@@ -1,0 +1,23 @@
+# Render.com Infrastructure Blueprint
+services:
+  # Express REST API Backend Web Service
+  - type: web
+    name: freelancer-api-backend
+    env: node
+    region: oregon
+    buildCommand: npm install
+    startCommand: node server/server.js
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: NODE_ENV
+        value: production
+      - key: GEMINI_API_KEY
+        sync: false
+
+  # Static Web Site Frontend
+  - type: static
+    name: freelancer-web-frontend
+    region: oregon
+    buildCommand: ""
+    publishDir: "."

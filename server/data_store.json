@@ -1,0 +1,249 @@
+{
+  "projects": [
+    {
+      "id": "prj-100",
+      "title": "Senior Vue Developer",
+      "hot": true,
+      "company": "Lemon.io",
+      "location": "New York, NY",
+      "timeAgo": "27d",
+      "boosted": true,
+      "top100": true,
+      "workType": "Full-Time",
+      "countries": [
+        { "code": "AD", "name": "Andorra" },
+        { "code": "AL", "name": "Albania" },
+        { "code": "AR", "name": "Argentina" },
+        { "code": "AT", "name": "Austria" },
+        { "code": "AU", "name": "Australia" }
+      ],
+      "clientName": "Lemon.io",
+      "clientRating": 5.0,
+      "clientReviews": 64,
+      "clientCountry": "New York, NY (United States)",
+      "clientVerified": true,
+      "category": "web-dev",
+      "type": "Fixed",
+      "budgetMin": 4500,
+      "budgetMax": 7000,
+      "currency": "USD",
+      "description": "We are seeking a senior Vue.js Developer with deep mastery of Vue 3 (Composition API), Pinia/Vuex, TypeScript, Vite, and modern reactive component architectures. You will lead frontend feature development for an enterprise analytics dashboard, integrate WebSocket real-time telemetry, and build clean reusable UI components.",
+      "skills": [
+        "Vue.js",
+        "Vue 3",
+        "TypeScript",
+        "HTML5",
+        "CSS3",
+        "Pinia",
+        "REST API",
+        "Tailwind CSS"
+      ],
+      "bidsCount": 28,
+      "avgBid": 5200,
+      "timeLeft": "3 days left",
+      "postedDate": "27 days ago",
+      "isBookmarked": false,
+      "featured": true,
+      "bids": [
+        {
+          "freelancerName": "Elena Rostova",
+          "amount": 5000,
+          "days": 14,
+          "pitch": "8+ years Vue & TypeScript specialist. Shipped 15+ production dashboards with Composition API and Pinia."
+        }
+      ]
+    },
+    {
+      "id": "prj-101",
+      "title": "Full-Stack Next.js 14 E-Commerce Platform with Stripe & AI Search",
+      "clientName": "NexusTech Global",
+      "clientRating": 4.9,
+      "clientReviews": 38,
+      "clientCountry": "United States",
+      "clientVerified": true,
+      "category": "web-dev",
+      "type": "Fixed",
+      "budgetMin": 3000,
+      "budgetMax": 5000,
+      "currency": "USD",
+      "description": "We are seeking a senior Full-Stack React/Next.js developer to build a modern, high-conversion e-commerce platform. Requirements include App Router, Tailwind CSS, PostgreSQL with Prisma ORM, Stripe Connect marketplace payments, and vector-based AI search integration.",
+      "skills": [
+        "Next.js",
+        "React.js",
+        "Node.js",
+        "TailwindCSS",
+        "Stripe",
+        "PostgreSQL"
+      ],
+      "bidsCount": 24,
+      "avgBid": 3850,
+      "timeLeft": "5 days left",
+      "postedDate": "2 hours ago",
+      "isBookmarked": false,
+      "featured": true,
+      "bids": [
+        {
+          "freelancerName": "Alex Rivera",
+          "amount": 3500,
+          "days": 14,
+          "pitch": "Senior full-stack dev with 8 years experience building high-scale Next.js storefronts."
+        }
+      ]
+    },
+    {
+      "id": "prj-102",
+      "title": "iOS & Android Flutter Mobile App for On-Demand Logistics Tracking",
+      "clientName": "SwiftDrop Deliveries",
+      "clientRating": 4.8,
+      "clientReviews": 19,
+      "clientCountry": "United Kingdom",
+      "clientVerified": true,
+      "category": "mobile-apps",
+      "type": "Hourly",
+      "budgetMin": 35,
+      "budgetMax": 65,
+      "currency": "USD",
+      "description": "Looking for a skilled Flutter mobile app developer to create real-time GPS tracking, push notifications, driver dispatch dashboard, and customer booking flow for iOS & Android.",
+      "skills": [
+        "Flutter",
+        "Dart",
+        "Firebase",
+        "Google Maps API",
+        "REST API"
+      ],
+      "bidsCount": 18,
+      "avgBid": 48,
+      "timeLeft": "6 days left",
+      "postedDate": "5 hours ago",
+      "isBookmarked": true,
+      "featured": false,
+      "bids": []
+    },
+    {
+      "id": "prj-103",
+      "title": "Custom LLM Chatbot & Retrieval-Augmented Generation (RAG) Pipeline",
+      "clientName": "DataMind Systems",
+      "clientRating": 5,
+      "clientReviews": 54,
+      "clientCountry": "Germany",
+      "clientVerified": true,
+      "category": "ai-ml",
+      "type": "Fixed",
+      "budgetMin": 2500,
+      "budgetMax": 4500,
+      "currency": "USD",
+      "description": "Build a document Q&A assistant using LangChain/LlamaIndex, OpenAI/Claude APIs, and Pinecone vector database. Must handle PDF parsing, hybrid search, and clean streaming Web UI.",
+      "skills": [
+        "Python",
+        "LangChain",
+        "OpenAI API",
+        "Pinecone",
+        "FastAPI",
+        "React"
+      ],
+      "bidsCount": 31,
+      "avgBid": 3200,
+      "timeLeft": "3 days left",
+      "postedDate": "1 day ago",
+      "isBookmarked": false,
+      "featured": true,
+      "bids": []
+    }
+  ],
+  "freelancers": [
+    {
+      "id": "freelancer-1",
+      "name": "Elena Rostova",
+      "title": "Senior Full-Stack & Cloud Architect",
+      "avatarBg": "linear-gradient(135deg, #0083c9, #00b2ff)",
+      "avatarText": "ER",
+      "rating": 5,
+      "reviewsCount": 142,
+      "hourlyRate": 65,
+      "country": "Estonia",
+      "flag": "🇪🇪",
+      "skills": [
+        "React.js",
+        "Next.js",
+        "Node.js",
+        "TypeScript",
+        "AWS",
+        "Docker"
+      ],
+      "completedJobs": 184,
+      "successRate": 100,
+      "tagline": "Top 1% React, Node.js & AWS Expert with 99% Job Success"
+    },
+    {
+      "id": "freelancer-2",
+      "name": "Marcus Vance",
+      "title": "Senior Mobile Engineer (Flutter & Native iOS)",
+      "avatarBg": "linear-gradient(135deg, #10b981, #059669)",
+      "avatarText": "MV",
+      "rating": 4.9,
+      "reviewsCount": 98,
+      "hourlyRate": 55,
+      "country": "Canada",
+      "flag": "🇨🇦",
+      "skills": [
+        "Flutter",
+        "iOS / Swift",
+        "Android",
+        "Firebase"
+      ],
+      "completedJobs": 112,
+      "successRate": 98,
+      "tagline": "Crafting slick cross-platform mobile apps with 60fps animations"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-1",
+      "text": "NexusTech Global invited you to bid on \"Full-Stack Next.js 14 E-Commerce Platform\"",
+      "time": "10m ago",
+      "unread": true,
+      "icon": "fa-briefcase"
+    },
+    {
+      "id": "notif-2",
+      "text": "Milestone #1 of $500 for \"Custom LLM Chatbot\" was funded by DataMind Systems",
+      "time": "1h ago",
+      "unread": true,
+      "icon": "fa-dollar-sign"
+    }
+  ],
+  "chats": {
+    "chat-1": [
+      {
+        "sender": "them",
+        "text": "Hi! I saw your post regarding the Next.js e-commerce project. I can start immediately.",
+        "time": "10:30 AM"
+      },
+      {
+        "sender": "me",
+        "text": "Great! Do you have experience with Stripe Connect multi-vendor payouts?",
+        "time": "10:32 AM"
+      }
+    ]
+  },
+  "users": [
+    {
+      "id": "usr-1784780601374",
+      "name": "Alex Founder",
+      "email": "alex@startup.io",
+      "password": "securePassword123",
+      "role": "Client",
+      "title": "Startup Founder & Entrepreneur",
+      "hourlyRate": 75,
+      "avatarText": "AF",
+      "bio": "Verified platform user registered on Freelancer NextGen.",
+      "skills": [
+        "React",
+        "Node.js",
+        "WebSockets",
+        "Stripe"
+      ],
+      "createdAt": "2026-07-23T04:23:21.374Z"
+    }
+  ]
+}

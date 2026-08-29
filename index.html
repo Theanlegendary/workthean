@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VietnamJobs - Nền Tảng Tuyển Dụng & Việc Làm Hàng Đầu Việt Nam</title>
+  <meta name="description" content="Kết nối hơn 500,000+ ứng viên chất lượng cao với hàng nghìn doanh nghiệp hàng đầu tại Việt Nam. Tìm việc làm nhanh, ứng tuyển 1-click.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Be Vietnam Pro & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css?v=3.0.0">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       SUPER CLEAN 2-TIER HEADER (MATCHING VLR / VIETNAM LOGISTICS REVIEW STYLE)
+       ========================================================================== -->
+  <header class="app-header" role="banner">
+    
+    <!-- Tier 1: Pure Clean White Top Bar -->
+    <div class="header-top-white-bar">
+      <div class="container header-top-container">
+        
+        <!-- Brand Logo & Social Utilities on Left -->
+        <div class="header-brand-group">
+          <a href="#" class="brand-logo-red" data-view="home">
+            <div class="logo-main-text">Vietnam<span>Jobs</span></div>
+            <div class="logo-sub-text">VIETNAM RECRUITMENT & CAREER MARKETPLACE</div>
+          </a>
+          <div class="header-social-pills">
+            <a href="#" class="social-circle-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" class="social-circle-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="social-circle-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="tel:19006868" class="social-circle-btn" title="Hotline 1900 6868"><i class="fa-solid fa-phone"></i></a>
+          </div>
+        </div>
+
+        <!-- Right: Capsule Search & Action Buttons -->
+        <div class="header-top-right-group">
+          <div class="header-capsule-search">
+            <input type="text" id="top-capsule-search-input" placeholder="Tìm kiếm..." aria-label="Tìm kiếm nhanh">
+            <i class="fa-solid fa-magnifying-glass" id="btn-top-capsule-search"></i>
+          </div>
+
+          <div class="flag-language-btn" title="Ngôn ngữ">
+            <span>🇻🇳 VN</span>
+          </div>
+
+          <button class="btn-login-red-outline" id="btn-open-auth-modal">
+            Đăng Nhập
+          </button>
+
+          <button class="btn-signup-red-solid" id="btn-open-post-project">
+            <i class="fa-solid fa-plus-circle"></i> Đăng Tin Tuyển Dụng
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tier 2: Solid Brand Navigation Strip (VLR Style) -->
+    <nav class="header-brand-nav-strip" role="navigation" aria-label="Primary Navigation">
+      <div class="container brand-nav-container">
+        
+        <div class="brand-nav-links-left">
+          <button class="brand-nav-item home-icon-btn active" data-view="home" title="Trang chủ">
+            <i class="fa-solid fa-house"></i>
+          </button>
+          <button class="brand-nav-item" data-view="browse">
+            Thời Sự Tuyển Dụng
+          </button>
+          <button class="brand-nav-item" data-view="browse">
+            Việc Làm Mới
+          </button>
+          <button class="brand-nav-item" data-view="browse">
+            Top Công Ty
+          </button>
+          <button class="brand-nav-item" data-view="freelancers">
+            Dành Cho Ứng Viên
+          </button>
+          <button class="brand-nav-item" data-view="browse">
+            Học Bổng & Sinh Viên
+          </button>
+          <button class="brand-nav-item" data-view="browse">
+            Công Nghệ & IT
+          </button>
+          <button class="brand-nav-item" data-view="freelancers">
+            Kỹ Năng & CV
+          </button>
+          <button class="brand-nav-item" id="nav-btn-headhunt-trigger">
+            Doanh Nghiệp / Headhunt
+          </button>
+        </div>
+
+        <div class="brand-nav-badge-right" id="nav-btn-hot-badge" data-view="browse">
+          <i class="fa-solid fa-fire"></i> HOT JOB
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN CONTENT CONTAINER & SPA VIEWS
+       ========================================================================== -->
+  <main class="main-content">
+
+    <!-- ========================================================================
+         VIEW 1: RECRUITMENT MARKETPLACE HOMEPAGE (#view-home)
+         ======================================================================== -->
+    <section class="app-view active-view" id="view-home">
+      <div class="container" style="padding-top: 18px;">
+
+        <!-- HERO SECTION (BIG CONVERSION & RECRUITMENT FOCUSED) -->
+        <section class="recruitment-hero-section" aria-label="Tuyển dụng và tìm việc làm">
+          <div class="hero-main-content">
+            <div class="hero-eyebrow-badge">
+              <i class="fa-solid fa-bolt"></i> Nền Tảng Tuyển Dụng & Việc Làm Hàng Đầu Việt Nam
+            </div>
+            <h1 class="hero-headline">
+              Tuyển đúng người. <span>Nhanh hơn.</span>
+            </h1>
+            <p class="hero-subheadline">
+              Tiếp cận hàng trăm nghìn ứng viên chất lượng cao và kết nối cơ hội nghề nghiệp đột phá tại các doanh nghiệp hàng đầu.
+            </p>
+
+            <!-- Integrated Search Bar -->
+            <form class="hero-search-box" id="hero-search-form" onsubmit="event.preventDefault();">
+              <div class="search-input-col">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="header-search-input" placeholder="Vị trí tuyển dụng, kỹ năng, công ty..." aria-label="Tìm kiếm việc làm">
+              </div>
+              <div class="search-divider"></div>
+              <div class="search-select-col">
+                <i class="fa-solid fa-location-dot"></i>
+                <select id="hero-location-select" aria-label="Chọn địa điểm">
+                  <option value="all">Tất cả địa điểm</option>
+                  <option value="hanoi">Hà Nội</option>
+                  <option value="hcm">TP. Hồ Chí Minh</option>
+                  <option value="danang">Đà Nẵng</option>
+                  <option value="remote">Làm việc từ xa (Remote)</option>
+                </select>
+              </div>
+              <button type="button" class="btn-hero-search" id="btn-hero-submit-search">
+                <i class="fa-solid fa-magnifying-glass"></i> Tìm Việc Ngay
+              </button>
+            </form>
+
+          </div>
+        </section>
+
+        <!-- SOCIAL PROOF & TRUSTED PARTNERS BAR -->
+        <div class="corporate-trust-bar" aria-label="Doanh nghiệp tin dùng">
+          <div class="corporate-trust-title">
+            <i class="fa-solid fa-shield-check" style="color: #16a34a;"></i> Được hàng nghìn doanh nghiệp tin dùng:
+          </div>
+          <div class="corporate-logos-list">
+            <div class="corporate-logo-item"><i class="fa-solid fa-building"></i> VINGROUP</div>
+            <div class="corporate-logo-item"><i class="fa-solid fa-landmark"></i> VIETCOMBANK</div>
+            <div class="corporate-logo-item"><i class="fa-solid fa-tower-cell"></i> VIETTEL</div>
+            <div class="corporate-logo-item"><i class="fa-solid fa-code"></i> FPT SOFTWARE</div>
+            <div class="corporate-logo-item"><i class="fa-solid fa-bolt"></i> TECHCOMBANK</div>
+            <div class="corporate-logo-item"><i class="fa-solid fa-bag-shopping"></i> SHOPEE</div>
+          </div>
+        </div>
+
+        <!-- ======================================================================
+             PORTAL 2-COLUMN BIG BIG LAYOUT (MAIN FEED + SIDEBAR WIDGETS)
+             ====================================================================== -->
+        <div class="portal-layout-grid">
+          
+          <!-- LEFT COLUMN: MAIN CONTENT & STREAMS -->
+          <div class="portal-main-stream">
+            
+            <!-- TOP NHÀ TUYỂN DỤNG HÀNG ĐẦU (BLUE CONTAINER & 6 CARDS) -->
+            <section class="company-spotlight-section" aria-label="Top Nhà Tuyển Dụng Hàng Đầu">
+              <div class="section-header-row" style="margin-bottom: 0; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 12px;">
+                <div>
+                  <h2 class="section-title" style="color: #ffffff;">Top Nhà Tuyển Dụng Hàng Đầu</h2>
+                  <p class="section-subtitle" style="color: rgba(255,255,255,0.85);">Khám phá cơ hội nghề nghiệp tại các doanh nghiệp tiêu biểu</p>
+                </div>
+                <a href="#" class="section-view-all-link" style="color: #ffffff; font-weight: 700;" data-view="browse">
+                  Xem tất cả công ty <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
+                </a>
+              </div>
+
+              <div class="company-spotlight-grid">
+                
+                <!-- Card 1: DAIKIN VIETNAM -->
+                <div class="company-profile-card" data-view="browse" data-filter-company="Daikin" title="Xem việc làm tại Daikin Vietnam">
+                  <div class="company-avatar-box">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="#00a3e0">
+                        <polygon points="12,2 22,22 2,22" />
+                      </svg>
+                      <span style="font-family: Arial, sans-serif; font-weight: 900; font-size: 17px; color: #00a3e0; letter-spacing: -0.5px;">DAIKIN</span>
+                    </div>
+                  </div>
+                  <div class="company-name-text">CN HƯNG YÊN - DAIKIN VIETNAM</div>
+                  <button class="btn-viec-moi" data-filter-company="Daikin">VIỆC MỚI</button>
+                </div>
+
+                <!-- Card 2: VNPT -->
+                <div class="company-profile-card" data-view="browse" data-filter-company="VNPT" title="Xem việc làm tại VNPT">
+                  <div class="company-avatar-box">
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                      <div style="width: 32px; height: 32px; border-radius: 50%; background: #0056d2; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 900; font-size: 14px; position: relative;">
+                        <i class="fa-solid fa-globe" style="font-size: 20px;"></i>
+                      </div>
+                      <span style="font-family: Arial, sans-serif; font-weight: 900; font-size: 13px; color: #0056d2; margin-top: 3px; letter-spacing: 0.5px;">VNPT</span>
+                    </div>
+                  </div>
+                  <div class="company-name-text">VNPT</div>
+                  <button class="btn-viec-moi" data-filter-company="VNPT">VIỆC MỚI</button>
+                </div>
+
+                <!-- Card 3: QNITY ELECTRONICS -->
+                <div class="company-profile-card" data-view="browse" data-filter-company="Qnity" title="Xem việc làm tại Qnity Electronics">
+                  <div class="company-avatar-box">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 5px;">
+                      <i class="fa-solid fa-snowflake" style="font-size: 18px; color: #0f172a;"></i>
+                      <span style="font-family: Arial, sans-serif; font-weight: 800; font-size: 18px; color: #0f172a;">Qnity</span>
+                    </div>
+                  </div>
+                  <div class="company-name-text">QNITY ELECTRONICS</div>
+                  <button class="btn-viec-moi" data-filter-company="Qnity">VIỆC MỚI</button>
+                </div>
+
+                <!-- Card 4: KHANG ĐIỀN -->
+                <div class="company-profile-card" data-view="browse" data-filter-company="Khang Điền" title="Xem việc làm tại Khang Điền">
+                  <div class="company-avatar-box">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
+                      <span style="background: #0284c7; color: #ffffff; font-weight: 900; font-size: 12px; padding: 2px 5px; border-radius: 3px;">K</span>
+                      <span style="font-family: Arial, sans-serif; font-weight: 800; font-size: 13.5px; color: #0284c7; letter-spacing: -0.2px;">KHANG ĐIỀN</span>
+                    </div>
+                  </div>
+                  <div class="company-name-text">KHANG ĐIỀN</div>
+                  <button class="btn-viec-moi" data-filter-company="Khang Điền">VIỆC MỚI</button>
+                </div>
+
+                <!-- Card 5: SEI (VIỆT NAM) -->
+                <div class="company-profile-card" data-view="browse" data-filter-company="SEEV" title="Xem việc làm tại SEEV / SEI Việt Nam">
+                  <div class="company-avatar-box">
+                    <span style="font-family: Arial, sans-serif; font-weight: 900; font-size: 22px; color: #1e3a8a; letter-spacing: 1px;">SEEV</span>
+                  </div>
+                  <div class="company-name-text">SEI (VIỆT NAM)</div>
+                  <button class="btn-viec-moi" data-filter-company="SEEV">VIỆC MỚI</button>
+                </div>
+
+                <!-- Card 6: VPBANK -->
+                <div class="company-profile-card" data-view="browse" data-filter-company="VPBank" title="Xem việc làm tại VPBank">
+                  <div class="company-avatar-box">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
+                      <i class="fa-solid fa-leaf" style="color: #dc2626; font-size: 16px;"></i>
+                      <span style="font-family: Arial, sans-serif; font-weight: 800; font-size: 16px; color: #15803d; letter-spacing: -0.3px;">VPBank</span>
+                    </div>
+                  </div>
+                  <div class="company-name-text">VPBANK</div>
+                  <button class="btn-viec-moi" data-filter-company="VPBank">VIỆC MỚI</button>
+                </div>
+
+              </div>
+            </section>
+
+            <!-- VIỆC LÀM MỚI NHẤT (QUICK FILTER & ACTIVE FEED) -->
+            <section aria-label="Việc Làm Mới Nhất">
+              <div class="section-header-row">
+                <div>
+                  <h2 class="section-title">Việc Làm Mới Nhất</h2>
+                  <p class="section-subtitle">Cập nhật liên tục các vị trí tuyển dụng vừa được đăng tải</p>
+                </div>
+                <a href="#" class="section-view-all-link" data-view="browse">
+                  Xem tất cả <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
+                </a>
+              </div>
+
+              <!-- Quick Filter Tabs -->
+              <div class="quick-filter-pills-row">
+                <button class="filter-pill-btn active" data-quick-filter="all">Tất cả việc làm</button>
+                <button class="filter-pill-btn" data-quick-filter="hot"><i class="fa-solid fa-fire" style="color:#dc2626;"></i> Tuyển gấp</button>
+                <button class="filter-pill-btn" data-quick-filter="remote"><i class="fa-solid fa-laptop-code"></i> Remote / WFH</button>
+                <button class="filter-pill-btn" data-quick-filter="fulltime"><i class="fa-solid fa-briefcase"></i> Toàn thời gian</button>
+                <button class="filter-pill-btn" data-quick-filter="highsalary"><i class="fa-solid fa-dollar-sign" style="color:#16a34a;"></i> Lương 30M+</button>
+                <button class="filter-pill-btn" data-quick-filter="saved"><i class="fa-solid fa-heart" style="color:#dc2626;"></i> Việc đã lưu (<span id="saved-jobs-count-badge">0</span>)</button>
+              </div>
+
+              <!-- Dynamic Projects Feed -->
+              <div class="projects-feed" id="projects-feed"></div>
+            </section>
+
+          </div>
+
+          <!-- RIGHT COLUMN: VLR-STYLE "/ MỚI NHẤT" LATEST NEWS & OPPORTUNITIES -->
+          <aside class="portal-sidebar" aria-label="Tin mới nhất và cơ hội nghề nghiệp">
+            
+            <div class="vlr-sidebar-heading">
+              <span>/</span> MỚI NHẤT
+            </div>
+
+            <div class="vlr-news-list">
+              
+              <!-- Item 1 -->
+              <a href="#" class="vlr-news-item" data-view="browse">
+                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?w=200&auto=format&fit=crop&q=80" alt="Dự án tồn đọng" class="vlr-news-thumb">
+                <div class="vlr-news-content">
+                  <div class="vlr-news-title">Khẩn trương rà soát, đề xuất giải pháp tháo gỡ vướng mắc cho các dự án tồn đọng, kéo dài</div>
+                  <div class="vlr-news-time">4 ngày trước</div>
+                </div>
+              </a>
+
+              <!-- Item 2 -->
+              <a href="#" class="vlr-news-item" data-view="browse">
+                <img src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?w=200&auto=format&fit=crop&q=80" alt="Dự án cao tốc" class="vlr-news-thumb">
+                <div class="vlr-news-content">
+                  <div class="vlr-news-title">Đẩy nhanh tiến độ các dự án đường bộ cao tốc khu vực Đông Nam Bộ và Tây Nam Bộ</div>
+                  <div class="vlr-news-time">14 ngày trước</div>
+                </div>
+              </a>
+
+              <!-- Item 3 -->
+              <a href="#" class="vlr-news-item" data-view="browse">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=200&auto=format&fit=crop&q=80" alt="Làn sóng AI" class="vlr-news-thumb">
+                <div class="vlr-news-content">
+                  <div class="vlr-news-title">Làn sóng AI liệu có biến Forwarder trở thành nạn nhân tiếp theo?</div>
+                  <div class="vlr-news-time">15 ngày trước</div>
+                </div>
+              </a>
+
+              <!-- Item 4 -->
+              <a href="#" class="vlr-news-item" data-view="browse">
+                <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=200&auto=format&fit=crop&q=80" alt="Logistics dược phẩm" class="vlr-news-thumb">
+                <div class="vlr-news-content">
+                  <div class="vlr-news-title">Logistics dược phẩm: chuỗi lạnh của niềm tin và sức khỏe</div>
+                  <div class="vlr-news-time">16 ngày trước</div>
+                </div>
+              </a>
+
+              <!-- Item 5 -->
+              <a href="#" class="vlr-news-item" data-view="browse">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200&auto=format&fit=crop&q=80" alt="Bất động sản phía Nam" class="vlr-news-thumb">
+                <div class="vlr-news-content">
+                  <div class="vlr-news-title">Từ cực công nghiệp đến điểm đến an cư: Cơ hội mới cho bất động sản phía Nam</div>
+                  <div class="vlr-news-time">16 ngày trước</div>
+                </div>
+              </a>
+
+            </div>
+
+          </aside>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW 2: BROWSE ALL JOBS PAGE (#view-browse)
+         ======================================================================== -->
+    <section class="app-view" id="view-browse">
+      <div class="container" style="padding: 24px 20px;">
+        <div class="section-header-row">
+          <div>
+            <h2 class="section-title">Danh Sách Việc Làm Đang Mở</h2>
+            <p class="section-subtitle">Tìm kiếm và ứng tuyển vào các vị trí phù hợp với năng lực của bạn</p>
+          </div>
+        </div>
+        <div class="projects-feed" id="browse-projects-feed"></div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW 3: FREELANCERS & CANDIDATES PAGE (#view-freelancers)
+         ======================================================================== -->
+    <section class="app-view" id="view-freelancers">
+      <div class="container" style="padding: 24px 20px;">
+        <div class="section-header-row">
+          <div>
+            <h2 class="section-title">Hồ Sơ Ứng Viên & Chuyên Gia Cấp Cao</h2>
+            <p class="section-subtitle">Đội ngũ kỹ sư, chuyên gia công nghệ đã được xác thực năng lực</p>
+          </div>
+        </div>
+        <div class="freelancers-grid" id="freelancers-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px;"></div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW 4: EMPLOYER DASHBOARD (#view-dashboard)
+         ======================================================================== -->
+    <section class="app-view" id="view-dashboard">
+      <div class="container" style="padding: 24px 20px;">
+        <div class="section-header-row">
+          <div>
+            <h2 class="section-title">Quản Lý Tuyển Dụng & Ứng Viên</h2>
+            <p class="section-subtitle">Theo dõi tiến độ tin đăng và danh sách hồ sơ ứng tuyển</p>
+          </div>
+        </div>
+        <div id="dashboard-content" style="background:#ffffff; border:1px solid var(--fl-border); border-radius:var(--radius-lg); padding:24px;">
+          <p>Chào mừng bạn đến với Trung tâm Quản lý Tuyển dụng Doanh Nghiệp.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       SHORT, CLEAN, BIG & SUPER RESPONSIVE FOOTER
+       ========================================================================== -->
+  <footer class="app-footer" role="contentinfo">
+    <div class="container">
+      
+      <!-- Quick Contact Cards Row -->
+      <div class="footer-contact-banner">
+        
+        <div class="footer-contact-card">
+          <div class="contact-card-icon"><i class="fa-solid fa-phone-volume"></i></div>
+          <div class="contact-card-info">
+            <h4>Hotline: 1900 6868</h4>
+            <p>Tư vấn & Hỗ trợ 24/7 (Miễn phí)</p>
+          </div>
+        </div>
+
+        <div class="footer-contact-card">
+          <div class="contact-card-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+          <div class="contact-card-info">
+            <h4>hotro@vietnamjobs.vn</h4>
+            <p>Tiếp nhận CV & Hợp tác doanh nghiệp</p>
+          </div>
+        </div>
+
+        <div class="footer-contact-card">
+          <div class="contact-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div class="contact-card-info">
+            <h4>Hà Nội & TP. Hồ Chí Minh</h4>
+            <p>Landmark 72 & Bitexco Tower</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Main Clean 4-Column Grid -->
+      <div class="footer-main-grid">
+        
+        <!-- Col 1: Brand Info -->
+        <div>
+          <a href="#" class="brand-logo-red" data-view="home" style="margin-bottom: 8px;">
+            <div class="logo-main-text" style="font-size: 24px;">Vietnam<span>Jobs</span></div>
+          </a>
+          <p style="font-size: 13.5px; color: #64748b; line-height: 1.5; margin-bottom: 12px;">
+            Nền tảng kết nối nhân tài & doanh nghiệp hàng đầu Việt Nam.
+          </p>
+          <div class="footer-social-row">
+            <a href="#" class="social-circle-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" class="social-circle-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="social-circle-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-circle-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Dành Cho Ứng Viên -->
+        <div>
+          <div class="footer-col-title">Dành Cho Ứng Viên</div>
+          <ul class="footer-links-list">
+            <li><a href="#" data-view="browse"><i class="fa-solid fa-chevron-right" style="font-size: 10px; color: #ea580c;"></i> Việc Làm Mới Nhất</a></li>
+            <li><a href="#" data-view="browse"><i class="fa-solid fa-chevron-right" style="font-size: 10px; color: #ea580c;"></i> Việc Lương Cao 30M+</a></li>
+            <li><a href="#" data-view="freelancers"><i class="fa-solid fa-chevron-right" style="font-size: 10px; color: #ea580c;"></i> Mẫu CV Chuyên Nghiệp</a></li>
+            <li><a href="#" data-view="browse"><i class="fa-solid fa-chevron-right" style="font-size: 10px; color: #ea580c;"></i> Khảo Sát Lương 2026</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Dành Cho Doanh Nghiệp -->
+        <div>
+          <div class="footer-col-title">Dành Cho Doanh Nghiệp</div>
+          <ul class="footer-links-list">
+            <li><a href="#" id="footer-btn-post-job"><i class="fa-solid fa-chevron-right" style="font-size: 10px; color: #ea580c;"></i> Đăng Tin Tuyển Dụng</a></li>
+            <li><a href="#" id="footer-btn-headhunt"><i class="fa-solid fa-chevron-right" style="font-size: 10px; color: #ea580c;"></i> Dịch Vụ Headhunt VIP</a></li>
+            <li><a href="#" data-view="dashboard"><i class="fa-solid fa-chevron-right" style="font-size: 10px; color: #ea580c;"></i> Quản Lý Hồ Sơ Ứng Viên</a></li>
+            <li><a href="#" data-view="home"><i class="fa-solid fa-chevron-right" style="font-size: 10px; color: #ea580c;"></i> Báo Giá Dịch Vụ</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Hỗ Trợ & Pháp Lý -->
+        <div>
+          <div class="footer-col-title">Hỗ Trợ & Pháp Lý</div>
+          <ul class="footer-links-list">
+            <li><a href="#" data-view="home"><i class="fa-solid fa-shield-check" style="font-size: 12px; color: #16a34a;"></i> Quy Chế Hoạt Động</a></li>
+            <li><a href="#" data-view="home"><i class="fa-solid fa-lock" style="font-size: 12px; color: #0284c7;"></i> Chính Sách Bảo Mật</a></li>
+            <li><a href="#" data-view="home"><i class="fa-solid fa-file-contract" style="font-size: 12px; color: #d97706;"></i> Điều Khoản Sử Dụng</a></li>
+            <li><a href="#" data-view="home"><i class="fa-solid fa-circle-question" style="font-size: 12px; color: #7c3aed;"></i> Câu Hỏi Thường Gặp</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Clean Footer Bottom Row -->
+      <div class="footer-bottom-bar">
+        <div>
+          <strong>© 2026 VietnamJobs Corporation.</strong> Nền tảng kết nối việc làm hàng đầu Việt Nam.
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px; font-size: 12.5px;">
+          <span><i class="fa-solid fa-certificate" style="color: #16a34a;"></i> Đã đăng ký Bộ Công Thương 🇻🇳</span>
+          <span>•</span>
+          <span>Bảo mật dữ liệu chuẩn ISO 27001</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODALS
+       ========================================================================== -->
+
+  <!-- MODAL ỨNG TUYỂN NHANH / 1-CLICK QUICK APPLY MODAL -->
+  <div class="modal-backdrop" id="modal-quick-apply">
+    <div class="quick-apply-modal-box">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; border-bottom: 1.5px solid var(--fl-border-subtle); padding-bottom: 16px;">
+        <div>
+          <span style="font-size: 12px; font-weight: 700; color: var(--fl-primary); text-transform: uppercase;">Ứng Tuyển Nhanh</span>
+          <h3 id="quick-apply-job-title" style="font-size: 18px; font-weight: 700; color: var(--fl-text-heading); margin: 4px 0 2px 0;">Senior Backend Engineer</h3>
+          <div id="quick-apply-company-name" style="font-size: 13px; color: var(--fl-text-muted); display: flex; align-items: center; gap: 6px;">
+            <span>FPT Software</span>
+            <i class="fa-solid fa-circle-check" style="color: #16a34a; font-size: 11px;"></i>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="close-quick-apply-modal" style="font-size: 24px; border: none; background: none; color: #94a3b8; cursor: pointer;">&times;</button>
+      </div>
+
+      <form id="quick-apply-form">
+        <input type="hidden" id="quick-apply-project-id">
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--fl-text-heading); margin-bottom: 5px;">Họ và Tên *</label>
+            <input type="text" id="qa-input-name" class="form-control" placeholder="Nguyễn Văn A" required>
+          </div>
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--fl-text-heading); margin-bottom: 5px;">Số Điện Thoại *</label>
+            <input type="tel" id="qa-input-phone" class="form-control" placeholder="0912 345 678" required>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--fl-text-heading); margin-bottom: 5px;">Email Liên Hệ *</label>
+            <input type="email" id="qa-input-email" class="form-control" placeholder="nguyenvana@gmail.com" required>
+          </div>
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--fl-text-heading); margin-bottom: 5px;">Mức Lương Mong Muốn</label>
+            <input type="text" id="qa-input-salary" class="form-control" placeholder="30,000,000₫ hoặc Thỏa thuận">
+          </div>
+        </div>
+
+        <!-- CV Drag & Drop Dropzone -->
+        <div style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 13px; font-weight: 600; color: var(--fl-text-heading); margin-bottom: 5px;">Đính Kèm CV / Hồ Sơ Ứng Tuyển *</label>
+          <div class="cv-dropzone" id="cv-dropzone-box">
+            <input type="file" id="qa-input-cv-file" accept=".pdf,.doc,.docx" style="display: none;">
+            <i class="fa-solid fa-cloud-arrow-up" style="font-size: 26px; color: var(--fl-primary); margin-bottom: 8px;"></i>
+            <div style="font-size: 13.5px; font-weight: 600; color: var(--fl-text-heading); margin-bottom: 2px;">Kéo & Thả file CV vào đây, hoặc click để chọn file</div>
+            <div style="font-size: 12px; color: var(--fl-text-muted);">Hỗ trợ định dạng PDF, DOC, DOCX (Dung lượng tối đa 10MB)</div>
+          </div>
+
+          <div class="cv-attached-preview" id="cv-attached-preview">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-file-pdf" style="font-size: 16px;"></i>
+              <span id="cv-attached-filename">NguyenVanA_CV.pdf</span>
+            </div>
+            <button type="button" id="btn-remove-attached-cv" style="border: none; background: none; color: #dc2626; cursor: pointer; font-size: 13px;">
+              <i class="fa-solid fa-trash-can"></i> Xóa
+            </button>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; font-size: 13px; font-weight: 600; color: var(--fl-text-heading); margin-bottom: 5px;">Thư Giới Thiệu Bản Thân (Tùy chọn)</label>
+          <textarea id="qa-input-pitch" rows="3" class="form-control" placeholder="Tóm tắt ngắn gọn số năm kinh nghiệm, thế mạnh chuyên môn hoặc đường dẫn Portfolio/GitHub..."></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 12px;">
+          <button type="button" class="btn-login-red-outline" id="btn-cancel-quick-apply">Hủy</button>
+          <button type="submit" class="btn-signup-red-solid">
+            <i class="fa-solid fa-paper-plane"></i> Gửi Hồ Sơ Ứng Tuyển
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL ĐĂNG KÝ TƯ VẤN DOANH NGHIỆP & BÁO GIÁ B2B -->
+  <div class="modal-backdrop" id="modal-enterprise-consult">
+    <div class="quick-apply-modal-box">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; border-bottom: 1.5px solid var(--fl-border-subtle); padding-bottom: 16px;">
+        <div>
+          <span style="font-size: 12px; font-weight: 700; color: var(--fl-primary); text-transform: uppercase;">Dịch Vụ Tuyển Dụng Doanh Nghiệp</span>
+          <h3 style="font-size: 18px; font-weight: 700; color: var(--fl-text-heading); margin: 4px 0 2px 0;">Đăng Ký Tư Vấn & Nhận Báo Giá B2B</h3>
+          <div style="font-size: 13px; color: var(--fl-text-muted);">Chuyên viên tuyển dụng cấp cao sẽ liên hệ tư vấn trong vòng 30 phút.</div>
+        </div>
+        <button class="modal-close-btn" id="close-enterprise-consult-modal" style="font-size: 24px; border: none; background: none; color: #94a3b8; cursor: pointer;">&times;</button>
+      </div>
+
+      <form id="enterprise-consult-form">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--fl-text-heading); margin-bottom: 5px;">Tên Doanh Nghiệp / Công Ty *</label>
+            <input type="text" id="ec-input-company" class="form-control" placeholder="Tập Đoàn ABC Corp" required>
+          </div>
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--fl-text-heading); margin-bottom: 5px;">Người Đại Diện / Chức Vụ *</label>
+            <input type="text" id="ec-input-contact-name" class="form-control" placeholder="Trần Thị B - HR Manager" required>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--fl-text-heading); margin-bottom: 5px;">Số Điện Thoại Doanh Nghiệp *</label>
+            <input type="tel" id="ec-input-phone" class="form-control" placeholder="0988 123 456" required>
+          </div>
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--fl-text-heading); margin-bottom: 5px;">Email Công Ty *</label>
+            <input type="email" id="ec-input-email" class="form-control" placeholder="hr@abccorp.vn" required>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--fl-text-heading); margin-bottom: 5px;">Gói Tuyển Dụng Quan Tâm</label>
+            <select id="ec-input-plan" class="form-control">
+              <option value="Business Pro">Gói Doanh Nghiệp Pro (2,990,000₫/tháng)</option>
+              <option value="Headhunt VIP">Dịch Vụ Săn Đầu Người Headhunt VIP</option>
+              <option value="Starter">Gói Khởi Nghiệp Starter (990,000₫/tháng)</option>
+              <option value="Custom">Tùy chỉnh theo yêu cầu Doanh nghiệp</option>
+            </select>
+          </div>
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: var(--fl-text-heading); margin-bottom: 5px;">Số Lượng Cần Tuyển</label>
+            <select id="ec-input-headcount" class="form-control">
+              <option value="1-3">1 - 3 vị trí</option>
+              <option value="4-10">4 - 10 vị trí</option>
+              <option value="10+">Hơn 10 vị trí / Tuyển dụng số lượng lớn</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; font-size: 13px; font-weight: 600; color: var(--fl-text-heading); margin-bottom: 5px;">Mô Tả Nhu Cầu & Vị Trí Cần Tuyển Dụng</label>
+          <textarea id="ec-input-notes" rows="3" class="form-control" placeholder="Ví dụ: Cần tuyển gấp 2 Senior React Native và 1 Solution Architect làm việc tại Hà Nội/TP.HCM..."></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 12px;">
+          <button type="button" class="btn-login-red-outline" id="btn-cancel-enterprise-consult">Hủy</button>
+          <button type="submit" class="btn-signup-red-solid">
+            <i class="fa-solid fa-paper-plane"></i> Gửi Yêu Cầu Báo Giá
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL ĐĂNG TIN TUYỂN DỤNG (WIZARD) -->
+  <div class="modal-backdrop" id="modal-wizard">
+    <div class="quick-apply-modal-box" style="max-width: 600px;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; border-bottom: 1.5px solid var(--fl-border-subtle); padding-bottom: 16px;">
+        <div>
+          <span style="font-size: 12px; font-weight: 700; color: var(--fl-primary); text-transform: uppercase;">Dành Cho Nhà Tuyển Dụng</span>
+          <h3 style="font-size: 18px; font-weight: 700; color: var(--fl-text-heading); margin: 4px 0 2px 0;">Đăng Tin Tuyển Dụng Nhanh</h3>
+        </div>
+        <button class="modal-close-btn" id="close-wizard-modal" style="font-size: 24px; border: none; background: none; color: #94a3b8; cursor: pointer;">&times;</button>
+      </div>
+
+      <form id="wizard-form">
+        <div class="form-group">
+          <label for="wiz-title">Tiêu Đề Vị Trí Tuyển Dụng *</label>
+          <input type="text" id="wiz-title" class="form-control" placeholder="Ví dụ: Senior Backend Engineer (Java / Spring Boot)" required>
+        </div>
+
+        <div class="form-group">
+          <label for="wiz-company">Tên Doanh Nghiệp / Công Ty *</label>
+          <input type="text" id="wiz-company" class="form-control" placeholder="Ví dụ: FPT Software" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+          <div>
+            <label for="wiz-category">Ngành Nghề / Chuyên Môn *</label>
+            <select id="wiz-category" class="form-control" required>
+              <option value="web-dev">Websites & Phần Mềm</option>
+              <option value="mobile-apps">Mobile Apps (iOS / Android)</option>
+              <option value="ai-ml">AI & Khoa Học Dữ Liệu</option>
+              <option value="recruitment">Nhân Sự & Quản Lý</option>
+              <option value="design">Thiết Kế UI/UX & Media</option>
+            </select>
+          </div>
+          <div>
+            <label for="wiz-location">Địa Điểm Làm Việc *</label>
+            <input type="text" id="wiz-location" class="form-control" placeholder="Hà Nội / TP.HCM / Remote" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="wiz-desc">Mô Tả Công Việc & Yêu Cầu Ứng Viên *</label>
+          <textarea id="wiz-desc" class="form-control" rows="4" placeholder="Mô tả trách nhiệm, kỹ năng cần thiết và chế độ đãi ngộ..." required></textarea>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+          <div>
+            <label for="wiz-min-budget">Mức Lương Tối Thiểu (VND)</label>
+            <input type="text" id="wiz-min-budget" class="form-control" placeholder="20,000,000₫" required>
+          </div>
+          <div>
+            <label for="wiz-max-budget">Mức Lương Tối Đa (VND)</label>
+            <input type="text" id="wiz-max-budget" class="form-control" placeholder="40,000,000₫" required>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 20px;">
+          <button type="button" class="btn-login-red-outline" id="btn-cancel-wizard">Hủy</button>
+          <button type="submit" class="btn-signup-red-solid">
+            <i class="fa-solid fa-check-circle"></i> Đăng Tin Tuyển Dụng
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- AUTH MODAL (ĐĂNG NHẬP / ĐĂNG KÝ) -->
+  <div class="modal-backdrop" id="modal-auth">
+    <div class="quick-apply-modal-box" style="max-width: 440px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1.5px solid var(--fl-border-subtle); padding-bottom: 14px;">
+        <h3 id="auth-modal-title" style="font-size: 18px; font-weight: 700; color: var(--fl-text-heading); margin: 0;">Đăng Nhập Tài Khoản</h3>
+        <button class="modal-close-btn" id="close-auth-modal" style="font-size: 24px; border: none; background: none; color: #94a3b8; cursor: pointer;">&times;</button>
+      </div>
+
+      <form id="auth-form">
+        <div class="form-group">
+          <label for="auth-email">Email hoặc Số điện thoại</label>
+          <input type="email" id="auth-email" class="form-control" placeholder="name@company.com" required>
+        </div>
+        <div class="form-group">
+          <label for="auth-password">Mật khẩu</label>
+          <input type="password" id="auth-password" class="form-control" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn-signup-red-solid" style="width: 100%; justify-content: center; padding: 10px; margin-top: 10px;">
+          Đăng Nhập
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating Zalo Support Widget -->
+  <div class="zalo-floating-widget" title="Tư vấn hỗ trợ qua Zalo" onclick="alert('Đang kết nối tổng đài hỗ trợ tuyển dụng VietnamJobs qua Zalo: 0988 123 456');">
+    Zalo
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

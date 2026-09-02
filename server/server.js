@@ -546,9 +546,14 @@ app.get('/api/chat/:threadId', (req, res) => {
   res.json({ threadId, messages });
 });
 
-server.listen(PORT, () => {
+if (require.main === module) {
+  server.listen(PORT, () => {
   console.log(`====================================================`);
   console.log(` Freelancer WebSockets & REST Server listening on port ${PORT}`);
   console.log(` Bid Attachments API Active: http://localhost:${PORT}/api/projects/prj-101/bids`);
   console.log(`====================================================`);
 });
+
+}
+
+module.exports = app;

@@ -481,7 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ${p.boosted !== false ? '<span class="pill-tag-boosted"><i class="fa-solid fa-rocket"></i> Boosted</span>' : ''}
                 ${p.featured ? '<span class="pill-tag-featured"><i class="fa-solid fa-crown"></i> Ưu Tiên</span>' : ''}
                 <span class="pill-tag-white"><i class="fa-solid fa-shield"></i> Xác thực 100%</span>
-                <span class="pill-tag-white"><i class="fa-solid fa-circle-check" style="color:var(--fl-accent-green);"></i> Tuyển gấp</span>
+                <span class="pill-tag-white"><i class="fa-solid fa-circle-check" style="color:var(--fl-primary);"></i> Tuyển gấp</span>
               </div>
 
               <div class="career-live-meta">
@@ -692,7 +692,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (compEl) {
       compEl.innerHTML = `
         <span>${p.company || p.clientName || 'Doanh Nghiệp'}</span>
-        <i class="fa-solid fa-circle-check" style="color: #16a34a; font-size: 11px;"></i>
+        <i class="fa-solid fa-circle-check" style="color: var(--fl-primary); font-size: 11px;"></i>
       `;
     }
 

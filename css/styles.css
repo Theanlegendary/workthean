@@ -1042,17 +1042,17 @@ button, input, select, textarea {
 }
 
 .career-verified-check {
-  color: var(--fl-accent-green);
-  font-size: 13px;
+  color: var(--fl-primary, #0a66c2);
+  font-size: 13.5px;
   display: inline-flex;
   align-items: center;
 }
 
-/* Green Verified Badge Utilities */
-.badge-verified-green {
-  background: #dcfce7;
-  color: #15803d;
-  border: 1px solid #bbf7d0;
+/* Verified Badge (LinkedIn Professional Blue) */
+.badge-verified-green, .badge-verified-blue {
+  background: #ebf4fd;
+  color: #0a66c2;
+  border: 1px solid #bfdbfe;
   font-size: 11px;
   font-weight: 700;
   padding: 2px 8px;
@@ -1062,8 +1062,8 @@ button, input, select, textarea {
   gap: 4px;
 }
 
-.badge-verified-green i {
-  color: var(--fl-accent-green);
+.badge-verified-green i, .badge-verified-blue i {
+  color: #0a66c2;
   font-size: 11px;
 }
 
@@ -2297,7 +2297,7 @@ button, input, select, textarea {
   background: linear-gradient(135deg, #004182 0%, #0a66c2 100%);
   color: #ffffff;
   border-radius: var(--radius-lg);
-  padding: 24px 28px;
+  padding: 28px 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2305,6 +2305,43 @@ button, input, select, textarea {
   flex-wrap: wrap;
   margin-bottom: 24px;
   box-shadow: 0 4px 16px rgba(10, 102, 194, 0.25);
+}
+
+.detail-bottom-cta-banner h3 {
+  color: #ffffff !important;
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.detail-bottom-cta-banner p {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-size: 14px;
+  margin: 0;
+}
+
+.btn-bottom-apply-cta {
+  background: #ffffff;
+  color: #0a66c2;
+  border: 2px solid #ffffff;
+  font-size: 14.5px;
+  font-weight: 800;
+  padding: 11px 26px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-bottom-apply-cta:hover {
+  background: #ebf4fd;
+  color: #004182;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
 }
 
 .detail-sidebar-card {

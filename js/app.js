@@ -552,14 +552,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const isSaved = state.savedJobs.has(p.id);
       const isPromoted = p.featured || p.hot;
       const initial = p.logoType || (p.company ? p.company.split(' ').map(w => w[0]).join('').substring(0, 3).toUpperCase() : 'VJ');
+      const logoUrl = p.logoUrl || `https://logo.clearbit.com/${(p.company || '').toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '')}.com`;
       const salaryText = p.salaryDisplay || (p.budgetMin ? `${p.budgetMin} – ${p.budgetMax} USD` : 'Thỏa thuận');
       const applicantCount = p.applicantsCount || (p.bids ? p.bids.length : 12);
+
+      const avatarHtml = `<img
+        src="${logoUrl}"
+        alt="${initial}"
+        class="card-brand-logo"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      /><span class="card-brand-fallback" style="display:none;">${initial}</span>`;
 
       return `
         <article class="career-job-card ${isPromoted ? 'promoted' : ''}" data-project-id="${p.id}">
           <div class="career-card-left-section">
             <div class="career-avatar-circle">
-              ${initial}
+              ${avatarHtml}
             </div>
 
             <div class="career-main-details">
@@ -655,16 +663,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const browseFeed = document.getElementById('browse-projects-feed');
     if (!browseFeed) return;
 
-    browseFeed.innerHTML = state.projects.map(p => {
+    // Read filters
+    const checkedCats = [...document.querySelectorAll('.browse-cat-filter:checked')].map(c => c.value);
+    const checkedTypes = [...document.querySelectorAll('.browse-type-filter:checked')].map(c => c.value);
+    const checkedLocs = [...document.querySelectorAll('.browse-loc-filter:checked')].map(c => c.value);
+    const sortVal = document.getElementById('browse-sort-select')?.value || 'newest';
+
+    let projects = [...state.projects];
+
+    if (checkedCats.length > 0) projects = projects.filter(p => checkedCats.includes(p.category));
+    if (checkedTypes.length > 0) projects = projects.filter(p => checkedTypes.some(t => (p.workType || p.type || '').toLowerCase().includes(t.toLowerCase())));
+    if (checkedLocs.length > 0) projects = projects.filter(p => checkedLocs.some(l => (p.location || '').toLowerCase().includes(l.toLowerCase())));
+
+    if (state.filters.search) {
+      const q = state.filters.search;
+      projects = projects.filter(p =>
+        p.title.toLowerCase().includes(q) ||
+        (p.company || '').toLowerCase().includes(q) ||
+        (p.skills || []).some(s => s.toLowerCase().includes(q))
+      );
+    }
+
+    if (sortVal === 'salary') projects.sort((a, b) => (b.budgetMax || 0) - (a.budgetMax || 0));
+    else if (sortVal === 'applicants') projects.sort((a, b) => (b.applicantsCount || 0) - (a.applicantsCount || 0));
+
+    const countEl = document.getElementById('browse-results-count');
+    if (countEl) countEl.textContent = projects.length;
+
+    if (projects.length === 0) {
+      browseFeed.innerHTML = `<div style="background:#fff;border:1px solid var(--fl-border);border-radius:var(--radius-lg);padding:40px;text-align:center;"><i class="fa-solid fa-folder-open" style="font-size:36px;color:var(--fl-text-light);"></i><h4 style="margin-top:12px;font-size:16px;color:var(--fl-text-heading);">Không tìm thấy việc làm phù hợp</h4></div>`;
+      return;
+    }
+
+    browseFeed.innerHTML = projects.map(p => {
       const isSaved = state.savedJobs.has(p.id);
       const initial = p.logoType || (p.company ? p.company.substring(0, 2).toUpperCase() : 'VJ');
+      const logoUrl = p.logoUrl || `https://logo.clearbit.com/${(p.company || '').toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '')}.com`;
       const salaryText = p.salaryDisplay || (p.budgetMin ? `${p.budgetMin} – ${p.budgetMax} USD` : 'Thỏa thuận');
 
       return `
-        <article class="career-job-card" data-project-id="${p.id}">
+        <article class="career-job-card ${p.hot ? 'promoted' : ''}" data-project-id="${p.id}">
           <div class="career-card-left-section">
             <div class="career-avatar-circle">
-              ${initial}
+              <img src="${logoUrl}" alt="${initial}" class="card-brand-logo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+              <span class="card-brand-fallback" style="display:none;">${initial}</span>
             </div>
 
             <div class="career-main-details">

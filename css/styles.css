@@ -2925,3 +2925,32 @@ button, input, select, textarea {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ==========================================================================
+   JOB CARD BRAND LOGO ICON
+   ========================================================================== */
+.card-brand-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  transition: transform 0.18s ease;
+}
+
+.career-job-card:hover .card-brand-logo {
+  transform: scale(1.06);
+}
+
+.card-brand-fallback {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--fl-text-heading);
+  border-radius: 8px;
+  background: var(--fl-bg-hover);
+}

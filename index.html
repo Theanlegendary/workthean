@@ -420,34 +420,43 @@
     <div class="browse-layout-grid">
       <!-- Filter Sidebar -->
       <aside class="browse-filter-sidebar">
-        <div class="filter-sidebar-title"><i class="fa-solid fa-sliders"></i> Bộ Lọc Tìm Kiếm</div>
-
-        <div class="filter-group">
-          <div class="filter-group-label">Ngành nghề</div>
-          <label class="filter-option"><input type="checkbox" value="web-dev" class="browse-cat-filter"> Công nghệ / IT <span class="filter-count-badge">6.8k</span></label>
-          <label class="filter-option"><input type="checkbox" value="ai-ml" class="browse-cat-filter"> AI & Dữ Liệu <span class="filter-count-badge">2.4k</span></label>
-          <label class="filter-option"><input type="checkbox" value="mobile-apps" class="browse-cat-filter"> Mobile App <span class="filter-count-badge">3.2k</span></label>
-          <label class="filter-option"><input type="checkbox" value="design" class="browse-cat-filter"> Design / UI-UX <span class="filter-count-badge">3.8k</span></label>
-          <label class="filter-option"><input type="checkbox" value="recruitment" class="browse-cat-filter"> Kinh doanh / HR <span class="filter-count-badge">4.1k</span></label>
+        <div class="filter-sidebar-header">
+          <div class="filter-sidebar-title">
+            <div class="filter-title-icon"><i class="fa-solid fa-sliders"></i></div>
+            <span>Bộ Lọc Tìm Kiếm</span>
+          </div>
+          <button type="button" class="btn-reset-filters" id="btn-reset-browse-filters" title="Xóa tất cả bộ lọc">
+            <i class="fa-solid fa-rotate-left"></i> Đặt lại
+          </button>
         </div>
 
         <div class="filter-group">
-          <div class="filter-group-label">Hình thức</div>
-          <label class="filter-option"><input type="checkbox" value="Full-Time" class="browse-type-filter"> Toàn thời gian</label>
-          <label class="filter-option"><input type="checkbox" value="Part-Time" class="browse-type-filter"> Bán thời gian</label>
-          <label class="filter-option"><input type="checkbox" value="Remote" class="browse-type-filter"> Remote / WFH</label>
+          <div class="filter-group-label"><i class="fa-solid fa-layer-group"></i> Ngành nghề tuyển dụng</div>
+          <label class="filter-option"><input type="checkbox" value="web-dev" class="browse-cat-filter"> <i class="fa-solid fa-code" style="color:#0a66c2; width:16px;"></i> Công nghệ / IT <span class="filter-count-badge">6.8k</span></label>
+          <label class="filter-option"><input type="checkbox" value="ai-ml" class="browse-cat-filter"> <i class="fa-solid fa-brain" style="color:#8b5cf6; width:16px;"></i> AI & Dữ Liệu <span class="filter-count-badge">2.4k</span></label>
+          <label class="filter-option"><input type="checkbox" value="mobile-apps" class="browse-cat-filter"> <i class="fa-solid fa-mobile-screen" style="color:#ec4899; width:16px;"></i> Mobile App <span class="filter-count-badge">3.2k</span></label>
+          <label class="filter-option"><input type="checkbox" value="design" class="browse-cat-filter"> <i class="fa-solid fa-pen-nib" style="color:#f59e0b; width:16px;"></i> Design / UI-UX <span class="filter-count-badge">3.8k</span></label>
+          <label class="filter-option"><input type="checkbox" value="recruitment" class="browse-cat-filter"> <i class="fa-solid fa-user-group" style="color:#10b981; width:16px;"></i> Kinh doanh / HR <span class="filter-count-badge">4.1k</span></label>
         </div>
 
         <div class="filter-group">
-          <div class="filter-group-label">Địa điểm</div>
-          <label class="filter-option"><input type="checkbox" value="hcm" class="browse-loc-filter"> TP. Hồ Chí Minh</label>
-          <label class="filter-option"><input type="checkbox" value="hanoi" class="browse-loc-filter"> Hà Nội</label>
-          <label class="filter-option"><input type="checkbox" value="danang" class="browse-loc-filter"> Đà Nẵng</label>
-          <label class="filter-option"><input type="checkbox" value="bacninh" class="browse-loc-filter"> Bắc Ninh</label>
+          <div class="filter-group-label"><i class="fa-solid fa-briefcase"></i> Hình thức làm việc</div>
+          <label class="filter-option"><input type="checkbox" value="Full-Time" class="browse-type-filter"> <i class="fa-solid fa-clock" style="color:#0a66c2; width:16px;"></i> Toàn thời gian</label>
+          <label class="filter-option"><input type="checkbox" value="Part-Time" class="browse-type-filter"> <i class="fa-solid fa-calendar-day" style="color:#f59e0b; width:16px;"></i> Bán thời gian</label>
+          <label class="filter-option"><input type="checkbox" value="Remote" class="browse-type-filter"> <i class="fa-solid fa-house-laptop" style="color:#10b981; width:16px;"></i> Remote / WFH</label>
         </div>
 
-        <button class="btn-hero-search" style="width:100%; justify-content:center; margin-top:4px;" id="btn-apply-browse-filters">
-          <i class="fa-solid fa-filter"></i> Áp Dụng Lọc
+        <div class="filter-group">
+          <div class="filter-group-label"><i class="fa-solid fa-location-dot"></i> Địa điểm làm việc</div>
+          <label class="filter-option"><input type="checkbox" value="hcm" class="browse-loc-filter"> <i class="fa-solid fa-city" style="color:#ef4444; width:16px;"></i> TP. Hồ Chí Minh</label>
+          <label class="filter-option"><input type="checkbox" value="hanoi" class="browse-loc-filter"> <i class="fa-solid fa-landmark" style="color:#0a66c2; width:16px;"></i> Hà Nội</label>
+          <label class="filter-option"><input type="checkbox" value="danang" class="browse-loc-filter"> <i class="fa-solid fa-bridge" style="color:#06b6d4; width:16px;"></i> Đà Nẵng</label>
+          <label class="filter-option"><input type="checkbox" value="bacninh" class="browse-loc-filter"> <i class="fa-solid fa-industry" style="color:#f97316; width:16px;"></i> Bắc Ninh</label>
+        </div>
+
+        <button class="btn-apply-filters-premium" id="btn-apply-browse-filters">
+          <i class="fa-solid fa-filter"></i> <span>Áp Dụng Lọc</span>
+          <span class="filter-active-count-badge" id="filter-active-badge" style="display:none;">0</span>
         </button>
       </aside>
 

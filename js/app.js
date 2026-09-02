@@ -703,11 +703,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
   function initBrowseFilters() {
-    document.getElementById('btn-apply-browse-filters')?.addEventListener('click', renderBrowseProjects);
+    const updateActiveBadge = () => {
+      const activeCount = document.querySelectorAll('.browse-cat-filter:checked, .browse-type-filter:checked, .browse-loc-filter:checked').length;
+      const badge = document.getElementById('filter-active-badge');
+      if (badge) {
+        if (activeCount > 0) {
+          badge.textContent = activeCount;
+          badge.style.display = 'inline-block';
+        } else {
+          badge.style.display = 'none';
+        }
+      }
+    };
+
+    document.getElementById('btn-apply-browse-filters')?.addEventListener('click', () => {
+      renderBrowseProjects();
+      showToast('🔍 Đã áp dụng bộ lọc thành công!');
+    });
+
+    document.getElementById('btn-reset-browse-filters')?.addEventListener('click', () => {
+      document.querySelectorAll('.browse-cat-filter, .browse-type-filter, .browse-loc-filter').forEach(cb => {
+        cb.checked = false;
+      });
+      const sortSelect = document.getElementById('browse-sort-select');
+      if (sortSelect) sortSelect.value = 'newest';
+      updateActiveBadge();
+      renderBrowseProjects();
+      showToast('🔄 Đã đặt lại toàn bộ bộ lọc tìm kiếm');
+    });
+
     document.getElementById('browse-sort-select')?.addEventListener('change', renderBrowseProjects);
 
     document.querySelectorAll('.browse-cat-filter, .browse-type-filter, .browse-loc-filter').forEach(cb => {
-      cb.addEventListener('change', renderBrowseProjects);
+      cb.addEventListener('change', () => {
+        updateActiveBadge();
+        renderBrowseProjects();
+      });
     });
   }
 

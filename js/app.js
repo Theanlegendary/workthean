@@ -1168,13 +1168,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!toast || !msgEl) return;
 
     const activities = [
-      { text: "Nguyễn Minh Tuấn vừa ứng tuyển <strong>Senior Backend Engineer</strong> tại FPT Software", time: "1 phút trước" },
-      { text: "Vietcombank vừa gửi lời mời phỏng vấn tới ứng viên <strong>Trần Minh Quang</strong>", time: "3 phút trước" },
-      { text: "Lê Hoàng Long vừa xác thực thành công hồ sơ chuyên gia <strong>AI Solution Architect</strong>", time: "5 phút trước" },
-      { text: "Shopee Vietnam vừa nhận 4 hồ sơ ứng tuyển <strong>Digital Marketing Manager</strong>", time: "7 phút trước" },
-      { text: "VinFast Digital vừa đăng tuyển 3 vị trí <strong>React / Next.js Senior</strong>", time: "9 phút trước" },
-      { text: "Vũ Đình Nam vừa nộp hồ sơ ứng tuyển <strong>Mobile Flutter Engineer</strong> tại Viettel", time: "11 phút trước" },
-      { text: "MoMo Fintech vừa xem hồ sơ của <strong>Nguyễn Hà My</strong> (UX Lead)", time: "14 phút trước" }
+      { logo: "images/brands/fpt.svg", text: "Nguyễn Minh Tuấn vừa ứng tuyển <strong>Senior Backend Engineer</strong> tại FPT Software", time: "1 phút trước" },
+      { logo: "images/brands/vcb.svg", text: "Vietcombank vừa gửi lời mời phỏng vấn tới ứng viên <strong>Trần Minh Quang</strong>", time: "3 phút trước" },
+      { logo: "images/brands/vinfast.svg", text: "VinFast Digital vừa đăng tuyển 3 vị trí <strong>React / Next.js Senior</strong>", time: "5 phút trước" },
+      { logo: "images/brands/shopee.svg", text: "Shopee Vietnam vừa nhận 4 hồ sơ ứng tuyển <strong>Digital Marketing Manager</strong>", time: "8 phút trước" },
+      { logo: "images/brands/viettel.svg", text: "Vũ Đình Nam vừa nộp hồ sơ ứng tuyển <strong>Mobile Flutter Engineer</strong> tại Viettel", time: "12 phút trước" },
+      { logo: "images/brands/momo.svg", text: "MoMo Fintech vừa xem hồ sơ của <strong>Nguyễn Hà My</strong> (UX Lead)", time: "15 phút trước" },
+      { logo: "images/brands/samsung.svg", text: "Samsung R&D vừa mở tuyển 2 vị trí <strong>AI Data Engineer</strong>", time: "18 phút trước" }
     ];
 
     let actIndex = 0;
@@ -1189,22 +1189,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const act = activities[actIndex];
       actIndex = (actIndex + 1) % activities.length;
 
-      msgEl.innerHTML = act.text;
+      const imgEl = document.getElementById('activity-toast-img');
+      if (imgEl && act.logo) imgEl.src = act.logo;
+      if (msgEl) msgEl.innerHTML = act.text;
       if (timeEl) timeEl.innerHTML = '<span class="live-pulse-dot" style="width:6px;height:6px;"></span> ' + act.time;
 
       toast.classList.add('show');
 
       clearTimeout(toastTimeout);
+      // Stay visible for 7.5 seconds for comfortable reading
       toastTimeout = setTimeout(() => {
         toast.classList.remove('show');
-      }, 5000);
+      }, 7500);
     }
 
-    // Start ticker loop
+    // Start ticker with comfortable unhurried 18s interval
     setTimeout(() => {
       showNextActivity();
-      setInterval(showNextActivity, 10000);
-    }, 2500);
+      setInterval(showNextActivity, 18000);
+    }, 4000);
   }
 
   function initMarketInsights() {

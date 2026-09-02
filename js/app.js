@@ -448,6 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     feedContainer.innerHTML = filtered.map(p => {
       const isSaved = state.savedJobs.has(p.id);
+      const isPromoted = p.featured || p.hot;
       const initial = p.logoType || (p.company ? p.company.split(' ').map(w => w[0]).join('').substring(0, 3).toUpperCase() : 'VJ');
       const salaryText = p.salaryDisplay || (p.budgetMin ? `${p.budgetMin} – ${p.budgetMax} USD` : 'Thỏa thuận');
       const applicantCount = p.applicantsCount || (p.bids ? p.bids.length : 12);

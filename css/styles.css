@@ -965,6 +965,8 @@ button, input, select, textarea {
   box-shadow: var(--shadow-sm);
   letter-spacing: -0.2px;
   text-transform: uppercase;
+  overflow: hidden;
+  padding: 2px;
 }
 
 .career-avatar-circle.promoted-icon {

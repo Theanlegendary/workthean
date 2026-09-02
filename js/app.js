@@ -194,29 +194,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const prjId = state.selectedProject.id;
       const btn = e.currentTarget;
       
-          
-      
-          if (state.savedJobs.has(prjId)) {
-            state.savedJobs.delete(prjId);
-            saveBtn.classList.remove('saved');
-            saveBtn.innerHTML = '<i class="fa-regular fa-heart"></i>';
-            showToast('Đã bỏ lưu việc làm');
-          } else {
-            state.savedJobs.add(prjId);
-            saveBtn.classList.add('saved');
-            saveBtn.innerHTML = '<i class="fa-solid fa-heart bookmark-pop"></i>';
-            showToast('❤️ Đã lưu việc làm vào danh sách yêu thích!');
-          }
-          const icon = saveBtn.querySelector('i');
-          if (icon) {
-            icon.classList.remove('bookmark-pop');
-            void icon.offsetWidth; // reflow
-            icon.classList.add('bookmark-pop');
-          }
-          updateSavedJobsCountUI();
-
-
-
+      if (state.savedJobs.has(prjId)) {
+        state.savedJobs.delete(prjId);
+        btn.classList.remove('saved');
+        btn.innerHTML = '<i class="fa-regular fa-bookmark"></i> Lưu Việc';
+        showToast('Đã bỏ lưu việc làm');
+      } else {
+        state.savedJobs.add(prjId);
+        btn.classList.add('saved');
+        btn.innerHTML = '<i class="fa-solid fa-bookmark bookmark-pop" style="color:#0a66c2;"></i> Đã Lưu';
+        showToast('❤️ Đã lưu việc làm vào danh sách yêu thích!');
+      }
+      const icon = btn.querySelector('i');
+      if (icon) {
+        icon.classList.remove('bookmark-pop');
+        void icon.offsetWidth; // reflow
+        icon.classList.add('bookmark-pop');
+      }
+      updateSavedJobsCountUI();
+      renderHomeFeaturedProjects();
     });
 
     document.getElementById('btn-detail-trigger-share')?.addEventListener('click', () => {
@@ -253,7 +249,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (compEl) compEl.textContent = p.company || p.clientName || 'Doanh Nghiệp Tuyển Dụng';
     
     const logoText = p.logoType || (p.company || p.clientName || 'VN').substring(0, 3).toUpperCase();
-    if (logoEl) logoEl.textContent = logoText;
+    const logoUrl = p.logoUrl || `https://logo.clearbit.com/${(p.company || '').toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '')}.com`;
+    
+    if (logoEl) {
+      logoEl.innerHTML = `<img src="${logoUrl}" alt="${logoText}" class="card-brand-logo" style="width:54px;height:54px;object-fit:contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><span class="card-brand-fallback" style="display:none;width:54px;height:54px;font-size:16px;">${logoText}</span>`;
+    }
 
     if (locEl) locEl.innerHTML = `<i class="fa-solid fa-location-dot" style="color:var(--fl-primary);"></i> ${p.location || 'Hà Nội & TP.HCM'}`;
     if (worktypeEl) worktypeEl.innerHTML = `<i class="fa-solid fa-briefcase"></i> ${p.workType || p.type || 'Toàn thời gian'}`;
@@ -306,7 +306,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const sideWorktype = document.getElementById('sidebar-spec-worktype');
     const sideDeadline = document.getElementById('sidebar-spec-deadline');
 
-    if (sideAvatar) sideAvatar.textContent = logoText;
+    if (sideAvatar) {
+      sideAvatar.innerHTML = `<img src="${logoUrl}" alt="${logoText}" class="card-brand-logo" style="width:42px;height:42px;object-fit:contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><span class="card-brand-fallback" style="display:none;width:42px;height:42px;">${logoText}</span>`;
+    }
     if (sideCompName) sideCompName.textContent = p.company || p.clientName || 'Doanh Nghiệp Tuyển Dụng';
     if (sideRating) sideRating.textContent = `${p.clientRating || 5.0} / 5.0 (${p.clientReviews || 84} đánh giá)`;
     if (sideHireRate) sideHireRate.textContent = p.clientHireRate || '98%';
@@ -938,25 +940,61 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.getElementById('freelancers-grid');
     if (!grid) return;
 
-    grid.innerHTML = state.freelancers.map(f => `
-      <div style="background:#ffffff; border:1px solid var(--fl-border); border-radius:var(--radius-md); padding:18px; display:flex; flex-direction:column; justify-content:space-between;">
-        <div>
-          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-            <div style="width:44px; height:44px; border-radius:50%; background:var(--fl-primary-light); color:var(--fl-primary); font-weight:700; display:flex; align-items:center; justify-content:center; font-size:14px;">
-              ${f.avatarText}
+    grid.innerHTML = state.freelancers.map(f => {
+      const skillsHtml = (f.skills || []).map(s => `<span class="detail-skill-pill" style="font-size:11.5px; padding:3px 10px;"><i class="fa-solid fa-check"></i> ${s}</span>`).join('');
+      const avatarImg = f.photoUrl ? `<img src="${f.photoUrl}" alt="${f.name}" style="width:52px; height:52px; border-radius:50%; object-fit:cover; border:2px solid #fff; box-shadow:var(--shadow-sm);" />` : `<div style="width:52px; height:52px; border-radius:50%; background:var(--fl-primary-light); color:var(--fl-primary); font-weight:800; display:flex; align-items:center; justify-content:center; font-size:16px;">${f.avatarText}</div>`;
+
+      return `
+        <div class="career-job-card" style="display:flex; flex-direction:column; justify-content:space-between; padding:22px; cursor:default;">
+          <div>
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:14px;">
+              <div style="display:flex; align-items:center; gap:14px;">
+                ${avatarImg}
+                <div>
+                  <h3 style="font-size:16px; font-weight:800; color:var(--fl-text-heading); margin-bottom:2px; display:flex; align-items:center; gap:6px;">
+                    ${f.name}
+                    <i class="fa-solid fa-circle-check" style="color:var(--fl-primary); font-size:13px;" title="Ứng viên đã xác thực"></i>
+                  </h3>
+                  <div style="font-size:13px; color:var(--fl-primary); font-weight:600;">${f.title}</div>
+                  <div style="font-size:12px; color:var(--fl-text-light); margin-top:2px;">
+                    <i class="fa-solid fa-location-dot"></i> ${f.country} • <i class="fa-solid fa-star" style="color:#eab308;"></i> ${f.rating} (${f.reviewsCount} đánh giá)
+                  </div>
+                </div>
+              </div>
             </div>
-            <div>
-              <h4 style="font-size:15px; font-weight:700; color:var(--fl-text-heading);">${f.name}</h4>
-              <div style="font-size:12.5px; color:var(--fl-text-muted);">${f.title}</div>
+
+            <p style="font-size:13px; color:var(--fl-text-body); line-height:1.5; margin-bottom:14px;">${f.bio || f.tagline}</p>
+            
+            <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;">
+              ${skillsHtml}
             </div>
           </div>
-          <p style="font-size:13px; color:var(--fl-text-body); line-height:1.5; margin-bottom:12px;">${f.bio || f.tagline}</p>
+
+          <div style="display:flex; gap:10px; border-top:1px solid var(--fl-border); padding-top:14px;">
+            <button class="btn-signup-red-solid" style="flex:1; justify-content:center; padding:9px 12px; font-size:13px;" data-candidate-name="${f.name}">
+              <i class="fa-solid fa-paper-plane"></i> Mời Phỏng Vấn
+            </button>
+            <button class="btn-login-red-outline" style="padding:9px 14px; font-size:13px;" data-view-profile="${f.name}">
+              Xem CV
+            </button>
+          </div>
         </div>
-        <button class="btn-signup-red-solid" style="width:100%; justify-content:center; padding:8px;" onclick="alert('Đã gửi lời mời phỏng vấn tới ứng viên ${f.name}');">
-          Liên Hệ Ứng Viên
-        </button>
-      </div>
-    `).join('');
+      `;
+    }).join('');
+
+    grid.querySelectorAll('[data-candidate-name]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.getAttribute('data-candidate-name');
+        showToast(`✉️ Đã gửi lời mời phỏng vấn tới chuyên gia ${name}! Chúng tôi sẽ thông báo cho bạn ngay khi ứng viên phản hồi.`);
+      });
+    });
+
+    grid.querySelectorAll('[data-view-profile]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.getAttribute('data-view-profile');
+        showToast(`📄 Đang mở hồ sơ năng lực chi tiết của ${name}...`);
+      });
+    });
   }
 
   /* ==========================================================================

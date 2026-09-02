@@ -1032,8 +1032,29 @@ button, input, select, textarea {
 }
 
 .career-verified-check {
-  color: #0056d2;
+  color: var(--fl-accent-green, #16a34a);
   font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Green Verified Badge Utilities */
+.badge-verified-green {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.badge-verified-green i {
+  color: #16a34a;
+  font-size: 11px;
 }
 
 .career-meta-sep {

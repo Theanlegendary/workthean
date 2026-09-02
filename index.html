@@ -372,6 +372,223 @@
     </section>
 
     <!-- ========================================================================
+         VIEW: JOB DETAIL PAGE WITH ID (#view-job-detail)
+         ======================================================================== -->
+    <section class="app-view" id="view-job-detail">
+      <div class="container" style="padding: 24px 20px;">
+        
+        <!-- Breadcrumb & Back Action -->
+        <div class="detail-top-nav-bar">
+          <button class="btn-back-breadcrumb" id="btn-back-to-jobs-feed">
+            <i class="fa-solid fa-arrow-left"></i> Quay lại danh sách việc làm
+          </button>
+          <div class="detail-id-pill">
+            <i class="fa-solid fa-hashtag"></i> Mã tin: <strong id="detail-job-id-tag">prj-101</strong>
+            <button class="btn-copy-id" id="btn-copy-job-id" title="Sao chép mã tin"><i class="fa-regular fa-copy"></i></button>
+          </div>
+        </div>
+
+        <!-- Hero Header Card -->
+        <div class="job-detail-header-card">
+          <div class="detail-header-main-row">
+            <div class="detail-header-left">
+              <div class="detail-avatar-box" id="detail-company-logo">
+                VCB
+              </div>
+              <div>
+                <div class="detail-badge-row" id="detail-badge-row">
+                  <span class="badge-hot-tag"><i class="fa-solid fa-fire"></i> GẤP</span>
+                  <span class="badge-verified-green"><i class="fa-solid fa-circle-check"></i> ĐÃ XÁC THỰC</span>
+                  <span class="detail-id-inline" id="detail-id-inline"><i class="fa-solid fa-fingerprint"></i> ID: prj-101</span>
+                </div>
+                <h1 class="detail-job-title" id="detail-job-title">Chuyên Viên Phân Tích Dữ Liệu & AI Solution Architect</h1>
+                <div class="detail-company-meta">
+                  <span class="detail-company-name" id="detail-company-name">Ngân Hàng Vietcombank</span>
+                  <i class="fa-solid fa-circle-check career-verified-check"></i>
+                  <span class="meta-dot">•</span>
+                  <span id="detail-location"><i class="fa-solid fa-location-dot" style="color:var(--fl-primary);"></i> Hà Nội (Hoàn Kiếm)</span>
+                  <span class="meta-dot">•</span>
+                  <span id="detail-worktype"><i class="fa-solid fa-briefcase"></i> Toàn thời gian</span>
+                  <span class="meta-dot">•</span>
+                  <span id="detail-posted-time"><i class="fa-regular fa-clock"></i> Đăng 4 giờ trước</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="detail-header-right">
+              <div class="detail-salary-value" id="detail-salary-value">35 – 65 triệu/tháng</div>
+              <div class="detail-salary-caption">Mức thu nhập dự kiến</div>
+              <div class="detail-action-buttons">
+                <button class="btn-apply-hero-cta" id="btn-detail-trigger-apply">
+                  <i class="fa-solid fa-paper-plane"></i> Ứng Tuyển Ngay
+                </button>
+                <button class="btn-save-hero-cta" id="btn-detail-trigger-save">
+                  <i class="fa-regular fa-bookmark"></i> Lưu Việc
+                </button>
+                <button class="btn-share-hero-cta" id="btn-detail-trigger-share">
+                  <i class="fa-solid fa-share-nodes"></i> Chia Sẻ Link
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2-Column Detail Layout Grid -->
+        <div class="job-detail-grid">
+          
+          <!-- Left Column: Rich Job Specs -->
+          <div class="job-detail-main-col">
+            
+            <!-- Description Card -->
+            <div class="detail-content-card">
+              <h3 class="detail-section-heading"><i class="fa-solid fa-file-lines" style="color:var(--fl-primary);"></i> Mô Tả Chi Tiết Công Việc</h3>
+              <div class="detail-description-text" id="detail-description-text">
+                Tham gia trực tiếp phát triển và triển khai hệ thống giải pháp công nghệ cao cho doanh nghiệp.
+              </div>
+            </div>
+
+            <!-- Requirements Card -->
+            <div class="detail-content-card">
+              <h3 class="detail-section-heading"><i class="fa-solid fa-list-check" style="color:var(--fl-primary);"></i> Yêu Cầu Ứng Viên</h3>
+              <ul class="detail-requirements-list" id="detail-requirements-list">
+                <li><i class="fa-solid fa-circle-check" style="color:var(--fl-accent-green);"></i> Tối thiểu 2-5+ năm kinh nghiệm thực chiến trong lĩnh vực tương đương.</li>
+                <li><i class="fa-solid fa-circle-check" style="color:var(--fl-accent-green);"></i> Nắm vững quy trình thiết kế kiến trúc, tư duy giải quyết bài toán hiệu năng cao.</li>
+                <li><i class="fa-solid fa-circle-check" style="color:var(--fl-accent-green);"></i> Tinh thần trách nhiệm cao, khả năng làm việc độc lập và phối hợp nhóm tốt.</li>
+                <li><i class="fa-solid fa-circle-check" style="color:var(--fl-accent-green);"></i> Ưu tiên ứng viên có chứng chỉ chuyên môn quốc tế và khả năng giao tiếp tiếng Anh.</li>
+              </ul>
+            </div>
+
+            <!-- Skills & Tech Stack -->
+            <div class="detail-content-card">
+              <h3 class="detail-section-heading"><i class="fa-solid fa-layer-group" style="color:var(--fl-primary);"></i> Kỹ Năng & Công Nghệ Yêu Cầu</h3>
+              <div class="detail-skills-tags-container" id="detail-skills-container">
+                <!-- Dynamic skills pills -->
+              </div>
+            </div>
+
+            <!-- Benefits Card -->
+            <div class="detail-content-card">
+              <h3 class="detail-section-heading"><i class="fa-solid fa-gift" style="color:var(--fl-primary);"></i> Quyền Lợi & Đãi Ngộ Dành Cho Bạn</h3>
+              <div class="detail-benefits-grid">
+                <div class="benefit-item-box">
+                  <i class="fa-solid fa-money-bill-wave"></i>
+                  <div>
+                    <strong>Lương Thưởng Hấp Dẫn</strong>
+                    <p>Thưởng KPI & hiệu suất (lương tháng 13-15) + Xét tăng lương định kỳ 2 lần/năm</p>
+                  </div>
+                </div>
+                <div class="benefit-item-box">
+                  <i class="fa-solid fa-shield-heart"></i>
+                  <div>
+                    <strong>Bảo Hiểm Sức Khỏe Cao Cấp</strong>
+                    <p>Gói bảo hiểm sức khỏe toàn diện Bảo Việt / PVI dành cho bạn và người thân</p>
+                  </div>
+                </div>
+                <div class="benefit-item-box">
+                  <i class="fa-solid fa-laptop-code"></i>
+                  <div>
+                    <strong>Trang Thiết Bị Hiện Đại</strong>
+                    <p>Cấp mới Macbook Pro / Laptop chuyên dụng, môi trường làm việc chuẩn quốc tế</p>
+                  </div>
+                </div>
+                <div class="benefit-item-box">
+                  <i class="fa-solid fa-plane-departure"></i>
+                  <div>
+                    <strong>Du Lịch & Đào Tạo Quốc Tế</strong>
+                    <p>Team building du lịch hàng năm, tài trợ 100% kinh phí thi các chứng chỉ quốc tế</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Apply CTA Box -->
+            <div class="detail-bottom-cta-banner">
+              <div>
+                <h3 style="font-size:18px; font-weight:800; margin-bottom:4px;">Bạn đã sẵn sàng ứng tuyển vị trí này?</h3>
+                <p style="font-size:13.5px; opacity:0.9; margin:0;">Gửi CV trực tuyến ngay để nhà tuyển dụng xem xét và phản hồi trong 24 giờ.</p>
+              </div>
+              <button class="btn-signup-red-solid" id="btn-bottom-apply-now" style="font-size:14.5px; padding:10px 24px;">
+                <i class="fa-solid fa-paper-plane"></i> Ứng Tuyển Ngay
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Sidebar (Company, Overview, Support) -->
+          <div class="job-detail-sidebar-col">
+            
+            <!-- Company Info Box -->
+            <div class="detail-sidebar-card">
+              <h4 class="sidebar-card-title"><i class="fa-solid fa-building" style="color:var(--fl-primary);"></i> Thông Tin Doanh Nghiệp</h4>
+              <div class="sidebar-company-header">
+                <div class="sidebar-company-avatar" id="sidebar-company-avatar">VCB</div>
+                <div>
+                  <h4 id="sidebar-company-name" style="font-size:15px; font-weight:700; color:var(--fl-text-heading); margin-bottom:4px;">Ngân Hàng Vietcombank</h4>
+                  <div class="badge-verified-green" style="font-size:10.5px; padding:2px 8px;">
+                    <i class="fa-solid fa-circle-check"></i> Doanh nghiệp đã xác thực
+                  </div>
+                </div>
+              </div>
+              <div class="sidebar-company-stats">
+                <div class="stat-row">
+                  <span><i class="fa-solid fa-star" style="color:#eab308;"></i> Đánh giá:</span>
+                  <strong id="sidebar-company-rating">5.0 / 5.0 (84 đánh giá)</strong>
+                </div>
+                <div class="stat-row">
+                  <span><i class="fa-solid fa-user-check"></i> Tỉ lệ phản hồi:</span>
+                  <strong id="sidebar-company-hire-rate">98%</strong>
+                </div>
+                <div class="stat-row">
+                  <span><i class="fa-solid fa-calendar-days"></i> Thành viên từ:</span>
+                  <strong id="sidebar-company-since">Năm 2016</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Job Overview Specs -->
+            <div class="detail-sidebar-card">
+              <h4 class="sidebar-card-title"><i class="fa-solid fa-circle-info" style="color:var(--fl-primary);"></i> Tổng Quan Vị Trí</h4>
+              <ul class="sidebar-specs-list">
+                <li>
+                  <span class="spec-label"><i class="fa-solid fa-hashtag"></i> Mã vị trí:</span>
+                  <span class="spec-value" id="sidebar-spec-id" style="font-weight:800; color:var(--fl-primary);">prj-101</span>
+                </li>
+                <li>
+                  <span class="spec-label"><i class="fa-solid fa-money-bill-wave"></i> Thu nhập:</span>
+                  <span class="spec-value" id="sidebar-spec-salary" style="font-weight:700; color:var(--fl-primary);">35 – 65 triệu</span>
+                </li>
+                <li>
+                  <span class="spec-label"><i class="fa-solid fa-location-dot"></i> Địa điểm:</span>
+                  <span class="spec-value" id="sidebar-spec-location">Hà Nội</span>
+                </li>
+                <li>
+                  <span class="spec-label"><i class="fa-solid fa-briefcase"></i> Hình thức:</span>
+                  <span class="spec-value" id="sidebar-spec-worktype">Toàn thời gian</span>
+                </li>
+                <li>
+                  <span class="spec-label"><i class="fa-solid fa-hourglass-half"></i> Hạn nộp:</span>
+                  <span class="spec-value" id="sidebar-spec-deadline">Còn 20 ngày</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Fast Support Contact -->
+            <div class="detail-sidebar-card">
+              <h4 class="sidebar-card-title"><i class="fa-solid fa-headset" style="color:var(--fl-primary);"></i> Hỗ Trợ Ứng Tuyển</h4>
+              <p style="font-size:13px; color:var(--fl-text-muted); margin-bottom:12px; line-height:1.5;">Đội ngũ tư vấn tuyển dụng VietnamJobs sẵn sàng hướng dẫn bạn kết nối trực tiếp với nhà tuyển dụng.</p>
+              <a href="tel:19006868" class="btn-login-red-outline" style="display:block; text-align:center; padding:8px 16px; border-radius:var(--radius-pill); font-weight:700; text-decoration:none;">
+                <i class="fa-solid fa-phone"></i> Hotline: 1900 6868
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
          VIEW 3: FREELANCERS & CANDIDATES PAGE (#view-freelancers)
          ======================================================================== -->
     <section class="app-view" id="view-freelancers">

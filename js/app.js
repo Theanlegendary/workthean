@@ -4,11 +4,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Global State
+  // Central Application State
   const state = {
     currentView: 'home',
     mode: 'work', // 'work' = candidate, 'hire' = employer
-    currency: 'VND',
     projects: [...initialProjects],
     freelancers: [...initialFreelancers],
     categories: [...initialCategories],
@@ -20,32 +19,36 @@ document.addEventListener('DOMContentLoaded', () => {
     escrowLedger: [],
     selectedProject: null,
     filters: {
-      categories: [],
-      type: ['Full-Time', 'Part-Time', 'Contract'],
       search: '',
+      category: 'all',
       location: 'all',
-      sort: 'latest'
+      type: 'all',
+      minBudget: 0,
+      maxBudget: 100000000,
+      skills: []
     }
   };
 
-  // Initialize
+  // Initialize Modules
   initNavigation();
-  initAuthModal();
   initSearch();
   initQuickFilterPills();
-  initQuickApplyModal();
-  initProjectsFeed();
-  initFreelancersDirectory();
-  initWizardModal();
   initBestJobsShowcase();
   initCompanySpotlight();
-  initEnterpriseFeatures();
-  updateSavedJobsCountUI();
-
+  initProjectsFeed();
+  initQuickApplyModal();
+  initJobDetailPage();
+  initPostJobWizard();
+  initAuthModal();
+  initFreelancersDirectory();
   loadProjectsFromAPI();
+  handleUrlRouting();
+
+  // Listen to browser forward/back & hash change
+  window.addEventListener('hashchange', handleUrlRouting);
 
   /* ==========================================================================
-     NAVIGATION
+     SPA VIEW SWITCHER & NAVIGATION
      ========================================================================== */
   function initNavigation() {
     document.querySelectorAll('[data-view]').forEach(btn => {
@@ -63,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function switchView(viewId) {
+  function switchView(viewId, updateHash = true) {
     state.currentView = viewId;
 
     document.querySelectorAll('.app-view').forEach(view => view.classList.remove('active-view'));
@@ -76,9 +79,178 @@ document.addEventListener('DOMContentLoaded', () => {
       else btn.classList.remove('active');
     });
 
+    if (updateHash && viewId !== 'job-detail') {
+      history.replaceState(null, null, ' ');
+    }
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     if (viewId === 'browse') renderBrowseProjects();
+  }
+
+  /* ==========================================================================
+     URL ROUTING (SUPPORT DIRECT LINK WITH JOB ID)
+     ========================================================================== */
+  function handleUrlRouting() {
+    const hash = window.location.hash;
+    const urlParams = new URLSearchParams(window.location.search);
+
+    let jobId = urlParams.get('id');
+
+    if (!jobId && hash.includes('id=')) {
+      const match = hash.match(/id=([^&]+)/);
+      if (match) jobId = decodeURIComponent(match[1]);
+    }
+
+    if (jobId) {
+      showJobDetail(jobId, false);
+    }
+  }
+
+  /* ==========================================================================
+     JOB DETAIL PAGE WITH ID (#view-job-detail)
+     ========================================================================== */
+  function initJobDetailPage() {
+    document.getElementById('btn-back-to-jobs-feed')?.addEventListener('click', () => {
+      switchView('home');
+    });
+
+    document.getElementById('btn-copy-job-id')?.addEventListener('click', () => {
+      if (state.selectedProject) {
+        navigator.clipboard?.writeText(state.selectedProject.id);
+        showToast(`📋 Đã sao chép mã việc làm: ${state.selectedProject.id}`);
+      }
+    });
+
+    document.getElementById('btn-detail-trigger-apply')?.addEventListener('click', () => {
+      if (state.selectedProject) openQuickApplyModal(state.selectedProject.id);
+    });
+
+    document.getElementById('btn-bottom-apply-now')?.addEventListener('click', () => {
+      if (state.selectedProject) openQuickApplyModal(state.selectedProject.id);
+    });
+
+    document.getElementById('btn-detail-trigger-save')?.addEventListener('click', (e) => {
+      if (!state.selectedProject) return;
+      const prjId = state.selectedProject.id;
+      const btn = e.currentTarget;
+      if (state.savedJobs.has(prjId)) {
+        state.savedJobs.delete(prjId);
+        btn.innerHTML = '<i class="fa-regular fa-bookmark"></i> Lưu Việc';
+        showToast('Đã bỏ lưu việc làm');
+      } else {
+        state.savedJobs.add(prjId);
+        btn.innerHTML = '<i class="fa-solid fa-bookmark" style="color:#0a66c2;"></i> Đã Lưu';
+        showToast('❤️ Đã lưu việc làm vào danh sách yêu thích!');
+      }
+      updateSavedJobsCountUI();
+    });
+
+    document.getElementById('btn-detail-trigger-share')?.addEventListener('click', () => {
+      if (!state.selectedProject) return;
+      const shareUrl = `${window.location.origin}${window.location.pathname}#job?id=${encodeURIComponent(state.selectedProject.id)}`;
+      navigator.clipboard?.writeText(shareUrl);
+      showToast(`🔗 Đã sao chép link chi tiết việc làm mã ${state.selectedProject.id}!`);
+    });
+  }
+
+  function showJobDetail(projectId, updateHash = true) {
+    const p = state.projects.find(x => x.id === projectId) || 
+              initialProjects.find(x => x.id === projectId) || 
+              state.projects[0];
+
+    if (!p) return;
+    state.selectedProject = p;
+
+    // Header Info
+    const idTag = document.getElementById('detail-job-id-tag');
+    const idInline = document.getElementById('detail-id-inline');
+    const titleEl = document.getElementById('detail-job-title');
+    const compEl = document.getElementById('detail-company-name');
+    const logoEl = document.getElementById('detail-company-logo');
+    const locEl = document.getElementById('detail-location');
+    const worktypeEl = document.getElementById('detail-worktype');
+    const postedTimeEl = document.getElementById('detail-posted-time');
+    const salaryEl = document.getElementById('detail-salary-value');
+    const saveBtn = document.getElementById('btn-detail-trigger-save');
+
+    if (idTag) idTag.textContent = p.id;
+    if (idInline) idInline.innerHTML = `<i class="fa-solid fa-fingerprint"></i> ID: ${p.id}`;
+    if (titleEl) titleEl.textContent = p.title;
+    if (compEl) compEl.textContent = p.company || p.clientName || 'Doanh Nghiệp Tuyển Dụng';
+    
+    const logoText = p.logoType || (p.company || p.clientName || 'VN').substring(0, 3).toUpperCase();
+    if (logoEl) logoEl.textContent = logoText;
+
+    if (locEl) locEl.innerHTML = `<i class="fa-solid fa-location-dot" style="color:var(--fl-primary);"></i> ${p.location || 'Hà Nội & TP.HCM'}`;
+    if (worktypeEl) worktypeEl.innerHTML = `<i class="fa-solid fa-briefcase"></i> ${p.workType || p.type || 'Toàn thời gian'}`;
+    if (postedTimeEl) postedTimeEl.innerHTML = `<i class="fa-regular fa-clock"></i> ${p.postedDate || p.timeAgo || 'Đăng gần đây'}`;
+
+    const salaryVal = p.salaryDisplay || (p.budgetMin ? (`${p.budgetMin} – ${p.budgetMax} USD`) : '30 – 50 triệu/tháng');
+    if (salaryEl) salaryEl.textContent = salaryVal;
+
+    if (saveBtn) {
+      if (state.savedJobs.has(p.id)) {
+        saveBtn.innerHTML = '<i class="fa-solid fa-bookmark" style="color:#0a66c2;"></i> Đã Lưu';
+      } else {
+        saveBtn.innerHTML = '<i class="fa-regular fa-bookmark"></i> Lưu Việc';
+      }
+    }
+
+    // Main Description & Requirements
+    const descEl = document.getElementById('detail-description-text');
+    if (descEl) {
+      descEl.innerHTML = `
+        <p style="margin-bottom:12px;">${p.description || 'Tham gia trực tiếp phát triển và triển khai hệ thống giải pháp công nghệ cao cho doanh nghiệp hàng đầu tại Việt Nam.'}</p>
+        <p style="margin-bottom:12px;"><strong>Trách nhiệm công việc chính:</strong></p>
+        <ul style="list-style:disc; padding-left:20px; line-height:1.7; color:var(--fl-text-body);">
+          <li>Tham gia phân tích yêu cầu nghiệp vụ và thiết kế kiến trúc hệ thống module tương ứng.</li>
+          <li>Lập trình, tối ưu hóa hiệu năng cơ sở dữ liệu và đảm bảo tính bảo mật, khả năng mở rộng cao.</li>
+          <li>Phối hợp cùng Product Manager, QA và Tech Lead để nghiệm thu sản phẩm đúng tiến độ cam kết.</li>
+          <li>Tham gia xây dựng tài liệu kỹ thuật, hướng dẫn vận hành và chuyển giao công nghệ.</li>
+        </ul>
+      `;
+    }
+
+    // Skills Pills
+    const skillsContainer = document.getElementById('detail-skills-container');
+    if (skillsContainer) {
+      const skillsList = (p.skills && p.skills.length > 0) ? p.skills : ['Java', 'Spring Boot', 'SQL', 'Git', 'Docker'];
+      skillsContainer.innerHTML = skillsList.map(s => `
+        <span class="detail-skill-pill"><i class="fa-solid fa-check"></i> ${s}</span>
+      `).join('');
+    }
+
+    // Sidebar Specs
+    const sideAvatar = document.getElementById('sidebar-company-avatar');
+    const sideCompName = document.getElementById('sidebar-company-name');
+    const sideRating = document.getElementById('sidebar-company-rating');
+    const sideHireRate = document.getElementById('sidebar-company-hire-rate');
+    const sideSince = document.getElementById('sidebar-company-since');
+    const sideId = document.getElementById('sidebar-spec-id');
+    const sideSalary = document.getElementById('sidebar-spec-salary');
+    const sideLoc = document.getElementById('sidebar-spec-location');
+    const sideWorktype = document.getElementById('sidebar-spec-worktype');
+    const sideDeadline = document.getElementById('sidebar-spec-deadline');
+
+    if (sideAvatar) sideAvatar.textContent = logoText;
+    if (sideCompName) sideCompName.textContent = p.company || p.clientName || 'Doanh Nghiệp Tuyển Dụng';
+    if (sideRating) sideRating.textContent = `${p.clientRating || 5.0} / 5.0 (${p.clientReviews || 84} đánh giá)`;
+    if (sideHireRate) sideHireRate.textContent = p.clientHireRate || '98%';
+    if (sideSince) sideSince.textContent = p.clientMemberSince || 'Năm 2018';
+
+    if (sideId) sideId.textContent = p.id;
+    if (sideSalary) sideSalary.textContent = salaryVal;
+    if (sideLoc) sideLoc.textContent = p.location || 'Hà Nội & TP.HCM';
+    if (sideWorktype) sideWorktype.textContent = p.workType || p.type || 'Toàn thời gian';
+    if (sideDeadline) sideDeadline.textContent = p.timeLeft || 'Còn 15 ngày';
+
+    // Switch View & Update Hash
+    switchView('job-detail', false);
+
+    if (updateHash) {
+      window.location.hash = `job?id=${encodeURIComponent(p.id)}`;
+    }
   }
 
   /* ==========================================================================
@@ -207,17 +379,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
-      const applyBtn = card.querySelector('.btn-apply-primary');
-      if (applyBtn) {
-        applyBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          openQuickApplyModal(prjId);
-        });
-      }
-
       card.addEventListener('click', (e) => {
-        if (e.target.closest('.btn-save-heart') || e.target.closest('.btn-apply-primary')) return;
-        openQuickApplyModal(prjId);
+        if (e.target.closest('.btn-save-heart')) return;
+        showJobDetail(prjId);
       });
     });
   }
@@ -262,120 +426,103 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (state.filters.search) {
+      const q = state.filters.search.toLowerCase();
       filtered = filtered.filter(p => 
-        p.title.toLowerCase().includes(state.filters.search) || 
-        p.description.toLowerCase().includes(state.filters.search) ||
-        (p.company && p.company.toLowerCase().includes(state.filters.search))
+        p.title.toLowerCase().includes(q) || 
+        (p.company && p.company.toLowerCase().includes(q)) ||
+        (p.description && p.description.toLowerCase().includes(q)) ||
+        (p.skills && p.skills.some(s => s.toLowerCase().includes(q)))
       );
     }
 
     if (filtered.length === 0) {
       feedContainer.innerHTML = `
-        <div style="background: #ffffff; border: 1px solid var(--fl-border); border-radius: var(--radius-md); padding: 40px 20px; text-align: center; color: var(--fl-text-muted);">
-          <i class="fa-solid fa-briefcase" style="font-size: 32px; color: var(--fl-text-light); margin-bottom: 12px;"></i>
-          <h4 style="color: var(--fl-text-heading); margin-bottom: 4px;">Không tìm thấy việc làm phù hợp</h4>
-          <p style="font-size: 13.5px;">Hãy thử đổi từ khóa tìm kiếm hoặc chọn bộ lọc "Tất cả việc làm".</p>
+        <div style="background:#ffffff; border:1px solid var(--fl-border); border-radius:var(--radius-lg); padding:40px 20px; text-align:center;">
+          <i class="fa-solid fa-folder-open" style="font-size:36px; color:var(--fl-text-light); margin-bottom:12px;"></i>
+          <h4 style="font-size:16px; font-weight:700; color:var(--fl-text-heading); margin-bottom:6px;">Không tìm thấy việc làm phù hợp</h4>
+          <p style="font-size:13.5px; color:var(--fl-text-muted);">Hãy thử tìm kiếm với từ khóa khác hoặc xóa bộ lọc để xem toàn bộ danh sách.</p>
         </div>
       `;
       return;
     }
 
-    feedContainer.innerHTML = filtered.map(p => createCleanJobCardHTML(p)).join('');
-    attachCleanJobCardListeners(feedContainer);
-  }
+    feedContainer.innerHTML = filtered.map(p => {
+      const isSaved = state.savedJobs.has(p.id);
+      const isPromoted = p.featured || p.hot;
+      const initial = p.logoType || (p.company ? p.company.substring(0, 2).toUpperCase() : 'VJ');
+      const salaryText = p.salaryDisplay || (p.budgetMin ? `${p.budgetMin} – ${p.budgetMax} USD` : 'Thỏa thuận');
+      const applicantCount = p.applicantsCount || (p.bids ? p.bids.length : 12);
 
-  function renderBrowseProjects() {
-    const browseContainer = document.getElementById('browse-projects-feed');
-    if (!browseContainer) return;
-    browseContainer.innerHTML = state.projects.map(p => createCleanJobCardHTML(p)).join('');
-    attachCleanJobCardListeners(browseContainer);
-  }
-
-  function createCleanJobCardHTML(p) {
-    const isSaved = state.savedJobs.has(p.id);
-    const initial = p.company ? p.company.charAt(0).toUpperCase() : 'A';
-    const isPromoted = p.promoted || false;
-    const applicantCount = p.proposalsCount || 18;
-    const salary = p.salaryDisplay || (p.budget ? `${(p.budget.min/1000000).toFixed(0)} - ${(p.budget.max/1000000).toFixed(0)} Triệu / tháng` : '$75,000 - $99,999 USD');
-
-    return `
-      <div class="career-job-card ${isPromoted ? 'promoted' : ''}" id="card-${p.id}" data-project-id="${p.id}">
-        
-        <div class="career-card-left-section">
-          <!-- Avatar Icon -->
-          <div class="career-avatar-circle ${isPromoted ? 'promoted-icon' : ''}">
-            ${isPromoted ? '<i class="fa-solid fa-bolt" style="color:var(--fl-primary);"></i>' : initial}
-          </div>
-
-          <!-- Main Career Details -->
-          <div class="career-main-details">
-            <div class="career-title-row">
-              <h3 class="career-job-title">${p.title}</h3>
-              <span class="badge-hot-tag"><i class="fa-solid fa-fire"></i> GẤP</span>
-              <span class="badge-new-yellow">NEW</span>
-              ${p.top100 !== false ? '<span class="badge-top100-star"><i class="fa-solid fa-star"></i> TOP 100</span>' : ''}
+      return `
+        <article class="career-job-card ${isPromoted ? 'promoted' : ''}" data-project-id="${p.id}">
+          <div class="career-card-left-section">
+            <div class="career-avatar-circle ${isPromoted ? 'promoted-icon' : ''}">
+              ${isPromoted ? '<i class="fa-solid fa-bolt" style="color:var(--fl-primary);"></i>' : initial}
             </div>
 
-            <div class="career-company-row">
-              <span class="company-name-bold">${p.company || p.clientName || 'Animalz Technologies'}</span>
-              <i class="fa-solid fa-circle-check career-verified-check" title="Doanh nghiệp đã xác thực"></i>
-              <span class="career-meta-sep">•</span>
-              <span class="career-location-text"><i class="fa-solid fa-location-dot" style="color:var(--fl-primary); font-size:12px;"></i> ${p.location || 'Hà Nội & TP.HCM'}</span>
-              <span class="career-meta-sep">•</span>
-              <span class="career-workmode-badge"><i class="fa-solid fa-briefcase" style="font-size:11px;"></i> ${p.workType || 'Full-Time'}</span>
+            <div class="career-main-details">
+              <div class="career-title-row">
+                <h3 class="career-job-title">${p.title}</h3>
+                <span class="badge-hot-tag"><i class="fa-solid fa-fire"></i> GẤP</span>
+                <span class="badge-new-yellow">NEW</span>
+                ${p.top100 !== false ? '<span class="badge-top100-star"><i class="fa-solid fa-star"></i> TOP 100</span>' : ''}
+              </div>
+
+              <div class="career-company-row">
+                <span class="company-name-bold">${p.company || p.clientName || 'Animalz Technologies'}</span>
+                <i class="fa-solid fa-circle-check career-verified-check" title="Doanh nghiệp đã xác thực"></i>
+                <span class="career-meta-sep">•</span>
+                <span class="career-location-text"><i class="fa-solid fa-location-dot" style="color:var(--fl-primary); font-size:12px;"></i> ${p.location || 'Hà Nội & TP.HCM'}</span>
+                <span class="career-meta-sep">•</span>
+                <span class="career-workmode-badge"><i class="fa-solid fa-briefcase" style="font-size:11px;"></i> ${p.workType || 'Full-Time'}</span>
+              </div>
+
+              <div class="career-pills-row">
+                ${p.boosted !== false ? '<span class="pill-tag-boosted"><i class="fa-solid fa-rocket"></i> Boosted</span>' : ''}
+                ${p.featured ? '<span class="pill-tag-featured"><i class="fa-solid fa-crown"></i> Ưu Tiên</span>' : ''}
+                <span class="pill-tag-white"><i class="fa-solid fa-shield"></i> Xác thực 100%</span>
+                <span class="pill-tag-white"><i class="fa-solid fa-circle-check" style="color:var(--fl-accent-green);"></i> Tuyển gấp</span>
+              </div>
+
+              <div class="career-live-meta">
+                <span><i class="fa-regular fa-clock"></i> ${p.postedDate || p.timeAgo || '2 giờ trước'}</span>
+                <span class="career-meta-sep">•</span>
+                <span><i class="fa-solid fa-users" style="color:var(--fl-primary);"></i> <strong>${applicantCount}</strong> người đã nộp CV</span>
+                <span class="career-meta-sep">•</span>
+                <span style="color:var(--fl-text-muted); font-size:11.5px;"><i class="fa-solid fa-hashtag"></i> ${p.id}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="career-card-right-section">
+            <div class="career-salary-box">
+              <div class="career-salary-text">${salaryText}</div>
+              <div class="career-salary-subbadge"><i class="fa-solid fa-circle-dollar-to-slot"></i> Thu nhập hấp dẫn</div>
             </div>
 
-            <!-- Full Pills Row -->
-            <div class="career-pills-row">
-              ${p.boosted !== false ? '<span class="pill-tag-boosted"><i class="fa-solid fa-rocket"></i> Boosted</span>' : ''}
-              ${p.featured !== false ? '<span class="pill-tag-featured"><i class="fa-solid fa-crown"></i> Featured</span>' : ''}
-              <span class="pill-tag-white"><i class="fa-solid fa-laptop-code"></i> Hybrid / WFH</span>
-              <span class="pill-tag-white"><i class="fa-solid fa-gift"></i> Thưởng KPI</span>
-              <span class="pill-tag-white"><i class="fa-solid fa-heart-pulse"></i> Bảo hiểm Bảo Việt</span>
+            <div class="career-action-buttons-group">
+              <button class="btn-save-pill ${isSaved ? 'saved' : ''}" title="Lưu việc làm" data-action="save">
+                <i class="fa-${isSaved ? 'solid' : 'regular'} fa-bookmark"></i> ${isSaved ? 'Đã lưu' : 'Lưu'}
+              </button>
+              <button class="btn-apply-prominent" data-action="view-detail">
+                Xem Chi Tiết <i class="fa-solid fa-arrow-right"></i>
+              </button>
             </div>
-
-            <!-- Live Applicant Signal -->
-            <div class="career-live-meta">
-              <span><i class="fa-solid fa-users" style="color:#0056d2;"></i> <strong>${applicantCount}</strong> người đã nộp CV</span>
-              <span class="career-meta-sep">•</span>
-              <span><i class="fa-regular fa-clock"></i> Cập nhật 2 giờ trước</span>
-            </div>
-
           </div>
-        </div>
+        </article>
+      `;
+    }).join('');
 
-        <!-- Prominent Right Column: Salary & Big Action Buttons -->
-        <div class="career-card-right-section">
-          <div class="career-salary-box">
-            <div class="career-salary-text">${salary}</div>
-            <div class="career-salary-subbadge"><i class="fa-solid fa-circle-dollar-to-slot"></i> Thu nhập hấp dẫn</div>
-          </div>
-
-          <div class="career-action-buttons-group">
-            <button class="btn-apply-prominent" data-apply-btn="${p.id}" title="Ứng tuyển nhanh">
-              <i class="fa-solid fa-paper-plane"></i> Ứng Tuyển Ngay
-            </button>
-            <button class="btn-save-pill ${isSaved ? 'saved' : ''}" data-save-job="${p.id}" title="${isSaved ? 'Bỏ lưu' : 'Lưu tin tuyển dụng'}">
-              <i class="fa-${isSaved ? 'solid' : 'regular'} fa-heart"></i>
-              <span>${isSaved ? 'Đã Lưu' : 'Lưu Tin'}</span>
-            </button>
-          </div>
-        </div>
-
-      </div>
-    `;
-  }
-
-  function attachCleanJobCardListeners(container) {
-    container.querySelectorAll('.career-job-card, .lemon-job-card').forEach(card => {
+    // Bind Event Listeners
+    feedContainer.querySelectorAll('.career-job-card').forEach(card => {
       const prjId = card.getAttribute('data-project-id');
 
-      card.querySelectorAll('.btn-save-pill, .btn-save-heart').forEach(saveBtn => {
+      card.querySelectorAll('[data-action="save"]').forEach(saveBtn => {
         saveBtn.addEventListener('click', (e) => {
           e.stopPropagation();
           if (state.savedJobs.has(prjId)) {
             state.savedJobs.delete(prjId);
-            showToast('Đã xóa khỏi danh sách đã lưu');
+            showToast('Đã bỏ lưu việc làm');
           } else {
             state.savedJobs.add(prjId);
             showToast('❤️ Đã lưu việc làm vào danh sách yêu thích!');
@@ -385,16 +532,67 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
 
-      card.querySelectorAll('.btn-apply-prominent, .btn-apply-primary').forEach(applyBtn => {
-        applyBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          openQuickApplyModal(prjId);
-        });
-      });
-
       card.addEventListener('click', (e) => {
-        if (e.target.closest('.btn-save-pill') || e.target.closest('.btn-save-heart') || e.target.closest('.btn-apply-prominent') || e.target.closest('.btn-apply-primary')) return;
-        openQuickApplyModal(prjId);
+        if (e.target.closest('[data-action="save"]')) return;
+        showJobDetail(prjId);
+      });
+    });
+  }
+
+  function renderBrowseProjects() {
+    const browseFeed = document.getElementById('browse-projects-feed');
+    if (!browseFeed) return;
+
+    browseFeed.innerHTML = state.projects.map(p => {
+      const isSaved = state.savedJobs.has(p.id);
+      const initial = p.logoType || (p.company ? p.company.substring(0, 2).toUpperCase() : 'VJ');
+      const salaryText = p.salaryDisplay || (p.budgetMin ? `${p.budgetMin} – ${p.budgetMax} USD` : 'Thỏa thuận');
+
+      return `
+        <article class="career-job-card" data-project-id="${p.id}">
+          <div class="career-card-left-section">
+            <div class="career-avatar-circle">
+              ${initial}
+            </div>
+
+            <div class="career-main-details">
+              <div class="career-title-row">
+                <h3 class="career-job-title">${p.title}</h3>
+                <span class="badge-hot-tag"><i class="fa-solid fa-fire"></i> GẤP</span>
+              </div>
+
+              <div class="career-company-row">
+                <span class="company-name-bold">${p.company || p.clientName || 'Doanh Nghiệp'}</span>
+                <i class="fa-solid fa-circle-check career-verified-check"></i>
+                <span class="career-meta-sep">•</span>
+                <span class="career-location-text"><i class="fa-solid fa-location-dot" style="color:var(--fl-primary);"></i> ${p.location || 'Hà Nội & TP.HCM'}</span>
+              </div>
+
+              <p style="font-size:13px; color:var(--fl-text-body); margin-top:4px; line-height:1.4;">
+                ${p.description ? p.description.substring(0, 140) + '...' : 'Tìm kiếm ứng viên tài năng tham gia dự án công nghệ.'}
+              </p>
+            </div>
+          </div>
+
+          <div class="career-card-right-section">
+            <div class="career-salary-box">
+              <div class="career-salary-text">${salaryText}</div>
+            </div>
+
+            <div class="career-action-buttons-group">
+              <button class="btn-apply-prominent" data-action="view-detail">
+                Xem Chi Tiết <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    browseFeed.querySelectorAll('.career-job-card').forEach(card => {
+      const prjId = card.getAttribute('data-project-id');
+      card.addEventListener('click', () => {
+        showJobDetail(prjId);
       });
     });
   }
@@ -439,19 +637,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    fileInput?.addEventListener('change', () => {
-      if (fileInput.files && fileInput.files.length > 0) {
-        handleCVFileSelected(fileInput.files[0]);
+    fileInput?.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files.length > 0) {
+        handleCVFileSelected(e.target.files[0]);
       }
     });
-
-    function handleCVFileSelected(file) {
-      state.attachedCVFile = file;
-      if (filenameEl) filenameEl.textContent = file.name;
-      if (previewBox) previewBox.style.display = 'flex';
-      if (dropzone) dropzone.style.display = 'none';
-      showToast(`📄 Đã đính kèm CV: ${file.name}`);
-    }
 
     removeFileBtn?.addEventListener('click', () => {
       state.attachedCVFile = null;
@@ -459,6 +649,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (previewBox) previewBox.style.display = 'none';
       if (dropzone) dropzone.style.display = 'block';
     });
+
+    function handleCVFileSelected(file) {
+      if (!file) return;
+      state.attachedCVFile = file;
+      if (filenameEl) filenameEl.textContent = file.name;
+      if (previewBox) previewBox.style.display = 'flex';
+      if (dropzone) dropzone.style.display = 'none';
+      showToast(`📄 Đã đính kèm hồ sơ CV: ${file.name}`);
+    }
 
     form?.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -471,7 +670,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (previewBox) previewBox.style.display = 'none';
       if (dropzone) dropzone.style.display = 'block';
 
-      showToast(`🎉 Chúc mừng ${applicantName}! Hồ sơ ứng tuyển vị trí "${jobTitle}" đã được gửi trực tiếp đến bộ phận tuyển dụng.`);
+      showToast(`🎉 Ứng tuyển thành công vị trí "${jobTitle}"! Nhà tuyển dụng sẽ sớm liên hệ với bạn.`);
     });
   }
 
@@ -501,72 +700,30 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     ENTERPRISE & B2B RECRUITMENT SUITE
+     POST JOB WIZARD MODAL
      ========================================================================== */
-  function initEnterpriseFeatures() {
-    const enterpriseModal = document.getElementById('modal-enterprise-consult');
-    const closeBtn = document.getElementById('close-enterprise-consult-modal');
-    const cancelBtn = document.getElementById('btn-cancel-enterprise-consult');
-    const consultForm = document.getElementById('enterprise-consult-form');
-
-    const openConsultModal = (defaultPlan = null) => {
-      if (defaultPlan) {
-        const planSelect = document.getElementById('ec-input-plan');
-        if (planSelect) {
-          if (defaultPlan.includes('Pro')) planSelect.value = 'Business Pro';
-          else if (defaultPlan.includes('Headhunt')) planSelect.value = 'Headhunt VIP';
-          else if (defaultPlan.includes('Starter')) planSelect.value = 'Starter';
-        }
-      }
-      enterpriseModal?.classList.add('show');
-    };
-
-    window.openEnterpriseModal = openConsultModal;
-
-    const closeConsultModal = () => enterpriseModal?.classList.remove('show');
-
-    document.getElementById('nav-btn-headhunt-trigger')?.addEventListener('click', () => openConsultModal('Headhunt VIP'));
-
-    closeBtn?.addEventListener('click', closeConsultModal);
-    cancelBtn?.addEventListener('click', closeConsultModal);
-    enterpriseModal?.addEventListener('click', (e) => {
-      if (e.target === enterpriseModal) closeConsultModal();
-    });
-
-    consultForm?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const compName = document.getElementById('ec-input-company')?.value || 'Doanh Nghiệp';
-      const contact = document.getElementById('ec-input-contact-name')?.value || 'Đại diện';
-
-      closeConsultModal();
-      showToast(`🏢 Cảm ơn ${contact}! Yêu cầu tư vấn của ${compName} đã được tiếp nhận. Chuyên viên sẽ liên hệ trong vòng 30 phút.`);
-    });
-  }
-
-  /* ==========================================================================
-     WIZARD MODAL (POST A JOB)
-     ========================================================================== */
-  function initWizardModal() {
+  function initPostJobWizard() {
     const modal = document.getElementById('modal-wizard');
     const closeBtn = document.getElementById('close-wizard-modal');
     const cancelBtn = document.getElementById('btn-cancel-wizard');
-    const form = document.getElementById('wizard-form');
+    const form = document.getElementById('wizard-job-form');
 
     const closeModal = () => modal?.classList.remove('show');
 
     closeBtn?.addEventListener('click', closeModal);
     cancelBtn?.addEventListener('click', closeModal);
+
     modal?.addEventListener('click', (e) => {
       if (e.target === modal) closeModal();
     });
 
     form?.addEventListener('submit', (e) => {
       e.preventDefault();
-      const title = document.getElementById('wiz-title').value;
-      const company = document.getElementById('wiz-company').value || 'Doanh Nghiệp Tuyển Dụng';
-      const desc = document.getElementById('wiz-desc').value;
-      const location = document.getElementById('wiz-location').value || 'Hà Nội';
-      const minBudget = document.getElementById('wiz-min-budget').value || '20,000,000₫';
+      const title = document.getElementById('wiz-job-title').value;
+      const company = document.getElementById('wiz-company-name').value;
+      const location = document.getElementById('wiz-job-location').value;
+      const desc = document.getElementById('wiz-job-desc').value;
+      const minBudget = document.getElementById('wiz-min-budget').value || '15,000,000₫';
       const maxBudget = document.getElementById('wiz-max-budget').value || '35,000,000₫';
 
       const newPrj = {
@@ -574,11 +731,11 @@ document.addEventListener('DOMContentLoaded', () => {
         title,
         company,
         location,
-        salaryDisplay: `${minBudget} – ${maxBudget}`,
+        salaryDisplay: `${minBudget} - ${maxBudget}`,
         hot: true,
-        postedDate: 'Vừa đăng',
+        postedDate: 'Vừa xong',
+        timeAgo: 'Vừa xong',
         applicantsCount: 0,
-        workType: 'Toàn thời gian',
         logoType: company.substring(0, 3).toUpperCase(),
         description: desc,
         clientVerified: true

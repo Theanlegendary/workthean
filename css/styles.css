@@ -3671,6 +3671,14 @@ button, input, select, textarea {
   margin-bottom: 2px;
 }
 
+.activity-toast-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+  gap: 8px;
+}
+
 .activity-toast-time {
   font-size: 11px;
   color: #059669;
@@ -3678,4 +3686,26 @@ button, input, select, textarea {
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+.activity-toast-dont-show {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--fl-text-light);
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s ease;
+}
+
+.activity-toast-dont-show:hover {
+  color: #dc2626;
+}
+
+.activity-toast-dont-show input[type="checkbox"] {
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  accent-color: #dc2626;
 }

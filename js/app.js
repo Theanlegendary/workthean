@@ -1150,10 +1150,16 @@ document.addEventListener('DOMContentLoaded', () => {
      HOMEPAGE LIVE ACTIVITY TICKER & MARKET INSIGHTS CONTROLLER
      ========================================================================== */
   function initLiveActivityTicker() {
+    // Check if user previously disabled ticker
+    if (localStorage.getItem('vietnamjobs_hide_activity_ticker') === 'true') {
+      return;
+    }
+
     const toast = document.getElementById('live-activity-toast');
     const msgEl = document.getElementById('activity-toast-msg');
     const timeEl = document.getElementById('activity-toast-time');
     const closeBtn = document.getElementById('btn-close-activity-toast');
+    const dontShowCb = document.getElementById('cb-dont-show-activity');
     const onlineCounter = document.getElementById('live-online-users');
 
     // Live Online Counter Fluctuation
@@ -1167,6 +1173,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!toast || !msgEl) return;
 
+    let tickerInterval = null;
+    let toastTimeout = null;
+
+    // "Không hiện lại" Checkbox Event Listener
+    dontShowCb?.addEventListener('change', (e) => {
+      e.stopPropagation();
+      if (dontShowCb.checked) {
+        localStorage.setItem('vietnamjobs_hide_activity_ticker', 'true');
+        toast.classList.remove('show');
+        clearInterval(tickerInterval);
+        clearTimeout(toastTimeout);
+        showToast('ℹ️ Đã tắt thông báo hoạt động ứng tuyển');
+      }
+    });
+
+    dontShowCb?.closest('.activity-toast-dont-show')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
     const activities = [
       { jobId: "prj-100", logo: "images/brands/fpt.svg", text: "Nguyễn Minh Tuấn vừa ứng tuyển <strong>Senior Backend Engineer</strong> tại FPT Software", time: "1 phút trước" },
       { jobId: "prj-101", logo: "images/brands/vcb.svg", text: "Vietcombank vừa gửi lời mời phỏng vấn tới ứng viên <strong>Trần Minh Quang</strong>", time: "3 phút trước" },
@@ -1178,12 +1203,11 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let actIndex = 0;
-    let toastTimeout = null;
     let currentJobId = "prj-100";
 
     // Direct routing on toast click
     toast.addEventListener('click', (e) => {
-      if (e.target.closest('.activity-toast-close')) return;
+      if (e.target.closest('.activity-toast-close') || e.target.closest('.activity-toast-dont-show')) return;
       if (currentJobId) {
         showJobDetail(currentJobId);
         toast.classList.remove('show');
@@ -1197,6 +1221,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showNextActivity() {
       if (document.hidden) return;
+      if (localStorage.getItem('vietnamjobs_hide_activity_ticker') === 'true') return;
+
       const act = activities[actIndex];
       actIndex = (actIndex + 1) % activities.length;
       currentJobId = act.jobId;
@@ -1204,7 +1230,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const imgEl = document.getElementById('activity-toast-img');
       if (imgEl && act.logo) imgEl.src = act.logo;
       if (msgEl) msgEl.innerHTML = act.text;
-      if (timeEl) timeEl.innerHTML = '<span class="live-pulse-dot" style="width:6px;height:6px;"></span> ' + act.time + ' <span style="margin-left:auto;color:var(--fl-primary);font-weight:700;">Xem chi tiết &rarr;</span>';
+      if (timeEl) timeEl.innerHTML = '<span class="live-pulse-dot" style="width:6px;height:6px;"></span> ' + act.time + ' <span style="margin-left:6px;color:var(--fl-primary);font-weight:700;">Xem chi tiết &rarr;</span>';
 
       toast.classList.add('show');
 
@@ -1218,7 +1244,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start ticker with comfortable unhurried 18s interval
     setTimeout(() => {
       showNextActivity();
-      setInterval(showNextActivity, 18000);
+      tickerInterval = setInterval(showNextActivity, 18000);
     }, 4000);
   }
 

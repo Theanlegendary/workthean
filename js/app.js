@@ -5,6 +5,52 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // Central Application State
+  
+  // Reliable Brand Logo Resolver
+  const brandLogoLookup = {
+    'fpt': 'images/brands/fpt.svg',
+    'vietcombank': 'images/brands/vcb.svg',
+    'vcb': 'images/brands/vcb.svg',
+    'vingroup': 'images/brands/vinfast.svg',
+    'vinfast': 'images/brands/vinfast.svg',
+    'vf': 'images/brands/vinfast.svg',
+    'viettel': 'images/brands/viettel.svg',
+    'vtl': 'images/brands/viettel.svg',
+    'shopee': 'images/brands/shopee.svg',
+    'shp': 'images/brands/shopee.svg',
+    'momo': 'images/brands/momo.svg',
+    'tiki': 'images/brands/tiki.svg',
+    'kiotviet': 'images/brands/kiotviet.svg',
+    'kiot': 'images/brands/kiotviet.svg',
+    'vnpay': 'images/brands/vnpay.svg',
+    'grab': 'images/brands/grab.svg',
+    'samsung': 'images/brands/samsung.svg',
+    'ss': 'images/brands/samsung.svg',
+    'axon': 'images/brands/axon.svg',
+    'vpbank': 'images/brands/vpbank.svg',
+    'vpbs': 'images/brands/vpbank.svg',
+    'vng': 'images/brands/vng.svg',
+    'nike': 'images/brands/nike.svg',
+    'zara': 'images/brands/zara.svg',
+    'loreal': 'images/brands/loreal.svg',
+    'unilever': 'images/brands/unilever.svg',
+    'adidas': 'images/brands/adidas.svg'
+  };
+
+  function resolveBrandLogo(p) {
+    if (!p) return 'images/brands/fpt.svg';
+    if (p.logoUrl && p.logoUrl.startsWith('images/brands/')) return p.logoUrl;
+    const comp = ((p.company || p.clientName || '') + ' ' + (p.title || '')).toLowerCase();
+    for (const [key, path] of Object.entries(brandLogoLookup)) {
+      if (comp.includes(key)) return path;
+    }
+    const type = (p.logoType || '').toLowerCase();
+    for (const [key, path] of Object.entries(brandLogoLookup)) {
+      if (type.includes(key) || key.includes(type)) return path;
+    }
+    return p.logoUrl || 'images/brands/fpt.svg';
+  }
+
   const state = {
     currentView: 'home',
     mode: 'work', // 'work' = candidate, 'hire' = employer
@@ -252,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (compEl) compEl.textContent = p.company || p.clientName || 'Doanh Nghiệp Tuyển Dụng';
     
     const logoText = p.logoType || (p.company || p.clientName || 'VN').substring(0, 3).toUpperCase();
-    const logoUrl = p.logoUrl || `https://logo.clearbit.com/${(p.company || '').toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '')}.com`;
+    const logoUrl = resolveBrandLogo(p);
     
     if (logoEl) {
       logoEl.innerHTML = `<img src="${logoUrl}" alt="${logoText}" class="card-brand-logo" style="width:54px;height:54px;object-fit:contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><span class="card-brand-fallback" style="display:none;width:54px;height:54px;font-size:16px;">${logoText}</span>`;
@@ -557,7 +603,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isSaved = state.savedJobs.has(p.id);
       const isPromoted = p.featured || p.hot;
       const initial = p.logoType || (p.company ? p.company.split(' ').map(w => w[0]).join('').substring(0, 3).toUpperCase() : 'VJ');
-      const logoUrl = p.logoUrl || `https://logo.clearbit.com/${(p.company || '').toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '')}.com`;
+      const logoUrl = resolveBrandLogo(p);
       const salaryText = p.salaryDisplay || (p.budgetMin ? `${p.budgetMin} – ${p.budgetMax} USD` : 'Thỏa thuận');
       const applicantCount = p.applicantsCount || (p.bids ? p.bids.length : 12);
 
@@ -703,7 +749,7 @@ document.addEventListener('DOMContentLoaded', () => {
     browseFeed.innerHTML = projects.map(p => {
       const isSaved = state.savedJobs.has(p.id);
       const initial = p.logoType || (p.company ? p.company.substring(0, 2).toUpperCase() : 'VJ');
-      const logoUrl = p.logoUrl || `https://logo.clearbit.com/${(p.company || '').toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '')}.com`;
+      const logoUrl = resolveBrandLogo(p);
       const salaryText = p.salaryDisplay || (p.budgetMin ? `${p.budgetMin} – ${p.budgetMax} USD` : 'Thỏa thuận');
 
       return `

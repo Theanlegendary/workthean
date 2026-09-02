@@ -2,8 +2,6 @@ const fs = require('fs');
 const path = require('path');
 
 const DB_FILE = path.join(__dirname, 'data_store.json');
-
-// Initial Data Seed
 const defaultData = {
   "projects": [
     {
@@ -313,7 +311,8 @@ const defaultData = {
       "clientVerified": true,
       "clientHireRate": "90%",
       "clientMemberSince": "Năm 2015",
-      "featured": true
+      "featured": true,
+      "logoUrl": "images/brands/shopee.svg"
     },
     {
       "id": "prj-105",
@@ -347,7 +346,8 @@ const defaultData = {
       "clientVerified": true,
       "clientHireRate": "95%",
       "clientMemberSince": "Năm 2014",
-      "featured": false
+      "featured": false,
+      "logoUrl": "images/brands/momo.svg"
     },
     {
       "id": "prj-106",
@@ -381,7 +381,8 @@ const defaultData = {
       "clientVerified": true,
       "clientHireRate": "92%",
       "clientMemberSince": "Năm 2012",
-      "featured": true
+      "featured": true,
+      "logoUrl": "images/brands/tiki.svg"
     },
     {
       "id": "prj-107",
@@ -414,7 +415,8 @@ const defaultData = {
       "clientVerified": true,
       "clientHireRate": "88%",
       "clientMemberSince": "Năm 2017",
-      "featured": false
+      "featured": false,
+      "logoUrl": "images/brands/vinfast.svg"
     },
     {
       "id": "prj-108",
@@ -448,7 +450,8 @@ const defaultData = {
       "clientVerified": true,
       "clientHireRate": "94%",
       "clientMemberSince": "Năm 2014",
-      "featured": true
+      "featured": true,
+      "logoUrl": "images/brands/kiotviet.svg"
     },
     {
       "id": "prj-109",
@@ -482,7 +485,8 @@ const defaultData = {
       "clientVerified": true,
       "clientHireRate": "96%",
       "clientMemberSince": "Năm 2011",
-      "featured": false
+      "featured": false,
+      "logoUrl": "images/brands/vnpay.svg"
     },
     {
       "id": "prj-110",
@@ -515,7 +519,8 @@ const defaultData = {
       "clientVerified": true,
       "clientHireRate": "93%",
       "clientMemberSince": "Năm 2014",
-      "featured": false
+      "featured": false,
+      "logoUrl": "images/brands/grab.svg"
     },
     {
       "id": "prj-111",
@@ -548,7 +553,8 @@ const defaultData = {
       "clientVerified": true,
       "clientHireRate": "98%",
       "clientMemberSince": "Năm 2008",
-      "featured": true
+      "featured": true,
+      "logoUrl": "images/brands/samsung.svg"
     },
     {
       "id": "prj-112",
@@ -582,7 +588,8 @@ const defaultData = {
       "clientVerified": true,
       "clientHireRate": "91%",
       "clientMemberSince": "Năm 2008",
-      "featured": false
+      "featured": false,
+      "logoUrl": "images/brands/axon.svg"
     },
     {
       "id": "prj-113",
@@ -616,7 +623,8 @@ const defaultData = {
       "clientVerified": true,
       "clientHireRate": "92%",
       "clientMemberSince": "Năm 2010",
-      "featured": true
+      "featured": true,
+      "logoUrl": "images/brands/vpbank.svg"
     },
     {
       "id": "prj-114",
@@ -798,54 +806,6 @@ const defaultData = {
       ]
     }
   ],
-  "notifications": [
-    {
-      "id": "n-1",
-      "text": "Elena Rostova submitted a proposal bid on your Next.js E-Commerce project.",
-      "time": "10m ago",
-      "unread": true
-    },
-    {
-      "id": "n-2",
-      "text": "Escrow Deposit Confirmed: $3,500 locked in Milestone Vault.",
-      "time": "1h ago",
-      "unread": true
-    }
-  ],
-  "chats": {
-    "chat-1": [
-      {
-        "sender": "them",
-        "text": "Hi! I saw your post regarding the Next.js e-commerce project. I can start immediately.",
-        "time": "10:30 AM"
-      },
-      {
-        "sender": "me",
-        "text": "Great! Do you have experience with Stripe Connect multi-vendor payouts?",
-        "time": "10:32 AM"
-      }
-    ]
-  },
-  "users": [
-    {
-      "id": "usr-1784780601374",
-      "name": "Alex Founder",
-      "email": "alex@startup.io",
-      "password": "securePassword123",
-      "role": "Client",
-      "title": "Startup Founder & Entrepreneur",
-      "hourlyRate": 75,
-      "avatarText": "AF",
-      "bio": "Verified platform user registered on Freelancer NextGen.",
-      "skills": [
-        "React",
-        "Node.js",
-        "WebSockets",
-        "Stripe"
-      ],
-      "createdAt": "2026-07-23T04:23:21.374Z"
-    }
-  ],
   "categories": [
     {
       "id": "web-dev",
@@ -877,7 +837,22 @@ const defaultData = {
       "name": "Technical Writing & Specs",
       "count": 1250
     }
-  ]
+  ],
+  "notifications": [
+    {
+      "id": "n-1",
+      "text": "Elena Rostova submitted a proposal bid on your Next.js E-Commerce project.",
+      "time": "10m ago",
+      "unread": true
+    },
+    {
+      "id": "n-2",
+      "text": "Escrow Deposit Confirmed: $3,500 locked in Milestone Vault.",
+      "time": "1h ago",
+      "unread": true
+    }
+  ],
+  "chats": {}
 };
 
 function readDB() {

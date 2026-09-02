@@ -448,16 +448,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     feedContainer.innerHTML = filtered.map(p => {
       const isSaved = state.savedJobs.has(p.id);
-      const isPromoted = p.featured || p.hot;
-      const initial = p.logoType || (p.company ? p.company.substring(0, 2).toUpperCase() : 'VJ');
+      const initial = p.logoType || (p.company ? p.company.split(' ').map(w => w[0]).join('').substring(0, 3).toUpperCase() : 'VJ');
       const salaryText = p.salaryDisplay || (p.budgetMin ? `${p.budgetMin} – ${p.budgetMax} USD` : 'Thỏa thuận');
       const applicantCount = p.applicantsCount || (p.bids ? p.bids.length : 12);
 
       return `
         <article class="career-job-card ${isPromoted ? 'promoted' : ''}" data-project-id="${p.id}">
           <div class="career-card-left-section">
-            <div class="career-avatar-circle ${isPromoted ? 'promoted-icon' : ''}">
-              ${isPromoted ? '<i class="fa-solid fa-bolt" style="color:var(--fl-primary);"></i>' : initial}
+            <div class="career-avatar-circle">
+              ${initial}
             </div>
 
             <div class="career-main-details">

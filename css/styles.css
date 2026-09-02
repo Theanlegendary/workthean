@@ -949,26 +949,28 @@ button, input, select, textarea {
 }
 
 .career-avatar-circle {
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   border-radius: var(--radius-md);
-  background: var(--fl-primary-light);
-  color: var(--fl-primary);
+  background: #ffffff;
+  color: var(--fl-text-heading);
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 22px;
-  font-weight: 900;
+  font-size: 15px;
+  font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  border: 1px solid #bfdbfe;
+  border: 1px solid var(--fl-border);
+  box-shadow: var(--shadow-sm);
+  letter-spacing: -0.2px;
+  text-transform: uppercase;
 }
 
 .career-avatar-circle.promoted-icon {
-  background: var(--fl-primary-light);
-  color: var(--fl-primary);
-  font-size: 24px;
+  background: #ffffff;
+  color: var(--fl-text-heading);
+  border: 1px solid var(--fl-border);
 }
 
 .career-main-details {
@@ -2028,18 +2030,20 @@ button, input, select, textarea {
 }
 
 .detail-avatar-box {
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   border-radius: var(--radius-md);
-  background: var(--fl-primary-light);
-  color: var(--fl-primary);
-  font-size: 24px;
-  font-weight: 900;
+  background: #ffffff;
+  color: var(--fl-text-heading);
+  font-size: 18px;
+  font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid #bfdbfe;
+  border: 1px solid var(--fl-border);
+  box-shadow: var(--shadow-sm);
   flex-shrink: 0;
+  text-transform: uppercase;
 }
 
 .detail-badge-row {
@@ -2374,15 +2378,16 @@ button, input, select, textarea {
   width: 44px;
   height: 44px;
   border-radius: var(--radius-md);
-  background: var(--fl-primary-light);
-  color: var(--fl-primary);
-  font-weight: 900;
-  font-size: 16px;
+  background: #ffffff;
+  color: var(--fl-text-heading);
+  font-weight: 800;
+  font-size: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #bfdbfe;
+  border: 1px solid var(--fl-border);
   flex-shrink: 0;
+  text-transform: uppercase;
 }
 
 .sidebar-company-stats {

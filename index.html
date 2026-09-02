@@ -302,24 +302,39 @@
 
             <!-- VIỆC LÀM MỚI NHẤT (QUICK FILTER & ACTIVE FEED) -->
             <section aria-label="Việc Làm Mới Nhất">
-              <div class="section-header-row">
+              <div class="section-header-row premium-section-header">
                 <div>
+                  <div class="section-badge-live">
+                    <span class="live-pulse-dot"></span> CẬP NHẬT TRỰC TIẾP
+                  </div>
                   <h2 class="section-title">Việc Làm Mới Nhất</h2>
-                  <p class="section-subtitle">Cập nhật liên tục các vị trí tuyển dụng vừa được đăng tải</p>
+                  <p class="section-subtitle">Cập nhật liên tục 15,000+ vị trí tuyển dụng vừa được đăng tải</p>
                 </div>
                 <a href="#" class="section-view-all-link" data-view="browse">
-                  Xem tất cả <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
+                  Xem tất cả việc làm <i class="fa-solid fa-arrow-right" style="font-size: 11px;"></i>
                 </a>
               </div>
 
               <!-- Quick Filter Tabs -->
               <div class="quick-filter-pills-row">
-                <button class="filter-pill-btn active" data-quick-filter="all">Tất cả việc làm</button>
-                <button class="filter-pill-btn" data-quick-filter="hot"><i class="fa-solid fa-fire" style="color:#dc2626;"></i> Tuyển gấp</button>
-                <button class="filter-pill-btn" data-quick-filter="remote"><i class="fa-solid fa-laptop-code"></i> Remote / WFH</button>
-                <button class="filter-pill-btn" data-quick-filter="fulltime"><i class="fa-solid fa-briefcase"></i> Toàn thời gian</button>
-                <button class="filter-pill-btn" data-quick-filter="highsalary"><i class="fa-solid fa-dollar-sign" style="color:var(--fl-primary);"></i> Lương 30M+</button>
-                <button class="filter-pill-btn" data-quick-filter="saved"><i class="fa-solid fa-heart" style="color:#dc2626;"></i> Việc đã lưu (<span id="saved-jobs-count-badge">0</span>)</button>
+                <button class="filter-pill-btn active" data-quick-filter="all">
+                  <i class="fa-solid fa-layer-group"></i> Tất cả việc làm
+                </button>
+                <button class="filter-pill-btn pill-hot" data-quick-filter="hot">
+                  <i class="fa-solid fa-fire"></i> Tuyển gấp
+                </button>
+                <button class="filter-pill-btn" data-quick-filter="remote">
+                  <i class="fa-solid fa-laptop-code"></i> Remote / WFH
+                </button>
+                <button class="filter-pill-btn" data-quick-filter="fulltime">
+                  <i class="fa-solid fa-briefcase"></i> Toàn thời gian
+                </button>
+                <button class="filter-pill-btn pill-salary" data-quick-filter="highsalary">
+                  <i class="fa-solid fa-dollar-sign"></i> Lương 30M+
+                </button>
+                <button class="filter-pill-btn pill-saved" data-quick-filter="saved">
+                  <i class="fa-solid fa-heart"></i> Việc đã lưu (<span id="saved-jobs-count-badge">0</span>)
+                </button>
               </div>
 
               <!-- Dynamic Projects Feed -->

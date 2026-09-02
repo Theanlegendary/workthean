@@ -1297,41 +1297,97 @@ button, input, select, textarea {
 /* ==========================================================================
    QUICK FILTER TABS (ABOVE JOB FEED)
    ========================================================================== */
+/* Premium Filter Pills Row */
 .quick-filter-pills-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   overflow-x: auto;
-  padding: 4px 0 14px 0;
+  padding: 6px 2px 16px 2px;
   margin-bottom: 16px;
+  scrollbar-width: thin;
 }
 
 .filter-pill-btn {
   background: #ffffff;
   border: 1px solid var(--fl-border);
-  color: var(--fl-text-body);
-  font-size: 13px;
-  font-weight: 600;
-  padding: 7px 18px;
+  color: var(--fl-text-heading);
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 8px 18px;
   border-radius: var(--radius-pill);
   cursor: pointer;
   white-space: nowrap;
-  transition: var(--transition-fast);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  position: relative;
+  user-select: none;
 }
 
 .filter-pill-btn:hover {
-  background: var(--fl-bg-hover);
-  border-color: var(--fl-border);
+  background: #ffffff;
+  border-color: var(--fl-primary);
+  color: var(--fl-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.12);
+}
+
+.filter-pill-btn:active {
+  transform: scale(0.97);
 }
 
 .filter-pill-btn.active {
-  background: var(--fl-primary-light);
-  color: var(--fl-primary);
-  border-color: var(--fl-primary);
-  font-weight: 700;
+  background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
+  color: #ffffff !important;
+  border-color: #0a66c2;
+  font-weight: 800;
+  box-shadow: 0 4px 14px rgba(10, 102, 194, 0.35);
+  transform: translateY(-1px);
+}
+
+.filter-pill-btn.active i {
+  color: #ffffff !important;
+}
+
+.filter-pill-btn.pill-hot i {
+  color: #ef4444;
+  animation: flameDance 1.4s infinite alternate ease-in-out;
+}
+
+.filter-pill-btn.pill-saved i {
+  color: #ef4444;
+  animation: heartPulse 1.8s infinite ease-in-out;
+}
+
+.filter-pill-btn.pill-salary i {
+  color: #059669;
+}
+
+@keyframes heartPulse {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.2); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.2); }
+  70% { transform: scale(1); }
+}
+
+/* Premium Section Header */
+.section-badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
 }
 
 /* Feed Container */

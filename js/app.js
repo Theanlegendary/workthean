@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initBrowseFilters();
   initNavigation();
+  initTaobaoSearchTicker();
   initSearch();
   initQuickFilterPills();
   initBestJobsShowcase();
@@ -1065,7 +1066,53 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ==========================================================================
      TOAST NOTIFICATIONS
      ========================================================================== */
-    function showToast(msg, duration = 3800) {
+    
+  /* ==========================================================================
+     TAOBAO-STYLE ROTATING SEARCH PLACEHOLDER TICKER
+     ========================================================================== */
+  function initTaobaoSearchTicker() {
+    const searchInputs = [
+      document.getElementById('header-search-input'),
+      document.getElementById('header-top-search-input'),
+      document.getElementById('top-capsule-search-input')
+    ].filter(Boolean);
+
+    if (searchInputs.length === 0) return;
+
+    const suggestions = [
+      "🚀 Senior Java / Spring Boot Microservices (FPT, VCB)...",
+      "💻 React 18 & Next.js 14 Fullstack Developer 35M+...",
+      "🤖 AI & Machine Learning Solution Architect...",
+      "🛍️ Digital Marketing Manager Shopee, Grab...",
+      "📱 Senior Mobile Flutter / iOS Viettel Money...",
+      "🎨 Senior Product UI/UX Designer Figma (MoMo, Tiki)...",
+      "☁️ DevOps & Cloud AWS Kubernetes Engineer...",
+      "⚡ Kỹ sư phần mềm VinFast Digital...",
+      "🏢 Khám phá cơ hội tại 3,200+ doanh nghiệp hàng đầu..."
+    ];
+
+    let currentIndex = 0;
+    let isFocused = false;
+
+    searchInputs.forEach(input => {
+      input.addEventListener('focus', () => { isFocused = true; });
+      input.addEventListener('blur', () => { isFocused = false; });
+    });
+
+    setInterval(() => {
+      if (isFocused) return;
+      currentIndex = (currentIndex + 1) % suggestions.length;
+      const nextText = suggestions[currentIndex];
+
+      searchInputs.forEach(input => {
+        if (!input.value) {
+          input.setAttribute('placeholder', nextText);
+        }
+      });
+    }, 2800);
+  }
+
+  function showToast(msg, duration = 3800) {
     const container = document.getElementById('toast-container');
     if (!container) return;
     const toast = document.createElement('div');

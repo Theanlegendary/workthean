@@ -130,7 +130,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.app-view').forEach(view => view.classList.remove('active-view'));
     const activeEl = document.getElementById(`view-${viewId}`);
-    if (activeEl) activeEl.classList.add('active-view');
+    if (activeEl) {
+      void activeEl.offsetWidth; // Trigger reflow for fresh entrance animation
+      activeEl.classList.add('active-view');
+    }
 
     // Sync Top Tier-2 Brand Nav Items
     document.querySelectorAll('.brand-nav-item').forEach(btn => {

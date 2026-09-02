@@ -2956,3 +2956,188 @@ button, input, select, textarea {
   border-radius: 8px;
   background: var(--fl-bg-hover);
 }
+
+
+/* ==========================================================================
+   DANCING LIGHT & NEON AURA SYSTEM (HOT JOB & HIGHLIGHTS)
+   ========================================================================== */
+.brand-nav-badge-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(125deg, #ff1744 0%, #ff5252 25%, #ff9100 50%, #e040fb 75%, #ff1744 100%);
+  background-size: 300% 300%;
+  color: #ffffff !important;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-left: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 14px rgba(255, 23, 68, 0.6), 0 0 28px rgba(255, 145, 0, 0.4);
+  animation: dancingLight 4s ease infinite, hotAuraPulse 2.2s ease-in-out infinite alternate;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.brand-nav-badge-right:hover {
+  transform: scale(1.08) translateY(-1px);
+  box-shadow: 0 0 20px rgba(255, 23, 68, 0.85), 0 0 36px rgba(255, 145, 0, 0.65);
+}
+
+.brand-nav-badge-right i {
+  color: #fffb00;
+  animation: flameDance 1.2s infinite alternate ease-in-out;
+  filter: drop-shadow(0 0 4px #ff9100);
+}
+
+/* Light Beam Sweep over Hot Badge */
+.brand-nav-badge-right::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  transform: rotate(25deg);
+  animation: lightSweep 2.8s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes dancingLight {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes hotAuraPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 23, 68, 0.5), 0 0 18px rgba(255, 145, 0, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 18px rgba(255, 23, 68, 0.85), 0 0 30px rgba(224, 64, 251, 0.5);
+  }
+}
+
+@keyframes flameDance {
+  0% { transform: translateY(0) scale(1) rotate(-3deg); }
+  50% { transform: translateY(-2px) scale(1.18) rotate(3deg); }
+  100% { transform: translateY(-1px) scale(1.08) rotate(-2deg); }
+}
+
+@keyframes lightSweep {
+  0%   { left: -70%; }
+  35%  { left: 140%; }
+  100% { left: 140%; }
+}
+
+/* Dancing light for in-card hot badges */
+.badge-hot-tag {
+  background: linear-gradient(135deg, #fee2e2 0%, #ffedd5 100%);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.badge-hot-tag i {
+  color: #ef4444;
+  animation: flameDance 1.4s infinite alternate ease-in-out;
+}
+
+/* ==========================================================================
+   CINEMATIC JOB DETAIL PAGE ENTRANCE ANIMATIONS
+   ========================================================================== */
+#view-job-detail.active-view {
+  animation: detailPageEntry 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes detailPageEntry {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+#view-job-detail.active-view .detail-top-nav-bar {
+  animation: detailFadeDown 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+#view-job-detail.active-view .job-detail-header-card {
+  animation: detailHeaderCardReveal 0.48s cubic-bezier(0.16, 1, 0.3, 1) 0.04s both;
+}
+
+#view-job-detail.active-view .detail-content-card {
+  animation: detailCardSlideUp 0.52s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+#view-job-detail.active-view .job-detail-sidebar-col {
+  animation: detailSidebarSlideIn 0.54s cubic-bezier(0.16, 1, 0.3, 1) 0.14s both;
+}
+
+#view-job-detail.active-view .detail-skill-pill {
+  animation: detailPillPopIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+#view-job-detail.active-view .detail-skill-pill:nth-child(1) { animation-delay: 0.18s; }
+#view-job-detail.active-view .detail-skill-pill:nth-child(2) { animation-delay: 0.22s; }
+#view-job-detail.active-view .detail-skill-pill:nth-child(3) { animation-delay: 0.26s; }
+#view-job-detail.active-view .detail-skill-pill:nth-child(4) { animation-delay: 0.30s; }
+#view-job-detail.active-view .detail-skill-pill:nth-child(5) { animation-delay: 0.34s; }
+#view-job-detail.active-view .detail-skill-pill:nth-child(6) { animation-delay: 0.38s; }
+#view-job-detail.active-view .detail-skill-pill:nth-child(7) { animation-delay: 0.42s; }
+
+@keyframes detailFadeDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes detailHeaderCardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+@keyframes detailCardSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes detailSidebarSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes detailPillPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

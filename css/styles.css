@@ -2058,6 +2058,7 @@ button, input, select, textarea {
   margin-bottom: 16px;
   padding-bottom: 14px;
   border-bottom: 1.5px solid #f1f5f9;
+  white-space: nowrap;
 }
 
 .filter-sidebar-title {
@@ -2145,6 +2146,19 @@ button, input, select, textarea {
   transition: all 0.16s ease;
   user-select: none;
   margin-bottom: 2px;
+  white-space: nowrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.filter-option .filter-opt-text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .filter-option input[type="checkbox"] {
@@ -3045,7 +3059,7 @@ button, input, select, textarea {
 /* Browse Sidebar Layout */
 .browse-layout-grid {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 280px 1fr;
   gap: 24px;
   align-items: flex-start;
 }
@@ -3592,12 +3606,19 @@ button, input, select, textarea {
   display: flex;
   align-items: center;
   gap: 12px;
-  max-width: 380px;
+  max-width: 390px;
   z-index: 150;
   transform: translateY(120px);
   opacity: 0;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
+  cursor: pointer;
+}
+
+.live-activity-toast:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 12px 36px rgba(10, 102, 194, 0.18);
+  border-color: var(--fl-primary);
 }
 
 .live-activity-toast.show {

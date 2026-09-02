@@ -65,6 +65,9 @@
     <nav class="header-brand-nav-strip" role="navigation" aria-label="Primary Navigation">
       <div class="container brand-nav-container">
         
+        <button class="hamburger-btn" id="btn-hamburger" aria-label="Mở menu" aria-expanded="false">
+  <i class="fa-solid fa-bars"></i>
+</button>
         <div class="brand-nav-links-left">
           <button class="brand-nav-item home-icon-btn active" data-view="home" title="Trang chủ">
             <i class="fa-solid fa-house"></i>
@@ -148,14 +151,47 @@
                 <i class="fa-solid fa-magnifying-glass"></i> Tìm Việc Ngay
               </button>
             </form>
+<!-- Hero Quick Search Tags -->
+<div class="quick-search-tags-row">
+  <span class="quick-search-label">Tìm nhanh:</span>
+  <button class="quick-search-tag" data-filter-keyword="Java"><i class="fa-brands fa-java"></i> Java</button>
+  <button class="quick-search-tag" data-filter-keyword="React"><i class="fa-brands fa-react"></i> React</button>
+  <button class="quick-search-tag" data-filter-keyword="Python">🐍 Python</button>
+  <button class="quick-search-tag" data-filter-keyword="Marketing"><i class="fa-solid fa-chart-line"></i> Marketing</button>
+  <button class="quick-search-tag" data-filter-keyword="Design"><i class="fa-solid fa-pen-nib"></i> UI/UX</button>
+  <button class="quick-search-tag" data-filter-keyword="Remote"><i class="fa-solid fa-laptop-house"></i> Remote</button>
+</div>
 
-          </div>
+<!-- Hero Stats -->
+<div class="hero-stats-row">
+  <div class="hero-stat-item">
+    <div class="hero-stat-number" id="stat-candidates">520,000+</div>
+    <div class="hero-stat-label">Ứng Viên</div>
+  </div>
+  <div class="hero-stat-divider"></div>
+  <div class="hero-stat-item">
+    <div class="hero-stat-number" id="stat-jobs">15,000+</div>
+    <div class="hero-stat-label">Việc Làm</div>
+  </div>
+  <div class="hero-stat-divider"></div>
+  <div class="hero-stat-item">
+    <div class="hero-stat-number" id="stat-companies">3,200+</div>
+    <div class="hero-stat-label">Doanh Nghiệp</div>
+  </div>
+  <div class="hero-stat-divider"></div>
+  <div class="hero-stat-item">
+    <div class="hero-stat-number">98%</div>
+    <div class="hero-stat-label">Tỷ Lệ Phản Hồi</div>
+  </div>
+</div>
+      </div>
+
         </section>
 
         <!-- SOCIAL PROOF & TRUSTED PARTNERS BAR -->
         <div class="corporate-trust-bar" aria-label="Doanh nghiệp tin dùng">
           <div class="corporate-trust-title">
-            <i class="fa-solid fa-shield-check" style="color: #16a34a;"></i> Được hàng nghìn doanh nghiệp tin dùng:
+            <i class="fa-solid fa-shield-check" style="color: var(--fl-primary);"></i> Được hàng nghìn doanh nghiệp tin dùng:
           </div>
           <div class="corporate-logos-list">
             <div class="corporate-logo-item"><i class="fa-solid fa-building"></i> VINGROUP</div>
@@ -283,7 +319,7 @@
                 <button class="filter-pill-btn" data-quick-filter="hot"><i class="fa-solid fa-fire" style="color:#dc2626;"></i> Tuyển gấp</button>
                 <button class="filter-pill-btn" data-quick-filter="remote"><i class="fa-solid fa-laptop-code"></i> Remote / WFH</button>
                 <button class="filter-pill-btn" data-quick-filter="fulltime"><i class="fa-solid fa-briefcase"></i> Toàn thời gian</button>
-                <button class="filter-pill-btn" data-quick-filter="highsalary"><i class="fa-solid fa-dollar-sign" style="color:#16a34a;"></i> Lương 30M+</button>
+                <button class="filter-pill-btn" data-quick-filter="highsalary"><i class="fa-solid fa-dollar-sign" style="color:var(--fl-primary);"></i> Lương 30M+</button>
                 <button class="filter-pill-btn" data-quick-filter="saved"><i class="fa-solid fa-heart" style="color:#dc2626;"></i> Việc đã lưu (<span id="saved-jobs-count-badge">0</span>)</button>
               </div>
 
@@ -360,16 +396,62 @@
          VIEW 2: BROWSE ALL JOBS PAGE (#view-browse)
          ======================================================================== -->
     <section class="app-view" id="view-browse">
-      <div class="container" style="padding: 24px 20px;">
-        <div class="section-header-row">
-          <div>
-            <h2 class="section-title">Danh Sách Việc Làm Đang Mở</h2>
-            <p class="section-subtitle">Tìm kiếm và ứng tuyển vào các vị trí phù hợp với năng lực của bạn</p>
-          </div>
+  <div class="container" style="padding: 24px 20px;">
+    <div class="section-header-row" style="margin-bottom: 20px;">
+      <div>
+        <h2 class="section-title">Danh Sách Việc Làm Đang Mở</h2>
+        <p class="section-subtitle">Tìm kiếm và ứng tuyển vào các vị trí phù hợp với năng lực của bạn</p>
+      </div>
+    </div>
+    <div class="browse-layout-grid">
+      <!-- Filter Sidebar -->
+      <aside class="browse-filter-sidebar">
+        <div class="filter-sidebar-title"><i class="fa-solid fa-sliders"></i> Bộ Lọc Tìm Kiếm</div>
+
+        <div class="filter-group">
+          <div class="filter-group-label">Ngành nghề</div>
+          <label class="filter-option"><input type="checkbox" value="web-dev" class="browse-cat-filter"> Công nghệ / IT <span class="filter-count-badge">6.8k</span></label>
+          <label class="filter-option"><input type="checkbox" value="ai-ml" class="browse-cat-filter"> AI & Dữ Liệu <span class="filter-count-badge">2.4k</span></label>
+          <label class="filter-option"><input type="checkbox" value="mobile-apps" class="browse-cat-filter"> Mobile App <span class="filter-count-badge">3.2k</span></label>
+          <label class="filter-option"><input type="checkbox" value="design" class="browse-cat-filter"> Design / UI-UX <span class="filter-count-badge">3.8k</span></label>
+          <label class="filter-option"><input type="checkbox" value="recruitment" class="browse-cat-filter"> Kinh doanh / HR <span class="filter-count-badge">4.1k</span></label>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group-label">Hình thức</div>
+          <label class="filter-option"><input type="checkbox" value="Full-Time" class="browse-type-filter"> Toàn thời gian</label>
+          <label class="filter-option"><input type="checkbox" value="Part-Time" class="browse-type-filter"> Bán thời gian</label>
+          <label class="filter-option"><input type="checkbox" value="Remote" class="browse-type-filter"> Remote / WFH</label>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group-label">Địa điểm</div>
+          <label class="filter-option"><input type="checkbox" value="hcm" class="browse-loc-filter"> TP. Hồ Chí Minh</label>
+          <label class="filter-option"><input type="checkbox" value="hanoi" class="browse-loc-filter"> Hà Nội</label>
+          <label class="filter-option"><input type="checkbox" value="danang" class="browse-loc-filter"> Đà Nẵng</label>
+          <label class="filter-option"><input type="checkbox" value="bacninh" class="browse-loc-filter"> Bắc Ninh</label>
+        </div>
+
+        <button class="btn-hero-search" style="width:100%; justify-content:center; margin-top:4px;" id="btn-apply-browse-filters">
+          <i class="fa-solid fa-filter"></i> Áp Dụng Lọc
+        </button>
+      </aside>
+
+      <!-- Main Results -->
+      <div>
+        <div class="browse-results-header">
+          <div class="browse-results-count">Tìm thấy <span id="browse-results-count">0</span> việc làm</div>
+          <select class="browse-sort-select" id="browse-sort-select">
+            <option value="newest">Mới nhất</option>
+            <option value="salary">Lương cao nhất</option>
+            <option value="applicants">Nhiều ứng viên nhất</option>
+          </select>
         </div>
         <div class="projects-feed" id="browse-projects-feed"></div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <!-- ========================================================================
          VIEW: JOB DETAIL PAGE WITH ID (#view-job-detail)
@@ -702,7 +784,7 @@
         <div>
           <div class="footer-col-title">Hỗ Trợ & Pháp Lý</div>
           <ul class="footer-links-list">
-            <li><a href="#" data-view="home"><i class="fa-solid fa-shield-check" style="font-size: 12px; color: #16a34a;"></i> Quy Chế Hoạt Động</a></li>
+            <li><a href="#" data-view="home"><i class="fa-solid fa-shield-check" style="font-size: 12px; color: var(--fl-primary);"></i> Quy Chế Hoạt Động</a></li>
             <li><a href="#" data-view="home"><i class="fa-solid fa-lock" style="font-size: 12px; color: #0284c7;"></i> Chính Sách Bảo Mật</a></li>
             <li><a href="#" data-view="home"><i class="fa-solid fa-file-contract" style="font-size: 12px; color: #d97706;"></i> Điều Khoản Sử Dụng</a></li>
             <li><a href="#" data-view="home"><i class="fa-solid fa-circle-question" style="font-size: 12px; color: #7c3aed;"></i> Câu Hỏi Thường Gặp</a></li>
@@ -717,7 +799,7 @@
           <strong>© 2026 VietnamJobs Corporation.</strong> Nền tảng kết nối việc làm hàng đầu Việt Nam.
         </div>
         <div style="display: flex; align-items: center; gap: 14px; font-size: 12.5px;">
-          <span><i class="fa-solid fa-certificate" style="color: #16a34a;"></i> Đã đăng ký Bộ Công Thương 🇻🇳</span>
+          <span><i class="fa-solid fa-certificate" style="color: var(--fl-primary);"></i> Đã đăng ký Bộ Công Thương 🇻🇳</span>
           <span>•</span>
           <span>Bảo mật dữ liệu chuẩn ISO 27001</span>
         </div>
@@ -976,5 +1058,20 @@
   <!-- Scripts -->
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
+<!-- Mobile Nav Overlay & Drawer -->
+<div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+<div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Menu điều hướng">
+  <div class="drawer-logo">Vietnam<span style="color:#191919">Jobs</span></div>
+  <button class="drawer-item" data-view="home"><i class="fa-solid fa-house"></i> Trang Chủ</button>
+  <button class="drawer-item" data-view="browse"><i class="fa-solid fa-briefcase"></i> Việc Làm Mới</button>
+  <button class="drawer-item" data-view="browse"><i class="fa-solid fa-building"></i> Top Công Ty</button>
+  <button class="drawer-item" data-view="freelancers"><i class="fa-solid fa-user-tie"></i> Dành Cho Ứng Viên</button>
+  <button class="drawer-item" data-view="browse"><i class="fa-solid fa-graduation-cap"></i> Học Bổng & Sinh Viên</button>
+  <button class="drawer-item" data-view="browse"><i class="fa-solid fa-laptop-code"></i> Công Nghệ & IT</button>
+  <div style="padding: 16px 20px; border-top: 1px solid var(--fl-border); margin-top: 8px; display: flex; gap: 8px; flex-direction: column;">
+    <button class="btn-login-red-outline" id="btn-open-auth-modal-mobile" style="width:100%; justify-content:center;">Đăng Nhập</button>
+    <button class="btn-signup-red-solid" id="btn-open-post-project-mobile" style="width:100%; justify-content:center;"><i class="fa-solid fa-plus-circle"></i> Đăng Tin Tuyển Dụng</button>
+  </div>
+</div>
 </body>
 </html>

@@ -29,7 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+
   // Initialize Modules
+  updateSavedJobsCountUI();
+  initMobileNav();
+  initBrowseFilters();
   initNavigation();
   initSearch();
   initQuickFilterPills();
@@ -47,9 +51,64 @@ document.addEventListener('DOMContentLoaded', () => {
   // Listen to browser forward/back & hash change
   window.addEventListener('hashchange', handleUrlRouting);
 
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal.show, .modal-overlay.show').forEach(m => m.classList.remove('show'));
+    }
+  });
+
+
   /* ==========================================================================
      SPA VIEW SWITCHER & NAVIGATION
      ========================================================================== */
+  
+  function openEnterpriseModal(type) {
+    showToast(`🏢 Tính năng ${type || 'Doanh nghiệp'} — Liên hệ: hr@vietnamjobs.vn`);
+  }
+
+  
+  function initMobileNav() {
+    const hamburger = document.getElementById('btn-hamburger');
+    const overlay = document.getElementById('mobile-nav-overlay');
+    const drawer = document.getElementById('mobile-nav-drawer');
+
+    const openDrawer = () => {
+      if(overlay) overlay.classList.add('open');
+      if(drawer) drawer.classList.add('open');
+      hamburger?.setAttribute('aria-expanded', 'true');
+    };
+
+    const closeDrawer = () => {
+      if(overlay) overlay.classList.remove('open');
+      if(drawer) drawer.classList.remove('open');
+      hamburger?.setAttribute('aria-expanded', 'false');
+    };
+
+    hamburger?.addEventListener('click', openDrawer);
+    overlay?.addEventListener('click', closeDrawer);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDrawer();
+    });
+
+    drawer?.querySelectorAll('.drawer-item[data-view]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        switchView(btn.getAttribute('data-view'));
+        closeDrawer();
+      });
+    });
+
+    document.getElementById('btn-open-auth-modal-mobile')?.addEventListener('click', () => {
+      closeDrawer();
+      document.getElementById('modal-auth')?.classList.add('show');
+    });
+
+    document.getElementById('btn-open-post-project-mobile')?.addEventListener('click', () => {
+      closeDrawer();
+      openWizardModal();
+    });
+  }
+
   function initNavigation() {
     document.querySelectorAll('[data-view]').forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -134,16 +193,30 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!state.selectedProject) return;
       const prjId = state.selectedProject.id;
       const btn = e.currentTarget;
-      if (state.savedJobs.has(prjId)) {
-        state.savedJobs.delete(prjId);
-        btn.innerHTML = '<i class="fa-regular fa-bookmark"></i> Lưu Việc';
-        showToast('Đã bỏ lưu việc làm');
-      } else {
-        state.savedJobs.add(prjId);
-        btn.innerHTML = '<i class="fa-solid fa-bookmark" style="color:#0a66c2;"></i> Đã Lưu';
-        showToast('❤️ Đã lưu việc làm vào danh sách yêu thích!');
-      }
-      updateSavedJobsCountUI();
+      
+          
+      
+          if (state.savedJobs.has(prjId)) {
+            state.savedJobs.delete(prjId);
+            saveBtn.classList.remove('saved');
+            saveBtn.innerHTML = '<i class="fa-regular fa-heart"></i>';
+            showToast('Đã bỏ lưu việc làm');
+          } else {
+            state.savedJobs.add(prjId);
+            saveBtn.classList.add('saved');
+            saveBtn.innerHTML = '<i class="fa-solid fa-heart bookmark-pop"></i>';
+            showToast('❤️ Đã lưu việc làm vào danh sách yêu thích!');
+          }
+          const icon = saveBtn.querySelector('i');
+          if (icon) {
+            icon.classList.remove('bookmark-pop');
+            void icon.offsetWidth; // reflow
+            icon.classList.add('bookmark-pop');
+          }
+          updateSavedJobsCountUI();
+
+
+
     });
 
     document.getElementById('btn-detail-trigger-share')?.addEventListener('click', () => {
@@ -403,8 +476,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  
+  function showSkeletonLoader(containerId, count = 3) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    el.innerHTML = Array.from({length: count}, () => `
+      <div class="skeleton-card">
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div class="skeleton-line" style="width:48px;height:48px;border-radius:8px;flex-shrink:0;"></div>
+          <div style="flex:1">
+            <div class="skeleton-line wide"></div>
+            <div class="skeleton-line mid"></div>
+            <div class="skeleton-line short"></div>
+          </div>
+        </div>
+        <div style="margin-top:12px">
+          <div class="skeleton-line full"></div>
+          <div class="skeleton-line mid"></div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function hideSkeletonLoader(containerId) {
+    // handled by rendering content over it
+  }
+
   function initProjectsFeed() {
-    renderHomeFeaturedProjects();
+    showSkeletonLoader('projects-feed', 4);
+    setTimeout(() => {
+      renderHomeFeaturedProjects();
+    }, 300);
   }
 
   function renderHomeFeaturedProjects() {
@@ -536,6 +638,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target.closest('[data-action="save"]')) return;
         showJobDetail(prjId);
       });
+    });
+  }
+
+  
+  function initBrowseFilters() {
+    document.getElementById('btn-apply-browse-filters')?.addEventListener('click', renderBrowseProjects);
+    document.getElementById('browse-sort-select')?.addEventListener('change', renderBrowseProjects);
+
+    document.querySelectorAll('.browse-cat-filter, .browse-type-filter, .browse-loc-filter').forEach(cb => {
+      cb.addEventListener('change', renderBrowseProjects);
     });
   }
 
@@ -823,14 +935,17 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ==========================================================================
      TOAST NOTIFICATIONS
      ========================================================================== */
-  function showToast(msg) {
+    function showToast(msg, duration = 3800) {
     const container = document.getElementById('toast-container');
     if (!container) return;
     const toast = document.createElement('div');
     toast.className = 'toast';
     toast.textContent = msg;
     container.appendChild(toast);
-    setTimeout(() => toast.remove(), 4000);
+    setTimeout(() => {
+      toast.classList.add('toast-hide');
+      setTimeout(() => toast.remove(), 260);
+    }, duration);
   }
 
 });

@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="career-card-left-section">
           <!-- Avatar Icon -->
           <div class="career-avatar-circle ${isPromoted ? 'promoted-icon' : ''}">
-            ${isPromoted ? '<i class="fa-solid fa-bolt" style="color:#ea580c;"></i>' : initial}
+            ${isPromoted ? '<i class="fa-solid fa-bolt" style="color:var(--fl-primary);"></i>' : initial}
           </div>
 
           <!-- Main Career Details -->
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <span class="company-name-bold">${p.company || p.clientName || 'Animalz Technologies'}</span>
               <i class="fa-solid fa-circle-check career-verified-check" title="Doanh nghiệp đã xác thực"></i>
               <span class="career-meta-sep">•</span>
-              <span class="career-location-text"><i class="fa-solid fa-location-dot" style="color:#ea580c; font-size:12px;"></i> ${p.location || 'Hà Nội & TP.HCM'}</span>
+              <span class="career-location-text"><i class="fa-solid fa-location-dot" style="color:var(--fl-primary); font-size:12px;"></i> ${p.location || 'Hà Nội & TP.HCM'}</span>
               <span class="career-meta-sep">•</span>
               <span class="career-workmode-badge"><i class="fa-solid fa-briefcase" style="font-size:11px;"></i> ${p.workType || 'Full-Time'}</span>
             </div>

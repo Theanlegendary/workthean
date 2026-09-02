@@ -1,49 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
 
 /* ==========================================================================
-   VIETNAM RECRUITMENT MARKETPLACE - DESIGN TOKENS & SYSTEM
+   LINKEDIN PROFESSIONAL THEME SYSTEM (DESIGN TOKENS & SYSTEM)
    ========================================================================== */
 
 :root {
-  /* Surface & Background Colors */
-  --fl-bg-main: #f8fafc;
+  /* Surface & Canvas Background Colors */
+  --fl-bg-main: #f3f2ef;
   --fl-bg-card: #ffffff;
-  --fl-bg-hover: #f1f5f9;
-  --fl-bg-input: #ffffff;
+  --fl-bg-hover: #f1f2f4;
+  --fl-bg-input: #edf3f8;
   
   /* Borders */
-  --fl-border: #e2e8f0;
-  --fl-border-subtle: #edf2f7;
-  --fl-border-focus: #ea580c;
+  --fl-border: #e0dfdc;
+  --fl-border-subtle: #edebe9;
+  --fl-border-focus: #0a66c2;
   
-  /* Primary Accent: Dynamic Amber-Orange & Corporate Navy */
-  --fl-primary: #ea580c;
-  --fl-primary-hover: #c2410c;
-  --fl-primary-light: #fff7ed;
-  --fl-accent-blue: #0056d2;
+  /* Primary Accent: LinkedIn Iconic Blue */
+  --fl-primary: #0a66c2;
+  --fl-primary-hover: #004182;
+  --fl-primary-light: #ebf4fd;
+  --fl-accent-blue: #0a66c2;
   
   /* Semantic Status Colors */
-  --fl-accent-green: #16a34a;
-  --fl-accent-amber: #d97706;
-  --fl-accent-red: #dc2626;
-  --fl-accent-cyan: #0284c7;
+  --fl-accent-green: #057642; /* LinkedIn verified green */
+  --fl-accent-green-bg: #dcfce7;
+  --fl-accent-amber: #b25e02;
+  --fl-accent-red: #c93b27;
+  --fl-accent-cyan: #0a66c2;
   
   /* Typography Hierarchy */
-  --fl-text-heading: #0f172a;
-  --fl-text-body: #334155;
-  --fl-text-muted: #64748b;
-  --fl-text-light: #94a3b8;
+  --fl-text-heading: #191919;
+  --fl-text-body: #191919;
+  --fl-text-muted: #666666;
+  --fl-text-light: #8c8c8c;
   
-  /* Radiuses (8-12px Cards, 6-8px Buttons/Inputs) */
-  --radius-sm: 6px;
+  /* Radiuses (LinkedIn 8-10px cards, 24px pill buttons) */
+  --radius-sm: 4px;
   --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+  --radius-pill: 24px;
   
-  /* Shadows (Subtle, Clean) */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+  /* Shadows (LinkedIn subtle card elevation) */
+  --shadow-sm: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.12);
   
   --transition-fast: all 0.15s ease;
   --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -143,8 +145,8 @@ button, input, select, textarea {
    YBOX-STYLE OPPORTUNITY SUB-NAV STRIP
    ========================================================================== */
 .ybox-subnav-strip {
-  background: #0f172a;
-  border-bottom: 1px solid #1e293b;
+  background: #191919;
+  border-bottom: 1px solid #282828;
   padding: 6px 0;
 }
 
@@ -169,8 +171,8 @@ button, input, select, textarea {
   color: #cbd5e1;
   font-size: 13px;
   font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
   text-decoration: none;
   transition: all 0.15s ease;
   flex-shrink: 0;
@@ -178,13 +180,13 @@ button, input, select, textarea {
 
 .subnav-pill:hover {
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   text-decoration: none;
 }
 
 .subnav-pill.active {
   color: #ffffff;
-  background: #0056d2;
+  background: var(--fl-primary);
   font-weight: 700;
 }
 
@@ -208,33 +210,34 @@ button, input, select, textarea {
   display: flex;
   flex-direction: column;
   background: #ffffff;
-  border-left: 1px solid #e2e8f0;
-  padding-left: 24px;
+  border: 1px solid var(--fl-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
 }
 
 @media (max-width: 1080px) {
   .portal-sidebar {
-    border-left: none;
-    padding-left: 0;
+    padding: 20px;
     margin-top: 24px;
   }
 }
 
 .vlr-sidebar-heading {
-  font-size: 24px;
-  font-weight: 900;
-  color: #0f172a;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--fl-text-heading);
   text-transform: uppercase;
   letter-spacing: -0.5px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   line-height: 1;
 }
 
 .vlr-sidebar-heading span {
-  color: #ea580c;
+  color: var(--fl-primary);
   font-style: italic;
   margin-right: 2px;
 }
@@ -242,15 +245,15 @@ button, input, select, textarea {
 .vlr-news-list {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 }
 
 .vlr-news-item {
   display: flex;
   gap: 14px;
   text-decoration: none;
-  padding-bottom: 18px;
-  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--fl-border-subtle);
   transition: all 0.15s ease;
   cursor: pointer;
   align-items: flex-start;
@@ -262,16 +265,16 @@ button, input, select, textarea {
 }
 
 .vlr-news-item:hover .vlr-news-title {
-  color: #ea580c;
+  color: var(--fl-primary);
 }
 
 .vlr-news-thumb {
-  width: 100px;
-  height: 68px;
-  border-radius: 4px;
+  width: 96px;
+  height: 64px;
+  border-radius: 6px;
   object-fit: cover;
   flex-shrink: 0;
-  background: #f1f5f9;
+  background: var(--fl-bg-hover);
 }
 
 .vlr-news-content {
@@ -284,7 +287,7 @@ button, input, select, textarea {
 .vlr-news-title {
   font-size: 13.5px;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--fl-text-heading);
   line-height: 1.35;
   margin-bottom: 6px;
   display: -webkit-box;
@@ -296,7 +299,7 @@ button, input, select, textarea {
 
 .vlr-news-time {
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--fl-text-light);
   font-weight: 500;
 }
 
@@ -305,43 +308,44 @@ button, input, select, textarea {
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: 12.5px;
 }
 
 .quick-search-tag {
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  color: #334155;
+  background: #f1f2f4;
+  border: 1px solid var(--fl-border);
+  color: var(--fl-text-body);
   font-size: 12px;
   font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 14px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .quick-search-tag:hover {
-  background: #ea580c;
+  background: var(--fl-primary);
   color: #ffffff;
-  border-color: #ea580c;
+  border-color: var(--fl-primary);
 }
 
 /* ==========================================================================
-   SUPER CLEAN 2-TIER HEADER (MATCHING VLR / VIETNAM LOGISTICS REVIEW STYLE)
+   LINKEDIN 2-TIER CLEAN HEADER
    ========================================================================== */
 .app-header {
   position: sticky;
   top: 0;
   z-index: 1000;
   background: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid var(--fl-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 /* Tier 1: Pure Clean White Top Bar */
 .header-top-white-bar {
   background: #ffffff;
-  padding: 12px 0;
+  padding: 10px 0;
 }
 
 .header-top-container {
@@ -369,31 +373,36 @@ button, input, select, textarea {
 .brand-logo-red .logo-main-text {
   font-size: 26px;
   font-weight: 900;
-  color: #ea580c;
+  color: var(--fl-primary);
   letter-spacing: -0.03em;
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
 }
 
 .brand-logo-red .logo-main-text span {
-  color: #0056d2;
+  background: var(--fl-primary);
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 20px;
+  letter-spacing: 0;
 }
 
 .brand-logo-red .logo-sub-text {
   font-size: 9px;
   font-weight: 700;
-  color: #64748b;
+  color: var(--fl-text-light);
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  margin-top: 3px;
+  margin-top: 4px;
 }
 
 .header-social-pills {
   display: flex;
   align-items: center;
   gap: 8px;
-  border-left: 1px solid #e2e8f0;
+  border-left: 1px solid var(--fl-border);
   padding-left: 16px;
 }
 
@@ -407,9 +416,9 @@ button, input, select, textarea {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  color: #64748b;
+  background: #f1f2f4;
+  border: 1px solid var(--fl-border);
+  color: var(--fl-text-muted);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -419,9 +428,9 @@ button, input, select, textarea {
 }
 
 .social-circle-btn:hover {
-  background: #0056d2;
+  background: var(--fl-primary);
   color: #ffffff;
-  border-color: #0056d2;
+  border-color: var(--fl-primary);
   text-decoration: none;
 }
 
@@ -432,22 +441,23 @@ button, input, select, textarea {
   flex-shrink: 0;
 }
 
-/* Rounded Pill Search Box matching screenshot */
+/* Rounded LinkedIn Pill Search Box */
 .header-capsule-search {
   display: flex;
   align-items: center;
-  background: #ffffff;
-  border: 1.5px solid #cbd5e1;
-  border-radius: 24px;
+  background: var(--fl-bg-input);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-pill);
   padding: 6px 16px;
-  width: 240px;
+  width: 250px;
   transition: all 0.15s ease;
 }
 
 .header-capsule-search:focus-within {
-  border-color: #0056d2;
-  box-shadow: 0 0 0 3px rgba(0, 86, 210, 0.15);
-  width: 280px;
+  background: #ffffff;
+  border-color: var(--fl-primary);
+  box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.15);
+  width: 290px;
 }
 
 .header-capsule-search input {
@@ -455,12 +465,12 @@ button, input, select, textarea {
   outline: none;
   background: transparent;
   font-size: 13px;
-  color: #0f172a;
+  color: var(--fl-text-heading);
   width: 100%;
 }
 
 .header-capsule-search i {
-  color: #94a3b8;
+  color: var(--fl-text-light);
   font-size: 13px;
   cursor: pointer;
 }
@@ -471,59 +481,60 @@ button, input, select, textarea {
   gap: 4px;
   font-size: 12.5px;
   font-weight: 700;
-  color: #475569;
-  background: #f1f5f9;
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: 1px solid #e2e8f0;
+  color: var(--fl-text-muted);
+  background: #f1f2f4;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--fl-border);
   cursor: pointer;
 }
 
 .btn-login-red-outline {
   background: #ffffff;
-  border: 1px solid #cbd5e1;
-  color: #0f172a;
-  font-size: 13px;
+  border: 1.5px solid var(--fl-primary);
+  color: var(--fl-primary);
+  font-size: 13.5px;
   font-weight: 700;
-  padding: 6px 16px;
-  border-radius: 6px;
+  padding: 6px 18px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.15s ease;
 }
 
 .btn-login-red-outline:hover {
-  background: #f8fafc;
-  border-color: #0056d2;
-  color: #0056d2;
+  background: var(--fl-primary-light);
+  border-color: var(--fl-primary-hover);
+  color: var(--fl-primary-hover);
 }
 
 .btn-signup-red-solid {
-  background: #0056d2;
-  border: 1px solid #0056d2;
+  background: var(--fl-primary);
+  border: 1.5px solid var(--fl-primary);
   color: #ffffff;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
-  padding: 6px 18px;
-  border-radius: 6px;
+  padding: 6px 20px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   white-space: nowrap;
-  box-shadow: 0 2px 6px rgba(0, 86, 210, 0.25);
+  box-shadow: 0 2px 6px rgba(10, 102, 194, 0.25);
   transition: all 0.15s ease;
 }
 
 .btn-signup-red-solid:hover {
-  background: #0047ba;
+  background: var(--fl-primary-hover);
+  border-color: var(--fl-primary-hover);
   transform: translateY(-1px);
 }
 
-/* Tier 2: Solid Brand Navigation Strip (VLR Style) */
+/* Tier 2: Solid Brand Navigation Strip (LinkedIn Professional Style) */
 .header-brand-nav-strip {
-  background: #ea580c;
-  background: linear-gradient(90deg, #ea580c 0%, #f97316 100%);
+  background: var(--fl-primary);
+  background: linear-gradient(90deg, #0a66c2 0%, #004182 100%);
   padding: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
@@ -571,7 +582,7 @@ button, input, select, textarea {
 }
 
 .brand-nav-item:hover, .brand-nav-item.active {
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.2);
   color: #ffffff;
   text-decoration: none;
 }
@@ -584,12 +595,12 @@ button, input, select, textarea {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #0056d2;
+  background: #004182;
   color: #ffffff;
   font-size: 12px;
   font-weight: 800;
-  padding: 5px 12px;
-  border-radius: 4px;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-left: 12px;
@@ -599,21 +610,21 @@ button, input, select, textarea {
 }
 
 .brand-nav-badge-right:hover {
-  background: #0047ba;
+  background: #002d5b;
   transform: scale(1.03);
 }
 
 /* ==========================================================================
-   HERO SECTION (VLR THEME MATCH: WARM AMBER-ORANGE ACCENT & CRISP SEARCH)
+   HERO SECTION (LINKEDIN THEME MATCH: BLUE ACCENT & CRISP SEARCH)
    ========================================================================== */
 .recruitment-hero-section {
   background: #ffffff;
-  border: 1px solid #fed7aa;
-  border-left: 6px solid #ea580c;
-  border-radius: 12px;
+  border: 1px solid var(--fl-border);
+  border-left: 6px solid var(--fl-primary);
+  border-radius: var(--radius-lg);
   padding: 36px 36px 28px 36px;
   margin: 16px 0 24px 0;
-  box-shadow: 0 4px 16px rgba(234, 88, 12, 0.06);
+  box-shadow: var(--shadow-sm);
   position: relative;
 }
 
@@ -625,13 +636,13 @@ button, input, select, textarea {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #fff7ed;
-  border: 1px solid #fed7aa;
-  color: #ea580c;
+  background: var(--fl-primary-light);
+  border: 1px solid #bfdbfe;
+  color: var(--fl-primary);
   font-size: 12px;
   font-weight: 800;
-  padding: 5px 12px;
-  border-radius: 20px;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
   margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 0.4px;
@@ -640,31 +651,31 @@ button, input, select, textarea {
 .hero-headline {
   font-size: 36px;
   font-weight: 900;
-  color: #0f172a;
+  color: var(--fl-text-heading);
   line-height: 1.2;
   margin-bottom: 8px;
   letter-spacing: -0.03em;
 }
 
 .hero-headline span {
-  color: #ea580c;
+  color: var(--fl-primary);
 }
 
 .hero-subheadline {
   font-size: 15.5px;
-  color: #475569;
+  color: var(--fl-text-muted);
   line-height: 1.6;
   margin-bottom: 22px;
 }
 
-/* Integrated Search Bar with Orange Accent */
+/* Integrated Search Bar with LinkedIn Blue Accent */
 .hero-search-box {
   display: flex;
   align-items: center;
   background: #ffffff;
-  border: 1.5px solid #cbd5e1;
-  border-radius: 8px;
-  padding: 6px 6px 6px 14px;
+  border: 1.5px solid var(--fl-border);
+  border-radius: var(--radius-pill);
+  padding: 6px 6px 6px 16px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
   gap: 12px;
   margin-bottom: 0;
@@ -672,8 +683,8 @@ button, input, select, textarea {
 }
 
 .hero-search-box:focus-within {
-  border-color: #ea580c;
-  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15);
+  border-color: var(--fl-primary);
+  box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.15);
 }
 
 .search-input-col {
@@ -684,7 +695,7 @@ button, input, select, textarea {
 }
 
 .search-input-col i {
-  color: #ea580c;
+  color: var(--fl-primary);
   font-size: 15px;
 }
 
@@ -694,14 +705,14 @@ button, input, select, textarea {
   outline: none;
   font-size: 14.5px;
   font-weight: 500;
-  color: #0f172a;
+  color: var(--fl-text-heading);
   background: transparent;
 }
 
 .search-divider {
   width: 1px;
   height: 28px;
-  background: #e2e8f0;
+  background: var(--fl-border);
   flex-shrink: 0;
 }
 
@@ -713,7 +724,7 @@ button, input, select, textarea {
 }
 
 .search-select-col i {
-  color: #ea580c;
+  color: var(--fl-primary);
   font-size: 14px;
 }
 
@@ -723,20 +734,19 @@ button, input, select, textarea {
   outline: none;
   background: transparent;
   font-size: 14px;
-  color: #334155;
+  color: var(--fl-text-body);
   font-weight: 600;
   cursor: pointer;
 }
 
 .btn-hero-search {
-  background: #ea580c;
-  background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+  background: var(--fl-primary);
   color: #ffffff;
   border: none;
   font-weight: 800;
   font-size: 14px;
   padding: 11px 24px;
-  border-radius: 6px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -744,11 +754,11 @@ button, input, select, textarea {
   transition: all 0.15s ease;
   white-space: nowrap;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.25);
+  box-shadow: 0 2px 8px rgba(10, 102, 194, 0.25);
 }
 
 .btn-hero-search:hover {
-  background: #c2410c;
+  background: var(--fl-primary-hover);
   transform: translateY(-1px);
 }
 
@@ -758,7 +768,7 @@ button, input, select, textarea {
   align-items: center;
   gap: 16px;
   font-size: 13px;
-  color: #64748b;
+  color: var(--fl-text-muted);
   flex-wrap: wrap;
 }
 
@@ -769,16 +779,16 @@ button, input, select, textarea {
 }
 
 .live-signal-item strong {
-  color: #0f172a;
+  color: var(--fl-text-heading);
   font-weight: 700;
 }
 
 .pulse-dot-green {
   width: 8px;
   height: 8px;
-  background: #16a34a;
+  background: var(--fl-accent-green);
   border-radius: 50%;
-  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+  box-shadow: 0 0 0 3px rgba(5, 118, 66, 0.2);
 }
 
 /* ==========================================================================
@@ -795,6 +805,7 @@ button, input, select, textarea {
   justify-content: space-between;
   gap: 20px;
   flex-wrap: wrap;
+  box-shadow: var(--shadow-sm);
 }
 
 .corporate-trust-title {
@@ -893,13 +904,13 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   CARRIER LISTS / PROMINENT RECRUITMENT JOB CARDS
+   CAREER LISTS / PROMINENT RECRUITMENT JOB CARDS (LINKEDIN FEED STYLE)
    ========================================================================== */
 .career-job-card, .lemon-job-card, .best-job-mini-card {
-  background: #f0f7ff;
-  border: 1px solid #bfdbfe;
-  border-left: 6px solid #1d4ed8;
-  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid var(--fl-border);
+  border-left: 5px solid var(--fl-primary);
+  border-radius: var(--radius-lg);
   padding: 20px 22px;
   display: flex;
   justify-content: space-between;
@@ -909,15 +920,15 @@ button, input, select, textarea {
   cursor: pointer;
   text-decoration: none;
   position: relative;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--shadow-sm);
   margin-bottom: 14px;
 }
 
 .career-job-card:hover, .lemon-job-card:hover, .best-job-mini-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 71, 186, 0.12);
+  box-shadow: var(--shadow-md);
   border-color: #93c5fd;
-  border-left-color: #ea580c;
+  border-left-color: var(--fl-primary);
   background: #ffffff;
   text-decoration: none;
 }
@@ -925,8 +936,8 @@ button, input, select, textarea {
 /* Promoted Variant */
 .career-job-card.promoted, .lemon-job-card.promoted {
   background: #ffffff;
-  border: 1.5px solid #fed7aa;
-  border-left: 6px solid #ea580c;
+  border: 1.5px solid #bfdbfe;
+  border-left: 5px solid var(--fl-primary);
 }
 
 .career-card-left-section {
@@ -940,9 +951,9 @@ button, input, select, textarea {
 .career-avatar-circle {
   width: 52px;
   height: 52px;
-  border-radius: 10px;
-  background: #fed7aa;
-  color: #ea580c;
+  border-radius: var(--radius-md);
+  background: var(--fl-primary-light);
+  color: var(--fl-primary);
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 22px;
   font-weight: 900;
@@ -950,14 +961,13 @@ button, input, select, textarea {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  border: 1.5px solid #ffedd5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid #bfdbfe;
 }
 
 .career-avatar-circle.promoted-icon {
-  background: #fff7ed;
-  border-radius: 10px;
-  color: #ea580c;
+  background: var(--fl-primary-light);
+  color: var(--fl-primary);
   font-size: 24px;
 }
 
@@ -977,17 +987,17 @@ button, input, select, textarea {
 .career-job-title {
   font-size: 17px;
   font-weight: 800;
-  color: #0f172a;
+  color: var(--fl-text-heading);
   line-height: 1.3;
 }
 
 .badge-hot-tag {
   background: #fee2e2;
-  color: #dc2626;
+  color: var(--fl-accent-red);
   font-size: 11px;
   font-weight: 800;
-  padding: 2px 7px;
-  border-radius: 4px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
@@ -999,18 +1009,18 @@ button, input, select, textarea {
   color: #000000;
   font-size: 10px;
   font-weight: 900;
-  padding: 2px 6px;
-  border-radius: 4px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
   text-transform: uppercase;
 }
 
 .badge-top100-star {
   background: #fef3c7;
-  color: #d97706;
+  color: var(--fl-accent-amber);
   font-size: 11px;
   font-weight: 800;
-  padding: 2px 7px;
-  border-radius: 4px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
   display: inline-flex;
   align-items: center;
   gap: 3px;
@@ -1021,18 +1031,18 @@ button, input, select, textarea {
   align-items: center;
   gap: 8px;
   font-size: 13.5px;
-  color: #475569;
+  color: var(--fl-text-muted);
   margin-bottom: 6px;
   flex-wrap: wrap;
 }
 
 .company-name-bold {
   font-weight: 700;
-  color: #0f172a;
+  color: var(--fl-text-heading);
 }
 
 .career-verified-check {
-  color: var(--fl-accent-green, #16a34a);
+  color: var(--fl-accent-green);
   font-size: 13px;
   display: inline-flex;
   align-items: center;
@@ -1046,14 +1056,14 @@ button, input, select, textarea {
   font-size: 11px;
   font-weight: 700;
   padding: 2px 8px;
-  border-radius: 4px;
+  border-radius: var(--radius-pill);
   display: inline-flex;
   align-items: center;
   gap: 4px;
 }
 
 .badge-verified-green i {
-  color: #16a34a;
+  color: var(--fl-accent-green);
   font-size: 11px;
 }
 
@@ -1064,7 +1074,7 @@ button, input, select, textarea {
 
 .career-location-text, .career-workmode-badge {
   font-size: 13px;
-  color: #475569;
+  color: var(--fl-text-muted);
   font-weight: 500;
   display: inline-flex;
   align-items: center;
@@ -1081,12 +1091,12 @@ button, input, select, textarea {
 }
 
 .pill-tag-boosted {
-  background: #1e3a8a;
+  background: #004182;
   color: #ffffff;
   font-size: 11px;
   font-weight: 800;
-  padding: 3px 8px;
-  border-radius: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -1097,8 +1107,8 @@ button, input, select, textarea {
   color: #000000;
   font-size: 11px;
   font-weight: 800;
-  padding: 3px 8px;
-  border-radius: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -1106,12 +1116,12 @@ button, input, select, textarea {
 
 .pill-tag-white {
   background: #ffffff;
-  border: 1px solid #cbd5e1;
-  color: #334155;
+  border: 1px solid var(--fl-border);
+  color: var(--fl-text-body);
   font-size: 11.5px;
   font-weight: 600;
-  padding: 3px 8px;
-  border-radius: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -1119,7 +1129,7 @@ button, input, select, textarea {
 
 .career-live-meta {
   font-size: 12px;
-  color: #64748b;
+  color: var(--fl-text-light);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1143,8 +1153,8 @@ button, input, select, textarea {
 
 .career-salary-text {
   font-size: 17px;
-  font-weight: 900;
-  color: #ea580c;
+  font-weight: 800;
+  color: var(--fl-primary);
   letter-spacing: -0.3px;
   line-height: 1.2;
 }
@@ -1152,7 +1162,7 @@ button, input, select, textarea {
 .career-salary-subbadge {
   font-size: 11px;
   font-weight: 700;
-  color: #16a34a;
+  color: var(--fl-accent-green);
   display: inline-flex;
   align-items: center;
   gap: 3px;
@@ -1166,36 +1176,36 @@ button, input, select, textarea {
 }
 
 .btn-apply-prominent {
-  background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+  background: var(--fl-primary);
   color: #ffffff;
   border: none;
   font-size: 13.5px;
-  font-weight: 800;
-  padding: 9px 18px;
-  border-radius: 6px;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   white-space: nowrap;
-  box-shadow: 0 3px 10px rgba(234, 88, 12, 0.3);
+  box-shadow: 0 2px 6px rgba(10, 102, 194, 0.25);
   transition: all 0.15s ease;
 }
 
 .btn-apply-prominent:hover {
-  background: #c2410c;
+  background: var(--fl-primary-hover);
   transform: translateY(-1px);
-  box-shadow: 0 5px 14px rgba(234, 88, 12, 0.4);
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.35);
 }
 
 .btn-save-pill {
   background: #ffffff;
-  border: 1px solid #cbd5e1;
-  color: #475569;
+  border: 1px solid var(--fl-border);
+  color: var(--fl-text-muted);
   font-size: 12px;
   font-weight: 700;
-  padding: 8px 12px;
-  border-radius: 6px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -1220,7 +1230,7 @@ button, input, select, textarea {
   .career-card-right-section {
     width: 100%;
     align-items: flex-start;
-    border-top: 1px solid #dbeafe;
+    border-top: 1px solid var(--fl-border-subtle);
     padding-top: 10px;
     flex-direction: row;
     justify-content: space-between;
@@ -1240,6 +1250,7 @@ button, input, select, textarea {
     flex-direction: column;
     padding: 12px;
     gap: 8px;
+    border-radius: var(--radius-lg);
   }
   .search-divider {
     display: none;
@@ -1269,9 +1280,6 @@ button, input, select, textarea {
     padding: 14px 14px 14px 12px;
     border-left-width: 5px;
   }
-  .career-card-top {
-    gap: 10px;
-  }
   .career-avatar-circle {
     width: 38px;
     height: 38px;
@@ -1280,35 +1288,6 @@ button, input, select, textarea {
   .career-job-title {
     font-size: 14.5px;
   }
-  .career-pills-row {
-    gap: 5px;
-  }
-  .pill-tag-boosted, .pill-tag-featured, .pill-tag-top100, .pill-tag-remote, .pill-tag-white {
-    font-size: 11px;
-    padding: 2px 8px;
-  }
-  .career-card-actions-right {
-    margin-left: 0;
-    width: 100%;
-    justify-content: space-between;
-    margin-top: 6px;
-    padding-top: 8px;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-  }
-}
-
-/* Hot Badge */
-.badge-hot-tag {
-  background: #fef2f2;
-  color: var(--fl-accent-red);
-  border: 1px solid #fecaca;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 1px 6px;
-  border-radius: 4px;
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
 }
 
 /* ==========================================================================
@@ -1328,9 +1307,9 @@ button, input, select, textarea {
   border: 1px solid var(--fl-border);
   color: var(--fl-text-body);
   font-size: 13px;
-  font-weight: 500;
-  padding: 7px 16px;
-  border-radius: var(--radius-sm);
+  font-weight: 600;
+  padding: 7px 18px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
   white-space: nowrap;
   transition: var(--transition-fast);
@@ -1348,7 +1327,7 @@ button, input, select, textarea {
   background: var(--fl-primary-light);
   color: var(--fl-primary);
   border-color: var(--fl-primary);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* Feed Container */
@@ -1363,12 +1342,12 @@ button, input, select, textarea {
    TOP NHÀ TUYỂN DỤNG NỔI BẬT (COMPANY PROFILES WITH BLUE BG & VIỆC MỚI BUTTON)
    ========================================================================== */
 .company-spotlight-section {
-  background: #0052cc;
-  background: linear-gradient(135deg, #0047ba 0%, #0056d2 100%);
+  background: #004182;
+  background: linear-gradient(135deg, #004182 0%, #0a66c2 100%);
   border-radius: var(--radius-lg);
   padding: 24px 24px 28px 24px;
   margin-bottom: 36px;
-  box-shadow: 0 4px 16px rgba(0, 71, 186, 0.25);
+  box-shadow: 0 4px 16px rgba(10, 102, 194, 0.25);
 }
 
 .company-spotlight-grid {
@@ -1392,7 +1371,7 @@ button, input, select, textarea {
 
 .company-profile-card {
   background: #ffffff;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   padding: 20px 12px 14px 12px;
   text-align: center;
   transition: var(--transition-smooth);
@@ -1402,12 +1381,13 @@ button, input, select, textarea {
   align-items: center;
   justify-content: space-between;
   min-height: 180px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--fl-border);
 }
 
 .company-profile-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  box-shadow: var(--shadow-md);
 }
 
 .company-avatar-box {
@@ -1422,7 +1402,7 @@ button, input, select, textarea {
 .company-name-text {
   font-size: 11.5px;
   font-weight: 800;
-  color: #0f172a;
+  color: var(--fl-text-heading);
   text-transform: uppercase;
   margin-bottom: 12px;
   line-height: 1.35;
@@ -1439,8 +1419,8 @@ button, input, select, textarea {
   color: #ffffff;
   font-size: 11px;
   font-weight: 800;
-  padding: 4px 14px;
-  border-radius: 4px;
+  padding: 5px 16px;
+  border-radius: var(--radius-pill);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   border: none;
@@ -1480,13 +1460,14 @@ button, input, select, textarea {
 }
 
 .testimonial-card {
-  background: var(--fl-bg-main);
+  background: #ffffff;
   border: 1px solid var(--fl-border);
   border-radius: var(--radius-md);
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: var(--shadow-sm);
 }
 
 .testimonial-quote {
@@ -1578,8 +1559,8 @@ button, input, select, textarea {
   color: #ffffff;
   font-size: 11px;
   font-weight: 700;
-  padding: 3px 12px;
-  border-radius: 4px;
+  padding: 3px 14px;
+  border-radius: var(--radius-pill);
   text-transform: uppercase;
 }
 
@@ -1633,9 +1614,9 @@ button, input, select, textarea {
 .btn-pricing-action {
   width: 100%;
   padding: 10px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-pill);
   font-size: 13.5px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: var(--transition-fast);
   text-align: center;
@@ -1653,14 +1634,12 @@ button, input, select, textarea {
 
 .btn-pricing-action.secondary {
   background: #ffffff;
-  color: var(--fl-text-heading);
-  border: 1px solid var(--fl-border);
+  color: var(--fl-primary);
+  border: 1.5px solid var(--fl-primary);
 }
 
 .btn-pricing-action.secondary:hover {
-  background: var(--fl-bg-hover);
-  border-color: var(--fl-primary);
-  color: var(--fl-primary);
+  background: var(--fl-primary-light);
 }
 
 /* ==========================================================================
@@ -1668,11 +1647,11 @@ button, input, select, textarea {
    ========================================================================== */
 .app-footer {
   background: #ffffff;
-  border-top: 1.5px solid #e2e8f0;
+  border-top: 1px solid var(--fl-border);
   padding: 36px 0 20px 0;
   margin-top: 40px;
   font-size: 14px;
-  color: #475569;
+  color: var(--fl-text-muted);
 }
 
 /* Fast Contact Cards Row */
@@ -1694,43 +1673,43 @@ button, input, select, textarea {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid var(--fl-border);
+  border-radius: var(--radius-md);
   padding: 14px 18px;
   transition: all 0.15s ease;
+  box-shadow: var(--shadow-sm);
 }
 
 .footer-contact-card:hover {
-  background: #fff7ed;
-  border-color: #fed7aa;
+  background: var(--fl-primary-light);
+  border-color: #bfdbfe;
 }
 
 .contact-card-icon {
   width: 42px;
   height: 42px;
-  border-radius: 8px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  border-radius: 50%;
+  background: var(--fl-primary-light);
+  border: 1px solid #bfdbfe;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  color: #ea580c;
+  color: var(--fl-primary);
   flex-shrink: 0;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .contact-card-info h4 {
   font-size: 14.5px;
   font-weight: 800;
-  color: #0f172a;
+  color: var(--fl-text-heading);
   margin-bottom: 2px;
 }
 
 .contact-card-info p {
   font-size: 12.5px;
-  color: #64748b;
+  color: var(--fl-text-muted);
   margin: 0;
 }
 
@@ -1740,7 +1719,7 @@ button, input, select, textarea {
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
   gap: 32px;
   padding-bottom: 28px;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid var(--fl-border-subtle);
 }
 
 @media (max-width: 960px) {
@@ -1760,7 +1739,7 @@ button, input, select, textarea {
 .footer-col-title {
   font-size: 15px;
   font-weight: 800;
-  color: #0f172a;
+  color: var(--fl-text-heading);
   margin-bottom: 14px;
   letter-spacing: -0.2px;
 }
@@ -1775,7 +1754,7 @@ button, input, select, textarea {
 }
 
 .footer-links-list li a {
-  color: #475569;
+  color: var(--fl-text-muted);
   text-decoration: none;
   font-size: 13.5px;
   font-weight: 500;
@@ -1786,7 +1765,7 @@ button, input, select, textarea {
 }
 
 .footer-links-list li a:hover {
-  color: #ea580c;
+  color: var(--fl-primary);
   transform: translateX(3px);
   text-decoration: none;
 }
@@ -1804,7 +1783,7 @@ button, input, select, textarea {
   align-items: center;
   justify-content: space-between;
   font-size: 13px;
-  color: #64748b;
+  color: var(--fl-text-light);
   flex-wrap: wrap;
   gap: 12px;
 }
@@ -1818,7 +1797,7 @@ button, input, select, textarea {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
   display: none;
   align-items: center;
@@ -1877,7 +1856,7 @@ button, input, select, textarea {
   width: 100%;
   padding: 9px 12px;
   border: 1px solid var(--fl-border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   background: #ffffff;
   color: var(--fl-text-heading);
   outline: none;
@@ -1885,7 +1864,7 @@ button, input, select, textarea {
 
 .form-control:focus {
   border-color: var(--fl-primary);
-  box-shadow: 0 0 0 3px rgba(0, 98, 210, 0.12);
+  box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.15);
 }
 
 .form-group {
@@ -1912,10 +1891,10 @@ button, input, select, textarea {
 }
 
 .toast {
-  background: #0f172a;
+  background: #191919;
   color: #ffffff;
   padding: 12px 18px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   font-size: 13.5px;
   font-weight: 500;
   box-shadow: var(--shadow-lg);
@@ -1935,14 +1914,14 @@ button, input, select, textarea {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: #0068ff;
+  background: var(--fl-primary);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
   font-size: 12px;
-  box-shadow: 0 4px 12px rgba(0, 104, 255, 0.35);
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.35);
   cursor: pointer;
   z-index: 90;
   transition: transform 0.15s ease;

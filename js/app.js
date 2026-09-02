@@ -82,6 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initBrowseFilters();
   initNavigation();
   initTaobaoSearchTicker();
+  initLiveActivityTicker();
+  initMarketInsights();
   initSearch();
   initQuickFilterPills();
   initBestJobsShowcase();
@@ -1141,6 +1143,194 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, 2800);
+  }
+
+  
+  /* ==========================================================================
+     HOMEPAGE LIVE ACTIVITY TICKER & MARKET INSIGHTS CONTROLLER
+     ========================================================================== */
+  function initLiveActivityTicker() {
+    const toast = document.getElementById('live-activity-toast');
+    const msgEl = document.getElementById('activity-toast-msg');
+    const timeEl = document.getElementById('activity-toast-time');
+    const closeBtn = document.getElementById('btn-close-activity-toast');
+    const onlineCounter = document.getElementById('live-online-users');
+
+    // Live Online Counter Fluctuation
+    if (onlineCounter) {
+      setInterval(() => {
+        const delta = Math.floor(Math.random() * 7) - 3;
+        const current = parseInt(onlineCounter.textContent.replace(/,/g, ''), 10) || 1486;
+        onlineCounter.textContent = (current + delta).toLocaleString();
+      }, 4000);
+    }
+
+    if (!toast || !msgEl) return;
+
+    const activities = [
+      { text: "Nguyễn Minh Tuấn vừa ứng tuyển <strong>Senior Backend Engineer</strong> tại FPT Software", time: "1 phút trước" },
+      { text: "Vietcombank vừa gửi lời mời phỏng vấn tới ứng viên <strong>Trần Minh Quang</strong>", time: "3 phút trước" },
+      { text: "Lê Hoàng Long vừa xác thực thành công hồ sơ chuyên gia <strong>AI Solution Architect</strong>", time: "5 phút trước" },
+      { text: "Shopee Vietnam vừa nhận 4 hồ sơ ứng tuyển <strong>Digital Marketing Manager</strong>", time: "7 phút trước" },
+      { text: "VinFast Digital vừa đăng tuyển 3 vị trí <strong>React / Next.js Senior</strong>", time: "9 phút trước" },
+      { text: "Vũ Đình Nam vừa nộp hồ sơ ứng tuyển <strong>Mobile Flutter Engineer</strong> tại Viettel", time: "11 phút trước" },
+      { text: "MoMo Fintech vừa xem hồ sơ của <strong>Nguyễn Hà My</strong> (UX Lead)", time: "14 phút trước" }
+    ];
+
+    let actIndex = 0;
+    let toastTimeout = null;
+
+    closeBtn?.addEventListener('click', () => {
+      toast.classList.remove('show');
+    });
+
+    function showNextActivity() {
+      if (document.hidden) return;
+      const act = activities[actIndex];
+      actIndex = (actIndex + 1) % activities.length;
+
+      msgEl.innerHTML = act.text;
+      if (timeEl) timeEl.innerHTML = '<span class="live-pulse-dot" style="width:6px;height:6px;"></span> ' + act.time;
+
+      toast.classList.add('show');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 5000);
+    }
+
+    // Start ticker loop
+    setTimeout(() => {
+      showNextActivity();
+      setInterval(showNextActivity, 10000);
+    }, 2500);
+  }
+
+  function initMarketInsights() {
+    const chips = document.querySelectorAll('.market-role-chip');
+    const salaryEl = document.getElementById('insight-salary');
+    const seniorEl = document.getElementById('insight-senior');
+    const demandEl = document.getElementById('insight-demand');
+    const openCountEl = document.getElementById('insight-open-count');
+    const compEl = document.getElementById('insight-companies');
+    const exploreBtn = document.getElementById('btn-explore-role-jobs');
+
+    const roleData = {
+      'java': {
+        salary: '28 – 50 triệu/tháng',
+        senior: 'Senior: 45 – 70 triệu/tháng',
+        demand: '+42% Nhu Cầu',
+        openCount: '1,240+ vị trí đang mở',
+        companies: [
+          { name: 'FPT Software', img: 'images/brands/fpt.svg' },
+          { name: 'Vietcombank', img: 'images/brands/vcb.svg' },
+          { name: 'VinFast Digital', img: 'images/brands/vinfast.svg' },
+          { name: 'Viettel Digital', img: 'images/brands/viettel.svg' }
+        ],
+        keyword: 'Java'
+      },
+      'react': {
+        salary: '25 – 45 triệu/tháng',
+        senior: 'Senior / Lead: 40 – 65 triệu/tháng',
+        demand: '+56% Nhu Cầu',
+        openCount: '1,890+ vị trí đang mở',
+        companies: [
+          { name: 'VinFast Digital', img: 'images/brands/vinfast.svg' },
+          { name: 'KiotViet', img: 'images/brands/kiotviet.svg' },
+          { name: 'Tiki', img: 'images/brands/tiki.svg' },
+          { name: 'Shopee', img: 'images/brands/shopee.svg' }
+        ],
+        keyword: 'React'
+      },
+      'ai': {
+        salary: '35 – 65 triệu/tháng',
+        senior: 'Principal / Architect: 60 – 100+ triệu/tháng',
+        demand: '+84% Đột Phá',
+        openCount: '860+ vị trí đang mở',
+        companies: [
+          { name: 'Vietcombank', img: 'images/brands/vcb.svg' },
+          { name: 'VNPay', img: 'images/brands/vnpay.svg' },
+          { name: 'FPT AI Lab', img: 'images/brands/fpt.svg' },
+          { name: 'Samsung R&D', img: 'images/brands/samsung.svg' }
+        ],
+        keyword: 'AI'
+      },
+      'mobile': {
+        salary: '25 – 45 triệu/tháng',
+        senior: 'Senior: 40 – 60 triệu/tháng',
+        demand: '+38% Nhu Cầu',
+        openCount: '940+ vị trí đang mở',
+        companies: [
+          { name: 'Viettel Money', img: 'images/brands/viettel.svg' },
+          { name: 'MoMo', img: 'images/brands/momo.svg' },
+          { name: 'Grab Vietnam', img: 'images/brands/grab.svg' },
+          { name: 'VNG', img: 'images/brands/vng.svg' }
+        ],
+        keyword: 'Mobile'
+      },
+      'design': {
+        salary: '22 – 42 triệu/tháng',
+        senior: 'Lead UX: 35 – 55 triệu/tháng',
+        demand: '+35% Nhu Cầu',
+        openCount: '780+ vị trí đang mở',
+        companies: [
+          { name: 'MoMo Fintech', img: 'images/brands/momo.svg' },
+          { name: 'Grab Vietnam', img: 'images/brands/grab.svg' },
+          { name: 'Tiki Corp', img: 'images/brands/tiki.svg' },
+          { name: 'Shopee', img: 'images/brands/shopee.svg' }
+        ],
+        keyword: 'Design'
+      },
+      'marketing': {
+        salary: '20 – 38 triệu/tháng',
+        senior: 'Head of Marketing: 40 – 70 triệu/tháng',
+        demand: '+48% Nhu Cầu',
+        openCount: '1,450+ vị trí đang mở',
+        companies: [
+          { name: 'Shopee Vietnam', img: 'images/brands/shopee.svg' },
+          { name: 'Grab Vietnam', img: 'images/brands/grab.svg' },
+          { name: 'Unilever', img: 'images/brands/unilever.svg' },
+          { name: "L'Oréal", img: 'images/brands/loreal.svg' }
+        ],
+        keyword: 'Marketing'
+      }
+    };
+
+    let currentKeyword = 'Java';
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+
+        const role = chip.getAttribute('data-role');
+        const data = roleData[role];
+        if (!data) return;
+
+        currentKeyword = data.keyword;
+
+        if (salaryEl) salaryEl.textContent = data.salary;
+        if (seniorEl) seniorEl.textContent = data.senior;
+        if (demandEl) demandEl.innerHTML = '<i class="fa-solid fa-arrow-trend-up"></i> ' + data.demand;
+        if (openCountEl) openCountEl.textContent = data.openCount;
+        if (exploreBtn) exploreBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> Xem ' + data.openCount.split('+')[0] + '+ Việc Này';
+
+        if (compEl) {
+          compEl.innerHTML = data.companies.map(c => `
+            <span class="hiring-comp-tag"><img src="${c.img}" alt="${c.name}"> ${c.name}</span>
+          `).join('');
+        }
+      });
+    });
+
+    exploreBtn?.addEventListener('click', () => {
+      switchView('browse');
+      const searchInput = document.getElementById('header-search-input');
+      if (searchInput) searchInput.value = currentKeyword;
+      renderBrowseProjects();
+      showToast(`🚀 Đang lọc danh sách việc làm ngành "${currentKeyword}"!`);
+    });
   }
 
   function showToast(msg, duration = 3800) {

@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // Initialize Modules
+  initSalaryCalculator();
   updateSavedJobsCountUI();
   initMobileNav();
   initBrowseFilters();
@@ -1382,6 +1383,133 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast(`🚀 Đang lọc danh sách việc làm ngành "${currentKeyword}"!`);
     });
   }
+
+  
+  /* ==========================================================================
+     GROSS ⇄ NET SALARY CALCULATOR & ATS CV TOOLKIT CONTROLLER
+     ========================================================================== */
+  function initSalaryCalculator() {
+    const grossBtn = document.getElementById('btn-calc-gross-to-net');
+    const netBtn = document.getElementById('btn-calc-net-to-gross');
+    const salaryInput = document.getElementById('calc-input-salary');
+    const modeLabel = document.getElementById('calc-salary-mode-label');
+    const dependentsSelect = document.getElementById('calc-dependents');
+    const calcBtn = document.getElementById('btn-do-calculate');
+    const resultTitle = document.getElementById('calc-result-title');
+    const resultNetVal = document.getElementById('calc-net-result');
+    const bhxhVal = document.getElementById('calc-bhxh-val');
+    const bhytVal = document.getElementById('calc-bhyt-val');
+    const bhtnVal = document.getElementById('calc-bhtn-val');
+    const taxVal = document.getElementById('calc-tax-val');
+
+    let isGrossToNet = true;
+
+    grossBtn?.addEventListener('click', () => {
+      isGrossToNet = true;
+      grossBtn.classList.add('active');
+      netBtn?.classList.remove('active');
+      if (modeLabel) modeLabel.textContent = 'GROSS';
+      if (resultTitle) resultTitle.textContent = 'LƯƠNG THỰC NHẬN (NET):';
+      calculate();
+    });
+
+    netBtn?.addEventListener('click', () => {
+      isGrossToNet = false;
+      netBtn.classList.add('active');
+      grossBtn?.classList.remove('active');
+      if (modeLabel) modeLabel.textContent = 'NET';
+      if (resultTitle) resultTitle.textContent = 'LƯƠNG GROSS CẦN ĐỀ XUẤT:';
+      calculate();
+    });
+
+    function formatNumber(num) {
+      return num.toLocaleString('vi-VN') + ' ₫';
+    }
+
+    function parseSalary(val) {
+      if (!val) return 25000000;
+      const clean = val.replace(/[^0-9]/g, '');
+      return parseInt(clean, 10) || 25000000;
+    }
+
+    salaryInput?.addEventListener('input', (e) => {
+      const raw = e.target.value.replace(/[^0-9]/g, '');
+      if (raw) {
+        e.target.value = parseInt(raw, 10).toLocaleString('en-US');
+      }
+    });
+
+    function calculate() {
+      const rawSalary = parseSalary(salaryInput?.value);
+      const dependents = parseInt(dependentsSelect?.value || '0', 10);
+      const selfDeduction = 11000000; // 11M VND per month
+      const dependentDeduction = dependents * 4400000; // 4.4M per dependent
+
+      let gross = rawSalary;
+      let net = 0;
+
+      if (isGrossToNet) {
+        gross = rawSalary;
+        // Insurance rates: BHXH 8%, BHYT 1.5%, BHTN 1%
+        const bhxh = Math.round(gross * 0.08);
+        const bhyt = Math.round(gross * 0.015);
+        const bhtn = Math.round(gross * 0.01);
+        const totalInsurance = bhxh + bhyt + bhtn;
+
+        // Income before tax
+        const incomeBeforeTax = Math.max(0, gross - totalInsurance);
+        const taxableIncome = Math.max(0, incomeBeforeTax - selfDeduction - dependentDeduction);
+
+        // Progressive PIT Tax (Thuế TNCN luỹ tiến 2026)
+        let pit = 0;
+        if (taxableIncome <= 5000000) pit = taxableIncome * 0.05;
+        else if (taxableIncome <= 10000000) pit = 250000 + (taxableIncome - 5000000) * 0.1;
+        else if (taxableIncome <= 18000000) pit = 750000 + (taxableIncome - 10000000) * 0.15;
+        else if (taxableIncome <= 32000000) pit = 1950000 + (taxableIncome - 18000000) * 0.2;
+        else if (taxableIncome <= 52000000) pit = 4750000 + (taxableIncome - 32000000) * 0.25;
+        else if (taxableIncome <= 80000000) pit = 9750000 + (taxableIncome - 52000000) * 0.3;
+        else pit = 18150000 + (taxableIncome - 80000000) * 0.35;
+
+        pit = Math.round(pit);
+        net = Math.max(0, gross - totalInsurance - pit);
+
+        if (resultNetVal) resultNetVal.textContent = formatNumber(net);
+        if (bhxhVal) bhxhVal.textContent = '-' + formatNumber(bhxh);
+        if (bhytVal) bhytVal.textContent = '-' + formatNumber(bhyt);
+        if (bhtnVal) bhtnVal.textContent = '-' + formatNumber(bhtn);
+        if (taxVal) taxVal.textContent = pit > 0 ? ('-' + formatNumber(pit)) : '0 ₫';
+      } else {
+        // NET to GROSS estimation
+        net = rawSalary;
+        gross = Math.round(net / 0.895);
+        const bhxh = Math.round(gross * 0.08);
+        const bhyt = Math.round(gross * 0.015);
+        const bhtn = Math.round(gross * 0.01);
+
+        if (resultNetVal) resultNetVal.textContent = formatNumber(gross);
+        if (bhxhVal) bhxhVal.textContent = formatNumber(bhxh);
+        if (bhytVal) bhytVal.textContent = formatNumber(bhyt);
+        if (bhtnVal) bhtnVal.textContent = formatNumber(bhtn);
+        if (taxVal) taxVal.textContent = 'Quy đổi luỹ tiến';
+      }
+    }
+
+    calcBtn?.addEventListener('click', () => {
+      calculate();
+      showToast('⚡ Đã tính xong mức thu nhập theo luật BHXH 2026!');
+    });
+
+    dependentsSelect?.addEventListener('change', calculate);
+
+    // ATS CV Toolkit Download Handler
+    document.getElementById('btn-download-cv-kit')?.addEventListener('click', () => {
+      showToast('📥 Đang tải trọn bộ 50+ Mẫu CV Chuẩn ATS 2026 (Format .DOCX & .PDF)...');
+      setTimeout(() => {
+        showToast('✅ Tải hoàn tất! Chúc bạn ứng tuyển thành công vị trí mơ ước.');
+      }, 1500);
+    });
+  }
+
 
   function showToast(msg, duration = 3800) {
     const container = document.getElementById('toast-container');

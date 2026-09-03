@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initQuickApplyModal();
   initJobDetailPage();
   initPostJobWizard();
-  initAuthModal();
+  initAuthSystem();
   initFreelancersDirectory();
   loadProjectsFromAPI();
   handleUrlRouting();
@@ -1004,25 +1004,200 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     AUTH MODAL
+     COMPLETE SIGN IN / SIGN UP & AUTHENTICATION CONTROLLER
      ========================================================================== */
-  function initAuthModal() {
+  function initAuthSystem() {
     const modal = document.getElementById('modal-auth');
-    const openBtn = document.getElementById('btn-open-auth-modal');
     const closeBtn = document.getElementById('close-auth-modal');
-    const form = document.getElementById('auth-form');
+    const tabSignIn = document.getElementById('tab-auth-signin');
+    const tabSignUp = document.getElementById('tab-auth-signup');
+    const formSignIn = document.getElementById('auth-signin-form');
+    const formSignUp = document.getElementById('auth-signup-form');
 
-    openBtn?.addEventListener('click', () => modal?.classList.add('show'));
-    closeBtn?.addEventListener('click', () => modal?.classList.remove('show'));
+    const guestGroup = document.getElementById('header-auth-guest');
+    const userProfile = document.getElementById('header-user-profile');
+    const userAvatarEl = document.getElementById('header-user-avatar');
+    const userNameEl = document.getElementById('header-user-name');
+    const dropNameEl = document.getElementById('dropdown-user-name');
+    const dropEmailEl = document.getElementById('dropdown-user-email');
+    const dropRoleEl = document.getElementById('dropdown-user-role');
+    const userMenuTrigger = document.getElementById('btn-user-profile-menu');
+    const userDropdown = document.getElementById('user-dropdown-menu');
+    const logoutBtn = document.getElementById('btn-user-logout');
+
+    const openModal = (tab = 'signin') => {
+      if (tab === 'signup') {
+        tabSignUp?.click();
+      } else {
+        tabSignIn?.click();
+      }
+      modal?.classList.add('show');
+    };
+
+    const closeModal = () => modal?.classList.remove('show');
+
+    // Header Trigger Buttons
+    document.getElementById('btn-header-signin')?.addEventListener('click', () => openModal('signin'));
+    document.getElementById('btn-header-signup')?.addEventListener('click', () => openModal('signup'));
+    document.getElementById('btn-open-auth-modal-mobile')?.addEventListener('click', () => openModal('signin'));
+    closeBtn?.addEventListener('click', closeModal);
+
     modal?.addEventListener('click', (e) => {
-      if (e.target === modal) modal.classList.remove('show');
+      if (e.target === modal) closeModal();
     });
 
-    form?.addEventListener('submit', (e) => {
+    // Tab Switching
+    tabSignIn?.addEventListener('click', () => {
+      tabSignIn.classList.add('active');
+      tabSignUp?.classList.remove('active');
+      if (formSignIn) formSignIn.style.display = 'block';
+      if (formSignUp) formSignUp.style.display = 'none';
+    });
+
+    tabSignUp?.addEventListener('click', () => {
+      tabSignUp.classList.add('active');
+      tabSignIn?.classList.remove('active');
+      if (formSignUp) formSignUp.style.display = 'block';
+      if (formSignIn) formSignIn.style.display = 'none';
+    });
+
+    // User Dropdown Toggle
+    userMenuTrigger?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      userDropdown?.classList.toggle('show');
+    });
+
+    document.addEventListener('click', () => {
+      userDropdown?.classList.remove('show');
+    });
+
+    // Render Logged-In User UI
+    function renderUserAuthUI(user) {
+      if (!user) {
+        if (guestGroup) guestGroup.style.display = 'flex';
+        if (userProfile) userProfile.style.display = 'none';
+        return;
+      }
+
+      if (guestGroup) guestGroup.style.display = 'none';
+      if (userProfile) userProfile.style.display = 'inline-block';
+
+      const initials = (user.name || 'User').split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+      if (userAvatarEl) userAvatarEl.textContent = initials;
+      if (userNameEl) userNameEl.textContent = user.name || 'Ứng viên';
+      if (dropNameEl) dropNameEl.textContent = user.name || 'Ứng viên';
+      if (dropEmailEl) dropEmailEl.textContent = user.email || 'user@vietnamjobs.vn';
+      if (dropRoleEl) dropRoleEl.textContent = user.role === 'Employer' ? '🏢 Nhà Tuyển Dụng' : '⭐ Ứng Viên VIP';
+
+      // Update menu saved count
+      const menuSaved = document.getElementById('menu-saved-count');
+      if (menuSaved) menuSaved.textContent = state.savedJobs.size;
+    }
+
+    // Check Local Storage on Boot
+    const savedUserJson = localStorage.getItem('vietnamjobs_auth_user');
+    if (savedUserJson) {
+      try {
+        const user = JSON.parse(savedUserJson);
+        renderUserAuthUI(user);
+      } catch (e) {}
+    }
+
+    // Sign In Submission
+    formSignIn?.addEventListener('submit', (e) => {
       e.preventDefault();
-      const email = document.getElementById('auth-email').value;
-      modal?.classList.remove('show');
-      showToast(`Xin chào ${email}! Đăng nhập tài khoản thành công.`);
+      const email = document.getElementById('signin-email')?.value?.trim();
+      const pass = document.getElementById('signin-password')?.value;
+
+      if (!email || !pass) {
+        showToast('⚠️ Vui lòng nhập đầy đủ thông tin đăng nhập!');
+        return;
+      }
+
+      const user = {
+        name: email.split('@')[0].toUpperCase(),
+        email: email,
+        role: 'Candidate',
+        loginTime: new Date().toISOString()
+      };
+
+      localStorage.setItem('vietnamjobs_auth_user', JSON.stringify(user));
+      renderUserAuthUI(user);
+      closeModal();
+      showToast(`🎉 Xin chào ${user.name}! Đăng nhập thành công vào VietnamJobs.`);
+    });
+
+    // 1-Click Demo Login
+    document.getElementById('btn-quick-demo-login')?.addEventListener('click', () => {
+      const demoUser = {
+        name: 'Thean Lê',
+        email: 'thean.le@vietnamjobs.vn',
+        role: 'Candidate',
+        loginTime: new Date().toISOString()
+      };
+      localStorage.setItem('vietnamjobs_auth_user', JSON.stringify(demoUser));
+      renderUserAuthUI(demoUser);
+      closeModal();
+      showToast('⚡ Đã đăng nhập nhanh với tài khoản mẫu (Thean Lê)!');
+    });
+
+    // Sign Up Submission
+    formSignUp?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('signup-name')?.value?.trim();
+      const email = document.getElementById('signup-email')?.value?.trim();
+      const phone = document.getElementById('signup-phone')?.value?.trim();
+      const role = document.getElementById('signup-role')?.value || 'Candidate';
+      const password = document.getElementById('signup-password')?.value;
+
+      if (!name || !email || !password) {
+        showToast('⚠️ Vui lòng điền đầy đủ các thông tin có dấu *!');
+        return;
+      }
+
+      const newUser = {
+        name,
+        email,
+        phone,
+        role,
+        registeredAt: new Date().toISOString()
+      };
+
+      localStorage.setItem('vietnamjobs_auth_user', JSON.stringify(newUser));
+      renderUserAuthUI(newUser);
+      closeModal();
+      showToast(`🎊 Chúc mừng ${name}! Tạo tài khoản thành công.`);
+    });
+
+    // Logout
+    logoutBtn?.addEventListener('click', () => {
+      localStorage.removeItem('vietnamjobs_auth_user');
+      renderUserAuthUI(null);
+      userDropdown?.classList.remove('show');
+      showToast('👋 Bạn đã đăng xuất thành công khỏi hệ thống.');
+    });
+
+    // Dropdown shortcuts
+    document.getElementById('dropdown-btn-saved')?.addEventListener('click', () => {
+      userDropdown?.classList.remove('show');
+      const savedPill = document.querySelector('[data-quick-filter="saved"]');
+      savedPill?.click();
+      document.getElementById('projects-feed')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    document.getElementById('dropdown-btn-applied')?.addEventListener('click', () => {
+      userDropdown?.classList.remove('show');
+      showToast('📄 Bạn đang có 1 hồ sơ đang trong quy trình xét duyệt.');
+    });
+
+    document.getElementById('dropdown-btn-post-job')?.addEventListener('click', () => {
+      userDropdown?.classList.remove('show');
+      openWizardModal();
+    });
+
+    document.getElementById('link-forgot-pass')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      showToast('📩 Vui lòng liên hệ tổng đài 1900 6868 hoặc email support@vietnamjobs.vn để đặt lại mật khẩu.');
     });
   }
 

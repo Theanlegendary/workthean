@@ -758,7 +758,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (checkedCats.length > 0) projects = projects.filter(p => checkedCats.includes(p.category));
     if (checkedTypes.length > 0) projects = projects.filter(p => checkedTypes.some(t => (p.workType || p.type || '').toLowerCase().includes(t.toLowerCase())));
-    if (checkedLocs.length > 0) projects = projects.filter(p => checkedLocs.some(l => (p.location || '').toLowerCase().includes(l.toLowerCase())));
+    if (checkedLocs.length > 0) {
+    const locMap = { 'hcm': ['hcm', 'hồ chí minh', 'tp.hcm', 'ho chi minh', 'sài gòn'], 'hanoi': ['hà nội', 'ha noi', 'hà noi'], 'danang': ['đà nẵng', 'da nang'], 'bacninh': ['bắc ninh', 'bac ninh'] };
+    projects = projects.filter(p => {
+      const loc = (p.location || '').toLowerCase();
+      return checkedLocs.some(filterKey => {
+        const aliases = locMap[filterKey] || [filterKey];
+        return aliases.some(alias => loc.includes(alias));
+      });
+    });
+  }
 
     if (state.filters.search) {
       const q = state.filters.search;
@@ -946,7 +955,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('modal-wizard');
     const closeBtn = document.getElementById('close-wizard-modal');
     const cancelBtn = document.getElementById('btn-cancel-wizard');
-    const form = document.getElementById('wizard-job-form');
+    const form = document.getElementById('wizard-form') || document.getElementById('wizard-job-form');
 
     const closeModal = () => modal?.classList.remove('show');
 

@@ -349,11 +349,11 @@
               <span>/</span> MỚI NHẤT
             </div>
 
-            <div class="vlr-news-list">
+                          <div class="vlr-news-list">
               
               <!-- Item 1 -->
               <a href="#" class="vlr-news-item" data-view="browse">
-                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?w=200&auto=format&fit=crop&q=80" alt="Dự án tồn đọng" class="vlr-news-thumb">
+                <img src="images/project_dashboard.jpg" alt="Dự án tồn đọng" class="vlr-news-thumb" onerror="this.src='images/hero_team.jpg'">
                 <div class="vlr-news-content">
                   <div class="vlr-news-title">Khẩn trương rà soát, đề xuất giải pháp tháo gỡ vướng mắc cho các dự án tồn đọng, kéo dài</div>
                   <div class="vlr-news-time">4 ngày trước</div>
@@ -362,7 +362,7 @@
 
               <!-- Item 2 -->
               <a href="#" class="vlr-news-item" data-view="browse">
-                <img src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?w=200&auto=format&fit=crop&q=80" alt="Dự án cao tốc" class="vlr-news-thumb">
+                <img src="images/news_tv360.jpg" alt="Dự án cao tốc" class="vlr-news-thumb" onerror="this.src='images/hero_team.jpg'">
                 <div class="vlr-news-content">
                   <div class="vlr-news-title">Đẩy nhanh tiến độ các dự án đường bộ cao tốc khu vực Đông Nam Bộ và Tây Nam Bộ</div>
                   <div class="vlr-news-time">14 ngày trước</div>
@@ -371,7 +371,7 @@
 
               <!-- Item 3 -->
               <a href="#" class="vlr-news-item" data-view="browse">
-                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=200&auto=format&fit=crop&q=80" alt="Làn sóng AI" class="vlr-news-thumb">
+                <img src="images/news_emoney.jpg" alt="Làn sóng AI" class="vlr-news-thumb" onerror="this.src='images/hero_team.jpg'">
                 <div class="vlr-news-content">
                   <div class="vlr-news-title">Làn sóng AI liệu có biến Forwarder trở thành nạn nhân tiếp theo?</div>
                   <div class="vlr-news-time">15 ngày trước</div>
@@ -380,7 +380,7 @@
 
               <!-- Item 4 -->
               <a href="#" class="vlr-news-item" data-view="browse">
-                <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=200&auto=format&fit=crop&q=80" alt="Logistics dược phẩm" class="vlr-news-thumb">
+                <img src="images/news_camid.jpg" alt="Logistics dược phẩm" class="vlr-news-thumb" onerror="this.src='images/hero_team.jpg'">
                 <div class="vlr-news-content">
                   <div class="vlr-news-title">Logistics dược phẩm: chuỗi lạnh của niềm tin và sức khỏe</div>
                   <div class="vlr-news-time">16 ngày trước</div>
@@ -389,13 +389,107 @@
 
               <!-- Item 5 -->
               <a href="#" class="vlr-news-item" data-view="browse">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200&auto=format&fit=crop&q=80" alt="Bất động sản phía Nam" class="vlr-news-thumb">
+                <img src="images/project_mobile.jpg" alt="Bất động sản phía Nam" class="vlr-news-thumb" onerror="this.src='images/hero_team.jpg'">
                 <div class="vlr-news-content">
                   <div class="vlr-news-title">Từ cực công nghiệp đến điểm đến an cư: Cơ hội mới cho bất động sản phía Nam</div>
                   <div class="vlr-news-time">16 ngày trước</div>
                 </div>
               </a>
 
+            </div>
+
+            <!-- FEATURE 1 UNDER / MỚI NHẤT: TIỆN ÍCH TÍNH LƯƠNG GROSS ⇄ NET CHUẨN 2026 -->
+            <div class="sidebar-feature-box salary-calc-box">
+              <div class="sidebar-feature-header">
+                <div class="sidebar-feature-icon"><i class="fa-solid fa-calculator"></i></div>
+                <div>
+                  <h4 class="sidebar-feature-title">Tính Lương GROSS ⇄ NET</h4>
+                  <div class="sidebar-feature-sub">Chuẩn quy định BHXH & Thuế TNCN 2026</div>
+                </div>
+              </div>
+
+              <!-- Switch Mode -->
+              <div class="calc-mode-switch">
+                <button type="button" class="calc-mode-btn active" id="btn-calc-gross-to-net">GROSS ➔ NET</button>
+                <button type="button" class="calc-mode-btn" id="btn-calc-net-to-gross">NET ➔ GROSS</button>
+              </div>
+
+              <div class="calc-form-group">
+                <label for="calc-input-salary" class="calc-label">Mức lương (<span id="calc-salary-mode-label">GROSS</span>):</label>
+                <div class="calc-input-wrapper">
+                  <input type="text" id="calc-input-salary" class="calc-input" value="25,000,000" placeholder="25,000,000">
+                  <span class="calc-currency-badge">VND</span>
+                </div>
+              </div>
+
+              <div class="calc-form-row">
+                <div>
+                  <label for="calc-dependents" class="calc-label">Người phụ thuộc:</label>
+                  <select id="calc-dependents" class="calc-select">
+                    <option value="0">0 người (0đ)</option>
+                    <option value="1">1 người (4.4tr)</option>
+                    <option value="2">2 người (8.8tr)</option>
+                    <option value="3">3+ người (13.2tr)</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="calc-region" class="calc-label">Vùng áp dụng:</label>
+                  <select id="calc-region" class="calc-select">
+                    <option value="1">Vùng I (Hà Nội, HCM)</option>
+                    <option value="2">Vùng II (Đà Nẵng, Cần Thơ)</option>
+                  </select>
+                </div>
+              </div>
+
+              <button type="button" class="btn-calculate-salary" id="btn-do-calculate">
+                <i class="fa-solid fa-bolt"></i> Tính Thu Nhập Thực Nhận
+              </button>
+
+              <!-- Dynamic Result Card -->
+              <div class="calc-result-card" id="calc-result-card">
+                <div class="calc-result-main">
+                  <div class="calc-result-label" id="calc-result-title">LƯƠNG THỰC NHẬN (NET):</div>
+                  <div class="calc-result-value" id="calc-net-result">22,375,000 ₫</div>
+                </div>
+                <div class="calc-breakdown-list">
+                  <div class="calc-breakdown-row">
+                    <span><i class="fa-solid fa-shield-heart" style="color:#0a66c2;"></i> BHXH (8%):</span>
+                    <span id="calc-bhxh-val">-2,000,000 ₫</span>
+                  </div>
+                  <div class="calc-breakdown-row">
+                    <span><i class="fa-solid fa-notes-medical" style="color:#10b981;"></i> BHYT (1.5%):</span>
+                    <span id="calc-bhyt-val">-375,000 ₫</span>
+                  </div>
+                  <div class="calc-breakdown-row">
+                    <span><i class="fa-solid fa-umbrella" style="color:#f59e0b;"></i> BHTN (1%):</span>
+                    <span id="calc-bhtn-val">-250,000 ₫</span>
+                  </div>
+                  <div class="calc-breakdown-row">
+                    <span><i class="fa-solid fa-receipt" style="color:#ef4444;"></i> Thuế TNCN:</span>
+                    <span id="calc-tax-val">0 ₫</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- FEATURE 2 UNDER / MỚI NHẤT: ATS CV TOOLKIT BANNER -->
+            <div class="sidebar-feature-box cv-toolkit-box">
+              <div class="cv-toolkit-header">
+                <div class="cv-toolkit-badge"><i class="fa-solid fa-crown"></i> MIỄN PHÍ 100%</div>
+                <h4 class="cv-toolkit-title">Kho 50+ Mẫu CV Chuẩn ATS 2026</h4>
+                <p class="cv-toolkit-desc">Tăng 85% cơ hội qua vòng quét tự động của các tập đoàn đa quốc gia.</p>
+              </div>
+              <div class="cv-tags-group">
+                <span class="cv-pill-tag"><i class="fa-solid fa-code"></i> IT Developer</span>
+                <span class="cv-pill-tag"><i class="fa-solid fa-chart-line"></i> Marketing</span>
+                <span class="cv-pill-tag"><i class="fa-solid fa-briefcase"></i> Kinh Doanh</span>
+                <span class="cv-pill-tag"><i class="fa-solid fa-pen-nib"></i> UI/UX</span>
+              </div>
+              <div class="cv-actions-row">
+                <button type="button" class="btn-download-cv-kit" id="btn-download-cv-kit">
+                  <i class="fa-solid fa-download"></i> Tải Trọn Bộ Template (.DOCX)
+                </button>
+              </div>
             </div>
 
           </aside>

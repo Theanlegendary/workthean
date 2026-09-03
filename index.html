@@ -51,9 +51,48 @@
             <span>🇻🇳 VN</span>
           </div>
 
-          <button class="btn-login-red-outline" id="btn-open-auth-modal">
-            Đăng Nhập
-          </button>
+          <!-- Auth Actions: Guest vs Logged-In State -->
+          <div class="header-auth-group" id="header-auth-guest">
+            <button class="btn-auth-signin" id="btn-header-signin">
+              <i class="fa-solid fa-right-to-bracket"></i> Đăng Nhập
+            </button>
+            <button class="btn-auth-signup" id="btn-header-signup">
+              <i class="fa-solid fa-user-plus"></i> Đăng Ký
+            </button>
+          </div>
+
+          <div class="header-user-profile" id="header-user-profile" style="display:none;">
+            <div class="header-user-avatar-btn" id="btn-user-profile-menu">
+              <div class="user-avatar-circle" id="header-user-avatar">TL</div>
+              <div class="user-name-wrapper">
+                <span class="user-display-name" id="header-user-name">Thean</span>
+                <i class="fa-solid fa-circle-check user-verified-icon"></i>
+              </div>
+              <i class="fa-solid fa-chevron-down" style="font-size:10px; color:var(--fl-text-muted);"></i>
+            </div>
+
+            <div class="user-dropdown-menu" id="user-dropdown-menu">
+              <div class="user-dropdown-header">
+                <div class="dropdown-user-name" id="dropdown-user-name">Thean</div>
+                <div class="dropdown-user-email" id="dropdown-user-email">thean@vietnamjobs.vn</div>
+                <span class="dropdown-role-badge" id="dropdown-user-role">Ứng Viên VIP</span>
+              </div>
+              <div class="dropdown-divider"></div>
+              <button type="button" class="dropdown-item" id="dropdown-btn-saved">
+                <i class="fa-solid fa-heart" style="color:#ef4444;"></i> Việc làm đã lưu (<span id="menu-saved-count">2</span>)
+              </button>
+              <button type="button" class="dropdown-item" id="dropdown-btn-applied">
+                <i class="fa-solid fa-paper-plane" style="color:#0a66c2;"></i> Hồ sơ đã nộp (<span id="menu-applied-count">1</span>)
+              </button>
+              <button type="button" class="dropdown-item" id="dropdown-btn-post-job">
+                <i class="fa-solid fa-plus-circle" style="color:#10b981;"></i> Đăng tin tuyển dụng
+              </button>
+              <div class="dropdown-divider"></div>
+              <button type="button" class="dropdown-item dropdown-logout-btn" id="btn-user-logout">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng Xuất
+              </button>
+            </div>
+          </div>
 
           <button class="btn-signup-red-solid" id="btn-open-post-project">
             <i class="fa-solid fa-plus-circle"></i> Đăng Tin Tuyển Dụng

@@ -170,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('btn-open-post-project')?.addEventListener('click', openWizardModal);
     document.getElementById('footer-btn-post-job')?.addEventListener('click', openWizardModal);
+    document.getElementById('btn-employer-cta-post')?.addEventListener('click', openWizardModal);
     document.getElementById('footer-btn-headhunt')?.addEventListener('click', () => {
       openEnterpriseModal('Headhunt VIP');
     });

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" width="1200" height="120">
+  <defs>
+    <linearGradient id="bannerBg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0a66c2"/>
+      <stop offset="60%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="goldBadge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="120" fill="url(#bannerBg)" rx="8"/>
+  
+  <!-- Subtle decorative grid -->
+  <g opacity="0.08" stroke="#ffffff" stroke-width="1">
+    <line x1="100" y1="0" x2="100" y2="120"/>
+    <line x1="200" y1="0" x2="200" y2="120"/>
+    <line x1="300" y1="0" x2="300" y2="120"/>
+    <line x1="400" y1="0" x2="400" y2="120"/>
+    <line x1="500" y1="0" x2="500" y2="120"/>
+    <line x1="600" y1="0" x2="600" y2="120"/>
+    <line x1="700" y1="0" x2="700" y2="120"/>
+    <line x1="800" y1="0" x2="800" y2="120"/>
+    <line x1="900" y1="0" x2="900" y2="120"/>
+    <line x1="1000" y1="0" x2="1000" y2="120"/>
+    <line x1="1100" y1="0" x2="1100" y2="120"/>
+    <line x1="0" y1="40" x2="1200" y2="40"/>
+    <line x1="0" y1="80" x2="1200" y2="80"/>
+  </g>
+
+  <!-- Left Accent Emblem -->
+  <g transform="translate(40, 20)">
+    <circle cx="40" cy="40" r="36" fill="#ffffff" opacity="0.15"/>
+    <circle cx="40" cy="40" r="30" fill="#ffffff" opacity="0.25"/>
+    <path d="M40 22 L45 35 L58 35 L48 43 L52 56 L40 48 L28 56 L32 43 L22 35 L35 35 Z" fill="#ffffff"/>
+  </g>
+
+  <!-- Main Headline &amp; Subtitle -->
+  <g transform="translate(140, 48)">
+    <text font-family="'Plus Jakarta Sans', 'Be Vietnam Pro', -apple-system, sans-serif" font-size="28" font-weight="900" fill="#ffffff" letter-spacing="0.5">
+      National Higher Education &amp; Freight Career Employment Hub
+    </text>
+    <text font-family="'Plus Jakarta Sans', 'Be Vietnam Pro', -apple-system, sans-serif" font-size="14" font-weight="600" fill="#e0f2fe" y="32">
+      Comprehensive Intelligent Career Network · Policy Direct · Verified Recruitment · Skill Upgrades
+    </text>
+  </g>
+
+  <!-- Right Callout Button -->
+  <g transform="translate(980, 36)">
+    <rect width="180" height="48" rx="24" fill="#ffffff" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.15))"/>
+    <text x="90" y="30" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="15" font-weight="800" fill="#0a66c2" text-anchor="middle">
+      Explore Portal ➔
+    </text>
+  </g>
+</svg>

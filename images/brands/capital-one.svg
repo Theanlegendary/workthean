@@ -1,0 +1,7 @@
+<svg viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <rect width="140" height="40" rx="4" fill="#004977"/>
+  <!-- Capital One Red Swoosh Accent -->
+  <path d="M 12 28 C 30 14, 52 10, 68 8 C 50 12, 32 18, 16 32 Z" fill="#D03027"/>
+  <!-- Capital One Typography -->
+  <text x="75" y="25" font-family="'Inter', -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-weight="800" font-size="12" fill="#FFFFFF" text-anchor="middle" letter-spacing="-0.2">Capital One</text>
+</svg>

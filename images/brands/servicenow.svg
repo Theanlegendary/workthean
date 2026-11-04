@@ -1,0 +1,9 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="100" rx="16" fill="#ffffff"/>
+  <!-- ServiceNow curved arc header accent -->
+  <path d="M 18 34 C 34 16, 66 16, 82 34" fill="none" stroke="#81b5a1" stroke-width="7" stroke-linecap="round"/>
+  <!-- Bold 'now' brand mark -->
+  <text x="36" y="68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="44" font-weight="900" fill="#293e40" text-anchor="middle">now</text>
+  <!-- ServiceNow green dot accent -->
+  <circle cx="78" cy="60" r="8" fill="#81b5a1"/>
+</svg>

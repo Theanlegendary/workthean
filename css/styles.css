@@ -620,7 +620,6 @@ button, input, select, textarea {
 .recruitment-hero-section {
   background: #ffffff;
   border: 1px solid var(--fl-border);
-  border-left: 6px solid var(--fl-primary);
   border-radius: var(--radius-lg);
   padding: 36px 36px 28px 36px;
   margin: 16px 0 24px 0;

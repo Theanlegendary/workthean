@@ -59,7 +59,7 @@
 }
 
 html {
-  font-family: 'Plus Jakarta Sans', 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Inter', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 15px;
   color: var(--fl-text-body);
   background-color: var(--fl-bg-main);
@@ -67,7 +67,7 @@ html {
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Inter', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 14.5px;
   line-height: 1.6;
   color: var(--fl-text-body);
@@ -5412,7 +5412,7 @@ footer a:hover {
 .fw-channels-title {
   color: var(--fl-primary, #0a66c2) !important;
   text-align: left !important;
-  font-family: var(--font-system, 'Be Vietnam Pro', 'Plus Jakarta Sans', sans-serif) !important;
+  font-family: var(--font-system, 'Plus Jakarta Sans', sans-serif) !important;
   font-weight: 700 !important;
   display: flex !important;
   align-items: center !important;
@@ -9486,7 +9486,7 @@ font-size: 11.5px !important;
 .fw-section-title {
   color: #0F172A !important;
   text-align: left !important;
-  font-family: var(--font-system, 'Be Vietnam Pro', 'Plus Jakarta Sans', sans-serif) !important;
+  font-family: var(--font-system, 'Plus Jakarta Sans', sans-serif) !important;
   font-weight: 700 !important;
 }
 

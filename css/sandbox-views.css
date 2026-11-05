@@ -1155,3 +1155,352 @@
   transform: translateY(-3px);
   box-shadow: 0 12px 24px -4px rgba(15, 23, 42, 0.08);
 }
+
+
+/* Official Built In Footer Styles from thesandbox-job-detail */
+
+
+/* ==========================================================================
+   10. FOOTER & FLOATING ACTIONS
+   ========================================================================== */
+/* ==========================================================================
+   BUILT IN (builtin.com) ENTERPRISE 4-COLUMN DIRECTORY FOOTER
+   Measured Specifications:
+   - Background: #0B1D30 (Deep Built In directory navy)
+   - Color: #94A3B8
+   - Padding: 56px 24px 32px (Desktop), 40px 16px 24px (Mobile)
+   - Border-Top: 1px solid #1E293B
+   - Column Structure: 4 columns (1.6fr 1fr 1fr 1fr) collapsing to 2 cols on tablet, 1 on mobile
+   - Link Color: #94A3B8, Hover Color: #FFFFFF
+   ========================================================================== */
+
+/* ==========================================================================
+   12. BUILT IN CLEAN DIRECTORY FOOTER (Light Periwinkle Spec)
+   Reference: Built In measured tokens #EAEEFD / #04003F / #28386F / #B8BFDC
+   ========================================================================== */
+
+.builtin-footer,
+.fw-official-gov-footer {
+  background: #001A2C !important;
+  color: #FFFFFF !important;
+  padding: 56px 24px 36px !important;
+  font-family: var(--font-builtin-sans, 'Montserrat', sans-serif) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+
+.builtin-footer-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr 1fr;
+  gap: 36px;
+}
+
+
+.builtin-footer-brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  text-decoration: none;
+}
+
+
+.builtin-footer-brand-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #004D80;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+
+.builtin-footer-brand-title {
+  font-family: var(--font-builtin-sans, 'Montserrat', sans-serif);
+  font-size: 19px;
+  font-weight: 800;
+  color: #FFFFFF !important;
+  letter-spacing: -0.02em;
+}
+
+
+.builtin-footer-desc {
+  font-size: 13.5px;
+  color: #94A3B8 !important;
+  line-height: 1.65;
+  margin: 0 0 18px;
+  max-width: 340px;
+}
+
+
+.builtin-footer-brand-copy {
+  font-family: var(--font-builtin-sans, 'Montserrat', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748B !important;
+  margin-top: 16px;
+  letter-spacing: -0.1px;
+}
+
+
+.builtin-footer-accreditation {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 11.5px;
+  color: #CBD5E1 !important;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+
+.builtin-footer-col-title {
+  font-family: var(--font-builtin-sans, 'Montserrat', sans-serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #FFFFFF !important;
+  margin: 0 0 16px;
+  text-transform: uppercase !important;
+  letter-spacing: 0.6px;
+}
+
+
+.builtin-footer-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+
+.builtin-footer-links-list a {
+  font-size: 13.5px;
+  color: #94A3B8 !important;
+  text-decoration: none;
+  transition: color 0.15s ease, transform 0.15s ease;
+  font-weight: 500;
+}
+
+
+.builtin-footer-links-list a:hover {
+  color: #38BDF8 !important;
+  text-decoration: none;
+  transform: translateX(2px);
+}
+
+
+.builtin-footer-copyright-row {
+  max-width: 1240px;
+  margin: 36px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+
+.builtin-footer-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+
+.builtin-footer-legal-links a {
+  font-size: 12.5px;
+  color: #64748B !important;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+
+.builtin-footer-legal-links a:hover {
+  color: #CBD5E1 !important;
+  text-decoration: underline;
+}
+
+  .builtin-footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .builtin-footer,
+  .fw-official-gov-footer {
+    padding: 36px 16px 24px !important;
+  }
+
+  .builtin-footer-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .builtin-footer-legal-links {
+    gap: 10px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .builtin-footer-copyright-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 28px;
+  }
+
+
+.app-page-wrapper,
+main,
+.builtin-home-hero,
+.builtin-metrics-bar,
+.builtin-company-section,
+.builtin-dual-cta-section,
+.fw-gov-news-section,
+.builtin-footer {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+
+  /* Footer 4-Column Directory Responsive Stack */
+  .builtin-footer-inner {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    padding: 0 16px !important;
+  }
+
+  .builtin-footer-copyright-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+    padding: 20px 16px !important;
+  }
+
+  .builtin-footer-legal-links {
+    flex-wrap: wrap !important;
+    gap: 12px 16px !important;
+  }
+
+
+/* ==========================================================================
+   16. STANDARDIZED CONTAINER WIDTH & RESPONSIVE GUTTERS
+   Target content width: 1240px (1200–1280px)
+   Desktop side gutters: 32px (calc(100% - 64px))
+   Mobile side gutters: 20px (calc(100% - 40px))
+   ========================================================================== */
+.container,
+.builtin-container,
+.builtin-jobs-main,
+.builtin-layout,
+.builtin-hero-inner,
+.builtin-hero-container,
+.builtin-metrics-container,
+.builtin-section-container,
+.builtin-dual-cta-container,
+.builtin-footer-inner,
+.editorial-news-canvas .container,
+.editorial-canvas .container,
+.companies-main-wrap,
+.courses-main-wrap,
+.builtin-layout-grid,
+.help-main,
+.help-header-inner,
+.about-container,
+.content-container,
+.content-container > div {
+  width: min(1240px, calc(100% - 64px)) !important;
+  max-width: 1240px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box !important;
+}
+
+  .container,
+  .builtin-container,
+  .builtin-jobs-main,
+  .builtin-layout,
+  .builtin-hero-inner,
+  .builtin-hero-container,
+  .builtin-metrics-container,
+  .builtin-section-container,
+  .builtin-dual-cta-container,
+  .builtin-footer-inner,
+  .editorial-news-canvas .container,
+  .editorial-canvas .container,
+  .companies-main-wrap,
+  .courses-main-wrap,
+  .builtin-layout-grid,
+  .help-main,
+  .help-header-inner,
+  .about-container,
+  .content-container,
+  .content-container > div {
+    width: calc(100% - 40px) !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+
+/* 13. Fine Print & Legal (Target: 12px / 18px, weight 400–500 - no harsh bold) */
+.builtin-footer-brand-copy,
+.footer-copy,
+.fine-print,
+.legal-notice,
+.role-generated-tag,
+.disclaimer-text {
+  font-family: var(--font-builtin-sans) !important;
+  font-size: 12px !important;
+  line-height: 18px !important;
+  font-weight: 400 !important;
+  color: #64748B !important;
+}
+
+
+/* Footer Headings & Links */
+.builtin-footer-col-title,
+.footer-col-title {
+  font-family: var(--font-builtin-sans) !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  font-weight: 700 !important;
+  color: #0F172A !important;
+  letter-spacing: 0.02em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 14px !important;
+}
+
+
+.builtin-footer-links-list a,
+.footer-link {
+  font-family: var(--font-builtin-sans) !important;
+  font-size: 14px !important;
+  line-height: 22px !important;
+  font-weight: 400 !important;
+  color: #475569 !important;
+}
+
+
+.builtin-footer-desc,
+.footer-desc {
+  font-family: var(--font-builtin-sans) !important;
+  font-size: 14px !important;
+  line-height: 22px !important;
+  font-weight: 400 !important;
+  color: #64748B !important;
+}

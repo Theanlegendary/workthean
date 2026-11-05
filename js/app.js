@@ -2272,25 +2272,25 @@ function initSplitScreenJobBoard() {
       const isSelected = job.id === enterpriseSelectedJobId;
       return `
         <article class="job-card ${isSelected ? 'active' : ''}" data-job-id="${job.id}" onclick="selectEnterpriseJob('${job.id}')" style="cursor:pointer;">
-          <div class="job-card-top-row">
-            <div class="linkedin-card-logo" style="width:48px; height:48px; flex-shrink:0;">
+          <div class="job-card-top-row" style="display:flex; gap:12px; align-items:flex-start;">
+            <div class="linkedin-card-logo" style="width:44px; height:44px; flex-shrink:0;">
               <img src="${job.companyLogo}" alt="${job.company}" class="linkedin-brand-img" style="width:100%; height:100%; object-fit:contain; background:transparent;">
             </div>
             <div class="job-card-header-info" style="flex:1; min-width:0;">
-              <h3 class="linkedin-card-title" style="font-size:15px; font-weight:700; color:#0A66C2; margin:0 0 3px; line-height:1.3; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+              <h3 class="linkedin-card-title" style="font-size:14.5px; font-weight:700; color:#0A66C2; margin:0 0 2px; line-height:1.3; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
                 ${job.title}
               </h3>
-              <div class="linkedin-card-company" style="font-size:13px; color:#334155; font-weight:500; margin-bottom:3px;">
+              <div class="linkedin-card-company" style="font-size:12.5px; color:#475569; font-weight:500; margin-bottom:2px;">
                 ${job.company}
               </div>
-              <div style="font-size:12px; color:#64748B; display:flex; align-items:center; gap:4px; margin-bottom:3px;">
-                <i class="fa-solid fa-location-dot" style="font-size:11px;"></i> ${job.location}
+              <div style="font-size:12px; color:#64748B; margin-bottom:3px;">
+                ${job.location}
               </div>
-              <div style="font-size:13.5px; font-weight:700; color:#0F172A; margin-bottom:4px;">
+              <div style="font-size:13px; font-weight:700; color:#0F172A; margin-bottom:3px;">
                 ${job.salary}
               </div>
-              <div style="font-size:11.5px; color:#64748B; font-weight:500;">
-                <i class="fa-regular fa-clock"></i> ${job.time} • ${job.applicants}
+              <div style="font-size:11.5px; color:#94A3B8; font-weight:500;">
+                ${job.time} • ${job.applicants}
               </div>
             </div>
           </div>

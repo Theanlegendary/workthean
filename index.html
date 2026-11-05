@@ -585,75 +585,120 @@
           <div class="vj-section-header">
             <div>
               <span class="vj-section-badge">DOANH NGHIỆP XÁC THỰC</span>
-              <h2 class="vj-section-title">Top Công Ty Đang Tuyển Dụng Nhiều Nhất</h2>
-              <p class="vj-section-subtitle">Hồ sơ doanh nghiệp minh bạch, quy mô vận hành chuẩn quốc tế và vị trí đang mở</p>
+              <h2 class="vj-section-title"><span class="fw-section-bar"></span>Top Doanh Nghiệp Công Nghệ, AI &amp; Logistics</h2>
+              <p class="vj-section-subtitle">Hồ sơ năng lực, giải pháp công nghệ số hóa, bảng giá và kết nối trực tiếp với đại diện doanh nghiệp</p>
             </div>
-            <a href="#" class="vj-section-link" data-view="browse">
-              <span>Xem danh bạ công ty</span> <i class="fa-solid fa-arrow-right"></i>
+            <a href="#" class="vj-section-link" data-view="companies" onclick="switchView('companies'); return false;">
+              <span>Xem tất cả doanh nghiệp</span> <i class="fa-solid fa-arrow-right"></i>
             </a>
           </div>
 
-          <div class="builtin-company-grid">
-            <!-- Company 1: Viconship -->
-            <div class="builtin-company-card" data-view="browse" data-filter-keyword="Viconship">
-              <div>
+          <div class="builtin-company-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px;">
+            <!-- Company 1: VinFast Logistics & Tech -->
+            <div class="builtin-company-card" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between;">
+              <div onclick="openCompanyDetail('vinfast')">
                 <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
-                  <div class="co-card-logo-wrap">
-                    <img src="images/brands/viconship.svg" alt="Viconship Logistics Group" onerror="this.src='images/brands/vcb.svg'">
+                  <div class="co-card-logo-wrap" style="width:56px; height:56px; background:transparent;">
+                    <img src="images/brands/vinfast.svg" alt="VinFast Logistics & Cold Chain" style="width:100%; height:100%; object-fit:contain; background:transparent;">
                   </div>
                   <div>
-                    <h3 style="font-size: 15.5px; font-weight: 800; color: #0f172a; margin: 0 0 3px;">Viconship Container Corporation</h3>
-                    <div style="font-size: 12.5px; color: #64748b;">Hải Phòng &bull; Cái Mép &bull; HCMC</div>
+                    <h3 style="font-size: 15.5px; font-weight: 800; color: #0f172a; margin: 0 0 3px;">VinFast Logistics &amp; AI Tech</h3>
+                    <div style="font-size: 12.5px; color: #64748b;">Hải Phòng &bull; HCMC &bull; ASEAN</div>
                   </div>
                 </div>
-                <div style="font-size: 13px; color: var(--fl-primary, #0a66c2); font-weight: 700; margin-bottom: 14px;">
-                  <span style="background: rgba(10, 102, 194, 0.08); padding: 3px 8px; border-radius: 6px; margin-right: 6px;">14 Vị Trí Mở</span> Seaport &amp; ICD Hub
+                <div style="font-size: 13px; color: var(--fl-primary, #0a66c2); font-weight: 700; margin-bottom: 12px;">
+                  <span style="background: rgba(10, 102, 194, 0.08); padding: 3px 8px; border-radius: 6px; margin-right: 6px;">IoT Telematics</span> AI Cold Chain
                 </div>
+                <p style="font-size: 12.5px; color: #475569; line-height: 1.5; margin: 0 0 14px;">Hạ tầng vận tải pin xe điện và chuỗi cung ứng lạnh thông minh với định vị IoT thời gian thực.</p>
               </div>
-              <div style="font-size: 12.5px; font-weight: 700; color: var(--fl-primary, #0a66c2); border-top: 1px solid #f1f5f9; padding-top: 10px; display: flex; align-items: center; justify-content: space-between;">
-                <span>Xem hồ sơ công ty</span> <i class="fa-solid fa-arrow-right" style="font-size: 11px;"></i>
+              <div style="border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                <button type="button" class="btn-company-view-profile" onclick="openCompanyDetail('vinfast')" style="padding: 6px 12px; font-size: 12px;">
+                  Xem Hồ Sơ
+                </button>
+                <button type="button" class="btn-company-contact-now" onclick="openCompanyContactModal('vinfast')" style="padding: 6px 14px; font-size: 12px;">
+                  <i class="fa-solid fa-paper-plane"></i> Contact Now
+                </button>
               </div>
             </div>
 
-            <!-- Company 2: Saigon Newport -->
-            <div class="builtin-company-card" data-view="browse" data-filter-keyword="Saigon Newport">
-              <div>
+            <!-- Company 2: FPT Software AI Labs -->
+            <div class="builtin-company-card" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between;">
+              <div onclick="openCompanyDetail('fpt')">
                 <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
-                  <div class="co-card-logo-wrap">
-                    <img src="images/brands/saigon-newport.svg" alt="Saigon Newport Corporation" onerror="this.src='images/brands/viettel.svg'">
+                  <div class="co-card-logo-wrap" style="width:56px; height:56px; background:transparent;">
+                    <img src="images/brands/fpt.svg" alt="FPT Software AI Labs" style="width:100%; height:100%; object-fit:contain; background:transparent;">
                   </div>
                   <div>
-                    <h3 style="font-size: 15.5px; font-weight: 800; color: #0f172a; margin: 0 0 3px;">Saigon Newport (Tân Cảng Sài Gòn)</h3>
+                    <h3 style="font-size: 15.5px; font-weight: 800; color: #0f172a; margin: 0 0 3px;">FPT Software AI &amp; Cloud</h3>
+                    <div style="font-size: 12.5px; color: #64748b;">Hà Nội &bull; Đà Nẵng &bull; HCMC</div>
+                  </div>
+                </div>
+                <div style="font-size: 13px; color: var(--fl-primary, #0a66c2); font-weight: 700; margin-bottom: 12px;">
+                  <span style="background: rgba(10, 102, 194, 0.08); padding: 3px 8px; border-radius: 6px; margin-right: 6px;">Generative AI</span> Enterprise Cloud
+                </div>
+                <p style="font-size: 12.5px; color: #475569; line-height: 1.5; margin: 0 0 14px;">Phát triển giải pháp Agentic AI tự hành, trích xuất dữ liệu chứng từ OCR và phần mềm quản trị.</p>
+              </div>
+              <div style="border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                <button type="button" class="btn-company-view-profile" onclick="openCompanyDetail('fpt')" style="padding: 6px 12px; font-size: 12px;">
+                  Xem Hồ Sơ
+                </button>
+                <button type="button" class="btn-company-contact-now" onclick="openCompanyContactModal('fpt')" style="padding: 6px 14px; font-size: 12px;">
+                  <i class="fa-solid fa-paper-plane"></i> Contact Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Company 3: Saigon Newport -->
+            <div class="builtin-company-card" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between;">
+              <div onclick="openCompanyDetail('saigon-newport')">
+                <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+                  <div class="co-card-logo-wrap" style="width:56px; height:56px; background:transparent;">
+                    <img src="images/brands/saigon-newport.svg" alt="Saigon Newport Corporation" style="width:100%; height:100%; object-fit:contain; background:transparent;">
+                  </div>
+                  <div>
+                    <h3 style="font-size: 15.5px; font-weight: 800; color: #0f172a; margin: 0 0 3px;">Saigon Newport (Tân Cảng)</h3>
                     <div style="font-size: 12.5px; color: #64748b;">Cát Lái &bull; Cái Mép &bull; Sóng Thần</div>
                   </div>
                 </div>
-                <div style="font-size: 13px; color: var(--fl-primary, #0a66c2); font-weight: 700; margin-bottom: 14px;">
-                  <span style="background: rgba(10, 102, 194, 0.08); padding: 3px 8px; border-radius: 6px; margin-right: 6px;">28 Vị Trí Mở</span> Container Terminal
+                <div style="font-size: 13px; color: var(--fl-primary, #0a66c2); font-weight: 700; margin-bottom: 12px;">
+                  <span style="background: rgba(10, 102, 194, 0.08); padding: 3px 8px; border-radius: 6px; margin-right: 6px;">Navis N4 TOS</span> Cảng Biển ePort
                 </div>
+                <p style="font-size: 12.5px; color: #475569; line-height: 1.5; margin: 0 0 14px;">Nhà khai thác cảng biển hàng đầu Việt Nam chiếm hơn 50% thị phần container xuất nhập khẩu.</p>
               </div>
-              <div style="font-size: 12.5px; font-weight: 700; color: var(--fl-primary, #0a66c2); border-top: 1px solid #f1f5f9; padding-top: 10px; display: flex; align-items: center; justify-content: space-between;">
-                <span>Xem hồ sơ công ty</span> <i class="fa-solid fa-arrow-right" style="font-size: 11px;"></i>
+              <div style="border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                <button type="button" class="btn-company-view-profile" onclick="openCompanyDetail('saigon-newport')" style="padding: 6px 12px; font-size: 12px;">
+                  Xem Hồ Sơ
+                </button>
+                <button type="button" class="btn-company-contact-now" onclick="openCompanyContactModal('saigon-newport')" style="padding: 6px 14px; font-size: 12px;">
+                  <i class="fa-solid fa-paper-plane"></i> Contact Now
+                </button>
               </div>
             </div>
 
-            <!-- Company 3: Gemadept -->
-            <div class="builtin-company-card" data-view="browse" data-filter-keyword="Gemadept">
-              <div>
+            <!-- Company 4: Tiki Smart MegaHub -->
+            <div class="builtin-company-card" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between;">
+              <div onclick="openCompanyDetail('tiki')">
                 <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
-                  <div class="co-card-logo-wrap">
-                    <img src="images/brands/gemadept.svg" alt="Gemadept Corporation" onerror="this.src='images/brands/vinfast.svg'">
+                  <div class="co-card-logo-wrap" style="width:56px; height:56px; background:transparent;">
+                    <img src="images/brands/tiki.svg" alt="Tiki Smart MegaHub" style="width:100%; height:100%; object-fit:contain; background:transparent;">
                   </div>
                   <div>
-                    <h3 style="font-size: 15.5px; font-weight: 800; color: #0f172a; margin: 0 0 3px;">Gemadept Corporation</h3>
-                    <div style="font-size: 12.5px; color: #64748b;">HCMC &bull; Hải Phòng &bull; Gemalink</div>
+                    <h3 style="font-size: 15.5px; font-weight: 800; color: #0f172a; margin: 0 0 3px;">Tiki Smart MegaHub Automation</h3>
+                    <div style="font-size: 12.5px; color: #64748b;">Bình Dương &bull; Bắc Ninh</div>
                   </div>
                 </div>
-                <div style="font-size: 13px; color: var(--fl-primary, #0a66c2); font-weight: 700; margin-bottom: 14px;">
-                  <span style="background: rgba(10, 102, 194, 0.08); padding: 3px 8px; border-radius: 6px; margin-right: 6px;">18 Vị Trí Mở</span> Port &amp; Logistics 3PL
+                <div style="font-size: 13px; color: var(--fl-primary, #0a66c2); font-weight: 700; margin-bottom: 12px;">
+                  <span style="background: rgba(10, 102, 194, 0.08); padding: 3px 8px; border-radius: 6px; margin-right: 6px;">500+ AMR Robots</span> Fulfillment AI
                 </div>
+                <p style="font-size: 12.5px; color: #475569; line-height: 1.5; margin: 0 0 14px;">Chuỗi trung tâm hoàn tất đơn hàng tự động hóa với robot tự hành AMR và giao hàng siêu tốc 2H.</p>
               </div>
-              <div style="font-size: 12.5px; font-weight: 700; color: var(--fl-primary, #0a66c2); border-top: 1px solid #f1f5f9; padding-top: 10px; display: flex; align-items: center; justify-content: space-between;">
-                <span>Xem hồ sơ công ty</span> <i class="fa-solid fa-arrow-right" style="font-size: 11px;"></i>
+              <div style="border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                <button type="button" class="btn-company-view-profile" onclick="openCompanyDetail('tiki')" style="padding: 6px 12px; font-size: 12px;">
+                  Xem Hồ Sơ
+                </button>
+                <button type="button" class="btn-company-contact-now" onclick="openCompanyContactModal('tiki')" style="padding: 6px 14px; font-size: 12px;">
+                  <i class="fa-solid fa-paper-plane"></i> Contact Now
+                </button>
               </div>
             </div>
           </div>
@@ -1209,7 +1254,139 @@
       </div>
     </section>
 
-  </main>
+  
+
+
+    <!-- ========================================================================
+         VIEW: COMPANIES DIRECTORY (#view-companies)
+         ======================================================================== -->
+    <section class="app-view" id="view-companies">
+      <div class="companies-directory-container">
+        
+        <!-- Header Banner -->
+        <div class="companies-header-banner">
+          <div>
+            <h1 class="companies-header-title">Hồ Sơ Doanh Nghiệp Công Nghệ, AI &amp; Logistics</h1>
+            <p class="companies-header-subtitle">
+              Nền tảng kết nối trực tiếp doanh nghiệp với khách hàng tiềm năng: Giới thiệu dịch vụ, sản phẩm công nghệ AI, bảng giá giải pháp và đăng ký tham gia sự kiện chuyên đề.
+            </p>
+          </div>
+          <div>
+            <button type="button" class="btn-company-contact-now" onclick="openCompanyContactModal('vinfast', 'Đăng ký giới thiệu giải pháp doanh nghiệp')" style="padding: 12px 24px; font-size: 14.5px;">
+              <i class="fa-solid fa-building-circle-check"></i> Đăng Ký Hồ Sơ Doanh Nghiệp
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter & Search Controls -->
+        <div class="companies-filter-bar">
+          <div class="companies-category-tabs">
+            <button type="button" class="companies-tab-pill active" data-category="all">Tất Cả (6)</button>
+            <button type="button" class="companies-tab-pill" data-category="ai"><i class="fa-solid fa-brain"></i> AI &amp; Tự Động Hóa</button>
+            <button type="button" class="companies-tab-pill" data-category="tech"><i class="fa-solid fa-cloud"></i> Công Nghệ &amp; Cloud</button>
+            <button type="button" class="companies-tab-pill" data-category="logistics"><i class="fa-solid fa-ship"></i> Cảng Biển &amp; Logistics</button>
+          </div>
+          <div class="companies-search-wrap">
+            <i class="fa-solid fa-magnifying-glass companies-search-icon"></i>
+            <input type="text" id="companies-search-input" class="companies-search-input" placeholder="Tìm theo tên doanh nghiệp, công nghệ AI...">
+          </div>
+        </div>
+
+        <!-- Companies Grid -->
+        <div class="companies-cards-grid" id="companies-cards-grid">
+          <!-- Dynamically populated by initCompaniesDirectory() -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW: COMPANY DETAIL SHOWCASE (#view-company-detail)
+         ======================================================================== -->
+    <section class="app-view" id="view-company-detail">
+      <div class="company-profile-wrapper">
+        
+        <!-- Top Back Nav -->
+        <div class="company-profile-top-bar">
+          <button type="button" class="btn-back-companies" onclick="switchView('companies');">
+            <i class="fa-solid fa-arrow-left"></i> Quay lại danh sách doanh nghiệp
+          </button>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:12.5px; color:#64748B;"><i class="fa-solid fa-shield-check" style="color:#059669;"></i> Hồ Sơ Đã Được Phê Duyệt B2B</span>
+          </div>
+        </div>
+
+        <!-- Hero Dossier Banner -->
+        <div class="company-profile-banner-card">
+          <div class="company-profile-cover"></div>
+          <div class="company-profile-header-content">
+            <div class="company-profile-avatar-row">
+              <div class="company-profile-logo-box">
+                <img src="images/brands/vinfast.svg" alt="Company Logo" id="company-profile-logo-img">
+              </div>
+              <div class="company-profile-action-btns">
+                <button type="button" class="btn-profile-contact-primary" id="btn-profile-contact-now-top">
+                  <i class="fa-solid fa-paper-plane"></i> Contact Now
+                </button>
+                <button type="button" class="btn-profile-follow" onclick="this.innerHTML='<i class=\'fa-solid fa-check\'></i> Đang Theo Dõi'; this.style.color='var(--fl-primary)';">
+                  + Theo Dõi
+                </button>
+                <button type="button" class="btn-profile-follow" onclick="alert('Đã sao chép liên kết hồ sơ doanh nghiệp!');" title="Chia sẻ">
+                  <i class="fa-solid fa-share-nodes"></i>
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <h1 class="company-profile-name">
+                <span id="company-profile-name-text">VinFast Logistics &amp; Cold Chain Solutions</span>
+                <i class="fa-solid fa-circle-check" style="color:var(--fl-primary); font-size:20px;" title="Xác thực doanh nghiệp"></i>
+              </h1>
+              <p class="company-profile-tagline" id="company-profile-tagline-text">
+                Kiến trúc chuỗi cung ứng lạnh thông minh &amp; vận tải tự hành thế hệ mới
+              </p>
+              <div class="company-profile-badges-row">
+                <span><i class="fa-solid fa-briefcase" style="color:var(--fl-primary);"></i> <strong id="company-profile-ind-text">Logistics Tech &amp; AI</strong></span>
+                <span>•</span>
+                <span><i class="fa-solid fa-location-dot" style="color:#EF4444;"></i> <span id="company-profile-loc-text">Hải Phòng &amp; TP.HCM</span></span>
+                <span>•</span>
+                <span><i class="fa-solid fa-users"></i> <span id="company-profile-size-text">10,000+ nhân sự</span></span>
+                <span>•</span>
+                <span><i class="fa-solid fa-globe"></i> <a href="#" id="company-profile-web-link" target="_blank" style="color:var(--fl-primary); text-decoration:none;">vinfastauto.com</a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs for Services, Products & AI, Pricing, Events, Jobs -->
+        <div class="company-profile-tabs-nav">
+          <button type="button" class="company-nav-tab-btn active" data-tab="services" onclick="switchCompanyTab('services');">
+            <i class="fa-solid fa-cube"></i> Dịch Vụ &amp; Giải Pháp
+          </button>
+          <button type="button" class="company-nav-tab-btn" data-tab="tech" onclick="switchCompanyTab('tech');">
+            <i class="fa-solid fa-microchip"></i> Sản Phẩm &amp; Công Nghệ AI
+          </button>
+          <button type="button" class="company-nav-tab-btn" data-tab="pricing" onclick="switchCompanyTab('pricing');">
+            <i class="fa-solid fa-tags"></i> Bảng Giá &amp; Gói Cước
+          </button>
+          <button type="button" class="company-nav-tab-btn" data-tab="events" onclick="switchCompanyTab('events');">
+            <i class="fa-solid fa-calendar-star"></i> Sự Kiện &amp; Tech Talks
+          </button>
+          <button type="button" class="company-nav-tab-btn" data-tab="jobs" onclick="switchCompanyTab('jobs');">
+            <i class="fa-solid fa-briefcase"></i> Tuyển Dụng
+          </button>
+        </div>
+
+        <!-- Active Tab Content Area -->
+        <div id="company-profile-tab-content">
+          <!-- Dynamically populated by switchCompanyTab() -->
+        </div>
+
+      </div>
+    </section>
+
+
+</main>
 
   <!-- ==========================================================================
        SHORT, CLEAN, BIG & SUPER RESPONSIVE FOOTER
@@ -1649,12 +1826,126 @@
   <button class="drawer-item" data-view="home"><i class="fa-solid fa-house"></i> Home</button>
   <button class="drawer-item" data-view="home" data-scroll="#section-today"><i class="fa-solid fa-newspaper"></i> News</button>
   <button class="drawer-item" data-view="home" data-scroll="#section-jobs"><i class="fa-solid fa-briefcase"></i> Jobs</button>
-  <button class="drawer-item" data-view="home" data-scroll="#section-companies-spotlight"><i class="fa-solid fa-building"></i> Companies</button>
+  <button class="drawer-item" data-view="companies"><i class="fa-solid fa-building"></i> Companies</button>
   <button class="drawer-item" data-view="home" data-scroll="#section-training"><i class="fa-solid fa-graduation-cap"></i> Courses</button>
   <div style="padding: 16px 20px; border-top: 1px solid var(--fl-border); margin-top: 8px; display: flex; gap: 8px; flex-direction: column;">
     <button class="btn-login-red-outline" id="btn-open-auth-modal-mobile" style="width:100%; justify-content:center;">Đăng Nhập</button>
     <button class="btn-signup-red-solid" id="btn-open-post-project-mobile" style="width:100%; justify-content:center;"><i class="fa-solid fa-plus-circle"></i> Đăng Tin Tuyển Dụng</button>
   </div>
 </div>
+
+
+
+    <!-- ========================================================================
+         MODAL: B2B DIRECT COMPANY CONTACT FORM (#company-contact-modal)
+         ======================================================================== -->
+    <div class="company-contact-modal-overlay" id="company-contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+      <div class="company-contact-modal-dialog">
+        
+        <div class="contact-modal-header">
+          <div>
+            <h2 class="contact-modal-title" id="contact-modal-title">Liên Hệ &amp; Kết Nối Doanh Nghiệp</h2>
+            <p class="contact-modal-sub">
+              Gửi yêu cầu tư vấn dịch vụ, sản phẩm công nghệ AI và nhận báo giá trực tiếp từ <strong id="contact-modal-company-name" style="color:var(--fl-primary);">Doanh nghiệp</strong>
+            </p>
+          </div>
+          <button type="button" class="btn-close-contact-modal" onclick="closeCompanyContactModal();" aria-label="Đóng">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div id="contact-modal-form-wrap">
+          <form id="company-contact-form" onsubmit="submitCompanyContactForm(event);">
+            <input type="hidden" id="contact-target-company-id" value="vinfast">
+            
+            <div class="contact-modal-body">
+              
+              <div class="contact-form-group">
+                <label class="contact-form-label">Họ và tên của bạn <span class="req">*</span></label>
+                <input type="text" name="contact_fullname" class="contact-form-input" placeholder="Ví dụ: Nguyễn Văn An" required>
+              </div>
+
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:14px;">
+                <div class="contact-form-group">
+                  <label class="contact-form-label">Email công việc <span class="req">*</span></label>
+                  <input type="email" name="contact_email" class="contact-form-input" placeholder="an.nguyen@company.com" required>
+                </div>
+                <div class="contact-form-group">
+                  <label class="contact-form-label">Số điện thoại liên hệ <span class="req">*</span></label>
+                  <input type="tel" name="contact_phone" class="contact-form-input" placeholder="0912 345 678" required>
+                </div>
+              </div>
+
+              <div class="contact-form-group">
+                <label class="contact-form-label">Tên doanh nghiệp / Đơn vị của bạn <span class="req">*</span></label>
+                <input type="text" name="contact_company" class="contact-form-input" placeholder="Ví dụ: Công ty TNHH Giải Pháp Công Nghệ Á Châu" required>
+              </div>
+
+              <div class="contact-form-group">
+                <label class="contact-form-label">Dịch vụ / Sản phẩm bạn quan tâm</label>
+                <select name="contact_service" id="contact-inquiry-subject" class="contact-form-select">
+                  <option value="Tư vấn giải pháp Công nghệ &amp; AI">Tư vấn giải pháp Công nghệ &amp; AI</option>
+                  <option value="Báo giá &amp; Đăng ký Gói Dịch vụ Doanh nghiệp">Báo giá &amp; Đăng ký Gói Dịch vụ Doanh nghiệp</option>
+                  <option value="Yêu cầu Bản Demo Sản phẩm (Product Demo)">Yêu cầu Bản Demo Sản phẩm (Product Demo)</option>
+                  <option value="Hợp tác Tổ chức Sự kiện &amp; Tech Talks">Hợp tác Tổ chức Sự kiện &amp; Tech Talks</option>
+                  <option value="Tư vấn Tùy Biến Theo Nhu Cầu Riêng">Tư vấn Tùy Biến Theo Nhu Cầu Riêng</option>
+                </select>
+              </div>
+
+              <div class="contact-form-group">
+                <label class="contact-form-label">Chi tiết nhu cầu &amp; thời gian dự kiến triển khai</label>
+                <textarea name="contact_message" id="contact-inquiry-message" class="contact-form-textarea" placeholder="Mô tả tóm tắt quy mô dự án, kỳ vọng về giải pháp công nghệ hoặc thắc mắc cụ thể..."></textarea>
+              </div>
+
+              <div class="contact-form-group">
+                <label class="contact-form-label">Hình thức kết nối ưu tiên</label>
+                <div class="contact-channel-chips">
+                  <label class="contact-chip-label">
+                    <input type="radio" name="contact_pref_channel" value="email" checked>
+                    <i class="fa-solid fa-envelope"></i> Gửi qua Email
+                  </label>
+                  <label class="contact-chip-label">
+                    <input type="radio" name="contact_pref_channel" value="phone">
+                    <i class="fa-solid fa-phone"></i> Gọi điện thoại
+                  </label>
+                  <label class="contact-chip-label">
+                    <input type="radio" name="contact_pref_channel" value="meeting">
+                    <i class="fa-solid fa-video"></i> Họp trực tuyến (Google Meet/Zoom)
+                  </label>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="contact-modal-footer">
+              <button type="button" class="btn-contact-cancel" onclick="closeCompanyContactModal();">Hủy</button>
+              <button type="submit" class="btn-contact-submit">
+                <i class="fa-solid fa-paper-plane"></i> Gửi Thông Tin Liên Hệ
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Success Confirmation State -->
+        <div id="contact-modal-success-wrap" class="lead-success-container" style="display:none;">
+          <div class="lead-success-icon-wrap">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <h3 class="lead-success-title">Yêu Cầu Đã Được Gửi Thành Công!</h3>
+          <p class="lead-success-desc" id="lead-success-company-text">
+            Thông tin liên hệ của bạn đã được chuyển trực tiếp tới đại diện giải pháp. Chúng tôi sẽ liên hệ lại với bạn trong vòng 24 giờ làm việc.
+          </p>
+          <div class="lead-ref-pill" id="lead-success-ref-code">Mã Hồ Sơ Yêu Cầu: LEAD-2026-8842</div>
+          <div>
+            <button type="button" class="btn-profile-contact-primary" onclick="closeCompanyContactModal();" style="margin:0 auto;">
+              <i class="fa-solid fa-check"></i> Hoàn Tất &amp; Đóng
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
 </body>
 </html>

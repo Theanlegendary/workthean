@@ -1756,217 +1756,477 @@ function initYouTubeHub() {
 
 // 2. Enterprise Split-Screen Job Board Controller & Dataset
 const enterpriseJobsDatabase = [
+  # Page 1
   {
-    id: 'job-1',
-    title: 'Supply Chain Solutions Architect (Cold Chain)',
-    company: 'VinFast Logistics & Cold Chain Solutions',
-    companyLogo: 'images/brands/vinfast.svg',
-    companyIcon: 'fa-snowflake',
-    salary: '₫35.000.000 - ₫55.000.000/mo',
-    salaryVal: 45000000,
-    location: 'Ho Chi Minh City, Vietnam (Hybrid)',
-    workplace: 'Hybrid',
-    category: 'tech',
-    tags: ['Top Tier Enterprise', 'Cold Chain', 'High Salary', 'Strategy'],
-    isUrgent: false,
-    isHighSalary: true,
-    time: '3 hours ago',
-    applicants: '22 applicants',
-    specs: { exp: 'Senior level (3 – 5 Yrs)', edu: 'Master / Engineering', dept: 'Strategic Network Optimization', openings: '1 Position' },
-    overview: 'Viconship is seeking a seasoned Ocean Freight Forwarding Specialist to manage end-to-end container booking, multimodal carrier negotiations, and freight optimization for multinational manufacturing accounts in Southern Vietnam.',
-    responsibilities: [
-      'Coordinate ocean freight routing, rate negotiations, and space allocation with major maritime alliances (2M, Ocean Alliance, THE Alliance).',
-      'Manage complex customs clearance, FMC bill-of-lading (B/L) documentation, and cross-border demurrage/detention minimization.',
-      'Act as direct strategic escalation lead for Tier-1 automotive and electronics enterprise shippers.',
-      'Optimize TEU container consolidation to reduce shipping expense by 12% across primary Europe-Vietnam routes.'
+    "id": "job-1",
+    "title": "Supply Chain Solutions Architect (Cold Chain)",
+    "company": "VinFast Logistics & Cold Chain Solutions",
+    "companyLogo": "images/brands/vinfast.svg",
+    "companyIcon": "fa-snowflake",
+    "salary": "₫35.000.000 - ₫55.000.000/mo",
+    "salaryVal": 45000000,
+    "location": "Ho Chi Minh City, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "tech",
+    "tags": ["Top Tier Enterprise", "Cold Chain", "High Salary", "Strategy"],
+    "isUrgent": False,
+    "isHighSalary": True,
+    "time": "3 hours ago",
+    "applicants": "22 applicants",
+    "specs": { "exp": "Senior level (3 – 5 Yrs)", "edu": "Master / Engineering", "dept": "Strategic Network Optimization", "openings": "1 Position" },
+    "overview": "VinFast is seeking a seasoned Ocean Freight & Cold Chain Logistics Architect to lead refrigerated linehaul, battery transport, and multimodal carrier negotiations.",
+    "responsibilities": [
+      "Coordinate ocean freight routing, rate negotiations, and space allocation with major maritime alliances (2M, Ocean Alliance).",
+      "Manage complex customs clearance, FMC bill-of-lading (B/L) documentation, and cross-border demurrage minimization.",
+      "Act as direct strategic escalation lead for Tier-1 automotive and electronics enterprise shippers."
     ],
-    requirements: [
-      'Minimum 3 years of direct container ocean freight forwarding or NVOCC operations experience in Vietnam.',
-      'Familiarity with CargoWise ONE or equivalent enterprise freight forwarding ERP systems.',
-      'Proficiency in bilingual trade English & Vietnamese; strong negotiation and carrier relationship management skills.',
-      'Valid international freight trade certification or FIATA diploma is highly preferred.'
+    "requirements": [
+      "Minimum 3 years direct container ocean freight or cold chain forwarding experience in Vietnam.",
+      "Proficiency with CargoWise ONE or equivalent enterprise freight forwarding ERP systems.",
+      "Proficiency in bilingual trade English & Vietnamese."
     ],
-    benefits: [
-      'Comprehensive 14-month annual compensation with performance incentive bonuses.',
-      'Flexible 2-day work-from-home policy each week.',
-      'Premium healthcare insurance including outpatient and dental coverage.',
-      'Annual corporate training sponsorship for supply chain certifications (CSCP / CLTD).'
+    "benefits": [
+      "14-month annual compensation with performance incentive bonuses.",
+      "Flexible 2-day work-from-home policy each week.",
+      "Premium healthcare insurance including outpatient and dental coverage."
     ]
   },
   {
-    id: 'job-2',
-    title: 'International Customs Clearance & Compliance Manager',
-    company: 'DHL Global Forwarding Vietnam',
-    companyLogo: 'images/brands/dhl.svg',
-    companyIcon: 'fa-stamp',
-    salary: '₫26.000.000 - ₫38.000.000/mo',
-    salaryVal: 32000000,
-    location: 'Hanoi, Vietnam (Hybrid)',
-    workplace: 'Hybrid',
-    category: 'customs',
-    tags: ['Multinational', 'Customs Brokerage', 'Compliance', 'Noi Bai'],
-    isUrgent: true,
-    isHighSalary: false,
-    time: '6 hours ago',
-    applicants: '33 applicants',
-    specs: { exp: 'Manager (5+ Yrs)', edu: 'BA Foreign Trade / Customs', dept: 'Customs & Trade Governance', openings: '1 Position' },
-    overview: 'Direct customs compliance, HS tariff classifications, and automated VNACCS/VCIS EDI transmissions for enterprise cargo moving through Northern Vietnam trade gateways.',
-    responsibilities: [
-      'Ensure zero regulatory non-compliance across 15,000+ annual sea/air declarations.',
-      'Act as chief liaison with General Department of Vietnam Customs on duty exemptions and origin certificates.',
-      'Supervise operational audit trails for bonded warehouse entries and export processing enterprises (EPEs).'
+    "id": "job-2",
+    "title": "International Customs Clearance & Compliance Manager",
+    "company": "DHL Global Forwarding Vietnam",
+    "companyLogo": "images/brands/dhl.svg",
+    "companyIcon": "fa-stamp",
+    "salary": "₫26.000.000 - ₫38.000.000/mo",
+    "salaryVal": 32000000,
+    "location": "Hanoi, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "customs",
+    "tags": ["Multinational", "Customs Brokerage", "Compliance", "Noi Bai"],
+    "isUrgent": True,
+    "isHighSalary": False,
+    "time": "6 hours ago",
+    "applicants": "33 applicants",
+    "specs": { "exp": "Manager (5+ Yrs)", "edu": "BA Foreign Trade / Customs", "dept": "Customs & Trade Governance", "openings": "1 Position" },
+    "overview": "Direct customs compliance, HS tariff classifications, and automated VNACCS/VCIS EDI transmissions for enterprise cargo moving through Northern Vietnam.",
+    "responsibilities": [
+      "Ensure zero regulatory non-compliance across 15,000+ annual sea/air declarations.",
+      "Act as chief liaison with General Department of Vietnam Customs on duty exemptions."
     ],
-    requirements: [
-      'Active Customs Broker License issued by General Department of Vietnam Customs.',
-      '5+ years managing trade compliance within major 3PL or express freight operations.',
-      'Deep mastery of Circular 38/39 customs valuation, rules of origin (AK, EVFTA, CPTPP).'
-    ],
-    benefits: [
-      'Competitive 13th-month salary and performance bonus.',
-      'Global mobility programs and corporate training pathways.',
-      'Full health, accident, and life insurance package for family members.'
-    ]
+    "requirements": ["Active Customs Broker License", "5+ years managing trade compliance within major 3PL."],
+    "benefits": ["Competitive 13th-month salary", "Global mobility programs", "Full health insurance for family."]
   },
   {
-    id: 'job-3',
-    title: 'Container Terminal Dispatch Coordinator (Shift)',
-    company: 'Saigon Newport Corporation (Tan Cang - Cai Mep TCIT)',
-    companyLogo: 'images/brands/saigon-newport.svg',
-    companyIcon: 'fa-anchor',
-    salary: '₫22.000.000 - ₫35.000.000/mo',
-    salaryVal: 28000000,
-    location: 'Ba Ria - Vung Tau, Vietnam (Hybrid)',
-    workplace: 'Hybrid',
-    category: 'port',
-    tags: ['Deep Sea Port', 'Maritime', 'Terminal Ops', 'Shift Work'],
-    isUrgent: false,
-    isHighSalary: false,
-    time: '1 day ago',
-    applicants: '34 applicants',
-    specs: { exp: 'Specialist (2 – 4 Yrs)', edu: 'Maritime University / Logistics', dept: 'Terminal Operating Systems (TOS)', openings: '3 Positions' },
-    overview: 'Manage quayside ship-to-shore gantry cranes and container yard straddle carrier dispatch using Navis N4 Terminal Operating Systems at Cai Mep deep-water port.',
-    responsibilities: [
-      'Coordinate container vessel stowage planning and crane split sequences for ultra-large container vessels (ULCVs).',
-      'Optimize yard turn times for drayage tractor-trailers to under 28 minutes per transaction.',
-      'Monitor real-time reefer container plug-in temperatures and automated yard alarms.'
+    "id": "job-3",
+    "title": "Container Terminal Dispatch Coordinator (Shift)",
+    "company": "Saigon Newport Corporation (Tan Cang - Cai Mep TCIT)",
+    "companyLogo": "images/brands/saigon-newport.svg",
+    "companyIcon": "fa-anchor",
+    "salary": "₫22.000.000 - ₫35.000.000/mo",
+    "salaryVal": 28000000,
+    "location": "Ba Ria - Vung Tau, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "port",
+    "tags": ["Deep Sea Port", "Maritime", "Terminal Ops", "Shift Work"],
+    "isUrgent": False,
+    "isHighSalary": False,
+    "time": "1 day ago",
+    "applicants": "34 applicants",
+    "specs": { "exp": "Specialist (2 – 4 Yrs)", "edu": "Maritime University / Logistics", "dept": "Terminal Operating Systems (TOS)", "openings": "3 Positions" },
+    "overview": "Manage quayside ship-to-shore gantry cranes and container yard straddle carrier dispatch using Navis N4 Terminal Operating Systems at Cai Mep deep-water port.",
+    "responsibilities": [
+      "Coordinate container vessel stowage planning and crane split sequences for ultra-large container vessels.",
+      "Optimize yard turn times for drayage tractor-trailers to under 28 minutes per transaction."
     ],
-    requirements: [
-      'Bachelor degree in Maritime Navigation, Port Management, or Logistics.',
-      'Experience operating Navis N4 or CATOS Terminal Operating Systems.',
-      'Ability to work rotating 12-hour shifts at Cai Mep deep-sea port complex.'
-    ],
-    benefits: [
-      'Hazard and shift duty allowances plus performance bonus.',
-      'Shuttle bus transport provided from Ho Chi Minh City & Vung Tau.',
-      'Standard state corporation pensions, meal vouchers, and annual retreats.'
-    ]
+    "requirements": ["Bachelor in Maritime Navigation / Port Logistics", "Navis N4 TOS operating experience."],
+    "benefits": ["Hazard & shift allowances", "Daily shuttle bus from HCMC/Vung Tau", "State corporation benefits."]
   },
   {
-    id: 'job-4',
-    title: 'Fleet Telematics & Route Optimization Data Analyst',
-    company: 'Logivan Vietnam Freight Network',
-    companyLogo: 'images/brands/logivan.svg',
-    companyIcon: 'fa-truck',
-    salary: '₫30.000.000 - ₫48.000.000/mo',
-    salaryVal: 38000000,
-    location: 'Da Nang, Vietnam (Hybrid)',
-    workplace: 'Hybrid',
-    category: 'tech',
-    tags: ['Telematics', 'Fleet Tech', 'Data Analytics', 'LogiTech'],
-    isUrgent: false,
-    isHighSalary: true,
-    time: '1 day ago',
-    applicants: '35 applicants',
-    specs: { exp: 'Mid-Senior (2 – 4 Yrs)', edu: 'Data Science / Industrial Eng.', dept: 'Digital Freight Platform', openings: '2 Positions' },
-    overview: 'Analyze GPS telemetry, fuel consumption rates, and empty-miles backtrack across a network of 40,000+ registered linehaul heavy trucks operating across National Route 1A.',
-    responsibilities: [
-      'Build predictive dynamic routing algorithms to cut backhaul empty-miles by 18%.',
-      'Deploy real-time driver scorecards evaluating harsh braking, idling, and speed compliance.',
-      'Automate freight rate estimation models combining diesel indexes and lane congestion metrics.'
-    ],
-    requirements: [
-      'Proficiency in Python/R for geospatial analytics (GeoPandas, PostGIS, Mapbox).',
-      'Solid SQL data warehousing skills on BigQuery or Snowflake.',
-      'Background in transportation logistics or on-demand delivery routing.'
-    ],
-    benefits: [
-      'Equity stock option program for high-impact engineering milestones.',
-      'Flexible remote work days with modern MacBook Pro hardware provided.',
-      'Continuous education budget for machine learning & supply chain conferences.'
-    ]
+    "id": "job-4",
+    "title": "Fleet Telematics & Route Optimization Data Analyst",
+    "company": "Logivan Vietnam Freight Network",
+    "companyLogo": "images/brands/logivan.svg",
+    "companyIcon": "fa-truck",
+    "salary": "₫30.000.000 - ₫48.000.000/mo",
+    "salaryVal": 38000000,
+    "location": "Da Nang, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "tech",
+    "tags": ["Telematics", "Fleet Tech", "Data Analytics", "LogiTech"],
+    "isUrgent": False,
+    "isHighSalary": True,
+    "time": "1 day ago",
+    "applicants": "35 applicants",
+    "specs": { "exp": "Mid-Senior (2 – 4 Yrs)", "edu": "Data Science / Industrial Eng.", "dept": "Digital Freight Platform", "openings": "2 Positions" },
+    "overview": "Analyze GPS telemetry, fuel consumption rates, and empty-miles backtrack across a network of 40,000+ heavy trucks.",
+    "responsibilities": ["Build predictive dynamic routing models in Python/SQL", "Deploy driver safety scorecards."],
+    "requirements": ["Proficiency in Python/R, PostgreSQL/BigQuery", "Background in transport logistics."],
+    "benefits": ["Stock options program", "Flexible remote work", "MacBook Pro hardware provided."]
   },
   {
-    id: 'job-5',
-    title: 'Senior Ocean Freight Forwarder',
-    company: 'Viconship Logistics Group',
-    companyLogo: 'images/brands/viconship.svg',
-    companyIcon: 'fa-ship',
-    salary: '₫28.000.000 - ₫42.000.000/mo',
-    salaryVal: 35000000,
-    location: 'Ho Chi Minh City, Vietnam (Hybrid)',
-    workplace: 'Hybrid',
-    category: 'forwarding',
-    tags: ['Verified Employer', 'Full-time', 'Hybrid', 'Ocean Freight'],
-    isUrgent: false,
-    isHighSalary: true,
-    time: '2 days ago',
-    applicants: '19 applicants',
-    specs: { exp: '3 – 5 Years', edu: 'Bachelor Degree', dept: 'Asia-Europe Trade Lane', openings: '2 Positions' },
-    overview: 'Viconship is seeking a seasoned Ocean Freight Forwarding Specialist to manage end-to-end container booking, multimodal carrier negotiations, and freight optimization.',
-    responsibilities: [
-      'Coordinate ocean freight routing, rate negotiations, and space allocation with major maritime alliances.',
-      'Manage complex customs clearance and bill-of-lading (B/L) documentation.',
-      'Act as direct strategic escalation lead for Tier-1 manufacturing enterprise shippers.'
-    ],
-    requirements: [
-      'Minimum 3 years container ocean freight forwarding experience in Vietnam.',
-      'Familiarity with enterprise freight forwarding ERP systems.',
-      'Proficiency in bilingual trade English & Vietnamese.'
-    ],
-    benefits: [
-      'Comprehensive 14-month annual compensation package.',
-      'Flexible 2-day work-from-home policy each week.',
-      'Premium healthcare insurance package.'
-    ]
+    "id": "job-5",
+    "title": "Senior Ocean Freight Forwarder",
+    "company": "Viconship Logistics Group",
+    "companyLogo": "images/brands/viconship.svg",
+    "companyIcon": "fa-ship",
+    "salary": "₫28.000.000 - ₫42.000.000/mo",
+    "salaryVal": 35000000,
+    "location": "Ho Chi Minh City, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "forwarding",
+    "tags": ["Verified Employer", "Full-time", "Hybrid", "Ocean Freight"],
+    "isUrgent": False,
+    "isHighSalary": True,
+    "time": "2 days ago",
+    "applicants": "19 applicants",
+    "specs": { "exp": "3 – 5 Years", "edu": "Bachelor Degree", "dept": "Asia-Europe Trade Lane", "openings": "2 Positions" },
+    "overview": "Manage end-to-end container booking, multimodal carrier space allocations, and trade documentation for key accounts.",
+    "responsibilities": ["Manage ocean freight contracts with 2M and Ocean Alliance carriers.", "Resolve customs documentation issues."],
+    "requirements": ["3+ years ocean freight forwarding experience.", "Strong English and negotiation skills."],
+    "benefits": ["14-month salary", "Annual corporate training sponsorship", "Flexible WFH schedule."]
+  },
+
+  # Page 2
+  {
+    "id": "job-6",
+    "title": "AMR Robotics & Automation Systems Specialist",
+    "company": "Tiki Logistics Automated Mega Hub",
+    "companyLogo": "images/brands/tiki.svg",
+    "companyIcon": "fa-robot",
+    "salary": "₫32.000.000 - ₫48.000.000/mo",
+    "salaryVal": 40000000,
+    "location": "Binh Duong, Vietnam (On-site)",
+    "workplace": "On-site",
+    "category": "robotics",
+    "tags": ["Urgent Hiring", "Full-time", "On-site", "Warehouse Tech"],
+    "isUrgent": True,
+    "isHighSalary": True,
+    "time": "2 days ago",
+    "applicants": "28 applicants",
+    "specs": { "exp": "2 – 4 Years", "edu": "BS in Mechatronics/CS", "dept": "Automated Operations Group", "openings": "4 Positions" },
+    "overview": "Lead continuous deployment, route calibration, and preventative maintenance for 450+ autonomous mobile robots (AMRs).",
+    "responsibilities": ["Supervise Fleet Management Software (FMS)", "Calibrate LiDAR and SLAM sensors."],
+    "requirements": ["Degree in Mechatronics/Electrical/Robotics", "Hands-on experience with AGV/AMRs."],
+    "benefits": ["Attractive project completion bonuses", "Comprehensive healthcare", "Modern robotics lab."]
   },
   {
-    id: 'job-6',
-    title: 'AMR Robotics & Automation Systems Specialist',
-    company: 'Tiki Logistics Automated Mega Hub',
-    companyLogo: 'images/brands/tiki.svg',
-    companyIcon: 'fa-robot',
-    salary: '₫32.000.000 - ₫48.000.000/mo',
-    salaryVal: 40000000,
-    location: 'Binh Duong, Vietnam (On-site)',
-    workplace: 'On-site',
-    category: 'robotics',
-    tags: ['Urgent Hiring', 'Full-time', 'On-site', 'Warehouse Tech'],
-    isUrgent: true,
-    isHighSalary: true,
-    time: '2 days ago',
-    applicants: '28 applicants',
-    specs: { exp: '2 – 4 Years', edu: 'BS in Mechatronics/CS', dept: 'Automated Operations Group', openings: '4 Positions' },
-    overview: 'Lead continuous deployment, route calibration, and preventative maintenance for a fleet of 450+ autonomous mobile robots (AMRs) and automated storage/retrieval systems (AS/RS).',
-    responsibilities: [
-      'Supervise real-time fleet management software (FMS) and automated material handling dispatch.',
-      'Conduct robotic sensor diagnostics (LiDAR, SLAM navigation, optical QR readers) to maintain 99.8% uptime.',
-      'Collaborate with software engineers to optimize dynamic parcel picking routes.'
-    ],
-    requirements: [
-      'Degree in Mechatronics, Electrical, or Robotics Automation.',
-      'Hands-on experience with industrial AMRs/AGVs or automated warehouse machinery.',
-      'Strong troubleshooting mindset and basic PLC/ROS programming capability.'
-    ],
-    benefits: [
-      'Competitive compensation package with robotics project deployment bonuses.',
-      'Full healthcare coverage and annual wellness stipends.',
-      'Modern automated robotics warehouse working environment.'
-    ]
+    "id": "job-7",
+    "title": "Senior AI Computer Vision Engineer (Warehouse OCR)",
+    "company": "FPT Software AI & Digital Labs",
+    "companyLogo": "images/brands/fpt.svg",
+    "companyIcon": "fa-eye",
+    "salary": "₫40.000.000 - ₫65.000.000/mo",
+    "salaryVal": 52000000,
+    "location": "Hanoi, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "tech",
+    "tags": ["Generative AI", "Computer Vision", "PyTorch", "High Salary"],
+    "isUrgent": True,
+    "isHighSalary": True,
+    "time": "2 days ago",
+    "applicants": "41 applicants",
+    "specs": { "exp": "Senior (4+ Yrs)", "edu": "Master / CS Degree", "dept": "AI Research Lab", "openings": "3 Positions" },
+    "overview": "Train deep learning models for high-speed parcel barcode recognition, dimension measurement, and automated damage detection on conveyor belts.",
+    "responsibilities": ["Develop PyTorch / TensorRT computer vision pipelines", "Optimize inference latency to <50ms."],
+    "requirements": ["Strong PyTorch / OpenCV experience", "Knowledge of edge AI deployment."],
+    "benefits": ["Sign-on bonus ₫50M", "Annual overseas tech conferences", "Full remote flexibility."]
+  },
+  {
+    "id": "job-8",
+    "title": "Multimodal Freight Operations Lead (Air & Sea)",
+    "company": "Kuehne+Nagel Vietnam",
+    "companyLogo": "images/brands/kuehne-nagel.svg",
+    "companyIcon": "fa-plane-departure",
+    "salary": "₫30.000.000 - ₫45.000.000/mo",
+    "salaryVal": 37000000,
+    "location": "Ho Chi Minh City, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "forwarding",
+    "tags": ["Global 3PL", "Air Freight", "Multimodal", "Tan Son Nhat"],
+    "isUrgent": False,
+    "isHighSalary": True,
+    "time": "3 days ago",
+    "applicants": "18 applicants",
+    "specs": { "exp": "Mid-Senior (3 – 5 Yrs)", "edu": "Bachelor in Economics / Trade", "dept": "Air Cargo Services", "openings": "2 Positions" },
+    "overview": "Coordinate priority air charter bookings and sea-air multimodal transit connections through ASEAN transshipment hubs.",
+    "responsibilities": ["Negotiate block space agreements (BSA) with major airlines", "Manage pharmaceutical cool-chain air shipments."],
+    "requirements": ["IATA Cargo introductory certification", "3+ years international airfreight experience."],
+    "benefits": ["Global health insurance", "Annual performance review and bonuses", "18 days annual leave."]
+  },
+  {
+    "id": "job-9",
+    "title": "Director of Cold Chain Storage & Temperature Operations",
+    "company": "SLP Vietnam Logistics",
+    "companyLogo": "images/brands/slp-vietnam.svg",
+    "companyIcon": "fa-snowflake",
+    "salary": "₫50.000.000 - ₫80.000.000/mo",
+    "salaryVal": 65000000,
+    "location": "Long An & Bac Ninh (On-site)",
+    "workplace": "On-site",
+    "category": "tech",
+    "tags": ["Executive", "Cold Storage", "GDP Standard", "Pharma"],
+    "isUrgent": False,
+    "isHighSalary": True,
+    "time": "3 days ago",
+    "applicants": "12 applicants",
+    "specs": { "exp": "Director (8+ Yrs)", "edu": "BS / Master in Engineering", "dept": "Cold Storage Division", "openings": "1 Position" },
+    "overview": "Direct all cold storage operations, multi-zone temperature validation (-25°C to +8°C), and automated ammonia refrigeration systems.",
+    "responsibilities": ["Lead operational compliance with WHO-GDP and ISO 22000 standards", "Manage a team of 120 warehouse engineers and staff."],
+    "requirements": ["8+ years cold storage operations leadership", "Familiarity with modern WMS and IoT telematics."],
+    "benefits": ["Executive profit-sharing bonus", "Company car with driver", "Full family health coverage."]
+  },
+  {
+    "id": "job-10",
+    "title": "Deep-Sea Port Berth Planning Specialist",
+    "company": "Gemadept Port Logistics",
+    "companyLogo": "images/brands/gemadept.svg",
+    "companyIcon": "fa-ship",
+    "salary": "₫24.000.000 - ₫36.000.000/mo",
+    "salaryVal": 30000000,
+    "location": "Cai Mep - Gemalink Port, Vung Tau",
+    "workplace": "On-site",
+    "category": "port",
+    "tags": ["Deep Sea", "Gemalink", "Berth Planning", "Maritime"],
+    "isUrgent": False,
+    "isHighSalary": False,
+    "time": "4 days ago",
+    "applicants": "24 applicants",
+    "specs": { "exp": "Specialist (2 – 4 Yrs)", "edu": "Maritime Navigation / Logistics", "dept": "Port Operations", "openings": "2 Positions" },
+    "overview": "Coordinate vessel berthing schedules, tide window calculations, and pilotage allocations for mega container vessels.",
+    "responsibilities": ["Calculate tidal depths and draft requirements for 20,000+ TEU ships", "Liaise with maritime port authorities."],
+    "requirements": ["Bachelor in Maritime Studies", "Experience with CATOS or Navis berth planning software."],
+    "benefits": ["Port duty allowances", "Free housing at Cai Mep staff complex", "Yearly profit bonuses."]
+  },
+
+  # Page 3
+  {
+    "id": "job-11",
+    "title": "Senior Logistics Backend Go & Kafka Engineer",
+    "company": "Grab Vietnam Logistics Tech",
+    "companyLogo": "images/brands/grab.svg",
+    "companyIcon": "fa-code",
+    "salary": "₫45.000.000 - ₫75.000.000/mo",
+    "salaryVal": 60000000,
+    "location": "Ho Chi Minh City, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "tech",
+    "tags": ["Go", "Kafka", "High-Concurrency", "Microservices"],
+    "isUrgent": True,
+    "isHighSalary": True,
+    "time": "4 days ago",
+    "applicants": "39 applicants",
+    "specs": { "exp": "Senior (4+ Yrs)", "edu": "BS / MS Computer Science", "dept": "Express Delivery Core", "openings": "2 Positions" },
+    "overview": "Build low-latency dispatch and tracking microservices handling 2.5 million events per minute across Vietnam.",
+    "responsibilities": ["Architect event-driven pipelines using Go and Apache Kafka", "Optimize Redis cache clusters and PostgreSQL sharding."],
+    "requirements": ["Expert in Golang and distributed systems", "Experience with Kubernetes and high concurrency."],
+    "benefits": ["Grab equity RSUs", "Comprehensive wellness allowance", "Top-tier MacBook Pro M3 Max."]
+  },
+  {
+    "id": "job-12",
+    "title": "Cross-Border E-Commerce Fulfillment Lead",
+    "company": "Shopee Express Logistics Vietnam",
+    "companyLogo": "images/brands/shopee.svg",
+    "companyIcon": "fa-box-open",
+    "salary": "₫28.000.000 - ₫42.000.000/mo",
+    "salaryVal": 35000000,
+    "location": "Binh Duong Mega MegaHub",
+    "workplace": "On-site",
+    "category": "robotics",
+    "tags": ["E-Commerce", "Shopee", "Cross-Border", "Fulfillment"],
+    "isUrgent": False,
+    "isHighSalary": True,
+    "time": "5 days ago",
+    "applicants": "47 applicants",
+    "specs": { "exp": "Supervisor (3 – 5 Yrs)", "edu": "Bachelor in Business / Logistics", "dept": "Inbound & Customs Hub", "openings": "3 Positions" },
+    "overview": "Manage daily cross-docking and sorting for 800,000+ parcels arriving from regional cross-border distribution centers.",
+    "responsibilities": ["Ensure 99.6% on-time sortation rate", "Supervise automated cross-belt sorting machinery."],
+    "requirements": ["3+ years fulfillment hub operations leadership", "Familiarity with high-volume parcel sortation."],
+    "benefits": ["Quarterly fulfillment bonuses", "Subsidized meals and transport", "Full medical insurance."]
+  },
+  {
+    "id": "job-13",
+    "title": "Warehouse Management Systems (WMS) Solutions Architect",
+    "company": "BW Industrial Development JSC",
+    "companyLogo": "images/brands/bw-industrial.svg",
+    "companyIcon": "fa-warehouse",
+    "salary": "₫35.000.000 - ₫52.000.000/mo",
+    "salaryVal": 43000000,
+    "location": "Binh Duong & Hai Phong (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "tech",
+    "tags": ["WMS", "Industrial Real Estate", "Solutions Architect", "Automation"],
+    "isUrgent": False,
+    "isHighSalary": True,
+    "time": "5 days ago",
+    "applicants": "15 applicants",
+    "specs": { "exp": "Senior (5+ Yrs)", "edu": "BS / Master in Information Systems", "dept": "Smart Warehousing Advisory", "openings": "1 Position" },
+    "overview": "Design tailored WMS and automated storage solutions (AS/RS) for multinational manufacturing tenants across BW logistics parks.",
+    "responsibilities": ["Consult clients on Manhattan / Infor / SAP EWM implementations", "Draft industrial automation blueprints."],
+    "requirements": ["Deep mastery of tier-1 WMS platforms", "Excellent enterprise consulting and presentation skills."],
+    "benefits": ["Competitive executive bonus", "Flexible hybrid schedule", "International advisory projects."]
+  },
+  {
+    "id": "job-14",
+    "title": "Air Cargo Charter Operations & Dangerous Goods Lead",
+    "company": "DB Schenker Vietnam",
+    "companyLogo": "images/brands/db-schenker.svg",
+    "companyIcon": "fa-plane",
+    "salary": "₫32.000.000 - ₫48.000.000/mo",
+    "salaryVal": 40000000,
+    "location": "Hanoi (Noi Bai Airport Office)",
+    "workplace": "On-site",
+    "category": "forwarding",
+    "tags": ["Air Cargo", "Dangerous Goods", "Noi Bai", "IATA DGR"],
+    "isUrgent": False,
+    "isHighSalary": True,
+    "time": "6 days ago",
+    "applicants": "21 applicants",
+    "specs": { "exp": "Specialist (4+ Yrs)", "edu": "Aviation / Trade Degree", "dept": "Special Cargo Unit", "openings": "1 Position" },
+    "overview": "Supervise full charter aircraft operations, lithium-battery cargo acceptance, and runway tarmac loading compliance at Noi Bai.",
+    "responsibilities": ["Inspect Class 9 dangerous goods packages according to IATA DGR", "Direct tarmac aircraft loadmasters and ground handlers."],
+    "requirements": ["Valid IATA Dangerous Goods Regulations Category 6 certification", "Experience handling full-freighter aircraft."],
+    "benefits": ["Airport hazardous allowance", "Annual European training exchanges", "Full healthcare package."]
+  },
+  {
+    "id": "job-15",
+    "title": "Autonomous Heavy Trucking Dispatch Supervisor",
+    "company": "Transimex Logistics Corporation",
+    "companyLogo": "images/brands/transimex.svg",
+    "companyIcon": "fa-truck-moving",
+    "salary": "₫25.000.000 - ₫38.000.000/mo",
+    "salaryVal": 31000000,
+    "location": "Thu Duc City, HCMC",
+    "workplace": "On-site",
+    "category": "port",
+    "tags": ["Trucking", "Container Drayage", "Dispatch", "Transimex"],
+    "isUrgent": True,
+    "isHighSalary": False,
+    "time": "6 days ago",
+    "applicants": "32 applicants",
+    "specs": { "exp": "Supervisor (3+ Yrs)", "edu": "Transportation / Logistics Diploma", "dept": "Fleet Dispatch Center", "openings": "2 Positions" },
+    "overview": "Coordinate 250+ prime movers hauling import/export containers between Cat Lai Port, ICD Song Than, and industrial zones.",
+    "responsibilities": ["Dispatch trucks dynamically to minimize demurrage and gate waiting time", "Manage driver compliance and digital fuel logs."],
+    "requirements": ["3+ years container trucking dispatch experience", "Familiarity with digital TMS dispatch systems."],
+    "benefits": ["Monthly dispatch performance incentives", "Full social insurance and health benefits", "Year-end 13th and 14th month pay."]
+  },
+
+  # Page 4
+  {
+    "id": "job-16",
+    "title": "Supply Chain ESG & Green Logistics Analyst",
+    "company": "CJ Logistics Vietnam",
+    "companyLogo": "images/brands/cj-logistics.svg",
+    "companyIcon": "fa-leaf",
+    "salary": "₫27.000.000 - ₫40.000.000/mo",
+    "salaryVal": 33000000,
+    "location": "Ho Chi Minh City, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "tech",
+    "tags": ["ESG", "Green Logistics", "Carbon Accounting", "Sustainability"],
+    "isUrgent": False,
+    "isHighSalary": False,
+    "time": "1 week ago",
+    "applicants": "26 applicants",
+    "specs": { "exp": "Analyst (2 – 4 Yrs)", "edu": "Environmental Science / Economics", "dept": "Sustainability Office", "openings": "1 Position" },
+    "overview": "Measure Scope 1, 2, and 3 carbon emissions across warehousing and linehaul networks to meet EU CBAM and corporate ESG mandates.",
+    "responsibilities": ["Calculate fleet carbon intensity per ton-kilometer", "Recommend route adjustments and EV fleet transitions."],
+    "requirements": ["Familiarity with GHG Protocol and carbon accounting", "Strong analytical modeling skills in Python/Excel."],
+    "benefits": ["Hybrid work environment", "International sustainability credentials sponsorship", "Premium health insurance."]
+  },
+  {
+    "id": "job-17",
+    "title": "Senior Procurement & Carrier Sourcing Manager",
+    "company": "Sotrans Logistics Vietnam",
+    "companyLogo": "images/brands/sotrans.svg",
+    "companyIcon": "fa-handshake",
+    "salary": "₫35.000.000 - ₫55.000.000/mo",
+    "salaryVal": 45000000,
+    "location": "Ho Chi Minh City, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "forwarding",
+    "tags": ["Procurement", "Carrier Sourcing", "Ocean Lines", "Sotrans"],
+    "isUrgent": False,
+    "isHighSalary": True,
+    "time": "1 week ago",
+    "applicants": "19 applicants",
+    "specs": { "exp": "Manager (5+ Yrs)", "edu": "Foreign Trade / Logistics", "dept": "Global Procurement", "openings": "1 Position" },
+    "overview": "Lead tender negotiations and annual service contracts with major container shipping lines and regional feeder operators.",
+    "responsibilities": ["Manage ocean freight procurement budget of over $40M annually", "Benchmark carrier rates across Transpacific and Asia-Europe corridors."],
+    "requirements": ["5+ years procurement in top tier freight forwarders", "Exceptional commercial negotiation skills."],
+    "benefits": ["Lucrative annual performance bonus", "Global executive networking opportunities", "Flexible WFH schedule."]
+  },
+  {
+    "id": "job-18",
+    "title": "Logistics B2B EDI & API Integration Specialist",
+    "company": "Viettel Post Digital Solutions",
+    "companyLogo": "images/brands/viettel.svg",
+    "companyIcon": "fa-network-wired",
+    "salary": "₫30.000.000 - ₫45.000.000/mo",
+    "salaryVal": 37000000,
+    "location": "Hanoi & HCMC (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "tech",
+    "tags": ["EDI", "API Integration", "Viettel", "B2B Logistics"],
+    "isUrgent": False,
+    "isHighSalary": True,
+    "time": "1 week ago",
+    "applicants": "29 applicants",
+    "specs": { "exp": "Specialist (3+ Yrs)", "edu": "Information Technology / Telecom", "dept": "Enterprise Solutions", "openings": "2 Positions" },
+    "overview": "Implement EDI (EDIFACT 204/214/300) and REST API connectors integrating enterprise ERP systems with national delivery networks.",
+    "responsibilities": ["Build automated data transformation pipelines", "Troubleshoot asynchronous message queues."],
+    "requirements": ["Solid knowledge of EDI standards and JSON/XML REST APIs", "3+ years technical integration experience."],
+    "benefits": ["Viettel Group comprehensive welfare", "Annual health checkups at Military Hospital 108", "Subsidized telecom packages."]
+  },
+  {
+    "id": "job-19",
+    "title": "Customs Brokerage Team Lead (Bonded Warehouse)",
+    "company": "Hai An Transport & Stevedoring",
+    "companyLogo": "images/brands/hai-an.svg",
+    "companyIcon": "fa-stamp",
+    "salary": "₫24.000.000 - ₫36.000.000/mo",
+    "salaryVal": 30000000,
+    "location": "Hai Phong (Dinh Vu Industrial Zone)",
+    "workplace": "On-site",
+    "category": "customs",
+    "tags": ["Customs", "Bonded Warehouse", "Hai An", "Dinh Vu"],
+    "isUrgent": True,
+    "isHighSalary": False,
+    "time": "1 week ago",
+    "applicants": "23 applicants",
+    "specs": { "exp": "Team Lead (4+ Yrs)", "edu": "Customs / International Business", "dept": "Bonded Customs Bureau", "openings": "1 Position" },
+    "overview": "Lead a team of 8 customs declarants managing bonded warehouse inventory, import raw materials, and finished goods re-exportation.",
+    "responsibilities": ["Review customs liquidation reports for export processing enterprises (EPE)", "Resolve customs audits and tariff appeals."],
+    "requirements": ["Active Customs Broker License", "Experience with Hai Phong port customs sub-departments."],
+    "benefits": ["Zone hazard allowance", "Company transport from Hai Phong center", "13th month salary and annual rewards."]
+  },
+  {
+    "id": "job-20",
+    "title": "Last-Mile Delivery Operations Regional Manager",
+    "company": "Grab Vietnam Express Division",
+    "companyLogo": "images/brands/grab.svg",
+    "companyIcon": "fa-motorcycle",
+    "salary": "₫35.000.000 - ₫55.000.000/mo",
+    "salaryVal": 45000000,
+    "location": "Ho Chi Minh City, Vietnam",
+    "workplace": "On-site",
+    "category": "robotics",
+    "tags": ["Last-Mile", "On-Demand", "Operations Lead", "GrabExpress"],
+    "isUrgent": False,
+    "isHighSalary": True,
+    "time": "1 week ago",
+    "applicants": "38 applicants",
+    "specs": { "exp": "Manager (5+ Yrs)", "edu": "Bachelor in Business / Operations", "dept": "GrabExpress Operations", "openings": "1 Position" },
+    "overview": "Oversee last-mile two-wheel delivery fulfillment, driver supply balancing, and SLAs across Greater Ho Chi Minh City.",
+    "responsibilities": ["Maintain 99.2% on-time pickup rate across peak lunch and evening hours", "Analyze cancellation heatmaps to allocate dynamic driver incentives."],
+    "requirements": ["5+ years on-demand or courier logistics management", "Strong data-driven mindset with SQL proficiency."],
+    "benefits": ["Grab competitive stock award", "Annual fitness and lifestyle allowance", "Top healthcare coverage."]
   }
 ];
 
 let enterpriseCurrentFilter = 'all';
 let enterpriseSelectedJobId = 'job-1';
+let currentJobPage = 1;
+const JOBS_PER_PAGE = 5;
 
 function initSplitScreenJobBoard() {
   const container = document.getElementById('jobs-list-container');
@@ -1976,7 +2236,7 @@ function initSplitScreenJobBoard() {
   const chipBtns = document.querySelectorAll('.job-chip-btn');
   if (!container || !detailPanel) return;
 
-  function renderJobList() {
+  function getFilteredJobs() {
     let filtered = enterpriseJobsDatabase;
     if (enterpriseCurrentFilter === 'urgent') {
       filtered = enterpriseJobsDatabase.filter(j => j.isUrgent);
@@ -1985,11 +2245,25 @@ function initSplitScreenJobBoard() {
     } else if (enterpriseCurrentFilter !== 'all') {
       filtered = enterpriseJobsDatabase.filter(j => j.category === enterpriseCurrentFilter);
     }
+    return filtered;
+  }
 
-    if (countBadge) countBadge.textContent = `${filtered.length} results`;
-    if (listCounter) listCounter.textContent = `${filtered.length} openings`;
+  function renderJobList() {
+    const filtered = getFilteredJobs();
+    const totalJobs = filtered.length;
+    const totalPages = Math.ceil(totalJobs / JOBS_PER_PAGE) || 1;
 
-    if (filtered.length === 0) {
+    if (currentJobPage > totalPages) currentJobPage = totalPages;
+    if (currentJobPage < 1) currentJobPage = 1;
+
+    const startIndex = (currentJobPage - 1) * JOBS_PER_PAGE;
+    const endIndex = Math.min(startIndex + JOBS_PER_PAGE, totalJobs);
+    const pageJobs = filtered.slice(startIndex, endIndex);
+
+    if (countBadge) countBadge.textContent = `${totalJobs} results • Trang ${currentJobPage}/${totalPages}`;
+    if (listCounter) listCounter.textContent = `${totalJobs} openings (${startIndex + 1}–${endIndex})`;
+
+    if (pageJobs.length === 0) {
       container.innerHTML = `
         <div style="padding: 48px 20px; text-align: center; color: #64748B;">
           <i class="fa-solid fa-folder-open" style="font-size: 36px; color: var(--fl-primary); margin-bottom: 12px; display:inline-block;"></i>
@@ -2000,12 +2274,12 @@ function initSplitScreenJobBoard() {
       return;
     }
 
-    // Ensure selected job exists in filtered list
+    // Ensure selected job exists in active page or filtered list
     if (!filtered.some(j => j.id === enterpriseSelectedJobId)) {
-      enterpriseSelectedJobId = filtered[0].id;
+      enterpriseSelectedJobId = pageJobs[0].id;
     }
 
-    container.innerHTML = filtered.map(job => {
+    const jobsHtml = pageJobs.map(job => {
       const isSelected = job.id === enterpriseSelectedJobId;
       return `
         <article class="job-card ${isSelected ? 'active' : ''}" data-job-id="${job.id}" onclick="selectEnterpriseJob('${job.id}')" style="cursor:pointer;">
@@ -2035,6 +2309,29 @@ function initSplitScreenJobBoard() {
       `;
     }).join('');
 
+    // Generate Pagination Controls
+    let pageButtonsHtml = '';
+    for (let p = 1; p <= totalPages; p++) {
+      pageButtonsHtml += `<button type="button" class="job-page-num-btn ${p === currentJobPage ? 'active' : ''}" onclick="goToJobPage(${p})">${p}</button>`;
+    }
+
+    const paginationHtml = `
+      <div class="split-jobs-pagination-wrap" id="split-jobs-pagination">
+        <button type="button" class="job-pagination-btn prev" ${currentJobPage === 1 ? 'disabled' : ''} onclick="changeJobPage(${currentJobPage - 1})">
+          <i class="fa-solid fa-chevron-left"></i> Prev
+        </button>
+        <div class="job-pagination-pages">
+          ${pageButtonsHtml}
+        </div>
+        <button type="button" class="job-pagination-btn next" ${currentJobPage === totalPages ? 'disabled' : ''} onclick="changeJobPage(${currentJobPage + 1})">
+          Next <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    `;
+
+    container.innerHTML = jobsHtml + paginationHtml;
+
+    // Render detail panel for selected job
     renderEnterpriseJobDetail(enterpriseSelectedJobId);
   }
 
@@ -2124,12 +2421,33 @@ function initSplitScreenJobBoard() {
     renderEnterpriseJobDetail(jobId);
   };
 
+  window.goToJobPage = function(pageNum) {
+    currentJobPage = pageNum;
+    const filtered = getFilteredJobs();
+    const startIndex = (currentJobPage - 1) * JOBS_PER_PAGE;
+    if (filtered[startIndex]) {
+      enterpriseSelectedJobId = filtered[startIndex].id;
+    }
+    renderJobList();
+    const container = document.getElementById('jobs-list-container');
+    if (container) container.scrollTop = 0;
+  };
+
+  window.changeJobPage = function(newPage) {
+    goToJobPage(newPage);
+  };
+
   // Wire filter chips
   chipBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       chipBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       enterpriseCurrentFilter = btn.dataset.filter || 'all';
+      currentJobPage = 1;
+      const filtered = getFilteredJobs();
+      if (filtered.length > 0) {
+        enterpriseSelectedJobId = filtered[0].id;
+      }
       renderJobList();
     });
   });
@@ -2137,23 +2455,6 @@ function initSplitScreenJobBoard() {
   renderJobList();
 }
 
-window.filterJobsByCategory = function(catKey) {
-  const chips = document.querySelectorAll('.job-chip-btn');
-  let matched = false;
-  chips.forEach(c => {
-    if (c.dataset.filter === catKey) {
-      c.click();
-      matched = true;
-    }
-  });
-  if (!matched && chips.length > 0) {
-    chips[0].click();
-  }
-  const target = document.getElementById('section-jobs');
-  if (target) {
-    target.scrollIntoView({ behavior: 'smooth' });
-  }
-};
 
 // 3. Course Center Catalog Tabs & Cards Controller
 const careerCatalogData = {

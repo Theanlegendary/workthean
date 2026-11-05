@@ -177,6 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function switchView(viewId, updateHash = true) {
+    if (viewId === 'jobs') viewId = 'browse';
     state.currentView = viewId;
 
     document.querySelectorAll('.app-view').forEach(view => view.classList.remove('active-view'));
@@ -188,8 +189,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Sync Top Tier-2 Brand Nav Items
     document.querySelectorAll('.brand-nav-item').forEach(btn => {
-      if (btn.getAttribute('data-view') === viewId) btn.classList.add('active');
-      else btn.classList.remove('active');
+      const bView = btn.getAttribute('data-view');
+      if (bView === viewId || (bView === 'jobs' && viewId === 'browse') || (bView === 'browse' && viewId === 'browse')) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    // Sync Mobile Drawer Items
+    document.querySelectorAll('.drawer-item').forEach(btn => {
+      const bView = btn.getAttribute('data-view');
+      if (bView === viewId || (bView === 'jobs' && viewId === 'browse') || (bView === 'browse' && viewId === 'browse')) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
     });
 
     if (updateHash && viewId !== 'job-detail') {
@@ -199,6 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     if (viewId === 'browse') renderBrowseProjects();
+    if (viewId === 'companies' && typeof initCompaniesDirectory === 'function') initCompaniesDirectory();
   }
 
   /* ==========================================================================
@@ -3374,3 +3390,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+
+  // Window Helper for News Video Player
+  window.playNewsVideo = function(videoId, title, category, date, duration, excerpt, elem) {
+    const iframe = document.getElementById('news-yt-iframe');
+    if (iframe) iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&enablejsapi=1`;
+
+    const titleEl = document.getElementById('news-yt-title');
+    if (titleEl) titleEl.textContent = title;
+
+    const catEl = document.getElementById('news-yt-category');
+    if (catEl) catEl.textContent = category;
+
+    const dateEl = document.getElementById('news-yt-date');
+    if (dateEl) dateEl.textContent = date;
+
+    const durEl = document.getElementById('news-yt-duration');
+    if (durEl) durEl.innerHTML = `<i class="fa-regular fa-clock"></i> ${duration}`;
+
+    const excerptEl = document.getElementById('news-yt-excerpt');
+    if (excerptEl) excerptEl.textContent = excerpt;
+
+    const extLink = document.getElementById('news-yt-external-link');
+    if (extLink) extLink.href = `https://www.youtube.com/watch?v=${videoId}`;
+
+    if (elem) {
+      document.querySelectorAll('#news-yt-playlist .fw-yt-item').forEach(el => el.classList.remove('active'));
+      elem.classList.add('active');
+    }
+  };
+
+  // Course Tab Listeners
+  document.addEventListener('click', (e) => {
+    const courseTab = e.target.closest('[data-course-tab]');
+    if (courseTab) {
+      document.querySelectorAll('[data-course-tab]').forEach(btn => {
+        btn.classList.remove('active');
+        btn.style.background = '#fff';
+        btn.style.color = '#475569';
+        btn.style.borderColor = '#E2E8F0';
+      });
+      courseTab.classList.add('active');
+      courseTab.style.background = '#0F172A';
+      courseTab.style.color = '#fff';
+      courseTab.style.borderColor = '#CBD5E1';
+      showToast(`Đang lọc khóa học: ${courseTab.textContent.trim()}`);
+    }
+  });

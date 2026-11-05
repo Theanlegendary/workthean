@@ -7878,9 +7878,9 @@ font-size: 11.5px !important;
 
 /* 1. Companies Directory View */
 .companies-directory-container {
-  max-width: 1240px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 32px 20px 60px;
+  padding: 32px 32px 60px;
 }
 
 .companies-header-banner {

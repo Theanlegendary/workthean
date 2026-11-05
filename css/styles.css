@@ -9939,3 +9939,78 @@ section[id] {
   border: none !important;
   margin: 0 auto !important;
 }
+
+/* ==========================================================================
+   BROADCAST EPISODES: EXACT 4-ITEM VISIBILITY & SMOOTH SCROLL
+   ========================================================================== */
+.fw-yt-playlist-card {
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+  padding: 16px 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+}
+
+.fw-yt-playlist-top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 6px 12px !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  margin-bottom: 10px !important;
+}
+
+.fw-yt-playlist-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  max-height: 472px !important; /* Exactly 4 items visible */
+  overflow-y: auto !important;
+  padding-right: 4px !important;
+  scroll-behavior: smooth !important;
+}
+
+.fw-yt-playlist-list::-webkit-scrollbar {
+  width: 5px !important;
+}
+
+.fw-yt-playlist-list::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.fw-yt-playlist-list::-webkit-scrollbar-thumb {
+  background: #CBD5E1 !important;
+  border-radius: 4px !important;
+}
+
+.fw-yt-playlist-list::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8 !important;
+}
+
+.fw-yt-item {
+  display: flex !important;
+  gap: 12px !important;
+  align-items: flex-start !important;
+  padding: 8px 10px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  border: none !important;
+  border-left: 3px solid transparent !important;
+  background: transparent !important;
+  transition: all 0.18s ease !important;
+  min-height: 110px !important;
+  box-sizing: border-box !important;
+}
+
+.fw-yt-item:hover {
+  background: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+.fw-yt-item.active {
+  background: #FFFFFF !important;
+  border-left-color: #DC2626 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06) !important;
+}

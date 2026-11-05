@@ -1,4 +1,470 @@
-<!DOCTYPE html>
+<!DOCTYPE
+
+    <!-- ========================================================================
+         VIEW: COURSE DETAIL (#view-course-detail)
+         Academic Syllabus & Curriculum specification from thesandbox-logistics-platform
+         ======================================================================== -->
+    <section class="app-view" id="view-course-detail">
+      
+  <div style="background:#F8FAFC; border-bottom:1px solid #E2E8F0; padding:12px 0;">
+    <div class="container" style="max-width:1440px; padding:0 32px; font-size:13px; color:#64748B; display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <a href="#" data-view="home" style="color:#64748B; text-decoration:none;"><i class="fa-solid fa-house"></i> Home</a>
+        <span>&rsaquo;</span>
+        <a href="#" data-view="courses" style="color:#64748B; text-decoration:none;">Courses &amp; Certifications</a>
+        <span>&rsaquo;</span>
+        <span id="breadcrumb-course-name" style="color:#0F172A; font-weight:600;">Programme Syllabus</span>
+      </div>
+      <div>
+        <button type="button" onclick="switchView('courses');" style="background:#FFFFFF; border:1px solid #CBD5E1; color:#0F172A; padding:6px 14px; border-radius:6px; font-size:12.5px; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+          <i class="fa-solid fa-arrow-left"></i> Quay lại Danh sách Khóa học
+        </button>
+      </div>
+    </div>
+  </div>
+
+      <div class="container" style="max-width:1440px; padding:0 32px 60px;">
+        <main style="padding: 36px 0 70px; background: #F8FAFC;">
+    <div class="course-detail-container">
+      <div style="display: grid; grid-template-columns: 1.8fr 1fr; gap: 32px; align-items: start;">
+        
+        <!-- Left Main Academic Column -->
+        <div>
+
+          <!-- 1. Course Overview & Target Audience -->
+          <div id="course-overview-card" style="background: #FFFFFF; border: none; border-radius: 12px; padding: 28px; margin-bottom: 24px;">
+            <h2 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0 0 14px;">
+              Programme Overview
+            </h2>
+            <p style="font-size: 15px; color: #334155; line-height: 1.7; margin: 0 0 14px;">
+              The FIATA Higher International Diploma is designed for practitioners aiming to advance from operational logistics tasks to strategic supply chain decision-making. The curriculum addresses contemporary challenges in multimodal transportation, contract administration, customs clearance procedures, and supply chain financial control across Southeast Asian and global freight networks.
+            </p>
+            <p style="font-size: 15px; color: #334155; line-height: 1.7; margin: 0;">
+              Participants develop practical case analysis skills to optimize end-to-end cargo movements, mitigate carrier liabilities, and design resilient supply chains aligned with international maritime and air conventions.
+            </p>
+          </div>
+
+          <!-- 2. Official 8-Module Curriculum -->
+          <div style="background: #FFFFFF; border: none; border-radius: 12px; padding: 28px; margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; flex-wrap: wrap; gap: 8px;">
+              <h2 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0;">
+                Curriculum (8 Core Modules &bull; 160 Hours)
+              </h2>
+              <span style="font-size: 13px; color: #64748B;">FIATA Minimum Standard Syllabus</span>
+            </div>
+            
+            <div id="course-curriculum-container" style="display: flex; flex-direction: column; gap: 12px;">
+              
+              <!-- Module 1 -->
+              <div style="background: #F8FAFC; border-radius: 8px; padding: 16px 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span class="module-badge-num">Module 01</span>
+                  <span class="module-hours-text"><i class="fa-regular fa-clock"></i> 20 Guided Hours</span>
+                </div>
+                <h3 style="font-size: 16px; font-weight: 600; color: #0F172A; margin: 0 0 4px;">
+                  Global Purchasing &amp; International Procurement
+                </h3>
+                <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
+                  Strategic supplier selection, purchasing contracts, vendor evaluation frameworks, and international procurement negotiation strategies.
+                </p>
+              </div>
+
+              <!-- Module 2 -->
+              <div style="background: #F8FAFC; border-radius: 8px; padding: 16px 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span class="module-badge-num">Module 02</span>
+                  <span class="module-hours-text"><i class="fa-regular fa-clock"></i> 20 Guided Hours</span>
+                </div>
+                <h3 style="font-size: 16px; font-weight: 600; color: #0F172A; margin: 0 0 4px;">
+                  Contract Management &amp; Maritime Law
+                </h3>
+                <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
+                  ICC Incoterms 2020 rules, passing of risk, letters of credit (UCP 600), international sales conventions (CISG), and standard logistics contract clauses.
+                </p>
+              </div>
+
+              <!-- Module 3 -->
+              <div style="background: #F8FAFC; border-radius: 8px; padding: 16px 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span class="module-badge-num">Module 03</span>
+                  <span class="module-hours-text"><i class="fa-regular fa-clock"></i> 18 Guided Hours</span>
+                </div>
+                <h3 style="font-size: 16px; font-weight: 600; color: #0F172A; margin: 0 0 4px;">
+                  Production &amp; Operations Management
+                </h3>
+                <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
+                  Lean logistics operations, material requirements planning (MRP), demand planning, and production scheduling coordination with cargo dispatch hubs.
+                </p>
+              </div>
+
+              <!-- Module 4 -->
+              <div style="background: #F8FAFC; border-radius: 8px; padding: 16px 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span class="module-badge-num">Module 04</span>
+                  <span class="module-hours-text"><i class="fa-regular fa-clock"></i> 24 Guided Hours</span>
+                </div>
+                <h3 style="font-size: 16px; font-weight: 600; color: #0F172A; margin: 0 0 4px;">
+                  Multimodal Transport &amp; Freight Forwarding Operations
+                </h3>
+                <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
+                  Issuance and liability under the negotiable FIATA Multimodal Bill of Lading (FBL), ocean container line bookings, air cargo airway bills, and sea-rail intermodal routing.
+                </p>
+              </div>
+
+              <!-- Module 5 -->
+              <div style="background: #F8FAFC; border-radius: 8px; padding: 16px 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span class="module-badge-num">Module 05</span>
+                  <span class="module-hours-text"><i class="fa-regular fa-clock"></i> 16 Guided Hours</span>
+                </div>
+                <h3 style="font-size: 16px; font-weight: 600; color: #0F172A; margin: 0 0 4px;">
+                  International Financial Management in Logistics
+                </h3>
+                <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
+                  Cost accounting in transport operations, working capital management, currency exchange risk mitigation, and freight payment reconciliation.
+                </p>
+              </div>
+
+              <!-- Module 6 -->
+              <div style="background: #F8FAFC; border-radius: 8px; padding: 16px 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span class="module-badge-num">Module 06</span>
+                  <span class="module-hours-text"><i class="fa-regular fa-clock"></i> 18 Guided Hours</span>
+                </div>
+                <h3 style="font-size: 16px; font-weight: 600; color: #0F172A; margin: 0 0 4px;">
+                  Warehouse Operations &amp; Inventory Optimization
+                </h3>
+                <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
+                  Facility layout design, safety stock calculations, automated storage and retrieval systems (AS/RS), WMS technology, and cold-chain compliance.
+                </p>
+              </div>
+
+              <!-- Module 7 -->
+              <div style="background: #F8FAFC; border-radius: 8px; padding: 16px 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span class="module-badge-num">Module 07</span>
+                  <span class="module-hours-text"><i class="fa-regular fa-clock"></i> 18 Guided Hours</span>
+                </div>
+                <h3 style="font-size: 16px; font-weight: 600; color: #0F172A; margin: 0 0 4px;">
+                  Supply Chain Risk Management &amp; Customs Compliance
+                </h3>
+                <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
+                  WCO SAFE Framework, Authorized Economic Operator (AEO) requirements, customs audit protocols under regional commerce agreements, and cargo insurance subrogation.
+                </p>
+              </div>
+
+              <!-- Module 8 -->
+              <div style="background: #F8FAFC; border-radius: 8px; padding: 16px 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span class="module-badge-num">Module 08</span>
+                  <span class="module-hours-text"><i class="fa-regular fa-clock"></i> 26 Guided Hours</span>
+                </div>
+                <h3 style="font-size: 16px; font-weight: 600; color: #0F172A; margin: 0 0 4px;">
+                  Strategic Supply Chain Management &amp; Capstone Project
+                </h3>
+                <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
+                  Applied supply chain simulation addressing port delays, carrier disruptions, and logistics network re-engineering. Evaluated by an academic and industry panel.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- 3. Entry Requirements & Assessment Method -->
+          <div style="background: #FFFFFF; border: none; border-radius: 12px; padding: 28px; margin-bottom: 24px;">
+            <h2 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0 0 16px;">
+              Admission Requirements &amp; Assessment
+            </h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <div>
+                <h3 style="font-size: 15px; font-weight: 600; color: #0F172A; margin: 0 0 8px;">
+                  <i class="fa-solid fa-graduation-cap" style="color: #123B5D; margin-right: 6px;"></i> Prerequisites
+                </h3>
+                <ul style="font-size: 13.5px; color: #475569; line-height: 1.6; padding-left: 18px; margin: 0;">
+                  <li>Recognized Bachelor's degree, OR</li>
+                  <li>Minimum 2 years of professional experience in freight forwarding, shipping, or logistics operations</li>
+                  <li>Working proficiency in English for reading course modules and international case studies</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 style="font-size: 15px; font-weight: 600; color: #0F172A; margin: 0 0 8px;">
+                  <i class="fa-solid fa-pen-ruler" style="color: #123B5D; margin-right: 6px;"></i> Assessment Criteria
+                </h3>
+                <ul style="font-size: 13.5px; color: #475569; line-height: 1.6; padding-left: 18px; margin: 0;">
+                  <li>Continuous Module Assignments: <strong>40%</strong></li>
+                  <li>Final FIATA Written Examination: <strong>30%</strong></li>
+                  <li>Capstone Strategy Project &amp; Defense: <strong>30%</strong></li>
+                  <li>Minimum 65% aggregate score required for diploma issuance</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Faculty & Instructors -->
+          <div style="background: #FFFFFF; border: none; border-radius: 12px; padding: 28px; margin-bottom: 24px;">
+            <h2 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0 0 16px;">
+              Instructors &amp; Faculty
+            </h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
+              <div class="faculty-card">
+                <strong style="font-size: 15px; color: #0F172A; display: block; margin-bottom: 2px;">Capt. Nguyen Van Thang</strong>
+                <span style="font-size: 12px; color: #123B5D; font-weight: 600; display: block; margin-bottom: 6px;">Senior Maritime &amp; Port Operations Advisor</span>
+                <p style="font-size: 13px; color: #475569; margin: 0; line-height: 1.5;">28 years of maritime leadership in container terminal management, vessel chartering, and fairway navigation safety.</p>
+              </div>
+              <div class="faculty-card">
+                <strong style="font-size: 15px; color: #0F172A; display: block; margin-bottom: 2px;">Tran Thi Minh Hanh, LL.M.</strong>
+                <span style="font-size: 12px; color: #123B5D; font-weight: 600; display: block; margin-bottom: 6px;">Maritime Arbitrator &amp; Legal Compliance Director</span>
+                <p style="font-size: 13px; color: #475569; margin: 0; line-height: 1.5;">Specialist in multimodal transport documentation, cargo claim arbitration, and customs risk defense for regional freight forwarders.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Credential & Institution Validation Details -->
+          <div id="course-cert-card" style="background: #FFFFFF; border: none; border-radius: 12px; padding: 28px;">
+            <h2 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0 0 14px;">
+              Certification &amp; Institutional Validation
+            </h2>
+            <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0 0 12px;">
+              Successful candidates are awarded the <strong>FIATA Higher International Diploma in Supply Chain Management</strong>. The certificate is issued under the authority of the International Federation of Freight Forwarders Associations (FIATA, Geneva) through its validated national association member, the Vietnam Logistics Research and Development Institute (VLI).
+            </p>
+            <p style="font-size: 13px; color: #64748B; line-height: 1.5; margin: 0;">
+              Graduates receive an individual verification registry number registered with FIATA's headquarters and are recognized across international freight associations worldwide.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Tuition, Application & Contact -->
+        <div style="position: sticky; top: 88px;">
+          
+          <div style="background: #FFFFFF; border: none; border-radius: 12px; padding: 26px; box-shadow: 0 2px 12px rgba(15,23,42,0.04); margin-bottom: 20px;">
+            <div style="margin-bottom: 18px;">
+              <span style="font-size: 11.5px; color: #64748B; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 4px;">Tuition Fee</span>
+              <div id="sidebar-tuition-val" style="font-size: 26px; font-weight: 700; color: #111827; line-height: 1.2;">
+                18,500,000 VND
+              </div>
+              <span id="sidebar-discount-label" style="font-size: 12.5px; color: #15803D; font-weight: 600; display: block; margin-top: 4px;">
+                15,700,000 VND for VLA Association Members
+              </span>
+            </div>
+
+            <!-- Essential Facts Checklist -->
+            <div style="border-top: 1px solid #F1F5F9; border-bottom: 1px solid #F1F5F9; padding: 14px 0; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; color: #475569;">
+              <div style="display: flex; justify-content: space-between;">
+                <span>Next Intake:</span>
+                <strong id="sidebar-next-intake" style="color: #0F172A;">14 November 2026</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span>Cohort Size:</span>
+                <strong style="color: #0F172A;">Limited to 30 participants</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span>Payment:</span>
+                <strong style="color: #0F172A;">Installments available</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span>Withdrawal:</span>
+                <strong style="color: #0F172A;">14-day refund policy</strong>
+              </div>
+            </div>
+
+            <!-- Primary Action: Apply for Enrollment -->
+            <button type="button" onclick="openEnrollModal();" class="btn-primary" style="width: 100%; background: #123B5D; color: #FFFFFF; border: none; padding: 12px 20px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.18s ease;">
+              <span>Apply for Enrollment</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+            <!-- Secondary Action: Download Syllabus -->
+            <a href="downloads/FIATA-Higher-Diploma-Syllabus-2026.pdf" download="FIATA-Higher-Diploma-Syllabus-2026.pdf" onclick="trackSyllabusDownload();" style="width: 100%; box-sizing: border-box; background: #F8FAFC; color: #334155; border: none; padding: 11px 16px; border-radius: 8px; font-size: 13.5px; font-weight: 600; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; transition: background 0.18s ease;">
+              <i class="fa-regular fa-file-pdf" style="color: #DC2626;"></i>
+              <span>Download Syllabus PDF (Official)</span>
+            </a>
+
+            <div style="margin-top: 16px; text-align: center;">
+              <span style="font-size: 12px; color: #64748B;">
+                Inquiries are reviewed by the VLI Admissions Committee.
+              </span>
+            </div>
+          </div>
+
+          <!-- Contact Admissions Office (Discreet, Professional Card) -->
+          <div style="background: #FFFFFF; border: none; border-radius: 12px; padding: 22px; box-shadow: 0 2px 12px rgba(15,23,42,0.04);">
+            <h3 style="font-size: 14.5px; font-weight: 600; color: #111827; margin: 0 0 10px;">
+              Admissions &amp; Academic Desk
+            </h3>
+            <button type="button" onclick="openConsultModal();" style="width: 100%; background: #EAF1F7; color: #123B5D; border: none; padding: 10px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 14px; transition: background 0.15s ease;">
+              <i class="fa-regular fa-calendar-check"></i>
+              <span>Request Academic Consultation</span>
+            </button>
+            <p style="font-size: 13px; color: #64748B; margin: 0 0 14px; line-height: 1.5;">
+              For corporate invoice arrangements, prerequisite consultations, or syllabus inquiries:
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: #334155;">
+              <div>
+                <i class="fa-solid fa-phone" style="color: #123B5D; width: 16px;"></i>
+                <a href="tel:02838220000" style="color: #123B5D; text-decoration: none; font-weight: 600;">(+84) 28 3822 0000</a>
+              </div>
+              <div>
+                <i class="fa-solid fa-envelope" style="color: #123B5D; width: 16px;"></i>
+                <a href="mailto:admissions@vli.edu.vn" style="color: #123B5D; text-decoration: none; font-weight: 600;">admissions@vli.edu.vn</a>
+              </div>
+              <div style="font-size: 12px; color: #64748B; margin-top: 4px;">
+                VLI Campus: 142 Nguyen Thi Minh Khai, District 3, HCMC
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+      </div>
+      <div class="modal-backdrop" id="modal-enrollment" role="dialog" aria-modal="true" aria-labelledby="enroll-modal-title" style="display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.6); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: #FFFFFF; border-radius: 12px; max-width: 520px; width: 100%; padding: 28px; position: relative;">
+      
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+        <div>
+          <h2 id="enroll-modal-title" style="font-size: 18px; font-weight: 700; color: #111827; margin: 0 0 4px;">
+            Apply for Course Enrollment
+          </h2>
+          <span style="font-size: 12.5px; color: #64748B;">FIATA Higher International Diploma &bull; November 2026 Cohort</span>
+        </div>
+        <button type="button" onclick="closeEnrollModal();" aria-label="Close" style="background: transparent; border: none; font-size: 20px; color: #94A3B8; cursor: pointer; padding: 0;">&times;</button>
+      </div>
+
+      <form id="course-enroll-form" onsubmit="handleEnrollSubmit(event);" style="display: flex; flex-direction: column; gap: 14px;">
+        <div>
+          <label style="display: block; font-size: 13px; font-weight: 500; color: #334155; margin-bottom: 4px;">Full Name *</label>
+          <input type="text" id="enroll-name" required placeholder="e.g. Nguyen Minh Tri" style="width: 100%; height: 42px; padding: 0 12px; border: none; background: #F1F5F9; border-radius: 6px; font-size: 14px; font-family: inherit;">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 500; color: #334155; margin-bottom: 4px;">Work Email *</label>
+            <input type="email" id="enroll-email" required placeholder="name@company.vn" style="width: 100%; height: 42px; padding: 0 12px; border: none; background: #F1F5F9; border-radius: 6px; font-size: 14px; font-family: inherit;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 500; color: #334155; margin-bottom: 4px;">Phone / Zalo *</label>
+            <input type="tel" id="enroll-phone" required placeholder="+84 908 123 456" style="width: 100%; height: 42px; padding: 0 12px; border: none; background: #F1F5F9; border-radius: 6px; font-size: 14px; font-family: inherit;">
+          </div>
+        </div>
+
+        <div>
+          <label style="display: block; font-size: 13px; font-weight: 500; color: #334155; margin-bottom: 4px;">Current Organization &amp; Job Title</label>
+          <input type="text" id="enroll-role" placeholder="e.g. Freight Operations Lead at Viconship" style="width: 100%; height: 42px; padding: 0 12px; border: none; background: #F1F5F9; border-radius: 6px; font-size: 14px; font-family: inherit;">
+        </div>
+
+        <div>
+          <label style="display: block; font-size: 13px; font-weight: 500; color: #334155; margin-bottom: 4px;">Tuition Sponsorship</label>
+          <select id="enroll-sponsor" style="width: 100%; height: 42px; padding: 0 12px; border: none; background: #F1F5F9; border-radius: 6px; font-size: 14px; font-family: inherit;">
+            <option value="self">Self-Funded Individual (Standard Rate)</option>
+            <option value="corporate">Corporate Sponsored (Company Invoice)</option>
+            <option value="vla">VLA Member Company (Discounted Rate)</option>
+          </select>
+        </div>
+
+        <div style="font-size: 12px; color: #64748B; line-height: 1.4; margin-top: 4px;">
+          By submitting this application, your dossier will be logged in the prototype registry and submitted to the VLI admissions team.
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px;">
+          <button type="button" onclick="closeEnrollModal();" style="padding: 10px 18px; background: transparent; border: none; color: #64748B; font-weight: 600; font-size: 14px; cursor: pointer;">Cancel</button>
+          <button type="submit" style="padding: 10px 22px; background: #123B5D; color: #FFFFFF; border: none; border-radius: 6px; font-weight: 600; font-size: 14px; cursor: pointer;">Submit Application</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<div class="modal-backdrop" id="modal-consultation" role="dialog" aria-modal="true" aria-labelledby="consult-modal-title" style="display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.6); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: #FFFFFF; border-radius: 12px; max-width: 480px; width: 100%; padding: 28px; position: relative;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+        <div>
+          <h2 id="consult-modal-title" style="font-size: 18px; font-weight: 700; color: #111827; margin: 0 0 4px;">
+            Request Academic Consultation
+          </h2>
+          <span style="font-size: 12.5px; color: #64748B;">Connect with a VLI Faculty Advisor &bull; FIATA Higher Diploma</span>
+        </div>
+        <button type="button" onclick="closeConsultModal();" aria-label="Close" style="background: transparent; border: none; font-size: 20px; color: #94A3B8; cursor: pointer; padding: 0;">&times;</button>
+      </div>
+
+      <form id="course-consult-form" onsubmit="handleConsultSubmit(event);" style="display: flex; flex-direction: column; gap: 14px;">
+        <div>
+          <label style="display: block; font-size: 13px; font-weight: 500; color: #334155; margin-bottom: 4px;">Full Name *</label>
+          <input type="text" id="consult-name" required placeholder="e.g. Tran Minh Tuan" style="width: 100%; height: 42px; padding: 0 12px; border: none; background: #F1F5F9; border-radius: 6px; font-size: 14px; font-family: inherit;">
+        </div>
+
+        <div>
+          <label style="display: block; font-size: 13px; font-weight: 500; color: #334155; margin-bottom: 4px;">Work Email or Phone *</label>
+          <input type="text" id="consult-contact" required placeholder="email@company.vn or 0908 123 456" style="width: 100%; height: 42px; padding: 0 12px; border: none; background: #F1F5F9; border-radius: 6px; font-size: 14px; font-family: inherit;">
+        </div>
+
+        <div>
+          <label style="display: block; font-size: 13px; font-weight: 500; color: #334155; margin-bottom: 4px;">Primary Consultation Topic</label>
+          <select id="consult-topic" style="width: 100%; height: 42px; padding: 0 12px; border: none; background: #F1F5F9; border-radius: 6px; font-size: 14px; font-family: inherit;">
+            <option value="curriculum">Module Curriculum &amp; Learning Outcomes</option>
+            <option value="corporate">Corporate Group Enrolment &amp; Invoicing</option>
+            <option value="exemption">Prerequisites &amp; Prior Learning Assessment</option>
+            <option value="schedule">Weekend Schedule &amp; Online Access</option>
+          </select>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 8px;">
+          <button type="button" onclick="closeConsultModal();" style="padding: 10px 18px; background: transparent; border: none; color: #64748B; font-weight: 600; font-size: 14px; cursor: pointer;">Cancel</button>
+          <button type="submit" style="padding: 10px 22px; background: #123B5D; color: #FFFFFF; border: none; border-radius: 6px; font-weight: 600; font-size: 14px; cursor: pointer;">Submit Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<div class="modal-backdrop" id="modal-receipt" role="dialog" aria-modal="true" aria-labelledby="receipt-modal-title" style="display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.6); z-index: 10000; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: #FFFFFF; border-radius: 12px; max-width: 500px; width: 100%; padding: 28px; position: relative;">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <div style="width: 48px; height: 48px; border-radius: 50%; background: #DCFCE7; color: #15803D; display: flex; align-items: center; justify-content: center; font-size: 22px; margin: 0 auto 12px;">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <h2 id="receipt-modal-title" style="font-size: 20px; font-weight: 700; color: #111827; margin: 0 0 6px;">
+          Enrolment Application Received
+        </h2>
+        <span style="font-size: 13px; color: #64748B;">Your application dossier has been logged into the admissions registry.</span>
+      </div>
+
+      <div style="background: #F8FAFC; border-radius: 8px; padding: 16px; margin-bottom: 20px; font-size: 13.5px; color: #334155; display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: #64748B;">Application Ref:</span>
+          <strong id="receipt-ref" style="color: #123B5D; font-family: monospace; font-size: 14px;">ENR-2026-FIATA-0000</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: #64748B;">Applicant:</span>
+          <strong id="receipt-name">---</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: #64748B;">Cohort:</span>
+          <strong>14 November 2026 (16 Weeks)</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: #64748B;">Status:</span>
+          <span style="background: #EAF1F7; color: #123B5D; font-weight: 600; font-size: 12px; padding: 2px 8px; border-radius: 4px;">Dossier Under Review</span>
+        </div>
+      </div>
+
+      <div style="font-size: 12.5px; color: #64748B; line-height: 1.5; margin-bottom: 20px;">
+        Next steps: A VLI admissions coordinator will contact you at your provided email/phone within 1 business day to verify prerequisite documents and provide tuition transfer instructions.
+      </div>
+
+      <div style="display: flex; justify-content: flex-end;">
+        <button type="button" onclick="closeReceiptModal();" style="width: 100%; padding: 11px; background: #123B5D; color: #FFFFFF; border: none; border-radius: 6px; font-weight: 600; font-size: 14px; cursor: pointer;">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+    </section>
+
+ html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
@@ -1824,310 +2290,943 @@
   
 
 
-    <!-- ========================================================================
-         VIEW: COMPANIES DIRECTORY (#view-companies)
+        <!-- ========================================================================
+         VIEW 4: COMPANIES DIRECTORY (#view-companies)
+         Derived from thesandbox-logistics-platform/web-prototype/companies.html
          ======================================================================== -->
     <section class="app-view" id="view-companies">
-      <div class="companies-directory-container">
-        
-        <!-- Header Banner -->
-        <div class="companies-header-banner">
+      <!-- APP INSTANT ROUTE ROOT CONTAINER (Zero Refresh SPA Swapper) -->
+  <div id="app-content-root" class="app-page-wrapper">
+
+  <!-- Breadcrumb Bar Below Header -->
+  <div style="background:#F8FAFC; border-bottom:1px solid #E2E8F0; padding:10px 0;">
+    <div class="container" style="padding:0 24px; font-size:13px; color:#64748B; display:flex; align-items:center; gap:6px;">
+      <a href="#" data-view="home" style="color:#64748B;text-decoration:none;">Home</a>
+      <span>›</span>
+      <span style="color:#0F172A;font-weight:600;">Who's Hiring in Vietnamese Logistics</span>
+    </div>
+  </div>
+
+  <!-- Hero Header -->
+  <section style="background:#FFFFFF; border-bottom:1px solid #E2E8F0; padding:40px 0 32px;">
+    <div class="container" style="padding:0 24px;">
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;"><span style="display:inline-block; width:4px; height:20px; background:#EAA824; border-radius:2px;"></span><span style="font-size:12px; font-weight:700; color:#64748B; letter-spacing:0.05em; text-transform:uppercase;">Vietnam &amp; ASEAN · Updated Oct 2026</span></div>
+      <h1 style="font-family:var(--font-montserrat, 'Montserrat', sans-serif); font-size:32px; font-weight:800; color:#0B1D30; margin:0 0 10px; line-height:1.2; letter-spacing:-0.4px;">
+        Who's Hiring in Vietnamese Logistics
+      </h1>
+      <p style="font-size:15.5px; color:#475569; margin:0 0 16px; max-width:760px; line-height:1.6;">
+        From Cát Lái terminal operators to cold-chain distributors in Bình Dương — verified employers with open roles right now. No ghost listings.
+      </p>
+      <div style="font-size:13.5px; font-weight:600; color:#64748B; margin-bottom:24px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+        <span style="color:#0F172A; font-weight:700;">318 verified employers</span>
+        <span style="color:#CBD5E1;">|</span>
+        <span>1,247 open roles this week</span>
+        <span style="color:#CBD5E1;">|</span>
+        <span>Last verified: <strong style="color:#0F172A;">Oct 28, 2026</strong></span>
+      </div>
+
+      <!-- Search Bar -->
+      <div style="position:relative; max-width:680px; margin-bottom:20px;">
+        <i class="fa-solid fa-magnifying-glass" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); color:#94A3B8; font-size:15px;"></i>
+        <input type="text" id="companies-search-input" placeholder="Search by company name, port, city..." style="width:100%; height:48px; padding:0 46px 0 46px; background:#F8FAFC; border:1px solid #CBD5E1; border-radius:8px; font-size:14.5px; color:#0F172A; outline:none; transition:border-color 0.15s, box-shadow 0.15s;" onkeyup="filterCompanies();">
+        <button type="button" onclick="clearCompanySearch();" id="btn-clear-search" style="position:absolute; right:14px; top:50%; transform:translateY(-50%); background:none; border:none; color:#94A3B8; cursor:pointer; display:none; padding:6px;">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Filter chips row -->
+      <div class="co-filter-strip" id="co-filter-chips">
+        <button type="button" class="co-filter-chip active" data-filter="all" onclick="setCompanyFilter('all', this);">All</button>
+        <button type="button" class="co-filter-chip" data-filter="3pl" onclick="setCompanyFilter('3pl', this);">Freight &amp; 3PL</button>
+        <button type="button" class="co-filter-chip" data-filter="port" onclick="setCompanyFilter('port', this);">Port &amp; Terminal</button>
+        <button type="button" class="co-filter-chip" data-filter="ecommerce" onclick="setCompanyFilter('ecommerce', this);">E-Commerce</button>
+        <button type="button" class="co-filter-chip" data-filter="tech" onclick="setCompanyFilter('tech', this);">WMS &amp; TMS Tech</button>
+        <button type="button" class="co-filter-chip" data-filter="coldchain" onclick="setCompanyFilter('coldchain', this);">Cold Chain</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company cards grid section -->
+  <section style="background:#F8FAFC; padding:36px 0 60px;">
+    <div class="container" style="padding:0 24px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <div style="font-size:14px; font-weight:700; color:#475569;">
+          Showing <span id="co-visible-count" style="color:#0F172A; font-weight:800;">18</span> verified companies
+        </div>
+      </div>
+
+      <div class="co-grid" id="co-grid-container">
+
+        <!-- Card 1: Saigon Newport (Tân Cảng Sài Gòn) -->
+        <a href="#company?id=saigon-newport" onclick="showCompanyDetail(\'saigon-newport\'); return false;" class="co-card" data-category="port" data-name="saigon newport tan cang sai gon port terminal maritime cat lai cai mep song than icd">
           <div>
-            <h1 class="companies-header-title">Hồ Sơ Doanh Nghiệp Công Nghệ, AI &amp; Logistics</h1>
-            <p class="companies-header-subtitle">
-              Nền tảng kết nối trực tiếp doanh nghiệp với khách hàng tiềm năng: Giới thiệu dịch vụ, sản phẩm công nghệ AI, bảng giá giải pháp và đăng ký tham gia sự kiện chuyên đề.
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/saigon-newport.svg" alt="Saigon Newport (Tân Cảng Sài Gòn)" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">Saigon Newport (Tân Cảng Sài Gòn)</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> Ho Chi Minh City · Cát Lái &amp; Cái Mép
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">18 Open Jobs</span>
+              <span class="co-card-badge">Port &amp; Terminal</span>
+              <span class="co-card-badge">10,000+ Staff</span>
+            </div>
+            <p class="co-card-desc">Vietnam's #1 container terminal operator managing Tân Cảng Cát Lái, TCIT Cái Mép deepwater port, and ICD network nationwide.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 2: Gemadept Corporation -->
+        <a href="#company?id=gemadept" onclick="showCompanyDetail(\'gemadept\'); return false;" class="co-card" data-category="port 3pl" data-name="gemadept corporation seaport logistics cold chain river shipping nam dinh vu dung quat">
+          <div>
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/gemadept.svg" alt="Gemadept Corporation" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">Gemadept Corporation</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> Ho Chi Minh City · Hải Phòng &amp; Cái Mép
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">12 Open Jobs</span>
+              <span class="co-card-badge">Port &amp; Logistics</span>
+              <span class="co-card-badge">3,500+ Staff</span>
+            </div>
+            <p class="co-card-desc">Pioneering port investor and integrated 3PL conglomerate operating Nam Đình Vũ Port, Gemalink Deepwater Port, and cold logistics.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 3: Viconship Container Corporation -->
+        <a href="#company?id=viconship" onclick="showCompanyDetail(\'viconship\'); return false;" class="co-card" data-category="port 3pl" data-name="viconship vietnam container shipping logistics green port vip dinh vu hai phong">
+          <div>
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/viconship.svg" alt="Viconship Container Corporation" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">Viconship Container Corporation</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> Hải Phòng &amp; Hà Nội
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">8 Open Jobs</span>
+              <span class="co-card-badge">Seaport &amp; Depots</span>
+              <span class="co-card-badge">2,000+ Staff</span>
+            </div>
+            <p class="co-card-desc">Northern Vietnam's leading container seaport operator managing Green Port VIP, Đình Vũ Terminal, and bonded logistics hubs.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 4: DHL Global Forwarding Vietnam -->
+        <a href="#company?id=dhl-global-forwarding" onclick="showCompanyDetail(\'dhl-global-forwarding\'); return false;" class="co-card" data-category="3pl" data-name="dhl global forwarding vietnam freight forwarding 3pl air ocean cold chain customs">
+          <div>
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/dhl.svg" alt="DHL Global Forwarding Vietnam" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">DHL Global Forwarding Vietnam</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> Ho Chi Minh City, Hà Nội &amp; Bắc Ninh
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">14 Open Jobs</span>
+              <span class="co-card-badge">Freight Forwarding</span>
+              <span class="co-card-badge">5,000–10,000 Staff</span>
+            </div>
+            <p class="co-card-desc">Global leader in air and ocean freight forwarding with modern multimodal customs brokerage and distribution gateways across Vietnam.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 5: Kuehne + Nagel Vietnam -->
+        <a href="#company?id=kuehne-nagel" onclick="showCompanyDetail(\'kuehne-nagel\'); return false;" class="co-card" data-category="3pl" data-name="kuehne nagel kn vietnam freight sea air logistics pharma healthcare contract logistics">
+          <div>
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/kuehne-nagel.svg" alt="Kuehne + Nagel Vietnam" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">Kuehne + Nagel Vietnam</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> Ho Chi Minh City, Hải Phòng &amp; Đà Nẵng
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">11 Open Jobs</span>
+              <span class="co-card-badge">Sea &amp; Air Freight</span>
+              <span class="co-card-badge">1,200+ Staff</span>
+            </div>
+            <p class="co-card-desc">Global top-tier logistics specialist providing end-to-end sea freight, air logistics, and GDP-certified healthcare supply chains across Vietnam.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 6: DB Schenker Vietnam -->
+        <a href="#company?id=db-schenker" onclick="showCompanyDetail(\'db-schenker\'); return false;" class="co-card" data-category="3pl tech" data-name="db schenker vietnam contract logistics contract warehousing vsip ocean air freight forwarding">
+          <div>
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/db-schenker.svg" alt="DB Schenker Vietnam" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">DB Schenker Vietnam</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> Bình Dương &amp; Ho Chi Minh City
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">9 Open Jobs</span>
+              <span class="co-card-badge">Contract Logistics</span>
+              <span class="co-card-badge">2,500+ Staff</span>
+            </div>
+            <p class="co-card-desc">European logistics powerhouse operating major automated distribution centers at VSIP Bình Dương and multimodal air-sea hubs.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 7: CJ Logistics Vietnam -->
+        <a href="#company?id=cj-logistics" onclick="showCompanyDetail(\'cj-logistics\'); return false;" class="co-card" data-category="3pl coldchain" data-name="cj logistics vietnam cold chain fmcg distribution temperature controlled smart warehouse">
+          <div>
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/cj-logistics.svg" alt="CJ Logistics Vietnam" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">CJ Logistics Vietnam</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> Bình Dương, Đồng Nai &amp; TP.HCM
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">15 Open Jobs</span>
+              <span class="co-card-badge">Cold Chain &amp; 3PL</span>
+              <span class="co-card-badge">4,000+ Staff</span>
+            </div>
+            <p class="co-card-desc">Leading multimodal cold chain and FMCG logistics operator managing multi-temperature distribution centers across southern Vietnam.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 8: Viettel Post Logistics -->
+        <a href="#company?id=viettel-post" onclick="showCompanyDetail(\'viettel-post\'); return false;" class="co-card" data-category="ecommerce 3pl" data-name="viettel post logistics express delivery cross border smart sorting china vietnam rail freight">
+          <div>
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/viettel.svg" alt="Viettel Post Logistics" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">Viettel Post Logistics</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> Hà Nội, Lạng Sơn &amp; Ho Chi Minh City
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">22 Open Jobs</span>
+              <span class="co-card-badge">Express &amp; Rail</span>
+              <span class="co-card-badge">25,000+ Staff</span>
+            </div>
+            <p class="co-card-desc">National logistics and courier enterprise operating cross-border China-Vietnam freight trains and automated mega-sorting hubs.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 9: Transimex Corporation -->
+        <a href="#company?id=transimex" onclick="showCompanyDetail(\'transimex\'); return false;" class="co-card" data-category="3pl coldchain" data-name="transimex logistics icd thu duc bonded warehouse inland container depot fcl lcl">
+          <div>
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/transimex.svg" alt="Transimex Corporation" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">Transimex Corporation</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> TP. Thủ Đức, TP.HCM &amp; Long An
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">7 Open Jobs</span>
+              <span class="co-card-badge">Inland Logistics &amp; ICD</span>
+              <span class="co-card-badge">1,800+ Staff</span>
+            </div>
+            <p class="co-card-desc">Vietnam's premier domestic logistics and ICD operator with bonded logistics centers, temperature-controlled facilities, and barges.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 10: Hai An Transport & Stevedoring (HATS) -->
+        <a href="#company?id=hai-an" onclick="showCompanyDetail(\'hai-an\'); return false;" class="co-card" data-category="port" data-name="hai an transport stevedoring hats container vessel coastal feeder hai phong cat lai">
+          <div>
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/hai-an.svg" alt="Hai An Transport &amp; Stevedoring (HATS)" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">Hai An Transport &amp; Stevedoring (HATS)</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> Hải Phòng &amp; Ho Chi Minh City
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">6 Open Jobs</span>
+              <span class="co-card-badge">Liner &amp; Terminal</span>
+              <span class="co-card-badge">900+ Staff</span>
+            </div>
+            <p class="co-card-desc">Largest domestic container liner fleet in Vietnam operating scheduled feeder services between Hải Phòng, Đà Nẵng, and TP. Hồ Chí Minh.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 11: Sotrans Logistics (South Logistics JSC) -->
+        <a href="#company?id=sotrans" onclick="showCompanyDetail(\'sotrans\'); return false;" class="co-card" data-category="3pl port" data-name="sotrans logistics south logistics heavy lift project cargo river barge icd sotrans">
+          <div>
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/sotrans.svg" alt="Sotrans Logistics" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">Sotrans Logistics (South Logistics JSC)</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> Ho Chi Minh City &amp; Bà Rịa - Vũng Tàu
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">5 Open Jobs</span>
+              <span class="co-card-badge">Project Cargo &amp; 3PL</span>
+              <span class="co-card-badge">1,500+ Staff</span>
+            </div>
+            <p class="co-card-desc">Specialized heavy-lift, project cargo transport, inland waterway barge fleet, and inland container depot (ICD) operations.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 12: BW Industrial Development -->
+        <a href="#company?id=bw-industrial" onclick="showCompanyDetail(\'bw-industrial\'); return false;" class="co-card" data-category="tech" data-name="bw industrial development logistics park warehouse e-commerce hub warburg pincus becamex">
+          <div>
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/bw-industrial.svg" alt="BW Industrial Development" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">BW Industrial Development</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> Bình Dương, Bắc Ninh &amp; Hải Dương
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">8 Open Jobs</span>
+              <span class="co-card-badge">Logistics Parks</span>
+              <span class="co-card-badge">500+ Staff</span>
+            </div>
+            <p class="co-card-desc">Joint venture between Warburg Pincus and Becamex IDC developing over 8.5 million sqm of institutional-grade logistics parks across Vietnam.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 13: SLP Vietnam (GLP Capital Partner) -->
+        <a href="#company?id=slp-vietnam" onclick="showCompanyDetail(\'slp-vietnam\'); return false;" class="co-card" data-category="tech" data-name="slp vietnam glp capital partner modern logistics facility smart warehouse distribution">
+          <div>
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/slp-vietnam.svg" alt="SLP Vietnam" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">SLP Vietnam (GLP Partner)</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> Bắc Ninh, Hải Phòng &amp; Long An
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">5 Open Jobs</span>
+              <span class="co-card-badge">Grade-A DC</span>
+              <span class="co-card-badge">350+ Staff</span>
+            </div>
+            <p class="co-card-desc">Modern logistics developer delivering institutional Grade-A warehouse infrastructure in Greater Hanoi and Greater Ho Chi Minh City.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 14: Shopee Xpress (SPX Logistics Vietnam) -->
+        <a href="#company?id=spx-logistics" onclick="showCompanyDetail(\'spx-logistics\'); return false;" class="co-card" data-category="ecommerce" data-name="shopee xpress spx logistics e-commerce sorting center automated last mile delivery">
+          <div>
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/shopee.svg" alt="Shopee Xpress (SPX Logistics)" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">Shopee Xpress (SPX Logistics)</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> Bắc Ninh, Củ Chi &amp; TP.HCM
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">26 Open Jobs</span>
+              <span class="co-card-badge">E-Commerce &amp; Hubs</span>
+              <span class="co-card-badge">15,000+ Staff</span>
+            </div>
+            <p class="co-card-desc">E-commerce supply chain arm powering Shopee with 100,000+ sqm automated sorting centers at VSIP Bắc Ninh and Tân Phú Trung.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 15: TikiNow Smart Fulfillment -->
+        <a href="#company?id=tikinow" onclick="showCompanyDetail(\'tikinow\'); return false;" class="co-card" data-category="ecommerce tech" data-name="tikinow smart fulfillment tiki logistics automated fulfillment wms 2 hour delivery">
+          <div>
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/tiki.svg" alt="TikiNow Smart Fulfillment" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">TikiNow Smart Fulfillment</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> Ho Chi Minh City, Hà Nội &amp; Cần Thơ
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">10 Open Jobs</span>
+              <span class="co-card-badge">Fulfillment &amp; WMS</span>
+              <span class="co-card-badge">3,000+ Staff</span>
+            </div>
+            <p class="co-card-desc">Pioneering fast-delivery fulfillment network in Vietnam with proprietary multi-tier WMS and high-density sorting hubs.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 16: VinFast EV Global Supply Chain & Logistics -->
+        <a href="#company?id=vinfast" onclick="showCompanyDetail(\'vinfast\'); return false;" class="co-card" data-category="port" data-name="vinfast ev supply chain global logistics ro-ro automotive export dinh vu hai phong">
+          <div>
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/vinfast.svg" alt="VinFast EV Global Logistics" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">VinFast EV Global Logistics</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> Cát Hải - Hải Phòng &amp; Hà Nội
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">12 Open Jobs</span>
+              <span class="co-card-badge">Automotive &amp; Export</span>
+              <span class="co-card-badge">20,000+ Staff</span>
+            </div>
+            <p class="co-card-desc">Automotive manufacturing supply chain operating dedicated Ro-Ro vehicle export berths and maritime container export lanes from Đình Vũ.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 17: Samsung Electronics Vietnam Logistics -->
+        <a href="#company?id=samsung" onclick="showCompanyDetail(\'samsung\'); return false;" class="co-card" data-category="3pl tech" data-name="samsung electronics vietnam logistics air cargo charter yen binh bac ninh thai nguyen">
+          <div>
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/samsung.svg" alt="Samsung Electronics Vietnam Logistics" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">Samsung Electronics Vietnam Logistics</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> Bắc Ninh &amp; Thái Nguyên
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">14 Open Jobs</span>
+              <span class="co-card-badge">High-Tech Supply Chain</span>
+              <span class="co-card-badge">50,000+ Staff</span>
+            </div>
+            <p class="co-card-desc">Vietnam's largest manufacturing exporter running dedicated high-frequency air cargo charters and bonded customs corridors at Nội Bài.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 18: Logivan Freight Tech -->
+        <a href="#company?id=logivan" onclick="showCompanyDetail(\'logivan\'); return false;" class="co-card" data-category="tech" data-name="logivan freight tech digital drayage trucking platform tms route optimization">
+          <div>
+            <div class="co-card-top">
+              <div class="co-card-logo-wrap">
+                <img src="images/brands/logivan.svg" alt="Logivan Freight Tech" loading="lazy">
+              </div>
+              <div class="co-card-info">
+                <h3 class="co-card-name">Logivan Freight Tech</h3>
+                <div class="co-card-meta">
+                  <i class="fa-solid fa-location-dot"></i> Ho Chi Minh City &amp; Hà Nội
+                </div>
+              </div>
+            </div>
+            <div class="co-card-badges">
+              <span class="co-card-badge highlight">6 Open Jobs</span>
+              <span class="co-card-badge">Digital Drayage &amp; TMS</span>
+              <span class="co-card-badge">250+ Staff</span>
+            </div>
+            <p class="co-card-desc">Vietnam's leading on-demand interprovincial freight matching and digital container drayage network connecting 60,000+ verified truckers.</p>
+          </div>
+          <div class="co-card-foot">
+            <span class="co-card-foot-link">
+              <span>Explore Company Profile</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Empty state when search/filter has 0 results -->
+      <div id="co-empty-state" style="display:none; text-align:center; padding:50px 20px; background:#fff; border:1px solid #E2E8F0; border-radius:8px; margin-top:20px;">
+        <i class="fa-solid fa-building" style="font-size:36px; color:#CBD5E1; margin-bottom:12px;"></i>
+        <h3 style="font-size:17px; font-weight:700; color:#0F172A; margin:0 0 6px;">No companies found</h3>
+        <p style="font-size:13.5px; color:#64748B; margin:0 0 16px;">Try adjusting your keywords or category filters.</p>
+        <button type="button" class="btn-builtin-primary" onclick="resetCompanyFilters();" style="padding:10px 24px; font-size:13.5px; font-weight:700; border-radius:8px; display:inline-flex; align-items:center; gap:8px; cursor:pointer;"><i class="fa-solid fa-rotate-left"></i> Reset All Filters</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Search & Filter script for companies -->
+  <script>
+    window.currentCompanyFilter = 'all';
+
+    function setCompanyFilter(cat, btn) {
+      document.querySelectorAll('.co-filter-chip').forEach(function(c) { c.classList.remove('active'); });
+      if (btn) btn.classList.add('active');
+      window.currentCompanyFilter = cat;
+      filterCompanies();
+    }
+
+    function filterCompanies() {
+      var query = (document.getElementById('companies-search-input').value || '').trim().toLowerCase();
+      var cat = window.currentCompanyFilter || 'all';
+      var clearBtn = document.getElementById('btn-clear-search');
+      if (clearBtn) clearBtn.style.display = query ? 'block' : 'none';
+
+      var cards = document.querySelectorAll('.co-card');
+      var visibleCount = 0;
+      cards.forEach(function(card) {
+        var cardCat = card.getAttribute('data-category') || '';
+        var cardName = card.getAttribute('data-name') || '';
+        var matchesCat = (cat === 'all') || cardCat.indexOf(cat) !== -1;
+        var matchesQuery = !query || cardName.indexOf(query) !== -1 || card.textContent.toLowerCase().indexOf(query) !== -1;
+        if (matchesCat && matchesQuery) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      var countEl = document.getElementById('co-visible-count');
+      if (countEl) countEl.textContent = visibleCount;
+      var emptyEl = document.getElementById('co-empty-state');
+      if (emptyEl) emptyEl.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    function clearCompanySearch() {
+      var input = document.getElementById('companies-search-input');
+      if (input) input.value = '';
+      filterCompanies();
+    }
+
+    function resetCompanyFilters() {
+      clearCompanySearch();
+      var allBtn = document.querySelector('.co-filter-chip[data-filter="all"]');
+      if (allBtn) setCompanyFilter('all', allBtn);
+    }
+  </script>
+
+  </div>
+
+  <!-- ========================================================================
+       12. BUILT IN 4-COLUMN ENTERPRISE DIRECTORY FOOTER
+       ======================================================================== -->
+    <!-- ========================================================================
+       12. BUILT IN CLEAN 5-COLUMN LIGHT FOOTER
+       Reference: Built In measured tokens #EAEEFD / #04003F / #28386F
+       ======================================================================== -->
+    </section>
+
+        <!-- ========================================================================
+         VIEW: COMPANY DETAIL (#view-company-detail)
+         Official Authentic Built In specification from thesandbox-logistics-platform
+         ======================================================================== -->
+    <section class="app-view" id="view-company-detail">
+      
+  <div style="background:#F8FAFC; border-bottom:1px solid #E2E8F0; padding:12px 0;">
+    <div class="container" style="max-width:1440px; padding:0 32px; font-size:13px; color:#64748B; display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <a href="#" data-view="home" style="color:#64748B; text-decoration:none;"><i class="fa-solid fa-house"></i> Home</a>
+        <span>&rsaquo;</span>
+        <a href="#" data-view="companies" style="color:#64748B; text-decoration:none;">Companies</a>
+        <span>&rsaquo;</span>
+        <span id="breadcrumb-company-name" style="color:#0F172A; font-weight:600;">Company Profile</span>
+      </div>
+      <div>
+        <button type="button" onclick="switchView('companies');" style="background:#FFFFFF; border:1px solid #CBD5E1; color:#0F172A; padding:6px 14px; border-radius:6px; font-size:12.5px; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+          <i class="fa-solid fa-arrow-left"></i> Quay lại Danh sách Công ty
+        </button>
+      </div>
+    </div>
+  </div>
+
+      <div class="container" style="max-width:1440px; padding:24px 32px 60px;">
+        <main class="builtin-layout-grid" role="main">
+      
+      <!-- LEFT COLUMN: Sticky Identity Card + Hiring Accordion -->
+      <aside class="builtin-left-aside" aria-label="Company Identity &amp; Status">
+        
+        <!-- Primary Sticky Identity Card with Floating 100x100 Logo Badge -->
+        <div class="builtin-card builtin-identity-card">
+          <div class="builtin-logo-badge">
+            <img id="company-logo-img" src="images/brands/viconship.svg" alt="Company Logo">
+          </div>
+
+          <h1 class="builtin-company-name" id="company-name-heading">Viconship Container Corporation</h1>
+          <div class="builtin-tier-pill" id="company-tier-chip">ACCREDITED TIER 1</div>
+
+          <!-- 1.5px Outlined Save Button -->
+          <button type="button" class="builtin-btn-save" id="btn-save-company" onclick="toggleSaveCompany();" aria-label="Save this company">
+            <i class="fa-regular fa-heart" id="save-icon"></i>
+            <span id="save-text">Save Company</span>
+          </button>
+
+          <div style="height:1px; background:var(--builtin-border); margin:0 0 16px;"></div>
+
+          <!-- Metadata Stack in Barlow Condensed -->
+          <div class="builtin-meta-list">
+            <div class="builtin-meta-item">
+              <i class="fa-solid fa-location-dot builtin-meta-icon"></i>
+              <span class="builtin-meta-text" id="company-hq">Hai Phong Port Cluster</span>
+            </div>
+            <div class="builtin-meta-item">
+              <i class="fa-solid fa-users builtin-meta-icon"></i>
+              <span class="builtin-meta-text" id="company-size">2,500+ Total Employees</span>
+            </div>
+            <div class="builtin-meta-item">
+              <i class="fa-solid fa-calendar builtin-meta-icon"></i>
+              <span class="builtin-meta-text">Year Founded: <span id="company-founded">1985</span></span>
+            </div>
+            <div class="builtin-meta-item">
+              <i class="fa-solid fa-arrow-up-right-from-square builtin-meta-icon"></i>
+              <a class="builtin-meta-link" id="company-website-link" href="https://viconship.com" target="_blank" rel="noopener">
+                View Official Website
+              </a>
+            </div>
+          </div>
+
+          <div style="height:1px; background:var(--builtin-border); margin:16px 0;"></div>
+
+          <!-- Contact Dossier -->
+          <div style="font-size:12px; font-family:var(--font-montserrat); color:var(--builtin-muted); line-height:1.55;">
+            <div style="margin-bottom:6px;"><strong style="color:var(--builtin-midnight);">Hotline:</strong> <span id="company-phone" style="color:#1e293b;">(+84) 225 3836 705</span></div>
+            <div style="margin-bottom:6px;"><strong style="color:var(--builtin-midnight);">Careers Email:</strong> <span id="company-email" style="color:#1e293b;">careers@viconship.com</span></div>
+            <div><strong style="color:var(--builtin-midnight);">HQ Facility:</strong> <span id="company-address" style="color:#1e293b;">11 Vo Thi Sau, Ngo Quyen, Hai Phong</span></div>
+          </div>
+        </div>
+
+        <!-- Secondary "We're Hiring!" Card with Role Categories -->
+        <div class="builtin-card" style="overflow:hidden;">
+          <div class="builtin-hiring-header">
+            <h2 class="builtin-hiring-title">
+              <span class="builtin-hiring-dot"></span>
+              We're Hiring!
+            </h2>
+            <span class="builtin-hiring-badge" id="hiring-total-badge">7 Roles</span>
+          </div>
+          <div id="company-hiring-categories">
+            <!-- Dynamically populated category breakdown rows -->
+          </div>
+          <div style="padding:10px 16px; background:#ffffff; border-top:1px solid var(--builtin-border); text-align:center;">
+            <a href="#tab-jobs" onclick="switchBuiltInTab('jobs'); return false;" style="font-family:var(--font-montserrat); font-size:12.5px; font-weight:700; color:var(--builtin-blue); text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+              <span>View All Open Positions</span>
+              <i class="fa-solid fa-arrow-right" style="font-size:11px;"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tertiary Similar Companies Card -->
+        <div class="builtin-card" style="padding:16px 18px;">
+          <h2 style="font-family:var(--font-montserrat); font-size:14.5px; font-weight:800; color:var(--builtin-midnight); margin:0 0 12px;">Similar Logistics Networks</h2>
+          <div id="company-similar-list" style="display:flex; flex-direction:column; gap:10px;">
+            <!-- Dynamically populated similar companies -->
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- RIGHT COLUMN: Cover Banner + Sticky Tabs + Panes -->
+      <section class="builtin-right-column" aria-label="Enterprise Narrative &amp; Operations">
+        
+        <!-- Wide Cover Banner Box -->
+        <div class="builtin-banner-wrap">
+          <div class="builtin-cover-photo-box">
+            <img id="company-hero-img" src="images/hero_3.jpg" alt="Cover Banner" class="builtin-cover-img">
+            <div class="builtin-cover-overlay"></div>
+            <div class="builtin-cover-content">
+              <div>
+                <div class="builtin-cover-sub" style="color: #38BDF8 !important; text-shadow: 0 1px 4px rgba(0,0,0,0.8); font-weight: 700;">OFFICIAL ENTERPRISE DOSSIER</div>
+                <h2 class="builtin-cover-heading" id="banner-company-title" style="color: #FFFFFF !important; text-shadow: 0 2px 8px rgba(0,0,0,0.85); font-weight: 800;">Viconship Container Corporation</h2>
+              </div>
+              <span class="builtin-cover-pill">ACCREDITED CARRIER</span>
+            </div>
+          </div>
+
+          <!-- Sticky Tab Navigation Bar -->
+          <nav class="builtin-tabs-navbar" role="tablist" aria-label="Company Detail Sections">
+            <button type="button" class="builtin-tab-btn active" role="tab" aria-selected="true" id="tab-nav-overview" onclick="switchBuiltInTab('overview');">
+              Overview
+            </button>
+            <button type="button" class="builtin-tab-btn" role="tab" aria-selected="false" id="tab-nav-jobs" onclick="switchBuiltInTab('jobs');">
+              Jobs <span class="builtin-tab-badge" id="tab-badge-jobs">7</span>
+            </button>
+            <button type="button" class="builtin-tab-btn" role="tab" aria-selected="false" id="tab-nav-technology" onclick="switchBuiltInTab('technology');">
+              Technology We Use
+            </button>
+            <button type="button" class="builtin-tab-btn" role="tab" aria-selected="false" id="tab-nav-culture" onclick="switchBuiltInTab('culture');">
+              Life &amp; Terminals
+            </button>
+            <button type="button" class="builtin-tab-btn" role="tab" aria-selected="false" id="tab-nav-offices" onclick="switchBuiltInTab('offices');">
+              Offices &amp; Facilities
+            </button>
+            <button type="button" class="builtin-tab-btn" role="tab" aria-selected="false" id="tab-nav-awards" onclick="switchBuiltInTab('awards');">
+              Awards &amp; Seals
+            </button>
+          </nav>
+        </div>
+
+        <!-- TAB PANE 1: OVERVIEW -->
+        <div id="pane-overview" class="builtin-pane">
+          <!-- Story & Metrics Card -->
+          <div class="builtin-pane-card">
+            <h2 class="builtin-pane-title">About <span id="company-about-name">Viconship</span></h2>
+            <p id="company-about-desc" style="font-size:14.5px; color:#475569; line-height:1.7; margin:0 0 20px;">
+              Viconship manages a nationwide network of deep-water seaports...
             </p>
-          </div>
-          <div>
-            <button type="button" class="btn-company-contact-now" onclick="openCompanyContactModal('vinfast', 'Đăng ký giới thiệu giải pháp doanh nghiệp')" style="padding: 12px 24px; font-size: 14.5px;">
-              <i class="fa-solid fa-building-circle-check"></i> Đăng Ký Hồ Sơ Doanh Nghiệp
-            </button>
-          </div>
-        </div>
 
-        <!-- Creative Segmented Filter & Search Controls -->
-        <div class="companies-filter-bar">
-          <div class="companies-category-tabs">
-            <button type="button" class="companies-tab-pill active" data-category="all">
-              <span class="tab-label">Tất Cả</span>
-              <span class="tab-count-tag">6</span>
-            </button>
-            <button type="button" class="companies-tab-pill" data-category="ai">
-              <span class="tab-color-dot" style="background: #8B5CF6;"></span>
-              <span class="tab-label">AI &amp; Tự Động Hóa</span>
-              <span class="tab-count-tag">2</span>
-            </button>
-            <button type="button" class="companies-tab-pill" data-category="tech">
-              <span class="tab-color-dot" style="background: #0EA5E9;"></span>
-              <span class="tab-label">Công Nghệ &amp; Cloud</span>
-              <span class="tab-count-tag">2</span>
-            </button>
-            <button type="button" class="companies-tab-pill" data-category="logistics">
-              <span class="tab-color-dot" style="background: #10B981;"></span>
-              <span class="tab-label">Cảng Biển &amp; Logistics</span>
-              <span class="tab-count-tag">2</span>
-            </button>
-          </div>
-          <div class="companies-search-wrap">
-            <i class="fa-solid fa-magnifying-glass companies-search-icon"></i>
-            <input type="text" id="companies-search-input" class="companies-search-input" placeholder="Tìm doanh nghiệp, giải pháp AI...">
-            <span class="search-tag-hint">Enter</span>
-          </div>
-        </div>
-
-        <!-- Companies Grid -->
-        <div class="companies-cards-grid" id="companies-cards-grid">
-          <!-- Dynamically populated by initCompaniesDirectory() -->
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         VIEW: COMPANY DETAIL SHOWCASE (#view-company-detail)
-         ======================================================================== -->
-    
-    <!-- ========================================================================
-         VIEW: COURSES & ACADEMY (#view-courses)
-         ======================================================================== -->
-    <section class="app-view" id="view-courses">
-      <div class="container" style="padding: 32px 32px 60px;">
-        
-        <!-- Header Banner -->
-        <div class="page-title-banner" style="background: linear-gradient(135deg, #1E1B4B 0%, #4338CA 100%); color: #fff; padding: 36px 36px; border-radius: 16px; margin-bottom: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-          <div>
-            <span style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 8px;">HỆ THỐNG ĐÀO TẠO &amp; CHỨNG CHỈ QUỐC TẾ</span>
-            <h1 style="font-size: 26px; font-weight: 800; margin: 0 0 8px; color: #fff;">Trung Tâm Đào Tạo &amp; Chứng Chỉ Nghề Logistics</h1>
-            <p style="margin: 0; font-size: 14px; color: rgba(255,255,255,0.85); max-width: 650px; line-height: 1.5;">Học cùng chuyên gia đầu ngành. Cấp chứng chỉ tiêu chuẩn FIATA, IATA DGR, quản trị logistics cảng biển và chuỗi cung ứng số.</p>
-          </div>
-          <div>
-            <button type="button" class="btn-consult-course" onclick="openEnterpriseModal('Tư Vấn Khóa Học &amp; Chứng Chỉ');" style="background: #E11D48; color: #fff; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 13.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(225,29,72,0.35);">
-              <i class="fa-solid fa-graduation-cap"></i> Nhận Lộ Trình Đào Tạo
-            </button>
-          </div>
-        </div>
-
-        <!-- 7 Category Tabs -->
-        <div class="career-tabs-row" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 24px;">
-          <button type="button" class="career-tab-btn active" data-course-tab="all" style="padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #CBD5E1; background: #0F172A; color: #fff; cursor: pointer; white-space: nowrap;">Tất Cả Khóa Học (24)</button>
-          <button type="button" class="career-tab-btn" data-course-tab="air" style="padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #E2E8F0; background: #fff; color: #475569; cursor: pointer; white-space: nowrap;">Air Cargo Operations</button>
-          <button type="button" class="career-tab-btn" data-course-tab="customs" style="padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #E2E8F0; background: #fff; color: #475569; cursor: pointer; white-space: nowrap;">Customs Brokerage</button>
-          <button type="button" class="career-tab-btn" data-course-tab="cold" style="padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #E2E8F0; background: #fff; color: #475569; cursor: pointer; white-space: nowrap;">Cold Chain Logistics</button>
-          <button type="button" class="career-tab-btn" data-course-tab="maritime" style="padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #E2E8F0; background: #fff; color: #475569; cursor: pointer; white-space: nowrap;">Maritime &amp; Port Management</button>
-          <button type="button" class="career-tab-btn" data-course-tab="analytics" style="padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #E2E8F0; background: #fff; color: #475569; cursor: pointer; white-space: nowrap;">Supply Chain Analytics &amp; AI</button>
-          <button type="button" class="career-tab-btn" data-course-tab="robotics" style="padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #E2E8F0; background: #fff; color: #475569; cursor: pointer; white-space: nowrap;">Warehouse Automation</button>
-        </div>
-
-        <!-- Course Cards Grid -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; margin-bottom: 40px;">
-          <!-- Course 1 -->
-          <div style="background: #fff; border: 1px solid #E2E8F0; border-radius: 12px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
-            <div>
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-                <span style="font-size: 11px; font-weight: 700; color: #15803D; background: #DCFCE7; padding: 3px 8px; border-radius: 4px;">CHỨNG CHỈ QUỐC TẾ FIATA</span>
-                <span style="font-size: 12px; color: #F59E0B; font-weight: 700;"><i class="fa-solid fa-star"></i> 4.9</span>
+            <!-- 3-Column KPI Metrics in Barlow Condensed -->
+            <div class="builtin-kpi-grid">
+              <div class="builtin-kpi-item">
+                <div class="builtin-kpi-label" id="company-stat1-label">Annual Throughput</div>
+                <div class="builtin-kpi-val" id="company-stat1-val">1.8M+ TEUs</div>
               </div>
-              <h3 style="font-size: 17px; font-weight: 700; color: #0F172A; margin: 0 0 8px; line-height: 1.4;">FIATA Higher Diploma in Supply Chain Management</h3>
-              <p style="font-size: 13px; color: #64748B; margin: 0 0 16px; line-height: 1.5;">Chương trình đào tạo tiêu chuẩn liên đoàn các hiệp hội giao nhận vận tải quốc tế FIATA về quản trị logistics toàn cầu.</p>
-              <div style="font-size: 12.5px; color: #475569; margin-bottom: 14px; display: flex; flex-direction: column; gap: 6px;">
-                <div><i class="fa-regular fa-clock" style="color: #94A3B8; width: 16px;"></i> Thời lượng: 12 tuần (72 giờ)</div>
-                <div><i class="fa-solid fa-chalkboard-user" style="color: #94A3B8; width: 16px;"></i> Giảng viên: Chuyên gia FIATA Master Trainer</div>
+              <div class="builtin-kpi-item">
+                <div class="builtin-kpi-label" id="company-stat2-label">Berth Frontage</div>
+                <div class="builtin-kpi-val" id="company-stat2-val">1,200 Meters</div>
               </div>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #F1F5F9; padding-top: 16px;">
-              <div>
-                <span style="font-size: 11px; color: #94A3B8; display: block;">Học phí</span>
-                <span style="font-size: 16px; font-weight: 800; color: #DC2626;">12.500.000 đ</span>
-              </div>
-              <button type="button" onclick="openEnterpriseModal('FIATA Diploma Enrollment');" style="background: #0F172A; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;">Đăng Ký Học</button>
-            </div>
-          </div>
-
-          <!-- Course 2 -->
-          <div style="background: #fff; border: 1px solid #E2E8F0; border-radius: 12px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
-            <div>
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-                <span style="font-size: 11px; font-weight: 700; color: #B45309; background: #FEF3C7; padding: 3px 8px; border-radius: 4px;">IATA DGR CAT 6</span>
-                <span style="font-size: 12px; color: #F59E0B; font-weight: 700;"><i class="fa-solid fa-star"></i> 4.95</span>
-              </div>
-              <h3 style="font-size: 17px; font-weight: 700; color: #0F172A; margin: 0 0 8px; line-height: 1.4;">Hàng Nguy Hiểm Đường Hàng Không IATA Dangerous Goods</h3>
-              <p style="font-size: 13px; color: #64748B; margin: 0 0 16px; line-height: 1.5;">Chứng chỉ bắt buộc cho nhân sự giao nhận, đóng gói và khai thác hàng hóa nguy hiểm theo quy định của IATA.</p>
-              <div style="font-size: 12.5px; color: #475569; margin-bottom: 14px; display: flex; flex-direction: column; gap: 6px;">
-                <div><i class="fa-regular fa-clock" style="color: #94A3B8; width: 16px;"></i> Thời lượng: 5 ngày tập trung</div>
-                <div><i class="fa-solid fa-chalkboard-user" style="color: #94A3B8; width: 16px;"></i> Giảng viên: IATA Certified Instructor</div>
-              </div>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #F1F5F9; padding-top: 16px;">
-              <div>
-                <span style="font-size: 11px; color: #94A3B8; display: block;">Học phí</span>
-                <span style="font-size: 16px; font-weight: 800; color: #DC2626;">9.800.000 đ</span>
-              </div>
-              <button type="button" onclick="openEnterpriseModal('IATA DGR Enrollment');" style="background: #0F172A; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;">Đăng Ký Học</button>
-            </div>
-          </div>
-
-          <!-- Course 3 -->
-          <div style="background: #fff; border: 1px solid #E2E8F0; border-radius: 12px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
-            <div>
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-                <span style="font-size: 11px; font-weight: 700; color: #0369A1; background: #E0F2FE; padding: 3px 8px; border-radius: 4px;">CẢNG BIỂN &amp; HẢI QUAN</span>
-                <span style="font-size: 12px; color: #F59E0B; font-weight: 700;"><i class="fa-solid fa-star"></i> 4.88</span>
-              </div>
-              <h3 style="font-size: 17px; font-weight: 700; color: #0F172A; margin: 0 0 8px; line-height: 1.4;">Nghiệp Vụ Khai Báo Hải Quan Điện Tử VNACCS/VCIS</h3>
-              <p style="font-size: 13px; color: #64748B; margin: 0 0 16px; line-height: 1.5;">Thực hành áp mã HS, tính thuế xuất nhập khẩu, kiểm tra sau thông quan và xử lý hồ sơ C/O các mẫu ưu đãi.</p>
-              <div style="font-size: 12.5px; color: #475569; margin-bottom: 14px; display: flex; flex-direction: column; gap: 6px;">
-                <div><i class="fa-regular fa-clock" style="color: #94A3B8; width: 16px;"></i> Thời lượng: 8 tuần (Online + Lab)</div>
-                <div><i class="fa-solid fa-chalkboard-user" style="color: #94A3B8; width: 16px;"></i> Giảng viên: Chuyên viên Tổng cục Hải Quan</div>
-              </div>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #F1F5F9; padding-top: 16px;">
-              <div>
-                <span style="font-size: 11px; color: #94A3B8; display: block;">Học phí</span>
-                <span style="font-size: 16px; font-weight: 800; color: #DC2626;">6.500.000 đ</span>
-              </div>
-              <button type="button" onclick="openEnterpriseModal('Customs VNACCS Enrollment');" style="background: #0F172A; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;">Đăng Ký Học</button>
-            </div>
-          </div>
-
-          <!-- Course 4 -->
-          <div style="background: #fff; border: 1px solid #E2E8F0; border-radius: 12px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
-            <div>
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-                <span style="font-size: 11px; font-weight: 700; color: #6D28D9; background: #EDE9FE; padding: 3px 8px; border-radius: 4px;">AI &amp; TỰ ĐỘNG HÓA</span>
-                <span style="font-size: 12px; color: #F59E0B; font-weight: 700;"><i class="fa-solid fa-star"></i> 4.92</span>
-              </div>
-              <h3 style="font-size: 17px; font-weight: 700; color: #0F172A; margin: 0 0 8px; line-height: 1.4;">Quản Trị Kho Thông Minh WMS &amp; Tự Động Hóa AMR</h3>
-              <p style="font-size: 13px; color: #64748B; margin: 0 0 16px; line-height: 1.5;">Thiết kế layout kho, tích hợp AGV/AMR, hệ thống phân loại sorter tự động và quản lý vận hành phần mềm WMS hiện đại.</p>
-              <div style="font-size: 12.5px; color: #475569; margin-bottom: 14px; display: flex; flex-direction: column; gap: 6px;">
-                <div><i class="fa-regular fa-clock" style="color: #94A3B8; width: 16px;"></i> Thời lượng: 6 tuần</div>
-                <div><i class="fa-solid fa-chalkboard-user" style="color: #94A3B8; width: 16px;"></i> Giảng viên: Giám đốc vận hành Kho VinFast</div>
-              </div>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #F1F5F9; padding-top: 16px;">
-              <div>
-                <span style="font-size: 11px; color: #94A3B8; display: block;">Học phí</span>
-                <span style="font-size: 16px; font-weight: 800; color: #DC2626;">8.900.000 đ</span>
-              </div>
-              <button type="button" onclick="openEnterpriseModal('Smart Warehouse AMR Enrollment');" style="background: #0F172A; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;">Đăng Ký Học</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Official Accreditation Channels -->
-        <div style="background: #F8FAFC; border: 1px dashed #CBD5E1; border-radius: 12px; padding: 24px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-            <div>
-              <h4 style="margin: 0 0 4px; font-size: 16px; font-weight: 700; color: #0F172A;">Kênh Tra Cứu Chứng Chỉ &amp; Kiểm Định Năng Lực Quốc Gia</h4>
-              <p style="margin: 0; font-size: 13px; color: #64748B;">Hệ thống kiểm tra trực tuyến mã số học viên, văn bằng FIATA, IATA và Tổng Cục Hải Quan</p>
-            </div>
-          </div>
-          <div class="fw-channels-grid">
-            <a href="#" class="fw-channel-card" onclick="showToast('Tra cứu mã chứng chỉ FIATA...'); return false;">
-              <span class="fw-channel-badge verified"><i class="fa-solid fa-check"></i> FIATA VERIFIED</span>
-              <h4 class="fw-channel-title">FIATA Diploma Registry</h4>
-              <span class="fw-channel-text">Tra cứu văn bằng quốc tế chính thức</span>
-            </a>
-            <a href="#" class="fw-channel-card" onclick="showToast('Tra cứu chứng chỉ IATA DGR...'); return false;">
-              <span class="fw-channel-badge accredited"><i class="fa-solid fa-shield-halved"></i> IATA ACCREDITED</span>
-              <h4 class="fw-channel-title">IATA Training Registry</h4>
-              <span class="fw-channel-text">Xác thực chứng chỉ hàng nguy hiểm DGR</span>
-            </a>
-            <a href="#" class="fw-channel-card" onclick="showToast('Tra cứu chứng chỉ hải quan...'); return false;">
-              <span class="fw-channel-badge official"><i class="fa-solid fa-building-columns"></i> TỔNG CỤC HẢI QUAN</span>
-              <h4 class="fw-channel-title">Customs Broker Lookup</h4>
-              <span class="fw-channel-text">Danh bạ nhân viên đại lý hải quan</span>
-            </a>
-            <a href="#" class="fw-channel-card" onclick="showToast('Tra cứu năng lực logistics ASCL...'); return false;">
-              <span class="fw-channel-badge secure"><i class="fa-solid fa-lock"></i> ASCL STANDARD</span>
-              <h4 class="fw-channel-title">ASEAN Supply Chain Registry</h4>
-              <span class="fw-channel-text">Kiểm định chuẩn nghề nghiệp khu vực</span>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-<section class="app-view" id="view-company-detail">
-      <div class="company-profile-wrapper">
-        
-        <!-- Top Back Nav -->
-        <div class="company-profile-top-bar">
-          <button type="button" class="btn-back-companies" onclick="switchView('companies');">
-            <i class="fa-solid fa-arrow-left"></i> Quay lại danh sách doanh nghiệp
-          </button>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-size:12.5px; color:#64748B;"><i class="fa-solid fa-shield-check" style="color:#059669;"></i> Hồ Sơ Đã Được Phê Duyệt B2B</span>
-          </div>
-        </div>
-
-        <!-- Hero Dossier Banner -->
-        <div class="company-profile-banner-card">
-          <div class="company-profile-cover"></div>
-          <div class="company-profile-header-content">
-            <div class="company-profile-avatar-row">
-              <div class="company-profile-logo-box">
-                <img src="images/brands/vinfast.svg" alt="Company Logo" id="company-profile-logo-img">
-              </div>
-              <div class="company-profile-action-btns">
-                <button type="button" class="btn-profile-contact-primary" id="btn-profile-contact-now-top">
-                  <i class="fa-solid fa-paper-plane"></i> Contact Now
-                </button>
-                <button type="button" class="btn-profile-follow" onclick="this.innerHTML='<i class=\'fa-solid fa-check\'></i> Đang Theo Dõi'; this.style.color='var(--fl-primary)';">
-                  + Theo Dõi
-                </button>
-                <button type="button" class="btn-profile-follow" onclick="alert('Đã sao chép liên kết hồ sơ doanh nghiệp!');" title="Chia sẻ">
-                  <i class="fa-solid fa-share-nodes"></i>
-                </button>
+              <div class="builtin-kpi-item">
+                <div class="builtin-kpi-label" id="company-stat3-label">ICD Storage</div>
+                <div class="builtin-kpi-val" id="company-stat3-val">450,000 m²</div>
               </div>
             </div>
 
-            <div>
-              <h1 class="company-profile-name">
-                <span id="company-profile-name-text">VinFast Logistics &amp; Cold Chain Solutions</span>
-                <i class="fa-solid fa-circle-check" style="color:var(--fl-primary); font-size:20px;" title="Xác thực doanh nghiệp"></i>
-              </h1>
-              <p class="company-profile-tagline" id="company-profile-tagline-text">
-                Kiến trúc chuỗi cung ứng lạnh thông minh &amp; vận tải tự hành thế hệ mới
+            <!-- Built In Editorial Pull-Quote -->
+            <div class="builtin-quote-box">
+              <p class="builtin-quote-text" id="company-quote-text">
+                "Integrating deep-water quayside efficiency with nationwide bonded ICD nodes to accelerate Vietnam's cross-border supply chains."
               </p>
-              <div class="company-profile-badges-row">
-                <span><i class="fa-solid fa-briefcase" style="color:var(--fl-primary);"></i> <strong id="company-profile-ind-text">Logistics Tech &amp; AI</strong></span>
-                <span>•</span>
-                <span><i class="fa-solid fa-location-dot" style="color:#EF4444;"></i> <span id="company-profile-loc-text">Hải Phòng &amp; TP.HCM</span></span>
-                <span>•</span>
-                <span><i class="fa-solid fa-users"></i> <span id="company-profile-size-text">10,000+ nhân sự</span></span>
-                <span>•</span>
-                <span><i class="fa-solid fa-globe"></i> <a href="#" id="company-profile-web-link" target="_blank" style="color:var(--fl-primary); text-decoration:none;">vinfastauto.com</a></span>
+              <div class="builtin-quote-author" id="company-quote-author">
+                Operations Directorate &middot; Logistics Executive Board
               </div>
+            </div>
+          </div>
+
+          <!-- Featured Roles on Overview -->
+          <div class="builtin-pane-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+              <h2 class="builtin-pane-title" style="margin:0; font-size:17px;">Featured Open Roles</h2>
+              <button type="button" onclick="switchBuiltInTab('jobs');" style="background:none; border:none; color:var(--builtin-blue); font-family:var(--font-montserrat); font-size:13px; font-weight:700; cursor:pointer;">
+                See All Jobs &rarr;
+              </button>
+            </div>
+            <div id="overview-jobs-list" class="job-list">
+              <!-- Dynamically populated top 3 job cards -->
             </div>
           </div>
         </div>
 
-        <!-- Navigation Tabs for Services, Products & AI, Pricing, Events, Jobs -->
-        <div class="company-profile-tabs-nav">
-          <button type="button" class="company-nav-tab-btn active" data-tab="services" onclick="switchCompanyTab('services');">
-            <i class="fa-solid fa-cube"></i> Dịch Vụ &amp; Giải Pháp
-          </button>
-          <button type="button" class="company-nav-tab-btn" data-tab="tech" onclick="switchCompanyTab('tech');">
-            <i class="fa-solid fa-microchip"></i> Sản Phẩm &amp; Công Nghệ AI
-          </button>
-          <button type="button" class="company-nav-tab-btn" data-tab="pricing" onclick="switchCompanyTab('pricing');">
-            <i class="fa-solid fa-tags"></i> Bảng Giá &amp; Gói Cước
-          </button>
-          <button type="button" class="company-nav-tab-btn" data-tab="events" onclick="switchCompanyTab('events');">
-            <i class="fa-solid fa-calendar-star"></i> Sự Kiện &amp; Tech Talks
-          </button>
-          <button type="button" class="company-nav-tab-btn" data-tab="jobs" onclick="switchCompanyTab('jobs');">
-            <i class="fa-solid fa-briefcase"></i> Tuyển Dụng
-          </button>
+        <!-- TAB PANE 2: JOBS (6-Column High-Density Built In Cards) -->
+        <div id="pane-jobs" class="builtin-pane" style="display:none;">
+          <div class="builtin-pane-card">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+              <div>
+                <h2 class="builtin-pane-title">Open Positions at <span class="co-name-span">Viconship</span></h2>
+                <div class="builtin-pane-sub">Explore verified corporate and field opportunities across Vietnam facilities.</div>
+              </div>
+              <span class="builtin-hiring-badge" style="font-size:14px; padding:4px 12px;"><span id="jobs-pane-total">7</span> Active Positions</span>
+            </div>
+            <div id="company-jobs-list" class="job-list">
+              <!-- Dynamically populated 6-column job cards -->
+            </div>
+          </div>
         </div>
 
-        <!-- Active Tab Content Area -->
-        <div id="company-profile-tab-content">
-          <!-- Dynamically populated by switchCompanyTab() -->
+        <!-- TAB PANE 3: TECHNOLOGY WE USE -->
+        <div id="pane-technology" class="builtin-pane" style="display:none;">
+          <div class="builtin-pane-card">
+            <h2 class="builtin-pane-title">Technology &amp; Software We Use</h2>
+            <div class="builtin-pane-sub">The operational technology, terminal operating systems, and EDI platforms driving daily throughput.</div>
+            <div class="tech-stack-grid" id="company-tech-grid">
+              <!-- Dynamically populated tech chips -->
+            </div>
+          </div>
         </div>
 
+        <!-- TAB PANE 4: LIFE & TERMINALS -->
+        <div id="pane-culture" class="builtin-pane" style="display:none;">
+          <div class="builtin-pane-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+              <div>
+                <h2 class="builtin-pane-title">Life at <span id="gallery-company-name">Viconship</span></h2>
+                <div class="builtin-pane-sub" style="margin:0;">Quayside operations, automated gantry terminals, and team culture.</div>
+              </div>
+              <button type="button" onclick="openGalleryLightbox(0);" style="font-family:var(--font-montserrat); font-size:13px; font-weight:700; color:var(--builtin-blue); background:none; border:none; cursor:pointer;">
+                Enlarge Photos &rarr;
+              </button>
+            </div>
+            <div class="co-gallery-grid" id="company-photo-gallery">
+              <!-- Dynamically populated 6-photo masonry grid -->
+            </div>
+          </div>
+
+          <div class="builtin-pane-card">
+            <h2 class="builtin-pane-title" style="margin-bottom:14px;">Core Values &amp; Culture Pillars</h2>
+            <div class="culture-pillar-grid" id="company-culture-pillars">
+              <!-- Dynamically populated culture pillars -->
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB PANE 5: OFFICES & FACILITIES -->
+        <div id="pane-offices" class="builtin-pane" style="display:none;">
+          <div class="builtin-pane-card">
+            <h2 class="builtin-pane-title">Offices, Terminals &amp; Intermodal Hubs</h2>
+            <div class="builtin-pane-sub">Strategic port clusters, inland container depots, and regional operating centers.</div>
+            <div class="office-terminal-grid" id="company-offices-grid">
+              <!-- Dynamically populated terminals -->
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB PANE 6: AWARDS & SEALS -->
+        <div id="pane-awards" class="builtin-pane" style="display:none;">
+          <div class="builtin-pane-card">
+            <h2 class="builtin-pane-title">Accreditations &amp; Industry Seals</h2>
+            <div class="builtin-pane-sub">Verified certifications, customs security clearances, and national industry recognitions.</div>
+            <div class="office-terminal-grid" id="company-awards-grid">
+              <!-- Dynamically populated awards -->
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
       </div>
     </section>
 
@@ -2519,6 +3618,7 @@
 
   <!-- Scripts -->
   <script src="js/data.js?v=20260903_v10"></script>
+  <script src="js/sandbox-database.js"></script>
   <script src="js/app.js?v=20260903_v10"></script>
 <!-- Real-Time Activity Notification Toast (Bottom-Left) -->
 <div class="live-activity-toast" id="live-activity-toast">

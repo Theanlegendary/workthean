@@ -190,7 +190,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sync Top Tier-2 Brand Nav Items
     document.querySelectorAll('.brand-nav-item').forEach(btn => {
       const bView = btn.getAttribute('data-view');
-      if (bView === viewId || (bView === 'jobs' && viewId === 'browse') || (bView === 'browse' && viewId === 'browse')) {
+      if (bView === viewId || 
+          (bView === 'jobs' && viewId === 'browse') || 
+          (bView === 'browse' && viewId === 'browse') ||
+          (bView === 'companies' && (viewId === 'companies' || viewId === 'company-detail')) ||
+          (bView === 'courses' && (viewId === 'courses' || viewId === 'course-detail'))) {
         btn.classList.add('active');
       } else {
         btn.classList.remove('active');
@@ -200,40 +204,74 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sync Mobile Drawer Items
     document.querySelectorAll('.drawer-item').forEach(btn => {
       const bView = btn.getAttribute('data-view');
-      if (bView === viewId || (bView === 'jobs' && viewId === 'browse') || (bView === 'browse' && viewId === 'browse')) {
+      if (bView === viewId || 
+          (bView === 'jobs' && viewId === 'browse') || 
+          (bView === 'browse' && viewId === 'browse') ||
+          (bView === 'companies' && (viewId === 'companies' || viewId === 'company-detail')) ||
+          (bView === 'courses' && (viewId === 'courses' || viewId === 'course-detail'))) {
         btn.classList.add('active');
       } else {
         btn.classList.remove('active');
       }
     });
 
-    if (updateHash && viewId !== 'job-detail') {
+    if (updateHash && viewId !== 'job-detail' && viewId !== 'company-detail' && viewId !== 'course-detail') {
       history.replaceState(null, null, ' ');
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     if (viewId === 'browse') renderBrowseProjects();
-    if (viewId === 'companies' && typeof initCompaniesDirectory === 'function') initCompaniesDirectory();
+    if (viewId === 'companies' && typeof filterCompanies === 'function') filterCompanies();
   }
 
   /* ==========================================================================
      URL ROUTING (SUPPORT DIRECT LINK WITH JOB ID)
      ========================================================================== */
   function handleUrlRouting() {
-    const hash = window.location.hash;
+    const hash = window.location.hash || '';
     const urlParams = new URLSearchParams(window.location.search);
 
-    let jobId = urlParams.get('id');
+    // 1. Company Detail Route
+    if (hash.includes('company?id=') || urlParams.get('slug')) {
+      const match = hash.match(/company\?id=([^&]+)/);
+      const companyId = match ? decodeURIComponent(match[1]) : (urlParams.get('slug') || urlParams.get('id'));
+      if (companyId && typeof showCompanyDetail === 'function') {
+        showCompanyDetail(companyId);
+        return;
+      }
+    }
 
-    if (!jobId && hash.includes('id=')) {
+    // 2. Course Detail Route
+    if (hash.includes('course?id=')) {
+      const match = hash.match(/course\?id=([^&]+)/);
+      const courseId = match ? decodeURIComponent(match[1]) : urlParams.get('id');
+      if (courseId && typeof showCourseDetail === 'function') {
+        showCourseDetail(courseId);
+        return;
+      }
+    }
+
+    // 3. Job Detail Route
+    let jobId = urlParams.get('id');
+    if (!jobId && hash.includes('job?id=')) {
+      const match = hash.match(/job\?id=([^&]+)/);
+      if (match) jobId = decodeURIComponent(match[1]);
+    } else if (!jobId && hash.includes('id=') && !hash.includes('company') && !hash.includes('course')) {
       const match = hash.match(/id=([^&]+)/);
       if (match) jobId = decodeURIComponent(match[1]);
     }
 
     if (jobId) {
       showJobDetail(jobId, false);
+      return;
     }
+
+    // 4. View Routes
+    if (hash === '#companies') switchView('companies');
+    else if (hash === '#courses') switchView('courses');
+    else if (hash === '#news') switchView('news');
+    else if (hash === '#jobs' || hash === '#browse') switchView('browse');
   }
 
   /* ==========================================================================

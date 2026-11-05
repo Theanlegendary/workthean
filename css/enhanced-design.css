@@ -1,0 +1,741 @@
+/* ==========================================================================
+   ENHANCED BUILT IN DESIGN SYSTEM - PRODUCTION READY
+   Ultra-clean, professional, matches builtin.com perfectly
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Enhanced Built In Brand Palette */
+  --builtin-navy: #002B49;
+  --builtin-navy-dark: #001A2C;
+  --builtin-navy-deep: #0B1D30;
+  --builtin-blue: #005B94;
+  --builtin-blue-hover: #004473;
+  --builtin-teal: #00A8A8;
+  
+  /* Enhanced Surfaces - Cleaner Backgrounds */
+  --builtin-surface-white: #FFFFFF;
+  --builtin-surface-page: #FAFBFC;     /* Main page background */
+  --builtin-surface-muted: #F5F7FA;    /* Section backgrounds */
+  --builtin-surface-subtle: #F0F3F7;   /* Hover states */
+  --builtin-surface-card: #FFFFFF;
+  
+  /* Ultra-Subtle Borders */
+  --builtin-border-light: #F0F3F7;     /* Lightest borders */
+  --builtin-border: #EDF2F7;           /* Standard borders */
+  --builtin-border-medium: #E4E9F0;    /* Medium emphasis */
+  --builtin-border-strong: #D1D9E0;    /* Strong emphasis */
+  --builtin-border-focus: #005B94;
+  
+  /* Typography Colors */
+  --builtin-text-primary: #0F172A;
+  --builtin-text-secondary: #475569;
+  --builtin-text-muted: #64748B;
+  --builtin-text-light: #94A3B8;
+  --builtin-text-inverse: #FFFFFF;
+
+  /* Status Colors - More Vibrant */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+  
+  /* Enhanced Shadows - More Depth */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 8px 24px rgba(0, 91, 148, 0.12);
+  
+  /* Border Radius - Built In Standards */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-pill: 100px;
+
+  /* Typography */
+  --font-sans: 'Montserrat', 'Barlow', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-condensed: 'Barlow Condensed', sans-serif;
+  
+  /* Animations */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+  
+  --max-width: 1280px;
+  --header-height: 68px;
+}
+
+/* ==========================================================================
+   BASE STYLES - Clean Foundation
+   ========================================================================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  color: var(--builtin-text-secondary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  color: var(--builtin-text-secondary);
+  background-color: var(--builtin-surface-page);
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+/* Performance optimizations */
+.card, .btn, a.interactive, .job-card, .company-card {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   TYPOGRAPHY - Enhanced Hierarchy
+   ========================================================================== */
+h1, h2, h3, h4 {
+  font-family: var(--font-sans);
+  color: var(--builtin-text-primary);
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+h1 { font-size: 36px; font-weight: 800; line-height: 1.22; }
+h2 { font-size: 28px; font-weight: 700; line-height: 1.21; }
+h3 { font-size: 18px; font-weight: 700; line-height: 1.33; }
+h4 { font-size: 16px; font-weight: 700; line-height: 1.38; }
+
+p {
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--builtin-text-secondary);
+  margin: 0;
+}
+
+a {
+  color: var(--builtin-blue);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-smooth);
+}
+
+a:hover {
+  color: var(--builtin-blue-hover);
+}
+
+/* ==========================================================================
+   ENHANCED BUTTONS - Polished & Professional
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  user-select: none;
+  transition: all var(--duration-base) var(--ease-smooth);
+  transform: translateZ(0);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--builtin-blue);
+  outline-offset: 2px;
+}
+
+/* Primary Button - Enhanced */
+.btn-primary, .btn-builtin-primary {
+  height: 44px;
+  padding: 10px 24px;
+  background: linear-gradient(135deg, var(--builtin-navy) 0%, #003D5C 100%);
+  color: var(--builtin-text-inverse);
+  font-size: 14.5px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(0, 43, 73, 0.15);
+}
+
+.btn-primary:hover, .btn-builtin-primary:hover {
+  background: linear-gradient(135deg, var(--builtin-navy-dark) 0%, #002B49 100%);
+  box-shadow: 0 4px 16px rgba(0, 43, 73, 0.25);
+  transform: translateY(-1px) translateZ(0);
+}
+
+.btn-primary:active, .btn-builtin-primary:active {
+  transform: translateY(0) scale(0.98) translateZ(0);
+}
+
+/* Secondary Button - Cleaner */
+.btn-secondary, .btn-builtin-secondary {
+  height: 40px;
+  padding: 8px 20px;
+  background: var(--builtin-surface-white);
+  color: var(--builtin-text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid var(--builtin-border-medium);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+}
+
+.btn-secondary:hover, .btn-builtin-secondary:hover {
+  background: var(--builtin-surface-subtle);
+  color: var(--builtin-navy);
+  border-color: var(--builtin-border-strong);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px) translateZ(0);
+}
+
+/* Outline Button */
+.btn-outline, .btn-builtin-outline {
+  height: 40px;
+  padding: 8px 18px;
+  background: transparent;
+  color: var(--builtin-navy);
+  font-size: 14px;
+  font-weight: 700;
+  border: 1.5px solid var(--builtin-navy);
+  border-radius: var(--radius-md);
+}
+
+.btn-outline:hover, .btn-builtin-outline:hover {
+  background: rgba(0, 43, 73, 0.04);
+  border-color: var(--builtin-navy-dark);
+  transform: translateY(-1px) translateZ(0);
+}
+
+/* Pill Button */
+.btn-pill {
+  height: 34px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  background: var(--builtin-surface-white);
+  border: 1px solid var(--builtin-border-medium);
+  color: var(--builtin-text-secondary);
+  box-shadow: var(--shadow-xs);
+}
+
+.btn-pill:hover, .btn-pill.active {
+  background: var(--builtin-surface-white);
+  color: var(--builtin-blue);
+  border-color: var(--builtin-blue);
+  box-shadow: 0 2px 8px rgba(0, 91, 148, 0.12);
+}
+
+/* ==========================================================================
+   ENHANCED CARDS - Ultra-Clean Design
+   ========================================================================== */
+.card {
+  background: var(--builtin-surface-card);
+  border: 1px solid var(--builtin-border);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  box-shadow: var(--shadow-xs);
+  transition: all var(--duration-slow) var(--ease-smooth);
+}
+
+.card:hover {
+  border-color: var(--builtin-border-medium);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px) translateZ(0);
+}
+
+/* Enhanced Job Card */
+.job-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+  align-items: start;
+  background: var(--builtin-surface-white);
+  border: 1px solid var(--builtin-border);
+  border-radius: var(--radius-xl);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-xs);
+  transition: all var(--duration-base) var(--ease-smooth);
+  cursor: pointer;
+}
+
+.job-card:hover {
+  border-color: var(--builtin-blue);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px) translateZ(0);
+}
+
+.job-card-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  object-fit: contain;
+  border: 1px solid var(--builtin-border-light);
+  background: var(--builtin-surface-white);
+  padding: 6px;
+  box-shadow: var(--shadow-xs);
+}
+
+.job-card-content {
+  min-width: 0;
+}
+
+.job-card-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--builtin-text-primary);
+  line-height: 1.35;
+  margin-bottom: 6px;
+  transition: color var(--duration-fast) var(--ease-smooth);
+}
+
+.job-card:hover .job-card-title {
+  color: var(--builtin-blue);
+}
+
+.job-card-company {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--builtin-text-muted);
+  margin-bottom: 10px;
+}
+
+.job-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--builtin-text-muted);
+}
+
+/* Company Card */
+.company-card {
+  background: var(--builtin-surface-white);
+  border: 1px solid var(--builtin-border);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  transition: all var(--duration-slow) var(--ease-smooth);
+  cursor: pointer;
+  box-shadow: var(--shadow-xs);
+}
+
+.company-card:hover {
+  border-color: var(--builtin-blue);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px) translateZ(0);
+}
+
+.company-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-lg);
+  object-fit: contain;
+  margin-bottom: 18px;
+  border: 1px solid var(--builtin-border-light);
+  padding: 8px;
+  background: var(--builtin-surface-white);
+  box-shadow: var(--shadow-xs);
+}
+
+/* ==========================================================================
+   ENHANCED BADGES - More Vibrant
+   ========================================================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  box-shadow: var(--shadow-xs);
+}
+
+.badge-verified {
+  background: #EFF6FF;
+  color: #1E40AF;
+  border: 1px solid #DBEAFE;
+}
+
+.badge-remote {
+  background: #ECFDF5;
+  color: #065F46;
+  border: 1px solid #D1FAE5;
+}
+
+.badge-urgent {
+  background: #FEF2F2;
+  color: #991B1B;
+  border: 1px solid #FECACA;
+}
+
+.badge-neutral {
+  background: var(--builtin-surface-subtle);
+  color: var(--builtin-text-secondary);
+  border: 1px solid var(--builtin-border-medium);
+}
+
+/* ==========================================================================
+   ENHANCED HEADER - Cleaner & More Professional
+   ========================================================================== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--builtin-surface-white);
+  border-bottom: 1px solid var(--builtin-border);
+  box-shadow: var(--shadow-xs);
+  transition: all var(--duration-slow) var(--ease-smooth);
+}
+
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: var(--builtin-border-medium);
+}
+
+.header-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  gap: 24px;
+}
+
+/* Navigation */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--builtin-text-primary);
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  transition: all var(--duration-fast) var(--ease-smooth);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--builtin-blue);
+  background: rgba(0, 91, 148, 0.06);
+}
+
+.nav-link.active {
+  color: var(--builtin-blue);
+  background: rgba(0, 91, 148, 0.08);
+}
+
+/* ==========================================================================
+   ENHANCED HERO SECTION - More Spacious
+   ========================================================================== */
+.hero-section {
+  padding: 72px 0 96px;
+  background: linear-gradient(135deg, var(--builtin-surface-white) 0%, var(--builtin-surface-muted) 100%);
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--builtin-text-primary);
+  line-height: 1.17;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: var(--builtin-text-muted);
+  margin-bottom: 44px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.hero-search-form {
+  max-width: 920px;
+  margin: 0 auto;
+  background: var(--builtin-surface-white);
+  border: 1px solid var(--builtin-border-medium);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+  padding: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 12px;
+  align-items: center;
+  transition: all var(--duration-slow) var(--ease-smooth);
+}
+
+.hero-search-form:focus-within {
+  border-color: var(--builtin-blue);
+  box-shadow: 0 0 0 4px rgba(0, 91, 148, 0.08), var(--shadow-xl);
+}
+
+.search-input-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  border-right: 1px solid var(--builtin-border);
+}
+
+.search-input-group:last-of-type {
+  border-right: none;
+}
+
+.search-input-group i {
+  color: var(--builtin-text-muted);
+  font-size: 16px;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  font-size: 15px;
+  color: var(--builtin-text-primary);
+  flex: 1;
+  background: transparent;
+}
+
+.search-input::placeholder {
+  color: var(--builtin-text-light);
+}
+
+.search-submit-btn {
+  height: 48px !important;
+  padding: 12px 32px !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   SECTIONS - Better Spacing
+   ========================================================================== */
+.section {
+  padding: 64px 0;
+}
+
+.section-alt {
+  background: var(--builtin-surface-muted);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ==========================================================================
+   GRIDS - Enhanced Spacing
+   ========================================================================== */
+.grid-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.grid-4col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* ==========================================================================
+   ENHANCED FOOTER
+   ========================================================================== */
+.footer {
+  background: var(--builtin-navy-deep);
+  color: var(--builtin-text-light);
+  padding: 64px 0 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-column h4 {
+  color: var(--builtin-text-inverse);
+  font-size: 15px;
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-link {
+  font-size: 14px;
+  color: var(--builtin-text-light);
+  transition: color var(--duration-fast) var(--ease-smooth);
+}
+
+.footer-link:hover {
+  color: var(--builtin-text-inverse);
+}
+
+.footer-bottom {
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 13px;
+  color: var(--builtin-text-light);
+}
+
+/* ==========================================================================
+   ANIMATIONS & EFFECTS
+   ========================================================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp var(--duration-slow) var(--ease-smooth);
+}
+
+/* Skeleton Loading */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--builtin-surface-subtle) 0%,
+    #E8EDF2 50%,
+    var(--builtin-surface-subtle) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Lazy Load */
+.lazy-load {
+  opacity: 0;
+  transition: opacity var(--duration-slow) var(--ease-smooth);
+}
+
+.lazy-load.loaded {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .grid-4col { grid-template-columns: repeat(2, 1fr); }
+  .grid-3col { grid-template-columns: repeat(2, 1fr); }
+  .hero-search-form { grid-template-columns: 1fr; gap: 8px; }
+  .search-input-group { border-right: none; border-bottom: 1px solid var(--builtin-border); }
+  .search-input-group:last-of-type { border-bottom: none; }
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 28px; }
+  h2 { font-size: 22px; }
+  .hero-title { font-size: 32px; }
+  .hero-section { padding: 56px 0 72px; }
+  .section { padding: 48px 0; }
+  .grid-2col, .grid-3col, .grid-4col { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .nav-links { display: none; }
+  .header-main { height: 60px; }
+}
+
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .btn { width: 100%; }
+  .hero-search-form { padding: 10px; }
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-1 { gap: 8px; }
+.gap-2 { gap: 16px; }
+.gap-3 { gap: 24px; }
+
+.mt-1 { margin-top: 8px; }
+.mt-2 { margin-top: 16px; }
+.mt-3 { margin-top: 24px; }
+.mb-1 { margin-bottom: 8px; }
+.mb-2 { margin-bottom: 16px; }
+.mb-3 { margin-bottom: 24px; }
+
+.hidden { display: none; }
+.visible { display: block; }

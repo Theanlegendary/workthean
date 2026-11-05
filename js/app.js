@@ -1756,7 +1756,7 @@ function initYouTubeHub() {
 
 // 2. Enterprise Split-Screen Job Board Controller & Dataset
 const enterpriseJobsDatabase = [
-  # Page 1
+  // Page 1
   {
     "id": "job-1",
     "title": "Supply Chain Solutions Architect (Cold Chain)",
@@ -1769,8 +1769,8 @@ const enterpriseJobsDatabase = [
     "workplace": "Hybrid",
     "category": "tech",
     "tags": ["Top Tier Enterprise", "Cold Chain", "High Salary", "Strategy"],
-    "isUrgent": False,
-    "isHighSalary": True,
+    "isUrgent": false,
+    "isHighSalary": true,
     "time": "3 hours ago",
     "applicants": "22 applicants",
     "specs": { "exp": "Senior level (3 – 5 Yrs)", "edu": "Master / Engineering", "dept": "Strategic Network Optimization", "openings": "1 Position" },
@@ -1803,8 +1803,8 @@ const enterpriseJobsDatabase = [
     "workplace": "Hybrid",
     "category": "customs",
     "tags": ["Multinational", "Customs Brokerage", "Compliance", "Noi Bai"],
-    "isUrgent": True,
-    "isHighSalary": False,
+    "isUrgent": true,
+    "isHighSalary": false,
     "time": "6 hours ago",
     "applicants": "33 applicants",
     "specs": { "exp": "Manager (5+ Yrs)", "edu": "BA Foreign Trade / Customs", "dept": "Customs & Trade Governance", "openings": "1 Position" },
@@ -1828,8 +1828,8 @@ const enterpriseJobsDatabase = [
     "workplace": "Hybrid",
     "category": "port",
     "tags": ["Deep Sea Port", "Maritime", "Terminal Ops", "Shift Work"],
-    "isUrgent": False,
-    "isHighSalary": False,
+    "isUrgent": false,
+    "isHighSalary": false,
     "time": "1 day ago",
     "applicants": "34 applicants",
     "specs": { "exp": "Specialist (2 – 4 Yrs)", "edu": "Maritime University / Logistics", "dept": "Terminal Operating Systems (TOS)", "openings": "3 Positions" },
@@ -1853,8 +1853,8 @@ const enterpriseJobsDatabase = [
     "workplace": "Hybrid",
     "category": "tech",
     "tags": ["Telematics", "Fleet Tech", "Data Analytics", "LogiTech"],
-    "isUrgent": False,
-    "isHighSalary": True,
+    "isUrgent": false,
+    "isHighSalary": true,
     "time": "1 day ago",
     "applicants": "35 applicants",
     "specs": { "exp": "Mid-Senior (2 – 4 Yrs)", "edu": "Data Science / Industrial Eng.", "dept": "Digital Freight Platform", "openings": "2 Positions" },
@@ -1875,8 +1875,8 @@ const enterpriseJobsDatabase = [
     "workplace": "Hybrid",
     "category": "forwarding",
     "tags": ["Verified Employer", "Full-time", "Hybrid", "Ocean Freight"],
-    "isUrgent": False,
-    "isHighSalary": True,
+    "isUrgent": false,
+    "isHighSalary": true,
     "time": "2 days ago",
     "applicants": "19 applicants",
     "specs": { "exp": "3 – 5 Years", "edu": "Bachelor Degree", "dept": "Asia-Europe Trade Lane", "openings": "2 Positions" },
@@ -1885,8 +1885,7 @@ const enterpriseJobsDatabase = [
     "requirements": ["3+ years ocean freight forwarding experience.", "Strong English and negotiation skills."],
     "benefits": ["14-month salary", "Annual corporate training sponsorship", "Flexible WFH schedule."]
   },
-
-  # Page 2
+  // Page 2
   {
     "id": "job-6",
     "title": "AMR Robotics & Automation Systems Specialist",
@@ -1899,8 +1898,8 @@ const enterpriseJobsDatabase = [
     "workplace": "On-site",
     "category": "robotics",
     "tags": ["Urgent Hiring", "Full-time", "On-site", "Warehouse Tech"],
-    "isUrgent": True,
-    "isHighSalary": True,
+    "isUrgent": true,
+    "isHighSalary": true,
     "time": "2 days ago",
     "applicants": "28 applicants",
     "specs": { "exp": "2 – 4 Years", "edu": "BS in Mechatronics/CS", "dept": "Automated Operations Group", "openings": "4 Positions" },
@@ -1921,8 +1920,8 @@ const enterpriseJobsDatabase = [
     "workplace": "Hybrid",
     "category": "tech",
     "tags": ["Generative AI", "Computer Vision", "PyTorch", "High Salary"],
-    "isUrgent": True,
-    "isHighSalary": True,
+    "isUrgent": true,
+    "isHighSalary": true,
     "time": "2 days ago",
     "applicants": "41 applicants",
     "specs": { "exp": "Senior (4+ Yrs)", "edu": "Master / CS Degree", "dept": "AI Research Lab", "openings": "3 Positions" },
@@ -1943,8 +1942,8 @@ const enterpriseJobsDatabase = [
     "workplace": "Hybrid",
     "category": "forwarding",
     "tags": ["Global 3PL", "Air Freight", "Multimodal", "Tan Son Nhat"],
-    "isUrgent": False,
-    "isHighSalary": True,
+    "isUrgent": false,
+    "isHighSalary": true,
     "time": "3 days ago",
     "applicants": "18 applicants",
     "specs": { "exp": "Mid-Senior (3 – 5 Yrs)", "edu": "Bachelor in Economics / Trade", "dept": "Air Cargo Services", "openings": "2 Positions" },
@@ -1965,8 +1964,8 @@ const enterpriseJobsDatabase = [
     "workplace": "On-site",
     "category": "tech",
     "tags": ["Executive", "Cold Storage", "GDP Standard", "Pharma"],
-    "isUrgent": False,
-    "isHighSalary": True,
+    "isUrgent": false,
+    "isHighSalary": true,
     "time": "3 days ago",
     "applicants": "12 applicants",
     "specs": { "exp": "Director (8+ Yrs)", "edu": "BS / Master in Engineering", "dept": "Cold Storage Division", "openings": "1 Position" },
@@ -1987,8 +1986,8 @@ const enterpriseJobsDatabase = [
     "workplace": "On-site",
     "category": "port",
     "tags": ["Deep Sea", "Gemalink", "Berth Planning", "Maritime"],
-    "isUrgent": False,
-    "isHighSalary": False,
+    "isUrgent": false,
+    "isHighSalary": false,
     "time": "4 days ago",
     "applicants": "24 applicants",
     "specs": { "exp": "Specialist (2 – 4 Yrs)", "edu": "Maritime Navigation / Logistics", "dept": "Port Operations", "openings": "2 Positions" },
@@ -1997,8 +1996,7 @@ const enterpriseJobsDatabase = [
     "requirements": ["Bachelor in Maritime Studies", "Experience with CATOS or Navis berth planning software."],
     "benefits": ["Port duty allowances", "Free housing at Cai Mep staff complex", "Yearly profit bonuses."]
   },
-
-  # Page 3
+  // Page 3
   {
     "id": "job-11",
     "title": "Senior Logistics Backend Go & Kafka Engineer",
@@ -2011,8 +2009,8 @@ const enterpriseJobsDatabase = [
     "workplace": "Hybrid",
     "category": "tech",
     "tags": ["Go", "Kafka", "High-Concurrency", "Microservices"],
-    "isUrgent": True,
-    "isHighSalary": True,
+    "isUrgent": true,
+    "isHighSalary": true,
     "time": "4 days ago",
     "applicants": "39 applicants",
     "specs": { "exp": "Senior (4+ Yrs)", "edu": "BS / MS Computer Science", "dept": "Express Delivery Core", "openings": "2 Positions" },
@@ -2033,8 +2031,8 @@ const enterpriseJobsDatabase = [
     "workplace": "On-site",
     "category": "robotics",
     "tags": ["E-Commerce", "Shopee", "Cross-Border", "Fulfillment"],
-    "isUrgent": False,
-    "isHighSalary": True,
+    "isUrgent": false,
+    "isHighSalary": true,
     "time": "5 days ago",
     "applicants": "47 applicants",
     "specs": { "exp": "Supervisor (3 – 5 Yrs)", "edu": "Bachelor in Business / Logistics", "dept": "Inbound & Customs Hub", "openings": "3 Positions" },
@@ -2055,8 +2053,8 @@ const enterpriseJobsDatabase = [
     "workplace": "Hybrid",
     "category": "tech",
     "tags": ["WMS", "Industrial Real Estate", "Solutions Architect", "Automation"],
-    "isUrgent": False,
-    "isHighSalary": True,
+    "isUrgent": false,
+    "isHighSalary": true,
     "time": "5 days ago",
     "applicants": "15 applicants",
     "specs": { "exp": "Senior (5+ Yrs)", "edu": "BS / Master in Information Systems", "dept": "Smart Warehousing Advisory", "openings": "1 Position" },
@@ -2077,8 +2075,8 @@ const enterpriseJobsDatabase = [
     "workplace": "On-site",
     "category": "forwarding",
     "tags": ["Air Cargo", "Dangerous Goods", "Noi Bai", "IATA DGR"],
-    "isUrgent": False,
-    "isHighSalary": True,
+    "isUrgent": false,
+    "isHighSalary": true,
     "time": "6 days ago",
     "applicants": "21 applicants",
     "specs": { "exp": "Specialist (4+ Yrs)", "edu": "Aviation / Trade Degree", "dept": "Special Cargo Unit", "openings": "1 Position" },
@@ -2099,8 +2097,8 @@ const enterpriseJobsDatabase = [
     "workplace": "On-site",
     "category": "port",
     "tags": ["Trucking", "Container Drayage", "Dispatch", "Transimex"],
-    "isUrgent": True,
-    "isHighSalary": False,
+    "isUrgent": true,
+    "isHighSalary": false,
     "time": "6 days ago",
     "applicants": "32 applicants",
     "specs": { "exp": "Supervisor (3+ Yrs)", "edu": "Transportation / Logistics Diploma", "dept": "Fleet Dispatch Center", "openings": "2 Positions" },
@@ -2109,8 +2107,7 @@ const enterpriseJobsDatabase = [
     "requirements": ["3+ years container trucking dispatch experience", "Familiarity with digital TMS dispatch systems."],
     "benefits": ["Monthly dispatch performance incentives", "Full social insurance and health benefits", "Year-end 13th and 14th month pay."]
   },
-
-  # Page 4
+  // Page 4
   {
     "id": "job-16",
     "title": "Supply Chain ESG & Green Logistics Analyst",
@@ -2123,8 +2120,8 @@ const enterpriseJobsDatabase = [
     "workplace": "Hybrid",
     "category": "tech",
     "tags": ["ESG", "Green Logistics", "Carbon Accounting", "Sustainability"],
-    "isUrgent": False,
-    "isHighSalary": False,
+    "isUrgent": false,
+    "isHighSalary": false,
     "time": "1 week ago",
     "applicants": "26 applicants",
     "specs": { "exp": "Analyst (2 – 4 Yrs)", "edu": "Environmental Science / Economics", "dept": "Sustainability Office", "openings": "1 Position" },
@@ -2145,8 +2142,8 @@ const enterpriseJobsDatabase = [
     "workplace": "Hybrid",
     "category": "forwarding",
     "tags": ["Procurement", "Carrier Sourcing", "Ocean Lines", "Sotrans"],
-    "isUrgent": False,
-    "isHighSalary": True,
+    "isUrgent": false,
+    "isHighSalary": true,
     "time": "1 week ago",
     "applicants": "19 applicants",
     "specs": { "exp": "Manager (5+ Yrs)", "edu": "Foreign Trade / Logistics", "dept": "Global Procurement", "openings": "1 Position" },
@@ -2167,8 +2164,8 @@ const enterpriseJobsDatabase = [
     "workplace": "Hybrid",
     "category": "tech",
     "tags": ["EDI", "API Integration", "Viettel", "B2B Logistics"],
-    "isUrgent": False,
-    "isHighSalary": True,
+    "isUrgent": false,
+    "isHighSalary": true,
     "time": "1 week ago",
     "applicants": "29 applicants",
     "specs": { "exp": "Specialist (3+ Yrs)", "edu": "Information Technology / Telecom", "dept": "Enterprise Solutions", "openings": "2 Positions" },
@@ -2189,8 +2186,8 @@ const enterpriseJobsDatabase = [
     "workplace": "On-site",
     "category": "customs",
     "tags": ["Customs", "Bonded Warehouse", "Hai An", "Dinh Vu"],
-    "isUrgent": True,
-    "isHighSalary": False,
+    "isUrgent": true,
+    "isHighSalary": false,
     "time": "1 week ago",
     "applicants": "23 applicants",
     "specs": { "exp": "Team Lead (4+ Yrs)", "edu": "Customs / International Business", "dept": "Bonded Customs Bureau", "openings": "1 Position" },
@@ -2211,8 +2208,8 @@ const enterpriseJobsDatabase = [
     "workplace": "On-site",
     "category": "robotics",
     "tags": ["Last-Mile", "On-Demand", "Operations Lead", "GrabExpress"],
-    "isUrgent": False,
-    "isHighSalary": True,
+    "isUrgent": false,
+    "isHighSalary": true,
     "time": "1 week ago",
     "applicants": "38 applicants",
     "specs": { "exp": "Manager (5+ Yrs)", "edu": "Bachelor in Business / Operations", "dept": "GrabExpress Operations", "openings": "1 Position" },
@@ -2251,19 +2248,11 @@ function initSplitScreenJobBoard() {
   function renderJobList() {
     const filtered = getFilteredJobs();
     const totalJobs = filtered.length;
-    const totalPages = Math.ceil(totalJobs / JOBS_PER_PAGE) || 1;
 
-    if (currentJobPage > totalPages) currentJobPage = totalPages;
-    if (currentJobPage < 1) currentJobPage = 1;
+    if (countBadge) countBadge.textContent = `${totalJobs} results`;
+    if (listCounter) listCounter.textContent = `${totalJobs} openings`;
 
-    const startIndex = (currentJobPage - 1) * JOBS_PER_PAGE;
-    const endIndex = Math.min(startIndex + JOBS_PER_PAGE, totalJobs);
-    const pageJobs = filtered.slice(startIndex, endIndex);
-
-    if (countBadge) countBadge.textContent = `${totalJobs} results • Trang ${currentJobPage}/${totalPages}`;
-    if (listCounter) listCounter.textContent = `${totalJobs} openings (${startIndex + 1}–${endIndex})`;
-
-    if (pageJobs.length === 0) {
+    if (totalJobs === 0) {
       container.innerHTML = `
         <div style="padding: 48px 20px; text-align: center; color: #64748B;">
           <i class="fa-solid fa-folder-open" style="font-size: 36px; color: var(--fl-primary); margin-bottom: 12px; display:inline-block;"></i>
@@ -2274,12 +2263,12 @@ function initSplitScreenJobBoard() {
       return;
     }
 
-    // Ensure selected job exists in active page or filtered list
+    // Ensure selected job exists in filtered list
     if (!filtered.some(j => j.id === enterpriseSelectedJobId)) {
-      enterpriseSelectedJobId = pageJobs[0].id;
+      enterpriseSelectedJobId = filtered[0].id;
     }
 
-    const jobsHtml = pageJobs.map(job => {
+    const jobsHtml = filtered.map(job => {
       const isSelected = job.id === enterpriseSelectedJobId;
       return `
         <article class="job-card ${isSelected ? 'active' : ''}" data-job-id="${job.id}" onclick="selectEnterpriseJob('${job.id}')" style="cursor:pointer;">
@@ -2288,19 +2277,19 @@ function initSplitScreenJobBoard() {
               <img src="${job.companyLogo}" alt="${job.company}" class="linkedin-brand-img" style="width:100%; height:100%; object-fit:contain; background:transparent;">
             </div>
             <div class="job-card-header-info" style="flex:1; min-width:0;">
-              <h3 class="linkedin-card-title" style="font-size:14.5px; font-weight:700; color:var(--fl-primary); margin:0 0 4px; line-height:1.35; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+              <h3 class="linkedin-card-title" style="font-size:15px; font-weight:700; color:#0A66C2; margin:0 0 3px; line-height:1.3; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
                 ${job.title}
               </h3>
-              <div class="linkedin-card-company" style="font-size:12.5px; color:#475569; font-weight:500; margin-bottom:4px;">
+              <div class="linkedin-card-company" style="font-size:13px; color:#334155; font-weight:500; margin-bottom:3px;">
                 ${job.company}
               </div>
-              <div style="font-size:12.5px; color:#64748B; display:flex; align-items:center; gap:4px; margin-bottom:4px;">
+              <div style="font-size:12px; color:#64748B; display:flex; align-items:center; gap:4px; margin-bottom:3px;">
                 <i class="fa-solid fa-location-dot" style="font-size:11px;"></i> ${job.location}
               </div>
-              <div style="font-size:13.5px; font-weight:700; color:#EA580C; margin-bottom:6px;">
+              <div style="font-size:13.5px; font-weight:700; color:#0F172A; margin-bottom:4px;">
                 ${job.salary}
               </div>
-              <div style="font-size:11.5px; color:#94A3B8; font-weight:500;">
+              <div style="font-size:11.5px; color:#64748B; font-weight:500;">
                 <i class="fa-regular fa-clock"></i> ${job.time} • ${job.applicants}
               </div>
             </div>
@@ -2309,27 +2298,7 @@ function initSplitScreenJobBoard() {
       `;
     }).join('');
 
-    // Generate Pagination Controls
-    let pageButtonsHtml = '';
-    for (let p = 1; p <= totalPages; p++) {
-      pageButtonsHtml += `<button type="button" class="job-page-num-btn ${p === currentJobPage ? 'active' : ''}" onclick="goToJobPage(${p})">${p}</button>`;
-    }
-
-    const paginationHtml = `
-      <div class="split-jobs-pagination-wrap" id="split-jobs-pagination">
-        <button type="button" class="job-pagination-btn prev" ${currentJobPage === 1 ? 'disabled' : ''} onclick="changeJobPage(${currentJobPage - 1})">
-          <i class="fa-solid fa-chevron-left"></i> Prev
-        </button>
-        <div class="job-pagination-pages">
-          ${pageButtonsHtml}
-        </div>
-        <button type="button" class="job-pagination-btn next" ${currentJobPage === totalPages ? 'disabled' : ''} onclick="changeJobPage(${currentJobPage + 1})">
-          Next <i class="fa-solid fa-chevron-right"></i>
-        </button>
-      </div>
-    `;
-
-    container.innerHTML = jobsHtml + paginationHtml;
+    container.innerHTML = jobsHtml;
 
     // Render detail panel for selected job
     renderEnterpriseJobDetail(enterpriseSelectedJobId);

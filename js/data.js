@@ -727,3 +727,18 @@ const initialFreelancers = [
     "verified": true
   }
 ];
+
+
+const initialCategories = [
+  { id: "web-dev", name: "Websites, IT & Software", count: 6840 },
+  { id: "mobile-apps", name: "Mobile Apps & Devices", count: 3240 },
+  { id: "ai-ml", name: "AI, Machine Learning & Data", count: 2450 },
+  { id: "recruitment", name: "Direct Recruitment Roles", count: 4120 },
+  { id: "design", name: "Design, Media & UI/UX", count: 3800 },
+  { id: "writing", name: "Technical Writing & Specs", count: 1250 }
+];
+
+const initialNotifications = [
+  { id: "n-1", text: "Elena Rostova submitted a proposal bid on your Next.js E-Commerce project.", time: "10m ago", unread: true },
+  { id: "n-2", text: "Escrow Deposit Confirmed: $3,500 locked in Milestone Vault.", time: "1h ago", unread: true }
+];

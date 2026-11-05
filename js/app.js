@@ -176,8 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  window.switchView = switchView;
   function switchView(viewId, updateHash = true) {
     if (viewId === 'jobs') viewId = 'browse';
+    window.state = state;
     state.currentView = viewId;
 
     document.querySelectorAll('.app-view').forEach(view => view.classList.remove('active-view'));

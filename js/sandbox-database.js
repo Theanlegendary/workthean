@@ -18,23 +18,23 @@
       website: 'https://gemadept.com.vn',
       heroImg: 'images/hero_1.jpg',
       logoImg: 'images/brands/gemadept.svg',
-      desc: 'Gemadept Corporation is a pioneer in Vietnam\'s maritime and port logistics sector. Operating world-class deep-sea ports including Gemalink (Cái Mép) and Nam Đình Vũ (Hải Phòng), alongside specialized cold-chain logistics, river-sea barging, and air freight cargo terminal operations.',
+      desc: 'Gemadept Corporation is a pioneer in Vietnam\'s maritime and port logistics sector. Operating world-class deep-sea ports including Gemalink (Cai Mep) and Nam Dinh Vu (Hai Phong), alongside specialized cold-chain logistics, river-sea barging, and air freight cargo terminal operations.',
       stat1Label: 'Port Capacity', stat1Val: '3.5M+ TEUs',
       stat2Label: 'Cold Storage DC', stat2Val: '65,000 Pallets',
       stat3Label: 'Barge & Liner Fleet', stat3Val: '45+ Vessels',
       quoteText: 'Pioneering integrated seaport ecosystems and zero-emission multimodal logistics to anchor Vietnam as Southeast Asia\'s leading trade hub.',
-      quoteAuthor: 'Executive Board · Port & Terminal Directorate',
+      quoteAuthor: 'Executive Board  Port & Terminal Directorate',
       photos: ['images/report_1.jpg','images/occ_1.jpg','images/today_3.jpg','images/occ_3.jpg','images/report_2.jpg'],
       email: 'recruitment@gemadept.com.vn',
       phone: '(+84) 28 3823 8888',
       offices: [
         { type: 'Headquarters', name: 'Gemadept Tower', loc: 'District 1, Ho Chi Minh City' },
-        { type: 'Deep-Sea Terminal', name: 'Gemalink Port', loc: 'Cái Mép - Thị Vải, Bà Rịa - Vũng Tàu' },
-        { type: 'Northern Gateway', name: 'Nam Đình Vũ Port', loc: 'Đình Vũ Economic Zone, Hải Phòng' }
+        { type: 'Deep-Sea Terminal', name: 'Gemalink Port', loc: 'Cai Mep - Thi Vai, Ba Ria - Vung Tau' },
+        { type: 'Northern Gateway', name: 'Nam Dinh Vu Port', loc: 'Dinh Vu Economic Zone, Hai Phong' }
       ],
       awards: [
         { badge: 'Top 50', title: 'Top 50 Best Listed Companies in Vietnam', org: 'Forbes Vietnam' },
-        { badge: 'Tier 1', title: 'Vietnam National Brand · Logistics & Ports', org: 'Ministry of Industry and Trade' }
+        { badge: 'Tier 1', title: 'Vietnam National Brand  Logistics & Ports', org: 'Ministry of Industry and Trade' }
       ]
     },
 
@@ -53,7 +53,7 @@
       desc: 'Viconship (Vietnam Container Shipping JSC) operates premier deep-water container terminal facilities in Northern Vietnam, including VIP Green Port, Green Port, and VIMC Dinh Vu, in addition to ICD intermodal nodes in Hai Phong and Cai Mep. With over 39 years of operational excellence, Viconship processes over 1.8 million TEUs annually and leads the adoption of green terminal port automation.',
       stat1Label: 'Annual Throughput', stat1Val: '1.8M+ TEUs',
       stat2Label: 'Berth Frontage', stat2Val: '1,200 Meters',
-      stat3Label: 'ICD Storage Yard', stat3Val: '450,000 m²',
+      stat3Label: 'ICD Storage Yard', stat3Val: '450,000 m',
       quoteText: 'Integrating deep-water quayside efficiency with nationwide bonded ICD nodes to accelerate Vietnam\'s cross-border maritime supply chains.',
       quoteAuthor: 'Operations Directorate &middot; Logistics Executive Board',
       photos: ['images/report_1.jpg','images/occ_1.jpg','images/today_3.jpg','images/occ_3.jpg','images/report_2.jpg','images/topic_real_1.jpg'],
@@ -85,22 +85,22 @@
       offices: [
         { name: 'VIP Green Port Terminal', location: 'Dinh Vu Economic Zone, Hai Phong', type: 'Deep-Water Berth', spec: '2 Berths &bull; 400m Quayside &bull; 80,000 DWT Vessels' },
         { name: 'Green Port Terminal', location: 'Chua Ve Port Area, Hai Phong', type: 'Container Terminal', spec: '2 Berths &bull; 320m Quayside &bull; Navis N4 Integrated' },
-        { name: 'Southern Intermodal ICD', location: 'Phu My, Cai Mep - Thi Vai, Ba Ria-Vung Tau', type: 'Bonded Logistics Hub', spec: '150,000 m² Yard &bull; 600 Reefer Plugs' }
+        { name: 'Southern Intermodal ICD', location: 'Phu My, Cai Mep - Thi Vai, Ba Ria-Vung Tau', type: 'Bonded Logistics Hub', spec: '150,000 m Yard &bull; 600 Reefer Plugs' }
       ],
       awards: [
         { title: 'Top 10 Maritime Port Operators Vietnam', org: 'Vietnam Logistics Association (VLA) &bull; 2025', badge: 'GOLD SEAL' },
         { title: 'Authorized Economic Operator (AEO) Seal', org: 'General Department of Vietnam Customs &bull; 2026', badge: 'COMPLIANCE' },
-        { title: 'Best Workplaces in Logistics 2026', org: 'Great Place to Work® Institute Vietnam', badge: 'TOP EMPLOYER' },
+        { title: 'Best Workplaces in Logistics 2026', org: 'Great Place to Work Institute Vietnam', badge: 'TOP EMPLOYER' },
         { title: 'ISO 14001:2015 Environmental Excellence', org: 'Bureau Veritas Certification', badge: 'GREEN PORT' }
       ],
       openJobs: [
-        { id: 'job-vsc-1', title: 'Senior Ocean Freight Operations Specialist', location: 'Ho Chi Minh City', salary: '35M–50M VND', badge: 'URGENT', accent: 'accent-coral', dept: 'Ocean Freight' },
-        { id: 'job-vsc-2', title: 'Container Terminal Berth Coordinator', location: 'Hai Phong Port', salary: '25M–38M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Terminal Ops' },
-        { id: 'job-vsc-3', title: 'Reefer Container Technical Supervisor', location: 'Cai Mep Port', salary: '22M–30M VND', badge: 'VERIFIED', accent: 'accent-blue', dept: 'Cold Chain' },
-        { id: 'job-vsc-4', title: 'Customs Clearance & Documentation Officer', location: 'Hai Phong Office', salary: '18M–25M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Customs Clearance' },
-        { id: 'job-vsc-5', title: 'Port Gate Automation & TOS Analyst', location: 'Hai Phong Port', salary: '28M–40M VND', badge: 'HOT', accent: 'accent-coral', dept: 'Logistics IT' },
-        { id: 'job-vsc-6', title: 'Heavy Gantry Crane (STS) Operator', location: 'VIP Green Port', salary: '20M–32M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Quayside Equipment' },
-        { id: 'job-vsc-7', title: 'Inland Container Depot (ICD) Yard Planner', location: 'Hai Phong ICD', salary: '20M–28M VND', badge: 'VERIFIED', accent: 'accent-blue', dept: 'Yard Planning' }
+        { id: 'job-vsc-1', title: 'Senior Ocean Freight Operations Specialist', location: 'Ho Chi Minh City', salary: '35M-50M VND', badge: 'URGENT', accent: 'accent-coral', dept: 'Ocean Freight' },
+        { id: 'job-vsc-2', title: 'Container Terminal Berth Coordinator', location: 'Hai Phong Port', salary: '25M-38M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Terminal Ops' },
+        { id: 'job-vsc-3', title: 'Reefer Container Technical Supervisor', location: 'Cai Mep Port', salary: '22M-30M VND', badge: 'VERIFIED', accent: 'accent-blue', dept: 'Cold Chain' },
+        { id: 'job-vsc-4', title: 'Customs Clearance & Documentation Officer', location: 'Hai Phong Office', salary: '18M-25M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Customs Clearance' },
+        { id: 'job-vsc-5', title: 'Port Gate Automation & TOS Analyst', location: 'Hai Phong Port', salary: '28M-40M VND', badge: 'HOT', accent: 'accent-coral', dept: 'Logistics IT' },
+        { id: 'job-vsc-6', title: 'Heavy Gantry Crane (STS) Operator', location: 'VIP Green Port', salary: '20M-32M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Quayside Equipment' },
+        { id: 'job-vsc-7', title: 'Inland Container Depot (ICD) Yard Planner', location: 'Hai Phong ICD', salary: '20M-28M VND', badge: 'VERIFIED', accent: 'accent-blue', dept: 'Yard Planning' }
       ]
     },
     'dhl-global-forwarding': {
@@ -118,7 +118,7 @@
       desc: 'DHL Global Forwarding is the undisputed international market leader in air and ocean freight services. In Vietnam, DHL connects factories in Bac Ninh, Hai Phong, and Binh Duong directly with key trade lanes in North America, Europe, and intra-Asia through bonded consolidation centers.',
       stat1Label: 'Air Freight Volume', stat1Val: '140,000+ Tons',
       stat2Label: 'Ocean TEUs Handled', stat2Val: '280,000+ TEUs',
-      stat3Label: 'Bonded Footprint', stat3Val: '120,000 m²',
+      stat3Label: 'Bonded Footprint', stat3Val: '120,000 m',
       quoteText: 'Connecting Vietnam\'s high-tech manufacturing corridors with over 220 global markets with carbon-neutral logistics solutions.',
       quoteAuthor: 'Country Management Board &middot; DHL Global Forwarding Vietnam',
       photos: ['images/news_1.jpg','images/yt_thumb_1.jpg','images/today_1.jpg','images/report_3.jpg','images/occ_2.jpg','images/topic_real_2.jpg'],
@@ -147,7 +147,7 @@
       offices: [
         { name: 'Vietnam Country Head Office', location: 'District 1, Ho Chi Minh City', type: 'Executive HQ', spec: 'Commercial, Pricing & Global Forwarding Strategy' },
         { name: 'Noi Bai Airfreight Logistics Center', location: 'Soc Son District, Hanoi', type: 'Air Cargo Hub', spec: 'Temperature Controlled &bull; IATA CEIV Pharma Certified' },
-        { name: 'Binh Duong Multi-Client Logistics Park', location: 'VSIP 1, Thuan An, Binh Duong', type: 'Bonded Warehouse', spec: '45,000 m² High-Bay Storage' }
+        { name: 'Binh Duong Multi-Client Logistics Park', location: 'VSIP 1, Thuan An, Binh Duong', type: 'Bonded Warehouse', spec: '45,000 m High-Bay Storage' }
       ],
       awards: [
         { title: 'Top Employer Vietnam 2026', org: 'Top Employers Institute Global &bull; Certified', badge: 'TOP EMPLOYER' },
@@ -155,9 +155,9 @@
         { title: 'IATA CEIV Pharma Accreditation', org: 'International Air Transport Association', badge: 'PHARMA SEAL' }
       ],
       openJobs: [
-        { id: 'job-dhl-1', title: 'Key Account Manager – High-Tech & Electronics', location: 'Ho Chi Minh City', salary: '45M–65M VND', badge: 'HOT', accent: 'accent-coral', dept: 'Commercial Sales' },
-        { id: 'job-dhl-2', title: 'Air Freight Pricing & Route Specialist', location: 'Hanoi (Noi Bai Airport)', salary: '30M–42M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Air Freight' },
-        { id: 'job-dhl-3', title: 'Pharma Cold Chain Compliance Officer', location: 'Ho Chi Minh City', salary: '28M–40M VND', badge: 'VERIFIED', accent: 'accent-blue', dept: 'Cold Chain' }
+        { id: 'job-dhl-1', title: 'Key Account Manager - High-Tech & Electronics', location: 'Ho Chi Minh City', salary: '45M-65M VND', badge: 'HOT', accent: 'accent-coral', dept: 'Commercial Sales' },
+        { id: 'job-dhl-2', title: 'Air Freight Pricing & Route Specialist', location: 'Hanoi (Noi Bai Airport)', salary: '30M-42M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Air Freight' },
+        { id: 'job-dhl-3', title: 'Pharma Cold Chain Compliance Officer', location: 'Ho Chi Minh City', salary: '28M-40M VND', badge: 'VERIFIED', accent: 'accent-blue', dept: 'Cold Chain' }
       ]
     },
     'saigon-newport': {
@@ -204,7 +204,7 @@
       offices: [
         { name: 'Tan Cang - Cat Lai Port', location: 'Thu Duc City, Ho Chi Minh City', type: 'Flagship Container Port', spec: '10 Berths &bull; 2,040m Quayside &bull; 6.5M TEU Capacity' },
         { name: 'Tan Cang - Cai Mep (TCIT / TCTT)', location: 'Phu My, Ba Ria-Vung Tau', type: 'Deep-Sea Super Terminal', spec: 'Accommodating 20,000+ TEU Mega Vessels' },
-        { name: 'Tan Cang - Hai Phong ICD', location: 'Hai An District, Hai Phong', type: 'Northern Intermodal Node', spec: '250,000 m² Yard with Direct Rail & Inland Waterway' }
+        { name: 'Tan Cang - Hai Phong ICD', location: 'Hai An District, Hai Phong', type: 'Northern Intermodal Node', spec: '250,000 m Yard with Direct Rail & Inland Waterway' }
       ],
       awards: [
         { title: 'Vietnam National Brand (Thuong Hieu Quoc Gia)', org: 'Ministry of Industry & Trade Vietnam', badge: 'NATIONAL SEAL' },
@@ -212,9 +212,9 @@
         { title: 'Top 20 Container Terminal Operators Worldwide', org: 'Lloyd\'s List Maritime Intelligence', badge: 'GLOBAL 20' }
       ],
       openJobs: [
-        { id: 'job-snp-1', title: 'Port Operations Shift Superintendent', location: 'Cat Lai Port, Thu Duc City', salary: '28M–45M VND', badge: 'URGENT', accent: 'accent-coral', dept: 'Quayside Ops' },
-        { id: 'job-snp-2', title: 'ePort Digital Systems Application Specialist', location: 'Ho Chi Minh City', salary: '30M–48M VND', badge: 'HOT', accent: 'accent-coral', dept: 'Port IT' },
-        { id: 'job-snp-3', title: 'Deep-Water Berth Planner (Cai Mep Hub)', location: 'Ba Ria - Vung Tau', salary: '24M–35M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Vessel Planning' }
+        { id: 'job-snp-1', title: 'Port Operations Shift Superintendent', location: 'Cat Lai Port, Thu Duc City', salary: '28M-45M VND', badge: 'URGENT', accent: 'accent-coral', dept: 'Quayside Ops' },
+        { id: 'job-snp-2', title: 'ePort Digital Systems Application Specialist', location: 'Ho Chi Minh City', salary: '30M-48M VND', badge: 'HOT', accent: 'accent-coral', dept: 'Port IT' },
+        { id: 'job-snp-3', title: 'Deep-Water Berth Planner (Cai Mep Hub)', location: 'Ba Ria - Vung Tau', salary: '24M-35M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Vessel Planning' }
       ]
     },
     'logivan': {
@@ -267,8 +267,8 @@
         { title: 'ISO/IEC 27001 Information Security', org: 'Global BSI Group', badge: 'SECURITY' }
       ],
       openJobs: [
-        { id: 'job-lgv-1', title: 'Senior AI / Optimization Engineer – Route Dispatching', location: 'Hanoi (Cau Giay)', salary: '55M–80M VND', badge: 'HOT', accent: 'accent-coral', dept: 'AI & Data Science' },
-        { id: 'job-lgv-2', title: 'Enterprise Enterprise Account Executive – FMCG Freight', location: 'Ho Chi Minh City', salary: '35M–60M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Enterprise Sales' }
+        { id: 'job-lgv-1', title: 'Senior AI / Optimization Engineer - Route Dispatching', location: 'Hanoi (Cau Giay)', salary: '55M-80M VND', badge: 'HOT', accent: 'accent-coral', dept: 'AI & Data Science' },
+        { id: 'job-lgv-2', title: 'Enterprise Enterprise Account Executive - FMCG Freight', location: 'Ho Chi Minh City', salary: '35M-60M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Enterprise Sales' }
       ]
     },
     'vinfast-logistics': {
@@ -323,9 +323,9 @@
         { title: 'Vietnam National Excellence Award', org: 'Prime Minister of Vietnam &bull; 2025', badge: 'NATIONAL SEAL' }
       ],
       openJobs: [
-        { id: 'job-vfs-1', title: 'Global Ro-Ro Vessel Chartering Specialist', location: 'Hai Phong Port Complex', salary: '45M–70M VND', badge: 'HOT', accent: 'accent-coral', dept: 'Maritime Chartering' },
-        { id: 'job-vfs-2', title: 'Lithium Battery Hazmat Logistics Lead', location: 'Hai Phong / Hanoi', salary: '40M–60M VND', badge: 'URGENT', accent: 'accent-coral', dept: 'Dangerous Goods' },
-        { id: 'job-vfs-3', title: 'SAP Supply Chain Integration Architect', location: 'Hanoi HQ', salary: '50M–75M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'SCM Architecture' }
+        { id: 'job-vfs-1', title: 'Global Ro-Ro Vessel Chartering Specialist', location: 'Hai Phong Port Complex', salary: '45M-70M VND', badge: 'HOT', accent: 'accent-coral', dept: 'Maritime Chartering' },
+        { id: 'job-vfs-2', title: 'Lithium Battery Hazmat Logistics Lead', location: 'Hai Phong / Hanoi', salary: '40M-60M VND', badge: 'URGENT', accent: 'accent-coral', dept: 'Dangerous Goods' },
+        { id: 'job-vfs-3', title: 'SAP Supply Chain Integration Architect', location: 'Hanoi HQ', salary: '50M-75M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'SCM Architecture' }
       ]
     },
     'tikinow': {
@@ -368,16 +368,16 @@
         { title: 'One Team, One Heart', desc: 'Field couriers and software engineers collaborating side-by-side to solve real-world last-mile challenges.' }
       ],
       offices: [
-        { name: 'TikiNOW South Mega Fulfillment', location: 'Tan Binh Industrial Park, HCMC', type: 'Mega Distribution Center', spec: '60,000 m² Automated High-Speed Sorter Hub' },
-        { name: 'TikiNOW North Logistics Center', location: 'Long Bien District, Hanoi', type: 'Regional Sorting Center', spec: '40,000 m² with Cold Storage for Fresh Groceries' }
+        { name: 'TikiNOW South Mega Fulfillment', location: 'Tan Binh Industrial Park, HCMC', type: 'Mega Distribution Center', spec: '60,000 m Automated High-Speed Sorter Hub' },
+        { name: 'TikiNOW North Logistics Center', location: 'Long Bien District, Hanoi', type: 'Regional Sorting Center', spec: '40,000 m with Cold Storage for Fresh Groceries' }
       ],
       awards: [
         { title: 'Best E-Commerce Logistics Provider Vietnam', org: 'Vietnam E-Commerce Association (VECOM)', badge: 'TOP 1' },
         { title: 'Customer Service Excellence in Last-Mile', org: 'ASEAN Retail Awards Singapore', badge: 'EXCELLENCE' }
       ],
       openJobs: [
-        { id: 'job-tki-1', title: 'Fulfillment Center Operations Director', location: 'Tan Binh, Ho Chi Minh City', salary: '60M–90M VND', badge: 'HOT', accent: 'accent-coral', dept: 'Warehouse Ops' },
-        { id: 'job-tki-2', title: 'Last-Mile Fleet Optimization Lead', location: 'Hanoi / HCMC', salary: '35M–50M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Fleet Dispatch' }
+        { id: 'job-tki-1', title: 'Fulfillment Center Operations Director', location: 'Tan Binh, Ho Chi Minh City', salary: '60M-90M VND', badge: 'HOT', accent: 'accent-coral', dept: 'Warehouse Ops' },
+        { id: 'job-tki-2', title: 'Last-Mile Fleet Optimization Lead', location: 'Hanoi / HCMC', salary: '35M-50M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Fleet Dispatch' }
       ]
     },
     'viettel-post': {
@@ -431,9 +431,9 @@
         { title: 'Golden Star of Vietnam (Sao Vang Dat Viet)', org: 'Vietnam Young Entrepreneurs Association', badge: 'GOLDEN STAR' }
       ],
       openJobs: [
-        { id: 'job-vtp-1', title: 'Automated Sorting Hub Operations Manager', location: 'Quang Minh Megahub, Hanoi', salary: '35M–50M VND', badge: 'URGENT', accent: 'accent-coral', dept: 'Megahub Ops' },
-        { id: 'job-vtp-2', title: 'Vietnam-China Intermodal Rail Freight Lead', location: 'Hanoi / Lang Son', salary: '30M–45M VND', badge: 'HOT', accent: 'accent-coral', dept: 'Rail Logistics' },
-        { id: 'job-vtp-3', title: 'Regional Fleet Safety & Compliance Lead', location: 'Ho Chi Minh City', salary: '25M–35M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Fleet Safety' }
+        { id: 'job-vtp-1', title: 'Automated Sorting Hub Operations Manager', location: 'Quang Minh Megahub, Hanoi', salary: '35M-50M VND', badge: 'URGENT', accent: 'accent-coral', dept: 'Megahub Ops' },
+        { id: 'job-vtp-2', title: 'Vietnam-China Intermodal Rail Freight Lead', location: 'Hanoi / Lang Son', salary: '30M-45M VND', badge: 'HOT', accent: 'accent-coral', dept: 'Rail Logistics' },
+        { id: 'job-vtp-3', title: 'Regional Fleet Safety & Compliance Lead', location: 'Ho Chi Minh City', salary: '25M-35M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Fleet Safety' }
       ]
     },
     'grab-express': {
@@ -481,11 +481,11 @@
       ],
       awards: [
         { title: 'ASEAN Best On-Demand Delivery Platform', org: 'Southeast Asia Tech & Logistics Summit', badge: 'ASEAN BEST' },
-        { title: 'Great Place to Work® Certified', org: 'Great Place to Work Institute Vietnam', badge: 'TOP WORKPLACE' }
+        { title: 'Great Place to Work Certified', org: 'Great Place to Work Institute Vietnam', badge: 'TOP WORKPLACE' }
       ],
       openJobs: [
-        { id: 'job-grb-1', title: 'B2B Logistics Business Development Manager', location: 'Ho Chi Minh City', salary: '40M–70M VND', badge: 'HOT', accent: 'accent-coral', dept: 'Enterprise BD' },
-        { id: 'job-grb-2', title: 'Last-Mile Operations Regional Lead', location: 'Hanoi / HCMC', salary: '30M–50M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Operations' }
+        { id: 'job-grb-1', title: 'B2B Logistics Business Development Manager', location: 'Ho Chi Minh City', salary: '40M-70M VND', badge: 'HOT', accent: 'accent-coral', dept: 'Enterprise BD' },
+        { id: 'job-grb-2', title: 'Last-Mile Operations Regional Lead', location: 'Hanoi / HCMC', salary: '30M-50M VND', badge: 'FULL-TIME', accent: 'accent-green', dept: 'Operations' }
       ]
     }
   };
@@ -912,7 +912,7 @@ window.showCompanyDetail = function(slug) {
         badgeIcon: 'fa-stamp',
         badgeBg: '#F1F5F9',
         badgeColor: '#0F172A',
-        provider: 'Delivered in partnership with <strong>General Department of Vietnam Customs (Tổng cục Hải quan) Accredited Lecturers</strong>',
+        provider: 'Delivered in partnership with <strong>General Department of Vietnam Customs (Tong cuc Hai quan) Accredited Lecturers</strong>',
         lead: 'Official preparatory curriculum for the national customs broker license exam. Master VNACCS/VCIS electronic declaration, HS Code classification rulings, customs valuation dispute defense, and post-clearance regulatory compliance.',
         duration: '8 Weeks &bull; 80 Hours',
         format: 'Classroom &bull; Electronic Declaration Lab',
@@ -939,7 +939,7 @@ window.showCompanyDetail = function(slug) {
         certHtml: `
           <h2 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0 0 14px;">Official Credential Standing</h2>
           <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0 0 12px;">
-            Prepares participants directly for the annual <strong>Customs Broker Practice Certificate (Chứng chỉ Nghiệp vụ Khai hải quan)</strong> examination administered by the General Department of Vietnam Customs.
+            Prepares participants directly for the annual <strong>Customs Broker Practice Certificate (Chung chi Nghiep vu Khai hai quan)</strong> examination administered by the General Department of Vietnam Customs.
           </p>
           <p style="font-size: 13px; color: #64748B; line-height: 1.5; margin: 0;">
             Graduates receive official course completion certificates recognized for exam eligibility and customs agency authorization registration.
@@ -1090,7 +1090,7 @@ window.showCompanyDetail = function(slug) {
         overviewHtml: `
           <h2 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0 0 14px;">Programme Overview</h2>
           <p style="font-size: 15px; color: #334155; line-height: 1.7; margin: 0 0 14px;">
-            Preserving cargo integrity across -80°C deep freeze, -20°C frozen, and +2°C to +8°C pharmaceutical ranges is vital for Vietnam's seafood exports and pharmaceutical distribution.
+            Preserving cargo integrity across -80C deep freeze, -20C frozen, and +2C to +8C pharmaceutical ranges is vital for Vietnam's seafood exports and pharmaceutical distribution.
           </p>
           <p style="font-size: 15px; color: #334155; line-height: 1.7; margin: 0;">
             This course equips professionals with temperature monitoring validation, data logger SOPs, thermal packaging design, reefer pre-trip inspections (PTI), and regulatory audit defense.
@@ -1200,10 +1200,10 @@ window.showCompanyDetail = function(slug) {
 
       // Update Modals
       const enrollTitle = document.getElementById('modal-enroll-course-title');
-      if (enrollTitle) enrollTitle.textContent = 'Admission Application — ' + activeCourse.shortTitle;
+      if (enrollTitle) enrollTitle.textContent = 'Admission Application - ' + activeCourse.shortTitle;
 
       const consultTitle = document.getElementById('modal-consult-course-title');
-      if (consultTitle) consultTitle.textContent = 'Academic Consultation — ' + activeCourse.shortTitle;
+      if (consultTitle) consultTitle.textContent = 'Academic Consultation - ' + activeCourse.shortTitle;
     }
 
     document.addEventListener('DOMContentLoaded', hydrateCourseDetail);

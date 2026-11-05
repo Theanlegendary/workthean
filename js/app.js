@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================================== */
   
   function openEnterpriseModal(type) {
-    showToast(`🏢 Tính năng ${type || 'Doanh nghiệp'} — Liên hệ: hr@vietnamjobs.vn`);
+    showToast(`🏢 Feature for ${type || 'Employers'} - Contact: hr@vietnamjobs.vn`);
   }
 
   
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-copy-job-id')?.addEventListener('click', () => {
       if (state.selectedProject) {
         navigator.clipboard?.writeText(state.selectedProject.id);
-        showToast(`📋 Đã sao chép mã việc làm: ${state.selectedProject.id}`);
+        showToast(`📋 Copied Job ID: ${state.selectedProject.id}`);
       }
     });
 
@@ -305,13 +305,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (state.savedJobs.has(prjId)) {
         state.savedJobs.delete(prjId);
         btn.classList.remove('saved');
-        btn.innerHTML = '<i class="fa-regular fa-bookmark"></i> Lưu Việc';
-        showToast('Đã bỏ lưu việc làm');
+        btn.innerHTML = '<i class=\"fa-regular fa-bookmark\"></i> Save Job';
+        showToast('Job removed from your saved list');
       } else {
         state.savedJobs.add(prjId);
         btn.classList.add('saved');
-        btn.innerHTML = '<i class="fa-solid fa-bookmark bookmark-pop" style="color:#0a66c2;"></i> Đã Lưu';
-        showToast('❤️ Đã lưu việc làm vào danh sách yêu thích!');
+        btn.innerHTML = '<i class=\"fa-solid fa-bookmark bookmark-pop\" style=\"color:#0a66c2;\"></i> Saved';
+        showToast('❤️ Job saved to your favorites!');
       }
       const icon = btn.querySelector('i');
       if (icon) {
@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!state.selectedProject) return;
       const shareUrl = `${window.location.origin}${window.location.pathname}#job?id=${encodeURIComponent(state.selectedProject.id)}`;
       navigator.clipboard?.writeText(shareUrl);
-      showToast(`🔗 Đã sao chép link chi tiết việc làm mã ${state.selectedProject.id}!`);
+      showToast(`🔗 Copied job detail URL for ${state.selectedProject.id}!`);
     });
   }
 
@@ -354,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (idTag) idTag.textContent = p.id;
     if (idInline) idInline.innerHTML = `<i class="fa-solid fa-fingerprint"></i> ID: ${p.id}`;
     if (titleEl) titleEl.textContent = p.title;
-    if (compEl) compEl.textContent = p.company || p.clientName || 'Doanh Nghiệp Tuyển Dụng';
+    if (compEl) compEl.textContent = p.company || p.clientName || 'Accredited Employer';
     
     const logoText = p.logoType || (p.company || p.clientName || 'VN').substring(0, 3).toUpperCase();
     const logoUrl = resolveBrandLogo(p);
@@ -363,18 +363,18 @@ document.addEventListener('DOMContentLoaded', () => {
       logoEl.innerHTML = `<img src="${logoUrl}" alt="${logoText}" class="card-brand-logo" style="width:54px;height:54px;object-fit:contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><span class="card-brand-fallback" style="display:none;width:54px;height:54px;font-size:16px;">${logoText}</span>`;
     }
 
-    if (locEl) locEl.innerHTML = `<i class="fa-solid fa-location-dot" style="color:var(--fl-primary);"></i> ${p.location || 'Hà Nội & TP.HCM'}`;
-    if (worktypeEl) worktypeEl.innerHTML = `<i class="fa-solid fa-briefcase"></i> ${p.workType || p.type || 'Toàn thời gian'}`;
-    if (postedTimeEl) postedTimeEl.innerHTML = `<i class="fa-regular fa-clock"></i> ${p.postedDate || p.timeAgo || 'Đăng gần đây'}`;
+    if (locEl) locEl.innerHTML = `<i class="fa-solid fa-location-dot" style="color:var(--fl-primary);"></i> ${p.location || 'Hanoi & Ho Chi Minh City'}`;
+    if (worktypeEl) worktypeEl.innerHTML = `<i class="fa-solid fa-briefcase"></i> ${p.workType || p.type || 'Full-Time'}`;
+    if (postedTimeEl) postedTimeEl.innerHTML = `<i class="fa-regular fa-clock"></i> ${p.postedDate || p.timeAgo || 'Recently posted'}`;
 
-    const salaryVal = p.salaryDisplay || (p.budgetMin ? (`${p.budgetMin} – ${p.budgetMax} USD`) : '30 – 50 triệu/tháng');
+    const salaryVal = p.salaryDisplay || (p.budgetMin ? (`${p.budgetMin} - ${p.budgetMax} USD`) : '$1,400 - $2,400 / mo');
     if (salaryEl) salaryEl.textContent = salaryVal;
 
     if (saveBtn) {
       if (state.savedJobs.has(p.id)) {
-        saveBtn.innerHTML = '<i class="fa-solid fa-bookmark" style="color:#0a66c2;"></i> Đã Lưu';
+        saveBtn.innerHTML = '<i class=\"fa-solid fa-bookmark\" style=\"color:#0a66c2;\"></i> Saved';
       } else {
-        saveBtn.innerHTML = '<i class="fa-regular fa-bookmark"></i> Lưu Việc';
+        saveBtn.innerHTML = '<i class=\"fa-regular fa-bookmark\"></i> Save Job';
       }
     }
 
@@ -382,13 +382,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const descEl = document.getElementById('detail-description-text');
     if (descEl) {
       descEl.innerHTML = `
-        <p style="margin-bottom:12px;">${p.description || 'Tham gia trực tiếp phát triển và triển khai hệ thống giải pháp công nghệ cao cho doanh nghiệp hàng đầu tại Việt Nam.'}</p>
-        <p style="margin-bottom:12px;"><strong>Trách nhiệm công việc chính:</strong></p>
+        <p style="margin-bottom:12px;">${p.description || 'Lead the architecture, development, and end-to-end execution of enterprise systems and supply chain solutions.'}</p>
+        <p style="margin-bottom:12px;"><strong>Key Responsibilities:</strong></p>
         <ul style="list-style:disc; padding-left:20px; line-height:1.7; color:var(--fl-text-body);">
-          <li>Tham gia phân tích yêu cầu nghiệp vụ và thiết kế kiến trúc hệ thống module tương ứng.</li>
-          <li>Lập trình, tối ưu hóa hiệu năng cơ sở dữ liệu và đảm bảo tính bảo mật, khả năng mở rộng cao.</li>
-          <li>Phối hợp cùng Product Manager, QA và Tech Lead để nghiệm thu sản phẩm đúng tiến độ cam kết.</li>
-          <li>Tham gia xây dựng tài liệu kỹ thuật, hướng dẫn vận hành và chuyển giao công nghệ.</li>
+          <li>Analyze business requirements and architect robust, scalable system modules.</li>
+          <li>Develop, optimize database query performance, and ensure strict security protocols.</li>
+          <li>Collaborate with Product Managers, QA, and Tech Leads for sprint deliverables.</li>
+          <li>Author technical architecture documentation, runbooks, and handover standards.</li>
         </ul>
       `;
     }
@@ -417,16 +417,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sideAvatar) {
       sideAvatar.innerHTML = `<img src="${logoUrl}" alt="${logoText}" class="card-brand-logo" style="width:42px;height:42px;object-fit:contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><span class="card-brand-fallback" style="display:none;width:42px;height:42px;">${logoText}</span>`;
     }
-    if (sideCompName) sideCompName.textContent = p.company || p.clientName || 'Doanh Nghiệp Tuyển Dụng';
-    if (sideRating) sideRating.textContent = `${p.clientRating || 5.0} / 5.0 (${p.clientReviews || 84} đánh giá)`;
+    if (sideCompName) sideCompName.textContent = p.company || p.clientName || 'Accredited Employer';
+    if (sideRating) sideRating.textContent = `${p.clientRating || 5.0} / 5.0 (${p.clientReviews || 84} reviews)`;
     if (sideHireRate) sideHireRate.textContent = p.clientHireRate || '98%';
-    if (sideSince) sideSince.textContent = p.clientMemberSince || 'Năm 2018';
+    if (sideSince) sideSince.textContent = p.clientMemberSince || 'Since 2018';
 
     if (sideId) sideId.textContent = p.id;
     if (sideSalary) sideSalary.textContent = salaryVal;
-    if (sideLoc) sideLoc.textContent = p.location || 'Hà Nội & TP.HCM';
-    if (sideWorktype) sideWorktype.textContent = p.workType || p.type || 'Toàn thời gian';
-    if (sideDeadline) sideDeadline.textContent = p.timeLeft || 'Còn 15 ngày';
+    if (sideLoc) sideLoc.textContent = p.location || 'Hanoi & Ho Chi Minh City';
+    if (sideWorktype) sideWorktype.textContent = p.workType || p.type || 'Full-Time';
+    if (sideDeadline) sideDeadline.textContent = p.timeLeft || '15 days left';
 
     // Switch View & Update Hash
     switchView('job-detail', false);
@@ -473,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (searchInput) searchInput.value = kw;
         state.filters.search = kw.toLowerCase();
         renderHomeFeaturedProjects();
-        showToast(`🔍 Đang tìm kiếm: ${kw}`);
+        showToast(`🔍 Searching for: ${kw}`);
         document.getElementById('projects-feed')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
@@ -551,12 +551,12 @@ document.addEventListener('DOMContentLoaded', () => {
             state.savedJobs.delete(prjId);
             saveBtn.classList.remove('saved');
             saveBtn.innerHTML = '<i class="fa-regular fa-heart"></i>';
-            showToast('Đã bỏ lưu việc làm');
+            showToast('Job removed from your saved list');
           } else {
             state.savedJobs.add(prjId);
             saveBtn.classList.add('saved');
             saveBtn.innerHTML = '<i class="fa-solid fa-heart"></i>';
-            showToast('❤️ Đã lưu việc làm vào danh sách yêu thích!');
+            showToast('❤️ Job saved to your favorites!');
           }
           updateSavedJobsCountUI();
         });
@@ -579,7 +579,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (searchInput) searchInput.value = compName;
         state.filters.search = compName.toLowerCase();
         renderHomeFeaturedProjects();
-        showToast(`🔍 Đang hiển thị việc làm mới tại ${compName}`);
+        showToast(`🔍 Showing verified jobs at ${compName}`);
         const feed = document.getElementById('projects-feed');
         feed?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
@@ -628,7 +628,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (state.quickFilter === 'hot') {
       filtered = filtered.filter(p => p.hot === true);
     } else if (state.quickFilter === 'remote') {
-      filtered = filtered.filter(p => (p.location && p.location.toLowerCase().includes('remote')) || (p.workType && p.workType.toLowerCase().includes('linh hoạt')));
+      filtered = filtered.filter(p => (p.location && p.location.toLowerCase().includes('remote')) || (p.workType && p.workType.toLowerCase().includes('linh hoat')));
     } else if (state.quickFilter === 'fulltime') {
       filtered = filtered.filter(p => !p.type || p.type === 'Full-Time');
     } else if (state.quickFilter === 'highsalary') {
@@ -651,8 +651,8 @@ document.addEventListener('DOMContentLoaded', () => {
       feedContainer.innerHTML = `
         <div style="background:#ffffff; border:1px solid var(--fl-border); border-radius:var(--radius-lg); padding:40px 20px; text-align:center;">
           <i class="fa-solid fa-folder-open" style="font-size:36px; color:var(--fl-text-light); margin-bottom:12px;"></i>
-          <h4 style="font-size:16px; font-weight:700; color:var(--fl-text-heading); margin-bottom:6px;">Không tìm thấy việc làm phù hợp</h4>
-          <p style="font-size:13.5px; color:var(--fl-text-muted);">Hãy thử tìm kiếm với từ khóa khác hoặc xóa bộ lọc để xem toàn bộ danh sách.</p>
+          <h4 style="font-size:16px; font-weight:700; color:var(--fl-text-heading); margin-bottom:6px;">No matching jobs found</h4>
+          <p style="font-size:13.5px; color:var(--fl-text-muted);">Try adjusting your search keywords or clear filters to see all available jobs.</p>
         </div>
       `;
       return;
@@ -663,7 +663,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isPromoted = p.featured || p.hot;
       const initial = p.logoType || (p.company ? p.company.split(' ').map(w => w[0]).join('').substring(0, 3).toUpperCase() : 'VJ');
       const logoUrl = resolveBrandLogo(p);
-      const salaryText = p.salaryDisplay || (p.budgetMin ? `${p.budgetMin} – ${p.budgetMax} USD` : 'Thỏa thuận');
+      const salaryText = p.salaryDisplay || (p.budgetMin ? `${p.budgetMin} - ${p.budgetMax} USD` : 'Competitive');
       const applicantCount = p.applicantsCount || (p.bids ? p.bids.length : 12);
 
       const avatarHtml = `<img
@@ -683,32 +683,32 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="career-main-details">
               <div class="career-title-row">
                 <h3 class="career-job-title">${p.title}</h3>
-                <span class="badge-hot-tag"><i class="fa-solid fa-fire"></i> GẤP</span>
+                <span class="badge-hot-tag"><i class="fa-solid fa-fire"></i> HOT</span>
                 <span class="badge-new-yellow">NEW</span>
                 ${p.top100 !== false ? '<span class="badge-top100-star"><i class="fa-solid fa-star"></i> TOP 100</span>' : ''}
               </div>
 
               <div class="career-company-row">
                 <span class="company-name-bold">${p.company || p.clientName || 'Animalz Technologies'}</span>
-                <i class="fa-solid fa-circle-check career-verified-check" title="Doanh nghiệp đã xác thực"></i>
-                <span class="career-meta-sep">•</span>
-                <span class="career-location-text"><i class="fa-solid fa-location-dot" style="color:var(--fl-primary); font-size:12px;"></i> ${p.location || 'Hà Nội & TP.HCM'}</span>
-                <span class="career-meta-sep">•</span>
+                <i class="fa-solid fa-circle-check career-verified-check" title="Verified Enterprise"></i>
+                <span class="career-meta-sep">&bull;</span>
+                <span class="career-location-text"><i class="fa-solid fa-location-dot" style="color:var(--fl-primary); font-size:12px;"></i> ${p.location || 'Hanoi & Ho Chi Minh City'}</span>
+                <span class="career-meta-sep">&bull;</span>
                 <span class="career-workmode-badge"><i class="fa-solid fa-briefcase" style="font-size:11px;"></i> ${p.workType || 'Full-Time'}</span>
               </div>
 
               <div class="career-pills-row">
                 ${p.boosted !== false ? '<span class="pill-tag-boosted"><i class="fa-solid fa-rocket"></i> Boosted</span>' : ''}
-                ${p.featured ? '<span class="pill-tag-featured"><i class="fa-solid fa-crown"></i> Ưu Tiên</span>' : ''}
-                <span class="pill-tag-white"><i class="fa-solid fa-shield"></i> Xác thực 100%</span>
-                <span class="pill-tag-white"><i class="fa-solid fa-circle-check" style="color:var(--fl-primary);"></i> Tuyển gấp</span>
+                ${p.featured ? '<span class="pill-tag-featured"><i class="fa-solid fa-crown"></i> Featured</span>' : ''}
+                <span class="pill-tag-white"><i class="fa-solid fa-shield"></i> 100% Verified</span>
+                <span class="pill-tag-white"><i class="fa-solid fa-circle-check" style="color:var(--fl-primary);"></i> Urgent</span>
               </div>
 
               <div class="career-live-meta">
-                <span><i class="fa-regular fa-clock"></i> ${p.postedDate || p.timeAgo || '2 giờ trước'}</span>
-                <span class="career-meta-sep">•</span>
-                <span><i class="fa-solid fa-users" style="color:var(--fl-primary);"></i> <strong>${applicantCount}</strong> người đã nộp CV</span>
-                <span class="career-meta-sep">•</span>
+                <span><i class="fa-regular fa-clock"></i> ${p.postedDate || p.timeAgo || '2 gio truoc'}</span>
+                <span class="career-meta-sep">&bull;</span>
+                <span><i class="fa-solid fa-users" style="color:var(--fl-primary);"></i> <strong>${applicantCount}</strong> applicants</span>
+                <span class="career-meta-sep">&bull;</span>
                 <span style="color:var(--fl-text-muted); font-size:11.5px;"><i class="fa-solid fa-hashtag"></i> ${p.id}</span>
               </div>
             </div>
@@ -717,15 +717,15 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="career-card-right-section">
             <div class="career-salary-box">
               <div class="career-salary-text">${salaryText}</div>
-              <div class="career-salary-subbadge"><i class="fa-solid fa-circle-dollar-to-slot"></i> Thu nhập hấp dẫn</div>
+              <div class="career-salary-subbadge"><i class="fa-solid fa-circle-dollar-to-slot"></i> Competitive Salary</div>
             </div>
 
             <div class="career-action-buttons-group">
-              <button class="btn-save-pill ${isSaved ? 'saved' : ''}" title="Lưu việc làm" data-action="save">
-                <i class="fa-${isSaved ? 'solid' : 'regular'} fa-bookmark"></i> ${isSaved ? 'Đã lưu' : 'Lưu'}
+              <button class="btn-save-pill ${isSaved ? 'saved' : ''}" title="Save Job" data-action="save">
+                <i class="fa-${isSaved ? 'solid' : 'regular'} fa-bookmark"></i> ${isSaved ? 'Saved' : 'Save'}
               </button>
               <button class="btn-apply-prominent" data-action="view-detail">
-                Xem Chi Tiết <i class="fa-solid fa-arrow-right"></i>
+                View Job <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
           </div>
@@ -742,10 +742,10 @@ document.addEventListener('DOMContentLoaded', () => {
           e.stopPropagation();
           if (state.savedJobs.has(prjId)) {
             state.savedJobs.delete(prjId);
-            showToast('Đã bỏ lưu việc làm');
+            showToast('Job removed from your saved list');
           } else {
             state.savedJobs.add(prjId);
-            showToast('❤️ Đã lưu việc làm vào danh sách yêu thích!');
+            showToast('❤️ Job saved to your favorites!');
           }
           updateSavedJobsCountUI();
           renderHomeFeaturedProjects();
@@ -776,7 +776,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('btn-apply-browse-filters')?.addEventListener('click', () => {
       renderBrowseProjects();
-      showToast('🔍 Đã áp dụng bộ lọc thành công!');
+      showToast('🔍 Filters applied successfully!');
     });
 
     document.getElementById('btn-reset-browse-filters')?.addEventListener('click', () => {
@@ -787,7 +787,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (sortSelect) sortSelect.value = 'newest';
       updateActiveBadge();
       renderBrowseProjects();
-      showToast('🔄 Đã đặt lại toàn bộ bộ lọc tìm kiếm');
+      showToast('🔄 Search filters have been reset');
     });
 
     document.getElementById('browse-sort-select')?.addEventListener('change', renderBrowseProjects);
@@ -815,7 +815,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (checkedCats.length > 0) projects = projects.filter(p => checkedCats.includes(p.category));
     if (checkedTypes.length > 0) projects = projects.filter(p => checkedTypes.some(t => (p.workType || p.type || '').toLowerCase().includes(t.toLowerCase())));
     if (checkedLocs.length > 0) {
-    const locMap = { 'hcm': ['hcm', 'hồ chí minh', 'tp.hcm', 'ho chi minh', 'sài gòn'], 'hanoi': ['hà nội', 'ha noi', 'hà noi'], 'danang': ['đà nẵng', 'da nang'], 'bacninh': ['bắc ninh', 'bac ninh'] };
+    const locMap = { 'hcm': ['hcm', 'ho chi minh', 'hcmc', 'saigon'], 'hanoi': ['hanoi', 'ha noi'], 'danang': ['danang', 'da nang'], 'bacninh': ['bac ninh', 'bacninh'] };
     projects = projects.filter(p => {
       const loc = (p.location || '').toLowerCase();
       return checkedLocs.some(filterKey => {
@@ -841,7 +841,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (countEl) countEl.textContent = projects.length;
 
     if (projects.length === 0) {
-      browseFeed.innerHTML = `<div style="background:#fff;border:1px solid var(--fl-border);border-radius:var(--radius-lg);padding:40px;text-align:center;"><i class="fa-solid fa-folder-open" style="font-size:36px;color:var(--fl-text-light);"></i><h4 style="margin-top:12px;font-size:16px;color:var(--fl-text-heading);">Không tìm thấy việc làm phù hợp</h4></div>`;
+      browseFeed.innerHTML = `<div style="background:#fff;border:1px solid var(--fl-border);border-radius:var(--radius-lg);padding:40px;text-align:center;"><i class="fa-solid fa-folder-open" style="font-size:36px;color:var(--fl-text-light);"></i><h4 style="margin-top:12px;font-size:16px;color:var(--fl-text-heading);">No matching jobs found</h4></div>`;
       return;
     }
 
@@ -849,7 +849,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isSaved = state.savedJobs.has(p.id);
       const initial = p.logoType || (p.company ? p.company.substring(0, 2).toUpperCase() : 'VJ');
       const logoUrl = resolveBrandLogo(p);
-      const salaryText = p.salaryDisplay || (p.budgetMin ? `${p.budgetMin} – ${p.budgetMax} USD` : 'Thỏa thuận');
+      const salaryText = p.salaryDisplay || (p.budgetMin ? `${p.budgetMin} - ${p.budgetMax} USD` : 'Competitive');
 
       return `
         <article class="career-job-card ${p.hot ? 'promoted' : ''}" data-project-id="${p.id}">
@@ -863,18 +863,18 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="career-main-details">
               <div class="career-title-row">
                 <h3 class="career-job-title">${p.title}</h3>
-                <span class="badge-hot-tag"><i class="fa-solid fa-fire"></i> GẤP</span>
+                <span class="badge-hot-tag"><i class="fa-solid fa-fire"></i> HOT</span>
               </div>
 
               <div class="career-company-row">
-                <span class="company-name-bold">${p.company || p.clientName || 'Doanh Nghiệp'}</span>
+                <span class="company-name-bold">${p.company || p.clientName || 'Enterprise Employer'}</span>
                 <i class="fa-solid fa-circle-check career-verified-check"></i>
-                <span class="career-meta-sep">•</span>
-                <span class="career-location-text"><i class="fa-solid fa-location-dot" style="color:var(--fl-primary);"></i> ${p.location || 'Hà Nội & TP.HCM'}</span>
+                <span class="career-meta-sep">&bull;</span>
+                <span class="career-location-text"><i class="fa-solid fa-location-dot" style="color:var(--fl-primary);"></i> ${p.location || 'Hanoi & Ho Chi Minh City'}</span>
               </div>
 
               <p style="font-size:13px; color:var(--fl-text-body); margin-top:4px; line-height:1.4;">
-                ${p.description ? p.description.substring(0, 140) + '...' : 'Tìm kiếm ứng viên tài năng tham gia dự án công nghệ.'}
+                ${p.description ? p.description.substring(0, 140) + '...' : 'Seeking qualified specialists to join high-impact enterprise teams.'}
               </p>
             </div>
           </div>
@@ -886,7 +886,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <div class="career-action-buttons-group">
               <button class="btn-apply-prominent" data-action="view-detail">
-                Xem Chi Tiết <i class="fa-solid fa-arrow-right"></i>
+                View Job <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
           </div>
@@ -961,13 +961,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (filenameEl) filenameEl.textContent = file.name;
       if (previewBox) previewBox.style.display = 'flex';
       if (dropzone) dropzone.style.display = 'none';
-      showToast(`📄 Đã đính kèm hồ sơ CV: ${file.name}`);
+      showToast(`📄 CV attachment added: ${file.name}`);
     }
 
     form?.addEventListener('submit', (e) => {
       e.preventDefault();
-      const applicantName = document.getElementById('qa-input-name')?.value || 'Ứng viên';
-      const jobTitle = document.getElementById('quick-apply-job-title')?.textContent || 'Vị trí';
+      const applicantName = document.getElementById('qa-input-name')?.value || 'Candidate';
+      const jobTitle = document.getElementById('quick-apply-job-title')?.textContent || 'Position';
 
       closeModal();
       form.reset();
@@ -975,7 +975,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (previewBox) previewBox.style.display = 'none';
       if (dropzone) dropzone.style.display = 'block';
 
-      showToast(`🎉 Ứng tuyển thành công vị trí "${jobTitle}"! Nhà tuyển dụng sẽ sớm liên hệ với bạn.`);
+      showToast(`🎉 Successfully applied for \"${jobTitle}\"! Employer will review your application.`);
     });
   }
 
@@ -996,7 +996,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (idInput) idInput.value = p.id;
     if (compEl) {
       compEl.innerHTML = `
-        <span>${p.company || p.clientName || 'Doanh Nghiệp'}</span>
+        <span>${p.company || p.clientName || 'Enterprise Employer'}</span>
         <i class="fa-solid fa-circle-check" style="color: var(--fl-primary); font-size: 11px;"></i>
       `;
     }
@@ -1028,8 +1028,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const company = document.getElementById('wiz-company-name').value;
       const location = document.getElementById('wiz-job-location').value;
       const desc = document.getElementById('wiz-job-desc').value;
-      const minBudget = document.getElementById('wiz-min-budget').value || '15,000,000₫';
-      const maxBudget = document.getElementById('wiz-max-budget').value || '35,000,000₫';
+      const minBudget = document.getElementById('wiz-min-budget').value || '$1,000';
+      const maxBudget = document.getElementById('wiz-max-budget').value || '$2,500';
 
       const newPrj = {
         id: `prj-${Date.now()}`,
@@ -1038,8 +1038,8 @@ document.addEventListener('DOMContentLoaded', () => {
         location,
         salaryDisplay: `${minBudget} - ${maxBudget}`,
         hot: true,
-        postedDate: 'Vừa xong',
-        timeAgo: 'Vừa xong',
+        postedDate: 'Just now',
+        timeAgo: 'Just now',
         applicantsCount: 0,
         logoType: company.substring(0, 3).toUpperCase(),
         description: desc,
@@ -1050,7 +1050,7 @@ document.addEventListener('DOMContentLoaded', () => {
       closeModal();
       form.reset();
       renderHomeFeaturedProjects();
-      showToast('🎉 Đăng tin tuyển dụng thành công! Tin đã xuất hiện trên trang chủ.');
+      showToast('🎉 Job posted successfully! It is now live on the jobs board.');
     });
   }
 
@@ -1139,10 +1139,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const initials = (user.name || 'User').split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
       if (userAvatarEl) userAvatarEl.textContent = initials;
-      if (userNameEl) userNameEl.textContent = user.name || 'Ứng viên';
-      if (dropNameEl) dropNameEl.textContent = user.name || 'Ứng viên';
+      if (userNameEl) userNameEl.textContent = user.name || 'Candidate';
+      if (dropNameEl) dropNameEl.textContent = user.name || 'Candidate';
       if (dropEmailEl) dropEmailEl.textContent = user.email || 'user@vietnamjobs.vn';
-      if (dropRoleEl) dropRoleEl.textContent = user.role === 'Employer' ? '🏢 Nhà Tuyển Dụng' : '⭐ Ứng Viên VIP';
+      if (dropRoleEl) dropRoleEl.textContent = user.role === 'Employer' ? '🏢 Employer Admin' : '⭐ Verified Candidate';
 
       // Update menu saved count
       const menuSaved = document.getElementById('menu-saved-count');
@@ -1165,7 +1165,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const pass = document.getElementById('signin-password')?.value;
 
       if (!email || !pass) {
-        showToast('⚠️ Vui lòng nhập đầy đủ thông tin đăng nhập!');
+        showToast('⚠️ Please enter both email and password!');
         return;
       }
 
@@ -1179,13 +1179,13 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('vietnamjobs_auth_user', JSON.stringify(user));
       renderUserAuthUI(user);
       closeModal();
-      showToast(`🎉 Xin chào ${user.name}! Đăng nhập thành công vào VietnamJobs.`);
+      showToast(`🎉 Welcome back, ${user.name}! Logged in successfully.`);
     });
 
     // 1-Click Demo Login
     document.getElementById('btn-quick-demo-login')?.addEventListener('click', () => {
       const demoUser = {
-        name: 'Thean Lê',
+        name: 'Thean Le',
         email: 'thean.le@vietnamjobs.vn',
         role: 'Candidate',
         loginTime: new Date().toISOString()
@@ -1193,7 +1193,7 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('vietnamjobs_auth_user', JSON.stringify(demoUser));
       renderUserAuthUI(demoUser);
       closeModal();
-      showToast('⚡ Đã đăng nhập nhanh với tài khoản mẫu (Thean Lê)!');
+      showToast('⚡ Quick login as demo candidate (Thean Le)!');
     });
 
     // Sign Up Submission
@@ -1206,7 +1206,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const password = document.getElementById('signup-password')?.value;
 
       if (!name || !email || !password) {
-        showToast('⚠️ Vui lòng điền đầy đủ các thông tin có dấu *!');
+        showToast('⚠️ Please complete all required fields (*)');
         return;
       }
 
@@ -1221,7 +1221,7 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('vietnamjobs_auth_user', JSON.stringify(newUser));
       renderUserAuthUI(newUser);
       closeModal();
-      showToast(`🎊 Chúc mừng ${name}! Tạo tài khoản thành công.`);
+      showToast(`🎊 Congratulations ${name}! Account created successfully.`);
     });
 
     // Logout
@@ -1229,7 +1229,7 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.removeItem('vietnamjobs_auth_user');
       renderUserAuthUI(null);
       userDropdown?.classList.remove('show');
-      showToast('👋 Bạn đã đăng xuất thành công khỏi hệ thống.');
+      showToast('👋 You have been logged out successfully.');
     });
 
     // Dropdown shortcuts
@@ -1242,7 +1242,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('dropdown-btn-applied')?.addEventListener('click', () => {
       userDropdown?.classList.remove('show');
-      showToast('📄 Bạn đang có 1 hồ sơ đang trong quy trình xét duyệt.');
+      showToast('📄 You have 1 active job application in review.');
     });
 
     document.getElementById('dropdown-btn-post-job')?.addEventListener('click', () => {
@@ -1252,7 +1252,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('link-forgot-pass')?.addEventListener('click', (e) => {
       e.preventDefault();
-      showToast('📩 Vui lòng liên hệ tổng đài 1900 6868 hoặc email support@vietnamjobs.vn để đặt lại mật khẩu.');
+      showToast('📩 Please contact support@vietnamjobs.vn to reset your password.');
     });
   }
 
@@ -1276,11 +1276,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div>
                   <h3 style="font-size:16px; font-weight:800; color:var(--fl-text-heading); margin-bottom:2px; display:flex; align-items:center; gap:6px;">
                     ${f.name}
-                    <i class="fa-solid fa-circle-check" style="color:var(--fl-primary); font-size:13px;" title="Ứng viên đã xác thực"></i>
+                    <i class="fa-solid fa-circle-check" style="color:var(--fl-primary); font-size:13px;" title="Verified Candidate"></i>
                   </h3>
                   <div style="font-size:13px; color:var(--fl-primary); font-weight:600;">${f.title}</div>
                   <div style="font-size:12px; color:var(--fl-text-light); margin-top:2px;">
-                    <i class="fa-solid fa-location-dot"></i> ${f.country} • <i class="fa-solid fa-star" style="color:#eab308;"></i> ${f.rating} (${f.reviewsCount} đánh giá)
+                    <i class="fa-solid fa-location-dot"></i> ${f.country} &bull; <i class="fa-solid fa-star" style="color:#eab308;"></i> ${f.rating} (${f.reviewsCount} reviews)
                   </div>
                 </div>
               </div>
@@ -1295,7 +1295,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           <div style="display:flex; gap:10px; border-top:1px solid var(--fl-border); padding-top:14px;">
             <button class="btn-signup-red-solid" style="flex:1; justify-content:center; padding:9px 12px; font-size:13px;" data-candidate-name="${f.name}">
-              <i class="fa-solid fa-paper-plane"></i> Mời Phỏng Vấn
+              <i class="fa-solid fa-paper-plane"></i> Invite to Interview
             </button>
             <button class="btn-login-red-outline" style="padding:9px 14px; font-size:13px;" data-view-profile="${f.name}">
               Xem CV
@@ -1308,14 +1308,14 @@ document.addEventListener('DOMContentLoaded', () => {
     grid.querySelectorAll('[data-candidate-name]').forEach(btn => {
       btn.addEventListener('click', () => {
         const name = btn.getAttribute('data-candidate-name');
-        showToast(`✉️ Đã gửi lời mời phỏng vấn tới chuyên gia ${name}! Chúng tôi sẽ thông báo cho bạn ngay khi ứng viên phản hồi.`);
+        showToast(`✉️ Interview invitation sent to ${name}! We will notify you once they accept.`);
       });
     });
 
     grid.querySelectorAll('[data-view-profile]').forEach(btn => {
       btn.addEventListener('click', () => {
         const name = btn.getAttribute('data-view-profile');
-        showToast(`📄 Đang mở hồ sơ năng lực chi tiết của ${name}...`);
+        showToast(`📄 Opening profile for ${name}...`);
       });
     });
   }
@@ -1353,15 +1353,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchInputs.length === 0) return;
 
     const suggestions = [
-      "🚀 Senior Java / Spring Boot Microservices (FPT, VCB)...",
-      "💻 React 18 & Next.js 14 Fullstack Developer 35M+...",
-      "🤖 AI & Machine Learning Solution Architect...",
-      "🛍️ Digital Marketing Manager Shopee, Grab...",
-      "📱 Senior Mobile Flutter / iOS Viettel Money...",
-      "🎨 Senior Product UI/UX Designer Figma (MoMo, Tiki)...",
-      "☁️ DevOps & Cloud AWS Kubernetes Engineer...",
-      "⚡ Kỹ sư phần mềm VinFast Digital...",
-      "🏢 Khám phá cơ hội tại 3,200+ doanh nghiệp hàng đầu..."
+      "🚀 Senior Java / Spring Boot Microservices (FPT, Vietcombank)...",
+      "💻 React 19 & Next.js Fullstack Developer ($1,800 - $2,600)...",
+      "🤖 AI & Machine Learning Solutions Architect (Enterprise Hub)...",
+      "🚢 Senior Ocean Freight Operations Specialist (Viconship Group)...",
+      "📱 Senior Mobile Flutter / iOS Engineer (Viettel Digital)...",
+      "🎨 Lead Product UI/UX Designer (Design Systems & Tokens)...",
+      "☁️ Principal DevOps & Multi-Cloud Kubernetes Engineer...",
+      "⚡ Smart Warehouse Robotics & AMR Automation Lead...",
+      "🏢 Explore career opportunities across 120+ accredited enterprises..."
     ];
 
     let currentIndex = 0;
@@ -1416,7 +1416,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let tickerInterval = null;
     let toastTimeout = null;
 
-    // "Không hiện lại" Checkbox Event Listener
+    // "Khong hien lai" Checkbox Event Listener
     dontShowCb?.addEventListener('change', (e) => {
       e.stopPropagation();
       if (dontShowCb.checked) {
@@ -1424,7 +1424,7 @@ document.addEventListener('DOMContentLoaded', () => {
         toast.classList.remove('show');
         clearInterval(tickerInterval);
         clearTimeout(toastTimeout);
-        showToast('ℹ️ Đã tắt thông báo hoạt động ứng tuyển');
+        showToast('ℹ️ Live activity notifications paused');
       }
     });
 
@@ -1433,13 +1433,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const activities = [
-      { jobId: "prj-100", logo: "images/brands/fpt.svg", text: "Nguyễn Minh Tuấn vừa ứng tuyển <strong>Senior Backend Engineer</strong> tại FPT Software", time: "1 phút trước" },
-      { jobId: "prj-101", logo: "images/brands/vcb.svg", text: "Vietcombank vừa gửi lời mời phỏng vấn tới ứng viên <strong>Trần Minh Quang</strong>", time: "3 phút trước" },
-      { jobId: "prj-102", logo: "images/brands/vinfast.svg", text: "VinFast Digital vừa đăng tuyển 3 vị trí <strong>React / Next.js Senior</strong>", time: "5 phút trước" },
-      { jobId: "prj-104", logo: "images/brands/shopee.svg", text: "Shopee Vietnam vừa nhận 4 hồ sơ ứng tuyển <strong>Digital Marketing Manager</strong>", time: "8 phút trước" },
-      { jobId: "prj-103", logo: "images/brands/viettel.svg", text: "Vũ Đình Nam vừa nộp hồ sơ ứng tuyển <strong>Mobile Flutter Engineer</strong> tại Viettel", time: "12 phút trước" },
-      { jobId: "prj-105", logo: "images/brands/momo.svg", text: "MoMo Fintech vừa xem hồ sơ của <strong>Nguyễn Hà My</strong> (UX Lead)", time: "15 phút trước" },
-      { jobId: "prj-111", logo: "images/brands/samsung.svg", text: "Samsung R&D vừa mở tuyển 2 vị trí <strong>AI Data Engineer</strong>", time: "18 phút trước" }
+      { jobId: "prj-100", logo: "images/brands/fpt.svg", text: "Nguyen Minh Tuan vua ung tuyen <strong>Senior Backend Engineer</strong> tai FPT Software", time: "1 phut truoc" },
+      { jobId: "prj-101", logo: "images/brands/vcb.svg", text: "Vietcombank vua gui loi moi phong van toi ung vien <strong>Tran Minh Quang</strong>", time: "3 phut truoc" },
+      { jobId: "prj-102", logo: "images/brands/vinfast.svg", text: "VinFast Digital vua dang tuyen 3 vi tri <strong>React / Next.js Senior</strong>", time: "5 phut truoc" },
+      { jobId: "prj-104", logo: "images/brands/shopee.svg", text: "Shopee Vietnam vua nhan 4 ho so ung tuyen <strong>Digital Marketing Manager</strong>", time: "8 phut truoc" },
+      { jobId: "prj-103", logo: "images/brands/viettel.svg", text: "Vu Dinh Nam vua nop ho so ung tuyen <strong>Mobile Flutter Engineer</strong> tai Viettel", time: "12 phut truoc" },
+      { jobId: "prj-105", logo: "images/brands/momo.svg", text: "MoMo Fintech vua xem ho so cua <strong>Nguyen Ha My</strong> (UX Lead)", time: "15 phut truoc" },
+      { jobId: "prj-111", logo: "images/brands/samsung.svg", text: "Samsung R&D vua mo tuyen 2 vi tri <strong>AI Data Engineer</strong>", time: "18 phut truoc" }
     ];
 
     let actIndex = 0;
@@ -1470,7 +1470,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const imgEl = document.getElementById('activity-toast-img');
       if (imgEl && act.logo) imgEl.src = act.logo;
       if (msgEl) msgEl.innerHTML = act.text;
-      if (timeEl) timeEl.innerHTML = '<span class="live-pulse-dot" style="width:6px;height:6px;"></span> ' + act.time + ' <span style="margin-left:6px;color:var(--fl-primary);font-weight:700;">Xem chi tiết &rarr;</span>';
+      if (timeEl) timeEl.innerHTML = '<span class="live-pulse-dot" style="width:6px;height:6px;"></span> ' + act.time + ' <span style="margin-left:6px;color:var(--fl-primary);font-weight:700;">Xem chi tiet &rarr;</span>';
 
       toast.classList.add('show');
 
@@ -1499,10 +1499,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const roleData = {
       'java': {
-        salary: '28 – 50 triệu/tháng',
-        senior: 'Senior: 45 – 70 triệu/tháng',
-        demand: '+42% Nhu Cầu',
-        openCount: '1,240+ vị trí đang mở',
+        salary: '$1,200 - $2,200 / mo',
+        senior: 'Senior: $1,800 - $3,000 / mo',
+        demand: '+42% Demand Growth',
+        openCount: '1,240+ Open Roles',
         companies: [
           { name: 'FPT Software', img: 'images/brands/fpt.svg' },
           { name: 'Vietcombank', img: 'images/brands/vcb.svg' },
@@ -1512,10 +1512,10 @@ document.addEventListener('DOMContentLoaded', () => {
         keyword: 'Java'
       },
       'react': {
-        salary: '25 – 45 triệu/tháng',
-        senior: 'Senior / Lead: 40 – 65 triệu/tháng',
-        demand: '+56% Nhu Cầu',
-        openCount: '1,890+ vị trí đang mở',
+        salary: '$1,100 - $2,000 / mo',
+        senior: 'Senior / Lead: $1,600 - $2,800 / mo',
+        demand: '+56% Demand Growth',
+        openCount: '1,890+ Open Roles',
         companies: [
           { name: 'VinFast Digital', img: 'images/brands/vinfast.svg' },
           { name: 'KiotViet', img: 'images/brands/kiotviet.svg' },
@@ -1525,10 +1525,10 @@ document.addEventListener('DOMContentLoaded', () => {
         keyword: 'React'
       },
       'ai': {
-        salary: '35 – 65 triệu/tháng',
-        senior: 'Principal / Architect: 60 – 100+ triệu/tháng',
-        demand: '+84% Đột Phá',
-        openCount: '860+ vị trí đang mở',
+        salary: '$1,500 - $2,800 / mo',
+        senior: 'Principal / Architect: $2,500 - $4,200 / mo',
+        demand: '+84% Breakout Growth',
+        openCount: '860+ Open Roles',
         companies: [
           { name: 'Vietcombank', img: 'images/brands/vcb.svg' },
           { name: 'VNPay', img: 'images/brands/vnpay.svg' },
@@ -1538,10 +1538,10 @@ document.addEventListener('DOMContentLoaded', () => {
         keyword: 'AI'
       },
       'mobile': {
-        salary: '25 – 45 triệu/tháng',
-        senior: 'Senior: 40 – 60 triệu/tháng',
-        demand: '+38% Nhu Cầu',
-        openCount: '940+ vị trí đang mở',
+        salary: '$1,100 - $2,000 / mo',
+        senior: 'Senior: 40 - 60 trieu/thang',
+        demand: '+38% Demand Growth',
+        openCount: '940+ Open Roles',
         companies: [
           { name: 'Viettel Money', img: 'images/brands/viettel.svg' },
           { name: 'MoMo', img: 'images/brands/momo.svg' },
@@ -1551,10 +1551,10 @@ document.addEventListener('DOMContentLoaded', () => {
         keyword: 'Mobile'
       },
       'design': {
-        salary: '22 – 42 triệu/tháng',
-        senior: 'Lead UX: 35 – 55 triệu/tháng',
-        demand: '+35% Nhu Cầu',
-        openCount: '780+ vị trí đang mở',
+        salary: '$1,000 - $1,900 / mo',
+        senior: 'Lead UX: $1,500 - $2,400 / mo',
+        demand: '+35% Demand Growth',
+        openCount: '780+ Open Roles',
         companies: [
           { name: 'MoMo Fintech', img: 'images/brands/momo.svg' },
           { name: 'Grab Vietnam', img: 'images/brands/grab.svg' },
@@ -1564,15 +1564,15 @@ document.addEventListener('DOMContentLoaded', () => {
         keyword: 'Design'
       },
       'marketing': {
-        salary: '20 – 38 triệu/tháng',
-        senior: 'Head of Marketing: 40 – 70 triệu/tháng',
-        demand: '+48% Nhu Cầu',
-        openCount: '1,450+ vị trí đang mở',
+        salary: '$900 - $1,700 / mo',
+        senior: 'Head of Marketing: $1,800 - $3,000 / mo',
+        demand: '+48% Demand Growth',
+        openCount: '1,450+ Open Roles',
         companies: [
           { name: 'Shopee Vietnam', img: 'images/brands/shopee.svg' },
           { name: 'Grab Vietnam', img: 'images/brands/grab.svg' },
           { name: 'Unilever', img: 'images/brands/unilever.svg' },
-          { name: "L'Oréal", img: 'images/brands/loreal.svg' }
+          { name: "L'Oreal", img: 'images/brands/loreal.svg' }
         ],
         keyword: 'Marketing'
       }
@@ -1595,7 +1595,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (seniorEl) seniorEl.textContent = data.senior;
         if (demandEl) demandEl.innerHTML = '<i class="fa-solid fa-arrow-trend-up"></i> ' + data.demand;
         if (openCountEl) openCountEl.textContent = data.openCount;
-        if (exploreBtn) exploreBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> Xem ' + data.openCount.split('+')[0] + '+ Việc Này';
+        if (exploreBtn) exploreBtn.innerHTML = '<i class=\"fa-solid fa-magnifying-glass\"></i> View ' + data.openCount.split('+')[0] + '+ Roles';
 
         if (compEl) {
           compEl.innerHTML = data.companies.map(c => `
@@ -1610,7 +1610,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const searchInput = document.getElementById('header-search-input');
       if (searchInput) searchInput.value = currentKeyword;
       renderBrowseProjects();
-      showToast(`🚀 Đang lọc danh sách việc làm ngành "${currentKeyword}"!`);
+      showToast(`🚀 Filtering jobs in category \"${currentKeyword}\"!`);
     });
   }
 
@@ -1639,7 +1639,7 @@ document.addEventListener('DOMContentLoaded', () => {
       grossBtn.classList.add('active');
       netBtn?.classList.remove('active');
       if (modeLabel) modeLabel.textContent = 'GROSS';
-      if (resultTitle) resultTitle.textContent = 'LƯƠNG THỰC NHẬN (NET):';
+      if (resultTitle) resultTitle.textContent = 'ESTIMATED TAKE-HOME (NET):';
       calculate();
     });
 
@@ -1648,12 +1648,12 @@ document.addEventListener('DOMContentLoaded', () => {
       netBtn.classList.add('active');
       grossBtn?.classList.remove('active');
       if (modeLabel) modeLabel.textContent = 'NET';
-      if (resultTitle) resultTitle.textContent = 'LƯƠNG GROSS CẦN ĐỀ XUẤT:';
+      if (resultTitle) resultTitle.textContent = 'RECOMMENDED GROSS SALARY:';
       calculate();
     });
 
     function formatNumber(num) {
-      return num.toLocaleString('vi-VN') + ' ₫';
+      return num.toLocaleString('vi-VN') + ' $';
     }
 
     function parseSalary(val) {
@@ -1690,7 +1690,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const incomeBeforeTax = Math.max(0, gross - totalInsurance);
         const taxableIncome = Math.max(0, incomeBeforeTax - selfDeduction - dependentDeduction);
 
-        // Progressive PIT Tax (Thuế TNCN luỹ tiến 2026)
+        // Progressive PIT Tax (Thue TNCN luy tien 2026)
         let pit = 0;
         if (taxableIncome <= 5000000) pit = taxableIncome * 0.05;
         else if (taxableIncome <= 10000000) pit = 250000 + (taxableIncome - 5000000) * 0.1;
@@ -1707,7 +1707,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (bhxhVal) bhxhVal.textContent = '-' + formatNumber(bhxh);
         if (bhytVal) bhytVal.textContent = '-' + formatNumber(bhyt);
         if (bhtnVal) bhtnVal.textContent = '-' + formatNumber(bhtn);
-        if (taxVal) taxVal.textContent = pit > 0 ? ('-' + formatNumber(pit)) : '0 ₫';
+        if (taxVal) taxVal.textContent = pit > 0 ? ('-' + formatNumber(pit)) : '0 $';
       } else {
         // NET to GROSS estimation
         net = rawSalary;
@@ -1720,22 +1720,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (bhxhVal) bhxhVal.textContent = formatNumber(bhxh);
         if (bhytVal) bhytVal.textContent = formatNumber(bhyt);
         if (bhtnVal) bhtnVal.textContent = formatNumber(bhtn);
-        if (taxVal) taxVal.textContent = 'Quy đổi luỹ tiến';
+        if (taxVal) taxVal.textContent = 'Progressive bracket';
       }
     }
 
     calcBtn?.addEventListener('click', () => {
       calculate();
-      showToast('⚡ Đã tính xong mức thu nhập theo luật BHXH 2026!');
+      showToast('⚡ Salary compensation model calculated!');
     });
 
     dependentsSelect?.addEventListener('change', calculate);
 
     // ATS CV Toolkit Download Handler
     document.getElementById('btn-download-cv-kit')?.addEventListener('click', () => {
-      showToast('📥 Đang tải trọn bộ 50+ Mẫu CV Chuẩn ATS 2026 (Format .DOCX & .PDF)...');
+      showToast('📥 Downloading 50+ ATS-Ready CV Templates (DOCX & PDF)...');
       setTimeout(() => {
-        showToast('✅ Tải hoàn tất! Chúc bạn ứng tuyển thành công vị trí mơ ước.');
+        showToast('✅ Download complete! Best wishes on your career search.');
       }, 1500);
     });
   }
@@ -1817,7 +1817,7 @@ const enterpriseJobsDatabase = [
     "company": "VinFast Logistics & Cold Chain Solutions",
     "companyLogo": "images/brands/vinfast.svg",
     "companyIcon": "fa-snowflake",
-    "salary": "₫35.000.000 - ₫55.000.000/mo",
+    "salary": "$35.000.000 - $55.000.000/mo",
     "salaryVal": 45000000,
     "location": "Ho Chi Minh City, Vietnam (Hybrid)",
     "workplace": "Hybrid",
@@ -1827,7 +1827,7 @@ const enterpriseJobsDatabase = [
     "isHighSalary": true,
     "time": "3 hours ago",
     "applicants": "22 applicants",
-    "specs": { "exp": "Senior level (3 – 5 Yrs)", "edu": "Master / Engineering", "dept": "Strategic Network Optimization", "openings": "1 Position" },
+    "specs": { "exp": "Senior level (3 - 5 Yrs)", "edu": "Master / Engineering", "dept": "Strategic Network Optimization", "openings": "1 Position" },
     "overview": "VinFast is seeking a seasoned Ocean Freight & Cold Chain Logistics Architect to lead refrigerated linehaul, battery transport, and multimodal carrier negotiations.",
     "responsibilities": [
       "Coordinate ocean freight routing, rate negotiations, and space allocation with major maritime alliances (2M, Ocean Alliance).",
@@ -1851,7 +1851,7 @@ const enterpriseJobsDatabase = [
     "company": "DHL Global Forwarding Vietnam",
     "companyLogo": "images/brands/dhl.svg",
     "companyIcon": "fa-stamp",
-    "salary": "₫26.000.000 - ₫38.000.000/mo",
+    "salary": "$26.000.000 - $38.000.000/mo",
     "salaryVal": 32000000,
     "location": "Hanoi, Vietnam (Hybrid)",
     "workplace": "Hybrid",
@@ -1876,7 +1876,7 @@ const enterpriseJobsDatabase = [
     "company": "Saigon Newport Corporation (Tan Cang - Cai Mep TCIT)",
     "companyLogo": "images/brands/saigon-newport.svg",
     "companyIcon": "fa-anchor",
-    "salary": "₫22.000.000 - ₫35.000.000/mo",
+    "salary": "$22.000.000 - $35.000.000/mo",
     "salaryVal": 28000000,
     "location": "Ba Ria - Vung Tau, Vietnam (Hybrid)",
     "workplace": "Hybrid",
@@ -1886,7 +1886,7 @@ const enterpriseJobsDatabase = [
     "isHighSalary": false,
     "time": "1 day ago",
     "applicants": "34 applicants",
-    "specs": { "exp": "Specialist (2 – 4 Yrs)", "edu": "Maritime University / Logistics", "dept": "Terminal Operating Systems (TOS)", "openings": "3 Positions" },
+    "specs": { "exp": "Specialist (2 - 4 Yrs)", "edu": "Maritime University / Logistics", "dept": "Terminal Operating Systems (TOS)", "openings": "3 Positions" },
     "overview": "Manage quayside ship-to-shore gantry cranes and container yard straddle carrier dispatch using Navis N4 Terminal Operating Systems at Cai Mep deep-water port.",
     "responsibilities": [
       "Coordinate container vessel stowage planning and crane split sequences for ultra-large container vessels.",
@@ -1901,7 +1901,7 @@ const enterpriseJobsDatabase = [
     "company": "Logivan Vietnam Freight Network",
     "companyLogo": "images/brands/logivan.svg",
     "companyIcon": "fa-truck",
-    "salary": "₫30.000.000 - ₫48.000.000/mo",
+    "salary": "$30.000.000 - $48.000.000/mo",
     "salaryVal": 38000000,
     "location": "Da Nang, Vietnam (Hybrid)",
     "workplace": "Hybrid",
@@ -1911,7 +1911,7 @@ const enterpriseJobsDatabase = [
     "isHighSalary": true,
     "time": "1 day ago",
     "applicants": "35 applicants",
-    "specs": { "exp": "Mid-Senior (2 – 4 Yrs)", "edu": "Data Science / Industrial Eng.", "dept": "Digital Freight Platform", "openings": "2 Positions" },
+    "specs": { "exp": "Mid-Senior (2 - 4 Yrs)", "edu": "Data Science / Industrial Eng.", "dept": "Digital Freight Platform", "openings": "2 Positions" },
     "overview": "Analyze GPS telemetry, fuel consumption rates, and empty-miles backtrack across a network of 40,000+ heavy trucks.",
     "responsibilities": ["Build predictive dynamic routing models in Python/SQL", "Deploy driver safety scorecards."],
     "requirements": ["Proficiency in Python/R, PostgreSQL/BigQuery", "Background in transport logistics."],
@@ -1923,7 +1923,7 @@ const enterpriseJobsDatabase = [
     "company": "Viconship Logistics Group",
     "companyLogo": "images/brands/viconship.svg",
     "companyIcon": "fa-ship",
-    "salary": "₫28.000.000 - ₫42.000.000/mo",
+    "salary": "$28.000.000 - $42.000.000/mo",
     "salaryVal": 35000000,
     "location": "Ho Chi Minh City, Vietnam (Hybrid)",
     "workplace": "Hybrid",
@@ -1933,7 +1933,7 @@ const enterpriseJobsDatabase = [
     "isHighSalary": true,
     "time": "2 days ago",
     "applicants": "19 applicants",
-    "specs": { "exp": "3 – 5 Years", "edu": "Bachelor Degree", "dept": "Asia-Europe Trade Lane", "openings": "2 Positions" },
+    "specs": { "exp": "3 - 5 Years", "edu": "Bachelor Degree", "dept": "Asia-Europe Trade Lane", "openings": "2 Positions" },
     "overview": "Manage end-to-end container booking, multimodal carrier space allocations, and trade documentation for key accounts.",
     "responsibilities": ["Manage ocean freight contracts with 2M and Ocean Alliance carriers.", "Resolve customs documentation issues."],
     "requirements": ["3+ years ocean freight forwarding experience.", "Strong English and negotiation skills."],
@@ -1946,7 +1946,7 @@ const enterpriseJobsDatabase = [
     "company": "Tiki Logistics Automated Mega Hub",
     "companyLogo": "images/brands/tiki.svg",
     "companyIcon": "fa-robot",
-    "salary": "₫32.000.000 - ₫48.000.000/mo",
+    "salary": "$32.000.000 - $48.000.000/mo",
     "salaryVal": 40000000,
     "location": "Binh Duong, Vietnam (On-site)",
     "workplace": "On-site",
@@ -1956,7 +1956,7 @@ const enterpriseJobsDatabase = [
     "isHighSalary": true,
     "time": "2 days ago",
     "applicants": "28 applicants",
-    "specs": { "exp": "2 – 4 Years", "edu": "BS in Mechatronics/CS", "dept": "Automated Operations Group", "openings": "4 Positions" },
+    "specs": { "exp": "2 - 4 Years", "edu": "BS in Mechatronics/CS", "dept": "Automated Operations Group", "openings": "4 Positions" },
     "overview": "Lead continuous deployment, route calibration, and preventative maintenance for 450+ autonomous mobile robots (AMRs).",
     "responsibilities": ["Supervise Fleet Management Software (FMS)", "Calibrate LiDAR and SLAM sensors."],
     "requirements": ["Degree in Mechatronics/Electrical/Robotics", "Hands-on experience with AGV/AMRs."],
@@ -1968,7 +1968,7 @@ const enterpriseJobsDatabase = [
     "company": "FPT Software AI & Digital Labs",
     "companyLogo": "images/brands/fpt.svg",
     "companyIcon": "fa-eye",
-    "salary": "₫40.000.000 - ₫65.000.000/mo",
+    "salary": "$40.000.000 - $65.000.000/mo",
     "salaryVal": 52000000,
     "location": "Hanoi, Vietnam (Hybrid)",
     "workplace": "Hybrid",
@@ -1982,7 +1982,7 @@ const enterpriseJobsDatabase = [
     "overview": "Train deep learning models for high-speed parcel barcode recognition, dimension measurement, and automated damage detection on conveyor belts.",
     "responsibilities": ["Develop PyTorch / TensorRT computer vision pipelines", "Optimize inference latency to <50ms."],
     "requirements": ["Strong PyTorch / OpenCV experience", "Knowledge of edge AI deployment."],
-    "benefits": ["Sign-on bonus ₫50M", "Annual overseas tech conferences", "Full remote flexibility."]
+    "benefits": ["Sign-on bonus $50M", "Annual overseas tech conferences", "Full remote flexibility."]
   },
   {
     "id": "job-8",
@@ -1990,7 +1990,7 @@ const enterpriseJobsDatabase = [
     "company": "Kuehne+Nagel Vietnam",
     "companyLogo": "images/brands/kuehne-nagel.svg",
     "companyIcon": "fa-plane-departure",
-    "salary": "₫30.000.000 - ₫45.000.000/mo",
+    "salary": "$30.000.000 - $45.000.000/mo",
     "salaryVal": 37000000,
     "location": "Ho Chi Minh City, Vietnam (Hybrid)",
     "workplace": "Hybrid",
@@ -2000,7 +2000,7 @@ const enterpriseJobsDatabase = [
     "isHighSalary": true,
     "time": "3 days ago",
     "applicants": "18 applicants",
-    "specs": { "exp": "Mid-Senior (3 – 5 Yrs)", "edu": "Bachelor in Economics / Trade", "dept": "Air Cargo Services", "openings": "2 Positions" },
+    "specs": { "exp": "Mid-Senior (3 - 5 Yrs)", "edu": "Bachelor in Economics / Trade", "dept": "Air Cargo Services", "openings": "2 Positions" },
     "overview": "Coordinate priority air charter bookings and sea-air multimodal transit connections through ASEAN transshipment hubs.",
     "responsibilities": ["Negotiate block space agreements (BSA) with major airlines", "Manage pharmaceutical cool-chain air shipments."],
     "requirements": ["IATA Cargo introductory certification", "3+ years international airfreight experience."],
@@ -2012,7 +2012,7 @@ const enterpriseJobsDatabase = [
     "company": "SLP Vietnam Logistics",
     "companyLogo": "images/brands/slp-vietnam.svg",
     "companyIcon": "fa-snowflake",
-    "salary": "₫50.000.000 - ₫80.000.000/mo",
+    "salary": "$50.000.000 - $80.000.000/mo",
     "salaryVal": 65000000,
     "location": "Long An & Bac Ninh (On-site)",
     "workplace": "On-site",
@@ -2023,7 +2023,7 @@ const enterpriseJobsDatabase = [
     "time": "3 days ago",
     "applicants": "12 applicants",
     "specs": { "exp": "Director (8+ Yrs)", "edu": "BS / Master in Engineering", "dept": "Cold Storage Division", "openings": "1 Position" },
-    "overview": "Direct all cold storage operations, multi-zone temperature validation (-25°C to +8°C), and automated ammonia refrigeration systems.",
+    "overview": "Direct all cold storage operations, multi-zone temperature validation (-25 deg C to +8 deg C), and automated ammonia refrigeration systems.",
     "responsibilities": ["Lead operational compliance with WHO-GDP and ISO 22000 standards", "Manage a team of 120 warehouse engineers and staff."],
     "requirements": ["8+ years cold storage operations leadership", "Familiarity with modern WMS and IoT telematics."],
     "benefits": ["Executive profit-sharing bonus", "Company car with driver", "Full family health coverage."]
@@ -2034,7 +2034,7 @@ const enterpriseJobsDatabase = [
     "company": "Gemadept Port Logistics",
     "companyLogo": "images/brands/gemadept.svg",
     "companyIcon": "fa-ship",
-    "salary": "₫24.000.000 - ₫36.000.000/mo",
+    "salary": "$24.000.000 - $36.000.000/mo",
     "salaryVal": 30000000,
     "location": "Cai Mep - Gemalink Port, Vung Tau",
     "workplace": "On-site",
@@ -2044,7 +2044,7 @@ const enterpriseJobsDatabase = [
     "isHighSalary": false,
     "time": "4 days ago",
     "applicants": "24 applicants",
-    "specs": { "exp": "Specialist (2 – 4 Yrs)", "edu": "Maritime Navigation / Logistics", "dept": "Port Operations", "openings": "2 Positions" },
+    "specs": { "exp": "Specialist (2 - 4 Yrs)", "edu": "Maritime Navigation / Logistics", "dept": "Port Operations", "openings": "2 Positions" },
     "overview": "Coordinate vessel berthing schedules, tide window calculations, and pilotage allocations for mega container vessels.",
     "responsibilities": ["Calculate tidal depths and draft requirements for 20,000+ TEU ships", "Liaise with maritime port authorities."],
     "requirements": ["Bachelor in Maritime Studies", "Experience with CATOS or Navis berth planning software."],
@@ -2057,7 +2057,7 @@ const enterpriseJobsDatabase = [
     "company": "Grab Vietnam Logistics Tech",
     "companyLogo": "images/brands/grab.svg",
     "companyIcon": "fa-code",
-    "salary": "₫45.000.000 - ₫75.000.000/mo",
+    "salary": "$45.000.000 - $75.000.000/mo",
     "salaryVal": 60000000,
     "location": "Ho Chi Minh City, Vietnam (Hybrid)",
     "workplace": "Hybrid",
@@ -2079,7 +2079,7 @@ const enterpriseJobsDatabase = [
     "company": "Shopee Express Logistics Vietnam",
     "companyLogo": "images/brands/shopee.svg",
     "companyIcon": "fa-box-open",
-    "salary": "₫28.000.000 - ₫42.000.000/mo",
+    "salary": "$28.000.000 - $42.000.000/mo",
     "salaryVal": 35000000,
     "location": "Binh Duong Mega MegaHub",
     "workplace": "On-site",
@@ -2089,7 +2089,7 @@ const enterpriseJobsDatabase = [
     "isHighSalary": true,
     "time": "5 days ago",
     "applicants": "47 applicants",
-    "specs": { "exp": "Supervisor (3 – 5 Yrs)", "edu": "Bachelor in Business / Logistics", "dept": "Inbound & Customs Hub", "openings": "3 Positions" },
+    "specs": { "exp": "Supervisor (3 - 5 Yrs)", "edu": "Bachelor in Business / Logistics", "dept": "Inbound & Customs Hub", "openings": "3 Positions" },
     "overview": "Manage daily cross-docking and sorting for 800,000+ parcels arriving from regional cross-border distribution centers.",
     "responsibilities": ["Ensure 99.6% on-time sortation rate", "Supervise automated cross-belt sorting machinery."],
     "requirements": ["3+ years fulfillment hub operations leadership", "Familiarity with high-volume parcel sortation."],
@@ -2101,7 +2101,7 @@ const enterpriseJobsDatabase = [
     "company": "BW Industrial Development JSC",
     "companyLogo": "images/brands/bw-industrial.svg",
     "companyIcon": "fa-warehouse",
-    "salary": "₫35.000.000 - ₫52.000.000/mo",
+    "salary": "$35.000.000 - $52.000.000/mo",
     "salaryVal": 43000000,
     "location": "Binh Duong & Hai Phong (Hybrid)",
     "workplace": "Hybrid",
@@ -2123,7 +2123,7 @@ const enterpriseJobsDatabase = [
     "company": "DB Schenker Vietnam",
     "companyLogo": "images/brands/db-schenker.svg",
     "companyIcon": "fa-plane",
-    "salary": "₫32.000.000 - ₫48.000.000/mo",
+    "salary": "$32.000.000 - $48.000.000/mo",
     "salaryVal": 40000000,
     "location": "Hanoi (Noi Bai Airport Office)",
     "workplace": "On-site",
@@ -2145,7 +2145,7 @@ const enterpriseJobsDatabase = [
     "company": "Transimex Logistics Corporation",
     "companyLogo": "images/brands/transimex.svg",
     "companyIcon": "fa-truck-moving",
-    "salary": "₫25.000.000 - ₫38.000.000/mo",
+    "salary": "$25.000.000 - $38.000.000/mo",
     "salaryVal": 31000000,
     "location": "Thu Duc City, HCMC",
     "workplace": "On-site",
@@ -2168,7 +2168,7 @@ const enterpriseJobsDatabase = [
     "company": "CJ Logistics Vietnam",
     "companyLogo": "images/brands/cj-logistics.svg",
     "companyIcon": "fa-leaf",
-    "salary": "₫27.000.000 - ₫40.000.000/mo",
+    "salary": "$27.000.000 - $40.000.000/mo",
     "salaryVal": 33000000,
     "location": "Ho Chi Minh City, Vietnam (Hybrid)",
     "workplace": "Hybrid",
@@ -2178,7 +2178,7 @@ const enterpriseJobsDatabase = [
     "isHighSalary": false,
     "time": "1 week ago",
     "applicants": "26 applicants",
-    "specs": { "exp": "Analyst (2 – 4 Yrs)", "edu": "Environmental Science / Economics", "dept": "Sustainability Office", "openings": "1 Position" },
+    "specs": { "exp": "Analyst (2 - 4 Yrs)", "edu": "Environmental Science / Economics", "dept": "Sustainability Office", "openings": "1 Position" },
     "overview": "Measure Scope 1, 2, and 3 carbon emissions across warehousing and linehaul networks to meet EU CBAM and corporate ESG mandates.",
     "responsibilities": ["Calculate fleet carbon intensity per ton-kilometer", "Recommend route adjustments and EV fleet transitions."],
     "requirements": ["Familiarity with GHG Protocol and carbon accounting", "Strong analytical modeling skills in Python/Excel."],
@@ -2190,7 +2190,7 @@ const enterpriseJobsDatabase = [
     "company": "Sotrans Logistics Vietnam",
     "companyLogo": "images/brands/sotrans.svg",
     "companyIcon": "fa-handshake",
-    "salary": "₫35.000.000 - ₫55.000.000/mo",
+    "salary": "$35.000.000 - $55.000.000/mo",
     "salaryVal": 45000000,
     "location": "Ho Chi Minh City, Vietnam (Hybrid)",
     "workplace": "Hybrid",
@@ -2212,7 +2212,7 @@ const enterpriseJobsDatabase = [
     "company": "Viettel Post Digital Solutions",
     "companyLogo": "images/brands/viettel.svg",
     "companyIcon": "fa-network-wired",
-    "salary": "₫30.000.000 - ₫45.000.000/mo",
+    "salary": "$30.000.000 - $45.000.000/mo",
     "salaryVal": 37000000,
     "location": "Hanoi & HCMC (Hybrid)",
     "workplace": "Hybrid",
@@ -2234,7 +2234,7 @@ const enterpriseJobsDatabase = [
     "company": "Hai An Transport & Stevedoring",
     "companyLogo": "images/brands/hai-an.svg",
     "companyIcon": "fa-stamp",
-    "salary": "₫24.000.000 - ₫36.000.000/mo",
+    "salary": "$24.000.000 - $36.000.000/mo",
     "salaryVal": 30000000,
     "location": "Hai Phong (Dinh Vu Industrial Zone)",
     "workplace": "On-site",
@@ -2256,7 +2256,7 @@ const enterpriseJobsDatabase = [
     "company": "Grab Vietnam Express Division",
     "companyLogo": "images/brands/grab.svg",
     "companyIcon": "fa-motorcycle",
-    "salary": "₫35.000.000 - ₫55.000.000/mo",
+    "salary": "$35.000.000 - $55.000.000/mo",
     "salaryVal": 45000000,
     "location": "Ho Chi Minh City, Vietnam",
     "workplace": "On-site",
@@ -2344,7 +2344,7 @@ function initSplitScreenJobBoard() {
                 ${job.salary}
               </div>
               <div style="font-size:11.5px; color:#94A3B8; font-weight:500;">
-                ${job.time} • ${job.applicants}
+                ${job.time} &bull; ${job.applicants}
               </div>
             </div>
           </div>
@@ -2369,9 +2369,9 @@ function initSplitScreenJobBoard() {
             <h1 style="font-size: 22px; font-weight: 700; color: #0F172A; margin: 0 0 6px 0; line-height: 1.3;">${job.title}</h1>
             <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:#475569; flex-wrap:wrap;">
               <span style="font-weight:600; color:var(--fl-primary);">${job.company}</span>
-              <span>•</span>
+              <span>&bull;</span>
               <span><i class="fa-solid fa-location-dot"></i> ${job.location}</span>
-              <span>•</span>
+              <span>&bull;</span>
               <span style="color:#059669; font-weight:600;"><i class="fa-solid fa-clock"></i> ${job.time}</span>
             </div>
           </div>
@@ -2381,7 +2381,7 @@ function initSplitScreenJobBoard() {
         </div>
 
         <div style="display:flex; gap:12px; margin-top:16px;">
-          <button type="button" class="btn-linkedin-easy-apply" onclick="alert('Cảm ơn bạn đã ứng tuyển vị trí: ${job.title}! Hồ sơ của bạn đã được gửi trực tiếp đến bộ phận tuyển dụng.');" style="background:var(--fl-primary); color:#fff; border:none; padding:10px 24px; border-radius:8px; font-weight:700; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
+          <button type="button" class="btn-linkedin-easy-apply" onclick=\"alert('Thank you for applying to: ${job.title}! Your application has been sent directly to hiring managers.');\" style="background:var(--fl-primary); color:#fff; border:none; padding:10px 24px; border-radius:8px; font-weight:700; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
             <i class="fa-solid fa-paper-plane"></i> Apply Now
           </button>
           <button type="button" class="btn-linkedin-save-job" onclick="this.innerHTML = '<i class=\'fa-solid fa-bookmark\'></i> Saved'; this.style.borderColor='var(--fl-primary)'; this.style.color='var(--fl-primary)';" style="background:#fff; border:1px solid #CBD5E1; color:#475569; padding:10px 18px; border-radius:8px; font-weight:600; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
@@ -2537,7 +2537,7 @@ function renderCareerCards(cat) {
   if (!container) return;
   const list = careerCatalogData[cat] || careerCatalogData['exam'];
   container.innerHTML = list.map(item => `
-    <article class="career-card-item reveal" onclick="alert('Chương trình đào tạo: ${item.title}\nQuy mô: ${item.modules}\nLượt học viên: ${item.views}');" style="cursor:pointer;">
+    <article class="career-card-item reveal" onclick=\"alert('Accredited Course: ${item.title}\nStructure: ${item.modules}\nEnrollment: ${item.views}');\" style="cursor:pointer;">
       <div class="career-card-img-wrap" style="border-radius:8px; overflow:hidden; aspect-ratio:16/9.2; background:#F1F5F9;">
         <img src="${item.img}" alt="${item.title}" class="career-card-img" style="width:100%; height:100%; object-fit:cover;">
       </div>
@@ -2595,90 +2595,90 @@ const enterpriseCompaniesData = [
     logo: 'images/brands/vinfast.svg',
     industry: 'Logistics Tech & AI Cold Chain',
     category: 'ai',
-    tagline: 'Kiến trúc chuỗi cung ứng lạnh thông minh & vận tải tự hành thế hệ mới',
-    location: 'Hải Phòng & TP. Hồ Chí Minh, Việt Nam',
-    size: '10,000+ nhân sự',
+    tagline: 'Kien truc chuoi cung ung lanh thong minh & van tai tu hanh the he moi',
+    location: 'Hai Phong & TP. Ho Chi Minh, Viet Nam',
+    size: '10,000+ nhan su',
     founded: '2017',
     website: 'https://vinfastauto.com',
-    desc: 'VinFast Logistics tiên phong ứng dụng trí tuệ nhân tạo (AI) và mạng lưới viễn thông IoT để tối ưu hóa tuyến vận tải pin xe điện, logistics chuỗi cung ứng lạnh xuyên biên giới ASEAN và mạng lưới trạm phân phối thông minh.',
+    desc: 'VinFast Logistics tien phong ung dung tri tue nhan tao (AI) va mang luoi vien thong IoT de toi uu hoa tuyen van tai pin xe dien, logistics chuoi cung ung lanh xuyen bien gioi ASEAN va mang luoi tram phan phoi thong minh.',
     techStack: ['Vision AI', 'Route Optimization ML', 'IoT Telematics', 'PyTorch', 'Kubernetes', 'Apache Kafka'],
     stats: { services: 4, plans: 3, events: 2, jobs: 6 },
     services: [
       {
         id: 'srv-vf-1',
-        title: 'Hệ Thống IoT Telematics Chuỗi Lạnh Thông Minh',
+        title: 'He Thong IoT Telematics Chuoi Lanh Thong Minh',
         icon: 'fa-snowflake',
-        desc: 'Giám sát nhiệt độ, độ ẩm và định vị thời gian thực cho đội xe container lạnh và kho lạnh sâu với độ chính xác 99.98%. Cảnh báo nguy cơ lệch nhiệt tự động qua AI.',
+        desc: 'Giam sat nhiet do, do am va dinh vi thoi gian thuc cho doi xe container lanh va kho lanh sau voi do chinh xac 99.98%. Canh bao nguy co lech nhiet tu dong qua AI.',
         features: [
-          'Độ trễ truyền dữ liệu dưới 1.5 giây qua mạng 5G/IoT vệ tinh',
-          'Tích hợp tự động hệ thống khai báo hải quan điện tử VNACCS',
-          'Báo cáo tự động chuẩn GDP (Good Distribution Practice) cho dược phẩm và vắc xin'
+          'Do tre truyen du lieu duoi 1.5 giay qua mang 5G/IoT ve tinh',
+          'Tich hop tu dong he thong khai bao hai quan dien tu VNACCS',
+          'Bao cao tu dong chuan GDP (Good Distribution Practice) cho duoc pham va vac xin'
         ]
       },
       {
         id: 'srv-vf-2',
         title: 'AI Dynamic Route Optimization Engine',
         icon: 'fa-route',
-        desc: 'Thuật toán học máy phân tích dữ liệu lưu lượng giao thông lịch sử và thời gian thực để tính toán hải trình và lộ trình xe tải tối ưu, giảm 18% chi phí tiêu hao nhiên liệu.',
+        desc: 'Thuat toan hoc may phan tich du lieu luu luong giao thong lich su va thoi gian thuc de tinh toan hai trinh va lo trinh xe tai toi uu, giam 18% chi phi tieu hao nhien lieu.',
         features: [
-          'Cân bằng tải động giữa 40+ cụm trung chuyển phân phối Bắc - Nam',
-          'Dự đoán thời gian cập cảng (ETA) chính xác tới từng phút',
-          'Giảm thiểu tối đa tình trạng chạy rỗng (Empty-Miles Reduction)'
+          'Can bang tai dong giua 40+ cum trung chuyen phan phoi Bac - Nam',
+          'Du doan thoi gian cap cang (ETA) chinh xac toi tung phut',
+          'Giam thieu toi da tinh trang chay rong (Empty-Miles Reduction)'
         ]
       },
       {
         id: 'srv-vf-3',
-        title: 'Cổng Tích Hợp API B2B EDI & Logistics Microservices',
+        title: 'Cong Tich Hop API B2B EDI & Logistics Microservices',
         icon: 'fa-network-wired',
-        desc: 'Hạ tầng kết nối API cấp doanh nghiệp cho phép đối tác ERP (SAP, Oracle, CargoWise) đồng bộ hóa vận đơn điện tử e-BL và hóa đơn cước vận chuyển tức thì.',
+        desc: 'Ha tang ket noi API cap doanh nghiep cho phep doi tac ERP (SAP, Oracle, CargoWise) dong bo hoa van don dien tu e-BL va hoa don cuoc van chuyen tuc thi.',
         features: [
-          'Chuẩn bảo mật ngân hàng OAuth2, mTLS và mã hóa dữ liệu AES-256',
-          'Khả năng chịu tải 150,000 requests/phút thời điểm cao điểm',
-          'Cam kết SLA hệ thống vận hành 99.99%'
+          'Chuan bao mat ngan hang OAuth2, mTLS va ma hoa du lieu AES-256',
+          'Kha nang chiu tai 150,000 requests/phut thoi diem cao diem',
+          'Cam ket SLA he thong van hanh 99.99%'
         ]
       }
     ],
     pricing: [
       {
         id: 'price-vf-pilot',
-        name: 'Gói Thử Nghiệm (Pilot Tier)',
-        price: '₫15.000.000',
-        period: '/tháng',
-        desc: 'Phù hợp cho các doanh nghiệp thử nghiệm giải pháp theo dõi chuỗi lạnh và định vị AI trên quy mô nhỏ.',
+        name: 'Goi Thu Nghiem (Pilot Tier)',
+        price: '$15.000.000',
+        period: '/thang',
+        desc: 'Phu hop cho cac doanh nghiep thu nghiem giai phap theo doi chuoi lanh va dinh vi AI tren quy mo nho.',
         popular: false,
         features: [
-          'Triển khai tối đa 10 cảm biến IoT & xe vận tải',
-          'Truy cập bảng điều khiển phân tích AI cơ bản',
-          'Xuất báo cáo định kỳ hàng tuần',
-          'Hỗ trợ kỹ thuật qua Email & Ticket (giờ hành chính)'
+          'Trien khai toi da 10 cam bien IoT & xe van tai',
+          'Truy cap bang dieu khien phan tich AI co ban',
+          'Xuat bao cao dinh ky hang tuan',
+          'Ho tro ky thuat qua Email & Ticket (gio hanh chinh)'
         ]
       },
       {
         id: 'price-vf-pro',
-        name: 'Gói Doanh Nghiệp (Growth Pro)',
-        price: '₫45.000.000',
-        period: '/tháng',
-        desc: 'Giải pháp toàn diện tối ưu hóa lộ trình xe tải và quản lý kho vận thông minh thời gian thực.',
+        name: 'Goi Doanh Nghiep (Growth Pro)',
+        price: '$45.000.000',
+        period: '/thang',
+        desc: 'Giai phap toan dien toi uu hoa lo trinh xe tai va quan ly kho van thong minh thoi gian thuc.',
         popular: true,
         features: [
-          'Triển khai không giới hạn tới 80 phương tiện / kho bãi',
-          'Đầy đủ thuật toán AI tối ưu hóa lộ trình đa điểm',
-          'Cảnh báo nhiệt độ & sự cố tức thì qua SMS / Telegram / App',
-          'Cam kết SLA vận hành 99.9% và hỗ trợ kỹ thuật 24/7'
+          'Trien khai khong gioi han toi 80 phuong tien / kho bai',
+          'Day du thuat toan AI toi uu hoa lo trinh da diem',
+          'Canh bao nhiet do & su co tuc thi qua SMS / Telegram / App',
+          'Cam ket SLA van hanh 99.9% va ho tro ky thuat 24/7'
         ]
       },
       {
         id: 'price-vf-ent',
-        name: 'Gói May Đo Doanh Nghiệp (Enterprise Custom)',
-        price: 'Theo Quy Mô',
+        name: 'Goi May Do Doanh Nghiep (Enterprise Custom)',
+        price: 'Theo Quy Mo',
         period: '',
-        desc: 'Kiến trúc hạ tầng dành riêng cho các tập đoàn đa quốc gia và tổng công ty logistics.',
+        desc: 'Kien truc ha tang danh rieng cho cac tap doan da quoc gia va tong cong ty logistics.',
         popular: false,
         features: [
-          'Triển khai On-Premise hoặc Dedicated Private Cloud',
-          'Huấn luyện riêng mô hình AI trên dữ liệu logistics nội bộ',
-          'Chuyên gia Solutions Architect trực tiếp đồng hành dự án',
-          'Tích hợp sâu hệ sinh thái ERP / WMS / TMS theo yêu cầu'
+          'Trien khai On-Premise hoac Dedicated Private Cloud',
+          'Huan luyen rieng mo hinh AI tren du lieu logistics noi bo',
+          'Chuyen gia Solutions Architect truc tiep dong hanh du an',
+          'Tich hop sau he sinh thai ERP / WMS / TMS theo yeu cau'
         ]
       }
     ],
@@ -2687,17 +2687,17 @@ const enterpriseCompaniesData = [
         id: 'evt-vf-1',
         title: 'Vietnam AI & Smart Logistics Innovation Summit 2026',
         format: 'Live Summit & Hybrid',
-        date: '15/12/2026 • 08:30 - 17:00',
-        location: 'GEM Center, Quận 1, TP. Hồ Chí Minh & Trực tuyến',
-        desc: 'Diễn đàn thường niên quy tụ 800+ lãnh đạo chuỗi cung ứng, chuyên gia AI và cơ quan ban ngành cùng thảo luận lộ trình chuyển đổi số và trung hòa carbon.'
+        date: '15/12/2026 &bull; 08:30 - 17:00',
+        location: 'GEM Center, Quan 1, TP. Ho Chi Minh & Truc tuyen',
+        desc: 'Dien dan thuong nien quy tu 800+ lanh dao chuoi cung ung, chuyen gia AI va co quan ban nganh cung thao luan lo trinh chuyen doi so va trung hoa carbon.'
       },
       {
         id: 'evt-vf-2',
-        title: 'Workshop Kỹ Thuật: Tối Ưu Hóa Tuyến Đường Vận Tải Bằng AI & Digital Twins',
+        title: 'Workshop Ky Thuat: Toi Uu Hoa Tuyen Duong Van Tai Bang AI & Digital Twins',
         format: 'Hands-on Webinar',
-        date: '28/11/2026 • 14:00 - 16:30',
+        date: '28/11/2026 &bull; 14:00 - 16:30',
         location: 'Virtual Zoom / Google Meet Webinar',
-        desc: 'Chia sẻ kiến trúc thực chiến từ đội ngũ kỹ sư AI VinFast về cách mô phỏng bản sao số (Digital Twin) để cắt giảm 18% chi phí nhiên liệu.'
+        desc: 'Chia se kien truc thuc chien tu doi ngu ky su AI VinFast ve cach mo phong ban sao so (Digital Twin) de cat giam 18% chi phi nhien lieu.'
       }
     ]
   },
@@ -2707,12 +2707,12 @@ const enterpriseCompaniesData = [
     logo: 'images/brands/fpt.svg',
     industry: 'Enterprise AI & Cloud Engineering',
     category: 'tech',
-    tagline: 'Tiên phong phát triển các mô hình Generative AI và giải pháp chuyển đổi số toàn cầu',
-    location: 'Hà Nội, Đà Nẵng & TP. Hồ Chí Minh',
-    size: '30,000+ nhân sự',
+    tagline: 'Tien phong phat trien cac mo hinh Generative AI va giai phap chuyen doi so toan cau',
+    location: 'Ha Noi, Da Nang & TP. Ho Chi Minh',
+    size: '30,000+ nhan su',
     founded: '1999',
     website: 'https://fpt-software.com',
-    desc: 'FPT Software cung cấp các giải pháp trí tuệ nhân tạo toàn diện từ Generative AI, Computer Vision, xử lý ngôn ngữ tự nhiên (NLP) cho tới các hệ thống đám mây phân tán cho hàng trăm tập đoàn trong danh sách Fortune 500.',
+    desc: 'FPT Software cung cap cac giai phap tri tue nhan tao toan dien tu Generative AI, Computer Vision, xu ly ngon ngu tu nhien (NLP) cho toi cac he thong dam may phan tan cho hang tram tap doan trong danh sach Fortune 500.',
     techStack: ['Generative AI', 'Large Language Models', 'Computer Vision', 'Python', 'Go', 'AWS / Azure'],
     stats: { services: 5, plans: 3, events: 3, jobs: 8 },
     services: [
@@ -2720,66 +2720,66 @@ const enterpriseCompaniesData = [
         id: 'srv-fpt-1',
         title: 'FPT AI Mentor & Agentic AI Workflow Solutions',
         icon: 'fa-brain',
-        desc: 'Hệ thống trợ lý ảo và Agentic AI tự hành có khả năng xử lý nghiệp vụ tự động, phân tích tài liệu hợp đồng và tự động hóa quy trình khách hàng (RPA).',
+        desc: 'He thong tro ly ao va Agentic AI tu hanh co kha nang xu ly nghiep vu tu dong, phan tich tai lieu hop dong va tu dong hoa quy trinh khach hang (RPA).',
         features: [
-          'Hỗ trợ mô hình ngôn ngữ tiếng Việt chuyên ngành chính xác cao',
-          'Tự động hóa 80% tác vụ giải đáp và xử lý ticket nội bộ',
-          'Bảo mật dữ liệu tuyệt đối theo tiêu chuẩn ISO 27001'
+          'Ho tro mo hinh ngon ngu tieng Viet chuyen nganh chinh xac cao',
+          'Tu dong hoa 80% tac vu giai dap va xu ly ticket noi bo',
+          'Bao mat du lieu tuyet doi theo tieu chuan ISO 27001'
         ]
       },
       {
         id: 'srv-fpt-2',
-        title: 'Computer Vision & OCR Trích Xuất Dữ Liệu Tự Động',
+        title: 'Computer Vision & OCR Trich Xuat Du Lieu Tu Dong',
         icon: 'fa-eye',
-        desc: 'Nhận diện và số hóa tức thì chứng từ vận tải, hóa đơn GTGT, căn cước công dân và hợp đồng kinh tế với độ chính xác trên 99.2%.',
+        desc: 'Nhan dien va so hoa tuc thi chung tu van tai, hoa don GTGT, can cuoc cong dan va hop dong kinh te voi do chinh xac tren 99.2%.',
         features: [
-          'Xử lý hơn 200 định dạng hóa đơn và bill of lading quốc tế',
-          'Thời gian nhận diện dưới 0.8 giây / trang tài liệu',
-          'Tích hợp trực tiếp hệ thống kho dữ liệu Data Lakehouse'
+          'Xu ly hon 200 dinh dang hoa don va bill of lading quoc te',
+          'Thoi gian nhan dien duoi 0.8 giay / trang tai lieu',
+          'Tich hop truc tiep he thong kho du lieu Data Lakehouse'
         ]
       }
     ],
     pricing: [
       {
         id: 'price-fpt-starter',
-        name: 'Gói Khởi Động AI (AI Starter Pack)',
-        price: '₫25.000.000',
-        period: '/tháng',
-        desc: 'Bộ công cụ OCR và Chatbot AI cơ bản cho doanh nghiệp số hóa chứng từ và tương tác khách hàng.',
+        name: 'Goi Khoi Dong AI (AI Starter Pack)',
+        price: '$25.000.000',
+        period: '/thang',
+        desc: 'Bo cong cu OCR va Chatbot AI co ban cho doanh nghiep so hoa chung tu va tuong tac khach hang.',
         popular: false,
         features: [
-          'Xử lý 10,000 trang chứng từ OCR / tháng',
-          '1 Trợ lý AI hỏi đáp nội bộ chuyên nghiệp',
-          'Tích hợp API Webhook cơ bản',
-          'Hỗ trợ kỹ thuật 8/5'
+          'Xu ly 10,000 trang chung tu OCR / thang',
+          '1 Tro ly AI hoi dap noi bo chuyen nghiep',
+          'Tich hop API Webhook co ban',
+          'Ho tro ky thuat 8/5'
         ]
       },
       {
         id: 'price-fpt-scale',
-        name: 'Gói Chuyển Đổi Số (Enterprise Scale)',
-        price: '₫75.000.000',
-        period: '/tháng',
-        desc: 'Tích hợp Agentic AI và xử lý thị giác máy tính vào toàn bộ chu trình nghiệp vụ doanh nghiệp.',
+        name: 'Goi Chuyen Doi So (Enterprise Scale)',
+        price: '$75.000.000',
+        period: '/thang',
+        desc: 'Tich hop Agentic AI va xu ly thi giac may tinh vao toan bo chu trinh nghiep vu doanh nghiep.',
         popular: true,
         features: [
-          'Xử lý 100,000 trang chứng từ OCR / tháng',
-          'Triển khai đa Agent AI kết nối cơ sở dữ liệu nội bộ',
-          'Mô hình Fine-tuned chuyên biệt theo dữ liệu công ty',
-          'Hỗ trợ kỹ thuật 24/7 với Dedicated Account Manager'
+          'Xu ly 100,000 trang chung tu OCR / thang',
+          'Trien khai da Agent AI ket noi co so du lieu noi bo',
+          'Mo hinh Fine-tuned chuyen biet theo du lieu cong ty',
+          'Ho tro ky thuat 24/7 voi Dedicated Account Manager'
         ]
       },
       {
         id: 'price-fpt-custom',
-        name: 'Gói May Đo Dự Án (Strategic Custom)',
-        price: 'Báo Giá Dự Án',
+        name: 'Goi May Do Du An (Strategic Custom)',
+        price: 'Bao Gia Du An',
         period: '',
-        desc: 'Phát triển giải pháp công nghệ và hệ sinh thái phần mềm quy mô lớn.',
+        desc: 'Phat trien giai phap cong nghe va he sinh thai phan mem quy mo lon.',
         popular: false,
         features: [
-          'Đội ngũ kỹ sư chuyên trách biệt phái (Dedicated Engineering Squad)',
-          'Tư vấn chiến lược kiến trúc tổng thể Enterprise Architecture',
-          'Bàn giao toàn bộ mã nguồn và bản quyền sở hữu trí tuệ',
-          'Bảo hành và tối ưu hóa hệ thống lâu dài'
+          'Doi ngu ky su chuyen trach biet phai (Dedicated Engineering Squad)',
+          'Tu van chien luoc kien truc tong the Enterprise Architecture',
+          'Ban giao toan bo ma nguon va ban quyen so huu tri tue',
+          'Bao hanh va toi uu hoa he thong lau dai'
         ]
       }
     ],
@@ -2788,9 +2788,9 @@ const enterpriseCompaniesData = [
         id: 'evt-fpt-1',
         title: 'FPT AI Summit 2026: The Age of Autonomous Agentic AI',
         format: 'Grand Technology Conference',
-        date: '20/12/2026 • 09:00 - 16:30',
-        location: 'Trung tâm Hội nghị Quốc gia, Hà Nội & Livestream toàn cầu',
-        desc: 'Sự kiện công nghệ thường niên lớn nhất của FPT giới thiệu các giải pháp Agentic AI tự hành và ứng dụng thực tiễn trong ngân hàng, sản xuất và logistics.'
+        date: '20/12/2026 &bull; 09:00 - 16:30',
+        location: 'Trung tam Hoi nghi Quoc gia, Ha Noi & Livestream toan cau',
+        desc: 'Su kien cong nghe thuong nien lon nhat cua FPT gioi thieu cac giai phap Agentic AI tu hanh va ung dung thuc tien trong ngan hang, san xuat va logistics.'
       }
     ]
   },
@@ -2798,52 +2798,52 @@ const enterpriseCompaniesData = [
     id: 'saigon-newport',
     name: 'Saigon Newport Corporation (TCIT / SNP)',
     logo: 'images/brands/saigon-newport.svg',
-    industry: 'Cảng Biển & Hạ Tầng Logistics Số Hóa',
+    industry: 'Cang Bien & Ha Tang Logistics So Hoa',
     category: 'logistics',
-    tagline: 'Nhà khai thác cảng biển hàng đầu Việt Nam chiếm trên 50% thị phần container xuất nhập khẩu',
-    location: 'Cát Lái, Cái Mép & Hải Phòng',
-    size: '8,000+ nhân sự',
+    tagline: 'Nha khai thac cang bien hang dau Viet Nam chiem tren 50% thi phan container xuat nhap khau',
+    location: 'Cat Lai, Cai Mep & Hai Phong',
+    size: '8,000+ nhan su',
     founded: '1989',
     website: 'https://saigonnewport.com.vn',
-    desc: 'Tổng công ty Tân Cảng Sài Gòn là biểu tượng dẫn đầu ngành cảng biển Việt Nam, ứng dụng hệ thống quản trị khai thác cảng tự động hóa cao cấp Navis N4 và mạng lưới cảng cạn ICD hiện đại.',
+    desc: 'Tong cong ty Tan Cang Sai Gon la bieu tuong dan dau nganh cang bien Viet Nam, ung dung he thong quan tri khai thac cang tu dong hoa cao cap Navis N4 va mang luoi cang can ICD hien dai.',
     techStack: ['Navis N4 TOS', 'Automated Quayside Dispatch', 'Port EDI Hub', 'IoT Crane Sensors'],
     stats: { services: 4, plans: 3, events: 2, jobs: 4 },
     services: [
       {
         id: 'srv-snp-1',
-        title: 'Hệ Thống Thủ Tục Cảng Điện Tử ePort & Lệnh Giao Hàng eDO',
+        title: 'He Thong Thu Tuc Cang Dien Tu ePort & Lenh Giao Hang eDO',
         icon: 'fa-file-invoice',
-        desc: 'Giải pháp thanh toán và làm thủ tục trực tuyến 100%, giảm 90% thời gian chờ đợi nhận container tại cổng cảng.',
+        desc: 'Giai phap thanh toan va lam thu tuc truc tuyen 100%, giam 90% thoi gian cho doi nhan container tai cong cang.',
         features: [
-          'Thanh toán trực tuyến bảo mật qua Napas, Vietcombank, MBBank',
-          'Tự động kết nối cơ sở dữ liệu Hải quan điện tử một cửa quốc gia',
-          'Tra cứu tình trạng container 24/7 trên ứng dụng di động'
+          'Thanh toan truc tuyen bao mat qua Napas, Vietcombank, MBBank',
+          'Tu dong ket noi co so du lieu Hai quan dien tu mot cua quoc gia',
+          'Tra cuu tinh trang container 24/7 tren ung dung di dong'
         ]
       }
     ],
     pricing: [
       {
         id: 'price-snp-custom',
-        name: 'Gói Dịch Vụ Cảng & Kho Bãi Chuyên Biệt',
-        price: 'Liên Hệ Báo Giá',
+        name: 'Goi Dich Vu Cang & Kho Bai Chuyen Biet',
+        price: 'Lien He Bao Gia',
         period: '',
-        desc: 'Báo giá chính thức các dịch vụ nâng hạ, lưu bãi, đóng rút hàng và chuyển cảng theo biểu cước quy định.',
+        desc: 'Bao gia chinh thuc cac dich vu nang ha, luu bai, dong rut hang va chuyen cang theo bieu cuoc quy dinh.',
         popular: true,
         features: [
-          'Biểu cước minh bạch theo quy chuẩn Bộ Giao thông Vận tải',
-          'Chính sách chiết khấu ưu đãi cho hãng tàu và chủ hàng lớn',
-          'Hỗ trợ làm thủ tục hải quan và kiểm hóa nhanh tại bãi'
+          'Bieu cuoc minh bach theo quy chuan Bo Giao thong Van tai',
+          'Chinh sach chiet khau uu dai cho hang tau va chu hang lon',
+          'Ho tro lam thu tuc hai quan va kiem hoa nhanh tai bai'
         ]
       }
     ],
     events: [
       {
         id: 'evt-snp-1',
-        title: 'Hội Thảo Logistics Xanh & Cảng Biển Thông Minh 2026',
+        title: 'Hoi Thao Logistics Xanh & Cang Bien Thong Minh 2026',
         format: 'Industry Conference',
-        date: '10/01/2027 • 08:30 - 12:00',
-        location: 'Khách sạn Lotte Hotel Saigon, TP. Hồ Chí Minh',
-        desc: 'Định hướng chuyển đổi hạ tầng cẩu điện chạy pin, năng lượng mặt trời áp mái và giải pháp cảng thông minh giảm phát thải ròng.'
+        date: '10/01/2027 &bull; 08:30 - 12:00',
+        location: 'Khach san Lotte Hotel Saigon, TP. Ho Chi Minh',
+        desc: 'Dinh huong chuyen doi ha tang cau dien chay pin, nang luong mat troi ap mai va giai phap cang thong minh giam phat thai rong.'
       }
     ]
   },
@@ -2851,53 +2851,53 @@ const enterpriseCompaniesData = [
     id: 'logivan',
     name: 'Logivan Vietnam Freight Network',
     logo: 'images/brands/logivan.svg',
-    industry: 'LogiTech & Nền Tảng Vận Tải Số',
+    industry: 'LogiTech & Nen Tang Van Tai So',
     category: 'tech',
-    tagline: 'Uber của ngành vận tải xe tải hàng hóa đường dài tại Việt Nam',
-    location: 'Hà Nội & TP. Hồ Chí Minh',
-    size: '300+ nhân sự',
+    tagline: 'Uber cua nganh van tai xe tai hang hoa duong dai tai Viet Nam',
+    location: 'Ha Noi & TP. Ho Chi Minh',
+    size: '300+ nhan su',
     founded: '2017',
     website: 'https://logivan.com',
-    desc: 'Logivan kết nối mạng lưới hơn 40,000 chủ xe tải với hàng nghìn doanh nghiệp sản xuất, ứng dụng thuật toán trí tuệ nhân tạo để ghép chuyến hàng chiều về, cắt giảm chi phí vận tải lên đến 30%.',
+    desc: 'Logivan ket noi mang luoi hon 40,000 chu xe tai voi hang nghin doanh nghiep san xuat, ung dung thuat toan tri tue nhan tao de ghep chuyen hang chieu ve, cat giam chi phi van tai len den 30%.',
     techStack: ['AI Matching Algorithm', 'Dynamic Rate Index', 'Geospatial Analytics', 'Snowflake', 'BigQuery'],
     stats: { services: 3, plans: 3, events: 1, jobs: 5 },
     services: [
       {
         id: 'srv-logi-1',
-        title: 'Nền Tảng Điều Phối Xe Tải Ghép Chuyến Bằng AI',
+        title: 'Nen Tang Dieu Phoi Xe Tai Ghep Chuyen Bang AI',
         icon: 'fa-truck-fast',
-        desc: 'Tự động ghép đơn hàng với xe tải trống chiều về trên toàn tuyến Quốc lộ 1A và các khu công nghiệp trọng điểm.',
+        desc: 'Tu dong ghep don hang voi xe tai trong chieu ve tren toan tuyen Quoc lo 1A va cac khu cong nghiep trong diem.',
         features: [
-          'Tiết kiệm từ 20% đến 30% chi phí vận chuyển so với cước truyền thống',
-          'Bảo hiểm hàng hóa lên tới 1 tỷ đồng / chuyến vận chuyển',
-          'Định vị GPS vị trí phương tiện thời gian thực'
+          'Tiet kiem tu 20% den 30% chi phi van chuyen so voi cuoc truyen thong',
+          'Bao hiem hang hoa len toi 1 ty dong / chuyen van chuyen',
+          'Dinh vi GPS vi tri phuong tien thoi gian thuc'
         ]
       }
     ],
     pricing: [
       {
         id: 'price-logi-starter',
-        name: 'Gói Doanh Nghiệp Tiêu Chuẩn',
-        price: 'Theo Chuyến Hàng',
+        name: 'Goi Doanh Nghiep Tieu Chuan',
+        price: 'Theo Chuyen Hang',
         period: '',
-        desc: 'Minh bạch cước phí theo từng cung đường vận tải với hóa đơn GTGT đầy đủ.',
+        desc: 'Minh bach cuoc phi theo tung cung duong van tai voi hoa don GTGT day du.',
         popular: true,
         features: [
-          'Báo giá cước cạnh tranh trong vòng 15 phút',
-          'Không phụ phí duy trì phần mềm',
-          'Theo dõi hành trình xe trực tuyến qua portal',
-          'Thanh toán linh hoạt công nợ 30 ngày cho đối tác xác thực'
+          'Bao gia cuoc canh tranh trong vong 15 phut',
+          'Khong phu phi duy tri phan mem',
+          'Theo doi hanh trinh xe truc tuyen qua portal',
+          'Thanh toan linh hoat cong no 30 ngay cho doi tac xac thuc'
         ]
       }
     ],
     events: [
       {
         id: 'evt-logi-1',
-        title: 'Tech Talk: Tối Ưu Hóa Dữ Liệu Không Gian Lớn (Big Data) Cho Logistics',
+        title: 'Tech Talk: Toi Uu Hoa Du Lieu Khong Gian Lon (Big Data) Cho Logistics',
         format: 'Technical Webinar',
-        date: '05/12/2026 • 19:30 - 21:00',
+        date: '05/12/2026 &bull; 19:30 - 21:00',
         location: 'Online Webinar (Google Meet)',
-        desc: 'Cách Logivan xử lý hơn 5 triệu điểm dữ liệu GPS mỗi ngày để đưa ra chỉ số cước vận tải động sát với thị trường.'
+        desc: 'Cach Logivan xu ly hon 5 trieu diem du lieu GPS moi ngay de dua ra chi so cuoc van tai dong sat voi thi truong.'
       }
     ]
   },
@@ -2907,50 +2907,50 @@ const enterpriseCompaniesData = [
     logo: 'images/brands/tiki.svg',
     industry: 'E-Commerce Fulfillment & Robotics Automation',
     category: 'ai',
-    tagline: 'Trung tâm xử lý đơn hàng tự động hóa với hơn 500 robot tự hành AMR hiện đại',
-    location: 'Bình Dương & Bắc Ninh, Việt Nam',
-    size: '3,000+ nhân sự',
+    tagline: 'Trung tam xu ly don hang tu dong hoa voi hon 500 robot tu hanh AMR hien dai',
+    location: 'Binh Duong & Bac Ninh, Viet Nam',
+    size: '3,000+ nhan su',
     founded: '2010',
     website: 'https://tiki.vn',
-    desc: 'TikiNOW Smart Logistics vận hành chuỗi trung tâm kho vận thông minh thế hệ mới, ứng dụng hệ thống robot tự hành AMR và thuật toán điều phối thông minh giúp giao hàng siêu tốc trong 2 giờ.',
+    desc: 'TikiNOW Smart Logistics van hanh chuoi trung tam kho van thong minh the he moi, ung dung he thong robot tu hanh AMR va thuat toan dieu phoi thong minh giup giao hang sieu toc trong 2 gio.',
     techStack: ['Autonomous Mobile Robots (AMR)', 'Kiva Fleet Orchestrator', 'SLAM Navigation', 'Edge AI'],
     stats: { services: 3, plans: 3, events: 2, jobs: 4 },
     services: [
       {
         id: 'srv-tiki-1',
-        title: 'Dịch Vụ Kho Vận Hoàn Tất Đơn Hàng Tự Động Bằng Robot (Fulfillment by Tiki)',
+        title: 'Dich Vu Kho Van Hoan Tat Don Hang Tu Dong Bang Robot (Fulfillment by Tiki)',
         icon: 'fa-robot',
-        desc: 'Lưu kho, nhặt hàng tự động bằng cánh tay robot và đội xe AMR, đóng gói và xuất hàng siêu tốc trong 15 phút từ lúc nhận đơn.',
+        desc: 'Luu kho, nhat hang tu dong bang canh tay robot va doi xe AMR, dong goi va xuat hang sieu toc trong 15 phut tu luc nhan don.',
         features: [
-          'Độ chính xác soạn hàng đạt 99.99%',
-          'Tối ưu diện tích lưu trữ kho gấp 2.5 lần so với kho truyền thống',
-          'Tích hợp đa kênh bán hàng Shopee, TikTok Shop, Lazada, Tiki'
+          'Do chinh xac soan hang dat 99.99%',
+          'Toi uu dien tich luu tru kho gap 2.5 lan so voi kho truyen thong',
+          'Tich hop da kenh ban hang Shopee, TikTok Shop, Lazada, Tiki'
         ]
       }
     ],
     pricing: [
       {
         id: 'price-tiki-ful',
-        name: 'Gói Hoàn Tất Đơn Hàng Thông Minh',
-        price: 'Từ ₫8.000 / đơn',
+        name: 'Goi Hoan Tat Don Hang Thong Minh',
+        price: 'Tu $8.000 / don',
         period: '',
-        desc: 'Toàn bộ chi phí lưu kho, nhặt hàng bằng robot, đóng gói vật tư và dán nhãn vận chuyển.',
+        desc: 'Toan bo chi phi luu kho, nhat hang bang robot, dong goi vat tu va dan nhan van chuyen.',
         popular: true,
         features: [
-          'Miễn phí 30 ngày lưu kho đầu tiên cho sản phẩm mới',
-          'Đảm bảo tốc độ đóng gói sẵn sàng giao trong 2 giờ',
-          'Bảo hiểm 100% giá trị hàng hóa nếu xảy ra thất thoát'
+          'Mien phi 30 ngay luu kho dau tien cho san pham moi',
+          'Dam bao toc do dong goi san sang giao trong 2 gio',
+          'Bao hiem 100% gia tri hang hoa neu xay ra that thoat'
         ]
       }
     ],
     events: [
       {
         id: 'evt-tiki-1',
-        title: 'Tech Tour: Trải Nghiệm Kho Tự Động Hóa 500+ Robot AMR Tại Bình Dương',
+        title: 'Tech Tour: Trai Nghiem Kho Tu Dong Hoa 500+ Robot AMR Tai Binh Duong',
         format: 'On-site Experience',
-        date: '10/01/2027 • 09:00 - 14:00',
-        location: 'Tiki Smart MegaHub, VSIP II, Bến Cát, Bình Dương',
-        desc: 'Chương trình tham quan độc quyền dành cho các kỹ sư và nhà quản lý chuỗi cung ứng tận mắt quan sát hạm đội robot AMR tự hành.'
+        date: '10/01/2027 &bull; 09:00 - 14:00',
+        location: 'Tiki Smart MegaHub, VSIP II, Ben Cat, Binh Duong',
+        desc: 'Chuong trinh tham quan doc quyen danh cho cac ky su va nha quan ly chuoi cung ung tan mat quan sat ham doi robot AMR tu hanh.'
       }
     ]
   },
@@ -2960,50 +2960,50 @@ const enterpriseCompaniesData = [
     logo: 'images/brands/viconship.svg',
     industry: 'Maritime Port Operations & Multimodal Shipping',
     category: 'logistics',
-    tagline: 'Tập đoàn khai thác cảng và dịch vụ đại lý vận tải biển truyền thống hàng đầu Hải Phòng',
-    location: 'Hải Phòng, Đà Nẵng & TP. Hồ Chí Minh',
-    size: '2,500+ nhân sự',
+    tagline: 'Tap doan khai thac cang va dich vu dai ly van tai bien truyen thong hang dau Hai Phong',
+    location: 'Hai Phong, Da Nang & TP. Ho Chi Minh',
+    size: '2,500+ nhan su',
     founded: '1985',
     website: 'https://viconship.com',
-    desc: 'Viconship sở hữu hệ thống cảng cạn, bãi container và dịch vụ giao nhận vận tải đa phương thức quốc tế, kết nối mạng lưới các liên minh tàu biển lớn nhất thế giới.',
+    desc: 'Viconship so huu he thong cang can, bai container va dich vu giao nhan van tai da phuong thuc quoc te, ket noi mang luoi cac lien minh tau bien lon nhat the gioi.',
     techStack: ['Multimodal Shipping ERP', 'Automated Customs EDI', 'Container Gate Vision OCR'],
     stats: { services: 3, plans: 2, events: 1, jobs: 4 },
     services: [
       {
         id: 'srv-vic-1',
-        title: 'Dịch Vụ Đại Lý Hãng Tàu & Vận Tải Đường Biển Quốc Tế',
+        title: 'Dich Vu Dai Ly Hang Tau & Van Tai Duong Bien Quoc Te',
         icon: 'fa-ship',
-        desc: 'Cung cấp booking tải trọng và container từ Việt Nam đi Mỹ, Châu Âu và nội Á với biểu cước cạnh tranh.',
+        desc: 'Cung cap booking tai trong va container tu Viet Nam di My, Chau Au va noi A voi bieu cuoc canh tranh.',
         features: [
-          'Hợp đồng bảo đảm chỗ (Space Guarantee) trong mùa cao điểm',
-          'Đại diện giải quyết thủ tục chứng từ vận đơn hải ngoại 24/7',
-          'Theo dõi vị trí tàu biển thời gian thực'
+          'Hop dong bao dam cho (Space Guarantee) trong mua cao diem',
+          'Dai dien giai quyet thu tuc chung tu van don hai ngoai 24/7',
+          'Theo doi vi tri tau bien thoi gian thuc'
         ]
       }
     ],
     pricing: [
       {
         id: 'price-vic-quote',
-        name: 'Gói Cước Vận Tải Hợp Đồng Doanh Nghiệp',
-        price: 'Báo Giá Theo Tuyến',
+        name: 'Goi Cuoc Van Tai Hop Dong Doanh Nghiep',
+        price: 'Bao Gia Theo Tuyen',
         period: '',
-        desc: 'Biểu cước linh hoạt theo từng mùa vụ với điều khoản thanh toán thuận lợi cho các nhà xuất khẩu lớn.',
+        desc: 'Bieu cuoc linh hoat theo tung mua vu voi dieu khoan thanh toan thuan loi cho cac nha xuat khau lon.',
         popular: true,
         features: [
-          'Cố định giá cước hợp đồng kỳ hạn dài hạn 6-12 tháng',
-          'Miễn phí 14 ngày lưu bãi và lưu vỏ container (Free Demurrage/Detention)',
-          'Đội ngũ chăm sóc tài khoản khách hàng VIP chuyên nghiệp'
+          'Co dinh gia cuoc hop dong ky han dai han 6-12 thang',
+          'Mien phi 14 ngay luu bai va luu vo container (Free Demurrage/Detention)',
+          'Doi ngu cham soc tai khoan khach hang VIP chuyen nghiep'
         ]
       }
     ],
     events: [
       {
         id: 'evt-vic-1',
-        title: 'Hội Thảo Dự Báo Xu Hướng Giá Cước Vận Tải Biển Quốc Tế 2026',
+        title: 'Hoi Thao Du Bao Xu Huong Gia Cuoc Van Tai Bien Quoc Te 2026',
         format: 'Executive Seminar',
-        date: '22/12/2026 • 14:00 - 17:30',
-        location: 'Khách sạn Nam Cường, TP. Hải Phòng',
-        desc: 'Phân tích biến động các liên minh hãng tàu (Gemini Cooperation, Premier Alliance) và tác động tới chi phí xuất khẩu của doanh nghiệp dệt may, da giày, điện tử.'
+        date: '22/12/2026 &bull; 14:00 - 17:30',
+        location: 'Khach san Nam Cuong, TP. Hai Phong',
+        desc: 'Phan tich bien dong cac lien minh hang tau (Gemini Cooperation, Premier Alliance) va tac dong toi chi phi xuat khau cua doanh nghiep det may, da giay, dien tu.'
       }
     ]
   }
@@ -3041,8 +3041,8 @@ function initCompaniesDirectory() {
       grid.innerHTML = `
         <div style="grid-column: 1/-1; padding: 60px 20px; text-align: center; color: #64748B;">
           <i class="fa-solid fa-building-circle-xmark" style="font-size: 40px; color: #94A3B8; margin-bottom: 12px; display:inline-block;"></i>
-          <h3 style="font-size: 17px; color: #1E293B; margin-bottom: 6px; font-weight: 700;">Không tìm thấy doanh nghiệp phù hợp</h3>
-          <p style="font-size: 13.5px; color: #64748B;">Vui lòng thử từ khóa tìm kiếm khác hoặc chọn tab "Tất cả".</p>
+          <h3 style="font-size: 17px; color: #1E293B; margin-bottom: 6px; font-weight: 700;">No matching enterprises found</h3>
+          <p style="font-size: 13.5px; color: #64748B;">Please try different search keywords or select the \"All\" filter tab.</p>
         </div>
       `;
       return;
@@ -3058,7 +3058,7 @@ function initCompaniesDirectory() {
             <div class="company-card-header-info">
               <div class="company-card-name-row">
                 <h3 class="company-card-name">${c.name}</h3>
-                <i class="fa-solid fa-circle-check company-card-verified-badge" title="Doanh Nghiệp Đã Được Xác Thực"></i>
+                <i class="fa-solid fa-circle-check company-card-verified-badge" title=\"Accredited Enterprise\"></i>
               </div>
               <div class="company-card-tagline">${c.tagline}</div>
               <div class="company-card-meta-pills">
@@ -3077,22 +3077,22 @@ function initCompaniesDirectory() {
           <div class="company-card-stats-grid">
             <div>
               <div class="company-stat-num">${c.stats.services}</div>
-              <div class="company-stat-label">Dịch Vụ & SP</div>
+              <div class=\"company-stat-label\">Services & Tech</div>
             </div>
             <div>
               <div class="company-stat-num">${c.stats.events}</div>
-              <div class="company-stat-label">Sự Kiện Tech</div>
+              <div class=\"company-stat-label\">Events</div>
             </div>
             <div>
               <div class="company-stat-num">${c.stats.jobs}</div>
-              <div class="company-stat-label">Vị Trí Mở</div>
+              <div class=\"company-stat-label\">Open Roles</div>
             </div>
           </div>
         </div>
 
         <div class="company-card-actions">
           <button type="button" class="btn-company-view-profile" onclick="openCompanyDetail('${c.id}')">
-            Xem Hồ Sơ &amp; Báo Giá
+            View Profile &amp; Solutions
           </button>
           <button type="button" class="btn-company-contact-now" onclick="openCompanyContactModal('${c.id}')">
             <i class="fa-solid fa-paper-plane"></i> Contact Now
@@ -3175,8 +3175,8 @@ window.switchCompanyTab = function(tabName) {
   if (tabName === 'services') {
     contentArea.innerHTML = `
       <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Dịch Vụ &amp; Giải Pháp Cung Cấp</h2>
-        <p style="font-size: 14px; color: #64748B; margin: 0;">Các giải pháp công nghệ, AI và dịch vụ vận hành đã được xác thực của ${company.name}.</p>
+        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Services &amp; Logistics Capabilities</h2>
+        <p style="font-size: 14px; color: #64748B; margin: 0;">Verified technology, automated infrastructure, and logistics capabilities of ${company.name}.</p>
       </div>
       <div class="services-showcase-grid">
         ${(company.services || []).map(s => `
@@ -3189,7 +3189,7 @@ window.switchCompanyTab = function(tabName) {
                 ${(s.features || []).map(f => `<li><i class="fa-solid fa-circle-check"></i> ${f}</li>`).join('')}
               </ul>
             </div>
-            <button type="button" class="btn-company-contact-now" onclick="openCompanyContactModal('${company.id}', 'Tư vấn giải pháp: ${s.title.replace(/'/g, "\'")}')" style="width:100%;">
+            <button type="button" class="btn-company-contact-now" onclick="openCompanyContactModal('${company.id}', 'Solutions Inquiry: ${s.title.replace(/'/g, "\'")}')" style="width:100%;">
               <i class="fa-solid fa-paper-plane"></i> Contact Now
             </button>
           </div>
@@ -3199,12 +3199,12 @@ window.switchCompanyTab = function(tabName) {
   } else if (tabName === 'tech') {
     contentArea.innerHTML = `
       <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Công Nghệ Nền Tảng &amp; Ứng Dụng Trí Tuệ Nhân Tạo (AI)</h2>
-        <p style="font-size: 14px; color: #64748B; margin: 0;">Kiến trúc phần mềm phân tán, mô hình Machine Learning và công nghệ đang vận hành tại ${company.name}.</p>
+        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Core Technology Stack &amp; Autonomous AI Systems</h2>
+        <p style="font-size: 14px; color: #64748B; margin: 0;">High-throughput distributed systems, predictive optimization, and telemetry deployed at ${company.name}.</p>
       </div>
 
       <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:14px; padding:28px; margin-bottom:28px;">
-        <h3 style="font-size:16px; font-weight:700; color:#0F172A; margin:0 0 14px 0;">Ngăn Xếp Công Nghệ (Core Tech Stack)</h3>
+        <h3 style="font-size:16px; font-weight:700; color:#0F172A; margin:0 0 14px 0;">Core Technology &amp; Infrastructure Stack</h3>
         <div style="display:flex; flex-wrap:wrap; gap:10px;">
           ${company.techStack.map(t => `
             <span style="background:#FFFFFF; border:1px solid #CBD5E1; color:#0F172A; padding:8px 18px; border-radius:8px; font-size:13.5px; font-weight:700; display:inline-flex; align-items:center; gap:8px; box-shadow:0 1px 3px rgba(0,0,0,0.04);">
@@ -3217,41 +3217,41 @@ window.switchCompanyTab = function(tabName) {
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px; margin-bottom:28px;">
         <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:12px; padding:22px;">
           <div style="font-size:16px; font-weight:700; color:var(--fl-primary); margin-bottom:8px; display:flex; align-items:center; gap:8px;">
-            <i class="fa-solid fa-brain"></i> Mô Hình Học Máy &amp; AI Tối Ưu Lộ Trình
+            <i class="fa-solid fa-brain"></i> Predictive Machine Learning &amp; AI Dispatch Optimization
           </div>
           <p style="font-size:13.5px; color:#475569; line-height:1.6; margin:0;">
-            Hệ thống huấn luyện trên hơn 12 triệu lượt chuyến xe tải thực tế tại Việt Nam, tích hợp xử lý dữ liệu cảm biến IoT thời gian thực để đưa ra quyết định dispatch tự động với độ trễ dưới 2 giây.
+            Trained across millions of transport lanes, integrating real-time telemetry and sub-second dispatch optimization algorithms.
           </p>
         </div>
         <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:12px; padding:22px;">
           <div style="font-size:16px; font-weight:700; color:var(--fl-primary); margin-bottom:8px; display:flex; align-items:center; gap:8px;">
-            <i class="fa-solid fa-shield-halved"></i> Bảo Mật &amp; Chuẩn An Toàn Dữ Liệu
+            <i class="fa-solid fa-shield-halved"></i> Zero-Trust Security &amp; Compliance Standards
           </div>
           <p style="font-size:13.5px; color:#475569; line-height:1.6; margin:0;">
-            Hạ tầng tuân thủ tiêu chuẩn ISO/IEC 27001 và SOC 2 Type II, hỗ trợ mã hóa đầu cuối mTLS và phân quyền dữ liệu theo vai trò (RBAC) nghiêm ngặt cho đối tác doanh nghiệp.
+            Certified ISO/IEC 27001 and SOC 2 Type II infrastructure with end-to-end mTLS encryption and strict RBAC controls.
           </p>
         </div>
       </div>
 
       <div style="text-align:center; padding:32px; background:linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); border-radius:14px;">
-        <h3 style="font-size:18px; font-weight:800; color:#1E3A8A; margin:0 0 8px 0;">Cần tư vấn kiến trúc công nghệ &amp; AI phù hợp cho doanh nghiệp của bạn?</h3>
-        <p style="font-size:14px; color:#1E40AF; margin:0 0 18px 0;">Đội ngũ Solutions Architect của ${company.name} sẵn sàng đồng hành cùng bạn thiết kế lộ trình chuyển đổi.</p>
-        <button type="button" class="btn-profile-contact-primary" onclick="openCompanyContactModal('${company.id}', 'Tư vấn giải pháp kiến trúc công nghệ &amp; AI')" style="margin:0 auto;">
-          <i class="fa-solid fa-paper-plane"></i> Contact Now Để Nhận Tư Vấn
+        <h3 style="font-size:18px; font-weight:800; color:#1E3A8A; margin:0 0 8px 0;">Need tailored enterprise logistics &amp; AI infrastructure for your organization?</h3>
+        <p style="font-size:14px; color:#1E40AF; margin:0 0 18px 0;">Our Solutions Architecture team is ready to design your operational integration roadmap.</p>
+        <button type="button" class="btn-profile-contact-primary" onclick="openCompanyContactModal('${company.id}', 'Inquiry for Enterprise AI & Architecture Solutions')" style="margin:0 auto;">
+          <i class="fa-solid fa-paper-plane"></i> Contact Solutions Team
         </button>
       </div>
     `;
   } else if (tabName === 'pricing') {
     contentArea.innerHTML = `
       <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Bảng Giá &amp; Gói Dịch Vụ Doanh Nghiệp</h2>
-        <p style="font-size: 14px; color: #64748B; margin: 0;">Minh bạch chi phí, linh hoạt mở rộng quy mô từ thử nghiệm đến tập đoàn đa quốc gia.</p>
+        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Enterprise Pricing &amp; Service Tiers</h2>
+        <p style="font-size: 14px; color: #64748B; margin: 0;">Transparent pricing, scalable service levels from pilot deployments to multi-facility operations.</p>
       </div>
 
       <div class="pricing-showcase-grid">
         ${(company.pricing || []).map(p => `
           <div class="pricing-plan-card ${p.popular ? 'highlighted' : ''}">
-            ${p.popular ? '<div class="pricing-badge-popular">ĐƯỢC ƯA CHUỘNG</div>' : ''}
+            ${p.popular ? '<div class=\"pricing-badge-popular\">POPULAR</div>' : ''}
             <div>
               <h3 class="pricing-plan-name">${p.name}</h3>
               <p class="pricing-plan-desc">${p.desc}</p>
@@ -3263,8 +3263,8 @@ window.switchCompanyTab = function(tabName) {
                 ${(p.features || []).map(f => `<li><i class="fa-solid fa-check"></i> ${f}</li>`).join('')}
               </ul>
             </div>
-            <button type="button" class="${p.popular ? 'btn-company-contact-now' : 'btn-company-view-profile'}" onclick="openCompanyContactModal('${company.id}', 'Đăng ký tư vấn gói cước: ${p.name.replace(/'/g, "\'")}')" style="width:100%; justify-content:center;">
-              <i class="fa-solid fa-paper-plane"></i> ${p.price.includes('₫') ? 'Inquire This Plan' : 'Contact Now'}
+            <button type="button" class="${p.popular ? 'btn-company-contact-now' : 'btn-company-view-profile'}" onclick="openCompanyContactModal('${company.id}', 'Dang ky tu van goi cuoc: ${p.name.replace(/'/g, "\'")}')" style="width:100%; justify-content:center;">
+              <i class="fa-solid fa-paper-plane"></i> ${p.price.includes('$') ? 'Inquire This Plan' : 'Contact Now'}
             </button>
           </div>
         `).join('')}
@@ -3273,8 +3273,8 @@ window.switchCompanyTab = function(tabName) {
   } else if (tabName === 'events') {
     contentArea.innerHTML = `
       <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Sự Kiện, Hội Thảo Công Nghệ &amp; Tech Talks</h2>
-        <p style="font-size: 14px; color: #64748B; margin: 0;">Đăng ký tham gia các sự kiện chuyên môn, workshop thực chiến và diễn đàn chuyển đổi số do ${company.name} tổ chức.</p>
+        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Industry Conferences, Workshops &amp; Tech Talks</h2>
+        <p style="font-size: 14px; color: #64748B; margin: 0;">Register for exclusive industry seminars, logistics keynotes, and technical briefings hosted by ${company.name}.</p>
       </div>
 
       <div class="events-showcase-grid">
@@ -3283,7 +3283,7 @@ window.switchCompanyTab = function(tabName) {
             <div>
               <div class="event-meta-badge-row">
                 <span class="event-format-pill">${e.format}</span>
-                <span class="event-date-text"><i class="fa-regular fa-calendar-days"></i> ${e.date.split('•')[0].trim()}</span>
+                <span class="event-date-text"><i class="fa-regular fa-calendar-days"></i> ${e.date.split('&bull;')[0].trim()}</span>
               </div>
               <h3 class="event-card-title">${e.title}</h3>
               <p class="event-card-desc">${e.desc}</p>
@@ -3292,11 +3292,11 @@ window.switchCompanyTab = function(tabName) {
               </div>
             </div>
             <div style="display:flex; gap:10px; margin-top:16px;">
-              <button type="button" class="btn-company-contact-now" onclick="alert('Đăng ký vé tham gia thành công: ${e.title.replace(/'/g, "\'")}\nBan tổ chức sẽ gửi mã QR vào email của bạn.'); this.innerHTML='<i class=\'fa-solid fa-check\'></i> Đã Đăng Ký';" style="flex:1;">
-                <i class="fa-solid fa-ticket"></i> Đăng Ký Tham Gia (RSVP)
+              <button type="button" class="btn-company-contact-now" onclick="alert('Dang ky ve tham gia thanh cong: ${e.title.replace(/'/g, "\'")}\nBan to chuc se gui ma QR vao email cua ban.'); this.innerHTML='<i class=\'fa-solid fa-check\'></i> Da Dang Ky';" style="flex:1;">
+                <i class=\"fa-solid fa-ticket\"></i> Register (RSVP)
               </button>
-              <button type="button" class="btn-company-view-profile" onclick="openCompanyContactModal('${company.id}', 'Hợp tác tổ chức sự kiện: ${e.title.replace(/'/g, "\'")}')" style="flex:1;">
-                Liên Hệ Hợp Tác
+              <button type="button" class="btn-company-view-profile" onclick="openCompanyContactModal('${company.id}', 'Hop tac to chuc su kien: ${e.title.replace(/'/g, "\'")}')" style="flex:1;">
+                Partner With Us
               </button>
             </div>
           </div>
@@ -3306,17 +3306,17 @@ window.switchCompanyTab = function(tabName) {
   } else if (tabName === 'jobs') {
     contentArea.innerHTML = `
       <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Vị Trí Tuyển Dụng Đang Mở Tại ${company.name}</h2>
-        <p style="font-size: 14px; color: #64748B; margin: 0;">Gia nhập đội ngũ kỹ sư và chuyên gia hàng đầu kiến tạo giải pháp tương lai.</p>
+        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Current Open Roles at ${company.name}</h2>
+        <p style="font-size: 14px; color: #64748B; margin: 0;">Join accredited engineering and operational teams building next-generation infrastructure.</p>
       </div>
       <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:12px; padding:24px; text-align:center;">
         <i class="fa-solid fa-briefcase" style="font-size:36px; color:var(--fl-primary); margin-bottom:12px; display:inline-block;"></i>
-        <h3 style="font-size:16px; font-weight:700; color:#0F172A; margin-bottom:8px;">Các Vị Trí Tuyển Dụng Trực Tiếp</h3>
+        <h3 style="font-size:16px; font-weight:700; color:#0F172A; margin-bottom:8px;">Direct Verified Openings</h3>
         <p style="font-size:13.5px; color:#64748B; max-width:500px; margin:0 auto 18px;">
-          Xem danh sách đầy đủ các cơ hội nghề nghiệp và nộp hồ sơ trực tuyến qua bảng việc làm VietnamJobs.
+          Browse the complete catalog of verified openings and apply directly through the VietnamJobs portal.
         </p>
         <button type="button" class="btn-company-contact-now" onclick="switchView('browse');" style="margin:0 auto;">
-          <i class="fa-solid fa-arrow-right"></i> Mở Bảng Việc Làm Tuyển Dụng
+          <i class=\"fa-solid fa-arrow-right\"></i> Open Jobs Directory
         </button>
       </div>
     `;
@@ -3368,13 +3368,13 @@ window.submitCompanyContactForm = function(e) {
   const email = form.elements['contact_email']?.value?.trim();
   const phone = form.elements['contact_phone']?.value?.trim();
   const clientCompany = form.elements['contact_company']?.value?.trim();
-  const subject = form.elements['contact_service']?.value || 'Tư vấn giải pháp';
+  const subject = form.elements['contact_service']?.value || 'Solutions Inquiry';
   const message = form.elements['contact_message']?.value?.trim();
   const targetCompanyId = document.getElementById('contact-target-company-id')?.value || currentSelectedCompanyId;
   const targetCompany = enterpriseCompaniesData.find(c => c.id === targetCompanyId) || enterpriseCompaniesData[0];
 
   if (!fullname || !email || !phone || !clientCompany) {
-    alert('Vui lòng điền đầy đủ các trường thông tin bắt buộc (*)');
+    alert('Please complete all required fields (*)');
     return;
   }
 
@@ -3402,9 +3402,9 @@ window.submitCompanyContactForm = function(e) {
   const successRef = document.getElementById('lead-success-ref-code');
   const successCompanyText = document.getElementById('lead-success-company-text');
 
-  if (successRef) successRef.textContent = `Mã Hồ Sơ Yêu Cầu: ${leadId}`;
+  if (successRef) successRef.textContent = `Ma Ho So Yeu Cau: ${leadId}`;
   if (successCompanyText) {
-    successCompanyText.innerHTML = `Thông tin liên hệ của bạn đã được chuyển trực tiếp tới đại diện của <strong>${targetCompany.name}</strong>. Đại diện giải pháp sẽ liên hệ với bạn qua email <strong>${email}</strong> hoặc số điện thoại <strong>${phone}</strong> trong vòng 24 giờ làm việc.`;
+    successCompanyText.innerHTML = `Your inquiry has been routed to <strong>${targetCompany.name}</strong> enterprise team. A specialist will follow up with you via <strong>${email}</strong> or <strong>${phone}</strong> within 24 business hours.`;
   }
 
   if (formWrap) formWrap.style.display = 'none';
@@ -3473,6 +3473,6 @@ document.addEventListener('DOMContentLoaded', () => {
       courseTab.style.background = '#0F172A';
       courseTab.style.color = '#fff';
       courseTab.style.borderColor = '#CBD5E1';
-      showToast(`Đang lọc khóa học: ${courseTab.textContent.trim()}`);
+      showToast(`Filtering courses: ${courseTab.textContent.trim()}`);
     }
   });

@@ -9775,3 +9775,167 @@ section[id] {
   box-shadow: none !important;
   background: transparent !important;
 }
+
+/* ==========================================================================
+   EXACT REPLICA: LOGISTICS & SUPPLY CHAIN 20-CATEGORY CREATIVE GRID
+   (Matching media_1793843379125_7590ce27.jpg & media_1793843416543_94e44ba0.jpg)
+   ========================================================================== */
+
+#section-job-categories {
+  background: #FFFFFF !important;
+  padding: 40px 0 !important;
+}
+
+.fw-bridge-header {
+  margin-bottom: 24px !important;
+  text-align: left !important;
+}
+
+.fw-bridge-title {
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  color: #0044CC !important;
+  margin: 0 0 12px 0 !important;
+  letter-spacing: -0.3px !important;
+  text-align: left !important;
+  display: block !important;
+}
+
+.fw-bridge-title::before,
+.fw-bridge-title .fw-section-bar {
+  display: none !important;
+}
+
+.fw-bridge-meta-bar {
+  text-align: center !important;
+  margin: 0 auto 20px auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  gap: 6px !important;
+}
+
+.fw-bridge-meta-text {
+  font-size: 13.5px !important;
+  color: #64748B !important;
+  margin: 0 !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+}
+
+.fw-bridge-more {
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  color: #0044CC !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  transition: all 0.15s ease !important;
+}
+
+.fw-bridge-more:hover {
+  text-decoration: underline !important;
+  color: #003399 !important;
+}
+
+/* 10 Columns x 2 Rows Grid */
+.fw-bridge-grid {
+  display: grid !important;
+  grid-template-columns: repeat(10, 1fr) !important;
+  gap: 12px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+@media (max-width: 1200px) {
+  .fw-bridge-grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .fw-bridge-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Individual Category Card: Light Blue Dashed Border with Rounded Corners */
+.fw-bridge-item {
+  background: #FFFFFF !important;
+  border: 1px dashed #BFDBFE !important; /* Soft Light Blue Dashed Border from screenshot */
+  border-radius: 8px !important;
+  padding: 16px 6px 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  text-align: center !important;
+  min-height: 162px !important;
+  text-decoration: none !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-sizing: border-box !important;
+}
+
+.fw-bridge-item:hover {
+  transform: translateY(-3px) !important;
+  border-color: #0044CC !important;
+  border-style: solid !important;
+  box-shadow: 0 6px 16px rgba(0, 68, 204, 0.12) !important;
+  background: #FFFFFF !important;
+}
+
+.fw-bridge-logo-wrap {
+  width: 48px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto 8px auto !important;
+  flex-shrink: 0 !important;
+}
+
+.fw-bridge-logo-svg {
+  width: 48px !important;
+  height: 48px !important;
+  display: block !important;
+}
+
+.fw-bridge-info {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  flex: 1 !important;
+}
+
+.fw-bridge-name {
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  color: #1E293B !important;
+  text-align: center !important;
+  line-height: 1.35 !important;
+  margin: 0 0 8px 0 !important;
+  min-height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  word-break: break-word !important;
+}
+
+.fw-bridge-job-count {
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  color: #0044CC !important;
+  background: #EFF6FF !important;
+  padding: 2px 8px !important;
+  border-radius: 12px !important;
+  display: inline-block !important;
+  border: none !important;
+  margin: 0 auto !important;
+}

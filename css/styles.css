@@ -10014,3 +10014,170 @@ section[id] {
   border-left-color: #DC2626 !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06) !important;
 }
+
+/* ==========================================================================
+   AUTHENTIC EMPLOYMENT BRIDGE (就业桥) 10x2 MATRIX GRID
+   (Matching media_1793843416543_94e44ba0.jpg 100%)
+   ========================================================================== */
+
+#section-job-categories {
+  background: #FFFFFF !important;
+  padding: 48px 0 36px 0 !important;
+}
+
+.fw-bridge-title {
+  font-size: 28px !important;
+  font-weight: 800 !important;
+  color: #1E293B !important;
+  text-align: center !important;
+  margin: 0 0 10px 0 !important;
+}
+
+.fw-bridge-title::before,
+.fw-bridge-title .fw-section-bar {
+  display: none !important;
+}
+
+.fw-bridge-more {
+  color: #94A3B8 !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: color 0.15s ease !important;
+}
+
+.fw-bridge-more:hover {
+  color: #0044CC !important;
+  text-decoration: underline !important;
+}
+
+/* Unified 10x2 Matrix with dashed divider lines */
+.fw-bridge-grid {
+  display: grid !important;
+  grid-template-columns: repeat(10, 1fr) !important;
+  background: #FFFFFF !important;
+  border-top: 1px dashed #E2E8F0 !important;
+  border-bottom: 1px dashed #E2E8F0 !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-radius: 0 !important;
+  gap: 0 !important;
+  margin: 24px 0 0 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 1200px) {
+  .fw-bridge-grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .fw-bridge-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Individual Cell in Matrix */
+.fw-bridge-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  text-align: center !important;
+  padding: 24px 6px 20px !important;
+  border: none !important;
+  border-right: 1px dashed #E2E8F0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  transition: all 0.15s ease !important;
+  box-sizing: border-box !important;
+  min-height: 145px !important;
+}
+
+/* 10th item on Row 1 and Row 2 has no right border */
+.fw-bridge-item:nth-child(10n) {
+  border-right: none !important;
+}
+
+/* Row 1 items (1 to 10) have dashed bottom border separating them from Row 2 */
+.fw-bridge-item:nth-child(-n+10) {
+  border-bottom: 1px dashed #E2E8F0 !important;
+}
+
+.fw-bridge-item:hover {
+  background: #F8FAFC !important;
+  transform: translateY(-2px) !important;
+  box-shadow: none !important;
+}
+
+.fw-bridge-item:hover .fw-bridge-name {
+  color: #0044CC !important;
+}
+
+/* 1.5x LARGER ICONS: 48px * 1.5 = 72px */
+.fw-bridge-logo-wrap {
+  width: 72px !important;
+  height: 72px !important;
+  min-width: 72px !important;
+  min-height: 72px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto 12px auto !important;
+  flex-shrink: 0 !important;
+}
+
+.fw-bridge-logo-svg {
+  width: 72px !important;
+  height: 72px !important;
+  min-width: 72px !important;
+  min-height: 72px !important;
+  display: block !important;
+}
+
+.fw-bridge-info {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.fw-bridge-name {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #1E293B !important;
+  text-align: center !important;
+  line-height: 1.35 !important;
+  margin: 0 !important;
+  word-break: break-word !important;
+  transition: color 0.15s ease !important;
+}
+
+/* REMOVE JOB COUNT BADGE TO ELIMINATE CLUTTER AND MATCH SCREENSHOT */
+.fw-bridge-job-count {
+  display: none !important;
+}
+
+.fw-bridge-meta-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+  padding: 0 10px !important;
+}
+
+.fw-bridge-more {
+  position: static !important;
+  margin: 0 !important;
+  color: #94A3B8 !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}

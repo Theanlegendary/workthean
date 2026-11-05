@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 140" width="240" height="140">
+  <defs>
+    <linearGradient id="t6-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="50%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#E11D48"/>
+    </linearGradient>
+    <radialGradient id="t6-star" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#FDE047" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="240" height="140" fill="url(#t6-bg)" rx="7"/>
+  <!-- Multi-Color Vocational Spark & Silhouette Montage (NO TEXT) -->
+  <circle cx="120" cy="70" r="45" fill="url(#t6-star)"/>
+  <!-- Modern Geometric polygons -->
+  <polygon points="120,20 128,55 160,55 134,75 144,110 120,90 96,110 106,75 80,55 112,55" fill="#FFFFFF" opacity="0.85"/>
+  <path d="M0,110 Q60,70 120,105 T240,85 L240,140 L0,140 Z" fill="#0F172A" opacity="0.6"/>
+  <circle cx="50" cy="115" r="14" fill="#38BDF8" opacity="0.5"/>
+  <circle cx="190" cy="115" r="14" fill="#FB7185" opacity="0.5"/>
+</svg>

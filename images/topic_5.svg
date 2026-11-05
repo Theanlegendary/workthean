@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 140" width="240" height="140">
+  <defs>
+    <linearGradient id="t5-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EBF4FF"/>
+      <stop offset="60%" stop-color="#C3D9FF"/>
+      <stop offset="100%" stop-color="#A5C4F5"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="140" fill="url(#t5-bg)" rx="7"/>
+  <!-- Yellow Calendar Notepad on Right (NO TEXT) -->
+  <g transform="translate(145, 18)">
+    <rect width="70" height="105" fill="#FDE047" rx="6" stroke="#EAB308" stroke-width="1.2"/>
+    <rect x="0" y="0" width="70" height="22" fill="#EAB308" rx="6"/>
+    <!-- Calendar binder rings -->
+    <rect x="12" y="-4" width="8" height="10" rx="3" fill="#6B7280"/>
+    <rect x="31" y="-4" width="8" height="10" rx="3" fill="#6B7280"/>
+    <rect x="50" y="-4" width="8" height="10" rx="3" fill="#6B7280"/>
+    <!-- Calendar grid lines -->
+    <circle cx="20" cy="40" r="3" fill="#B45309" opacity="0.6"/>
+    <circle cx="35" cy="40" r="3" fill="#B45309" opacity="0.6"/>
+    <circle cx="50" cy="40" r="3" fill="#B45309" opacity="0.6"/>
+    <circle cx="20" cy="58" r="3" fill="#B45309" opacity="0.6"/>
+    <circle cx="35" cy="58" r="3" fill="#B45309" opacity="0.6"/>
+    <circle cx="50" cy="58" r="3" fill="#B45309" opacity="0.6"/>
+    <circle cx="20" cy="76" r="3" fill="#B45309" opacity="0.6"/>
+    <circle cx="35" cy="76" r="3" fill="#B45309" opacity="0.6"/>
+    <circle cx="50" cy="76" r="3" fill="#B45309" opacity="0.6"/>
+  </g>
+  <!-- Background circular decorative aura -->
+  <circle cx="65" cy="70" r="42" fill="#FFFFFF" opacity="0.45"/>
+  <circle cx="65" cy="70" r="28" fill="#FFFFFF" opacity="0.65"/>
+</svg>

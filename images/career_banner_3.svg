@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="60%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#082f49"/>
+    </linearGradient>
+    <filter id="shadow3" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect width="320" height="180" fill="url(#bg3)"/>
+  <circle cx="220" cy="110" r="120" fill="#38bdf8" opacity="0.2" filter="blur(25px)"/>
+  <path d="M-20,90 Q80,20 180,90 T340,60" stroke="#bae6fd" stroke-width="0.8" opacity="0.3" fill="none"/>
+  
+  <rect x="22" y="22" width="70" height="20" rx="3" fill="#ffffff" opacity="0.2"/>
+  <text x="57" y="36" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">SKILLS BANK</text>
+  
+  <text x="22" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="21" font-weight="800" fill="#ffffff" letter-spacing="1">OPERATIONS</text>
+  <text x="22" y="94" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#bae6fd">Analytical Logic &amp; Governance</text>
+  
+  <rect x="22" y="112" width="114" height="1" fill="#38bdf8" opacity="0.4"/>
+  <text x="22" y="128" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#e0f2fe">Industry Qualification Standards</text>
+  <text x="22" y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#93c5fd" opacity="0.9">Occupational Skills Evaluation</text>
+  
+  <g transform="translate(192, 18)" filter="url(#shadow3)">
+    <rect x="10" y="4" width="98" height="136" rx="4" fill="#ffffff" opacity="0.35" transform="rotate(4 50 70)"/>
+    <rect x="6" y="2" width="98" height="136" rx="4" fill="#ffffff" opacity="0.6" transform="rotate(2 50 70)"/>
+    <rect x="0" y="0" width="98" height="136" rx="4" fill="#ffffff"/>
+    <rect x="4" y="4" width="90" height="128" rx="3" fill="#e2e8f0"/>
+    <circle cx="49" cy="45" r="16" fill="#334155"/>
+    <path d="M24,114 Q49,74 74,114 Z" fill="#0f172a"/>
+    <path d="M40,80 L49,96 L58,80 Z" fill="#ffffff"/>
+    <path d="M45,86 L49,100 L53,86 Z" fill="#38bdf8"/>
+    <circle cx="80" cy="18" r="10" fill="#10b981"/>
+    <path d="M76,18 L79,21 L85,15" stroke="#ffffff" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>

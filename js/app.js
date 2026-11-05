@@ -1701,3 +1701,559 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+
+
+/* ==========================================================================
+   HOMEPAGE ENTERPRISE LOGISTICS PORTAL JS (BROADCASTS, SPLIT JOBS, COURSES)
+   ========================================================================== */
+
+// 1. YouTube Broadcasts Hub Controller
+function initYouTubeHub() {
+  const iframe = document.getElementById('main-yt-iframe');
+  const titleEl = document.getElementById('main-yt-title');
+  const categoryEl = document.getElementById('main-yt-category');
+  const dateEl = document.getElementById('main-yt-date');
+  const durationEl = document.getElementById('main-yt-duration');
+  const excerptEl = document.getElementById('main-yt-excerpt');
+  const linkEl = document.getElementById('main-yt-external-link');
+  const playlistItems = document.querySelectorAll('.fw-yt-item');
+  if (!iframe || !playlistItems.length) return;
+
+  playlistItems.forEach(item => {
+    item.addEventListener('click', () => {
+      playlistItems.forEach(i => {
+        i.classList.remove('active');
+        const tag = i.querySelector('.fw-yt-item-tag');
+        if (tag && tag.textContent === 'Now Playing') {
+          tag.textContent = i.dataset.category || 'Broadcast';
+        }
+      });
+
+      item.classList.add('active');
+      const curTag = item.querySelector('.fw-yt-item-tag');
+      if (curTag) curTag.textContent = 'Now Playing';
+
+      const ytId = item.dataset.ytId;
+      const title = item.dataset.title;
+      const category = item.dataset.category;
+      const date = item.dataset.date;
+      const duration = item.dataset.duration;
+      const excerpt = item.dataset.excerpt;
+
+      if (ytId) {
+        iframe.src = `https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&rel=0&enablejsapi=1`;
+      }
+      if (titleEl) titleEl.textContent = title;
+      if (categoryEl) categoryEl.textContent = category;
+      if (dateEl) dateEl.textContent = date;
+      if (durationEl) durationEl.innerHTML = `<i class="fa-regular fa-clock"></i> ${duration}`;
+      if (excerptEl) excerptEl.textContent = excerpt;
+      if (linkEl && ytId) linkEl.href = `https://www.youtube.com/watch?v=${ytId}`;
+    });
+  });
+}
+
+// 2. Enterprise Split-Screen Job Board Controller & Dataset
+const enterpriseJobsDatabase = [
+  {
+    id: 'job-1',
+    title: 'Supply Chain Solutions Architect (Cold Chain)',
+    company: 'VinFast Logistics & Cold Chain Solutions',
+    companyLogo: 'images/brands/vinfast.svg',
+    companyIcon: 'fa-snowflake',
+    salary: '₫35.000.000 - ₫55.000.000/mo',
+    salaryVal: 45000000,
+    location: 'Ho Chi Minh City, Vietnam (Hybrid)',
+    workplace: 'Hybrid',
+    category: 'tech',
+    tags: ['Top Tier Enterprise', 'Cold Chain', 'High Salary', 'Strategy'],
+    isUrgent: false,
+    isHighSalary: true,
+    time: '3 hours ago',
+    applicants: '22 applicants',
+    specs: { exp: 'Senior level (3 – 5 Yrs)', edu: 'Master / Engineering', dept: 'Strategic Network Optimization', openings: '1 Position' },
+    overview: 'Viconship is seeking a seasoned Ocean Freight Forwarding Specialist to manage end-to-end container booking, multimodal carrier negotiations, and freight optimization for multinational manufacturing accounts in Southern Vietnam.',
+    responsibilities: [
+      'Coordinate ocean freight routing, rate negotiations, and space allocation with major maritime alliances (2M, Ocean Alliance, THE Alliance).',
+      'Manage complex customs clearance, FMC bill-of-lading (B/L) documentation, and cross-border demurrage/detention minimization.',
+      'Act as direct strategic escalation lead for Tier-1 automotive and electronics enterprise shippers.',
+      'Optimize TEU container consolidation to reduce shipping expense by 12% across primary Europe-Vietnam routes.'
+    ],
+    requirements: [
+      'Minimum 3 years of direct container ocean freight forwarding or NVOCC operations experience in Vietnam.',
+      'Familiarity with CargoWise ONE or equivalent enterprise freight forwarding ERP systems.',
+      'Proficiency in bilingual trade English & Vietnamese; strong negotiation and carrier relationship management skills.',
+      'Valid international freight trade certification or FIATA diploma is highly preferred.'
+    ],
+    benefits: [
+      'Comprehensive 14-month annual compensation with performance incentive bonuses.',
+      'Flexible 2-day work-from-home policy each week.',
+      'Premium healthcare insurance including outpatient and dental coverage.',
+      'Annual corporate training sponsorship for supply chain certifications (CSCP / CLTD).'
+    ]
+  },
+  {
+    id: 'job-2',
+    title: 'International Customs Clearance & Compliance Manager',
+    company: 'DHL Global Forwarding Vietnam',
+    companyLogo: 'images/brands/dhl.svg',
+    companyIcon: 'fa-stamp',
+    salary: '₫26.000.000 - ₫38.000.000/mo',
+    salaryVal: 32000000,
+    location: 'Hanoi, Vietnam (Hybrid)',
+    workplace: 'Hybrid',
+    category: 'customs',
+    tags: ['Multinational', 'Customs Brokerage', 'Compliance', 'Noi Bai'],
+    isUrgent: true,
+    isHighSalary: false,
+    time: '6 hours ago',
+    applicants: '33 applicants',
+    specs: { exp: 'Manager (5+ Yrs)', edu: 'BA Foreign Trade / Customs', dept: 'Customs & Trade Governance', openings: '1 Position' },
+    overview: 'Direct customs compliance, HS tariff classifications, and automated VNACCS/VCIS EDI transmissions for enterprise cargo moving through Northern Vietnam trade gateways.',
+    responsibilities: [
+      'Ensure zero regulatory non-compliance across 15,000+ annual sea/air declarations.',
+      'Act as chief liaison with General Department of Vietnam Customs on duty exemptions and origin certificates.',
+      'Supervise operational audit trails for bonded warehouse entries and export processing enterprises (EPEs).'
+    ],
+    requirements: [
+      'Active Customs Broker License issued by General Department of Vietnam Customs.',
+      '5+ years managing trade compliance within major 3PL or express freight operations.',
+      'Deep mastery of Circular 38/39 customs valuation, rules of origin (AK, EVFTA, CPTPP).'
+    ],
+    benefits: [
+      'Competitive 13th-month salary and performance bonus.',
+      'Global mobility programs and corporate training pathways.',
+      'Full health, accident, and life insurance package for family members.'
+    ]
+  },
+  {
+    id: 'job-3',
+    title: 'Container Terminal Dispatch Coordinator (Shift)',
+    company: 'Saigon Newport Corporation (Tan Cang - Cai Mep TCIT)',
+    companyLogo: 'images/brands/saigon-newport.svg',
+    companyIcon: 'fa-anchor',
+    salary: '₫22.000.000 - ₫35.000.000/mo',
+    salaryVal: 28000000,
+    location: 'Ba Ria - Vung Tau, Vietnam (Hybrid)',
+    workplace: 'Hybrid',
+    category: 'port',
+    tags: ['Deep Sea Port', 'Maritime', 'Terminal Ops', 'Shift Work'],
+    isUrgent: false,
+    isHighSalary: false,
+    time: '1 day ago',
+    applicants: '34 applicants',
+    specs: { exp: 'Specialist (2 – 4 Yrs)', edu: 'Maritime University / Logistics', dept: 'Terminal Operating Systems (TOS)', openings: '3 Positions' },
+    overview: 'Manage quayside ship-to-shore gantry cranes and container yard straddle carrier dispatch using Navis N4 Terminal Operating Systems at Cai Mep deep-water port.',
+    responsibilities: [
+      'Coordinate container vessel stowage planning and crane split sequences for ultra-large container vessels (ULCVs).',
+      'Optimize yard turn times for drayage tractor-trailers to under 28 minutes per transaction.',
+      'Monitor real-time reefer container plug-in temperatures and automated yard alarms.'
+    ],
+    requirements: [
+      'Bachelor degree in Maritime Navigation, Port Management, or Logistics.',
+      'Experience operating Navis N4 or CATOS Terminal Operating Systems.',
+      'Ability to work rotating 12-hour shifts at Cai Mep deep-sea port complex.'
+    ],
+    benefits: [
+      'Hazard and shift duty allowances plus performance bonus.',
+      'Shuttle bus transport provided from Ho Chi Minh City & Vung Tau.',
+      'Standard state corporation pensions, meal vouchers, and annual retreats.'
+    ]
+  },
+  {
+    id: 'job-4',
+    title: 'Fleet Telematics & Route Optimization Data Analyst',
+    company: 'Logivan Vietnam Freight Network',
+    companyLogo: 'images/brands/logivan.svg',
+    companyIcon: 'fa-truck',
+    salary: '₫30.000.000 - ₫48.000.000/mo',
+    salaryVal: 38000000,
+    location: 'Da Nang, Vietnam (Hybrid)',
+    workplace: 'Hybrid',
+    category: 'tech',
+    tags: ['Telematics', 'Fleet Tech', 'Data Analytics', 'LogiTech'],
+    isUrgent: false,
+    isHighSalary: true,
+    time: '1 day ago',
+    applicants: '35 applicants',
+    specs: { exp: 'Mid-Senior (2 – 4 Yrs)', edu: 'Data Science / Industrial Eng.', dept: 'Digital Freight Platform', openings: '2 Positions' },
+    overview: 'Analyze GPS telemetry, fuel consumption rates, and empty-miles backtrack across a network of 40,000+ registered linehaul heavy trucks operating across National Route 1A.',
+    responsibilities: [
+      'Build predictive dynamic routing algorithms to cut backhaul empty-miles by 18%.',
+      'Deploy real-time driver scorecards evaluating harsh braking, idling, and speed compliance.',
+      'Automate freight rate estimation models combining diesel indexes and lane congestion metrics.'
+    ],
+    requirements: [
+      'Proficiency in Python/R for geospatial analytics (GeoPandas, PostGIS, Mapbox).',
+      'Solid SQL data warehousing skills on BigQuery or Snowflake.',
+      'Background in transportation logistics or on-demand delivery routing.'
+    ],
+    benefits: [
+      'Equity stock option program for high-impact engineering milestones.',
+      'Flexible remote work days with modern MacBook Pro hardware provided.',
+      'Continuous education budget for machine learning & supply chain conferences.'
+    ]
+  },
+  {
+    id: 'job-5',
+    title: 'Senior Ocean Freight Forwarder',
+    company: 'Viconship Logistics Group',
+    companyLogo: 'images/brands/viconship.svg',
+    companyIcon: 'fa-ship',
+    salary: '₫28.000.000 - ₫42.000.000/mo',
+    salaryVal: 35000000,
+    location: 'Ho Chi Minh City, Vietnam (Hybrid)',
+    workplace: 'Hybrid',
+    category: 'forwarding',
+    tags: ['Verified Employer', 'Full-time', 'Hybrid', 'Ocean Freight'],
+    isUrgent: false,
+    isHighSalary: true,
+    time: '2 days ago',
+    applicants: '19 applicants',
+    specs: { exp: '3 – 5 Years', edu: 'Bachelor Degree', dept: 'Asia-Europe Trade Lane', openings: '2 Positions' },
+    overview: 'Viconship is seeking a seasoned Ocean Freight Forwarding Specialist to manage end-to-end container booking, multimodal carrier negotiations, and freight optimization.',
+    responsibilities: [
+      'Coordinate ocean freight routing, rate negotiations, and space allocation with major maritime alliances.',
+      'Manage complex customs clearance and bill-of-lading (B/L) documentation.',
+      'Act as direct strategic escalation lead for Tier-1 manufacturing enterprise shippers.'
+    ],
+    requirements: [
+      'Minimum 3 years container ocean freight forwarding experience in Vietnam.',
+      'Familiarity with enterprise freight forwarding ERP systems.',
+      'Proficiency in bilingual trade English & Vietnamese.'
+    ],
+    benefits: [
+      'Comprehensive 14-month annual compensation package.',
+      'Flexible 2-day work-from-home policy each week.',
+      'Premium healthcare insurance package.'
+    ]
+  },
+  {
+    id: 'job-6',
+    title: 'AMR Robotics & Automation Systems Specialist',
+    company: 'Tiki Logistics Automated Mega Hub',
+    companyLogo: 'images/brands/tiki.svg',
+    companyIcon: 'fa-robot',
+    salary: '₫32.000.000 - ₫48.000.000/mo',
+    salaryVal: 40000000,
+    location: 'Binh Duong, Vietnam (On-site)',
+    workplace: 'On-site',
+    category: 'robotics',
+    tags: ['Urgent Hiring', 'Full-time', 'On-site', 'Warehouse Tech'],
+    isUrgent: true,
+    isHighSalary: true,
+    time: '2 days ago',
+    applicants: '28 applicants',
+    specs: { exp: '2 – 4 Years', edu: 'BS in Mechatronics/CS', dept: 'Automated Operations Group', openings: '4 Positions' },
+    overview: 'Lead continuous deployment, route calibration, and preventative maintenance for a fleet of 450+ autonomous mobile robots (AMRs) and automated storage/retrieval systems (AS/RS).',
+    responsibilities: [
+      'Supervise real-time fleet management software (FMS) and automated material handling dispatch.',
+      'Conduct robotic sensor diagnostics (LiDAR, SLAM navigation, optical QR readers) to maintain 99.8% uptime.',
+      'Collaborate with software engineers to optimize dynamic parcel picking routes.'
+    ],
+    requirements: [
+      'Degree in Mechatronics, Electrical, or Robotics Automation.',
+      'Hands-on experience with industrial AMRs/AGVs or automated warehouse machinery.',
+      'Strong troubleshooting mindset and basic PLC/ROS programming capability.'
+    ],
+    benefits: [
+      'Competitive compensation package with robotics project deployment bonuses.',
+      'Full healthcare coverage and annual wellness stipends.',
+      'Modern automated robotics warehouse working environment.'
+    ]
+  }
+];
+
+let enterpriseCurrentFilter = 'all';
+let enterpriseSelectedJobId = 'job-1';
+
+function initSplitScreenJobBoard() {
+  const container = document.getElementById('jobs-list-container');
+  const detailPanel = document.getElementById('job-detail-panel');
+  const countBadge = document.getElementById('job-filter-count');
+  const listCounter = document.getElementById('linkedin-jobs-counter');
+  const chipBtns = document.querySelectorAll('.job-chip-btn');
+  if (!container || !detailPanel) return;
+
+  function renderJobList() {
+    let filtered = enterpriseJobsDatabase;
+    if (enterpriseCurrentFilter === 'urgent') {
+      filtered = enterpriseJobsDatabase.filter(j => j.isUrgent);
+    } else if (enterpriseCurrentFilter === 'high-salary') {
+      filtered = enterpriseJobsDatabase.filter(j => j.isHighSalary);
+    } else if (enterpriseCurrentFilter !== 'all') {
+      filtered = enterpriseJobsDatabase.filter(j => j.category === enterpriseCurrentFilter);
+    }
+
+    if (countBadge) countBadge.textContent = `${filtered.length} results`;
+    if (listCounter) listCounter.textContent = `${filtered.length} openings`;
+
+    if (filtered.length === 0) {
+      container.innerHTML = `
+        <div style="padding: 48px 20px; text-align: center; color: #64748B;">
+          <i class="fa-solid fa-folder-open" style="font-size: 36px; color: var(--fl-primary); margin-bottom: 12px; display:inline-block;"></i>
+          <h3 style="font-size: 16px; color: #1E293B; margin-bottom: 6px; font-weight: 700;">No Openings Found</h3>
+          <p style="font-size: 13px; margin-bottom: 14px; color: #64748B;">Try selecting "All Jobs" or adjusting your category filter.</p>
+        </div>
+      `;
+      return;
+    }
+
+    // Ensure selected job exists in filtered list
+    if (!filtered.some(j => j.id === enterpriseSelectedJobId)) {
+      enterpriseSelectedJobId = filtered[0].id;
+    }
+
+    container.innerHTML = filtered.map(job => {
+      const isSelected = job.id === enterpriseSelectedJobId;
+      return `
+        <article class="job-card ${isSelected ? 'active' : ''}" data-job-id="${job.id}" onclick="selectEnterpriseJob('${job.id}')" style="cursor:pointer;">
+          <div class="job-card-top-row">
+            <div class="linkedin-card-logo" style="width:48px; height:48px; flex-shrink:0;">
+              <img src="${job.companyLogo}" alt="${job.company}" class="linkedin-brand-img" style="width:100%; height:100%; object-fit:contain; background:transparent;">
+            </div>
+            <div class="job-card-header-info" style="flex:1; min-width:0;">
+              <h3 class="linkedin-card-title" style="font-size:14.5px; font-weight:700; color:var(--fl-primary); margin:0 0 4px; line-height:1.35; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+                ${job.title}
+              </h3>
+              <div class="linkedin-card-company" style="font-size:12.5px; color:#475569; font-weight:500; margin-bottom:4px;">
+                ${job.company}
+              </div>
+              <div style="font-size:12.5px; color:#64748B; display:flex; align-items:center; gap:4px; margin-bottom:4px;">
+                <i class="fa-solid fa-location-dot" style="font-size:11px;"></i> ${job.location}
+              </div>
+              <div style="font-size:13.5px; font-weight:700; color:#EA580C; margin-bottom:6px;">
+                ${job.salary}
+              </div>
+              <div style="font-size:11.5px; color:#94A3B8; font-weight:500;">
+                <i class="fa-regular fa-clock"></i> ${job.time} • ${job.applicants}
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    renderEnterpriseJobDetail(enterpriseSelectedJobId);
+  }
+
+  function renderEnterpriseJobDetail(jobId) {
+    const job = enterpriseJobsDatabase.find(j => j.id === jobId) || enterpriseJobsDatabase[0];
+    if (!job) return;
+
+    detailPanel.innerHTML = `
+      <div style="padding-bottom: 24px; border-bottom: 1px solid #E2E8F0; margin-bottom: 24px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:16px;">
+          <div>
+            <h1 style="font-size: 22px; font-weight: 700; color: #0F172A; margin: 0 0 6px 0; line-height: 1.3;">${job.title}</h1>
+            <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:#475569; flex-wrap:wrap;">
+              <span style="font-weight:600; color:var(--fl-primary);">${job.company}</span>
+              <span>•</span>
+              <span><i class="fa-solid fa-location-dot"></i> ${job.location}</span>
+              <span>•</span>
+              <span style="color:#059669; font-weight:600;"><i class="fa-solid fa-clock"></i> ${job.time}</span>
+            </div>
+          </div>
+          <div style="width:56px; height:56px; flex-shrink:0;">
+            <img src="${job.companyLogo}" alt="${job.company}" style="width:100%; height:100%; object-fit:contain; background:transparent;">
+          </div>
+        </div>
+
+        <div style="display:flex; gap:12px; margin-top:16px;">
+          <button type="button" class="btn-linkedin-easy-apply" onclick="alert('Cảm ơn bạn đã ứng tuyển vị trí: ${job.title}! Hồ sơ của bạn đã được gửi trực tiếp đến bộ phận tuyển dụng.');" style="background:var(--fl-primary); color:#fff; border:none; padding:10px 24px; border-radius:8px; font-weight:700; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
+            <i class="fa-solid fa-paper-plane"></i> Apply Now
+          </button>
+          <button type="button" class="btn-linkedin-save-job" onclick="this.innerHTML = '<i class=\'fa-solid fa-bookmark\'></i> Saved'; this.style.borderColor='var(--fl-primary)'; this.style.color='var(--fl-primary)';" style="background:#fff; border:1px solid #CBD5E1; color:#475569; padding:10px 18px; border-radius:8px; font-weight:600; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+            <i class="fa-regular fa-bookmark"></i> Save Job
+          </button>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 16px; font-weight: 700; color: #0F172A; margin: 0 0 10px 0;">About the job</h3>
+        <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0;">${job.overview}</p>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 16px; font-weight: 700; color: #0F172A; margin: 0 0 10px 0;">Key Responsibilities</h3>
+        <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #475569; line-height: 1.6;">
+          ${(job.responsibilities || []).map(r => `<li style="margin-bottom: 6px;">${r}</li>`).join('')}
+        </ul>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 16px; font-weight: 700; color: #0F172A; margin: 0 0 10px 0;">Candidate Qualifications &amp; Requirements</h3>
+        <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #475569; line-height: 1.6;">
+          ${(job.requirements || []).map(rq => `<li style="margin-bottom: 6px;">${rq}</li>`).join('')}
+        </ul>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 16px; font-weight: 700; color: #0F172A; margin: 0 0 10px 0;">Compensation &amp; Benefits</h3>
+        <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #475569; line-height: 1.6;">
+          ${(job.benefits || []).map(b => `<li style="margin-bottom: 6px;">${b}</li>`).join('')}
+        </ul>
+      </div>
+
+      <div style="padding-top: 20px; border-top: 1px solid #E2E8F0;">
+        <h3 style="font-size: 16px; font-weight: 700; color: #0F172A; margin: 0 0 12px 0;">About the company</h3>
+        <div style="display:flex; justify-content:space-between; align-items:center; background:#F8FAFC; padding:16px; border-radius:10px; border:1px solid #E2E8F0;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div style="width:44px; height:44px; flex-shrink:0;">
+              <img src="${job.companyLogo}" alt="${job.company}" style="width:100%; height:100%; object-fit:contain; background:transparent;">
+            </div>
+            <div>
+              <div style="font-weight:700; font-size:14.5px; color:#0F172A;">${job.company}</div>
+              <div style="font-size:12px; color:#64748B;">Accredited Enterprise Hiring Partner</div>
+            </div>
+          </div>
+          <button type="button" onclick="this.textContent = 'Following'; this.style.background='#0F172A'; this.style.color='#fff';" style="background:#fff; border:1px solid #CBD5E1; color:#0F172A; padding:6px 16px; border-radius:20px; font-size:13px; font-weight:600; cursor:pointer;">
+            + Follow
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  window.selectEnterpriseJob = function(jobId) {
+    enterpriseSelectedJobId = jobId;
+    document.querySelectorAll('.job-card').forEach(c => {
+      c.classList.toggle('active', c.dataset.jobId === jobId);
+    });
+    renderEnterpriseJobDetail(jobId);
+  };
+
+  // Wire filter chips
+  chipBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      chipBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      enterpriseCurrentFilter = btn.dataset.filter || 'all';
+      renderJobList();
+    });
+  });
+
+  renderJobList();
+}
+
+window.filterJobsByCategory = function(catKey) {
+  const chips = document.querySelectorAll('.job-chip-btn');
+  let matched = false;
+  chips.forEach(c => {
+    if (c.dataset.filter === catKey) {
+      c.click();
+      matched = true;
+    }
+  });
+  if (!matched && chips.length > 0) {
+    chips[0].click();
+  }
+  const target = document.getElementById('section-jobs');
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
+// 3. Course Center Catalog Tabs & Cards Controller
+const careerCatalogData = {
+  exam: [
+    { title: 'Legal & Regulatory Foundations', modules: '1 Module', views: '8,166,589 Views', img: 'images/career_banner_1.svg?v=2' },
+    { title: 'Executive Verbal & Communication', modules: '1 Module', views: '7,478,162 Views', img: 'images/career_banner_2.svg?v=2' },
+    { title: 'Analytical Judgment & Concepts', modules: '1 Module', views: '7,398,773 Views', img: 'images/career_banner_3.svg?v=2' },
+    { title: 'Quantitative Logistics & Strategy', modules: '3 Modules', views: '6,550,610 Views', img: 'images/career_banner_4.svg?v=2' }
+  ],
+  guidance: [
+    { title: 'Port & Maritime Career Pathways', modules: '2 Modules', views: '5,210,400 Views', img: 'images/career_banner_2.svg?v=2' },
+    { title: 'Air Cargo Operations Onboarding', modules: '1 Module', views: '4,850,210 Views', img: 'images/career_banner_1.svg?v=2' },
+    { title: 'Cold Chain Fleet Management Protocol', modules: '2 Modules', views: '4,120,900 Views', img: 'images/career_banner_4.svg?v=2' },
+    { title: 'Warehouse Automation & AMR Integration', modules: '3 Modules', views: '3,950,450 Views', img: 'images/career_banner_3.svg?v=2' }
+  ],
+  cert: [
+    { title: 'FIATA International Freight Forwarding Diploma', modules: '4 Modules', views: '6,890,120 Views', img: 'images/career_banner_3.svg?v=2' },
+    { title: 'Certified Supply Chain Professional (CSCP)', modules: '5 Modules', views: '6,450,800 Views', img: 'images/career_banner_4.svg?v=2' },
+    { title: 'Customs Clearance Specialist Credential', modules: '2 Modules', views: '5,780,300 Views', img: 'images/career_banner_1.svg?v=2' },
+    { title: 'Dangerous Goods Air Regulations (IATA DGR)', modules: '3 Modules', views: '5,120,600 Views', img: 'images/career_banner_2.svg?v=2' }
+  ],
+  growth: [
+    { title: 'Cross-Border Supply Chain Negotiation', modules: '2 Modules', views: '4,650,200 Views', img: 'images/career_banner_4.svg?v=2' },
+    { title: 'Terminal Operating Systems (TOS) Leadership', modules: '3 Modules', views: '4,180,900 Views', img: 'images/career_banner_3.svg?v=2' },
+    { title: 'Supply Chain Analytics & PowerBI Modeling', modules: '2 Modules', views: '3,890,400 Views', img: 'images/career_banner_1.svg?v=2' },
+    { title: 'International Commercial Terms (Incoterms 2020)', modules: '1 Module', views: '3,650,700 Views', img: 'images/career_banner_2.svg?v=2' }
+  ],
+  postgrad: [
+    { title: 'Master of Global Logistics & Maritime Governance', modules: '6 Modules', views: '3,450,100 Views', img: 'images/career_banner_1.svg?v=2' },
+    { title: 'Postgraduate Diploma in Transport Economics', modules: '4 Modules', views: '3,120,400 Views', img: 'images/career_banner_2.svg?v=2' },
+    { title: 'International Trade Law & Maritime Arbitration', modules: '5 Modules', views: '2,980,500 Views', img: 'images/career_banner_3.svg?v=2' },
+    { title: 'Green Logistics & Port Decarbonization Research', modules: '3 Modules', views: '2,750,800 Views', img: 'images/career_banner_4.svg?v=2' }
+  ],
+  practice: [
+    { title: 'Navis N4 Quayside Crane Dispatch Simulation', modules: '3 Modules', views: '4,520,100 Views', img: 'images/career_banner_2.svg?v=2' },
+    { title: 'Warehouse WMS & Autonomous Robot Fleet Routing', modules: '2 Modules', views: '4,180,600 Views', img: 'images/career_banner_3.svg?v=2' },
+    { title: 'Cold Chain IoT Sensor Calibration Workshop', modules: '2 Modules', views: '3,890,200 Views', img: 'images/career_banner_4.svg?v=2' },
+    { title: 'Cross-Docking & Distribution Center Layout Plan', modules: '3 Modules', views: '3,540,900 Views', img: 'images/career_banner_1.svg?v=2' }
+  ],
+  knowledge: [
+    { title: 'ASEAN Single Window & Electronic Customs Clearance', modules: '1 Module', views: '5,620,300 Views', img: 'images/career_banner_1.svg?v=2' },
+    { title: 'Vietnam Maritime Code & Port Tariff Structures', modules: '2 Modules', views: '4,980,400 Views', img: 'images/career_banner_4.svg?v=2' },
+    { title: 'Multimodal Bill of Lading & Carrier Liabilities', modules: '2 Modules', views: '4,750,100 Views', img: 'images/career_banner_2.svg?v=2' },
+    { title: 'Air Waybill (AWB) Compliance & Dangerous Goods', modules: '1 Module', views: '4,320,800 Views', img: 'images/career_banner_3.svg?v=2' }
+  ]
+};
+
+window.selectCareerTab = function(btn, title) {
+  document.querySelectorAll('.career-tab-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  const cat = btn ? btn.dataset.category : 'exam';
+  renderCareerCards(cat);
+};
+
+function renderCareerCards(cat) {
+  const container = document.getElementById('career-cards-container');
+  if (!container) return;
+  const list = careerCatalogData[cat] || careerCatalogData['exam'];
+  container.innerHTML = list.map(item => `
+    <article class="career-card-item reveal" onclick="alert('Chương trình đào tạo: ${item.title}\nQuy mô: ${item.modules}\nLượt học viên: ${item.views}');" style="cursor:pointer;">
+      <div class="career-card-img-wrap" style="border-radius:8px; overflow:hidden; aspect-ratio:16/9.2; background:#F1F5F9;">
+        <img src="${item.img}" alt="${item.title}" class="career-card-img" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div class="career-card-content" style="padding:10px 2px 4px;">
+        <h3 class="career-card-name" style="font-size:14.5px; font-weight:600; color:#191919; margin:0 0 6px; line-height:1.35; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+          ${item.title}
+        </h3>
+        <div class="career-card-meta" style="display:flex; justify-content:space-between; align-items:center; font-size:12px; color:#64748B;">
+          <span><i class="fa-regular fa-file-lines"></i> ${item.modules}</span>
+          <span><i class="fa-regular fa-eye"></i> ${item.views}</span>
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+
+// 4. Smooth Navigation Scroll Handler for Nav 5 items
+function initNavigationScrollLinks() {
+  document.querySelectorAll('[data-scroll]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const targetSelector = btn.getAttribute('data-scroll');
+      if (!targetSelector) return;
+
+      const targetEl = document.querySelector(targetSelector);
+      if (targetEl) {
+        // Switch to home view first if not active
+        if (typeof switchView === 'function') {
+          switchView('home');
+        }
+        setTimeout(() => {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }, 80);
+      }
+    });
+  });
+}
+
+// Auto-initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  initYouTubeHub();
+  initSplitScreenJobBoard();
+  initNavigationScrollLinks();
+});

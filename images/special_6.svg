@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 100" width="280" height="100">
+  <rect width="280" height="100" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="1" rx="4"/>
+  <rect x="14" y="14" width="130" height="18" fill="#E8F4FD" rx="3"/>
+  <text x="79" y="27" font-family="-apple-system, sans-serif" font-size="9.5" font-weight="bold" fill="#0A66C2" text-anchor="middle" letter-spacing="0.5">GLOBAL SKILLS</text>
+  <text x="14" y="58" font-family="-apple-system, sans-serif" font-size="13.5" font-weight="800" fill="#1D2226">WorldSkills China Portal</text>
+  <text x="14" y="78" font-family="-apple-system, sans-serif" font-size="11.5" font-weight="500" fill="#666666">Industrial Craftsmanship</text>
+  <line x1="250" y1="50" x2="262" y2="50" stroke="#0A66C2" stroke-width="2"/>
+  <polyline points="258,46 263,50 258,54" fill="none" stroke="#0A66C2" stroke-width="2"/>
+</svg>

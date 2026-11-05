@@ -1,792 +1,587 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VietnamJobs - Nền Tảng Tuyển Dụng & Việc Làm Hàng Đầu Việt Nam</title>
-  <meta name="theme-color" content="#0a66c2">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="description" content="Kết nối hơn 500,000+ ứng viên chất lượng cao với hàng nghìn doanh nghiệp hàng đầu tại Việt Nam. Tìm việc làm nhanh, ứng tuyển 1-click.">
-  
-  <!-- Google Fonts: Plus Jakarta Sans & Be Vietnam Pro & FontAwesome -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/styles.css?v=20260903_v10">
-</head>
-<body>
-
-  <!-- ==========================================================================
-       SUPER CLEAN 2-TIER HEADER (MATCHING VLR / VIETNAM LOGISTICS REVIEW STYLE)
-       ========================================================================== -->
-  <header class="app-header" role="banner">
-    
-    <!-- Tier 1: Pure Clean White Top Bar -->
-    <div class="header-top-white-bar">
-      <div class="container header-top-container">
-        
-        <!-- Brand Logo & Social Utilities on Left -->
-        <div class="header-brand-group">
-          <a href="#" class="brand-logo-red" data-view="home">
-            <div class="logo-main-text">Vietnam<span>Jobs</span></div>
-            <div class="logo-sub-text">VIETNAM RECRUITMENT & CAREER MARKETPLACE</div>
-          </a>
-          <div class="header-social-pills">
-            <a href="#" class="social-circle-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="#" class="social-circle-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-            <a href="#" class="social-circle-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="tel:19006868" class="social-circle-btn" title="Hotline 1900 6868"><i class="fa-solid fa-phone"></i></a>
-          </div>
-        </div>
-
-        <!-- Right: Capsule Search & Action Buttons -->
-        <div class="header-top-right-group">
-          <div class="header-capsule-search">
-            <input type="text" id="top-capsule-search-input" placeholder="Tìm kiếm..." aria-label="Tìm kiếm nhanh">
-            <i class="fa-solid fa-magnifying-glass" id="btn-top-capsule-search"></i>
-          </div>
-
-          <div class="flag-language-btn" title="Ngôn ngữ">
-            <span>🇻🇳 VN</span>
-          </div>
-
-          <!-- Auth Actions: Guest vs Logged-In State -->
-          <div class="header-auth-group" id="header-auth-guest">
-            <button class="btn-auth-signin" id="btn-header-signin">
-              <i class="fa-solid fa-right-to-bracket"></i> Đăng Nhập
-            </button>
-            <button class="btn-auth-signup" id="btn-header-signup">
-              <i class="fa-solid fa-user-plus"></i> Đăng Ký
-            </button>
-          </div>
-
-          <div class="header-user-profile" id="header-user-profile" style="display:none;">
-            <div class="header-user-avatar-btn" id="btn-user-profile-menu">
-              <div class="user-avatar-circle" id="header-user-avatar">TL</div>
-              <div class="user-name-wrapper">
-                <span class="user-display-name" id="header-user-name">Thean</span>
-                <i class="fa-solid fa-circle-check user-verified-icon"></i>
-              </div>
-              <i class="fa-solid fa-chevron-down" style="font-size:10px; color:var(--fl-text-muted);"></i>
-            </div>
-
-            <div class="user-dropdown-menu" id="user-dropdown-menu">
-              <div class="user-dropdown-header">
-                <div class="dropdown-user-name" id="dropdown-user-name">Thean</div>
-                <div class="dropdown-user-email" id="dropdown-user-email">thean@vietnamjobs.vn</div>
-                <span class="dropdown-role-badge" id="dropdown-user-role">Ứng Viên VIP</span>
-              </div>
-              <div class="dropdown-divider"></div>
-              <button type="button" class="dropdown-item" id="dropdown-btn-saved">
-                <i class="fa-solid fa-heart" style="color:#ef4444;"></i> Việc làm đã lưu (<span id="menu-saved-count">2</span>)
-              </button>
-              <button type="button" class="dropdown-item" id="dropdown-btn-applied">
-                <i class="fa-solid fa-paper-plane" style="color:#0a66c2;"></i> Hồ sơ đã nộp (<span id="menu-applied-count">1</span>)
-              </button>
-              <button type="button" class="dropdown-item" id="dropdown-btn-post-job">
-                <i class="fa-solid fa-plus-circle" style="color:#10b981;"></i> Đăng tin tuyển dụng
-              </button>
-              <div class="dropdown-divider"></div>
-              <button type="button" class="dropdown-item dropdown-logout-btn" id="btn-user-logout">
-                <i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng Xuất
-              </button>
-            </div>
-          </div>
-
-          <button class="btn-signup-red-solid" id="btn-open-post-project">
-            <i class="fa-solid fa-plus-circle"></i> Đăng Tin Tuyển Dụng
-          </button>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Tier 2: Solid Brand Navigation Strip (VLR Style) -->
-    <nav class="header-brand-nav-strip" role="navigation" aria-label="Primary Navigation">
-      <div class="container brand-nav-container">
-        
-        <button class="hamburger-btn" id="btn-hamburger" aria-label="Mở menu" aria-expanded="false">
-  <i class="fa-solid fa-bars"></i>
-</button>
-        <div class="brand-nav-links-left">
-          <button class="brand-nav-item home-icon-btn active" data-view="home" title="Trang chủ">
-            <i class="fa-solid fa-house"></i>
-          </button>
-          <button class="brand-nav-item" data-view="browse">
-            Thời Sự Tuyển Dụng
-          </button>
-          <button class="brand-nav-item" data-view="browse">
-            Việc Làm Mới
-          </button>
-          <button class="brand-nav-item" data-view="browse">
-            Top Công Ty
-          </button>
-          <button class="brand-nav-item" data-view="freelancers">
-            Dành Cho Ứng Viên
-          </button>
-          <button class="brand-nav-item" data-view="browse">
-            Học Bổng & Sinh Viên
-          </button>
-          <button class="brand-nav-item" data-view="browse">
-            Công Nghệ & IT
-          </button>
-          <button class="brand-nav-item" data-view="freelancers">
-            Kỹ Năng & CV
-          </button>
-          <button class="brand-nav-item" id="nav-btn-headhunt-trigger">
-            Doanh Nghiệp / Headhunt
-          </button>
-        </div>
-
-        <div class="brand-nav-badge-right" id="nav-btn-hot-badge" data-view="browse">
-          <i class="fa-solid fa-fire"></i> HOT JOB
-        </div>
-
-      </div>
-    </nav>
-  </header>
-
-  <!-- ==========================================================================
-       MAIN CONTENT CONTAINER & SPA VIEWS
-       ========================================================================== -->
-  <main class="main-content">
+<!DOCTYPE
 
     <!-- ========================================================================
-         VIEW 1: RECRUITMENT MARKETPLACE HOMEPAGE (#view-home)
+         SECTION: MARKET INTELLIGENCE • VIDEO BROADCASTS
          ======================================================================== -->
-    <section class="app-view active-view" id="view-home">
-      <div class="container" style="padding-top: 18px;">
-
-        <!-- HERO SECTION (BIG CONVERSION & RECRUITMENT FOCUSED) -->
-        <section class="recruitment-hero-section" aria-label="Tuyển dụng và tìm việc làm">
-          <div class="hero-main-content">
-            <h1 class="hero-headline">
-              Tuyển đúng người. <span>Nhanh hơn.</span>
-            </h1>
-            <p class="hero-subheadline">
-              Tiếp cận hàng trăm nghìn ứng viên chất lượng cao và kết nối cơ hội nghề nghiệp đột phá tại các doanh nghiệp hàng đầu.
-            </p>
-
-            <!-- Integrated Search Bar -->
-            <form class="hero-search-box" id="hero-search-form" onsubmit="event.preventDefault();">
-              <div class="search-input-col">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="header-search-input" placeholder="Vị trí tuyển dụng, kỹ năng, công ty..." aria-label="Tìm kiếm việc làm">
-              </div>
-              <div class="search-divider"></div>
-              <div class="search-select-col">
-                <i class="fa-solid fa-location-dot"></i>
-                <select id="hero-location-select" aria-label="Chọn địa điểm">
-                  <option value="all">Tất cả địa điểm</option>
-                  <option value="hanoi">Hà Nội</option>
-                  <option value="hcm">TP. Hồ Chí Minh</option>
-                  <option value="danang">Đà Nẵng</option>
-                  <option value="remote">Làm việc từ xa (Remote)</option>
-                </select>
-              </div>
-              <button type="button" class="btn-hero-search" id="btn-hero-submit-search">
-                <i class="fa-solid fa-magnifying-glass"></i> Tìm Việc Ngay
-              </button>
-            </form>
-<!-- Hero Quick Search Tags -->
-<div class="quick-search-tags-row">
-  <span class="quick-search-label">Tìm nhanh:</span>
-  <button class="quick-search-tag" data-filter-keyword="Java"><i class="fa-brands fa-java"></i> Java</button>
-  <button class="quick-search-tag" data-filter-keyword="React"><i class="fa-brands fa-react"></i> React</button>
-  <button class="quick-search-tag" data-filter-keyword="Python">🐍 Python</button>
-  <button class="quick-search-tag" data-filter-keyword="Marketing"><i class="fa-solid fa-chart-line"></i> Marketing</button>
-  <button class="quick-search-tag" data-filter-keyword="Design"><i class="fa-solid fa-pen-nib"></i> UI/UX</button>
-  <button class="quick-search-tag" data-filter-keyword="Remote"><i class="fa-solid fa-laptop-house"></i> Remote</button>
-</div>
-
-<!-- Hero Stats -->
-<div class="hero-stats-row">
-  <div class="hero-stat-item">
-    <div class="hero-stat-number" id="stat-candidates">520,000+</div>
-    <div class="hero-stat-label">Ứng Viên</div>
-  </div>
-  <div class="hero-stat-divider"></div>
-  <div class="hero-stat-item">
-    <div class="hero-stat-number" id="stat-jobs">15,000+</div>
-    <div class="hero-stat-label">Việc Làm</div>
-  </div>
-  <div class="hero-stat-divider"></div>
-  <div class="hero-stat-item">
-    <div class="hero-stat-number" id="stat-companies">3,200+</div>
-    <div class="hero-stat-label">Doanh Nghiệp</div>
-  </div>
-  <div class="hero-stat-divider"></div>
-  <div class="hero-stat-item">
-    <div class="hero-stat-number">98%</div>
-    <div class="hero-stat-label">Tỷ Lệ Phản Hồi</div>
-  </div>
-</div>
+<section class="fw-today-section reveal" id="section-today" aria-label="Market Intelligence Video Broadcasts">
+    <div class="container">
+      <div class="fw-today-header" style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+        <div class="fw-yt-header-left">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+            <span class="news-badge-latest" style="background:#EF4444; color:#FFFFFF; font-size:11px; font-weight:800; padding:2px 8px; border-radius:4px; letter-spacing:0.5px;">LATEST</span>
+            <span style="font-size:12px; color:#64748B; font-weight:600;">Industry updates &amp; market intelligence</span>
+          </div>
+          <h2 class="fw-today-title" style="margin:0;"><span class="fw-section-bar"></span>Market Intelligence • Video Broadcasts</h2>
+          <p style="font-size:12.5px; color:#64748B; margin:4px 0 0; font-weight:500;">Real-time industry briefings, deep-dive investigations & logistics video broadcasts. Accurate real-time logistics briefings across Vietnam &amp; ASEAN trade lanes.</p>
+        </div>
+        <div class="fw-yt-header-right">
+          <a href="news.html" class="btn-view-all-news" style="display:inline-flex; align-items:center; gap:6px; background:#FFFFFF; border:1px solid #CBD5E1; color:#0044CC; font-size:13px; font-weight:700; padding:8px 16px; border-radius:8px; text-decoration:none; transition:all 0.15s ease;">
+            <span>View all</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
 
-        </section>
-
-        <!-- SOCIAL PROOF & TRUSTED PARTNERS BAR -->
-        <div class="corporate-trust-bar" aria-label="Doanh nghiệp tin dùng">
-          <div class="corporate-trust-title">
-            <i class="fa-solid fa-shield-check" style="color: var(--fl-primary);"></i> Được hàng nghìn doanh nghiệp tin dùng:
+      <div class="fw-yt-hub-grid">
+        <!-- Main Featured YouTube Video Player -->
+        <div class="fw-yt-main-player-card">
+          <div class="fw-yt-iframe-wrap">
+            <iframe id="main-yt-iframe" 
+                    src="https://www.youtube-nocookie.com/embed/8d5d_HXGeMA?rel=0&amp;enablejsapi=1" 
+                    title="Market Intelligence Video Broadcast" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+            </iframe>
           </div>
-          <div class="corporate-logos-list">
-            <div class="corporate-logo-item trust-logo-img-item">
-              <img src="images/brands/samsung.svg" alt="Samsung" class="trust-brand-img" onerror="this.parentNode.innerHTML='<span>SAMSUNG</span>'"> Samsung
-            </div>
-            <div class="corporate-logo-item trust-logo-img-item">
-              <img src="images/brands/nike.svg" alt="Nike" class="trust-brand-img" onerror="this.parentNode.innerHTML='<span>NIKE</span>'"> Nike
-            </div>
-            <div class="corporate-logo-item trust-logo-img-item">
-              <img src="images/brands/loreal.svg" alt="L'Oréal" class="trust-brand-img" onerror="this.parentNode.innerHTML='<span>L\'ORÉAL</span>'"> L'Oréal
-            </div>
-            <div class="corporate-logo-item trust-logo-img-item">
-              <img src="images/brands/unilever.svg" alt="Unilever" class="trust-brand-img" onerror="this.parentNode.innerHTML='<span>UNILEVER</span>'"> Unilever
-            </div>
-            <div class="corporate-logo-item trust-logo-img-item">
-              <img src="images/brands/shopee.svg" alt="Shopee" class="trust-brand-img" onerror="this.parentNode.innerHTML='<span>SHOPEE</span>'"> Shopee
-            </div>
-            <div class="corporate-logo-item trust-logo-img-item">
-              <img src="images/brands/grab.svg" alt="Grab" class="trust-brand-img" onerror="this.parentNode.innerHTML='<span>GRAB</span>'"> Grab
-            </div>
-            <div class="corporate-logo-item trust-logo-img-item">
-              <img src="images/brands/zara.svg" alt="Zara" class="trust-brand-img" onerror="this.parentNode.innerHTML='<span>ZARA</span>'"> Zara
-            </div>
-            <div class="corporate-logo-item trust-logo-img-item">
-              <img src="images/brands/adidas.svg" alt="Adidas" class="trust-brand-img" onerror="this.parentNode.innerHTML='<span>ADIDAS</span>'"> Adidas
-            </div>
-          </div>
-        </div>
-
-                <!-- ======================================================================
-             EDITORIAL SHOWCASE: TODAY'S PICKS & MOST RECENT
-             ====================================================================== -->
-        <section class="wired-editorial-section" aria-label="Editorial Showcase">
-          <div class="wired-editorial-inner">
-            <div class="wired-main-grid">
-
-              <!-- LEFT COLUMN: TODAY'S PICKS -->
-              <div class="wired-picks-column">
-                
-                <!-- Section Header -->
-                <div class="wired-section-header">
-                  <span class="wired-header-badge">TODAY'S PICKS</span>
-                  <div class="wired-header-line"></div>
-                </div>
-
-                <!-- 2-Subcolumn Grid -->
-                <div class="wired-picks-split">
-
-                  <!-- Left 2 Stacked Stories -->
-                  <div class="wired-left-stories">
-
-                    <!-- Stack Story 1 -->
-                    <article class="wired-stack-story" data-view="browse">
-                      <div class="wired-story-img-box">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Policy & Remote Trends">
-                      </div>
-                      <div class="wired-story-kicker">POLICY &amp; REMOTE TRENDS</div>
-                      <h3 class="wired-story-title">Cross-Border Tech Hiring Guidelines &amp; Global Remote Tax Treaties for 2026</h3>
-                      <div class="wired-author-caps">SANDBOX EDITORIAL STAFF</div>
-                    </article>
-
-                    <!-- Stack Story 2 -->
-                    <article class="wired-stack-story" data-view="browse">
-                      <div class="wired-story-img-box">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Autonomous Dev Workflows">
-                      </div>
-                      <div class="wired-story-kicker">AUTONOMOUS DEV WORKFLOWS</div>
-                      <h3 class="wired-story-title">GitLab Unveils Autonomous AI Duo: Transforming Developer Workflows from Planning to Production</h3>
-                      <div class="wired-author-caps">SARAH JENKINS • GITLAB</div>
-                    </article>
-
-                  </div>
-
-                  <!-- Right Center Hero Feature -->
-                  <article class="wired-center-hero" data-view="browse">
-                    <div class="wired-hero-img-box">
-                      <img src="images/editorial_tech_salaries_hd.png" alt="State of Tech Salaries" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'">
-                    </div>
-                    <div class="wired-hero-kicker">SPECIAL INVESTIGATION</div>
-                    <h2 class="wired-hero-headline">The 2026 State of Tech Salaries: Why Specialized AI &amp; Distributed Systems Engineers Command Record Premiums</h2>
-                    <p class="wired-hero-dek">An investigation across 1,200 tech organizations reveals evolving equity structures, with demand for high-concurrency systems outstripping generalist development by 2.4x.</p>
-                    <div class="wired-author-caps">DAVID STERLING</div>
-                  </article>
-
-                </div>
-
-              </div>
-
-              <!-- RIGHT COLUMN: MOST RECENT -->
-              <div class="wired-recent-column">
-                
-                <!-- Section Header -->
-                <div class="wired-section-header">
-                  <span class="wired-header-badge">MOST RECENT</span>
-                  <div class="wired-header-line"></div>
-                </div>
-
-                <!-- 5 Recent Items List -->
-                <div class="wired-recent-list">
-
-                  <!-- Item 1 -->
-                  <article class="wired-recent-item" data-view="browse">
-                    <div class="wired-recent-text">
-                      <h4 class="wired-recent-title">Cross-Border Tech Hiring Guidelines &amp; Global Remote Tax Treaties for 2026</h4>
-                      <div class="wired-author-caps">SANDBOX EDITORIAL STAFF</div>
-                    </div>
-                    <div class="wired-recent-thumb">
-                      <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80" alt="Article Thumbnail">
-                    </div>
-                  </article>
-
-                  <!-- Item 2 -->
-                  <article class="wired-recent-item" data-view="browse">
-                    <div class="wired-recent-text">
-                      <h4 class="wired-recent-title">GitLab Unveils Autonomous AI Duo: Transforming Developer Workflows from Planning to Production</h4>
-                      <div class="wired-author-caps">SARAH JENKINS</div>
-                    </div>
-                    <div class="wired-recent-thumb">
-                      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80" alt="Article Thumbnail">
-                    </div>
-                  </article>
-
-                  <!-- Item 3 -->
-                  <article class="wired-recent-item" data-view="browse">
-                    <div class="wired-recent-text">
-                      <h4 class="wired-recent-title">Datadog Deploys Low-Latency Petabyte Streaming Engine: Inside the Infrastructure Powering Enterprise Observability</h4>
-                      <div class="wired-author-caps">MARCUS VANCE</div>
-                    </div>
-                    <div class="wired-recent-thumb">
-                      <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=400&q=80" alt="Article Thumbnail">
-                    </div>
-                  </article>
-
-                  <!-- Item 4 -->
-                  <article class="wired-recent-item" data-view="browse">
-                    <div class="wired-recent-text">
-                      <h4 class="wired-recent-title">VinFast Global R&amp;D Expansion: How We Support International Engineers with Relocation, Housing &amp; Growth Stipends</h4>
-                      <div class="wired-author-caps">NGUYEN THU HANG</div>
-                    </div>
-                    <div class="wired-recent-thumb">
-                      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=400&q=80" alt="Article Thumbnail">
-                    </div>
-                  </article>
-
-                  <!-- Item 5 -->
-                  <article class="wired-recent-item" data-view="browse">
-                    <div class="wired-recent-text">
-                      <h4 class="wired-recent-title">The Shift to Compound AI Systems: Why Future Software Engineering Belongs to Orchestrators</h4>
-                      <div class="wired-author-caps">DR. ELENA ROSTOVA</div>
-                    </div>
-                    <div class="wired-recent-thumb">
-                      <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=400&q=80" alt="Article Thumbnail">
-                    </div>
-                  </article>
-
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-<!-- ======================================================================
-             PORTAL 2-COLUMN BIG BIG LAYOUT (MAIN FEED + SIDEBAR WIDGETS)
-             ====================================================================== -->
-        <div class="portal-layout-grid">
           
-          <!-- LEFT COLUMN: MAIN CONTENT & STREAMS -->
-          <div class="portal-main-stream">
-            
-            <!-- TOP NHÀ TUYỂN DỤNG HÀNG ĐẦU (BLUE CONTAINER & 6 CARDS) -->
-            <section class="company-spotlight-section" aria-label="Top Nhà Tuyển Dụng Hàng Đầu">
-              <div class="section-header-row" style="margin-bottom: 0; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 12px;">
-                <div>
-                  <h2 class="section-title" style="color: #ffffff;">Top Nhà Tuyển Dụng Hàng Đầu</h2>
-                  <p class="section-subtitle" style="color: rgba(255,255,255,0.85);">Khám phá cơ hội nghề nghiệp tại các doanh nghiệp tiêu biểu</p>
-                </div>
-                <a href="#" class="section-view-all-link" style="color: #ffffff; font-weight: 700;" data-view="browse">
-                  Xem tất cả công ty <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
-                </a>
-              </div>
-
-              <div class="company-spotlight-grid">
-
-                <!-- Card 1: Nike -->
-                <div class="company-profile-card" data-view="browse" data-filter-company="Nike" title="Xem việc làm tại Nike">
-                  <div class="company-avatar-box" style="background:#fff; padding:6px;">
-                    <img src="images/brands/nike.svg" alt="Nike logo" class="brand-logo-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'font-weight:900;font-size:22px;color:#111;\'>NIKE</span>'">
-                  </div>
-                  <div class="company-name-text">NIKE VIETNAM</div>
-                  <button class="btn-viec-moi" data-filter-company="Nike">VIỆC MỚI</button>
-                </div>
-
-                <!-- Card 2: Samsung -->
-                <div class="company-profile-card" data-view="browse" data-filter-company="Samsung" title="Xem việc làm tại Samsung">
-                  <div class="company-avatar-box" style="background:#fff; padding:6px;">
-                    <img src="images/brands/samsung.svg" alt="Samsung logo" class="brand-logo-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'font-weight:900;font-size:16px;color:#1428a0;\'>SAMSUNG</span>'">
-                  </div>
-                  <div class="company-name-text">SAMSUNG VIETNAM</div>
-                  <button class="btn-viec-moi" data-filter-company="Samsung">VIỆC MỚI</button>
-                </div>
-
-                <!-- Card 3: L'Oreal -->
-                <div class="company-profile-card" data-view="browse" data-filter-company="L'Oreal" title="Xem việc làm tại L'Oreal">
-                  <div class="company-avatar-box" style="background:#fff; padding:6px;">
-                    <img src="images/brands/loreal.svg" alt="L'Oreal logo" class="brand-logo-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'font-weight:900;font-size:15px;color:#c4a84a;\'>L\'ORÉAL</span>'">
-                  </div>
-                  <div class="company-name-text">L'ORÉAL VIETNAM</div>
-                  <button class="btn-viec-moi" data-filter-company="L'Oreal">VIỆC MỚI</button>
-                </div>
-
-                <!-- Card 4: Unilever -->
-                <div class="company-profile-card" data-view="browse" data-filter-company="Unilever" title="Xem việc làm tại Unilever">
-                  <div class="company-avatar-box" style="background:#fff; padding:6px;">
-                    <img src="images/brands/unilever.svg" alt="Unilever logo" class="brand-logo-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'font-weight:900;font-size:14px;color:#1f36c7;\'>UNILEVER</span>'">
-                  </div>
-                  <div class="company-name-text">UNILEVER VIETNAM</div>
-                  <button class="btn-viec-moi" data-filter-company="Unilever">VIỆC MỚI</button>
-                </div>
-
-                <!-- Card 5: Zara / Inditex -->
-                <div class="company-profile-card" data-view="browse" data-filter-company="Zara" title="Xem việc làm tại Zara">
-                  <div class="company-avatar-box" style="background:#fff; padding:6px;">
-                    <img src="images/brands/zara.svg" alt="Zara logo" class="brand-logo-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'font-weight:900;font-size:22px;color:#111;letter-spacing:-1px;\'>ZARA</span>'">
-                  </div>
-                  <div class="company-name-text">ZARA VIETNAM</div>
-                  <button class="btn-viec-moi" data-filter-company="Zara">VIỆC MỚI</button>
-                </div>
-
-                <!-- Card 6: Shopee -->
-                <div class="company-profile-card" data-view="browse" data-filter-company="Shopee" title="Xem việc làm tại Shopee">
-                  <div class="company-avatar-box" style="background:#fff; padding:6px;">
-                    <img src="images/brands/shopee.svg" alt="Shopee logo" class="brand-logo-img" onerror="this.style.display='none'; this.parentNode.innerHTML='<span style=\'font-weight:900;font-size:16px;color:#ee4d2d;\'>SHOPEE</span>'">
-                  </div>
-                  <div class="company-name-text">SHOPEE VIETNAM</div>
-                  <button class="btn-viec-moi" data-filter-company="Shopee">VIỆC MỚI</button>
-                </div>
-
-              </div>
-            </section>
-
-            <!-- VIỆC LÀM MỚI NHẤT (QUICK FILTER & ACTIVE FEED) -->
-            <section aria-label="Việc Làm Mới Nhất">
-              <div class="section-header-row premium-section-header">
-                <div>
-                  <div class="section-badge-live">
-                    <span class="live-pulse-dot"></span> CẬP NHẬT TRỰC TIẾP
-                  </div>
-                  <h2 class="section-title">Việc Làm Mới Nhất</h2>
-                  <p class="section-subtitle">Cập nhật liên tục 15,000+ vị trí tuyển dụng vừa được đăng tải</p>
-                </div>
-                <a href="#" class="section-view-all-link" data-view="browse">
-                  Xem tất cả việc làm <i class="fa-solid fa-arrow-right" style="font-size: 11px;"></i>
-                </a>
-              </div>
-
-              <!-- Quick Filter Tabs -->
-              <div class="quick-filter-pills-row">
-                <button class="filter-pill-btn active" data-quick-filter="all">
-                  <i class="fa-solid fa-layer-group"></i> Tất cả việc làm
-                </button>
-                <button class="filter-pill-btn pill-hot" data-quick-filter="hot">
-                  <i class="fa-solid fa-fire"></i> Tuyển gấp
-                </button>
-                <button class="filter-pill-btn" data-quick-filter="remote">
-                  <i class="fa-solid fa-laptop-code"></i> Remote / WFH
-                </button>
-                <button class="filter-pill-btn" data-quick-filter="fulltime">
-                  <i class="fa-solid fa-briefcase"></i> Toàn thời gian
-                </button>
-                <button class="filter-pill-btn pill-salary" data-quick-filter="highsalary">
-                  <i class="fa-solid fa-dollar-sign"></i> Lương 30M+
-                </button>
-                <button class="filter-pill-btn pill-saved" data-quick-filter="saved">
-                  <i class="fa-solid fa-heart"></i> Việc đã lưu (<span id="saved-jobs-count-badge">0</span>)
-                </button>
-              </div>
-
-              <!-- Dynamic Projects Feed -->
-              <div class="projects-feed" id="projects-feed"></div>
-            </section>
-
-          </div>
-
-          <!-- RIGHT COLUMN: VLR-STYLE "/ MỚI NHẤT" LATEST NEWS & OPPORTUNITIES -->
-          <aside class="portal-sidebar" aria-label="Tin mới nhất và cơ hội nghề nghiệp">
-            
-            <div class="vlr-sidebar-heading">
-              <span>/</span> MỚI NHẤT
+          <div class="fw-yt-player-details">
+            <div class="fw-yt-meta-row">
+              <span class="fw-yt-category-badge" id="main-yt-category">Global Trade &amp; Maritime</span>
+              <span class="fw-yt-meta-dot">ΓÇó</span>
+              <span class="fw-yt-date" id="main-yt-date">Sep 28, 2026</span>
+              <span class="fw-yt-meta-dot">ΓÇó</span>
+              <span class="fw-yt-duration" id="main-yt-duration"><i class="fa-regular fa-clock"></i> 17:42</span>
             </div>
-
-                          <div class="vlr-news-list">
-              
-              <!-- Item 1 -->
-              <a href="#" class="vlr-news-item" data-view="browse">
-                <img src="images/project_dashboard.jpg" alt="Dự án tồn đọng" class="vlr-news-thumb" onerror="this.src='images/hero_team.jpg'">
-                <div class="vlr-news-content">
-                  <div class="vlr-news-title">Khẩn trương rà soát, đề xuất giải pháp tháo gỡ vướng mắc cho các dự án tồn đọng, kéo dài</div>
-                  <div class="vlr-news-time">4 ngày trước</div>
-                </div>
+            
+            <h3 class="fw-yt-player-title" id="main-yt-title">
+              How Ocean Shipping Works (And Why It's Broken)
+            </h3>
+            
+            <h3 class="fw-yt-player-excerpt" id="main-yt-excerpt">
+              A comprehensive investigation into container shipping economics, port congestion, multi-modal freight networks, and how modern ocean supply chains function under global trade shifts.
+            </h3>
+            
+            <div class="fw-yt-actions">
+              <a href="https://www.youtube.com/watch?v=8d5d_HXGeMA" target="_blank" rel="noopener noreferrer" class="fw-yt-btn-primary" id="main-yt-external-link">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="#FFFFFF"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                <span>Watch on YouTube</span>
+                <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px; opacity:0.85;"></i>
               </a>
-
-              <!-- Item 2 -->
-              <a href="#" class="vlr-news-item" data-view="browse">
-                <img src="images/news_tv360.jpg" alt="Dự án cao tốc" class="vlr-news-thumb" onerror="this.src='images/hero_team.jpg'">
-                <div class="vlr-news-content">
-                  <div class="vlr-news-title">Đẩy nhanh tiến độ các dự án đường bộ cao tốc khu vực Đông Nam Bộ và Tây Nam Bộ</div>
-                  <div class="vlr-news-time">14 ngày trước</div>
-                </div>
-              </a>
-
-              <!-- Item 3 -->
-              <a href="#" class="vlr-news-item" data-view="browse">
-                <img src="images/news_emoney.jpg" alt="Làn sóng AI" class="vlr-news-thumb" onerror="this.src='images/hero_team.jpg'">
-                <div class="vlr-news-content">
-                  <div class="vlr-news-title">Làn sóng AI liệu có biến Forwarder trở thành nạn nhân tiếp theo?</div>
-                  <div class="vlr-news-time">15 ngày trước</div>
-                </div>
-              </a>
-
-              <!-- Item 4 -->
-              <a href="#" class="vlr-news-item" data-view="browse">
-                <img src="images/news_camid.jpg" alt="Logistics dược phẩm" class="vlr-news-thumb" onerror="this.src='images/hero_team.jpg'">
-                <div class="vlr-news-content">
-                  <div class="vlr-news-title">Logistics dược phẩm: chuỗi lạnh của niềm tin và sức khỏe</div>
-                  <div class="vlr-news-time">16 ngày trước</div>
-                </div>
-              </a>
-
-              <!-- Item 5 -->
-              <a href="#" class="vlr-news-item" data-view="browse">
-                <img src="images/project_mobile.jpg" alt="Bất động sản phía Nam" class="vlr-news-thumb" onerror="this.src='images/hero_team.jpg'">
-                <div class="vlr-news-content">
-                  <div class="vlr-news-title">Từ cực công nghiệp đến điểm đến an cư: Cơ hội mới cho bất động sản phía Nam</div>
-                  <div class="vlr-news-time">16 ngày trước</div>
-                </div>
-              </a>
-
-            </div>
-
-            <!-- FEATURE 1 UNDER / MỚI NHẤT: TIỆN ÍCH TÍNH LƯƠNG GROSS ⇄ NET CHUẨN 2026 -->
-            <div class="sidebar-feature-box salary-calc-box">
-              <div class="sidebar-feature-header">
-                <div class="sidebar-feature-icon"><i class="fa-solid fa-calculator"></i></div>
-                <div>
-                  <h4 class="sidebar-feature-title">Tính Lương GROSS ⇄ NET</h4>
-                  <div class="sidebar-feature-sub">Chuẩn quy định BHXH & Thuế TNCN 2026</div>
-                </div>
-              </div>
-
-              <!-- Switch Mode -->
-              <div class="calc-mode-switch">
-                <button type="button" class="calc-mode-btn active" id="btn-calc-gross-to-net">GROSS ➔ NET</button>
-                <button type="button" class="calc-mode-btn" id="btn-calc-net-to-gross">NET ➔ GROSS</button>
-              </div>
-
-              <div class="calc-form-group">
-                <label for="calc-input-salary" class="calc-label">Mức lương (<span id="calc-salary-mode-label">GROSS</span>):</label>
-                <div class="calc-input-wrapper">
-                  <input type="text" id="calc-input-salary" class="calc-input" value="25,000,000" placeholder="25,000,000">
-                  <span class="calc-currency-badge">VND</span>
-                </div>
-              </div>
-
-              <div class="calc-form-row">
-                <div>
-                  <label for="calc-dependents" class="calc-label">Người phụ thuộc:</label>
-                  <select id="calc-dependents" class="calc-select">
-                    <option value="0">0 người (0đ)</option>
-                    <option value="1">1 người (4.4tr)</option>
-                    <option value="2">2 người (8.8tr)</option>
-                    <option value="3">3+ người (13.2tr)</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="calc-region" class="calc-label">Vùng áp dụng:</label>
-                  <select id="calc-region" class="calc-select">
-                    <option value="1">Vùng I (Hà Nội, HCM)</option>
-                    <option value="2">Vùng II (Đà Nẵng, Cần Thơ)</option>
-                  </select>
-                </div>
-              </div>
-
-              <button type="button" class="btn-calculate-salary" id="btn-do-calculate">
-                <i class="fa-solid fa-bolt"></i> Tính Thu Nhập Thực Nhận
+              <button type="button" class="fw-yt-btn-secondary" onclick="navigator.clipboard.writeText(document.getElementById('main-yt-external-link').href); showToast('Video link copied to clipboard!');">
+                <i class="fa-solid fa-share-nodes"></i>
+                <span>Share Broadcast</span>
               </button>
-
-              <!-- Dynamic Result Card -->
-              <div class="calc-result-card" id="calc-result-card">
-                <div class="calc-result-main">
-                  <div class="calc-result-label" id="calc-result-title">LƯƠNG THỰC NHẬN (NET):</div>
-                  <div class="calc-result-value" id="calc-net-result">22,375,000 ₫</div>
-                </div>
-                <div class="calc-breakdown-list">
-                  <div class="calc-breakdown-row">
-                    <span><i class="fa-solid fa-shield-heart" style="color:#0a66c2;"></i> BHXH (8%):</span>
-                    <span id="calc-bhxh-val">-2,000,000 ₫</span>
-                  </div>
-                  <div class="calc-breakdown-row">
-                    <span><i class="fa-solid fa-notes-medical" style="color:#10b981;"></i> BHYT (1.5%):</span>
-                    <span id="calc-bhyt-val">-375,000 ₫</span>
-                  </div>
-                  <div class="calc-breakdown-row">
-                    <span><i class="fa-solid fa-umbrella" style="color:#f59e0b;"></i> BHTN (1%):</span>
-                    <span id="calc-bhtn-val">-250,000 ₫</span>
-                  </div>
-                  <div class="calc-breakdown-row">
-                    <span><i class="fa-solid fa-receipt" style="color:#ef4444;"></i> Thuế TNCN:</span>
-                    <span id="calc-tax-val">0 ₫</span>
-                  </div>
-                </div>
-              </div>
             </div>
-
-            <!-- FEATURE 2 UNDER / MỚI NHẤT: ATS CV TOOLKIT BANNER -->
-            <div class="sidebar-feature-box cv-toolkit-box">
-              <div class="cv-toolkit-header">
-                <div class="cv-toolkit-badge"><i class="fa-solid fa-crown"></i> MIỄN PHÍ 100%</div>
-                <h4 class="cv-toolkit-title">Kho 50+ Mẫu CV Chuẩn ATS 2026</h4>
-                <p class="cv-toolkit-desc">Tăng 85% cơ hội qua vòng quét tự động của các tập đoàn đa quốc gia.</p>
-              </div>
-              <div class="cv-tags-group">
-                <span class="cv-pill-tag"><i class="fa-solid fa-code"></i> IT Developer</span>
-                <span class="cv-pill-tag"><i class="fa-solid fa-chart-line"></i> Marketing</span>
-                <span class="cv-pill-tag"><i class="fa-solid fa-briefcase"></i> Kinh Doanh</span>
-                <span class="cv-pill-tag"><i class="fa-solid fa-pen-nib"></i> UI/UX</span>
-              </div>
-              <div class="cv-actions-row">
-                <button type="button" class="btn-download-cv-kit" id="btn-download-cv-kit">
-                  <i class="fa-solid fa-download"></i> Tải Trọn Bộ Template (.DOCX)
-                </button>
-              </div>
-            </div>
-
-          </aside>
-
+          </div>
         </div>
 
-        <!-- ======================================================================
-             SECTION 1: POPULAR SPECIALIZATIONS & JOB CATEGORIES
-             ====================================================================== -->
-        <section class="vj-section-container" id="section-categories" aria-label="Ngành Nghề Tuyển Dụng Hàng Đầu">
-          <div class="vj-section-header">
+        <!-- Right Side: Interactive Episode Playlist -->
+        <div class="fw-yt-playlist-card">
+          <div class="fw-yt-playlist-top">
+            <h3 class="fw-yt-playlist-heading">Broadcast Episodes</h3>
+            <span class="fw-yt-badge-count">5 Episodes</span>
+          </div>
+
+          <div class="fw-yt-playlist-list" id="fw-yt-playlist">
+            <!-- Episode 1 (Active) -->
+            <div class="fw-yt-item active" data-yt-id="8d5d_HXGeMA" data-title="How Ocean Shipping Works (And Why It's Broken)" data-category="Global Trade &amp; Maritime" data-date="Sep 28, 2026" data-duration="17:42" data-excerpt="A comprehensive investigation into container shipping economics, port congestion, multi-modal freight networks, and how modern ocean supply chains function under global trade shifts.">
+              <div class="fw-yt-item-thumb-wrap">
+                <img src="images/yt_thumb_1.jpg" alt="How Ocean Shipping Works" class="fw-yt-item-thumb">
+                <span class="fw-yt-duration-pill">17:42</span>
+                <div class="fw-yt-play-btn-overlay">
+                  <div class="fw-yt-btn-icon">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="fw-yt-item-info">
+                <span class="fw-yt-item-tag">Now Playing</span>
+                <h3 class="fw-yt-item-title">How Ocean Shipping Works (And Why It's Broken)</h3>
+                <span class="fw-yt-item-channel">Wendover Productions • 17:42</span>
+              </div>
+            </div>
+
+            <!-- Episode 2 -->
+            <div class="fw-yt-item" data-yt-id="2qanMpnYsjk" data-title="How Amazon's Super-Complex Shipping System Works" data-category="Fulfillment &amp; Last-Mile" data-date="Sep 26, 2026" data-duration="14:15" data-excerpt="Inside the massive logistics network, predictive routing algorithms, sortation centers, and multi-tier delivery pipelines that power modern high-speed fulfillment.">
+              <div class="fw-yt-item-thumb-wrap">
+                <img src="images/yt_thumb_2.jpg" alt="Amazon Shipping System" class="fw-yt-item-thumb">
+                <span class="fw-yt-duration-pill">14:15</span>
+                <div class="fw-yt-play-btn-overlay">
+                  <div class="fw-yt-btn-icon">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="fw-yt-item-info">
+                <span class="fw-yt-item-tag">Episode 143</span>
+                <h3 class="fw-yt-item-title">How Amazon's Super-Complex Shipping System Works</h3>
+                <span class="fw-yt-item-channel">Wendover Productions • 14:15</span>
+              </div>
+            </div>
+
+            <!-- Episode 3 -->
+            <div class="fw-yt-item" data-yt-id="4DKrcpa8Z_E" data-title="Inside A Warehouse Where Thousands Of Robots Pack Groceries" data-category="Warehouse Automation &amp; AI" data-date="Sep 26, 2026" data-duration="11:38" data-excerpt="An exclusive look at autonomous automated grid systems, intelligent robotics, and real-time swarm logistics transforming high-density distribution centers.">
+              <div class="fw-yt-item-thumb-wrap">
+                <img src="images/yt_thumb_3.jpg" alt="Automated Robotics Warehouse" class="fw-yt-item-thumb">
+                <span class="fw-yt-duration-pill">11:38</span>
+                <div class="fw-yt-play-btn-overlay">
+                  <div class="fw-yt-btn-icon">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="fw-yt-item-info">
+                <span class="fw-yt-item-tag">Special Report</span>
+                <h3 class="fw-yt-item-title">Inside A Warehouse Where Thousands Of Robots Pack Groceries</h3>
+                <span class="fw-yt-item-channel">Insider Tech • 11:38</span>
+              </div>
+            </div>
+
+            <!-- Episode 4 -->
+            <div class="fw-yt-item" data-yt-id="Mi1QBxVjZAw" data-title="What is Supply Chain Management? Industry Fundamentals" data-category="Workforce Education" data-date="Sep 25, 2026" data-duration="10:20" data-excerpt="Foundational analysis of end-to-end supply chain mechanics, procurement protocols, inventory optimization, and operational talent requirements across global enterprises.">
+              <div class="fw-yt-item-thumb-wrap">
+                <img src="images/yt_thumb_4.jpg" alt="Supply Chain Fundamentals" class="fw-yt-item-thumb">
+                <span class="fw-yt-duration-pill">10:20</span>
+                <div class="fw-yt-play-btn-overlay">
+                  <div class="fw-yt-btn-icon">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="fw-yt-item-info">
+                <span class="fw-yt-item-tag">Education</span>
+                <h3 class="fw-yt-item-title">What is Supply Chain Management? Industry Fundamentals</h3>
+                <span class="fw-yt-item-channel">W. P. Carey School of Business • 10:20</span>
+              </div>
+            </div>
+
+            <!-- Episode 5 -->
+            <div class="fw-yt-item" data-yt-id="JMXZTcBozR8" data-title="Shipper Liability &amp; Freight Law Standards in Modern Transport" data-category="Legal &amp; Compliance" data-date="Sep 25, 2026" data-duration="13:50" data-excerpt="Legal analysis breaking down judicial precedents in shipper liability, third-party broker exposure, and contractual risk management across interstate carrier corridors.">
+              <div class="fw-yt-item-thumb-wrap">
+                <img src="images/yt_thumb_5.jpg" alt="Shipper Liability Standards" class="fw-yt-item-thumb">
+                <span class="fw-yt-duration-pill">13:50</span>
+                <div class="fw-yt-play-btn-overlay">
+                  <div class="fw-yt-btn-icon">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="fw-yt-item-info">
+                <span class="fw-yt-item-tag">Legal Forum</span>
+                <h3 class="fw-yt-item-title">Shipper Liability &amp; Freight Law Standards in Modern Transport</h3>
+                <span class="fw-yt-item-channel">The Freight Coach • 13:50</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- ========================================================================
+         SECTION: ENTERPRISE LOGISTICS & SUPPLY CHAIN SPLIT JOB BOARD
+         ======================================================================== -->
+<section class="fw-split-jobs-section reveal" id="section-jobs" aria-label="Enterprise Logistics Job Board">
+    <div class="container" style="max-width: 1240px; margin: 0 auto; padding: 0 20px;">
+      
+      <!-- Marketplace Header & Live Stats Bar -->
+      <div class="split-jobs-header-row">
+        <div>
+          <h2 class="split-jobs-title"><span class="fw-section-bar"></span>Enterprise Logistics &amp; Supply Chain Job Board</h2>
+          <h4 class="split-jobs-sub">Direct recruitment pipelines from accredited 3PLs, container lines, air cargo carriers &amp; port authorities</h4>
+        </div>
+        <div class="split-jobs-actions-right">
+          <button type="button" class="btn-post-job-accent" id="btn-trigger-post-job" onclick="openEmployerPostModal();">
+            <i class="fa-solid fa-plus"></i> Post a Verified Job
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Interactive Filter Chips Bar -->
+      <div class="job-filters-bar">
+        <div class="job-chips-scroll-wrap">
+          <button type="button" class="chips-scroll-btn prev" id="chips-scroll-prev" aria-label="Scroll left" style="display: none;">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <div class="job-chips-scroll" id="job-chips-scroll">
+            <button type="button" class="job-chip-btn active" data-filter="all">All Jobs (28)</button>
+            <button type="button" class="job-chip-btn" data-filter="urgent"><i class="fa-solid fa-bolt" style="color:#DC2626;"></i> Easy Apply (8)</button>
+            <button type="button" class="job-chip-btn" data-filter="forwarding">Freight Forwarding (12)</button>
+            <button type="button" class="job-chip-btn" data-filter="robotics">Smart Warehousing (7)</button>
+            <button type="button" class="job-chip-btn" data-filter="tech">Cold Chain &amp; Tech (6)</button>
+            <button type="button" class="job-chip-btn" data-filter="port">Maritime &amp; Port (9)</button>
+            <button type="button" class="job-chip-btn" data-filter="customs">Customs Brokerage (5)</button>
+            <button type="button" class="job-chip-btn" data-filter="high-salary"><i class="fa-solid fa-fire" style="color:#EA580C;"></i> Top Compensation (11)</button>
+          </div>
+          <button type="button" class="chips-scroll-btn next" id="chips-scroll-next" aria-label="Scroll right">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+        <span class="job-filter-count-badge" id="job-filter-count">6 results</span>
+      </div>
+
+      <!-- Master-Detail Split Screen Grid -->
+      <div class="split-job-layout">
+        
+        <!-- Left Column: Interactive Job Cards Scroll List -->
+        <div class="job-list-panel">
+          <div class="linkedin-list-header">
             <div>
-              <span class="vj-section-badge">CHUYÊN MÔN NỔI BẬT</span>
-              <h2 class="vj-section-title">Ngành Nghề Tuyển Dụng Hàng Đầu</h2>
-              <p class="vj-section-subtitle">Khám phá các vị trí chuyên môn trọng điểm đang được săn đón tại Việt Nam</p>
+              <span class="linkedin-list-title">Top job picks for you</span>
+              <span class="linkedin-list-sub">Based on your logistics profile &amp; search history</span>
             </div>
-            <a href="#" class="vj-section-link" data-view="browse">
-              <span>Xem tất cả ngành nghề</span> <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            <span class="linkedin-list-count" id="linkedin-jobs-counter">6 openings</span>
           </div>
-
-          <div class="home-categories-grid">
-            <!-- Category 1 -->
-            <div class="home-category-card" data-view="browse" data-filter-keyword="Forwarding">
-              <div class="home-cat-icon-wrap">
-                <i class="fa-solid fa-ship"></i>
-              </div>
-              <div class="home-cat-info">
-                <h3 class="home-cat-name">Freight Forwarding &amp; 3PL</h3>
-                <span class="home-cat-count"><span class="count-pill">142</span> Việc làm đang mở</span>
-              </div>
-              <i class="fa-solid fa-chevron-right home-cat-arrow"></i>
-            </div>
-
-            <!-- Category 2 -->
-            <div class="home-category-card" data-view="browse" data-filter-keyword="Port">
-              <div class="home-cat-icon-wrap">
-                <i class="fa-solid fa-anchor"></i>
-              </div>
-              <div class="home-cat-info">
-                <h3 class="home-cat-name">Port &amp; Container Terminal</h3>
-                <span class="home-cat-count"><span class="count-pill">95</span> Việc làm đang mở</span>
-              </div>
-              <i class="fa-solid fa-chevron-right home-cat-arrow"></i>
-            </div>
-
-            <!-- Category 3 -->
-            <div class="home-category-card" data-view="browse" data-filter-keyword="Warehouse">
-              <div class="home-cat-icon-wrap">
-                <i class="fa-solid fa-warehouse"></i>
-              </div>
-              <div class="home-cat-info">
-                <h3 class="home-cat-name">Smart Warehousing &amp; ASRS</h3>
-                <span class="home-cat-count"><span class="count-pill">86</span> Việc làm đang mở</span>
-              </div>
-              <i class="fa-solid fa-chevron-right home-cat-arrow"></i>
-            </div>
-
-            <!-- Category 4 -->
-            <div class="home-category-card" data-view="browse" data-filter-keyword="Customs">
-              <div class="home-cat-icon-wrap">
-                <i class="fa-solid fa-file-contract"></i>
-              </div>
-              <div class="home-cat-info">
-                <h3 class="home-cat-name">Customs Brokerage &amp; EDI</h3>
-                <span class="home-cat-count"><span class="count-pill">52</span> Việc làm đang mở</span>
-              </div>
-              <i class="fa-solid fa-chevron-right home-cat-arrow"></i>
-            </div>
-
-            <!-- Category 5 -->
-            <div class="home-category-card" data-view="browse" data-filter-keyword="Fleet">
-              <div class="home-cat-icon-wrap">
-                <i class="fa-solid fa-truck-moving"></i>
-              </div>
-              <div class="home-cat-info">
-                <h3 class="home-cat-name">Fleet Drayage &amp; Dispatch</h3>
-                <span class="home-cat-count"><span class="count-pill">64</span> Việc làm đang mở</span>
-              </div>
-              <i class="fa-solid fa-chevron-right home-cat-arrow"></i>
-            </div>
-
-            <!-- Category 6 -->
-            <div class="home-category-card" data-view="browse" data-filter-keyword="Supply Chain">
-              <div class="home-cat-icon-wrap">
-                <i class="fa-solid fa-network-wired"></i>
-              </div>
-              <div class="home-cat-info">
-                <h3 class="home-cat-name">Supply Chain Planning &amp; S&amp;OP</h3>
-                <span class="home-cat-count"><span class="count-pill">118</span> Việc làm đang mở</span>
-              </div>
-              <i class="fa-solid fa-chevron-right home-cat-arrow"></i>
-            </div>
-
-            <!-- Category 7 -->
-            <div class="home-category-card" data-view="browse" data-filter-keyword="Air Cargo">
-              <div class="home-cat-icon-wrap">
-                <i class="fa-solid fa-plane-departure"></i>
-              </div>
-              <div class="home-cat-info">
-                <h3 class="home-cat-name">Air Cargo &amp; Cold Chain</h3>
-                <span class="home-cat-count"><span class="count-pill">48</span> Việc làm đang mở</span>
-              </div>
-              <i class="fa-solid fa-chevron-right home-cat-arrow"></i>
-            </div>
-
-            <!-- Category 8 -->
-            <div class="home-category-card" data-view="browse" data-filter-keyword="Logistics Tech">
-              <div class="home-cat-icon-wrap">
-                <i class="fa-solid fa-microchip"></i>
-              </div>
-              <div class="home-cat-info">
-                <h3 class="home-cat-name">Logistics Tech &amp; Robotics</h3>
-                <span class="home-cat-count"><span class="count-pill">29</span> Việc làm đang mở</span>
-              </div>
-              <i class="fa-solid fa-chevron-right home-cat-arrow"></i>
-            </div>
+          <div class="jobs-list-container" id="jobs-list-container">
+            <!-- Dynamically populated by JS renderJobList() -->
           </div>
-        </section>
+        </div>
 
-        <!-- ======================================================================
-             SECTION 2: TOP VERIFIED ENTERPRISE COMPANIES HIRING NOW
-             ====================================================================== -->
-        <section class="vj-section-container" id="section-companies-spotlight" aria-label="Top Doanh Nghiệp Xác Thực">
+        <!-- Right Column: Sticky Detail Panel -->
+        <div class="job-detail-panel" id="job-detail-panel">
+          <!-- Dynamically populated by JS selectJob() -->
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+    <!-- ========================================================================
+         SECTION: LOGISTICS & SUPPLY CHAIN 20 CORE CATEGORIES (CARD LIST + JOB COUNT)
+         ======================================================================== -->
+<section class="fw-bridge-section reveal" id="section-job-categories" aria-label="Job Categories Directory">
+    <div class="container">
+      
+      <div class="fw-bridge-header">
+        <h2 class="fw-bridge-title"><span class="fw-section-bar"></span>Logistics &amp; Supply Chain Job Categories</h2>
+        <div class="fw-bridge-meta-bar">
+          <h3 class="fw-bridge-meta-text">
+            National occupational classification across key supply chain, transport &amp; logistics sectors: <strong class="fw-bridge-count">20 Core Categories</strong>
+          </h3>
+          <a href="#" class="fw-bridge-more" onclick="showToast('Loading full directory of 20+ specialized logistics categories...'); return false;">
+            VIEW ALL 20+ &gt;
+          </a>
+        </div>
+      </div>
+
+      <div class="fw-bridge-grid">
+        
+        <!-- Category 1: Freight Forwarding & 3PL -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Freight Forwarding &amp; 3PL" onclick="filterJobsByCategory('forwarding'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#003E7E" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24.5" fill="none" stroke="#003E7E" stroke-width="0.8" stroke-dasharray="2,2"/>
+              <circle cx="30" cy="30" r="17" fill="#003E7E"/>
+              <path d="M21 34 L23 25 L37 25 L39 34 Z M24 23 L36 23 M26 20 L34 20" stroke="#FFFFFF" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+              <text x="30" y="11" font-size="4" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#003E7E" text-anchor="middle">FREIGHT &amp; 3PL</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#003E7E" text-anchor="middle">LOGISTICS</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Freight Forwarding &amp; 3PL</p><span class="fw-bridge-job-count">142 jobs</span></div>
+        </a>
+
+        <!-- Category 2: Smart Warehousing -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Smart Warehousing" onclick="filterJobsByCategory('robotics'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#003399" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24.5" fill="none" stroke="#003399" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="17" fill="#003399"/>
+              <path d="M20 34 V24 L30 18 L40 24 V34 Z M24 34 V28 H36 V34 M30 21 V28" stroke="#FFFFFF" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#003399" text-anchor="middle">WAREHOUSING</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#003399" text-anchor="middle">AS / RS</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Smart Warehousing</p><span class="fw-bridge-job-count">86 jobs</span></div>
+        </a>
+
+        <!-- Category 3: Fleet Dispatch & Trucking -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Fleet Dispatch &amp; Trucking" onclick="filterJobsByCategory('fleet'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#70193D" stroke-width="2"/>
+              <polygon points="30,8 46,14 52,30 46,46 30,52 14,46 8,30 14,14" fill="none" stroke="#70193D" stroke-width="1"/>
+              <circle cx="30" cy="30" r="15" fill="#70193D"/>
+              <path d="M19 33 H22 M25 33 H33 M36 33 H41 M19 25 H32 V33 H19 Z M32 27 H37 L41 30 V33 H32 Z" stroke="#FFFFFF" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+              <text x="30" y="50" font-size="3.3" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#70193D" text-anchor="middle">TRUCKING</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Fleet Dispatch &amp; Trucking</p><span class="fw-bridge-job-count">64 jobs</span></div>
+        </a>
+
+        <!-- Category 4: Supply Chain Management -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Supply Chain Management" onclick="filterJobsByCategory('tech'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#0E7490" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24.5" fill="none" stroke="#0E7490" stroke-width="0.8" stroke-dasharray="2,2"/>
+              <circle cx="30" cy="30" r="16" fill="#0E7490"/>
+              <circle cx="23" cy="25" r="2" fill="#FFFFFF"/>
+              <circle cx="37" cy="25" r="2" fill="#FFFFFF"/>
+              <circle cx="30" cy="34" r="2" fill="#FFFFFF"/>
+              <path d="M23 25 L37 25 L30 34 Z" stroke="#FFFFFF" stroke-width="1.5" fill="none"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#0E7490" text-anchor="middle">SUPPLY CHAIN</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#0E7490" text-anchor="middle">PLANNING</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Supply Chain Management</p><span class="fw-bridge-job-count">118 jobs</span></div>
+        </a>
+
+        <!-- Category 5: Customs & Compliance -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Customs &amp; Trade Compliance" onclick="filterJobsByCategory('customs'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#00693E" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#00693E" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#00693E"/>
+              <path d="M22 23 C22 23 30 21 30 21 C30 21 38 23 38 23 C38 31 30 36 30 36 C30 36 22 31 22 23 Z M25 28 L29 32 L35 25" stroke="#FFFFFF" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#00693E" text-anchor="middle">CUSTOMS TRADE</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#00693E" text-anchor="middle">COMPLIANCE</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Customs &amp; Compliance</p><span class="fw-bridge-job-count">52 jobs</span></div>
+        </a>
+
+        <!-- Category 6: Maritime & Port Logistics -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Maritime &amp; Port Logistics" onclick="filterJobsByCategory('port'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#004F98" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#004F98" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#004F98"/>
+              <circle cx="30" cy="21" r="2" fill="none" stroke="#FFFFFF" stroke-width="1.6"/>
+              <path d="M30 23 V34 M25 26 H35 M22 30 C24 35, 36 35, 38 30" stroke="#FFFFFF" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <text x="30" y="11" font-size="4" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#004F98" text-anchor="middle">PORT &amp; DOCK</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#004F98" text-anchor="middle">MARITIME</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Maritime &amp; Port Logistics</p><span class="fw-bridge-job-count">95 jobs</span></div>
+        </a>
+
+        <!-- Category 7: Air Cargo Operations -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Air Cargo Operations" onclick="filterJobsByCategory('forwarding'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#0066B3" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#0066B3" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#0066B3"/>
+              <path d="M30 18 L30 35 M20 26 L30 22 L40 26 M25 33 L30 31 L35 33" stroke="#FFFFFF" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="30" y="11" font-size="4" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#0066B3" text-anchor="middle">AIR FREIGHT</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#0066B3" text-anchor="middle">AVIATION</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Air Cargo Operations</p><span class="fw-bridge-job-count">48 jobs</span></div>
+        </a>
+
+        <!-- Category 8: Cold Chain Logistics -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Cold Chain Logistics" onclick="filterJobsByCategory('tech'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#0284C7" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#0284C7" stroke-width="0.8" stroke-dasharray="2,2"/>
+              <circle cx="30" cy="30" r="16" fill="#0284C7"/>
+              <path d="M30 19 V35 M22 27 H38 M24 21 L36 33 M24 33 L36 21" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+              <text x="30" y="11" font-size="4" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#0284C7" text-anchor="middle">COLD CHAIN</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#0284C7" text-anchor="middle">REEFER</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Cold Chain Logistics</p><span class="fw-bridge-job-count">38 jobs</span></div>
+        </a>
+
+        <!-- Category 9: Last-Mile Delivery -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Last-Mile &amp; Urban Delivery" onclick="filterJobsByCategory('fleet'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#D97706" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#D97706" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#D97706"/>
+              <path d="M30 19 C26 19, 23 22, 23 26 C23 31, 30 36, 30 36 C30 36, 37 31, 37 26 C37 22, 34 19, 30 19 Z" stroke="#FFFFFF" stroke-width="1.6" fill="none"/>
+              <circle cx="30" cy="25" r="2.2" fill="#FFFFFF"/>
+              <text x="30" y="11" font-size="4" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#D97706" text-anchor="middle">LAST-MILE</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#D97706" text-anchor="middle">EXPRESS</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Last-Mile &amp; Delivery</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+        </a>
+
+        <!-- Category 10: Autonomous AMR Robotics -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Autonomous AMR &amp; Robotics" onclick="filterJobsByCategory('robotics'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#4338CA" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#4338CA" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#4338CA"/>
+              <rect x="22" y="22" width="16" height="11" rx="2" stroke="#FFFFFF" stroke-width="1.6" fill="none"/>
+              <circle cx="26" cy="27.5" r="1.5" fill="#FFFFFF"/>
+              <circle cx="34" cy="27.5" r="1.5" fill="#FFFFFF"/>
+              <path d="M30 18 V22 M20 27.5 H22 M38 27.5 H40 M30 33 V36" stroke="#FFFFFF" stroke-width="1.5"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#4338CA" text-anchor="middle">AUTONOMOUS</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#4338CA" text-anchor="middle">ROBOTICS</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Autonomous AMR &amp; Robotics</p><span class="fw-bridge-job-count">29 jobs</span></div>
+        </a>
+
+        <!-- Row 2 (Categories 11-20) -->
+
+        <!-- Category 11: E-Commerce Fulfillment -->
+        <a href="#section-jobs" class="fw-bridge-item" title="E-Commerce Fulfillment" onclick="filterJobsByCategory('robotics'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#9E1B32" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#9E1B32" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#9E1B32"/>
+              <path d="M30 19 L39 24 L30 29 L21 24 Z M21 25 V33 L30 38 V30 M39 25 V33 L30 38" stroke="#FFFFFF" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#9E1B32" text-anchor="middle">E-COMMERCE</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#9E1B32" text-anchor="middle">FULFILLMENT</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">E-Commerce Fulfillment</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+        </a>
+
+        <!-- Category 12: Procurement & Sourcing -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Procurement &amp; Sourcing" onclick="filterJobsByCategory('forwarding'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#1E293B" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#1E293B" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#1E293B"/>
+              <path d="M21 28 L26 23 L31 27 L35 23 L39 27 M23 31 L28 35 L33 31 L37 34" stroke="#FFFFFF" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#1E293B" text-anchor="middle">PROCUREMENT</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#1E293B" text-anchor="middle">SOURCING</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Procurement &amp; Sourcing</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+        </a>
+
+        <!-- Category 13: Inventory Control -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Inventory &amp; Material Control" onclick="filterJobsByCategory('robotics'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#672179" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#672179" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#672179"/>
+              <path d="M22 21 H38 M22 25 H38 M22 29 H34 M22 33 H31" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+              <text x="30" y="11" font-size="4" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#672179" text-anchor="middle">INVENTORY</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#672179" text-anchor="middle">CONTROL</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Inventory Control</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+        </a>
+
+        <!-- Category 14: Rail & Intermodal -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Rail &amp; Intermodal Freight" onclick="filterJobsByCategory('fleet'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#1E40AF" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#1E40AF" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#1E40AF"/>
+              <rect x="23" y="19" width="14" height="15" rx="3" stroke="#FFFFFF" stroke-width="1.6" fill="none"/>
+              <circle cx="26" cy="30" r="1.5" fill="#FFFFFF"/>
+              <circle cx="34" cy="30" r="1.5" fill="#FFFFFF"/>
+              <path d="M20 36 L40 36 M25 34 L22 37 M35 34 L38 37" stroke="#FFFFFF" stroke-width="1.5"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#1E40AF" text-anchor="middle">INTERMODAL</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#1E40AF" text-anchor="middle">RAIL FREIGHT</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Rail &amp; Intermodal</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+        </a>
+
+        <!-- Category 15: Hazmat Transport -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Hazmat &amp; Chemical Cargo" onclick="filterJobsByCategory('fleet'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#B45309" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#B45309" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#B45309"/>
+              <polygon points="30,19 39,27 30,35 21,27" stroke="#FFFFFF" stroke-width="1.6" fill="none"/>
+              <path d="M30 22 V27 M30 30 V31" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+              <text x="30" y="11" font-size="4" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#B45309" text-anchor="middle">HAZMAT</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#B45309" text-anchor="middle">SAFETY</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Hazmat Transport</p><span class="fw-bridge-job-count">19 jobs</span></div>
+        </a>
+
+        <!-- Category 16: Telematics & IoT Systems -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Telematics &amp; IoT Systems" onclick="filterJobsByCategory('tech'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#0F766E" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#0F766E" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#0F766E"/>
+              <circle cx="30" cy="27" r="2.5" fill="#FFFFFF"/>
+              <path d="M25 22 C28 19, 32 19, 35 22 M22 19 C26 15, 34 15, 38 19 M25 32 C28 35, 32 35, 35 32" stroke="#FFFFFF" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#0F766E" text-anchor="middle">TELEMATICS</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#0F766E" text-anchor="middle">IOT SENSORS</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Telematics &amp; IoT Systems</p><span class="fw-bridge-job-count">33 jobs</span></div>
+        </a>
+
+        <!-- Category 17: Reverse Logistics -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Reverse Logistics &amp; Returns" onclick="filterJobsByCategory('forwarding'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#15803D" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#15803D" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#15803D"/>
+              <path d="M24 22 L30 18 L36 22 M36 21 V29 M36 32 L30 36 L24 32 M24 33 V25" stroke="#FFFFFF" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="30" y="11" font-size="3.6" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#15803D" text-anchor="middle">REVERSE LOGISTICS</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#15803D" text-anchor="middle">CIRCULAR</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Reverse Logistics</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+        </a>
+
+        <!-- Category 18: Terminal & Yard -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Terminal &amp; Yard Operations" onclick="filterJobsByCategory('port'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#155E75" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#155E75" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#155E75"/>
+              <path d="M20 34 L24 20 H36 L40 34 M24 25 H36 M30 20 V29" stroke="#FFFFFF" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#155E75" text-anchor="middle">TERMINAL YARD</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#155E75" text-anchor="middle">DISPATCH</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Terminal &amp; Yard</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+        </a>
+
+        <!-- Category 19: Green Logistics & ESG -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Green Logistics &amp; ESG" onclick="filterJobsByCategory('tech'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#047857" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#047857" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#047857"/>
+              <path d="M22 33 C22 24 33 19 37 19 C37 23 37 33 28 33 Z M22 33 L32 23" stroke="#FFFFFF" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#047857" text-anchor="middle">GREEN FREIGHT</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#047857" text-anchor="middle">ESG ECO</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Green Logistics &amp; ESG</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+        </a>
+
+        <!-- Category 20: Logistics IT & Big Data -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Logistics IT &amp; Data Systems" onclick="filterJobsByCategory('tech'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="52" height="52" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#5B21B6" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#5B21B6" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#5B21B6"/>
+              <ellipse cx="30" cy="21" rx="9" ry="3" stroke="#FFFFFF" stroke-width="1.5" fill="none"/>
+              <path d="M21 21 V26 C21 28 39 28 39 26 V21 M21 26 V31 C21 33 39 33 39 31 V26" stroke="#FFFFFF" stroke-width="1.5" fill="none"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#5B21B6" text-anchor="middle">LOGISTICS IT</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#5B21B6" text-anchor="middle">BIG DATA</text>
+            </svg>
+          </div>
+          <div class="fw-bridge-info"><p class="fw-bridge-name">Logistics IT &amp; Data Systems</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+    <!-- ========================================================================
+         SECTION: TOP EMPLOYERS SPOTLIGHT
+         ======================================================================== -->
+<section class="vj-section-container" id="section-companies-spotlight" aria-label="Top Doanh Nghiệp Xác Thực">
           <div class="vj-section-header">
             <div>
               <span class="vj-section-badge">DOANH NGHIỆP XÁC THỰC</span>
@@ -864,408 +659,190 @@
           </div>
         </section>
 
-        <!-- ======================================================================
-             SECTION 3: BEST TECH & ENGINEERING JOBS (3x3 GRID WITH 84px LOGOS)
-             ====================================================================== -->
-        <section class="vj-section-container" id="section-best-jobs" aria-label="Việc Làm Công Nghệ & Kỹ Thuật Hàng Đầu">
-          <div class="vj-section-header">
-            <div>
-              <span class="vj-section-badge">CƠ HỘI NỔI BẬT</span>
-              <h2 class="vj-section-title">Việc Làm Công Nghệ &amp; Kỹ Thuật Hàng Đầu</h2>
-              <p class="vj-section-subtitle">Các vị trí chọn lọc với đãi ngộ cạnh tranh và văn hóa doanh nghiệp minh bạch</p>
-            </div>
-            <a href="#" class="vj-section-link" data-view="browse">
-              <span>Khám phá 500+ việc làm hot</span> <i class="fa-solid fa-arrow-right"></i>
-            </a>
+    <!-- ========================================================================
+         SECTION: COURSE CENTER (FEATURED CAREERS & JOBS)
+         ======================================================================== -->
+<section class="fw-featured-career-section reveal" id="section-training" aria-label="Featured Careers & Jobs">
+    <div class="container">
+      
+      <!-- Section Header with Red Vertical Accent Bar -->
+      <div class="career-center-header-row">
+        <div class="career-center-title-wrap">
+          <span class="career-title-bar"></span>
+          <div>
+            <h1 class="career-center-title">
+              Course Center <span class="career-title-en">Featured Careers &amp; Jobs</span>
+            </h1>
+            <h3 class="career-section-desc">
+              Accredited vocational certification programs, legal compliance masterclasses, and executive skill development
+            </h3>
           </div>
+        </div>
+      </div>
 
-          <div class="best-jobs-grid-3x3">
-            <!-- Job 1: FPT Software -->
-            <div class="best-job-card" data-view="job-detail" data-job-id="prj-100">
-              <div>
-                <div class="best-job-top">
-                  <div class="best-job-logo">
-                    <img src="images/brands/fpt.svg" alt="FPT Software">
-                  </div>
-                  <div>
-                    <h3 class="best-job-role-title">Lead Cloud Architect (AWS &amp; GCP)</h3>
-                    <div class="best-job-company-name">
-                      <span>FPT Software</span>
-                      <i class="fa-solid fa-circle-check" style="font-size: 11px; color: var(--fl-primary, #0a66c2);"></i>
-                    </div>
-                  </div>
-                </div>
-                <div class="best-job-salary">45 &ndash; 75 triệu/tháng</div>
-                <div class="best-job-skills">
-                  <span class="best-job-skill-tag">Kubernetes</span>
-                  <span class="best-job-skill-tag">Terraform</span>
-                  <span class="best-job-skill-tag">Microservices</span>
-                </div>
-              </div>
-              <div class="best-job-footer">
-                <span class="best-job-pill"><i class="fa-solid fa-building"></i> Hybrid &bull; Hà Nội</span>
-                <span style="font-size: 11.5px; font-weight: 700; color: var(--fl-primary, #0a66c2);">Ứng tuyển &rsaquo;</span>
-              </div>
-            </div>
+      <!-- Category Filter Tabs Navigation Bar -->
+      <div class="career-tabs-bar">
+        <div class="career-tabs-scroll" id="career-category-tabs">
+          <button type="button" class="career-tab-btn" data-category="guidance" onclick="selectCareerTab(this, 'Career Guidance');">Career Guidance</button>
+          <button type="button" class="career-tab-btn active" data-category="exam" onclick="selectCareerTab(this, 'Vocational Certifications & Exams');">Vocational Exams</button>
+          <button type="button" class="career-tab-btn" data-category="cert" onclick="selectCareerTab(this, 'Certification Upgrades');">Skill Certification</button>
+          <button type="button" class="career-tab-btn" data-category="growth" onclick="selectCareerTab(this, 'Workplace Career Growth');">Career Growth</button>
+          <button type="button" class="career-tab-btn" data-category="postgrad" onclick="selectCareerTab(this, 'Postgraduate & Academy');">Postgraduate Studies</button>
+          <button type="button" class="career-tab-btn" data-category="practice" onclick="selectCareerTab(this, 'Innovation & Practical Projects');">Innovation &amp; Practice</button>
+          <button type="button" class="career-tab-btn" data-category="knowledge" onclick="selectCareerTab(this, 'Employment Knowledge Base');">Industry Knowledge</button>
+          <button type="button" class="career-tab-btn" data-category="it" onclick="selectCareerTab(this, 'IT, AI & Tech Skills');">IT &amp; AI Skills</button>
+          <button type="button" class="career-tab-btn" data-category="lifestyle" onclick="selectCareerTab(this, 'Lifestyle & Specialized Interests');">Lifestyle &amp; Culture</button>
+        </div>
+        <a href="#section-dual-feed" class="career-tabs-more" onclick="showToast('Loading full catalog of 8,500+ accredited career modules...'); return false;">
+          View Full Catalog &gt;
+        </a>
+      </div>
 
-            <!-- Job 2: VinFast -->
-            <div class="best-job-card" data-view="job-detail" data-job-id="prj-101">
-              <div>
-                <div class="best-job-top">
-                  <div class="best-job-logo">
-                    <img src="images/brands/vinfast.svg" alt="VinFast Digital">
-                  </div>
-                  <div>
-                    <h3 class="best-job-role-title">Senior AI Research Engineer</h3>
-                    <div class="best-job-company-name">
-                      <span>VinFast Digital</span>
-                      <i class="fa-solid fa-circle-check" style="font-size: 11px; color: var(--fl-primary, #0a66c2);"></i>
-                    </div>
-                  </div>
-                </div>
-                <div class="best-job-salary">50 &ndash; 90 triệu/tháng</div>
-                <div class="best-job-skills">
-                  <span class="best-job-skill-tag">Autonomous</span>
-                  <span class="best-job-skill-tag">PyTorch</span>
-                  <span class="best-job-skill-tag">Computer Vision</span>
-                </div>
-              </div>
-              <div class="best-job-footer">
-                <span class="best-job-pill"><i class="fa-solid fa-location-dot"></i> On-site &bull; Hải Phòng</span>
-                <span style="font-size: 11.5px; font-weight: 700; color: var(--fl-primary, #0a66c2);">Ứng tuyển &rsaquo;</span>
-              </div>
-            </div>
-
-            <!-- Job 3: Vietcombank -->
-            <div class="best-job-card" data-view="job-detail" data-job-id="prj-102">
-              <div>
-                <div class="best-job-top">
-                  <div class="best-job-logo">
-                    <img src="images/brands/vcb.svg" alt="Vietcombank Digital">
-                  </div>
-                  <div>
-                    <h3 class="best-job-role-title">Core Banking System Lead</h3>
-                    <div class="best-job-company-name">
-                      <span>Vietcombank</span>
-                      <i class="fa-solid fa-circle-check" style="font-size: 11px; color: var(--fl-primary, #0a66c2);"></i>
-                    </div>
-                  </div>
-                </div>
-                <div class="best-job-salary">40 &ndash; 65 triệu/tháng</div>
-                <div class="best-job-skills">
-                  <span class="best-job-skill-tag">Fintech</span>
-                  <span class="best-job-skill-tag">Java Core</span>
-                  <span class="best-job-skill-tag">High-Concurrency</span>
-                </div>
-              </div>
-              <div class="best-job-footer">
-                <span class="best-job-pill"><i class="fa-solid fa-briefcase"></i> Full-Time &bull; TP. HCM</span>
-                <span style="font-size: 11.5px; font-weight: 700; color: var(--fl-primary, #0a66c2);">Ứng tuyển &rsaquo;</span>
-              </div>
-            </div>
-
-            <!-- Job 4: Viettel Solutions -->
-            <div class="best-job-card" data-view="job-detail" data-job-id="prj-103">
-              <div>
-                <div class="best-job-top">
-                  <div class="best-job-logo">
-                    <img src="images/brands/viettel.svg" alt="Viettel Solutions">
-                  </div>
-                  <div>
-                    <h3 class="best-job-role-title">Staff Platform Engineer (K8s)</h3>
-                    <div class="best-job-company-name">
-                      <span>Viettel Solutions</span>
-                      <i class="fa-solid fa-circle-check" style="font-size: 11px; color: var(--fl-primary, #0a66c2);"></i>
-                    </div>
-                  </div>
-                </div>
-                <div class="best-job-salary">45 &ndash; 70 triệu/tháng</div>
-                <div class="best-job-skills">
-                  <span class="best-job-skill-tag">Golang</span>
-                  <span class="best-job-skill-tag">Linux Kernel</span>
-                  <span class="best-job-skill-tag">Distributed</span>
-                </div>
-              </div>
-              <div class="best-job-footer">
-                <span class="best-job-pill"><i class="fa-solid fa-laptop-house"></i> Remote / Hybrid &bull; Hà Nội</span>
-                <span style="font-size: 11.5px; font-weight: 700; color: var(--fl-primary, #0a66c2);">Ứng tuyển &rsaquo;</span>
-              </div>
-            </div>
-
-            <!-- Job 5: MoMo -->
-            <div class="best-job-card" data-view="job-detail" data-job-id="prj-104">
-              <div>
-                <div class="best-job-top">
-                  <div class="best-job-logo">
-                    <img src="images/brands/momo.svg" alt="MoMo">
-                  </div>
-                  <div>
-                    <h3 class="best-job-role-title">Principal Product Designer</h3>
-                    <div class="best-job-company-name">
-                      <span>MoMo</span>
-                      <i class="fa-solid fa-circle-check" style="font-size: 11px; color: var(--fl-primary, #0a66c2);"></i>
-                    </div>
-                  </div>
-                </div>
-                <div class="best-job-salary">35 &ndash; 55 triệu/tháng</div>
-                <div class="best-job-skills">
-                  <span class="best-job-skill-tag">Design System</span>
-                  <span class="best-job-skill-tag">Figma</span>
-                  <span class="best-job-skill-tag">User Research</span>
-                </div>
-              </div>
-              <div class="best-job-footer">
-                <span class="best-job-pill"><i class="fa-solid fa-building"></i> Hybrid &bull; TP. HCM</span>
-                <span style="font-size: 11.5px; font-weight: 700; color: var(--fl-primary, #0a66c2);">Ứng tuyển &rsaquo;</span>
-              </div>
-            </div>
-
-            <!-- Job 6: Samsung -->
-            <div class="best-job-card" data-view="job-detail" data-job-id="prj-105">
-              <div>
-                <div class="best-job-top">
-                  <div class="best-job-logo">
-                    <img src="images/brands/samsung.svg" alt="Samsung Vietnam">
-                  </div>
-                  <div>
-                    <h3 class="best-job-role-title">Supply Chain Operations Lead</h3>
-                    <div class="best-job-company-name">
-                      <span>Samsung Vietnam</span>
-                      <i class="fa-solid fa-circle-check" style="font-size: 11px; color: var(--fl-primary, #0a66c2);"></i>
-                    </div>
-                  </div>
-                </div>
-                <div class="best-job-salary">38 &ndash; 60 triệu/tháng</div>
-                <div class="best-job-skills">
-                  <span class="best-job-skill-tag">ERP / SAP</span>
-                  <span class="best-job-skill-tag">Global Logistics</span>
-                  <span class="best-job-skill-tag">Six Sigma</span>
-                </div>
-              </div>
-              <div class="best-job-footer">
-                <span class="best-job-pill"><i class="fa-solid fa-briefcase"></i> Full-Time &bull; Bắc Ninh</span>
-                <span style="font-size: 11.5px; font-weight: 700; color: var(--fl-primary, #0a66c2);">Ứng tuyển &rsaquo;</span>
-              </div>
-            </div>
-
-            <!-- Job 7: Nike Vietnam -->
-            <div class="best-job-card" data-view="job-detail" data-job-id="prj-106">
-              <div>
-                <div class="best-job-top">
-                  <div class="best-job-logo">
-                    <img src="images/brands/nike.svg" alt="Nike Vietnam">
-                  </div>
-                  <div>
-                    <h3 class="best-job-role-title">Director of Global Procurement</h3>
-                    <div class="best-job-company-name">
-                      <span>Nike Vietnam</span>
-                      <i class="fa-solid fa-circle-check" style="font-size: 11px; color: var(--fl-primary, #0a66c2);"></i>
-                    </div>
-                  </div>
-                </div>
-                <div class="best-job-salary">60 &ndash; 95 triệu/tháng</div>
-                <div class="best-job-skills">
-                  <span class="best-job-skill-tag">Strategic Sourcing</span>
-                  <span class="best-job-skill-tag">ESG Compliance</span>
-                  <span class="best-job-skill-tag">Trade Law</span>
-                </div>
-              </div>
-              <div class="best-job-footer">
-                <span class="best-job-pill"><i class="fa-solid fa-location-dot"></i> On-site &bull; TP. HCM</span>
-                <span style="font-size: 11.5px; font-weight: 700; color: var(--fl-primary, #0a66c2);">Ứng tuyển &rsaquo;</span>
-              </div>
-            </div>
-
-            <!-- Job 8: VNG -->
-            <div class="best-job-card" data-view="job-detail" data-job-id="prj-107">
-              <div>
-                <div class="best-job-top">
-                  <div class="best-job-logo">
-                    <img src="images/brands/vng.svg" alt="VNG Corporation">
-                  </div>
-                  <div>
-                    <h3 class="best-job-role-title">Senior DevOps / SRE Engineer</h3>
-                    <div class="best-job-company-name">
-                      <span>VNG Corporation</span>
-                      <i class="fa-solid fa-circle-check" style="font-size: 11px; color: var(--fl-primary, #0a66c2);"></i>
-                    </div>
-                  </div>
-                </div>
-                <div class="best-job-salary">35 &ndash; 55 triệu/tháng</div>
-                <div class="best-job-skills">
-                  <span class="best-job-skill-tag">CI/CD</span>
-                  <span class="best-job-skill-tag">Prometheus</span>
-                  <span class="best-job-skill-tag">Ansible</span>
-                </div>
-              </div>
-              <div class="best-job-footer">
-                <span class="best-job-pill"><i class="fa-solid fa-building"></i> Hybrid &bull; TP. HCM</span>
-                <span style="font-size: 11.5px; font-weight: 700; color: var(--fl-primary, #0a66c2);">Ứng tuyển &rsaquo;</span>
-              </div>
-            </div>
-
-            <!-- Job 9: Shopee -->
-            <div class="best-job-card" data-view="job-detail" data-job-id="prj-108">
-              <div>
-                <div class="best-job-top">
-                  <div class="best-job-logo">
-                    <img src="images/brands/shopee.svg" alt="Shopee Vietnam">
-                  </div>
-                  <div>
-                    <h3 class="best-job-role-title">Head of Performance Marketing</h3>
-                    <div class="best-job-company-name">
-                      <span>Shopee Vietnam</span>
-                      <i class="fa-solid fa-circle-check" style="font-size: 11px; color: var(--fl-primary, #0a66c2);"></i>
-                    </div>
-                  </div>
-                </div>
-                <div class="best-job-salary">40 &ndash; 65 triệu/tháng</div>
-                <div class="best-job-skills">
-                  <span class="best-job-skill-tag">Growth</span>
-                  <span class="best-job-skill-tag">E-Commerce</span>
-                  <span class="best-job-skill-tag">Attribution</span>
-                </div>
-              </div>
-              <div class="best-job-footer">
-                <span class="best-job-pill"><i class="fa-solid fa-briefcase"></i> Full-Time &bull; TP. HCM</span>
-                <span style="font-size: 11.5px; font-weight: 700; color: var(--fl-primary, #0a66c2);">Ứng tuyển &rsaquo;</span>
-              </div>
+      <!-- 4-Column Career Cards Grid -->
+      <div class="career-cards-grid-4" id="career-cards-container">
+        
+        <!-- Card 1: Legal & Regulatory Foundations -->
+        <article class="career-card-item reveal" onclick="showToast('Opening Career Program: Legal & Regulatory Foundations');">
+          <div class="career-card-img-wrap">
+            <img src="images/career_banner_1.svg?v=2" alt="Legal & Regulatory Foundations" class="career-card-img">
+          </div>
+          <div class="career-card-content">
+            <h3 class="career-card-name" title="Legal & Regulatory Foundations • Jurisprudence">Legal &amp; Regulatory Foundations</h3>
+            <div class="career-card-meta">
+              <span class="career-meta-modules">
+                <i class="fa-regular fa-file-lines"></i>
+                <span>1 Module</span>
+              </span>
+              <span class="career-meta-views">
+                <i class="fa-regular fa-eye"></i>
+                <span>8,166,589 Views</span>
+              </span>
             </div>
           </div>
-        </section>
+        </article>
 
-        <!-- ======================================================================
-             SECTION 4: CAREER DEVELOPMENT & PROFESSIONAL TRAINING
-             ====================================================================== -->
-        <section class="vj-section-container" id="section-training" aria-label="Chương Trình Đào Tạo & Chứng Chỉ Chuyên Nghiệp">
-          <div class="vj-section-header">
-            <div>
-              <span class="vj-section-badge">KỸ NĂNG &amp; ĐÀO TẠO</span>
-              <h2 class="vj-section-title">Chương Trình Đào Tạo &amp; Chứng Chỉ Chuyên Nghiệp</h2>
-              <p class="vj-section-subtitle">Các chứng chỉ chuẩn quốc tế nâng cao năng lực cạnh tranh trong thị trường lao động 2026</p>
-            </div>
-            <a href="#" class="vj-section-link" data-view="browse">
-              <span>Xem tất cả khóa học</span> <i class="fa-solid fa-arrow-right"></i>
-            </a>
+        <!-- Card 2: Executive Verbal & Communication -->
+        <article class="career-card-item reveal" onclick="showToast('Opening Career Program: Executive Verbal & Communication');">
+          <div class="career-card-img-wrap">
+            <img src="images/career_banner_2.svg?v=2" alt="Executive Verbal & Communication" class="career-card-img">
           </div>
-
-          <div class="home-training-grid">
-            <!-- Course 1 -->
-            <div class="home-training-card" data-view="browse">
-              <div>
-                <div class="home-training-badge">FIATA Certified</div>
-                <h3 class="home-training-title">FIATA Higher Diploma in Supply Chain Management</h3>
-                <p class="home-training-desc">Luật vận tải hàng hải quốc tế, Incoterms 2020 và quản trị thực thi hợp đồng vận tải đa phương thức toàn cầu.</p>
-              </div>
-              <div class="home-training-meta">
-                <span><i class="fa-regular fa-clock"></i> 120 Giờ học</span>
-                <span class="home-training-link">Chi tiết &rsaquo;</span>
-              </div>
-            </div>
-
-            <!-- Course 2 -->
-            <div class="home-training-card" data-view="browse">
-              <div>
-                <div class="home-training-badge">National Customs</div>
-                <h3 class="home-training-title">Chứng Chỉ Khai Thuê Hải Quan &amp; VNACCS/VCIS EDI</h3>
-                <p class="home-training-desc">Đào tạo nghiệp vụ thông quan điện tử, kỹ năng phân loại mã HS, tính thuế xuất nhập khẩu và giải quyết tranh chấp.</p>
-              </div>
-              <div class="home-training-meta">
-                <span><i class="fa-regular fa-clock"></i> 60 Giờ học</span>
-                <span class="home-training-link">Chi tiết &rsaquo;</span>
-              </div>
-            </div>
-
-            <!-- Course 3 -->
-            <div class="home-training-card" data-view="browse">
-              <div>
-                <div class="home-training-badge">Maritime Academy</div>
-                <h3 class="home-training-title">Xếp Dỡ Cảng Biển &amp; Hàng Nguy Hiểm IMDG Code</h3>
-                <p class="home-training-desc">Lập sơ đồ xếp dỡ tàu container, quy trình an toàn cẩu bờ và quy chuẩn quản lý hàng hóa nguy hiểm theo IMO.</p>
-              </div>
-              <div class="home-training-meta">
-                <span><i class="fa-regular fa-clock"></i> 45 Giờ học</span>
-                <span class="home-training-link">Chi tiết &rsaquo;</span>
-              </div>
-            </div>
-
-            <!-- Course 4 -->
-            <div class="home-training-card" data-view="browse">
-              <div>
-                <div class="home-training-badge">Smart Logistics</div>
-                <h3 class="home-training-title">Chuỗi Cung Ứng Lạnh &amp; Kho Tự Động Hóa (ASRS)</h3>
-                <p class="home-training-desc">Vận hành kho tự động ASRS, hệ thống cảm biến nhiệt IoT cho logistics dược phẩm &amp; thực phẩm xuất khẩu.</p>
-              </div>
-              <div class="home-training-meta">
-                <span><i class="fa-regular fa-clock"></i> 40 Giờ học</span>
-                <span class="home-training-link">Chi tiết &rsaquo;</span>
-              </div>
+          <div class="career-card-content">
+            <h3 class="career-card-name" title="Executive Verbal & Communication">Executive Verbal &amp; Communication</h3>
+            <div class="career-card-meta">
+              <span class="career-meta-modules">
+                <i class="fa-regular fa-file-lines"></i>
+                <span>1 Module</span>
+              </span>
+              <span class="career-meta-views">
+                <i class="fa-regular fa-eye"></i>
+                <span>7,478,162 Views</span>
+              </span>
             </div>
           </div>
-        </section>
+        </article>
 
-        <!-- ======================================================================
-             SECTION 5: EMPLOYMENT POLICIES & LABOR RESOURCES LIBRARY
-             ====================================================================== -->
-        <section class="vj-section-container" id="section-resources" aria-label="Chính Sách Lao Động & Tài Liệu Pháp Lý">
-          <div class="vj-section-header">
-            <div>
-              <span class="vj-section-badge">CHÍNH SÁCH CHÍNH THỨC</span>
-              <h2 class="vj-section-title">Chính Sách Lao Động &amp; Tài Liệu Pháp Lý</h2>
-              <p class="vj-section-subtitle">Khung pháp lý chính phủ, quy định tiền lương chuẩn và tài liệu bảo vệ quyền lợi người lao động</p>
-            </div>
-            <a href="#" class="vj-section-link" data-view="browse">
-              <span>Thư viện pháp lý</span> <i class="fa-solid fa-arrow-right"></i>
-            </a>
+        <!-- Card 3: Analytical Judgment & Concepts -->
+        <article class="career-card-item reveal" onclick="showToast('Opening Career Program: Analytical Judgment & Concepts');">
+          <div class="career-card-img-wrap">
+            <img src="images/career_banner_3.svg?v=2" alt="Analytical Judgment & Concepts" class="career-card-img">
           </div>
-
-          <div class="home-resources-grid">
-            <!-- Resource 1 -->
-            <div class="home-resource-card" data-view="browse">
-              <div>
-                <div class="home-resource-icon"><i class="fa-solid fa-scale-balanced"></i></div>
-                <h4 class="home-resource-title">Nghị định 163/2017/NĐ-CP</h4>
-                <p class="home-resource-desc">Khung pháp lý của Chính phủ quy định điều kiện kinh doanh dịch vụ logistics, giới hạn trách nhiệm và tỷ lệ vốn đầu tư nước ngoài.</p>
-              </div>
-              <span class="home-resource-action">Đọc văn bản hướng dẫn &rsaquo;</span>
-            </div>
-
-            <!-- Resource 2 -->
-            <div class="home-resource-card" data-view="browse">
-              <div>
-                <div class="home-resource-icon"><i class="fa-solid fa-chart-line"></i></div>
-                <h4 class="home-resource-title">Báo Cáo Lương Thưởng 2026</h4>
-                <p class="home-resource-desc">Khảo sát chuẩn hóa mức thu nhập thực tế giữa các vị trí điều hành forwarding, nhân viên khai hải quan, giám sát cảng và quản lý chuỗi cung ứng.</p>
-              </div>
-              <span class="home-resource-action">Xem báo cáo thị trường &rsaquo;</span>
-            </div>
-
-            <!-- Resource 3 -->
-            <div class="home-resource-card" data-view="browse">
-              <div>
-                <div class="home-resource-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                <h4 class="home-resource-title">Quy Chuẩn An Toàn &amp; Ca Kíp</h4>
-                <p class="home-resource-desc">Quy định pháp luật bắt buộc về làm việc ca đêm 24/7 tại cảng biển, chế độ phụ cấp công việc nặng nhọc độc hại và bảo hiểm xã hội.</p>
-              </div>
-              <span class="home-resource-action">Xem quy định quyền lợi &rsaquo;</span>
-            </div>
-
-            <!-- Resource 4 -->
-            <div class="home-resource-card" data-view="browse">
-              <div>
-                <div class="home-resource-icon"><i class="fa-solid fa-book-bookmark"></i></div>
-                <h4 class="home-resource-title">Khung Năng Lực Chuẩn Ngành</h4>
-                <p class="home-resource-desc">Hệ thống tiêu chuẩn kỹ năng nghề nghiệp và lộ trình thăng tiến từ Chuyên viên tập sự lên Giám đốc Logistics &amp; Chuỗi cung ứng.</p>
-              </div>
-              <span class="home-resource-action">Tải tài liệu chuẩn hóa &rsaquo;</span>
+          <div class="career-card-content">
+            <h3 class="career-card-name" title="Analytical Judgment & Concepts">Analytical Judgment &amp; Concepts</h3>
+            <div class="career-card-meta">
+              <span class="career-meta-modules">
+                <i class="fa-regular fa-file-lines"></i>
+                <span>1 Module</span>
+              </span>
+              <span class="career-meta-views">
+                <i class="fa-regular fa-eye"></i>
+                <span>7,398,773 Views</span>
+              </span>
             </div>
           </div>
-        </section>
+        </article>
 
-        <!-- ======================================================================
-             SECTION 6: FOR EMPLOYERS & HIRING MANAGERS (B2B HERO BANNER)
-             ====================================================================== -->
-        <section class="home-employer-cta-section" id="section-employers" aria-label="Dành Cho Doanh Nghiệp Tuyển Dụng">
+        <!-- Card 4: Quantitative Logistics & Strategy -->
+        <article class="career-card-item reveal" onclick="showToast('Opening Career Program: Quantitative Logistics & Strategy');">
+          <div class="career-card-img-wrap">
+            <img src="images/career_banner_4.svg?v=2" alt="Quantitative Logistics & Strategy" class="career-card-img">
+          </div>
+          <div class="career-card-content">
+            <h3 class="career-card-name" title="Quantitative Logistics & Strategy • Masterclass">Quantitative Logistics &amp; Strategy</h3>
+            <div class="career-card-meta">
+              <span class="career-meta-modules">
+                <i class="fa-regular fa-file-lines"></i>
+                <span>3 Modules</span>
+              </span>
+              <span class="career-meta-views">
+                <i class="fa-regular fa-eye"></i>
+                <span>6,550,610 Views</span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+    <!-- ========================================================================
+         SECTION: OFFICIAL VERIFICATION & CREDENTIAL REGISTRY CHANNELS
+         ======================================================================== -->
+<section class="fw-channels-section" id="section-channels">
+    <div class="container">
+      
+      <div class="fw-section-header">
+        <div class="fw-section-title-wrap">
+          <span class="fw-section-bar"></span>
+          <div>
+            <div class="fw-section-tag">CREDENTIALS &amp; INTEROPERABILITY</div>
+            <h2 class="fw-section-title">Official Verification &amp; Credential Registry Channels</h2>
+            <h4 class="fw-section-desc">Public authentication registries, government helplines, and institutional accreditation lookups</h4>
+          </div>
+        </div>
+        <a href="#" class="fw-section-more">VIEW ALL &gt;</a>
+      </div>
+
+      <div class="fw-channels-grid">
+        <a href="#" class="fw-channel-tile reveal" title="Vocational Skill Certificate Query" onclick="showToast('Navigating to: Vocational Skill Certificate Query'); return false;">
+          <div class="fw-channel-icon"><i class="fa-solid fa-stamp"></i></div>
+          <span class="fw-channel-text">Vocational Skill Certificate Query</span>
+        </a>
+        <a href="#" class="fw-channel-tile reveal" title="12333 National Workforce Helpline" onclick="showToast('Connecting to: 12333 National Workforce Helpline'); return false;">
+          <div class="fw-channel-icon"><i class="fa-solid fa-headset"></i></div>
+          <span class="fw-channel-text">12333 National Workforce Helpline</span>
+        </a>
+        <a href="#" class="fw-channel-tile reveal" title="Employment &amp; Entrepreneurship Certificate" onclick="showToast('Navigating to: Employment & Entrepreneurship Certificate'); return false;">
+          <div class="fw-channel-icon"><i class="fa-solid fa-book-open"></i></div>
+          <span class="fw-channel-text">Employment &amp; Entrepreneurship Cert</span>
+        </a>
+        <a href="#" class="fw-channel-tile reveal" title="Provincial Public Employment Hubs" onclick="showToast('Opening: Provincial Public Employment Hubs'); return false;">
+          <div class="fw-channel-icon"><i class="fa-solid fa-users"></i></div>
+          <span class="fw-channel-text">Provincial Public Employment Hubs</span>
+        </a>
+
+        <a href="#" class="fw-channel-tile reveal" title="Skill Level Evaluation Org Registry" onclick="showToast('Navigating to: Skill Level Org Public Registry'); return false;">
+          <div class="fw-channel-icon"><i class="fa-solid fa-display"></i></div>
+          <span class="fw-channel-text">Skill Level Org Public Registry</span>
+        </a>
+        <a href="#" class="fw-channel-tile reveal" title="High-Tech IT Examination Registry" onclick="showToast('Navigating to: High-Tech IT Examination Registry'); return false;">
+          <div class="fw-channel-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <span class="fw-channel-text">High-Tech IT Examination Registry</span>
+        </a>
+        <a href="#" class="fw-channel-tile reveal" title="Specialized Competency Assessment Inquiry" onclick="showToast('Navigating to: Competency Assessment Inquiry'); return false;">
+          <div class="fw-channel-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+          <span class="fw-channel-text">Specialized Competency Assessment</span>
+        </a>
+        <a href="#" class="fw-channel-tile reveal" title="Foreign Qualification Verification" onclick="showToast('Navigating to: Foreign Qualification Verification'); return false;">
+          <div class="fw-channel-icon"><i class="fa-solid fa-globe"></i></div>
+          <span class="fw-channel-text">Foreign Qualification Verification</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+    <section class="home-employer-cta-section" id="section-employers" aria-label="Dành Cho Doanh Nghiệp Tuyển Dụng">
           <div class="employer-cta-inner">
             <div style="max-width: 650px;">
               <span class="employer-badge">DÀNH CHO DOANH NGHIỆP &amp; NHÀ TUYỂN DỤNG</span>
@@ -1339,26 +916,26 @@
 
         <div class="filter-group">
           <div class="filter-group-label"><i class="fa-solid fa-layer-group"></i> Ngành nghề tuyển dụng</div>
-          <label class="filter-option"><input type="checkbox" value="web-dev" class="browse-cat-filter"> <span class="filter-opt-text"><i class="fa-solid fa-code" style="color:#0a66c2; width:16px;"></i> Công nghệ / IT</span> <span class="filter-count-badge">6.8k</span></label>
-          <label class="filter-option"><input type="checkbox" value="ai-ml" class="browse-cat-filter"> <span class="filter-opt-text"><i class="fa-solid fa-brain" style="color:#8b5cf6; width:16px;"></i> AI & Dữ Liệu</span> <span class="filter-count-badge">2.4k</span></label>
-          <label class="filter-option"><input type="checkbox" value="mobile-apps" class="browse-cat-filter"> <span class="filter-opt-text"><i class="fa-solid fa-mobile-screen" style="color:#ec4899; width:16px;"></i> Mobile App</span> <span class="filter-count-badge">3.2k</span></label>
-          <label class="filter-option"><input type="checkbox" value="design" class="browse-cat-filter"> <span class="filter-opt-text"><i class="fa-solid fa-pen-nib" style="color:#f59e0b; width:16px;"></i> Design / UI-UX</span> <span class="filter-count-badge">3.8k</span></label>
-          <label class="filter-option"><input type="checkbox" value="recruitment" class="browse-cat-filter"> <span class="filter-opt-text"><i class="fa-solid fa-user-group" style="color:#10b981; width:16px;"></i> Kinh doanh / HR</span> <span class="filter-count-badge">4.1k</span></label>
+          <label class="filter-option"><input type="checkbox" value="web-dev" class="browse-cat-filter"> <span class="filter-opt-text">Công nghệ & IT</span> <span class="filter-count-badge">6.8k</span></label>
+          <label class="filter-option"><input type="checkbox" value="ai-ml" class="browse-cat-filter"> <span class="filter-opt-text">AI & Dữ liệu</span> <span class="filter-count-badge">2.4k</span></label>
+          <label class="filter-option"><input type="checkbox" value="mobile-apps" class="browse-cat-filter"> <span class="filter-opt-text">Mobile Apps</span> <span class="filter-count-badge">3.2k</span></label>
+          <label class="filter-option"><input type="checkbox" value="design" class="browse-cat-filter"> <span class="filter-opt-text">Thiết kế & UI/UX</span> <span class="filter-count-badge">3.8k</span></label>
+          <label class="filter-option"><input type="checkbox" value="recruitment" class="browse-cat-filter"> <span class="filter-opt-text">Kinh doanh & Tuyển dụng</span> <span class="filter-count-badge">4.1k</span></label>
         </div>
 
         <div class="filter-group">
           <div class="filter-group-label"><i class="fa-solid fa-briefcase"></i> Hình thức làm việc</div>
-          <label class="filter-option"><input type="checkbox" value="Full-Time" class="browse-type-filter"> <span class="filter-opt-text"><i class="fa-solid fa-clock" style="color:#0a66c2; width:16px;"></i> Toàn thời gian</span></label>
-          <label class="filter-option"><input type="checkbox" value="Part-Time" class="browse-type-filter"> <span class="filter-opt-text"><i class="fa-solid fa-calendar-day" style="color:#f59e0b; width:16px;"></i> Bán thời gian</span></label>
-          <label class="filter-option"><input type="checkbox" value="Remote" class="browse-type-filter"> <span class="filter-opt-text"><i class="fa-solid fa-house-laptop" style="color:#10b981; width:16px;"></i> Remote / WFH</span></label>
+          <label class="filter-option"><input type="checkbox" value="Full-Time" class="browse-type-filter"> <span class="filter-opt-text">Toàn thời gian</span></label>
+          <label class="filter-option"><input type="checkbox" value="Part-Time" class="browse-type-filter"> <span class="filter-opt-text">Bán thời gian</span></label>
+          <label class="filter-option"><input type="checkbox" value="Remote" class="browse-type-filter"> <span class="filter-opt-text">Remote / WFH</span></label>
         </div>
 
         <div class="filter-group">
           <div class="filter-group-label"><i class="fa-solid fa-location-dot"></i> Địa điểm làm việc</div>
-          <label class="filter-option"><input type="checkbox" value="hcm" class="browse-loc-filter"> <span class="filter-opt-text"><i class="fa-solid fa-city" style="color:#ef4444; width:16px;"></i> TP. Hồ Chí Minh</span></label>
-          <label class="filter-option"><input type="checkbox" value="hanoi" class="browse-loc-filter"> <span class="filter-opt-text"><i class="fa-solid fa-landmark" style="color:#0a66c2; width:16px;"></i> Hà Nội</span></label>
-          <label class="filter-option"><input type="checkbox" value="danang" class="browse-loc-filter"> <span class="filter-opt-text"><i class="fa-solid fa-bridge" style="color:#06b6d4; width:16px;"></i> Đà Nẵng</span></label>
-          <label class="filter-option"><input type="checkbox" value="bacninh" class="browse-loc-filter"> <span class="filter-opt-text"><i class="fa-solid fa-industry" style="color:#f97316; width:16px;"></i> Bắc Ninh</span></label>
+          <label class="filter-option"><input type="checkbox" value="hcm" class="browse-loc-filter"> <span class="filter-opt-text">TP. Hồ Chí Minh</span></label>
+          <label class="filter-option"><input type="checkbox" value="hanoi" class="browse-loc-filter"> <span class="filter-opt-text">Hà Nội</span></label>
+          <label class="filter-option"><input type="checkbox" value="danang" class="browse-loc-filter"> <span class="filter-opt-text">Đà Nẵng</span></label>
+          <label class="filter-option"><input type="checkbox" value="bacninh" class="browse-loc-filter"> <span class="filter-opt-text">Bắc Ninh</span></label>
         </div>
 
         <button class="btn-apply-filters-premium" id="btn-apply-browse-filters">
@@ -2069,12 +1646,11 @@
 <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
 <div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Menu điều hướng">
   <div class="drawer-logo">Vietnam<span style="color:#191919">Jobs</span></div>
-  <button class="drawer-item" data-view="home"><i class="fa-solid fa-house"></i> Trang Chủ</button>
-  <button class="drawer-item" data-view="browse"><i class="fa-solid fa-briefcase"></i> Việc Làm Mới</button>
-  <button class="drawer-item" data-view="browse"><i class="fa-solid fa-building"></i> Top Công Ty</button>
-  <button class="drawer-item" data-view="freelancers"><i class="fa-solid fa-user-tie"></i> Dành Cho Ứng Viên</button>
-  <button class="drawer-item" data-view="browse"><i class="fa-solid fa-graduation-cap"></i> Học Bổng & Sinh Viên</button>
-  <button class="drawer-item" data-view="browse"><i class="fa-solid fa-laptop-code"></i> Công Nghệ & IT</button>
+  <button class="drawer-item" data-view="home"><i class="fa-solid fa-house"></i> Home</button>
+  <button class="drawer-item" data-view="home" data-scroll="#section-today"><i class="fa-solid fa-newspaper"></i> News</button>
+  <button class="drawer-item" data-view="home" data-scroll="#section-jobs"><i class="fa-solid fa-briefcase"></i> Jobs</button>
+  <button class="drawer-item" data-view="home" data-scroll="#section-companies-spotlight"><i class="fa-solid fa-building"></i> Companies</button>
+  <button class="drawer-item" data-view="home" data-scroll="#section-training"><i class="fa-solid fa-graduation-cap"></i> Courses</button>
   <div style="padding: 16px 20px; border-top: 1px solid var(--fl-border); margin-top: 8px; display: flex; gap: 8px; flex-direction: column;">
     <button class="btn-login-red-outline" id="btn-open-auth-modal-mobile" style="width:100%; justify-content:center;">Đăng Nhập</button>
     <button class="btn-signup-red-solid" id="btn-open-post-project-mobile" style="width:100%; justify-content:center;"><i class="fa-solid fa-plus-circle"></i> Đăng Tin Tuyển Dụng</button>

@@ -908,7 +908,6 @@ button, input, select, textarea {
 .career-job-card, .lemon-job-card, .best-job-mini-card {
   background: #ffffff;
   border: 1px solid var(--fl-border);
-  border-left: 5px solid var(--fl-primary);
   border-radius: var(--radius-lg);
   padding: 20px 22px;
   display: flex;
@@ -927,7 +926,6 @@ button, input, select, textarea {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
   border-color: #93c5fd;
-  border-left-color: var(--fl-primary);
   background: #ffffff;
   text-decoration: none;
 }
@@ -936,7 +934,6 @@ button, input, select, textarea {
 .career-job-card.promoted, .lemon-job-card.promoted {
   background: #ffffff;
   border: 1.5px solid #bfdbfe;
-  border-left: 5px solid var(--fl-primary);
 }
 
 .career-card-left-section {
@@ -1281,7 +1278,6 @@ button, input, select, textarea {
 @media (max-width: 640px) {
   .career-job-card {
     padding: 14px 14px 14px 12px;
-    border-left-width: 5px;
   }
   .career-avatar-circle {
     width: 38px;
@@ -5386,4 +5382,2491 @@ footer a:hover {
   .home-resources-grid { grid-template-columns: 1fr; }
   .home-employer-cta-section { padding: 32px 20px; }
   .employer-title { font-size: 23px; }
+}
+
+
+/* Freelancers Candidate Cards Clean Border */
+.freelancers-grid .career-job-card {
+  border: 1px solid var(--fl-border) !important;
+  border-left: 1px solid var(--fl-border) !important;
+  border-radius: var(--radius-lg);
+}
+.freelancers-grid .career-job-card:hover {
+  border-color: #93c5fd !important;
+  border-left-color: #93c5fd !important;
+}
+
+
+/* ==========================================================================
+   ENTERPRISE LOGISTICS PORTAL COMPONENTS (VIETNAMJOBS THEME INTEGRATION)
+   ========================================================================== */
+
+/* Universal Section Titles Consistency: All Headings Blue & Left-Aligned */
+.vj-section-title,
+.section-title,
+.fw-today-title,
+.split-jobs-title,
+.fw-bridge-title,
+.career-center-title,
+.fw-section-title,
+.fw-channels-title {
+  color: var(--fl-primary, #0a66c2) !important;
+  text-align: left !important;
+  font-family: var(--font-system, 'Be Vietnam Pro', 'Plus Jakarta Sans', sans-serif) !important;
+  font-weight: 700 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  letter-spacing: -0.2px !important;
+}
+
+.fw-section-bar,
+.career-title-bar {
+  display: inline-block !important;
+  width: 4px !important;
+  height: 22px !important;
+  background: var(--fl-primary, #0a66c2) !important;
+  border-radius: 2px !important;
+  flex-shrink: 0 !important;
+}
+
+.fw-bridge-header,
+.fw-section-header,
+.career-center-header-row,
+.fw-today-header,
+.split-jobs-header-row {
+  text-align: left !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+}
+
+/* ==========================================================================
+   DEFAULT BRAND LOGO RULES: STRICTLY ZERO BORDER & NO BACKGROUND (TRANSPARENT)
+   ========================================================================== */
+.linkedin-card-logo,
+.linkedin-detail-logo,
+.linkedin-company-avatar,
+.wt-brand-logo,
+.fw-partner-logo,
+.linkedin-brand-img,
+[class*="card-logo"],
+[class*="company-logo"],
+[class*="brand-logo"] {
+border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Descriptions & Subtitles styled as H3 */
+h3.zara-hero-subtitle,
+h4.zara-hero-subtitle,
+h3.fw-section-desc,
+h4.fw-section-desc,
+h3.fw-broadsheet-desc,
+h4.fw-broadsheet-desc,
+h3.fw-gov-section-desc,
+h4.fw-gov-section-desc,
+h3.career-section-desc,
+h4.career-section-desc,
+h3.fw-yt-header-sub,
+h4.fw-yt-header-sub,
+h3.fw-yt-player-excerpt,
+h4.fw-yt-player-excerpt,
+h3.fw-bridge-meta-text,
+h4.fw-bridge-meta-text,
+h3.gov-lead-summary,
+h4.gov-lead-summary,
+h3.modal-subtitle,
+h4.modal-subtitle,
+.modal-subtitle {
+font-family: var(--font-system);
+  font-size: 14.5px;
+  font-weight: 400;
+  color: #64748B;
+  line-height: 1.6;
+  margin-top: 6px;
+}
+
+h3.fw-yt-header-sub,
+h4.fw-yt-header-sub {
+font-size: 12.5px;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 0;
+}
+
+h3.fw-yt-player-excerpt,
+h4.fw-yt-player-excerpt {
+font-size: 13.5px;
+  color: #475569;
+  line-height: 1.6;
+  margin: 10px 0 18px;
+}
+
+h3.fw-bridge-meta-text,
+h4.fw-bridge-meta-text {
+font-size: 13.5px;
+  font-weight: 400;
+  color: rgba(43, 48, 58, 0.70);
+  margin-top: 0;
+  display: inline-block;
+}
+
+/* <SPAN> Default Accent / Badges
+   Font Family: Microsoft YaHei, Font Size: 14px, Font Color: rgb(158, 122, 22), Font Weight: 400 */
+span.fw-tag,
+span.fw-section-tag,
+span.badge-highlight,
+span.accent-gold,
+.fw-section-tag,
+.fw-span-accent {
+font-family: var(--font-system);
+  font-size: 14px;
+  color: rgb(158, 122, 22) !important;
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   LINKEDIN DESIGN SYSTEM: BUTTON STANDARDS
+   ========================================================================== */
+.btn-linkedin-primary {
+background: #0A66C2;
+  color: #FFFFFF !important;
+  border: 1.5px solid transparent;
+  border-radius: 24px;
+  padding: 7px 18px;
+  font-size: 13.5px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1.35;
+}
+
+.btn-linkedin-primary:hover {
+background: #004182;
+  color: #FFFFFF !important;
+}
+
+/* Outlined Blue Pill (Matches media_1790580126788.png) */
+.btn-linkedin-outline {
+background: transparent;
+  color: #0A66C2 !important;
+  border: 1.5px solid #0A66C2;
+  border-radius: 24px;
+  padding: 6px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1.35;
+}
+
+.btn-linkedin-outline:hover {
+background: rgba(10, 102, 194, 0.08);
+  box-shadow: inset 0 0 0 1px #0A66C2;
+  color: #0A66C2 !important;
+}
+
+/* Outlined Dark/Gray Pill (Matches media_1790580129844.png) */
+.btn-linkedin-secondary {
+background: transparent;
+  color: rgba(0, 0, 0, 0.75) !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.6);
+  border-radius: 24px;
+  padding: 6px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1.35;
+}
+
+.btn-linkedin-secondary:hover {
+background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.9);
+  color: rgba(0, 0, 0, 0.9) !important;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.9);
+}
+
+/* ==========================================================================
+   3.1 MARKET INTELLIGENCE • YOUTUBE VIDEO BROADCAST HUB (CLEAN & FRAMELESS)
+   ========================================================================== */
+.fw-today-section {
+padding: 24px 0 40px;
+  background: #FFFFFF;
+}
+
+.fw-today-header {
+display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.fw-today-title {
+font-size: 20px;
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: -0.2px;
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+}
+
+.fw-yt-header-left {
+display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.fw-yt-live-tag {
+display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #CC1016;
+  background: rgba(204, 16, 22, 0.07);
+  padding: 3px 10px;
+  border-radius: 14px;
+  letter-spacing: 0.3px;
+}
+
+.fw-yt-header-right {
+display: flex;
+  align-items: center;
+}
+
+.fw-yt-header-sub {
+font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.fw-yt-hub-grid {
+display: grid;
+  grid-template-columns: 1.65fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Main Featured Player: Frameless & Clean */
+.fw-yt-main-player-card {
+background: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.fw-yt-iframe-wrap {
+position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0F172A;
+  border-radius: 8px; /* 5% radius compliant */
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.fw-yt-iframe-wrap iframe {
+position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.fw-yt-player-details {
+padding: 18px 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.fw-yt-meta-row {
+display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.fw-yt-category-badge {
+font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--primary-blue);
+  background: rgba(10, 102, 194, 0.08);
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.fw-yt-meta-dot {
+color: #CBD5E1;
+  font-size: 10px;
+}
+
+.fw-yt-date, .fw-yt-duration {
+font-size: 12px;
+  color: #94A3B8;
+  font-weight: 400;
+}
+
+.fw-yt-player-title {
+font-size: 19px;
+  font-weight: 600;
+  color: #1F2937;
+  line-height: 1.38;
+  margin: 0 0 10px;
+}
+
+.fw-yt-player-excerpt {
+font-size: 13px;
+  font-weight: 400;
+  color: rgba(43, 48, 58, 0.70); /* 70% contrast, clean editorial feel */
+  line-height: 1.55;
+  margin: 0 0 16px;
+}
+
+.fw-yt-actions {
+display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fw-yt-btn-primary {
+display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: #FF0000 !important; /* Authentic YouTube Red */
+  color: #FFFFFF !important;
+  font-size: 13.5px;
+  font-weight: 600;
+  border-radius: 20px !important;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.28);
+  transition: background 0.18s ease, transform 0.15s ease, box-shadow 0.18s ease;
+}
+
+.fw-yt-btn-primary:hover {
+background: #CC0000 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(255, 0, 0, 0.38);
+}
+
+.fw-yt-btn-secondary {
+display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 20px !important;
+  border: 1px solid #E2E8F0;
+  color: #0F172A;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  background: #F1F5F9;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.fw-yt-btn-secondary:hover {
+background: #E2E8F0;
+  color: #000000;
+}
+
+/* Playlist Card: Frameless with Subtle Background Canvas */
+.fw-yt-playlist-card {
+background: #F8FAFC;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.fw-yt-playlist-card {
+margin-top: -46px; /* Moves the playlist card up to align with Market Intelligence heading */
+}
+
+.fw-yt-playlist-top {
+display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 8px;
+}
+
+.fw-yt-playlist-heading {
+font-size: 15px;
+  font-weight: 600;
+  color: #1F2937;
+  margin: 0;
+}
+
+.fw-yt-badge-count {
+font-size: 11px;
+  font-weight: 600;
+  color: #64748B;
+  background: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.fw-yt-playlist-list {
+display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-y: auto;
+  max-height: 520px;
+  padding-right: 2px;
+}
+
+.fw-yt-playlist-list::-webkit-scrollbar {
+width: 5px;
+}
+
+.fw-yt-playlist-list::-webkit-scrollbar-thumb {
+background: #CBD5E1;
+  border-radius: 4px;
+}
+
+.fw-yt-item {
+display: flex;
+  gap: 12px;
+  align-items: flex-start; /* Aligns text cleanly to top of thumbnail */
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  border-left: 3px solid transparent;
+  background: transparent;
+  transition: all 0.18s ease;
+}
+
+.fw-yt-item:hover {
+background: #FFFFFF;
+}
+
+.fw-yt-item.active {
+background: #FFFFFF;
+  border-left-color: #FF0000 !important; /* Authentic YouTube Red Active Indicator */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+}
+
+.fw-yt-item-thumb-wrap {
+position: relative;
+  width: 167px;
+  height: 96px;
+  min-width: 167px;
+  min-height: 96px;
+  flex-shrink: 0;
+  border-radius: 6px !important;
+  overflow: hidden;
+  background: #000000;
+}
+
+.fw-yt-item-thumb {
+width: 167px;
+  height: 96px;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px !important;
+  transition: transform 0.25s ease;
+}
+
+.fw-yt-item:hover .fw-yt-item-thumb {
+transform: scale(1.03);
+}
+
+/* Authentic YouTube duration badge at bottom right */
+.fw-yt-duration-pill {
+position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: rgba(0, 0, 0, 0.85) !important;
+  color: #FFFFFF !important;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  padding: 2px 5px;
+  border-radius: 4px !important;
+  line-height: 1.2;
+  letter-spacing: 0.3px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Authentic YouTube Play Button Overlay */
+.fw-yt-play-btn-overlay {
+position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease;
+  z-index: 1;
+}
+
+.fw-yt-item:hover .fw-yt-play-btn-overlay {
+opacity: 1;
+}
+
+.fw-yt-item.active .fw-yt-play-btn-overlay {
+opacity: 1;
+  background: rgba(0, 0, 0, 0.20);
+}
+
+.fw-yt-btn-icon {
+width: 38px;
+  height: 26px;
+  background: #FF0000 !important; /* Authentic YouTube Red */
+  border-radius: 6px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.2, 1), background 0.2s ease;
+}
+
+.fw-yt-item:hover .fw-yt-btn-icon {
+transform: scale(1.1);
+  background: #CC0000 !important;
+}
+
+.fw-yt-item.active .fw-yt-btn-icon {
+background: #FF0000 !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85), 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.fw-yt-item-info {
+flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1px;
+}
+
+.fw-yt-item-tag {
+font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--primary-blue);
+  letter-spacing: 0.3px;
+  margin-bottom: 2px;
+}
+
+.fw-yt-item.active .fw-yt-item-tag {
+color: #CC1016;
+}
+
+.fw-yt-item-title {
+font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(43, 48, 58, 0.85);
+  line-height: 1.35;
+  margin: 0 0 3px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.15s ease;
+}
+
+.fw-yt-item:hover .fw-yt-item-title {
+color: var(--primary-blue);
+}
+
+.fw-yt-item-channel {
+font-size: 11px;
+  color: #94A3B8;
+  font-weight: 400;
+}
+
+.fw-yt-hub-grid {
+grid-template-columns: 1fr;
+}
+
+.fw-yt-playlist-list {
+max-height: 320px;
+}
+
+.fw-section-bar {
+display: inline-block;
+  width: 3.5px;
+  height: 18px;
+  background: var(--color-amber);
+  margin-right: 8px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.fw-section-tag {
+font-size: 11px;
+  font-weight: 600;
+  color: var(--primary-blue);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.fw-section-more,
+.fw-view-all-link {
+font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.15s ease;
+}
+
+.fw-section-more:hover,
+.fw-view-all-link:hover {
+color: var(--primary-blue);
+}
+
+/* 5% (~5-6px) smooth corner radius on all images and media containers */
+.fw-card-photo-wrap,
+.fw-card-photo,
+.fw-card-thumb,
+.fw-thumb-img,
+.fw-today-media,
+.fw-today-img,
+.fw-lead-thumb,
+.fw-lead-img,
+.hero-editorial-viewport,
+.hero-editorial-slide img,
+.gov-lead-img-wrap,
+.gov-lead-img,
+.fw-topic-img-wrap,
+.fw-topic-img,
+.fw-yt-item-thumb-wrap,
+.fw-yt-item-thumb {
+border-radius: 5px !important;
+}
+
+/* ==========================================================================
+   STRICT USER DIRECTIVE: ONLY 3 IMAGE RENDERED SIZES ALLOWED:
+   1. 167 ├ù 96 px  -> Small thumbnails, playlist items, topic grid tiles
+   2. 290 ├ù 140 px -> Medium lead story briefings
+   3. 320 ├ù 205 px -> Standard editorial and vocational cards
+   ========================================================================== */
+
+/* Size 1: Exactly 167 ├ù 96 px */
+.fw-yt-item-thumb-wrap,
+.fw-topic-img-wrap {
+width: 167px !important;
+  height: 96px !important;
+  min-width: 167px !important;
+  min-height: 96px !important;
+  max-width: 167px !important;
+  max-height: 96px !important;
+  overflow: hidden !important;
+  border-radius: 5px !important;
+  flex-shrink: 0 !important;
+}
+
+.fw-yt-item-thumb,
+.fw-topic-img {
+width: 167px !important;
+  height: 96px !important;
+  min-width: 167px !important;
+  min-height: 96px !important;
+  max-width: 167px !important;
+  max-height: 96px !important;
+  object-fit: cover !important;
+  border-radius: 5px !important;
+  display: block !important;
+}
+
+/* ==========================================================================
+   USER DIRECTIVE: EXACT TYPOGRAPHY STYLING (FROM CHROME DEVTOOLS INSPECT)
+   1. Title Style:
+      Color: #717171
+      Font Size: 24px
+      Padding: 0 0 0 25px
+      Font Weight: 500 (Refined, not harsh bold)
+      With vertical amber accent bar on the left edge
+   2. Text Normal Style:
+      Color: #363637
+      Font Size: 16px
+      Font Weight: 400 (Regular, clean, not bold, not light)
+   ========================================================================== */
+
+/* Master Title Style: 24px, #717171, padding: 0 0 0 25px */
+.fw-section-title,
+.fw-today-title,
+.fw-block-heading,
+.fw-bridge-title,
+.fw-channels-header h4,
+.fw-channels-header h3,
+.fw-channels-title,
+.fw-section-header h1,
+.fw-section-header h2,
+.fw-section-title-wrap h1,
+.fw-section-title-wrap h2 {
+color: #717171 !important;
+  font-size: 24px !important;
+  font-weight: 500 !important;
+  line-height: 1.35 !important;
+  letter-spacing: -0.2px;
+  position: relative !important;
+  padding: 0 0 0 25px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+}
+
+/* Vertical Amber Accent Bar on Left Edge */
+.fw-section-title::before,
+.fw-today-title::before,
+.fw-block-heading::before,
+.fw-bridge-title::before,
+.fw-channels-header h4::before,
+.fw-channels-header h3::before,
+.fw-channels-title::before,
+.fw-section-header h1::before,
+.fw-section-header h2::before,
+.fw-section-title-wrap h1::before,
+.fw-section-title-wrap h2::before {
+content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 22px;
+  background: var(--color-amber) !important;
+  border-radius: 2px;
+}
+
+/* Hide duplicate inline span bars */
+.fw-section-bar {
+display: none !important;
+}
+
+/* Master Text Normal: 16px, rgb(46, 62, 78) = #2E3E4E, 400 regular weight */
+a.fl,
+.text-normal,
+.gov-news-title,
+.gov-news-list a,
+.fw-card-title,
+.fw-card-title a,
+.fw-headline-card a,
+.fw-news-link,
+.fw-news-title,
+.fw-news-item a,
+.fw-topic-name,
+.fw-yt-item-title,
+.fw-card-title-main,
+.fw-channel-text,
+.fw-event-title a,
+.fw-course-title,
+.fw-occ-title {
+color: rgb(46, 62, 78) !important;
+  font-family: var(--font-system) !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.55 !important;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+/* Interactive Hover for Normal Text */
+a.fl:hover,
+.text-normal:hover,
+.gov-news-title:hover,
+.gov-news-list a:hover,
+.fw-card-title a:hover,
+.fw-headline-card a:hover,
+.fw-news-link:hover,
+.fw-news-title:hover,
+.fw-news-item a:hover,
+.fw-topic-item:hover .fw-topic-name,
+.fw-yt-item:hover .fw-yt-item-title,
+.fw-card-title-main:hover,
+.fw-channel-tile:hover .fw-channel-text,
+.fw-event-title a:hover,
+.fw-course-title:hover,
+.fw-occ-title:hover {
+color: var(--primary-blue) !important;
+}
+
+/* ==========================================================================
+   8. QUICK CHANNELS & VERIFICATION GRID (MATCHING MOHRSS SCREENSHOT)
+   ========================================================================== */
+.fw-channels-section {
+padding: 48px 0 56px;
+  background: #F8FAFC;
+  border-top: none;
+  border-bottom: none;
+}
+
+.fw-channels-grid {
+display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.fw-channel-tile {
+background: #FFFFFF;
+  border: none !important;
+  border-radius: 12px;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  cursor: pointer;
+  min-height: 96px;
+  text-decoration: none;
+}
+
+.fw-channel-tile:hover {
+background: #FFFFFF;
+  border: none !important;
+  border-color: transparent !important;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.11);
+  transform: translateY(-4px);
+}
+
+.fw-channel-icon {
+width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  max-width: 44px !important;
+  max-height: 44px !important;
+  background: transparent !important;
+  color: #1E293B !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 32px !important;
+  flex-shrink: 0 !important;
+  transition: color 0.18s ease, transform 0.2s ease;
+}
+
+.fw-channel-tile:hover .fw-channel-icon {
+color: var(--primary-blue) !important;
+  transform: scale(1.08);
+}
+
+.fw-channel-info {
+display: flex;
+  flex-direction: column;
+}
+
+.fw-channel-text {
+font-family: var(--font-system) !important;
+  font-size: 16.5px !important;
+  font-weight: 600 !important;
+  color: #1E293B !important;
+  line-height: 1.4 !important;
+  display: inline-block;
+  max-width: none !important;
+  transition: color 0.15s ease;
+}
+
+.fw-channel-tile:hover .fw-channel-text {
+color: var(--primary-blue) !important;
+}
+
+.fw-channel-sub {
+font-family: var(--font-system) !important;
+  font-size: 13px !important;
+  color: #64748B !important;
+  font-weight: 500 !important;
+  margin-top: 3px;
+}
+
+/* ==========================================================================
+   12. LINKEDIN-STYLE SPLIT-SCREEN RECRUITMENT BOARD (MINIMAL BORDERLESS)
+   ========================================================================== */
+.split-job-layout {
+display: grid;
+  grid-template-columns: 410px 1fr;
+  background: #FFFFFF;
+  border: none !important;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+  min-height: 720px;
+  max-height: 780px;
+  overflow: hidden;
+}
+
+/* Left: Job Scrollable List Panel */
+.job-list-panel {
+display: flex;
+  flex-direction: column;
+  border-right: 1px solid #F1F5F9;
+  height: 100%;
+  max-height: 780px;
+  overflow-y: auto;
+  background: #FAFAFB;
+  padding: 8px;
+}
+
+.job-list-panel::-webkit-scrollbar,
+.job-detail-panel::-webkit-scrollbar {
+width: 5px;
+}
+
+.job-list-panel::-webkit-scrollbar-thumb,
+.job-detail-panel::-webkit-scrollbar-thumb {
+background: rgba(148, 163, 184, 0.35);
+  border-radius: 4px;
+}
+
+.job-list-panel::-webkit-scrollbar-thumb:hover,
+.job-detail-panel::-webkit-scrollbar-thumb:hover {
+background: rgba(148, 163, 184, 0.6);
+}
+
+.linkedin-list-header {
+padding: 10px 12px 14px;
+  border-bottom: none !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+}
+
+.linkedin-list-title {
+font-size: 14px;
+  font-weight: 700;
+  color: #191919;
+  display: block;
+}
+
+.linkedin-list-sub {
+font-size: 11.5px;
+  color: #717171;
+  display: block;
+  margin-top: 1px;
+}
+
+.linkedin-list-count {
+font-size: 12px;
+  font-weight: 600;
+  color: #0A66C2;
+}
+
+.linkedin-card-logo {
+width: 58px;
+  height: 58px;
+  border-radius: 0 !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+.linkedin-brand-img {
+width: 54px !important;
+  height: 54px !important;
+  max-width: 54px !important;
+  max-height: 54px !important;
+  object-fit: contain !important;
+  display: block !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.linkedin-card-content {
+display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.linkedin-card-title {
+font-size: 15px;
+  font-weight: 600;
+  color: #0A66C2;
+  line-height: 1.25;
+  margin: 0 0 2px;
+}
+
+.job-card:hover .linkedin-card-title {
+text-decoration: underline;
+}
+
+.linkedin-card-company {
+font-size: 13.5px;
+  color: #191919;
+  font-weight: 400;
+  margin-bottom: 2px;
+}
+
+.linkedin-card-location {
+font-size: 12.5px;
+  color: #666666;
+  margin-bottom: 4px;
+}
+
+.linkedin-card-salary-row {
+margin-bottom: 4px;
+}
+
+.linkedin-card-salary-val {
+font-size: 13px;
+  font-weight: 500;
+  color: #191919;
+}
+
+.linkedin-card-badges {
+display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 3px;
+  flex-wrap: wrap;
+}
+
+.linkedin-badge-easy {
+font-size: 12px;
+  font-weight: 600;
+  color: #0A66C2;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.linkedin-badge-active {
+font-size: 11.5px;
+  color: #057642;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.linkedin-card-meta {
+font-size: 11.5px;
+  color: #717171;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Right: LinkedIn Job Detail Panel */
+.job-detail-panel {
+background: #FFFFFF;
+  height: 100%;
+  max-height: 780px;
+  overflow-y: auto;
+  padding: 24px 28px;
+}
+
+.linkedin-detail-header {
+display: flex;
+  flex-direction: column;
+}
+
+.linkedin-detail-top-row {
+display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.linkedin-detail-logo {
+width: 68px;
+  height: 68px;
+  border-radius: 0 !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+.linkedin-detail-logo .linkedin-brand-img {
+width: 66px !important;
+  height: 66px !important;
+  max-width: 66px !important;
+  max-height: 66px !important;
+}
+
+.linkedin-detail-top-info {
+flex: 1;
+}
+
+.linkedin-detail-company-link-row {
+display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.linkedin-detail-company-link {
+font-size: 14.5px;
+  color: #0A66C2;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.linkedin-detail-company-link:hover {
+text-decoration: underline;
+}
+
+.linkedin-vip-pill {
+font-size: 10.5px;
+  font-weight: 700;
+  background: #FFE4E6;
+  color: #BE123C;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.linkedin-featured-pill {
+font-size: 10.5px;
+  font-weight: 700;
+  background: #E0F2FE;
+  color: #0369A1;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.linkedin-detail-title {
+font-size: 24px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.9);
+  line-height: 1.25;
+  margin: 0 0 6px;
+  letter-spacing: -0.3px;
+}
+
+.linkedin-detail-meta-line {
+font-size: 13.5px;
+  color: #666666;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* LinkedIn Unboxed Clean Insights */
+.linkedin-insights-grid {
+display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 16px 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.linkedin-insight-item {
+display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.linkedin-insight-item i {
+font-size: 16px;
+  color: rgba(0, 0, 0, 0.6);
+  width: 20px;
+  text-align: center;
+}
+
+.linkedin-insight-item strong {
+font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.linkedin-insight-item .sub-insight {
+display: none;
+}
+
+/* LinkedIn Action Buttons */
+.linkedin-actions-row {
+display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0 6px;
+}
+
+.btn-linkedin-easy-apply {
+background: #0A66C2;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 7px 22px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s ease;
+  font-family: inherit;
+}
+
+.btn-linkedin-easy-apply:hover {
+background: #004182;
+}
+
+.btn-linkedin-save {
+background: transparent;
+  color: #0A66C2;
+  border: 1.5px solid #0A66C2;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 6px 20px;
+  border-radius: 24px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.btn-linkedin-save:hover {
+background: rgba(10, 102, 194, 0.08);
+}
+
+.btn-linkedin-save.saved {
+background: #0A66C2;
+  color: #FFFFFF;
+}
+
+.btn-linkedin-circle-icon {
+width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  background: transparent;
+  color: rgba(0, 0, 0, 0.7);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 14px;
+}
+
+.btn-linkedin-circle-icon:hover {
+background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.9);
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.linkedin-detail-divider {
+height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 18px 0;
+  border: none;
+}
+
+/* About the Job Section */
+.linkedin-about-job-section {
+color: rgba(0, 0, 0, 0.9);
+}
+
+.linkedin-section-title {
+font-size: 18px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 0 0 12px;
+  letter-spacing: -0.2px;
+}
+
+.linkedin-body-p {
+font-size: 14px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.9);
+  margin-bottom: 16px;
+}
+
+.linkedin-sub-title {
+font-size: 15px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 16px 0 8px;
+}
+
+.linkedin-bullets-list {
+list-style: disc;
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.linkedin-bullets-list li {
+font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.85);
+  margin-bottom: 6px;
+}
+
+/* About the Company Module - Clean Unboxed */
+.linkedin-company-card {
+border: none;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  margin-top: 10px;
+}
+
+.linkedin-company-card-top {
+display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.linkedin-company-avatar {
+width: 62px;
+  height: 62px;
+  border-radius: 0 !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+.linkedin-company-avatar .linkedin-brand-img {
+width: 60px !important;
+  height: 60px !important;
+  max-width: 60px !important;
+  max-height: 60px !important;
+}
+
+.linkedin-company-card-name {
+font-size: 16px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.linkedin-company-card-meta {
+font-size: 12.5px;
+  color: #666666;
+  margin-top: 2px;
+}
+
+.btn-linkedin-follow {
+margin-left: auto;
+  border: 1.5px solid #0A66C2;
+  background: transparent;
+  color: #0A66C2;
+  font-weight: 600;
+  font-size: 13.5px;
+  padding: 4px 16px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.btn-linkedin-follow:hover {
+background: rgba(10, 102, 194, 0.08);
+}
+
+.linkedin-company-card-desc {
+font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+}
+
+.split-job-layout {
+grid-template-columns: 1fr;
+    max-height: none;
+    height: auto;
+}
+
+.job-list-panel {
+border-right: none;
+    border-bottom: 1px solid #E0E0E0;
+    max-height: 500px;
+}
+
+.job-detail-panel {
+max-height: none;
+    height: auto;
+    padding: 20px;
+}
+
+.linkedin-insights-grid {
+grid-template-columns: 1fr;
+}
+
+.split-job-layout {
+grid-template-columns: 1fr;
+}
+
+.job-detail-panel {
+position: static;
+}
+
+.fw-today-track {
+grid-template-columns: repeat(3, 1fr);
+}
+
+.fw-channels-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+
+.fw-today-track {
+grid-template-columns: 1fr;
+}
+
+.fw-four-cards-grid,
+  .fw-cards-row-4,
+  .fw-channels-grid {
+grid-template-columns: 1fr;
+}
+
+/* ==========================================================================
+   15. INTERACTION & ANIMATION SYSTEM (HUMAN-CRAFTED POLISH)
+   ========================================================================== */
+
+/* Walk into Employment Bridge - Partner Academic Network */
+.fw-bridge-section {
+padding: 46px 0 54px;
+  background: #FFFFFF;
+  border-top: 1px solid var(--border-divider);
+  border-bottom: 1px solid var(--border-divider);
+}
+
+.fw-bridge-header {
+text-align: center;
+  margin-bottom: 26px;
+}
+
+.fw-bridge-title {
+font-size: 26px;
+  font-weight: 600;
+  color: #2B303A;
+  letter-spacing: 0.5px;
+  margin: 0 0 10px;
+}
+
+.fw-bridge-meta-bar {
+display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.fw-bridge-meta-text {
+font-size: 13.5px;
+  font-weight: 400;
+  color: rgba(43, 48, 58, 0.70); /* 70% intensity, not too bold, not too light */
+  letter-spacing: 0.2px;
+}
+
+.fw-bridge-count {
+color: #CC1016;
+  font-weight: 600;
+  margin: 0 2px;
+}
+
+.fw-bridge-more {
+position: absolute;
+  right: 10px;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(43, 48, 58, 0.65); /* 70% muted */
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.18s ease;
+}
+
+.fw-bridge-more:hover {
+color: var(--primary-blue);
+}
+
+/* 10-Column Grid Container */
+.fw-bridge-grid {
+display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  background: #FFFFFF;
+  margin-top: 24px;
+  border-top: 1px dashed #E5E7EB;
+  border-left: 1px dashed #E5E7EB;
+}
+
+.fw-bridge-item {
+display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 18px 8px 16px;
+  border-right: 1px dashed #E5E7EB;
+  border-bottom: 1px dashed #E5E7EB;
+  text-decoration: none;
+  background: #FFFFFF;
+  transition: background 0.18s ease, transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.fw-bridge-item:hover {
+background: #FAFBFD;
+  transform: translateY(-2px);
+}
+
+.fw-bridge-logo-wrap {
+width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  transition: transform 0.25s ease;
+}
+
+.fw-bridge-item:hover .fw-bridge-logo-wrap {
+transform: scale(1.06);
+}
+
+.fw-bridge-logo-svg {
+width: 52px;
+  height: 52px;
+  display: block;
+}
+
+.fw-bridge-name {
+font-size: 12px;
+  font-weight: 500;
+  color: rgb(46, 62, 78);
+  text-align: center;
+  line-height: 1.35;
+  margin: 0;
+  transition: color 0.18s ease;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.fw-bridge-item:hover .fw-bridge-name {
+color: var(--primary-blue);
+}
+
+.fw-bridge-grid {
+grid-template-columns: repeat(5, 1fr);
+}
+
+.fw-bridge-meta-bar {
+flex-direction: column;
+    gap: 8px;
+    text-align: center;
+}
+
+.fw-bridge-more {
+position: static;
+}
+
+.fw-bridge-grid {
+display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+}
+
+.fw-bridge-item {
+min-width: 110px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+}
+
+/* 2. Realistic Hover Behavior (Intentional & Grounded) */
+.fw-today-card,
+.fw-headline-card,
+.fw-report-card,
+.fw-course-card-clean,
+.fw-occ-card-clean,
+.fw-channel-tile,
+.job-card,
+.fw-special-card-clean,
+.fw-serv-card-clean {
+transition:
+    transform .35s cubic-bezier(.2, .8, .2, 1),
+    box-shadow .35s ease,
+    border-color .2s ease;
+}
+
+.fw-today-card:hover,
+.fw-headline-card:hover,
+.fw-report-card:hover,
+.fw-course-card-clean:hover,
+.fw-occ-card-clean:hover {
+transform: translateY(-4px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+}
+
+.fw-channel-tile:hover {
+transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.11);
+}
+
+/* 2.5% Image Scale on Hover (Not cartoonish 10%) */
+.fw-card-photo-wrap img,
+.fw-card-thumb img,
+.fw-report-cover-img,
+.fw-today-thumb img,
+.fw-lead-img {
+transition: transform .6s cubic-bezier(.2, .8, .2, 1);
+}
+
+.fw-headline-card:hover .fw-thumb-img,
+.fw-course-card-clean:hover .fw-card-photo,
+.fw-occ-card-clean:hover .fw-card-photo,
+.fw-report-card:hover .fw-report-cover-img,
+.fw-today-card:hover .fw-today-thumb img,
+.fw-lead-story:hover .fw-lead-img {
+transform: scale(1.025) !important;
+}
+
+/* 3. Micro-Interactions: Buttons & Interactive Controls */
+button,
+.btn-apply-primary,
+.btn-bookmark-job,
+.hero-search-btn,
+.fw-btn-auth,
+.fw-course-btn,
+.job-chip-btn,
+.fw-nav-live-btn,
+.hero-css-cta {
+transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    background .18s ease,
+    color .18s ease;
+}
+
+button:hover,
+.btn-apply-primary:hover,
+.btn-bookmark-job:hover,
+.hero-search-btn:hover,
+.fw-btn-auth:hover,
+.fw-course-btn:hover,
+.job-chip-btn:hover,
+.hero-css-cta:hover {
+transform: translateY(-1px);
+}
+
+button:active,
+.btn-apply-primary:active,
+.btn-bookmark-job:active,
+.hero-search-btn:active,
+.fw-btn-auth:active,
+.fw-course-btn:active,
+.job-chip-btn:active,
+.hero-css-cta:active {
+transform: translateY(1px);
+}
+
+.fw-channels-grid,
+  .fw-cards-row-4,
+  .fw-whitepapers-grid,
+  .hero-stats-grid {
+display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+    gap: 14px;
+}
+
+.fw-channels-grid > *,
+  .fw-cards-row-4 > *,
+  .fw-whitepapers-grid > *,
+  .hero-stats-grid > * {
+min-width: 260px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   FEATURED CAREERS & JOBS / Course Center (EXACT SCREENSHOT SPECIFICATION)
+   ========================================================================== */
+.fw-featured-career-section {
+padding: 42px 0 48px;
+  background: #FFFFFF;
+  border-top: none;
+  border-bottom: none;
+}
+
+.career-center-header-row {
+margin-bottom: 18px;
+}
+
+.career-center-title-wrap {
+display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.career-center-title {
+font-family: var(--font-system) !important;
+  font-size: 21px !important;
+  font-weight: 700 !important;
+  color: #1E293B !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.3px !important;
+  display: flex !important;
+  align-items: baseline !important;
+}
+
+/* Category Filter Tabs Bar */
+.career-tabs-bar {
+display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: none;
+  margin-bottom: 24px;
+  padding-bottom: 0;
+  gap: 16px;
+}
+
+.career-tabs-scroll {
+display: flex;
+  align-items: center;
+  gap: 28px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.career-tabs-scroll::-webkit-scrollbar {
+display: none;
+}
+
+.career-tab-btn {
+background: none;
+  border: none;
+  outline: none;
+  font-family: var(--font-system);
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #475569;
+  padding: 8px 0 12px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.15s ease;
+  white-space: nowrap;
+}
+
+.career-tab-btn:hover {
+color: #E11D48;
+}
+
+.career-tab-btn.active {
+color: #E11D48 !important;
+  font-weight: 700 !important;
+}
+
+.career-tab-btn.active::after {
+content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: #E11D48;
+  border-radius: 1px;
+}
+
+.career-tabs-more {
+font-family: var(--font-system);
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748B;
+  text-decoration: none;
+  white-space: nowrap;
+  margin-bottom: 6px;
+  transition: color 0.15s ease;
+}
+
+.career-tabs-more:hover {
+color: #E11D48;
+}
+
+/* 4-Column Cards Grid */
+.career-cards-grid-4 {
+display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.career-cards-grid-4 {
+grid-template-columns: repeat(2, 1fr);
+}
+
+.career-cards-grid-4 {
+grid-template-columns: 1fr;
+}
+
+/* Individual Card - Pure Borderless & Neutral LinkedIn Style */
+.career-card-item {
+background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+  box-shadow: none !important;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease;
+}
+
+.career-card-item:hover {
+transform: translateY(-2px);
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.career-card-img-wrap {
+width: 100%;
+  aspect-ratio: 16 / 9.2;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #F1F5F9;
+  position: relative;
+  border: none !important;
+}
+
+.career-card-img {
+width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  transition: transform 0.25s ease;
+  border: none !important;
+}
+
+.career-card-item:hover .career-card-img {
+transform: scale(1.025);
+}
+
+.career-card-content {
+padding: 10px 2px 4px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+  border: none !important;
+}
+
+.career-card-name {
+font-family: var(--font-system) !important;
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  color: #191919 !important; /* Authentic LinkedIn Title */
+  margin: 0 0 6px !important;
+  line-height: 1.35 !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.career-card-item:hover .career-card-name {
+color: #0A66C2 !important; /* Authentic LinkedIn Blue */
+  text-decoration: underline !important;
+}
+
+/* Meta Footer Row - Pure LinkedIn Typography (No orange or rainbow colors) */
+.career-card-meta {
+display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 400;
+  color: #666666 !important; /* Neutral LinkedIn metadata text */
+}
+
+.career-meta-modules,
+.career-meta-views {
+display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #666666 !important; /* Neutral LinkedIn metadata text */
+}
+
+.career-meta-modules i,
+.career-meta-views i {
+font-size: 11.5px;
+  color: #8C8C8C !important; /* Subtle LinkedIn icon tone */
+}
+
+/* ==========================================================================
+   16. ENTERPRISE SPLIT-SCREEN RECRUITMENT MARKETPLACE
+   ========================================================================== */
+.fw-split-jobs-section {
+padding: 48px 0 56px;
+  background: #F8FAFC;
+  border-top: none;
+  border-bottom: none;
+}
+
+.split-jobs-header-row {
+display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+  gap: 20px;
+}
+
+.split-jobs-badge-pill {
+display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  color: #1D4ED8;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+h1.split-jobs-title,
+.split-jobs-title {
+font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #191919 !important;
+  line-height: 1.25 !important;
+  margin: 0 0 6px 0 !important;
+  letter-spacing: -0.2px !important;
+}
+
+h3.split-jobs-sub,
+.split-jobs-sub {
+font-size: 13.5px !important;
+  color: #666666 !important;
+  font-weight: 400 !important;
+  margin: 0 !important;
+  line-height: 1.5 !important;
+}
+
+.job-chips-scroll-wrap {
+display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+  position: relative;
+}
+
+.job-chips-scroll {
+display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 4px 2px;
+  scroll-behavior: smooth;
+  cursor: grab;
+  user-select: none;
+}
+
+.job-chips-scroll:active {
+cursor: grabbing;
+}
+
+.job-chips-scroll::-webkit-scrollbar {
+display: none;
+}
+
+.chips-scroll-btn {
+width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none !important;
+  background: #FFFFFF;
+  color: #475569;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+  font-size: 12px;
+  z-index: 2;
+}
+
+.chips-scroll-btn:hover {
+background: #F1F5F9;
+  color: #0F172A;
+  transform: scale(1.05);
+}
+
+.chips-scroll-btn:active {
+background: #E2E8F0;
+  transform: scale(0.96);
+}
+
+.job-chip-btn {
+background: #F1F5F9;
+  border: none !important;
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-size: 13.5px;
+  font-weight: 550;
+  color: #475569;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.job-chip-btn:hover {
+background: #E2E8F0;
+  color: #0F172A;
+  border: none !important;
+}
+
+.job-chip-btn.active {
+background: #0044CC !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 68, 204, 0.25);
+}
+
+.split-jobs-header-row {
+flex-direction: column;
+    align-items: flex-start;
+}
+
+.job-detail-panel.animate-swap {
+animation: linkedinDetailFade 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Subtle micro-press click effect for interactive buttons */
+.btn-linkedin-easy-apply:active,
+.btn-linkedin-save:active,
+.wt-post-btn-linkedin:active,
+.hero-search-btn:active,
+.job-chip-btn:active,
+.btn-linkedin-circle-icon:active {
+transform: scale(0.975);
+  transition: transform 0.08s ease;
+}
+
+/* Smooth hover elevation on job cards */
+.linkedin-job-card {
+transition: background-color 0.15s ease, box-shadow 0.18s cubic-bezier(0.2, 0, 0, 1), transform 0.18s cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+.linkedin-job-card:hover {
+transform: translateY(-1px);
+}
+
+.split-job-layout {
+grid-template-columns: 360px 1fr !important;
+}
+
+.career-cards-grid-4 {
+gap: 16px !important;
+}
+
+.fw-channels-grid {
+gap: 16px !important;
+}
+
+/* Dual-Pane Job Board Responsive Stack */
+  .split-job-layout {
+grid-template-columns: 1fr !important;
+    min-height: auto !important;
+    max-height: none !important;
+    border-radius: 12px !important;
+}
+
+.job-list-panel {
+border-right: none !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    max-height: 440px !important;
+    padding: 6px !important;
+}
+
+.job-detail-panel {
+height: auto !important;
+    max-height: none !important;
+    padding: 22px 20px !important;
+}
+
+/* Grid Layouts */
+  .career-cards-grid-4 {
+grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+}
+
+.fw-channels-grid {
+grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px !important;
+}
+
+/* Section Spacing & Titles */
+  .fw-split-jobs-section,
+  .fw-featured-career-section,
+  .fw-channels-section,
+  .fw-gov-news-section {
+padding: 34px 0 38px !important;
+}
+
+.split-jobs-title,
+  .career-center-title,
+  .fw-section-title {
+font-size: 19px !important;
+    line-height: 1.3 !important;
+}
+
+.split-jobs-sub,
+  .career-section-desc,
+  .fw-section-desc {
+font-size: 13px !important;
+    line-height: 1.45 !important;
+}
+
+.split-jobs-header-row {
+flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+    margin-bottom: 16px !important;
+}
+
+.job-chip-btn {
+padding: 6px 13px !important;
+    font-size: 12.5px !important;
+}
+
+/* Job Detail Panel Inside Split Layout */
+  .linkedin-detail-top-row {
+flex-direction: column !important;
+    gap: 12px !important;
+}
+
+.linkedin-detail-logo {
+width: 52px !important;
+    height: 52px !important;
+}
+
+.linkedin-detail-logo .linkedin-brand-img {
+width: 50px !important;
+    height: 50px !important;
+}
+
+.linkedin-detail-title {
+font-size: 20px !important;
+}
+
+.linkedin-actions-row {
+flex-wrap: wrap !important;
+    gap: 8px !important;
+}
+
+.btn-linkedin-easy-apply {
+width: 100% !important;
+    justify-content: center !important;
+    padding: 10px 20px !important;
+}
+
+.btn-linkedin-save {
+flex: 1 !important;
+    justify-content: center !important;
+}
+
+/* Featured Careers Tabs */
+  .career-tabs-bar {
+flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    margin-bottom: 18px !important;
+}
+
+.career-tabs-scroll {
+width: 100% !important;
+    gap: 18px !important;
+}
+
+.career-tabs-more {
+font-size: 12px !important;
+    margin-bottom: 0 !important;
+}
+
+/* Verification Channels */
+  .fw-channel-tile {
+padding: 18px 18px !important;
+    min-height: 84px !important;
+    gap: 14px !important;
+}
+
+.fw-channel-icon {
+font-size: 28px !important;
+    width: 38px !important;
+    height: 38px !important;
+}
+
+.fw-channel-text {
+font-size: 15px !important;
+}
+
+.career-cards-grid-4 {
+grid-template-columns: 1fr !important;
+}
+
+.fw-channels-grid {
+grid-template-columns: 1fr !important;
+}
+
+/* ==========================================================================
+   STANDARDIZED BLUE HEADINGS & ACCENT BARS (Client Feedback 12/10/2026)
+   Consistent Left Alignment & Blue Titles
+   ========================================================================== */
+.split-jobs-title {
+color: #0044CC !important;
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+  padding-left: 20px !important;
+}
+
+.split-jobs-title::before {
+content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 22px;
+  background: #0044CC;
+  border-radius: 2px;
+}
+
+.fw-today-title,
+.fw-bridge-title,
+.career-center-title,
+.fw-section-title {
+color: #0044CC !important;
+}
+
+.fw-section-tag {
+color: #0044CC !important;
+}
+
+/* ==========================================================================
+   35% - 65% SPLIT JOB BOARD & VISUAL POLISH (Client Feedback 12/10/2026)
+   ========================================================================== */
+.split-job-layout {
+display: grid !important;
+  grid-template-columns: 35% 65% !important;
+  background: #FFFFFF !important;
+  border-radius: 14px !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+  min-height: 720px !important;
+  max-height: 820px !important;
+  overflow: hidden !important;
+}
+
+.split-job-layout {
+grid-template-columns: 1fr !important;
+    max-height: none !important;
+}
+
+/* Title in Bold Dark Gray (Client Feedback Note) */
+.linkedin-card-title {
+font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #1E293B !important; /* Dark Gray */
+  line-height: 1.3 !important;
+  margin: 0 0 3px !important;
+}
+
+.linkedin-card-company {
+font-size: 12.5px !important;
+  color: #64748B !important;
+  font-weight: 500 !important;
+}
+
+.job-detail-pill {
+font-size: 11.5px !important;
+  color: #475569 !important;
+  background: #F1F5F9 !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  font-weight: 500 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+/* Sticky Bottom Action Bar on Detail Panel (Client Feedback Note) */
+.job-detail-sticky-bar {
+position: sticky !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  background: #FFFFFF !important;
+  border-top: 1px solid #E2E8F0 !important;
+  padding: 12px 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.06) !important;
+  z-index: 20 !important;
+  margin-top: 24px !important;
+}
+
+/* ==========================================================================
+   CATEGORY CARD LIST WITH JOB COUNTS & INCREASED PADDING (Client Feedback)
+   ========================================================================== */
+.fw-bridge-grid {
+display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: 16px !important;
+  background: transparent !important;
+  margin-top: 24px !important;
+  border: none !important;
+}
+
+.fw-bridge-grid {
+grid-template-columns: repeat(4, 1fr) !important;
+}
+
+.fw-bridge-grid {
+grid-template-columns: repeat(2, 1fr) !important;
+}
+
+.fw-bridge-grid {
+grid-template-columns: 1fr !important;
+}
+
+.fw-bridge-item {
+display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 14px !important;
+  padding: 16px 18px !important; /* Increased padding */
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03) !important;
+  text-decoration: none !important;
+  transition: all 0.18s ease !important;
+}
+
+.fw-bridge-item:hover {
+background: #FFFFFF !important;
+  border-color: #0044CC !important;
+  box-shadow: 0 8px 24px rgba(0, 68, 204, 0.08) !important;
+  transform: translateY(-2px) !important;
+}
+
+.fw-bridge-logo-wrap {
+width: 46px !important;
+  height: 46px !important;
+  margin-bottom: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+.fw-bridge-logo-svg {
+width: 44px !important;
+  height: 44px !important;
+}
+
+.fw-bridge-info {
+display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  min-width: 0 !important;
+}
+
+.fw-bridge-name {
+font-size: 13.5px !important;
+  font-weight: 700 !important;
+  color: #1E293B !important;
+  text-align: left !important;
+  line-height: 1.3 !important;
+  margin: 0 0 3px 0 !important;
+}
+
+.fw-bridge-item:hover .fw-bridge-name {
+color: #0044CC !important;
+}
+
+.fw-bridge-job-count {
+font-size: 11.5px !important;
+  font-weight: 600 !important;
+  color: #0044CC !important; /* Blue Job Count */
+  background: #EFF6FF !important;
+  padding: 2px 8px !important;
+  border-radius: 100px !important;
+  display: inline-block !important;
 }

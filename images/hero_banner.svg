@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 360" width="1400" height="360">
+  <defs>
+    <linearGradient id="heroDarkBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#002d5a"/>
+      <stop offset="60%" stop-color="#004182"/>
+      <stop offset="100%" stop-color="#0a3563"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="360" fill="url(#heroDarkBlue)"/>
+  <!-- Minimalist Grid Lines -->
+  <g opacity="0.15" stroke="#E0E0E0" stroke-width="1">
+    <line x1="0" y1="90" x2="1400" y2="90"/>
+    <line x1="0" y1="180" x2="1400" y2="180"/>
+    <line x1="0" y1="270" x2="1400" y2="270"/>
+    <line x1="350" y1="0" x2="350" y2="360"/>
+    <line x1="700" y1="0" x2="700" y2="360"/>
+    <line x1="1050" y1="0" x2="1050" y2="360"/>
+  </g>
+  <!-- Left Side Editorial Spotlight Card -->
+  <g transform="translate(100, 50)">
+    <rect width="280" height="150" fill="#FFFFFF" rx="4"/>
+    <rect x="18" y="18" width="160" height="22" fill="#E8F4FD" rx="3"/>
+    <text x="26" y="33" font-family="-apple-system, sans-serif" font-size="10.5" font-weight="bold" fill="#0A66C2" letter-spacing="0.5">NATIONAL INITIATIVE</text>
+    <text x="18" y="72" font-family="-apple-system, sans-serif" font-size="16" font-weight="800" fill="#1D2226">YOUTH CAREER</text>
+    <text x="18" y="94" font-family="-apple-system, sans-serif" font-size="16" font-weight="800" fill="#1D2226">ACCELERATION 2026</text>
+    <line x1="18" y1="110" x2="260" y2="110" stroke="#E0E0E0" stroke-width="1"/>
+    <text x="18" y="132" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#666666">High-Quality Full Employment Strategy</text>
+  </g>
+  <!-- Main Banner Title Typography -->
+  <text x="430" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="800" font-size="42" fill="#FFFFFF" letter-spacing="-0.5">
+    CHINA EMPLOYMENT ANNUAL WORK REPORT
+  </text>
+  <text x="435" y="200" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="500" font-size="16" fill="#E8F4FD" letter-spacing="0.3">
+    Special Intelligence: Macro Labor Market Dynamics &amp; National Vocational Standards
+  </text>
+  <g transform="translate(435, 226)">
+    <rect width="180" height="38" fill="#0A66C2" rx="4"/>
+    <text x="90" y="24" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">DOWNLOAD REPORT &gt;</text>
+  </g>
+</svg>

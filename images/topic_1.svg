@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 140" width="240" height="140">
+  <defs>
+    <linearGradient id="t1-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#990000"/>
+      <stop offset="45%" stop-color="#CC1016"/>
+      <stop offset="100%" stop-color="#E53E3E"/>
+    </linearGradient>
+    <radialGradient id="t1-glow" cx="80%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#FFD700" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#CC1016" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="240" height="140" fill="url(#t1-grad)" rx="7"/>
+  <rect width="240" height="140" fill="url(#t1-glow)" rx="7"/>
+  <!-- Decorative clean ribbon waves (NO TEXT) -->
+  <path d="M-20,110 Q60,60 140,110 T260,80 L260,150 L-20,150 Z" fill="#FFFFFF" opacity="0.12"/>
+  <path d="M-10,130 Q70,90 150,130 T270,100 L270,150 L-10,150 Z" fill="#FFD700" opacity="0.18"/>
+  <circle cx="190" cy="40" r="28" fill="#FFD700" opacity="0.15"/>
+  <circle cx="190" cy="40" r="16" fill="#FFD700" opacity="0.22"/>
+</svg>

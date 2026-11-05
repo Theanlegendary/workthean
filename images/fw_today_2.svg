@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 225" width="400" height="225">
+  <defs>
+    <linearGradient id="grad_fw_toda" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#11161B"/>
+      <stop offset="60%" stop-color="#1D2226"/>
+      <stop offset="100%" stop-color="#002D5A"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="225" fill="url(#grad_fw_toda)" rx="6"/>
+  
+  <!-- Subtle Grid &amp; Technical Scanlines -->
+  <g opacity="0.1" stroke="#FFFFFF" stroke-width="1">
+    <line x1="0" y1="45" x2="400" y2="45"/>
+    <line x1="0" y1="90" x2="400" y2="90"/>
+    <line x1="0" y1="135" x2="400" y2="135"/>
+    <line x1="0" y1="180" x2="400" y2="180"/>
+    <line x1="100" y1="0" x2="100" y2="225"/>
+    <line x1="200" y1="0" x2="200" y2="225"/>
+    <line x1="300" y1="0" x2="300" y2="225"/>
+  </g>
+
+  <!-- Title Badge Overlay in top-left -->
+  <rect x="16" y="20" width="200" height="60" fill="#0A66C2" rx="2" opacity="0.95"/>
+  <text x="24" y="38" font-family="-apple-system, sans-serif" font-size="11" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">SPECIAL BRIEFING</text>
+  <text x="24" y="56" font-family="-apple-system, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">STANDARDS &amp; AUDITS</text>
+  <text x="24" y="70" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="700" fill="#E8F4FD">REGULATORY DIRECTIVE</text>
+
+  <!-- Presenter Silhouette on Right -->
+  <g transform="translate(260, 40)">
+    <ellipse cx="45" cy="35" rx="24" ry="28" fill="#2E3E4E"/>
+    <path d="M15,90 Q45,65 75,90 L90,160 L0,160 Z" fill="#222B35"/>
+    <circle cx="45" cy="32" r="20" fill="#425262" opacity="0.4"/>
+  </g>
+
+  <!-- Share Icon Top-Right -->
+  <circle cx="372" cy="28" r="16" fill="#000000" opacity="0.6"/>
+  <g transform="translate(366, 21)" stroke="#FFFFFF" stroke-width="1.8" fill="none">
+    <path d="M 6 2 L 6 9"/>
+    <path d="M 3 5 L 6 2 L 9 5"/>
+    <path d="M 1 7 L 1 12 L 11 12 L 11 7"/>
+  </g>
+
+  <!-- Play Button (Left Center) -->
+  <circle cx="110" cy="140" r="22" fill="#1D2226"/>
+  <polygon points="104,130 120,140 104,150" fill="#FFFFFF"/>
+
+  <!-- Bottom Lower Third Bar -->
+  <rect x="0" y="190" width="400" height="35" fill="#0F1419" opacity="0.9"/>
+  <text x="16" y="212" font-family="-apple-system, sans-serif" font-size="11" font-weight="800" fill="#FFFFFF" letter-spacing="1">ZACH STRICKLAND</text>
+  <text x="384" y="212" font-family="-apple-system, sans-serif" font-size="10" font-weight="700" fill="#0A66C2" text-anchor="end" letter-spacing="0.8">DATA &amp; TRENDS</text>
+</svg>

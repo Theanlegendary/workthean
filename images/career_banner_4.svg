@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="60%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </linearGradient>
+    <filter id="shadow4" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <rect width="320" height="180" fill="url(#bg4)"/>
+  
+  <!-- Left text & module badge -->
+  <rect x="22" y="22" width="116" height="24" rx="4" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="26" y="26" width="16" height="16" rx="3" fill="#f59e0b"/>
+  <text x="34" y="38" font-size="11" font-weight="900" fill="#ffffff" text-anchor="middle">∑</text>
+  <text x="48" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#1e293b">QUANTITATIVE OPS</text>
+  
+  <text x="22" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#0f172a" letter-spacing="0.5">QUANT STRATEGY</text>
+  <text x="22" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#475569">Supply Chain Quantitative Modeling</text>
+  
+  <rect x="22" y="114" width="114" height="1" fill="#94a3b8" opacity="0.4"/>
+  <text x="22" y="130" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#475569">Advanced Operational Math Series</text>
+  <text x="22" y="144" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#64748b">Quantitative Strategy Masterclass</text>
+  
+  <!-- Right instructor lecturing -->
+  <g transform="translate(188, 14)" filter="url(#shadow4)">
+    <circle cx="52" cy="76" r="56" fill="#3b82f6" opacity="0.12"/>
+    <circle cx="52" cy="38" r="18" fill="#cbd5e1"/>
+    <!-- Glasses -->
+    <rect x="44" y="34" width="7" height="5" rx="1" fill="none" stroke="#1e293b" stroke-width="1.2"/>
+    <rect x="53" y="34" width="7" height="5" rx="1" fill="none" stroke="#1e293b" stroke-width="1.2"/>
+    <path d="M51,36 L53,36" stroke="#1e293b" stroke-width="1.2"/>
+    <!-- Tie and Suit -->
+    <path d="M22,132 Q52,72 82,132 Z" fill="#334155"/>
+    <path d="M44,78 L52,122 L60,78 Z" fill="#ffffff"/>
+    <path d="M50,84 L52,122 L54,84 Z" fill="#2563eb"/>
+    <ellipse cx="26" cy="118" rx="7" ry="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <ellipse cx="78" cy="118" rx="7" ry="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <circle cx="86" cy="18" r="9" fill="#dc2626"/>
+    <text x="86" y="22" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">TOP</text>
+  </g>
+</svg>

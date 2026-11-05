@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 280" width="460" height="280">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bg-sky" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="50%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0A2540"/>
+    </linearGradient>
+    
+    <linearGradient id="glass-roof" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.05"/>
+    </linearGradient>
+    
+    <linearGradient id="accent-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0EA5E9" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#38BDF8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0EA5E9" stop-opacity="0"/>
+    </linearGradient>
+    
+    <linearGradient id="pillar-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="50%" stop-color="#64748B"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+
+    <linearGradient id="floor-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0B132B"/>
+    </linearGradient>
+
+    <linearGradient id="stage-halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="gold-pillar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="50%" stop-color="#FDE68A"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Architectural Background: International Summit Hall -->
+  <rect width="460" height="280" fill="url(#bg-sky)"/>
+
+  <!-- High-Tech Ceiling Structure / Geometric Atrium Glass Lines -->
+  <g stroke="#38BDF8" stroke-width="1" opacity="0.2">
+    <line x1="230" y1="0" x2="0" y2="170"/>
+    <line x1="230" y1="0" x2="80" y2="170"/>
+    <line x1="230" y1="0" x2="160" y2="170"/>
+    <line x1="230" y1="0" x2="230" y2="170"/>
+    <line x1="230" y1="0" x2="300" y2="170"/>
+    <line x1="230" y1="0" x2="380" y2="170"/>
+    <line x1="230" y1="0" x2="460" y2="170"/>
+    
+    <line x1="30" y1="50" x2="430" y2="50"/>
+    <line x1="60" y1="95" x2="400" y2="95"/>
+    <line x1="90" y1="135" x2="370" y2="135"/>
+  </g>
+
+  <!-- Center Back Wall / Giant Digital World Forum Map Screen -->
+  <rect x="85" y="42" width="290" height="120" rx="4" fill="#0D1B2A" stroke="#1E3A8A" stroke-width="1.5" opacity="0.85"/>
+  
+  <!-- Abstract Digital World Data Grid Map on Screen -->
+  <g fill="#38BDF8" opacity="0.35">
+    <!-- North America cluster -->
+    <circle cx="125" cy="80" r="3"/>
+    <circle cx="140" cy="72" r="2.5"/>
+    <circle cx="150" cy="85" r="3"/>
+    <!-- Europe cluster -->
+    <circle cx="215" cy="70" r="3"/>
+    <circle cx="225" cy="78" r="2.5"/>
+    <circle cx="235" cy="72" r="3"/>
+    <!-- Asia & Pacific cluster -->
+    <circle cx="280" cy="78" r="3.5"/>
+    <circle cx="295" cy="72" r="4"/>
+    <circle cx="310" cy="82" r="3.5"/>
+    <circle cx="325" cy="90" r="3"/>
+    <circle cx="300" cy="95" r="3"/>
+    <circle cx="270" cy="98" r="2.5"/>
+  </g>
+  
+  <!-- Intercontinental Network Polyline Arcs -->
+  <path d="M140,72 Q215,35 295,72" fill="none" stroke="#60A5FA" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.7"/>
+  <path d="M225,78 Q260,65 310,82" fill="none" stroke="#38BDF8" stroke-width="1.2" opacity="0.8"/>
+  <path d="M150,85 Q210,110 280,78" fill="none" stroke="#0284C7" stroke-width="1" opacity="0.6"/>
+
+  <!-- Screen Header Accent Line -->
+  <rect x="85" y="42" width="290" height="3" fill="url(#accent-glow)"/>
+
+  <!-- Auditorium / Summit Floor Perspective -->
+  <polygon points="0,280 460,280 390,165 70,165" fill="url(#floor-grad)"/>
+
+  <!-- Reflective Stage Glow -->
+  <ellipse cx="230" cy="195" rx="140" ry="24" fill="#0284C7" opacity="0.18"/>
+
+  <!-- Diplomatic Forum Table & Rostrum -->
+  <!-- Back Tier Benches -->
+  <polygon points="105,178 355,178 340,185 120,185" fill="#334155" opacity="0.6"/>
+  <polygon points="85,190 375,190 360,200 100,200" fill="#475569" opacity="0.7"/>
+
+  <!-- Main Executive Summit Dais / Horseshoe Rostrum -->
+  <path d="M130,225 C160,200 300,200 330,225 L345,236 C310,210 150,210 115,236 Z" fill="url(#pillar-grad)" stroke="#64748B" stroke-width="0.8"/>
+  <path d="M115,236 C150,210 310,210 345,236 L348,244 C310,218 150,218 112,244 Z" fill="#1E293B"/>
+
+  <!-- Bilateral Flags at Backstage Columns -->
+  <!-- Left Diplomatic Flag Standards -->
+  <g transform="translate(100, 110)">
+    <line x1="0" y1="0" x2="0" y2="60" stroke="#CBD5E1" stroke-width="1.5"/>
+    <path d="M0,0 Q12,-4 22,2 Q12,8 0,6 Z" fill="#DC2626" opacity="0.9"/>
+    <line x1="12" y1="5" x2="12" y2="62" stroke="#CBD5E1" stroke-width="1.5"/>
+    <path d="M12,5 Q24,1 34,7 Q24,13 12,11 Z" fill="#E11D48" opacity="0.85"/>
+  </g>
+
+  <!-- Right Diplomatic Flag Standards -->
+  <g transform="translate(325, 110)">
+    <line x1="12" y1="0" x2="12" y2="60" stroke="#CBD5E1" stroke-width="1.5"/>
+    <path d="M12,0 Q2,-4 -8,2 Q2,8 12,6 Z" fill="#0284C7" opacity="0.9"/>
+    <line x1="0" y1="5" x2="0" y2="62" stroke="#CBD5E1" stroke-width="1.5"/>
+    <path d="M0,5 Q-10,1 -20,7 Q-10,13 0,11 Z" fill="#2563EB" opacity="0.85"/>
+  </g>
+
+  <!-- Central Glass Podium -->
+  <polygon points="218,205 242,205 245,248 215,248" fill="#38BDF8" opacity="0.3" stroke="#7DD3FC" stroke-width="1"/>
+  <ellipse cx="230" cy="205" rx="14" ry="4" fill="#E0F2FE"/>
+
+  <!-- Architectural Pillars with Lighting -->
+  <rect x="30" y="20" width="16" height="260" fill="url(#pillar-grad)" opacity="0.8"/>
+  <line x1="38" y1="20" x2="38" y2="280" stroke="#38BDF8" stroke-width="1" opacity="0.3"/>
+
+  <rect x="414" y="20" width="16" height="260" fill="url(#pillar-grad)" opacity="0.8"/>
+  <line x1="422" y1="20" x2="422" y2="280" stroke="#38BDF8" stroke-width="1" opacity="0.3"/>
+
+  <!-- Elegant Foreground Lighting Vignette -->
+  <rect x="0" y="268" width="460" height="12" fill="url(#floor-grad)"/>
+  <line x1="0" y1="268" x2="460" y2="268" stroke="#0284C7" stroke-width="1" opacity="0.3"/>
+</svg>

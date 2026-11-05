@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 210" width="320" height="210">
+  <rect width="320" height="210" fill="#F3F2EF"/>
+  <rect x="10" y="10" width="300" height="190" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="1" rx="4"/>
+  <!-- Diplomatic silhouette -->
+  <g transform="translate(90, 48)">
+    <ellipse cx="28" cy="24" rx="14" ry="16" fill="#1D2226"/>
+    <path d="M16,18 Q28,8 38,18" fill="#1D2226"/>
+    <path d="M6,40 L50,40 L46,145 L8,145 Z" fill="#004182"/>
+    <polygon points="23,40 28,68 33,40" fill="#CC1016"/>
+    <polygon points="20,40 28,52 36,40" fill="#FFFFFF"/>
+    <path d="M42,55 L75,70" stroke="#004182" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(175, 52)">
+    <ellipse cx="22" cy="24" rx="14" ry="16" fill="#1D2226"/>
+    <path d="M10,16 Q22,8 34,16" fill="#666666"/>
+    <path d="M12,32 Q22,44 32,32" fill="#666666"/>
+    <path d="M2,40 L42,40 L38,140 L4,140 Z" fill="#1D2226"/>
+    <path d="M10,40 L22,60 L34,40 Z" fill="#F3F2EF"/>
+    <path d="M6,55 L-25,70" stroke="#1D2226" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <!-- Verified Badge -->
+  <rect x="20" y="20" width="105" height="22" fill="#E8F4FD" rx="3"/>
+  <text x="72" y="35" font-family="-apple-system, sans-serif" font-size="10.5" font-weight="bold" fill="#0A66C2" text-anchor="middle">OFFICIAL PRESS</text>
+</svg>

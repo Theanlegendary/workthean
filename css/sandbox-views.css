@@ -1472,35 +1472,38 @@ main,
 }
 
 
-/* Footer Headings & Links */
+/* Footer Headings & Links - Premium Dark Contrast */
 .builtin-footer-col-title,
 .footer-col-title {
-  font-family: var(--font-builtin-sans) !important;
-  font-size: 14px !important;
+  font-family: var(--font-builtin-sans, 'Montserrat', sans-serif) !important;
+  font-size: 13.5px !important;
   line-height: 20px !important;
   font-weight: 700 !important;
-  color: #0F172A !important;
-  letter-spacing: 0.02em !important;
+  color: #FFFFFF !important;
+  letter-spacing: 0.03em !important;
   text-transform: uppercase !important;
   margin-bottom: 14px !important;
 }
 
-
 .builtin-footer-links-list a,
 .footer-link {
-  font-family: var(--font-builtin-sans) !important;
-  font-size: 14px !important;
+  font-family: var(--font-builtin-sans, 'Montserrat', sans-serif) !important;
+  font-size: 13.5px !important;
   line-height: 22px !important;
   font-weight: 400 !important;
-  color: #475569 !important;
+  color: #94A3B8 !important;
 }
 
+.builtin-footer-links-list a:hover,
+.footer-link:hover {
+  color: #38BDF8 !important;
+}
 
 .builtin-footer-desc,
 .footer-desc {
-  font-family: var(--font-builtin-sans) !important;
-  font-size: 14px !important;
+  font-family: var(--font-builtin-sans, 'Montserrat', sans-serif) !important;
+  font-size: 13.5px !important;
   line-height: 22px !important;
   font-weight: 400 !important;
-  color: #64748B !important;
+  color: #CBD5E1 !important;
 }

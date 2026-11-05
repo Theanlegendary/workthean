@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 
 const DB_FILE = path.join(__dirname, 'data_store.json');
@@ -861,7 +861,9 @@ function readDB() {
       writeDB(defaultData);
       return defaultData;
     }
-    const data = fs.readFileSync(DB_FILE, 'utf8');
+    let data = fs.readFileSync(DB_FILE, 'utf8');
+    // Strip UTF-8 BOM if present
+    if (data.charCodeAt(0) === 0xFEFF) data = data.slice(1);
     return JSON.parse(data);
   } catch (err) {
     console.error('Error reading DB, falling back to default:', err);

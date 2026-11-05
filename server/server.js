@@ -1,4 +1,4 @@
-const express = require('express');
+﻿const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
@@ -28,9 +28,25 @@ app.use((req, res, next) => {
   next();
 });
 
+// Simple in-memory rate limiter (200 req/min per IP)
+const rateLimit = {}; // { ip: { count, resetAt } }
+app.use((req, res, next) => {
+  const ip = req.ip || req.connection.remoteAddress || 'unknown';
+  const now = Date.now();
+  if (!rateLimit[ip] || now > rateLimit[ip].resetAt) {
+    rateLimit[ip] = { count: 1, resetAt: now + 60 * 1000 };
+  } else {
+    rateLimit[ip].count++;
+  }
+  if (rateLimit[ip].count > 200) {
+    return res.status(429).json({ error: 'Too many requests. Limit: 200/min.' });
+  }
+  next();
+});
+
 // Root check endpoint
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', serverTime: new Date().toISOString(), message: 'Freelancer WebSockets & REST API Active' });
+  res.json({ status: 'ok', serverTime: new Date().toISOString(), message: 'Freelancer WebSockets & REST API Active', uptime: process.uptime(), env: process.env.NODE_ENV || 'development' });
 });
 
 /* ==========================================================================
@@ -212,19 +228,19 @@ app.post('/api/ai/generate-scope', (req, res) => {
   }
 
   const architectureDiagram = `
-┌─────────────────────────┐      ┌─────────────────────────┐      ┌─────────────────────────┐
-│   Responsive Client UI  │ ────►│  Express REST & Socket  │ ────►│  PostgreSQL & Vector DB │
-│ (React / Next.js / PWA) │      │  Backend API (Port 5000)│      │  (Persistent Storage)   │
-└─────────────────────────┘      └─────────────────────────┘      └─────────────────────────┘
-             │                                │                                │
-             ▼                                ▼                                ▼
-┌─────────────────────────┐      ┌─────────────────────────┐      ┌─────────────────────────┐
-│  Technical Spec Engine  │      │  100% Escrow Protection │      │  Stripe / Payment Gateway│
-└─────────────────────────┘      └─────────────────────────┘      └─────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”      â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”      â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚   Responsive Client UI  â”‚ â”€â”€â”€â”€â–ºâ”‚  Express REST & Socket  â”‚ â”€â”€â”€â”€â–ºâ”‚  PostgreSQL & Vector DB â”‚
+â”‚ (React / Next.js / PWA) â”‚      â”‚  Backend API (Port 5000)â”‚      â”‚  (Persistent Storage)   â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜      â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜      â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+             â”‚                                â”‚                                â”‚
+             â–¼                                â–¼                                â–¼
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”      â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”      â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  Technical Spec Engine  â”‚      â”‚  100% Escrow Protection â”‚      â”‚  Stripe / Payment Gatewayâ”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜      â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜      â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
   `.trim();
 
   const specDoc = `
-### 🛠️ Technical Blueprint & Specification
+### ðŸ› ï¸ Technical Blueprint & Specification
 
 #### 1. Scope Overview
 ${prompt}
@@ -270,7 +286,7 @@ let currentUserProfile = {
   title: 'Senior Full-Stack Engineer & Product Manager',
   hourlyRate: 75,
   country: 'United States',
-  flag: '🇺🇸',
+  flag: 'ðŸ‡ºðŸ‡¸',
   avatarText: 'JD',
   bio: 'Passionate software architect with 10+ years experience building scalable Web applications, microservices, and European fintech systems.',
   skills: ['Next.js', 'React.js', 'Node.js', 'PostgreSQL', 'Prompt Engineering'],
@@ -347,7 +363,7 @@ io.on('connection', (socket) => {
       const dbLatest = readDB();
       const reply = {
         sender: 'them',
-        text: "⚡ Real-time WebSocket: Got your message instantly! Ready to collaborate.",
+        text: "âš¡ Real-time WebSocket: Got your message instantly! Ready to collaborate.",
         time: 'Just now'
       };
       if (!dbLatest.chats[threadId]) dbLatest.chats[threadId] = [];
@@ -546,6 +562,86 @@ app.get('/api/chat/:threadId', (req, res) => {
   res.json({ threadId, messages });
 });
 
+/* ==========================================================================
+   ADDITIONAL REST API ENDPOINTS
+   ========================================================================== */
+
+// DELETE /api/projects/:id
+app.delete('/api/projects/:id', (req, res) => {
+  const db = readDB();
+  const idx = (db.projects || []).findIndex(p => p.id === req.params.id);
+  if (idx === -1) {
+    return res.status(404).json({ error: 'Project not found' });
+  }
+  const removed = db.projects.splice(idx, 1)[0];
+  writeDB(db);
+  res.json({ message: 'Project deleted successfully', project: removed });
+});
+
+// PATCH /api/projects/:id
+app.patch('/api/projects/:id', (req, res) => {
+  const db = readDB();
+  const project = (db.projects || []).find(p => p.id === req.params.id);
+  if (!project) {
+    return res.status(404).json({ error: 'Project not found' });
+  }
+  const { title, description, skills, budget } = req.body;
+  if (title !== undefined) project.title = title;
+  if (description !== undefined) project.description = description;
+  if (skills !== undefined) project.skills = Array.isArray(skills) ? skills : skills.split(',').map(s => s.trim());
+  if (budget !== undefined) {
+    project.budgetMin = parseFloat(budget.min) || project.budgetMin;
+    project.budgetMax = parseFloat(budget.max) || project.budgetMax;
+  }
+  writeDB(db);
+  res.json({ message: 'Project updated successfully', project });
+});
+
+// GET /api/stats
+app.get('/api/stats', (req, res) => {
+  const db = readDB();
+  const totalUsers = (db.users || []).length;
+  const totalProjects = (db.projects || []).length;
+  const totalFreelancers = (db.freelancers || []).length;
+  res.json({ totalUsers, totalProjects, totalFreelancers });
+});
+
+// GET /api/jobs/trending — top 5 hottest jobs (most bids, most recent)
+app.get('/api/jobs/trending', (req, res) => {
+  const db = readDB();
+  const sorted = [...(db.projects || [])]
+    .sort((a, b) => (b.bidsCount || 0) - (a.bidsCount || 0))
+    .slice(0, 5);
+  res.json({ count: sorted.length, data: sorted });
+});
+
+// GET /api/jobs/saved — return projects matching given IDs (?ids=prj-100,prj-101)
+app.get('/api/jobs/saved', (req, res) => {
+  const db = readDB();
+  const rawIds = req.query.ids || '';
+  const ids = rawIds.split(',').map(id => id.trim()).filter(Boolean);
+  const saved = (db.projects || []).filter(p => ids.includes(p.id));
+  res.json({ count: saved.length, data: saved });
+});
+
+// GET /api/companies — from data_store.json companies field
+app.get('/api/companies', (req, res) => {
+  const fs = require('fs');
+  const dataStorePath = require('path').join(__dirname, 'data_store.json');
+  try {
+    const raw = fs.readFileSync(dataStorePath, 'utf8');
+    const store = JSON.parse(raw);
+    const companies = store.companies || [];
+    res.json({ count: companies.length, data: companies });
+  } catch (e) {
+    res.json({ count: 0, data: [] });
+  }
+});
+// Global error handler middleware
+app.use((err, req, res, next) => {
+  console.error('[ERROR]', err.message);
+  res.status(err.status || 500).json({ error: err.message || 'Internal Server Error' });
+});
 if (require.main === module) {
   server.listen(PORT, () => {
   console.log(`====================================================`);

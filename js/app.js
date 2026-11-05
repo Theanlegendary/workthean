@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    VIETNAM RECRUITMENT MARKETPLACE - APP LOGIC & SPA CONTROLLER
    ========================================================================== */
 
@@ -2326,28 +2326,24 @@ function initSplitScreenJobBoard() {
 
     const jobsHtml = filtered.map(job => {
       const isSelected = job.id === enterpriseSelectedJobId;
+      const easyApplyCategories = ['forwarding', 'robotics', 'customs'];
+      const isEasyApply = easyApplyCategories.includes(job.category) || job.isUrgent;
       return `
-        <article class="job-card ${isSelected ? 'active' : ''}" data-job-id="${job.id}" onclick="selectEnterpriseJob('${job.id}')" style="cursor:pointer;">
-          <div class="job-card-top-row" style="display:flex; gap:12px; align-items:flex-start;">
-            <div class="linkedin-card-logo" style="width:44px; height:44px; flex-shrink:0;">
-              <img src="${job.companyLogo}" alt="${job.company}" class="linkedin-brand-img" style="width:100%; height:100%; object-fit:contain; background:transparent;">
+        <article class="job-card ${isSelected ? 'active' : ''}" data-job-id="${job.id}" onclick="selectEnterpriseJob('${job.id}')" aria-selected="${isSelected}">
+          <div class="job-card-top-row">
+            <div class="linkedin-card-logo">
+              <img src="${job.companyLogo}" alt="${job.company}" class="linkedin-brand-img" onerror="this.style.display='none'">
             </div>
-            <div class="job-card-header-info" style="flex:1; min-width:0;">
-              <h3 class="linkedin-card-title" style="font-size:14.5px; font-weight:700; color:#0A66C2; margin:0 0 2px; line-height:1.3; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
-                ${job.title}
-              </h3>
-              <div class="linkedin-card-company" style="font-size:12.5px; color:#475569; font-weight:500; margin-bottom:2px;">
-                ${job.company}
+            <div class="job-card-header-info">
+              <h3 class="linkedin-card-title">${job.title}</h3>
+              <div class="linkedin-card-company">${job.company}</div>
+              <div class="li-card-meta">${job.location} &middot; ${job.workplace}</div>
+              <div class="li-card-salary">${job.salary}</div>
+              <div class="li-card-badges">
+                ${isEasyApply ? '<span class="li-badge-easy-apply"><i class="fa-solid fa-bolt"></i> Easy Apply</span>' : ''}
+                ${job.isUrgent ? '<span class="li-badge-urgent">URGENT</span>' : ''}
               </div>
-              <div style="font-size:12px; color:#64748B; margin-bottom:3px;">
-                ${job.location}
-              </div>
-              <div style="font-size:13px; font-weight:700; color:#0F172A; margin-bottom:3px;">
-                ${job.salary}
-              </div>
-              <div style="font-size:11.5px; color:#94A3B8; font-weight:500;">
-                ${job.time} &bull; ${job.applicants}
-              </div>
+              <div class="li-card-meta" style="margin-top:5px;">${job.time} &bull; ${job.applicants}</div>
             </div>
           </div>
         </article>
@@ -2383,10 +2379,10 @@ function initSplitScreenJobBoard() {
         </div>
 
         <div style="display:flex; gap:12px; margin-top:16px;">
-          <button type="button" class="btn-linkedin-easy-apply" onclick=\"alert('Thank you for applying to: ${job.title}! Your application has been sent directly to hiring managers.');\" style="background:var(--fl-primary); color:#fff; border:none; padding:10px 24px; border-radius:8px; font-weight:700; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
+          <button type="button" class="btn-linkedin-easy-apply" onclick=\"alert('Thank you for applying to: ${job.title}! Your application has been sent directly to hiring managers.');\" style="background:var(--fl-primary); color:#fff; border:none; padding:10px 24px; border-radius:24px; font-weight:600; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
             <i class="fa-solid fa-paper-plane"></i> Apply Now
           </button>
-          <button type="button" class="btn-linkedin-save-job" onclick="this.innerHTML = '<i class=\'fa-solid fa-bookmark\'></i> Saved'; this.style.borderColor='var(--fl-primary)'; this.style.color='var(--fl-primary)';" style="background:#fff; border:1px solid #CBD5E1; color:#475569; padding:10px 18px; border-radius:8px; font-weight:600; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+          <button type="button" class="btn-linkedin-save-job" onclick="this.innerHTML = '<i class=\'fa-solid fa-bookmark\'></i> Saved'; this.style.borderColor='var(--fl-primary)'; this.style.color='var(--fl-primary)';" style="padding:9px 20px; border-radius:24px; font-weight:600; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
             <i class="fa-regular fa-bookmark"></i> Save Job
           </button>
         </div>

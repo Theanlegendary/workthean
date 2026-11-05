@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -18,6 +18,8 @@
   <!-- Core & Prototype Stylesheets -->
   <link rel="stylesheet" href="css/styles.css?v=20261105_v3">
   <link rel="stylesheet" href="css/builtin-theme.css?v=20261105_v3">
+  <!-- Enhancement CSS v4: Dark Mode, Skeleton, Animations, Responsive -->
+  <link rel="stylesheet" href="css/enhancements.css?v=20261105_v4">
   <link rel="stylesheet" href="css/sandbox-views.css?v=20261105_v3">
 </head>
 <body>
@@ -141,16 +143,9 @@
     <section class="app-view active-view" id="view-home">
       <div class="container" style="padding-top: 18px;">
 
-        <!-- HERO SECTION (BIG CONVERSION & RECRUITMENT FOCUSED) -->
-        <section class="recruitment-hero-section" aria-label="Tuyen dung va tim viec lam">
+        <!-- HERO SEARCH SECTION (CLEAN WHITE SEARCH BAR & QUICK TAGS ONLY) -->
+        <section class="recruitment-hero-section" aria-label="Job Search Marketplace">
           <div class="hero-main-content">
-            <h1 class="hero-headline">
-              Hire the right talent. <span>Faster.</span>
-            </h1>
-            <p class="hero-subheadline">
-              Connect with verified engineering, AI systems, logistics operations, and supply chain professionals across leading enterprises.
-            </p>
-
             <!-- Integrated Search Bar -->
             <form class="hero-search-box" id="hero-search-form" onsubmit="event.preventDefault();">
               <div class="search-input-col">
@@ -172,41 +167,18 @@
                 <i class="fa-solid fa-magnifying-glass"></i> Search Jobs
               </button>
             </form>
-<!-- Hero Quick Search Tags -->
-<div class="quick-search-tags-row">
-  <span class="quick-search-label">Quick search:</span>
-  <button class="quick-search-tag" data-filter-keyword="Java"><i class="fa-brands fa-java"></i> Java</button>
-  <button class="quick-search-tag" data-filter-keyword="React"><i class="fa-brands fa-react"></i> React</button>
-  <button class="quick-search-tag" data-filter-keyword="Python">&#128013; Python</button>
-  <button class="quick-search-tag" data-filter-keyword="Marketing"><i class="fa-solid fa-chart-line"></i> Marketing</button>
-  <button class="quick-search-tag" data-filter-keyword="Design"><i class="fa-solid fa-pen-nib"></i> UI/UX</button>
-  <button class="quick-search-tag" data-filter-keyword="Remote"><i class="fa-solid fa-laptop-house"></i> Remote</button>
-</div>
 
-<!-- Hero Stats -->
-<div class="hero-stats-row">
-  <div class="hero-stat-item">
-    <div class="hero-stat-number" id="stat-candidates">520,000+</div>
-    <div class="hero-stat-label">Candidates</div>
-  </div>
-  <div class="hero-stat-divider"></div>
-  <div class="hero-stat-item">
-    <div class="hero-stat-number" id="stat-jobs">15,000+</div>
-    <div class="hero-stat-label">Active Jobs</div>
-  </div>
-  <div class="hero-stat-divider"></div>
-  <div class="hero-stat-item">
-    <div class="hero-stat-number" id="stat-companies">3,200+</div>
-    <div class="hero-stat-label">Top Employers</div>
-  </div>
-  <div class="hero-stat-divider"></div>
-  <div class="hero-stat-item">
-    <div class="hero-stat-number">98%</div>
-    <div class="hero-stat-label">Response Rate</div>
-  </div>
-</div>
-      </div>
-
+            <!-- Hero Quick Search Tags -->
+            <div class="quick-search-tags-row">
+              <span class="quick-search-label">Quick search:</span>
+              <button class="quick-search-tag" data-filter-keyword="Java"><i class="fa-brands fa-java"></i> Java</button>
+              <button class="quick-search-tag" data-filter-keyword="React"><i class="fa-brands fa-react"></i> React</button>
+              <button class="quick-search-tag" data-filter-keyword="Python"><i class="fa-brands fa-python"></i> Python</button>
+              <button class="quick-search-tag" data-filter-keyword="Marketing"><i class="fa-solid fa-chart-line"></i> Marketing</button>
+              <button class="quick-search-tag" data-filter-keyword="Design"><i class="fa-solid fa-pen-nib"></i> UI/UX</button>
+              <button class="quick-search-tag" data-filter-keyword="Remote"><i class="fa-solid fa-laptop-house"></i> Remote</button>
+            </div>
+          </div>
         </section>
 
         <!-- SOCIAL PROOF & TRUSTED PARTNERS BAR -->
@@ -554,12 +526,13 @@
       <!-- Marketplace Header & Live Stats Bar -->
       <div class="split-jobs-header-row" style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:20px; flex-wrap:wrap; gap:14px;">
         <div>
-          <h2 class="split-jobs-title" style="margin:0 0 6px 0; font-size:22px; font-weight:700; color:#0F172A;">Enterprise Logistics &amp; Supply Chain Job Board</h2>
+          <div style="display:inline-flex;align-items:center;gap:6px;background:#ebf4fd;border:1px solid #bfdbfe;color:#0a66c2;font-size:11px;font-weight:700;padding:3px 10px;border-radius:6px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;"><i class="fa-solid fa-circle-check"></i> Verified Enterprise Partners</div>
+          <h2 class="split-jobs-title" style="margin:0 0 6px 0; font-size:22px; font-weight:700; color:#191919;">Enterprise Logistics &amp; Supply Chain Job Board</h2>
           <h4 class="split-jobs-sub" style="margin:0; font-size:13.5px; color:#64748B; font-weight:400;">Direct hiring from accredited 3PLs, shipping lines &amp; port authorities</h4>
           <a href="#" class="section-view-all-link" data-view="browse" style="color: #0A66C2; font-weight: 600; font-size: 13px; text-decoration: none; display: inline-block; margin-top: 4px;">View All 20+ Open Positions &gt;</a>
         </div>
         <div class="split-jobs-actions-right">
-          <button type="button" class="btn-post-job-accent" id="btn-trigger-post-job" onclick="openEmployerPostModal();" style="background:#0A66C2; color:#FFFFFF; border:none; padding:10px 18px; border-radius:8px; font-weight:600; font-size:13.5px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+          <button type="button" class="btn-post-job-accent" id="btn-trigger-post-job" onclick="openEmployerPostModal();" style="background:#0A66C2; color:#FFFFFF; border:none; padding:10px 20px; border-radius:24px; font-weight:600; font-size:13.5px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; transition:background 0.15s;" onmouseover="this.style.background='#004182'" onmouseout="this.style.background='#0A66C2'">
             <i class="fa-solid fa-plus"></i> Post a Verified Job
           </button>
         </div>
@@ -621,7 +594,7 @@
 <section class="fw-bridge-section reveal" id="section-job-categories" aria-label="Logistics & Supply Chain Job Categories">
     <div class="container">
       
-      <div class="fw-bridge-header" style="margin-bottom: 24px; text-align: center;">
+      <div class="fw-bridge-header" style="margin-bottom: 16px; text-align: center;">
         <h2 class="fw-bridge-title" style="font-size: 26px; font-weight: 800; color: #1E293B; margin: 0 0 10px 0; text-align: center; letter-spacing: -0.3px;">Logistics &amp; Supply Chain Job Categories</h2>
         <div class="fw-bridge-meta-row" style="display: flex; align-items: center; justify-content: center; position: relative;">
           <p class="fw-bridge-meta-text" style="margin: 0; text-align: center; font-size: 13.5px; color: #64748B;">
@@ -635,206 +608,379 @@
         </div>
       </div>
 
-      <div class="fw-bridge-grid">
+            <div class="fw-bridge-grid">
         
         <!-- Category 1: Freight Forwarding & 3PL -->
         <a href="#section-jobs" class="fw-bridge-item" title="Freight Forwarding &amp; 3PL" onclick="filterJobsByCategory('forwarding'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #003E7E; color: #003E7E;">
-              <i class="fa-solid fa-ship"></i>
-            </div>
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#003E7E" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24.5" fill="none" stroke="#003E7E" stroke-width="0.8" stroke-dasharray="2,2"/>
+              <circle cx="30" cy="30" r="17" fill="#003E7E"/>
+              <path d="M21 34 L23 25 L37 25 L39 34 Z M24 23 L36 23 M26 20 L34 20" stroke="#FFFFFF" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+              <text x="30" y="11" font-size="4" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#003E7E" text-anchor="middle">FREIGHT &amp; 3PL</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#003E7E" text-anchor="middle">LOGISTICS</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Freight Forwarding &amp; 3PL</p><span class="fw-bridge-job-count">142 jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">142 jobs</span>
+            <p class="fw-bridge-name">Freight Forwarding &amp; 3PL</p>
+          </div>
         </a>
 
         <!-- Category 2: Smart Warehousing -->
         <a href="#section-jobs" class="fw-bridge-item" title="Smart Warehousing" onclick="filterJobsByCategory('robotics'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #003399; color: #003399;">
-              <i class="fa-solid fa-warehouse"></i>
-            </div>
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#003399" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24.5" fill="none" stroke="#003399" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="17" fill="#003399"/>
+              <path d="M20 34 V24 L30 18 L40 24 V34 Z M24 34 V28 H36 V34 M30 21 V28" stroke="#FFFFFF" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#003399" text-anchor="middle">WAREHOUSING</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#003399" text-anchor="middle">AS / RS</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Smart Warehousing</p><span class="fw-bridge-job-count">86 jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">86 jobs</span>
+            <p class="fw-bridge-name">Smart Warehousing</p>
+          </div>
         </a>
 
         <!-- Category 3: Fleet Dispatch & Trucking -->
         <a href="#section-jobs" class="fw-bridge-item" title="Fleet Dispatch &amp; Trucking" onclick="filterJobsByCategory('fleet'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #70193D; color: #70193D;">
-              <i class="fa-solid fa-truck-fast"></i>
-            </div>
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#70193D" stroke-width="2"/>
+              <polygon points="30,8 46,14 52,30 46,46 30,52 14,46 8,30 14,14" fill="none" stroke="#70193D" stroke-width="1"/>
+              <circle cx="30" cy="30" r="15" fill="#70193D"/>
+              <path d="M19 33 H22 M25 33 H33 M36 33 H41 M19 25 H32 V33 H19 Z M32 27 H37 L41 30 V33 H32 Z" stroke="#FFFFFF" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+              <text x="30" y="50" font-size="3.3" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#70193D" text-anchor="middle">TRUCKING</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Fleet Dispatch &amp; Trucking</p><span class="fw-bridge-job-count">64 jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">64 jobs</span>
+            <p class="fw-bridge-name">Fleet Dispatch &amp; Trucking</p>
+          </div>
         </a>
 
         <!-- Category 4: Supply Chain Management -->
         <a href="#section-jobs" class="fw-bridge-item" title="Supply Chain Management" onclick="filterJobsByCategory('tech'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #0E7490; color: #0E7490;">
-              <i class="fa-solid fa-diagram-project"></i>
-            </div>
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#0E7490" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24.5" fill="none" stroke="#0E7490" stroke-width="0.8" stroke-dasharray="2,2"/>
+              <circle cx="30" cy="30" r="16" fill="#0E7490"/>
+              <circle cx="23" cy="25" r="2" fill="#FFFFFF"/>
+              <circle cx="37" cy="25" r="2" fill="#FFFFFF"/>
+              <circle cx="30" cy="34" r="2" fill="#FFFFFF"/>
+              <path d="M23 25 L37 25 L30 34 Z" stroke="#FFFFFF" stroke-width="1.5" fill="none"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#0E7490" text-anchor="middle">SUPPLY CHAIN</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#0E7490" text-anchor="middle">PLANNING</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Supply Chain Management</p><span class="fw-bridge-job-count">118 jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">118 jobs</span>
+            <p class="fw-bridge-name">Supply Chain Management</p>
+          </div>
         </a>
 
         <!-- Category 5: Customs & Compliance -->
-        <a href="#section-jobs" class="fw-bridge-item" title="Customs &amp; Compliance" onclick="filterJobsByCategory('customs'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #00693E; color: #00693E;">
-              <i class="fa-solid fa-shield-halved"></i>
-            </div>
+        <a href="#section-jobs" class="fw-bridge-item" title="Customs &amp; Trade Compliance" onclick="filterJobsByCategory('customs'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#00693E" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#00693E" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#00693E"/>
+              <path d="M22 23 C22 23 30 21 30 21 C30 21 38 23 38 23 C38 31 30 36 30 36 C30 36 22 31 22 23 Z M25 28 L29 32 L35 25" stroke="#FFFFFF" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#00693E" text-anchor="middle">CUSTOMS TRADE</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#00693E" text-anchor="middle">COMPLIANCE</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Customs &amp; Compliance</p><span class="fw-bridge-job-count">52 jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">52 jobs</span>
+            <p class="fw-bridge-name">Customs &amp; Compliance</p>
+          </div>
         </a>
 
         <!-- Category 6: Maritime & Port Logistics -->
         <a href="#section-jobs" class="fw-bridge-item" title="Maritime &amp; Port Logistics" onclick="filterJobsByCategory('port'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #0284C7; color: #0284C7;">
-              <i class="fa-solid fa-anchor"></i>
-            </div>
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#004F98" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#004F98" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#004F98"/>
+              <circle cx="30" cy="21" r="2" fill="none" stroke="#FFFFFF" stroke-width="1.6"/>
+              <path d="M30 23 V34 M25 26 H35 M22 30 C24 35, 36 35, 38 30" stroke="#FFFFFF" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <text x="30" y="11" font-size="4" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#004F98" text-anchor="middle">PORT &amp; DOCK</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#004F98" text-anchor="middle">MARITIME</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Maritime &amp; Port Logistics</p><span class="fw-bridge-job-count">95 jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">95 jobs</span>
+            <p class="fw-bridge-name">Maritime &amp; Port Logistics</p>
+          </div>
         </a>
 
         <!-- Category 7: Air Cargo Operations -->
         <a href="#section-jobs" class="fw-bridge-item" title="Air Cargo Operations" onclick="filterJobsByCategory('forwarding'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #0284C7; color: #0284C7;">
-              <i class="fa-solid fa-plane-departure"></i>
-            </div>
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#0066B3" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#0066B3" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#0066B3"/>
+              <path d="M30 18 L30 35 M20 26 L30 22 L40 26 M25 33 L30 31 L35 33" stroke="#FFFFFF" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="30" y="11" font-size="4" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#0066B3" text-anchor="middle">AIR FREIGHT</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#0066B3" text-anchor="middle">AVIATION</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Air Cargo Operations</p><span class="fw-bridge-job-count">48 jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">48 jobs</span>
+            <p class="fw-bridge-name">Air Cargo Operations</p>
+          </div>
         </a>
 
         <!-- Category 8: Cold Chain Logistics -->
         <a href="#section-jobs" class="fw-bridge-item" title="Cold Chain Logistics" onclick="filterJobsByCategory('tech'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #0369A1; color: #0369A1;">
-              <i class="fa-solid fa-snowflake"></i>
-            </div>
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#0284C7" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#0284C7" stroke-width="0.8" stroke-dasharray="2,2"/>
+              <circle cx="30" cy="30" r="16" fill="#0284C7"/>
+              <path d="M30 19 V35 M22 27 H38 M24 21 L36 33 M24 33 L36 21" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+              <text x="30" y="11" font-size="4" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#0284C7" text-anchor="middle">COLD CHAIN</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#0284C7" text-anchor="middle">REEFER</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Cold Chain Logistics</p><span class="fw-bridge-job-count">38 jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">38 jobs</span>
+            <p class="fw-bridge-name">Cold Chain Logistics</p>
+          </div>
         </a>
 
-        <!-- Category 9: Last-Mile & Delivery -->
-        <a href="#section-jobs" class="fw-bridge-item" title="Last-Mile &amp; Delivery" onclick="filterJobsByCategory('fleet'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #D97706; color: #D97706;">
-              <i class="fa-solid fa-location-dot"></i>
-            </div>
+        <!-- Category 9: Last-Mile Delivery -->
+        <a href="#section-jobs" class="fw-bridge-item" title="Last-Mile &amp; Urban Delivery" onclick="filterJobsByCategory('fleet'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#D97706" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#D97706" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#D97706"/>
+              <path d="M30 19 C26 19, 23 22, 23 26 C23 31, 30 36, 30 36 C30 36, 37 31, 37 26 C37 22, 34 19, 30 19 Z" stroke="#FFFFFF" stroke-width="1.6" fill="none"/>
+              <circle cx="30" cy="25" r="2.2" fill="#FFFFFF"/>
+              <text x="30" y="11" font-size="4" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#D97706" text-anchor="middle">LAST-MILE</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#D97706" text-anchor="middle">EXPRESS</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Last-Mile &amp; Delivery</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">35+ jobs</span>
+            <p class="fw-bridge-name">Last-Mile &amp; Delivery</p>
+          </div>
         </a>
 
-        <!-- Category 10: Autonomous AMR & Robotics -->
+        <!-- Category 10: Autonomous AMR Robotics -->
         <a href="#section-jobs" class="fw-bridge-item" title="Autonomous AMR &amp; Robotics" onclick="filterJobsByCategory('robotics'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #6366F1; color: #6366F1;">
-              <i class="fa-solid fa-robot"></i>
-            </div>
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#4338CA" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#4338CA" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#4338CA"/>
+              <rect x="22" y="22" width="16" height="11" rx="2" stroke="#FFFFFF" stroke-width="1.6" fill="none"/>
+              <circle cx="26" cy="27.5" r="1.5" fill="#FFFFFF"/>
+              <circle cx="34" cy="27.5" r="1.5" fill="#FFFFFF"/>
+              <path d="M30 18 V22 M20 27.5 H22 M38 27.5 H40 M30 33 V36" stroke="#FFFFFF" stroke-width="1.5"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#4338CA" text-anchor="middle">AUTONOMOUS</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#4338CA" text-anchor="middle">ROBOTICS</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Autonomous AMR &amp; Robotics</p><span class="fw-bridge-job-count">29 jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">29 jobs</span>
+            <p class="fw-bridge-name">Autonomous AMR &amp; Robotics</p>
+          </div>
         </a>
 
         <!-- Category 11: E-Commerce Fulfillment -->
-        <a href="#section-jobs" class="fw-bridge-item" title="E-Commerce Fulfillment" onclick="filterJobsByCategory('forwarding'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #DC2626; color: #DC2626;">
-              <i class="fa-solid fa-box-open"></i>
-            </div>
+        <a href="#section-jobs" class="fw-bridge-item" title="E-Commerce Fulfillment" onclick="filterJobsByCategory('robotics'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#9E1B32" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#9E1B32" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#9E1B32"/>
+              <path d="M30 19 L39 24 L30 29 L21 24 Z M21 25 V33 L30 38 V30 M39 25 V33 L30 38" stroke="#FFFFFF" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#9E1B32" text-anchor="middle">E-COMMERCE</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#9E1B32" text-anchor="middle">FULFILLMENT</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">E-Commerce Fulfillment</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">35+ jobs</span>
+            <p class="fw-bridge-name">E-Commerce Fulfillment</p>
+          </div>
         </a>
 
         <!-- Category 12: Procurement & Sourcing -->
-        <a href="#section-jobs" class="fw-bridge-item" title="Procurement &amp; Sourcing" onclick="filterJobsByCategory('tech'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #1E293B; color: #1E293B;">
-              <i class="fa-solid fa-chart-line"></i>
-            </div>
+        <a href="#section-jobs" class="fw-bridge-item" title="Procurement &amp; Sourcing" onclick="filterJobsByCategory('forwarding'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#1E293B" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#1E293B" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#1E293B"/>
+              <path d="M21 28 L26 23 L31 27 L35 23 L39 27 M23 31 L28 35 L33 31 L37 34" stroke="#FFFFFF" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#1E293B" text-anchor="middle">PROCUREMENT</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#1E293B" text-anchor="middle">SOURCING</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Procurement &amp; Sourcing</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">35+ jobs</span>
+            <p class="fw-bridge-name">Procurement &amp; Sourcing</p>
+          </div>
         </a>
 
         <!-- Category 13: Inventory Control -->
-        <a href="#section-jobs" class="fw-bridge-item" title="Inventory Control" onclick="filterJobsByCategory('robotics'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #7C3AED; color: #7C3AED;">
-              <i class="fa-solid fa-barcode"></i>
-            </div>
+        <a href="#section-jobs" class="fw-bridge-item" title="Inventory &amp; Material Control" onclick="filterJobsByCategory('robotics'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#672179" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#672179" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#672179"/>
+              <path d="M22 21 H38 M22 25 H38 M22 29 H34 M22 33 H31" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+              <text x="30" y="11" font-size="4" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#672179" text-anchor="middle">INVENTORY</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#672179" text-anchor="middle">CONTROL</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Inventory Control</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">35+ jobs</span>
+            <p class="fw-bridge-name">Inventory Control</p>
+          </div>
         </a>
 
         <!-- Category 14: Rail & Intermodal -->
-        <a href="#section-jobs" class="fw-bridge-item" title="Rail &amp; Intermodal" onclick="filterJobsByCategory('fleet'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #2563EB; color: #2563EB;">
-              <i class="fa-solid fa-train"></i>
-            </div>
+        <a href="#section-jobs" class="fw-bridge-item" title="Rail &amp; Intermodal Freight" onclick="filterJobsByCategory('fleet'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#1E40AF" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#1E40AF" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#1E40AF"/>
+              <rect x="23" y="19" width="14" height="15" rx="3" stroke="#FFFFFF" stroke-width="1.6" fill="none"/>
+              <circle cx="26" cy="30" r="1.5" fill="#FFFFFF"/>
+              <circle cx="34" cy="30" r="1.5" fill="#FFFFFF"/>
+              <path d="M20 36 L40 36 M25 34 L22 37 M35 34 L38 37" stroke="#FFFFFF" stroke-width="1.5"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#1E40AF" text-anchor="middle">INTERMODAL</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#1E40AF" text-anchor="middle">RAIL FREIGHT</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Rail &amp; Intermodal</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">35+ jobs</span>
+            <p class="fw-bridge-name">Rail &amp; Intermodal</p>
+          </div>
         </a>
 
         <!-- Category 15: Hazmat Transport -->
-        <a href="#section-jobs" class="fw-bridge-item" title="Hazmat Transport" onclick="filterJobsByCategory('customs'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #C2410C; color: #C2410C;">
-              <i class="fa-solid fa-triangle-exclamation"></i>
-            </div>
+        <a href="#section-jobs" class="fw-bridge-item" title="Hazmat &amp; Chemical Cargo" onclick="filterJobsByCategory('fleet'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#B45309" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#B45309" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#B45309"/>
+              <polygon points="30,19 39,27 30,35 21,27" stroke="#FFFFFF" stroke-width="1.6" fill="none"/>
+              <path d="M30 22 V27 M30 30 V31" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+              <text x="30" y="11" font-size="4" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#B45309" text-anchor="middle">HAZMAT</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#B45309" text-anchor="middle">SAFETY</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Hazmat Transport</p><span class="fw-bridge-job-count">19 jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">19 jobs</span>
+            <p class="fw-bridge-name">Hazmat Transport</p>
+          </div>
         </a>
 
         <!-- Category 16: Telematics & IoT Systems -->
         <a href="#section-jobs" class="fw-bridge-item" title="Telematics &amp; IoT Systems" onclick="filterJobsByCategory('tech'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #0F766E; color: #0F766E;">
-              <i class="fa-solid fa-tower-broadcast"></i>
-            </div>
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#0F766E" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#0F766E" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#0F766E"/>
+              <circle cx="30" cy="27" r="2.5" fill="#FFFFFF"/>
+              <path d="M25 22 C28 19, 32 19, 35 22 M22 19 C26 15, 34 15, 38 19 M25 32 C28 35, 32 35, 35 32" stroke="#FFFFFF" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#0F766E" text-anchor="middle">TELEMATICS</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#0F766E" text-anchor="middle">IOT SENSORS</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Telematics &amp; IoT Systems</p><span class="fw-bridge-job-count">33 jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">33 jobs</span>
+            <p class="fw-bridge-name">Telematics &amp; IoT Systems</p>
+          </div>
         </a>
 
         <!-- Category 17: Reverse Logistics -->
-        <a href="#section-jobs" class="fw-bridge-item" title="Reverse Logistics" onclick="filterJobsByCategory('forwarding'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #16A34A; color: #16A34A;">
-              <i class="fa-solid fa-arrows-rotate"></i>
-            </div>
+        <a href="#section-jobs" class="fw-bridge-item" title="Reverse Logistics &amp; Returns" onclick="filterJobsByCategory('forwarding'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#15803D" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#15803D" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#15803D"/>
+              <path d="M24 22 L30 18 L36 22 M36 21 V29 M36 32 L30 36 L24 32 M24 33 V25" stroke="#FFFFFF" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="30" y="11" font-size="3.6" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#15803D" text-anchor="middle">REVERSE LOGISTICS</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#15803D" text-anchor="middle">CIRCULAR</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Reverse Logistics</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">35+ jobs</span>
+            <p class="fw-bridge-name">Reverse Logistics</p>
+          </div>
         </a>
 
         <!-- Category 18: Terminal & Yard -->
-        <a href="#section-jobs" class="fw-bridge-item" title="Terminal &amp; Yard" onclick="filterJobsByCategory('port'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #0D9488; color: #0D9488;">
-              <i class="fa-solid fa-dolly"></i>
-            </div>
+        <a href="#section-jobs" class="fw-bridge-item" title="Terminal &amp; Yard Operations" onclick="filterJobsByCategory('port'); return false;">
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#155E75" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#155E75" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#155E75"/>
+              <path d="M20 34 L24 20 H36 L40 34 M24 25 H36 M30 20 V29" stroke="#FFFFFF" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#155E75" text-anchor="middle">TERMINAL YARD</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#155E75" text-anchor="middle">DISPATCH</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Terminal &amp; Yard</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">35+ jobs</span>
+            <p class="fw-bridge-name">Terminal &amp; Yard</p>
+          </div>
         </a>
 
         <!-- Category 19: Green Logistics & ESG -->
         <a href="#section-jobs" class="fw-bridge-item" title="Green Logistics &amp; ESG" onclick="filterJobsByCategory('tech'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #059669; color: #059669;">
-              <i class="fa-solid fa-leaf"></i>
-            </div>
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#047857" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#047857" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#047857"/>
+              <path d="M22 33 C22 24 33 19 37 19 C37 23 37 33 28 33 Z M22 33 L32 23" stroke="#FFFFFF" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#047857" text-anchor="middle">GREEN FREIGHT</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#047857" text-anchor="middle">ESG ECO</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Green Logistics &amp; ESG</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">35+ jobs</span>
+            <p class="fw-bridge-name">Green Logistics &amp; ESG</p>
+          </div>
         </a>
 
-        <!-- Category 20: Logistics IT & Data Systems -->
+        <!-- Category 20: Logistics IT & Big Data -->
         <a href="#section-jobs" class="fw-bridge-item" title="Logistics IT &amp; Data Systems" onclick="filterJobsByCategory('tech'); return false;">
-          <div class="fw-bridge-badge-wrap">
-            <div class="fw-bridge-circle-badge" style="border-color: #6D28D9; color: #6D28D9;">
-              <i class="fa-solid fa-server"></i>
-            </div>
+          <div class="fw-bridge-logo-wrap">
+            <svg viewBox="0 0 60 60" width="68" height="68" class="fw-bridge-logo-svg">
+              <circle cx="30" cy="30" r="28" fill="none" stroke="#5B21B6" stroke-width="2"/>
+              <circle cx="30" cy="30" r="24" fill="none" stroke="#5B21B6" stroke-width="0.8"/>
+              <circle cx="30" cy="30" r="16" fill="#5B21B6"/>
+              <ellipse cx="30" cy="21" rx="9" ry="3" stroke="#FFFFFF" stroke-width="1.5" fill="none"/>
+              <path d="M21 21 V26 C21 28 39 28 39 26 V21 M21 26 V31 C21 33 39 33 39 31 V26" stroke="#FFFFFF" stroke-width="1.5" fill="none"/>
+              <text x="30" y="11" font-size="3.8" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#5B21B6" text-anchor="middle">LOGISTICS IT</text>
+              <text x="30" y="53" font-size="3.5" font-family="'Segoe UI', sans-serif" font-weight="600" fill="#5B21B6" text-anchor="middle">BIG DATA</text>
+            </svg>
           </div>
-          <div class="fw-bridge-info"><p class="fw-bridge-name">Logistics IT &amp; Data Systems</p><span class="fw-bridge-job-count">35+ jobs</span></div>
+          <div class="fw-bridge-info">
+            <span class="fw-bridge-job-count">35+ jobs</span>
+            <p class="fw-bridge-name">Logistics IT &amp; Data Systems</p>
+          </div>
         </a>
 
       </div>
@@ -2642,765 +2788,379 @@
 <!-- ========================================================================
      VIEW: COURSES CATALOG (#view-courses)
      ======================================================================== -->
+
 <section class="app-view" id="view-courses">
-<div id="app-content-root" class="app-page-wrapper">
 
-
-  
-  <!-- Breadcrumb Bar Below Header -->
-  <div class="wt-breadcrumb-bar">
-    <div class="container" style="max-width: 1280px; padding: 0 24px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: #64748B;">
-      <a href="index.html" style="color: #64748B; text-decoration: none;">Home</a>
-      <span>/</span>
-      <span style="color: #0F172A; font-weight: 600;">Courses & Certifications</span>
+  <!-- ===== HERO BANNER ===== -->
+  <div class="courses-hero">
+    <div class="courses-hero__particles" id="coursesParticles"></div>
+    <div class="courses-hero__content">
+      <div class="courses-hero__badge"><i class="fa-solid fa-graduation-cap"></i> Vietnam's #1 Logistics Training Platform</div>
+      <h1 class="courses-hero__title">Master Logistics &amp; Supply Chain<br>Certifications</h1>
+      <p class="courses-hero__sub">Industry-accredited programs taught by Vietnam's leading logistics professionals.<br>Advance your career with globally recognized qualifications.</p>
+      <div class="courses-hero__stats">
+        <div class="courses-hero__stat"><span class="stat-num">24</span><span class="stat-lbl">Courses</span></div>
+        <div class="courses-hero__divider"></div>
+        <div class="courses-hero__stat"><span class="stat-num">12,000+</span><span class="stat-lbl">Students</span></div>
+        <div class="courses-hero__divider"></div>
+        <div class="courses-hero__stat"><span class="stat-num">8</span><span class="stat-lbl">Accreditors</span></div>
+        <div class="courses-hero__divider"></div>
+        <div class="courses-hero__stat"><span class="stat-num">94%</span><span class="stat-lbl">Pass Rate</span></div>
+      </div>
+      <div class="courses-hero__search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="courseSearchInput" placeholder="Search courses, certifications, skills..." oninput="filterCourseCards()" />
+        <button class="hero-search-btn" onclick="filterCourseCards()">Search</button>
+      </div>
     </div>
   </div>
 
-
-  <!-- Courses Page Dedicated Hero Showcase -->
-  <section style="background: #FFFFFF; padding: 40px 0 28px;">
-    <div class="container" style="max-width: 1240px; margin: 0 auto; padding: 0 20px;">
-      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-        <span style="font-size:12px; font-weight:700; color:#64748B; letter-spacing:0.05em; text-transform:uppercase;">Courses &amp; Certifications</span>
-        <span style="font-size: 13px; color: #64748B; font-weight: 600;">FIATA &middot; IATA &middot; CSCP &middot; VLA Standards</span>
+  <!-- ===== STICKY FILTER BAR ===== -->
+  <div class="course-filter-bar" id="courseFilterBar">
+    <div class="course-filter-bar__inner">
+      <div class="course-pills" id="coursePills">
+        <button class="course-pill active" onclick="filterCoursesByPill(this,'all')">All <span class="pill-count">24</span></button>
+        <button class="course-pill" onclick="filterCoursesByPill(this,'fiata')">FIATA &amp; Maritime <span class="pill-count">6</span></button>
+        <button class="course-pill" onclick="filterCoursesByPill(this,'customs')">Customs &amp; Tariffs <span class="pill-count">5</span></button>
+        <button class="course-pill" onclick="filterCoursesByPill(this,'aviation')">Air Cargo IATA <span class="pill-count">4</span></button>
+        <button class="course-pill" onclick="filterCoursesByPill(this,'warehouse')">Smart Warehousing <span class="pill-count">4</span></button>
+        <button class="course-pill" onclick="filterCoursesByPill(this,'coldchain')">Cold Chain <span class="pill-count">3</span></button>
+        <button class="course-pill" onclick="filterCoursesByPill(this,'esg')">ESG &amp; Green <span class="pill-count">2</span></button>
       </div>
-      <h1 style="font-size: 34px; font-weight: 900; color: #0F172A; margin: 0 0 10px; letter-spacing: -0.02em;">
-        Certifications that actually get you hired
-      </h1>
-      <p style="font-size: 14.5px; color: #475569; margin: 0; max-width: 820px; line-height: 1.6;">
-        FIATA, IATA DGR, customs brokerage prep, and WMS training — the certifications Vietnamese freight companies actually ask for on job listings.
-      </p>
-    </div>
-  </section>
-
-  <!-- Filter & Course Discovery Bar (Clean Minimalist — No Harsh Borders) -->
-  <section style="background: #FFFFFF; padding: 16px 0; position: sticky; top: 68px; z-index: 100; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04); border-bottom: 1px solid #E2E8F0;">
-    <div class="container" style="max-width: 1240px; margin: 0 auto; padding: 0 20px;">
-      <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
-        <!-- Search Input -->
-        <div style="position: relative; flex: 1; min-width: 280px; max-width: 480px;">
-          <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #94A3B8; font-size: 14px;"></i>
-          <input type="text" id="course-search-input" placeholder="Search by certification name..." style="width: 100%; height: 42px; padding: 0 16px 0 40px; border: none; border-radius: 8px; font-size: 13.5px; font-family: inherit; outline: none; background: #F1F5F9; transition: all 0.15s ease;" oninput="filterCourseCards();">
-        </div>
-        <!-- Filter Tabs / Pills -->
-        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;" id="course-filter-pills">
-          <button type="button" class="course-filter-btn active" data-filter="all" onclick="filterCoursesByPill(this, 'all');" style="background: #123B5D; color: #FFFFFF; border: none; border-radius: 20px; padding: 7px 16px; font-size: 12.5px; font-weight: 700; cursor: pointer; transition: all 0.15s ease;">All Programs (6)</button>
-          <button type="button" class="course-filter-btn" data-filter="fiata" onclick="filterCoursesByPill(this, 'fiata');" style="background: #F1F5F9; color: #475569; border: none; border-radius: 20px; padding: 7px 16px; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: all 0.15s ease;">FIATA &amp; Maritime</button>
-          <button type="button" class="course-filter-btn" data-filter="customs" onclick="filterCoursesByPill(this, 'customs');" style="background: #F1F5F9; color: #475569; border: none; border-radius: 20px; padding: 7px 16px; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: all 0.15s ease;">Customs &amp; Tariffs</button>
-          <button type="button" class="course-filter-btn" data-filter="aviation" onclick="filterCoursesByPill(this, 'aviation');" style="background: #F1F5F9; color: #475569; border: none; border-radius: 20px; padding: 7px 16px; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: all 0.15s ease;">Air Cargo (IATA)</button>
-          <button type="button" class="course-filter-btn" data-filter="warehouse" onclick="filterCoursesByPill(this, 'warehouse');" style="background: #F1F5F9; color: #475569; border: none; border-radius: 20px; padding: 7px 16px; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: all 0.15s ease;">Smart Warehousing &amp; Tech</button>
-        </div>
+      <div class="course-sort">
+        <label><i class="fa-solid fa-arrow-up-wide-short"></i></label>
+        <select id="courseSortSelect" onchange="sortCourses(this.value)">
+          <option value="popular">Most Popular</option>
+          <option value="newest">Newest</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+        </select>
       </div>
     </div>
-  </section>
-
-  <!-- Courses Main Catalog Grid -->
-  <section style="padding: 40px 0 60px; background: #F8FAFC;">
-    <div class="container" style="max-width: 1240px; margin: 0 auto; padding: 0 20px;">
-      
-      <!-- Catalog Header -->
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-        <h2 style="font-size: 22px; font-weight: 700; color: #0F172A; margin: 0; display: flex; align-items: center; gap: 8px;">
-          <span style="display: inline-block; width: 4px; height: 22px; background: #123B5D; border-radius: 2px;"></span>
-          Courses
-        </h2>
-        <span style="font-size: 13px; color: #64748B; font-weight: 600;" id="course-count-label">Showing 6 verified programs</span>
-      </div>
-
-      <!-- 2-Column Responsive Card Grid (Borderless Soft-Shadow Design) -->
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;" id="courses-grid-container">
-        
-        <!-- Course 1: FIATA Higher International Diploma -->
-        <article class="course-card" data-category="fiata" style="background: #FFFFFF; border: none; border-radius: 14px; padding: 26px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.18s ease, box-shadow 0.18s ease;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-              <span style="background: #EAF1F7; color: #123B5D; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 4px; letter-spacing: 0.5px; text-transform: uppercase;">FIATA VALIDATED DIPLOMA</span>
-              <span style="font-size: 12px; color: #64748B; font-weight: 600;"><i class="fa-solid fa-graduation-cap" style="color: #123B5D; margin-right: 4px;"></i> Executive Qualification</span>
-            </div>
-            <h3 style="font-size: 18px; font-weight: 700; color: #0F172A; margin: 0 0 8px; line-height: 1.35;">
-              FIATA Higher International Diploma in Supply Chain Management
-            </h3>
-            <p style="font-size: 13px; color: #64748B; margin: 0 0 16px; line-height: 1.55;">
-              Delivered in Vietnam by the Vietnam Logistics Research &amp; Development Institute (VLI). Covers 8 official FIATA modules including procurement, maritime law, multimodal transport, customs compliance, and supply chain management.
-            </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px;">
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-clock" style="color:#64748B; margin-right:4px;"></i> 16 Weeks</span>
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-book-open" style="color:#123B5D; margin-right:4px;"></i> 160 Guided Hours</span>
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-language" style="color:#64748B; margin-right:4px;"></i> Bilingual (VN / EN)</span>
-            </div>
-          </div>
-          <div style="padding-top: 16px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
-            <div>
-              <span style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700; display: block;">Standard Tuition</span>
-              <span style="font-size: 17px; font-weight: 800; color: #123B5D;">18,500,000 VND</span>
-            </div>
-            <div style="display: flex; gap: 8px;">
-              <a href="#course?id=fiata-diploma" onclick="switchView('course-detail'); hydrateCourseDetail('fiata-diploma'); return false;" class="btn-course-details" style="display: inline-flex; align-items: center; gap: 6px; background: #123B5D; color: #FFFFFF; font-size: 12.5px; font-weight: 600; padding: 8px 16px; border-radius: 6px; text-decoration: none; border: none; transition: background 0.15s ease;">
-                <span>View Course</span>
-                <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Course 2: National Customs Brokerage Exam Prep -->
-        <article class="course-card" data-category="customs" style="background: #FFFFFF; border: none; border-radius: 14px; padding: 26px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.18s ease, box-shadow 0.18s ease;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-              <span style="background: #F1F5F9; color: #0F172A; font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.5px; text-transform: uppercase;">GOVERNMENT EXAM PREP</span>
-              <span style="font-size: 12px; color: #0F172A; font-weight: 700;"><i class="fa-solid fa-star" style="color: #123B5D;"></i> 4.8 (185 reviews)</span>
-            </div>
-            <h3 style="font-size: 18px; font-weight: 800; color: #0F172A; margin: 0 0 8px; line-height: 1.35;">
-              Customs Brokerage Official Licensing &amp; VNACCS/VCIS Mastery
-            </h3>
-            <p style="font-size: 13px; color: #64748B; margin: 0 0 16px; line-height: 1.55;">
-              Preparation course for the official General Department of Vietnam Customs broker license examination. Covers HS Code classification, tariff rulings, and electronic declaration.
-            </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px;">
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-clock" style="color:#64748B; margin-right:4px;"></i> 8 Weeks</span>
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-stamp" style="color:#123B5D; margin-right:4px;"></i> Official License Prep</span>
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-laptop-code" style="color:#64748B; margin-right:4px;"></i> VNACCS Software Lab</span>
-            </div>
-          </div>
-          <div style="padding-top: 16px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
-            <div>
-              <span style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700; display: block;">Standard Tuition</span>
-              <span style="font-size: 17px; font-weight: 900; color: #123B5D;">9,800,000 VND</span>
-            </div>
-            <div style="display: flex; gap: 8px;">
-              <a href="#course?id=customs-brokerage" onclick="switchView('course-detail'); hydrateCourseDetail('customs-brokerage'); return false;" class="btn-course-details" style="display: inline-flex; align-items: center; gap: 6px; background: #123B5D; color: #FFFFFF; font-size: 12.5px; font-weight: 700; padding: 8px 16px; border-radius: 6px; text-decoration: none; border: none; transition: background 0.15s ease;">
-                <span>View Details</span>
-                <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Course 3: IATA Dangerous Goods Regulations (DGR) -->
-        <article class="course-card" data-category="aviation" style="background: #FFFFFF; border: none; border-radius: 14px; padding: 26px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.18s ease, box-shadow 0.18s ease;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-              <span style="background: #EAF1F7; color: #123B5D; font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.5px; text-transform: uppercase;">IATA AVIATION CERTIFIED</span>
-              <span style="font-size: 12px; color: #0F172A; font-weight: 700;"><i class="fa-solid fa-star" style="color: #123B5D;"></i> 4.9 (310 reviews)</span>
-            </div>
-            <h3 style="font-size: 18px; font-weight: 800; color: #0F172A; margin: 0 0 8px; line-height: 1.35;">
-              IATA Dangerous Goods Regulations (DGR Category 6) Certification
-            </h3>
-            <p style="font-size: 13px; color: #64748B; margin: 0 0 16px; line-height: 1.55;">
-              Mandatory qualification for air cargo forwarders, ramp handlers, and hazardous goods packers. Direct certification from the International Air Transport Association (IATA).
-            </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px;">
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-clock" style="color:#64748B; margin-right:4px;"></i> 5 Days Intensive</span>
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-plane-departure" style="color:#123B5D; margin-right:4px;"></i> IATA Global Registry</span>
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-calendar-check" style="color:#64748B; margin-right:4px;"></i> Valid 24 Months</span>
-            </div>
-          </div>
-          <div style="padding-top: 16px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
-            <div>
-              <span style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700; display: block;">Standard Tuition</span>
-              <span style="font-size: 17px; font-weight: 900; color: #123B5D;">14,200,000 VND</span>
-            </div>
-            <div style="display: flex; gap: 8px;">
-              <a href="#course?id=iata-dgr" onclick="switchView('course-detail'); hydrateCourseDetail('iata-dgr'); return false;" class="btn-course-details" style="display: inline-flex; align-items: center; gap: 6px; background: #123B5D; color: #FFFFFF; font-size: 12.5px; font-weight: 700; padding: 8px 16px; border-radius: 6px; text-decoration: none; border: none; transition: background 0.15s ease;">
-                <span>View Details</span>
-                <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Course 4: Smart Warehousing, AMR & WMS Architecture -->
-        <article class="course-card" data-category="warehouse" style="background: #FFFFFF; border: none; border-radius: 14px; padding: 26px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.18s ease, box-shadow 0.18s ease;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-              <span style="background: #F1F5F9; color: #0F172A; font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.5px; text-transform: uppercase;">INDUSTRY 4.0 LOGISTICS</span>
-              <span style="font-size: 12px; color: #0F172A; font-weight: 700;"><i class="fa-solid fa-star" style="color: #123B5D;"></i> 4.9 (142 reviews)</span>
-            </div>
-            <h3 style="font-size: 18px; font-weight: 800; color: #0F172A; margin: 0 0 8px; line-height: 1.35;">
-              Autonomous Mobile Robots (AMR), AGV &amp; WMS Systems Architecture
-            </h3>
-            <p style="font-size: 13px; color: #64748B; margin: 0 0 16px; line-height: 1.55;">
-              Hands-on training in automated storage and retrieval systems (AS/RS), fleet manager integration, barcode/RFID tracking, and warehouse layout optimization for modern fulfillment centers.
-            </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px;">
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-clock" style="color:#64748B; margin-right:4px;"></i> 6 Weeks</span>
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-robot" style="color:#123B5D; margin-right:4px;"></i> Robotics Simulation</span>
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-network-wired" style="color:#64748B; margin-right:4px;"></i> ERP / WMS API Labs</span>
-            </div>
-          </div>
-          <div style="padding-top: 16px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
-            <div>
-              <span style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700; display: block;">Standard Tuition</span>
-              <span style="font-size: 17px; font-weight: 900; color: #123B5D;">11,500,000 VND</span>
-            </div>
-            <div style="display: flex; gap: 8px;">
-              <a href="course-detail.html?id=smart-warehousing" class="btn-course-details" style="display: inline-flex; align-items: center; gap: 6px; background: #123B5D; color: #FFFFFF; font-size: 12.5px; font-weight: 700; padding: 8px 16px; border-radius: 6px; text-decoration: none; border: none; transition: background 0.15s ease;">
-                <span>View Details</span>
-                <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Course 5: Port & Maritime Terminal Management -->
-        <article class="course-card" data-category="fiata" style="background: #FFFFFF; border: none; border-radius: 14px; padding: 26px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.18s ease, box-shadow 0.18s ease;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-              <span style="background: #EAF1F7; color: #123B5D; font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.5px; text-transform: uppercase;">MARITIME ACADEMY</span>
-              <span style="font-size: 12px; color: #0F172A; font-weight: 700;"><i class="fa-solid fa-star" style="color: #123B5D;"></i> 4.8 (115 reviews)</span>
-            </div>
-            <h3 style="font-size: 18px; font-weight: 800; color: #0F172A; margin: 0 0 8px; line-height: 1.35;">
-              Container Port Operations &amp; Berth Allocation Planning
-            </h3>
-            <p style="font-size: 13px; color: #64748B; margin: 0 0 16px; line-height: 1.55;">
-              Curriculum endorsed by Vietnam Seaports Association (VPA). Learn TOS (Terminal Operating Systems), vessel stowage planning, quay crane productivity, and intermodal yard drayage.
-            </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px;">
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-clock" style="color:#64748B; margin-right:4px;"></i> 10 Weeks</span>
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-anchor" style="color:#123B5D; margin-right:4px;"></i> Seaport Field Practicum</span>
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-shield" style="color:#64748B; margin-right:4px;"></i> ISPS Code Certified</span>
-            </div>
-          </div>
-          <div style="padding-top: 16px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
-            <div>
-              <span style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700; display: block;">Standard Tuition</span>
-              <span style="font-size: 17px; font-weight: 900; color: #123B5D;">16,000,000 VND</span>
-            </div>
-            <div style="display: flex; gap: 8px;">
-              <a href="course-detail.html?id=port-maritime" class="btn-course-details" style="display: inline-flex; align-items: center; gap: 6px; background: #123B5D; color: #FFFFFF; font-size: 12.5px; font-weight: 700; padding: 8px 16px; border-radius: 6px; text-decoration: none; border: none; transition: background 0.15s ease;">
-                <span>View Details</span>
-                <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Course 6: Cold Chain Pharma & Good Distribution Practices -->
-        <article class="course-card" data-category="customs" style="background: #FFFFFF; border: none; border-radius: 14px; padding: 26px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.18s ease, box-shadow 0.18s ease;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-              <span style="background: #F1F5F9; color: #0F172A; font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.5px; text-transform: uppercase;">PHARMA &amp; HEALTHCARE</span>
-              <span style="font-size: 12px; color: #0F172A; font-weight: 700;"><i class="fa-solid fa-star" style="color: #123B5D;"></i> 4.9 (98 reviews)</span>
-            </div>
-            <h3 style="font-size: 18px; font-weight: 800; color: #0F172A; margin: 0 0 8px; line-height: 1.35;">
-              Cold Chain Management &amp; Good Distribution Practices (GDP)
-            </h3>
-            <p style="font-size: 13px; color: #64748B; margin: 0 0 16px; line-height: 1.55;">
-              Certified training on temperature-controlled transport, vaccine cold room validation, reefer container telematics, and pharmaceutical regulatory compliance.
-            </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px;">
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-clock" style="color:#64748B; margin-right:4px;"></i> 4 Weeks</span>
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-snowflake" style="color:#123B5D; margin-right:4px;"></i> WHO GDP Compliant</span>
-              <span style="background: #F1F5F9; color: #475569; font-size: 11.5px; padding: 4px 10px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-temperature-arrow-down" style="color:#64748B; margin-right:4px;"></i> Data Logger SOPs</span>
-            </div>
-          </div>
-          <div style="padding-top: 16px; margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
-            <div>
-              <span style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700; display: block;">Standard Tuition</span>
-              <span style="font-size: 17px; font-weight: 900; color: #123B5D;">8,500,000 VND</span>
-            </div>
-            <div style="display: flex; gap: 8px;">
-              <a href="#course?id=cold-chain" onclick="switchView('course-detail'); hydrateCourseDetail('cold-chain'); return false;" class="btn-course-details" style="display: inline-flex; align-items: center; gap: 6px; background: #123B5D; color: #FFFFFF; font-size: 12.5px; font-weight: 700; padding: 8px 16px; border-radius: 6px; text-decoration: none; border: none; transition: background 0.15s ease;">
-                <span>View Details</span>
-                <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </article>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Accreditation Partners Logo Banner -->
-  <section style="background: #FFFFFF; padding: 36px 0 40px;">
-    <div class="container" style="max-width: 1240px; margin: 0 auto; padding: 0 20px; text-align: center;">
-      <span style="font-size: 11.5px; font-weight: 800; color: #94A3B8; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 20px;">
-        Officially Recognized by International &amp; National Regulatory Bodies
-      </span>
-      <div style="display: flex; align-items: center; justify-content: center; gap: 36px; flex-wrap: wrap; opacity: 0.85;">
-        <span style="font-size: 15px; font-weight: 800; color: #123B5D; letter-spacing: 0.5px;"><i class="fa-solid fa-globe"></i> FIATA Geneva</span>
-        <span style="font-size: 15px; font-weight: 800; color: #0F172A; letter-spacing: 0.5px;"><i class="fa-solid fa-plane"></i> IATA Training</span>
-        <span style="font-size: 15px; font-weight: 800; color: #123B5D; letter-spacing: 0.5px;"><i class="fa-solid fa-shield-halved"></i> MOLISA Vietnam</span>
-        <span style="font-size: 15px; font-weight: 800; color: #0F172A; letter-spacing: 0.5px;"><i class="fa-solid fa-building-columns"></i> VALOMA Association</span>
-      </div>
-    </div>
-  </section>
-  <!-- Official Footer -->
-  
   </div>
 
-  <!-- ========================================================================
-       12. BUILT IN 4-COLUMN ENTERPRISE DIRECTORY FOOTER
-       ======================================================================== -->
-    <!-- ========================================================================
-       12. BUILT IN CLEAN 5-COLUMN LIGHT FOOTER
-       Reference: Built In measured tokens #EAEEFD / #04003F / #28386F
-       ======================================================================== -->
-  
+  <!-- ===== FEATURED COURSE BANNER ===== -->
+  <div class="featured-course-banner">
+    <div class="featured-course-banner__inner">
+      <div class="featured-course-banner__left">
+        <span class="featured-badge"><i class="fa-solid fa-star"></i> Featured Program</span>
+        <h2 class="featured-title">FIATA Higher International Diploma<br>in Supply Chain Management</h2>
+        <p class="featured-desc">The world's most recognized logistics qualification — now available fully in Vietnam with VALOMA accreditation. 16 weeks, blended learning.</p>
+        <div class="featured-meta">
+          <span><i class="fa-solid fa-clock"></i> 160 hours</span>
+          <span><i class="fa-solid fa-layer-group"></i> 12 Modules</span>
+          <span><i class="fa-solid fa-signal"></i> Advanced</span>
+          <span><i class="fa-solid fa-users"></i> 2,847 enrolled</span>
+        </div>
+        <div class="featured-actions">
+          <button class="featured-enroll-btn" onclick="hydrateCourseDetail(1); switchView('view-course-detail')">Start Learning <i class="fa-solid fa-arrow-right"></i></button>
+          <span class="featured-price">24,900,000 ₫</span>
+        </div>
+      </div>
+      <div class="featured-course-banner__right">
+        <img src="images/course_1.jpg" alt="FIATA Diploma" class="featured-img" />
+        <div class="featured-rating-bubble">
+          <span class="featured-rating-num">4.9</span>
+          <div class="featured-stars">★★★★★</div>
+          <span class="featured-rating-lbl">Top Rated</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MAIN COURSE GRID ===== -->
+  <div class="courses-grid-section">
+    <div class="courses-grid-header">
+      <h2 id="coursesGridTitle">All Courses <span id="coursesGridCount" class="grid-count-badge">24</span></h2>
+      <p id="coursesGridSub">Explore our full catalog of logistics &amp; supply chain certifications</p>
+    </div>
+    <div class="courses-grid" id="coursesGrid">
+      <!-- Populated by JS -->
+    </div>
+    <div class="courses-empty" id="coursesEmpty" style="display:none;">
+      <i class="fa-solid fa-box-open"></i>
+      <p>No courses found matching your search.</p>
+      <button onclick="document.getElementById('courseSearchInput').value=''; filterCourseCards()">Clear Search</button>
+    </div>
+  </div>
+
+  <!-- ===== STATS BANNER ===== -->
+  <div class="courses-stats-banner">
+    <div class="courses-stats-banner__inner">
+      <div class="cstats-item">
+        <div class="cstats-icon"><i class="fa-solid fa-book-open"></i></div>
+        <div class="cstats-num" data-target="24">0</div>
+        <div class="cstats-lbl">Training Programs</div>
+      </div>
+      <div class="cstats-item">
+        <div class="cstats-icon"><i class="fa-solid fa-user-graduate"></i></div>
+        <div class="cstats-num" data-target="12847">0</div>
+        <div class="cstats-lbl">Graduates</div>
+      </div>
+      <div class="cstats-item">
+        <div class="cstats-icon"><i class="fa-solid fa-trophy"></i></div>
+        <div class="cstats-num" data-target="94" data-suffix="%">0</div>
+        <div class="cstats-lbl">Pass Rate</div>
+      </div>
+      <div class="cstats-item">
+        <div class="cstats-icon"><i class="fa-solid fa-award"></i></div>
+        <div class="cstats-num" data-target="8">0</div>
+        <div class="cstats-lbl">Accreditors</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ACCREDITATION PARTNERS ===== -->
+  <div class="accreditation-section">
+    <div class="accreditation-section__inner">
+      <h3 class="accred-title">Accreditation &amp; Partners</h3>
+      <p class="accred-sub">Our programs are recognized by leading national and international logistics bodies</p>
+      <div class="accred-logos">
+        <div class="accred-badge fiata-badge"><i class="fa-solid fa-globe"></i> FIATA Geneva</div>
+        <div class="accred-badge iata-badge"><i class="fa-solid fa-plane"></i> IATA Training</div>
+        <div class="accred-badge molisa-badge"><i class="fa-solid fa-landmark"></i> MOLISA Vietnam</div>
+        <div class="accred-badge valoma-badge"><i class="fa-solid fa-shield-halved"></i> VALOMA</div>
+        <div class="accred-badge vla-badge"><i class="fa-solid fa-truck"></i> VLA</div>
+        <div class="accred-badge vli-badge"><i class="fa-solid fa-building"></i> VLI</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <div class="courses-testimonials">
+    <div class="courses-testimonials__inner">
+      <h3 class="testi-section-title">What Our Graduates Say</h3>
+      <p class="testi-section-sub">Join thousands of logistics professionals who advanced their careers with VietnamJobs Training</p>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"The FIATA Diploma completely transformed my career. Within 3 months of completing the program, I was promoted to Supply Chain Manager at Maersk Vietnam. The curriculum is incredibly practical and relevant to the Vietnamese market."</p>
+          <div class="testi-author">
+            <div class="testi-avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="testi-info">
+              <div class="testi-name">Nguyễn Minh Tuấn</div>
+              <div class="testi-role">Supply Chain Manager, Maersk Vietnam</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card testi-featured">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"The IATA Dangerous Goods certification opened doors I didn't know existed. The instructors have real-world airline experience and the materials were up-to-date with the latest regulations. Passed first attempt!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="testi-info">
+              <div class="testi-name">Trần Thị Lan Anh</div>
+              <div class="testi-role">Cargo Operations Supervisor, Vietnam Airlines</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★☆</div>
+          <p class="testi-quote">"The Cold Chain GDP Compliance course was exactly what our pharmaceutical distribution company needed. We were able to immediately apply the knowledge to improve our storage protocols and pass a WHO audit."</p>
+          <div class="testi-author">
+            <div class="testi-avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="testi-info">
+              <div class="testi-name">Phạm Quốc Hùng</div>
+              <div class="testi-role">Logistics Director, Zuellig Pharma Vietnam</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="app-view" id="view-course-detail">
+
+  <!-- ===== DETAIL HERO ===== -->
+  <div class="crs-detail-hero" id="crsDetailHero">
+    <div class="crs-detail-hero__inner">
+      <div class="crs-detail-hero__content">
+        <!-- Breadcrumb -->
+        <div class="crs-breadcrumb">
+          <span onclick="switchView('view-courses')" class="crs-bc-link"><i class="fa-solid fa-house"></i> Courses</span>
+          <i class="fa-solid fa-chevron-right crs-bc-sep"></i>
+          <span class="crs-bc-current" id="crsDetailCategory">FIATA &amp; Maritime</span>
+          <i class="fa-solid fa-chevron-right crs-bc-sep"></i>
+          <span class="crs-bc-current" id="crsDetailBreadTitle">FIATA Higher Diploma</span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="crs-detail-title" id="crsDetailTitle">FIATA Higher International Diploma in Supply Chain Management</h1>
+        <p class="crs-detail-sub" id="crsDetailSub">Master the world's most recognized logistics qualification with Vietnam-accredited curriculum.</p>
+
+        <!-- Meta row -->
+        <div class="crs-detail-meta">
+          <span class="crs-meta-badge crs-badge-bestseller" id="crsDetailBadge">Best Seller</span>
+          <span class="crs-meta-rating" id="crsDetailRating">
+            <span class="crs-rating-num">4.9</span>
+            <span class="crs-rating-stars">★★★★★</span>
+            <span class="crs-rating-count">(847 ratings)</span>
+          </span>
+          <span class="crs-meta-item"><i class="fa-solid fa-users"></i> <span id="crsDetailEnrolled">2,847</span> students</span>
+          <span class="crs-meta-item"><i class="fa-solid fa-calendar-days"></i> Updated <span id="crsDetailUpdated">Oct 2026</span></span>
+          <span class="crs-meta-item"><i class="fa-solid fa-language"></i> <span id="crsDetailLang">Vietnamese / English</span></span>
+        </div>
+
+        <!-- Instructor -->
+        <div class="crs-detail-instructor">
+          <i class="fa-solid fa-chalkboard-user"></i>
+          <span>Created by <strong id="crsDetailInstructor">TS. Nguyễn Thành Long</strong> · <span id="crsDetailOrg">VALOMA Institute</span></span>
+        </div>
+
+        <!-- What you'll learn -->
+        <div class="crs-outcomes-box" id="crsDetailOutcomes">
+          <h4><i class="fa-solid fa-check-circle"></i> What You'll Learn</h4>
+          <ul class="crs-outcomes-list">
+            <li><i class="fa-solid fa-check"></i> Master FIATA documentation and international trade compliance</li>
+            <li><i class="fa-solid fa-check"></i> Design end-to-end supply chain strategies for Vietnamese markets</li>
+            <li><i class="fa-solid fa-check"></i> Apply lean and Six Sigma methodologies to logistics operations</li>
+            <li><i class="fa-solid fa-check"></i> Manage multimodal transport and customs clearance processes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DETAIL BODY (content + sidebar) ===== -->
+  <div class="crs-detail-body">
+    <div class="crs-detail-body__inner">
+
+      <!-- LEFT: Main Content -->
+      <div class="crs-detail-main">
+
+        <!-- Requirements -->
+        <div class="crs-section-card">
+          <h3 class="crs-section-title"><i class="fa-solid fa-list-check"></i> Requirements</h3>
+          <ul class="crs-req-list" id="crsDetailRequirements">
+            <li>Basic understanding of import/export operations</li>
+            <li>At least 1 year of experience in logistics or related field</li>
+            <li>Proficiency in Vietnamese; English reading ability is advantageous</li>
+            <li>Access to a computer with internet connection for online modules</li>
+          </ul>
+        </div>
+
+        <!-- Curriculum -->
+        <div class="crs-section-card">
+          <h3 class="crs-section-title"><i class="fa-solid fa-book-open"></i> Course Curriculum</h3>
+          <div class="crs-curriculum-meta" id="crsCurriculumMeta">12 modules · 160 hours · 48 lessons</div>
+          <div class="crs-curriculum" id="crsDetailCurriculum">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Instructor Bio -->
+        <div class="crs-section-card">
+          <h3 class="crs-section-title"><i class="fa-solid fa-user-tie"></i> Your Instructor</h3>
+          <div class="crs-instructor-card">
+            <div class="crs-instructor-avatar">
+              <i class="fa-solid fa-user-graduate"></i>
+            </div>
+            <div class="crs-instructor-info">
+              <div class="crs-instructor-name" id="crsInstructorName">TS. Nguyễn Thành Long</div>
+              <div class="crs-instructor-title" id="crsInstructorTitle">FIATA Certified Trainer · VALOMA Institute</div>
+              <div class="crs-instructor-stats">
+                <span><i class="fa-solid fa-star" style="color:#f59e0b"></i> 4.9 Instructor Rating</span>
+                <span><i class="fa-solid fa-users"></i> 3,200+ Students</span>
+                <span><i class="fa-solid fa-book"></i> 5 Courses</span>
+              </div>
+              <p class="crs-instructor-bio" id="crsInstructorBio">With over 20 years in Vietnamese logistics and supply chain management, TS. Long holds FIATA, CILT, and APICS certifications. He has consulted for leading companies including Vingroup Logistics, Maersk Vietnam, and the Ministry of Transport. His practical, case-study-based teaching approach has earned him top instructor ratings across all cohorts.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Student Reviews -->
+        <div class="crs-section-card">
+          <h3 class="crs-section-title"><i class="fa-solid fa-star"></i> Student Reviews</h3>
+          <div class="crs-reviews-overview">
+            <div class="crs-reviews-score">
+              <div class="crs-reviews-big-num" id="crsDetailBigRating">4.9</div>
+              <div class="crs-reviews-big-stars">★★★★★</div>
+              <div class="crs-reviews-label">Course Rating</div>
+            </div>
+            <div class="crs-reviews-bars">
+              <div class="crs-review-bar-row"><span class="crs-rbar-stars">★★★★★</span><div class="crs-rbar-track"><div class="crs-rbar-fill" style="width:78%"></div></div><span class="crs-rbar-pct">78%</span></div>
+              <div class="crs-review-bar-row"><span class="crs-rbar-stars">★★★★☆</span><div class="crs-rbar-track"><div class="crs-rbar-fill" style="width:16%"></div></div><span class="crs-rbar-pct">16%</span></div>
+              <div class="crs-review-bar-row"><span class="crs-rbar-stars">★★★☆☆</span><div class="crs-rbar-track"><div class="crs-rbar-fill" style="width:4%"></div></div><span class="crs-rbar-pct">4%</span></div>
+              <div class="crs-review-bar-row"><span class="crs-rbar-stars">★★☆☆☆</span><div class="crs-rbar-track"><div class="crs-rbar-fill" style="width:1%"></div></div><span class="crs-rbar-pct">1%</span></div>
+              <div class="crs-review-bar-row"><span class="crs-rbar-stars">★☆☆☆☆</span><div class="crs-rbar-track"><div class="crs-rbar-fill" style="width:1%"></div></div><span class="crs-rbar-pct">1%</span></div>
+            </div>
+          </div>
+          <div class="crs-reviews-list">
+            <div class="crs-review-item">
+              <div class="crs-rev-avatar"><i class="fa-solid fa-user"></i></div>
+              <div class="crs-rev-body">
+                <div class="crs-rev-header">
+                  <span class="crs-rev-name">Lê Hoàng Nam</span>
+                  <span class="crs-rev-stars">★★★★★</span>
+                  <span class="crs-rev-date">3 weeks ago</span>
+                </div>
+                <p class="crs-rev-text">"Absolutely world-class content. The case studies on Vietnamese port operations and customs procedures were exactly what I needed. The instructor's industry connections make this course invaluable."</p>
+              </div>
+            </div>
+            <div class="crs-review-item">
+              <div class="crs-rev-avatar"><i class="fa-solid fa-user"></i></div>
+              <div class="crs-rev-body">
+                <div class="crs-rev-header">
+                  <span class="crs-rev-name">Võ Thị Mai Linh</span>
+                  <span class="crs-rev-stars">★★★★★</span>
+                  <span class="crs-rev-date">1 month ago</span>
+                </div>
+                <p class="crs-rev-text">"Completed this while working full-time. The blended learning format is perfect. Live sessions on weekends, self-paced materials during the week. Got my FIATA certificate and a promotion within 2 months!"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end crs-detail-main -->
+
+      <!-- RIGHT: Sticky Sidebar -->
+      <div class="crs-sidebar-wrapper">
+        <div class="crs-sidebar" id="crsSidebar">
+          <div class="crs-sidebar__preview">
+            <img id="crsSidebarImg" src="images/course_1.jpg" alt="Course Preview" />
+            <div class="crs-sidebar__play-overlay">
+              <div class="crs-play-btn"><i class="fa-solid fa-play"></i></div>
+              <span>Preview this course</span>
+            </div>
+          </div>
+          <div class="crs-sidebar__body">
+            <div class="crs-sidebar__price" id="crsSidebarPrice">24,900,000 ₫</div>
+            <button class="crs-enroll-big-btn" id="crsSidebarEnrollBtn">
+              <i class="fa-solid fa-graduation-cap"></i> Enroll Now
+            </button>
+            <button class="crs-try-btn">Try Free Preview</button>
+            <div class="crs-guarantee"><i class="fa-solid fa-shield-halved"></i> 30-Day Money-Back Guarantee</div>
+            <div class="crs-includes-title">This course includes:</div>
+            <ul class="crs-includes-list" id="crsSidebarIncludes">
+              <li><i class="fa-solid fa-video"></i> 160 hours of video content</li>
+              <li><i class="fa-solid fa-layer-group"></i> 12 downloadable modules</li>
+              <li><i class="fa-solid fa-certificate"></i> FIATA-accredited certificate</li>
+              <li><i class="fa-solid fa-infinity"></i> Lifetime access</li>
+              <li><i class="fa-solid fa-mobile-screen"></i> Mobile &amp; desktop access</li>
+              <li><i class="fa-solid fa-trophy"></i> Certificate of completion</li>
+            </ul>
+            <div class="crs-share-row">
+              <button class="crs-share-btn"><i class="fa-solid fa-share-nodes"></i> Share</button>
+              <button class="crs-gift-btn"><i class="fa-solid fa-gift"></i> Gift</button>
+              <button class="crs-coupon-btn"><i class="fa-solid fa-tag"></i> Apply Coupon</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end crs-detail-body__inner -->
+  </div><!-- end crs-detail-body -->
+
+  <!-- Back button -->
+  <div class="crs-detail-back-bar">
+    <button class="crs-back-btn" onclick="switchView('view-courses')"><i class="fa-solid fa-arrow-left"></i> Back to All Courses</button>
+  </div>
+
 </section>
 
 
-<section class="app-view" id="view-course-detail">
-      
-  <div style="background:#F8FAFC; border-bottom:1px solid #E2E8F0; padding:12px 0;">
-    <div class="container" style="max-width:1440px; padding:0 32px; font-size:13px; color:#64748B; display:flex; align-items:center; justify-content:space-between;">
-      <div style="display:flex; align-items:center; gap:8px;">
-        <a href="#" data-view="home" style="color:#64748B; text-decoration:none;"><i class="fa-solid fa-house"></i> Home</a>
-        <span>&rsaquo;</span>
-        <a href="#" data-view="courses" style="color:#64748B; text-decoration:none;">Courses &amp; Certifications</a>
-        <span>&rsaquo;</span>
-        <span id="breadcrumb-course-name" style="color:#0F172A; font-weight:600;">Programme Syllabus</span>
-      </div>
-      <div>
-        <button type="button" onclick="switchView('courses');" style="background:#FFFFFF; border:1px solid #CBD5E1; color:#0F172A; padding:6px 14px; border-radius:6px; font-size:12.5px; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
-          <i class="fa-solid fa-arrow-left"></i> Back to Courses Catalog
-        </button>
-      </div>
-    </div>
-  </div>
-
-      <div class="container" style="max-width:1440px; padding:0 32px 60px;">
-        <main style="padding: 36px 0 70px; background: #F8FAFC;">
-    <div class="course-detail-container">
-      <div style="display: grid; grid-template-columns: 1.8fr 1fr; gap: 32px; align-items: start;">
-        
-        <!-- Left Main Academic Column -->
-        <div>
-
-          <!-- 1. Course Overview & Target Audience -->
-          <div id="course-overview-card" style="background: #FFFFFF; border: none; border-radius: 12px; padding: 28px; margin-bottom: 24px;">
-            <h2 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0 0 14px;">
-              Programme Overview
-            </h2>
-            <p style="font-size: 15px; color: #334155; line-height: 1.7; margin: 0 0 14px;">
-              The FIATA Higher International Diploma is designed for practitioners aiming to advance from operational logistics tasks to strategic supply chain decision-making. The curriculum addresses contemporary challenges in multimodal transportation, contract administration, customs clearance procedures, and supply chain financial control across Southeast Asian and global freight networks.
-            </p>
-            <p style="font-size: 15px; color: #334155; line-height: 1.7; margin: 0;">
-              Participants develop practical case analysis skills to optimize end-to-end cargo movements, mitigate carrier liabilities, and design resilient supply chains aligned with international maritime and air conventions.
-            </p>
-          </div>
-
-          <!-- 2. Official 8-Module Curriculum -->
-          <div style="background: #FFFFFF; border: none; border-radius: 12px; padding: 28px; margin-bottom: 24px;">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; flex-wrap: wrap; gap: 8px;">
-              <h2 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0;">
-                Curriculum (8 Core Modules &bull; 160 Hours)
-              </h2>
-              <span style="font-size: 13px; color: #64748B;">FIATA Minimum Standard Syllabus</span>
-            </div>
-            
-            <div id="course-curriculum-container" style="display: flex; flex-direction: column; gap: 12px;">
-              
-              <!-- Module 1 -->
-              <div style="background: #F8FAFC; border-radius: 8px; padding: 16px 20px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                  <span class="module-badge-num">Module 01</span>
-                  <span class="module-hours-text"><i class="fa-regular fa-clock"></i> 20 Guided Hours</span>
-                </div>
-                <h3 style="font-size: 16px; font-weight: 600; color: #0F172A; margin: 0 0 4px;">
-                  Global Purchasing &amp; International Procurement
-                </h3>
-                <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
-                  Strategic supplier selection, purchasing contracts, vendor evaluation frameworks, and international procurement negotiation strategies.
-                </p>
-              </div>
-
-              <!-- Module 2 -->
-              <div style="background: #F8FAFC; border-radius: 8px; padding: 16px 20px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                  <span class="module-badge-num">Module 02</span>
-                  <span class="module-hours-text"><i class="fa-regular fa-clock"></i> 20 Guided Hours</span>
-                </div>
-                <h3 style="font-size: 16px; font-weight: 600; color: #0F172A; margin: 0 0 4px;">
-                  Contract Management &amp; Maritime Law
-                </h3>
-                <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
-                  ICC Incoterms 2020 rules, passing of risk, letters of credit (UCP 600), international sales conventions (CISG), and standard logistics contract clauses.
-                </p>
-              </div>
-
-              <!-- Module 3 -->
-              <div style="background: #F8FAFC; border-radius: 8px; padding: 16px 20px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                  <span class="module-badge-num">Module 03</span>
-                  <span class="module-hours-text"><i class="fa-regular fa-clock"></i> 18 Guided Hours</span>
-                </div>
-                <h3 style="font-size: 16px; font-weight: 600; color: #0F172A; margin: 0 0 4px;">
-                  Production &amp; Operations Management
-                </h3>
-                <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
-                  Lean logistics operations, material requirements planning (MRP), demand planning, and production scheduling coordination with cargo dispatch hubs.
-                </p>
-              </div>
-
-              <!-- Module 4 -->
-              <div style="background: #F8FAFC; border-radius: 8px; padding: 16px 20px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                  <span class="module-badge-num">Module 04</span>
-                  <span class="module-hours-text"><i class="fa-regular fa-clock"></i> 24 Guided Hours</span>
-                </div>
-                <h3 style="font-size: 16px; font-weight: 600; color: #0F172A; margin: 0 0 4px;">
-                  Multimodal Transport &amp; Freight Forwarding Operations
-                </h3>
-                <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
-                  Issuance and liability under the negotiable FIATA Multimodal Bill of Lading (FBL), ocean container line bookings, air cargo airway bills, and sea-rail intermodal routing.
-                </p>
-              </div>
-
-              <!-- Module 5 -->
-              <div style="background: #F8FAFC; border-radius: 8px; padding: 16px 20px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                  <span class="module-badge-num">Module 05</span>
-                  <span class="module-hours-text"><i class="fa-regular fa-clock"></i> 16 Guided Hours</span>
-                </div>
-                <h3 style="font-size: 16px; font-weight: 600; color: #0F172A; margin: 0 0 4px;">
-                  International Financial Management in Logistics
-                </h3>
-                <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
-                  Cost accounting in transport operations, working capital management, currency exchange risk mitigation, and freight payment reconciliation.
-                </p>
-              </div>
-
-              <!-- Module 6 -->
-              <div style="background: #F8FAFC; border-radius: 8px; padding: 16px 20px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                  <span class="module-badge-num">Module 06</span>
-                  <span class="module-hours-text"><i class="fa-regular fa-clock"></i> 18 Guided Hours</span>
-                </div>
-                <h3 style="font-size: 16px; font-weight: 600; color: #0F172A; margin: 0 0 4px;">
-                  Warehouse Operations &amp; Inventory Optimization
-                </h3>
-                <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
-                  Facility layout design, safety stock calculations, automated storage and retrieval systems (AS/RS), WMS technology, and cold-chain compliance.
-                </p>
-              </div>
-
-              <!-- Module 7 -->
-              <div style="background: #F8FAFC; border-radius: 8px; padding: 16px 20px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                  <span class="module-badge-num">Module 07</span>
-                  <span class="module-hours-text"><i class="fa-regular fa-clock"></i> 18 Guided Hours</span>
-                </div>
-                <h3 style="font-size: 16px; font-weight: 600; color: #0F172A; margin: 0 0 4px;">
-                  Supply Chain Risk Management &amp; Customs Compliance
-                </h3>
-                <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
-                  WCO SAFE Framework, Authorized Economic Operator (AEO) requirements, customs audit protocols under regional commerce agreements, and cargo insurance subrogation.
-                </p>
-              </div>
-
-              <!-- Module 8 -->
-              <div style="background: #F8FAFC; border-radius: 8px; padding: 16px 20px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                  <span class="module-badge-num">Module 08</span>
-                  <span class="module-hours-text"><i class="fa-regular fa-clock"></i> 26 Guided Hours</span>
-                </div>
-                <h3 style="font-size: 16px; font-weight: 600; color: #0F172A; margin: 0 0 4px;">
-                  Strategic Supply Chain Management &amp; Capstone Project
-                </h3>
-                <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.5;">
-                  Applied supply chain simulation addressing port delays, carrier disruptions, and logistics network re-engineering. Evaluated by an academic and industry panel.
-                </p>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- 3. Entry Requirements & Assessment Method -->
-          <div style="background: #FFFFFF; border: none; border-radius: 12px; padding: 28px; margin-bottom: 24px;">
-            <h2 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0 0 16px;">
-              Admission Requirements &amp; Assessment
-            </h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-              <div>
-                <h3 style="font-size: 15px; font-weight: 600; color: #0F172A; margin: 0 0 8px;">
-                  <i class="fa-solid fa-graduation-cap" style="color: #123B5D; margin-right: 6px;"></i> Prerequisites
-                </h3>
-                <ul style="font-size: 13.5px; color: #475569; line-height: 1.6; padding-left: 18px; margin: 0;">
-                  <li>Recognized Bachelor's degree, OR</li>
-                  <li>Minimum 2 years of professional experience in freight forwarding, shipping, or logistics operations</li>
-                  <li>Working proficiency in English for reading course modules and international case studies</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 style="font-size: 15px; font-weight: 600; color: #0F172A; margin: 0 0 8px;">
-                  <i class="fa-solid fa-pen-ruler" style="color: #123B5D; margin-right: 6px;"></i> Assessment Criteria
-                </h3>
-                <ul style="font-size: 13.5px; color: #475569; line-height: 1.6; padding-left: 18px; margin: 0;">
-                  <li>Continuous Module Assignments: <strong>40%</strong></li>
-                  <li>Final FIATA Written Examination: <strong>30%</strong></li>
-                  <li>Capstone Strategy Project &amp; Defense: <strong>30%</strong></li>
-                  <li>Minimum 65% aggregate score required for diploma issuance</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- 4. Faculty & Instructors -->
-          <div style="background: #FFFFFF; border: none; border-radius: 12px; padding: 28px; margin-bottom: 24px;">
-            <h2 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0 0 16px;">
-              Instructors &amp; Faculty
-            </h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
-              <div class="faculty-card">
-                <strong style="font-size: 15px; color: #0F172A; display: block; margin-bottom: 2px;">Capt. Nguyen Van Thang</strong>
-                <span style="font-size: 12px; color: #123B5D; font-weight: 600; display: block; margin-bottom: 6px;">Senior Maritime &amp; Port Operations Advisor</span>
-                <p style="font-size: 13px; color: #475569; margin: 0; line-height: 1.5;">28 years of maritime leadership in container terminal management, vessel chartering, and fairway navigation safety.</p>
-              </div>
-              <div class="faculty-card">
-                <strong style="font-size: 15px; color: #0F172A; display: block; margin-bottom: 2px;">Tran Thi Minh Hanh, LL.M.</strong>
-                <span style="font-size: 12px; color: #123B5D; font-weight: 600; display: block; margin-bottom: 6px;">Maritime Arbitrator &amp; Legal Compliance Director</span>
-                <p style="font-size: 13px; color: #475569; margin: 0; line-height: 1.5;">Specialist in multimodal transport documentation, cargo claim arbitration, and customs risk defense for regional freight forwarders.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- 5. Credential & Institution Validation Details -->
-          <div id="course-cert-card" style="background: #FFFFFF; border: none; border-radius: 12px; padding: 28px;">
-            <h2 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0 0 14px;">
-              Certification &amp; Institutional Validation
-            </h2>
-            <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0 0 12px;">
-              Successful candidates are awarded the <strong>FIATA Higher International Diploma in Supply Chain Management</strong>. The certificate is issued under the authority of the International Federation of Freight Forwarders Associations (FIATA, Geneva) through its validated national association member, the Vietnam Logistics Research and Development Institute (VLI).
-            </p>
-            <p style="font-size: 13px; color: #64748B; line-height: 1.5; margin: 0;">
-              Graduates receive an individual verification registry number registered with FIATA's headquarters and are recognized across international freight associations worldwide.
-            </p>
-          </div>
-
-        </div>
-
-        <!-- Right Column: Tuition, Application & Contact -->
-        <div style="position: sticky; top: 88px;">
-          
-          <div style="background: #FFFFFF; border: none; border-radius: 12px; padding: 26px; box-shadow: 0 2px 12px rgba(15,23,42,0.04); margin-bottom: 20px;">
-            <div style="margin-bottom: 18px;">
-              <span style="font-size: 11.5px; color: #64748B; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 4px;">Tuition Fee</span>
-              <div id="sidebar-tuition-val" style="font-size: 26px; font-weight: 700; color: #111827; line-height: 1.2;">
-                18,500,000 VND
-              </div>
-              <span id="sidebar-discount-label" style="font-size: 12.5px; color: #15803D; font-weight: 600; display: block; margin-top: 4px;">
-                15,700,000 VND for VLA Association Members
-              </span>
-            </div>
-
-            <!-- Essential Facts Checklist -->
-            <div style="border-top: 1px solid #F1F5F9; border-bottom: 1px solid #F1F5F9; padding: 14px 0; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; color: #475569;">
-              <div style="display: flex; justify-content: space-between;">
-                <span>Next Intake:</span>
-                <strong id="sidebar-next-intake" style="color: #0F172A;">14 November 2026</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between;">
-                <span>Cohort Size:</span>
-                <strong style="color: #0F172A;">Limited to 30 participants</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between;">
-                <span>Payment:</span>
-                <strong style="color: #0F172A;">Installments available</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between;">
-                <span>Withdrawal:</span>
-                <strong style="color: #0F172A;">14-day refund policy</strong>
-              </div>
-            </div>
-
-            <!-- Primary Action: Apply for Enrollment -->
-            <button type="button" onclick="openEnrollModal();" class="btn-primary" style="width: 100%; background: #123B5D; color: #FFFFFF; border: none; padding: 12px 20px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.18s ease;">
-              <span>Apply for Enrollment</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
-
-            <!-- Secondary Action: Download Syllabus -->
-            <a href="downloads/FIATA-Higher-Diploma-Syllabus-2026.pdf" download="FIATA-Higher-Diploma-Syllabus-2026.pdf" onclick="trackSyllabusDownload();" style="width: 100%; box-sizing: border-box; background: #F8FAFC; color: #334155; border: none; padding: 11px 16px; border-radius: 8px; font-size: 13.5px; font-weight: 600; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; transition: background 0.18s ease;">
-              <i class="fa-regular fa-file-pdf" style="color: #DC2626;"></i>
-              <span>Download Syllabus PDF (Official)</span>
-            </a>
-
-            <div style="margin-top: 16px; text-align: center;">
-              <span style="font-size: 12px; color: #64748B;">
-                Inquiries are reviewed by the VLI Admissions Committee.
-              </span>
-            </div>
-          </div>
-
-          <!-- Contact Admissions Office (Discreet, Professional Card) -->
-          <div style="background: #FFFFFF; border: none; border-radius: 12px; padding: 22px; box-shadow: 0 2px 12px rgba(15,23,42,0.04);">
-            <h3 style="font-size: 14.5px; font-weight: 600; color: #111827; margin: 0 0 10px;">
-              Admissions &amp; Academic Desk
-            </h3>
-            <button type="button" onclick="openConsultModal();" style="width: 100%; background: #EAF1F7; color: #123B5D; border: none; padding: 10px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 14px; transition: background 0.15s ease;">
-              <i class="fa-regular fa-calendar-check"></i>
-              <span>Request Academic Consultation</span>
-            </button>
-            <p style="font-size: 13px; color: #64748B; margin: 0 0 14px; line-height: 1.5;">
-              For corporate invoice arrangements, prerequisite consultations, or syllabus inquiries:
-            </p>
-            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: #334155;">
-              <div>
-                <i class="fa-solid fa-phone" style="color: #123B5D; width: 16px;"></i>
-                <a href="tel:02838220000" style="color: #123B5D; text-decoration: none; font-weight: 600;">(+84) 28 3822 0000</a>
-              </div>
-              <div>
-                <i class="fa-solid fa-envelope" style="color: #123B5D; width: 16px;"></i>
-                <a href="mailto:admissions@vli.edu.vn" style="color: #123B5D; text-decoration: none; font-weight: 600;">admissions@vli.edu.vn</a>
-              </div>
-              <div style="font-size: 12px; color: #64748B; margin-top: 4px;">
-                VLI Campus: 142 Nguyen Thi Minh Khai, District 3, HCMC
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </main>
-      </div>
-      <div class="modal-backdrop" id="modal-enrollment" role="dialog" aria-modal="true" aria-labelledby="enroll-modal-title" style="display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.6); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
-    <div style="background: #FFFFFF; border-radius: 12px; max-width: 520px; width: 100%; padding: 28px; position: relative;">
-      
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-        <div>
-          <h2 id="enroll-modal-title" style="font-size: 18px; font-weight: 700; color: #111827; margin: 0 0 4px;">
-            Apply for Course Enrollment
-          </h2>
-          <span style="font-size: 12.5px; color: #64748B;">FIATA Higher International Diploma &bull; November 2026 Cohort</span>
-        </div>
-        <button type="button" onclick="closeEnrollModal();" aria-label="Close" style="background: transparent; border: none; font-size: 20px; color: #94A3B8; cursor: pointer; padding: 0;">&times;</button>
-      </div>
-
-      <form id="course-enroll-form" onsubmit="handleEnrollSubmit(event);" style="display: flex; flex-direction: column; gap: 14px;">
-        <div>
-          <label style="display: block; font-size: 13px; font-weight: 500; color: #334155; margin-bottom: 4px;">Full Name *</label>
-          <input type="text" id="enroll-name" required placeholder="e.g. Nguyen Minh Tri" style="width: 100%; height: 42px; padding: 0 12px; border: none; background: #F1F5F9; border-radius: 6px; font-size: 14px; font-family: inherit;">
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-          <div>
-            <label style="display: block; font-size: 13px; font-weight: 500; color: #334155; margin-bottom: 4px;">Work Email *</label>
-            <input type="email" id="enroll-email" required placeholder="name@company.vn" style="width: 100%; height: 42px; padding: 0 12px; border: none; background: #F1F5F9; border-radius: 6px; font-size: 14px; font-family: inherit;">
-          </div>
-          <div>
-            <label style="display: block; font-size: 13px; font-weight: 500; color: #334155; margin-bottom: 4px;">Phone / Zalo *</label>
-            <input type="tel" id="enroll-phone" required placeholder="+84 908 123 456" style="width: 100%; height: 42px; padding: 0 12px; border: none; background: #F1F5F9; border-radius: 6px; font-size: 14px; font-family: inherit;">
-          </div>
-        </div>
-
-        <div>
-          <label style="display: block; font-size: 13px; font-weight: 500; color: #334155; margin-bottom: 4px;">Current Organization &amp; Job Title</label>
-          <input type="text" id="enroll-role" placeholder="e.g. Freight Operations Lead at Viconship" style="width: 100%; height: 42px; padding: 0 12px; border: none; background: #F1F5F9; border-radius: 6px; font-size: 14px; font-family: inherit;">
-        </div>
-
-        <div>
-          <label style="display: block; font-size: 13px; font-weight: 500; color: #334155; margin-bottom: 4px;">Tuition Sponsorship</label>
-          <select id="enroll-sponsor" style="width: 100%; height: 42px; padding: 0 12px; border: none; background: #F1F5F9; border-radius: 6px; font-size: 14px; font-family: inherit;">
-            <option value="self">Self-Funded Individual (Standard Rate)</option>
-            <option value="corporate">Corporate Sponsored (Company Invoice)</option>
-            <option value="vla">VLA Member Company (Discounted Rate)</option>
-          </select>
-        </div>
-
-        <div style="font-size: 12px; color: #64748B; line-height: 1.4; margin-top: 4px;">
-          By submitting this application, your dossier will be logged in the prototype registry and submitted to the VLI admissions team.
-        </div>
-
-        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px;">
-          <button type="button" onclick="closeEnrollModal();" style="padding: 10px 18px; background: transparent; border: none; color: #64748B; font-weight: 600; font-size: 14px; cursor: pointer;">Cancel</button>
-          <button type="submit" style="padding: 10px 22px; background: #123B5D; color: #FFFFFF; border: none; border-radius: 6px; font-weight: 600; font-size: 14px; cursor: pointer;">Submit Application</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-<div class="modal-backdrop" id="modal-consultation" role="dialog" aria-modal="true" aria-labelledby="consult-modal-title" style="display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.6); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
-    <div style="background: #FFFFFF; border-radius: 12px; max-width: 480px; width: 100%; padding: 28px; position: relative;">
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-        <div>
-          <h2 id="consult-modal-title" style="font-size: 18px; font-weight: 700; color: #111827; margin: 0 0 4px;">
-            Request Academic Consultation
-          </h2>
-          <span style="font-size: 12.5px; color: #64748B;">Connect with a VLI Faculty Advisor &bull; FIATA Higher Diploma</span>
-        </div>
-        <button type="button" onclick="closeConsultModal();" aria-label="Close" style="background: transparent; border: none; font-size: 20px; color: #94A3B8; cursor: pointer; padding: 0;">&times;</button>
-      </div>
-
-      <form id="course-consult-form" onsubmit="handleConsultSubmit(event);" style="display: flex; flex-direction: column; gap: 14px;">
-        <div>
-          <label style="display: block; font-size: 13px; font-weight: 500; color: #334155; margin-bottom: 4px;">Full Name *</label>
-          <input type="text" id="consult-name" required placeholder="e.g. Tran Minh Tuan" style="width: 100%; height: 42px; padding: 0 12px; border: none; background: #F1F5F9; border-radius: 6px; font-size: 14px; font-family: inherit;">
-        </div>
-
-        <div>
-          <label style="display: block; font-size: 13px; font-weight: 500; color: #334155; margin-bottom: 4px;">Work Email or Phone *</label>
-          <input type="text" id="consult-contact" required placeholder="email@company.vn or 0908 123 456" style="width: 100%; height: 42px; padding: 0 12px; border: none; background: #F1F5F9; border-radius: 6px; font-size: 14px; font-family: inherit;">
-        </div>
-
-        <div>
-          <label style="display: block; font-size: 13px; font-weight: 500; color: #334155; margin-bottom: 4px;">Primary Consultation Topic</label>
-          <select id="consult-topic" style="width: 100%; height: 42px; padding: 0 12px; border: none; background: #F1F5F9; border-radius: 6px; font-size: 14px; font-family: inherit;">
-            <option value="curriculum">Module Curriculum &amp; Learning Outcomes</option>
-            <option value="corporate">Corporate Group Enrolment &amp; Invoicing</option>
-            <option value="exemption">Prerequisites &amp; Prior Learning Assessment</option>
-            <option value="schedule">Weekend Schedule &amp; Online Access</option>
-          </select>
-        </div>
-
-        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 8px;">
-          <button type="button" onclick="closeConsultModal();" style="padding: 10px 18px; background: transparent; border: none; color: #64748B; font-weight: 600; font-size: 14px; cursor: pointer;">Cancel</button>
-          <button type="submit" style="padding: 10px 22px; background: #123B5D; color: #FFFFFF; border: none; border-radius: 6px; font-weight: 600; font-size: 14px; cursor: pointer;">Submit Request</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-<div class="modal-backdrop" id="modal-receipt" role="dialog" aria-modal="true" aria-labelledby="receipt-modal-title" style="display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.6); z-index: 10000; align-items: center; justify-content: center; padding: 20px;">
-    <div style="background: #FFFFFF; border-radius: 12px; max-width: 500px; width: 100%; padding: 28px; position: relative;">
-      <div style="text-align: center; margin-bottom: 20px;">
-        <div style="width: 48px; height: 48px; border-radius: 50%; background: #DCFCE7; color: #15803D; display: flex; align-items: center; justify-content: center; font-size: 22px; margin: 0 auto 12px;">
-          <i class="fa-solid fa-check"></i>
-        </div>
-        <h2 id="receipt-modal-title" style="font-size: 20px; font-weight: 700; color: #111827; margin: 0 0 6px;">
-          Enrolment Application Received
-        </h2>
-        <span style="font-size: 13px; color: #64748B;">Your application dossier has been logged into the admissions registry.</span>
-      </div>
-
-      <div style="background: #F8FAFC; border-radius: 8px; padding: 16px; margin-bottom: 20px; font-size: 13.5px; color: #334155; display: flex; flex-direction: column; gap: 8px;">
-        <div style="display: flex; justify-content: space-between;">
-          <span style="color: #64748B;">Application Ref:</span>
-          <strong id="receipt-ref" style="color: #123B5D; font-family: monospace; font-size: 14px;">ENR-2026-FIATA-0000</strong>
-        </div>
-        <div style="display: flex; justify-content: space-between;">
-          <span style="color: #64748B;">Applicant:</span>
-          <strong id="receipt-name">---</strong>
-        </div>
-        <div style="display: flex; justify-content: space-between;">
-          <span style="color: #64748B;">Cohort:</span>
-          <strong>14 November 2026 (16 Weeks)</strong>
-        </div>
-        <div style="display: flex; justify-content: space-between;">
-          <span style="color: #64748B;">Status:</span>
-          <span style="background: #EAF1F7; color: #123B5D; font-weight: 600; font-size: 12px; padding: 2px 8px; border-radius: 4px;">Dossier Under Review</span>
-        </div>
-      </div>
-
-      <div style="font-size: 12.5px; color: #64748B; line-height: 1.5; margin-bottom: 20px;">
-        Next steps: A VLI admissions coordinator will contact you at your provided email/phone within 1 business day to verify prerequisite documents and provide tuition transfer instructions.
-      </div>
-
-      <div style="display: flex; justify-content: flex-end;">
-        <button type="button" onclick="closeReceiptModal();" style="width: 100%; padding: 11px; background: #123B5D; color: #FFFFFF; border: none; border-radius: 6px; font-weight: 600; font-size: 14px; cursor: pointer;">
-          Done
-        </button>
-      </div>
-    </div>
-  </div>
-
-
-    </section>
 
 
 
@@ -3418,77 +3178,130 @@
        OFFICIAL BUILT IN AUTHENTIC FOOTER (ENGLISH - THE SANDBOX SPECIFICATION)
        ========================================================================== -->
   <footer class="builtin-footer" id="portal-footer" role="contentinfo">
-    <div class="builtin-footer-inner">
+    <div class="builtin-footer-container">
       
-      <!-- Column 1: Brand Identity & Accreditation -->
-      <div>
-        <a href="#" class="builtin-footer-brand-logo" data-view="home" title="VietnamJobs Logistics &amp; Tech Network">
-          <div class="builtin-footer-brand-title" style="color: #FFFFFF; font-size: 20px; font-weight: 800;">
-            Vietnam<span style="color: #38BDF8;">Jobs</span>
+      <!-- Top Strip: Accreditation Badges & Intelligence Briefing -->
+      <div class="footer-top-strip">
+        <div class="footer-strip-left">
+          <div class="footer-accreditation-pill">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>ISO 27001 Certified &bull; Accredited Logistics &amp; Tech Recruitment Platform</span>
           </div>
-        </a>
-        <p class="builtin-footer-desc">
-          Vietnam's accredited enterprise recruitment platform. Connecting premier multimodal logistics operators, technology leaders, and high-performance talent worldwide.
-        </p>
-        <div class="builtin-footer-brand-copy">&copy; 2026 VietnamJobs Corporation. All rights reserved.</div>
+          <div class="footer-accreditation-logos">
+            <span class="footer-acc-tag"><i class="fa-solid fa-anchor"></i> FIATA Network</span>
+            <span class="footer-acc-tag"><i class="fa-solid fa-plane"></i> IATA Air Partner</span>
+            <span class="footer-acc-tag"><i class="fa-solid fa-truck-ramp-box"></i> VLA Logistics</span>
+            <span class="footer-acc-tag"><i class="fa-solid fa-microchip"></i> AI Tech Alliance</span>
+          </div>
+        </div>
+        <div class="footer-strip-right">
+          <div class="footer-system-status">
+            <span class="status-pulse-dot"></span>
+            <span>API &amp; Portal: <strong>100% Operational</strong></span>
+          </div>
+        </div>
       </div>
 
-      <!-- Column 2: Find Jobs -->
-      <div>
-        <div class="builtin-footer-col-title">Find Jobs</div>
-        <ul class="builtin-footer-links-list">
-          <li><a href="#" data-view="browse">Browse All Jobs</a></li>
-          <li><a href="#" data-view="browse">Freight Forwarding &amp; 3PL</a></li>
-          <li><a href="#" data-view="browse">Maritime &amp; Seaports</a></li>
-          <li><a href="#" data-view="browse">Smart Warehousing &amp; Robotics</a></li>
-          <li><a href="#" data-view="browse">Customs &amp; Compliance</a></li>
-        </ul>
+      <!-- Main 5-Column Grid -->
+      <div class="builtin-footer-inner">
+        
+        <!-- Column 1: Brand Identity & Accreditations -->
+        <div class="footer-col-brand">
+          <a href="#" class="builtin-footer-brand-logo" data-view="home" title="VietnamJobs Enterprise Network">
+            <div class="builtin-footer-brand-title">
+              Vietnam<span>Jobs</span>
+            </div>
+          </a>
+          <p class="builtin-footer-desc">
+            Vietnam's premier multimodal supply chain, port logistics, AI systems, and enterprise technology career marketplace. Connecting 500,000+ verified professionals with tier-1 enterprise employers across ASEAN.
+          </p>
+
+          <div class="footer-contact-micro">
+            <div><i class="fa-solid fa-location-dot"></i> Keangnam Landmark 72, Hanoi &bull; Bitexco, HCMC</div>
+            <div><i class="fa-solid fa-phone"></i> Hotline: <strong>1900 6868</strong> (24/7)</div>
+            <div><i class="fa-solid fa-envelope"></i> contact@vietnamjobs.vn</div>
+          </div>
+
+          <!-- Social Links Strip -->
+          <div class="footer-social-strip">
+            <a href="#" class="footer-social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="footer-social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="footer-social-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="footer-social-btn" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#" class="footer-social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2: Career Sectors -->
+        <div>
+          <div class="builtin-footer-col-title">Career Sectors</div>
+          <ul class="builtin-footer-links-list">
+            <li><a href="#section-jobs" onclick="filterJobsByCategory('all'); return false;">Browse All Open Roles</a></li>
+            <li><a href="#section-jobs" onclick="filterJobsByCategory('forwarding'); return false;">Freight Forwarding &amp; 3PL</a></li>
+            <li><a href="#section-jobs" onclick="filterJobsByCategory('port'); return false;">Maritime, Ports &amp; Terminals</a></li>
+            <li><a href="#section-jobs" onclick="filterJobsByCategory('robotics'); return false;">Smart Warehouse &amp; Robotics</a></li>
+            <li><a href="#section-jobs" onclick="filterJobsByCategory('customs'); return false;">Customs &amp; Trade Compliance</a></li>
+            <li><a href="#section-jobs" onclick="filterJobsByCategory('fleet'); return false;">Fleet Telematics &amp; Trucking</a></li>
+            <li><a href="#section-jobs" onclick="filterJobsByCategory('tech'); return false;">AI Logistics Systems &amp; IT</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: For Employers -->
+        <div>
+          <div class="builtin-footer-col-title">For Employers</div>
+          <ul class="builtin-footer-links-list">
+            <li><a href="#" onclick="openEmployerPostModal(); return false;">Post an Enterprise Role</a></li>
+            <li><a href="#" onclick="switchView('companies'); return false;">Verified Employer Directory</a></li>
+            <li><a href="#" onclick="openEnterpriseModal('ATS Enterprise VIP'); return false;">ATS Integration &amp; API</a></li>
+            <li><a href="#" onclick="openEnterpriseModal('Executive Headhunting'); return false;">Executive Talent Search</a></li>
+            <li><a href="#" onclick="openEnterpriseModal('Bulk Screening'); return false;">Candidate Verification</a></li>
+            <li><a href="#" onclick="openEnterpriseModal('Pricing &amp; Plans'); return false;">Corporate Hiring Solutions</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Certifications & Learning -->
+        <div>
+          <div class="builtin-footer-col-title">Learning &amp; News</div>
+          <ul class="builtin-footer-links-list">
+            <li><a href="#" onclick="switchView('news'); return false;">Daily Video Broadcasts</a></li>
+            <li><a href="#" onclick="switchView('courses'); return false;">FIATA International Diplomas</a></li>
+            <li><a href="#" onclick="switchView('courses'); return false;">IATA Cargo &amp; DGR Licenses</a></li>
+            <li><a href="#" onclick="switchView('courses'); return false;">Smart Port Operations Training</a></li>
+            <li><a href="#" onclick="switchView('news'); return false;">Global Trade Lane Forecasts</a></li>
+            <li><a href="#" onclick="switchView('news'); return false;">Salary &amp; Compensation Benchmark</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 5: Support & Governance -->
+        <div>
+          <div class="builtin-footer-col-title">Trust &amp; Governance</div>
+          <ul class="builtin-footer-links-list">
+            <li><a href="#" onclick="showToast('Customer Support 24/7 is Active'); return false;">24/7 Dedicated Support</a></li>
+            <li><a href="#" onclick="showToast('Enterprise Terms of Service'); return false;">Terms of Service</a></li>
+            <li><a href="#" onclick="showToast('Privacy Policy'); return false;">Privacy &amp; Data Protection</a></li>
+            <li><a href="#" onclick="showToast('Security Compliance & ISO 27001'); return false;">Security &amp; ISO 27001</a></li>
+            <li><a href="#" onclick="showToast('Candidate Dispute Resolution'); return false;">Candidate Dispute Center</a></li>
+            <li><a href="#" onclick="showToast('API Documentation & Developer Portal'); return false;">Developer API Docs</a></li>
+          </ul>
+        </div>
+
       </div>
 
-      <!-- Column 3: For Employers -->
-      <div>
-        <div class="builtin-footer-col-title">For Employers</div>
-        <ul class="builtin-footer-links-list">
-          <li><a href="#" onclick="openEmployerPostModal(); return false;">Post a Job</a></li>
-          <li><a href="#" data-view="companies">Company Directory</a></li>
-          <li><a href="#" onclick="openEnterpriseModal('ATS Enterprise VIP'); return false;">Employer Solutions &amp; ATS</a></li>
-          <li><a href="#" onclick="openEnterpriseModal('Partnership Solutions'); return false;">Partnership Solutions</a></li>
-        </ul>
+      <!-- Bottom Legal Row -->
+      <div class="builtin-footer-copyright-row">
+        <div class="builtin-footer-brand-copy">
+          &copy; 2026 VietnamJobs Corporation. Accredited National Logistics &amp; Tech Human Resources Marketplace. All rights reserved.
+        </div>
+        <div class="builtin-footer-legal-links">
+          <a href="#" onclick="showToast('User Agreement'); return false;">User Agreement</a>
+          <a href="#" onclick="showToast('Accessibility'); return false;">Accessibility</a>
+          <a href="#" onclick="showToast('Privacy Policy'); return false;">Privacy Policy</a>
+          <a href="#" onclick="showToast('Terms of Use'); return false;">Terms of Use</a>
+          <a href="#" onclick="showToast('Cookie Preferences'); return false;">Cookies</a>
+          <a href="#" onclick="showToast('Security ISO 27001'); return false;">Security</a>
+        </div>
       </div>
 
-      <!-- Column 4: News & Learning -->
-      <div>
-        <div class="builtin-footer-col-title">News &amp; Learning</div>
-        <ul class="builtin-footer-links-list">
-          <li><a href="#" data-view="news">Market Intelligence &amp; News</a></li>
-          <li><a href="#" data-view="courses">FIATA &amp; IATA Certifications</a></li>
-          <li><a href="#" data-view="courses">Vocational Masterclasses</a></li>
-          <li><a href="#" data-view="news">Supply Chain Reports</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 5: Assistance -->
-      <div>
-        <div class="builtin-footer-col-title">Support</div>
-        <ul class="builtin-footer-links-list">
-          <li><a href="#" onclick="showToast('Customer support is active 24/7'); return false;">Customer Support</a></li>
-          <li><a href="#" onclick="showToast('Terms of Service'); return false;">Terms of Service</a></li>
-          <li><a href="#" onclick="showToast('Privacy Policy'); return false;">Privacy Policy</a></li>
-          <li><a href="#" onclick="showToast('FAQ Knowledge Base'); return false;">Help Center &amp; FAQ</a></li>
-        </ul>
-      </div>
-
-    </div>
-
-    <!-- Bottom Legal Links Row -->
-    <div class="builtin-footer-copyright-row">
-      <div class="builtin-footer-legal-links">
-        <a href="#" onclick="showToast('User Agreement'); return false;">User Agreement</a>
-        <a href="#" onclick="showToast('Accessibility'); return false;">Accessibility</a>
-        <a href="#" onclick="showToast('Privacy Policy'); return false;">Privacy Policy</a>
-        <a href="#" onclick="showToast('Terms of Use'); return false;">Terms of Use</a>
-        <a href="#" onclick="showToast('Security Standards ISO 27001'); return false;">Security &amp; ISO 27001</a>
-      </div>
     </div>
   </footer>
 
@@ -3925,5 +3738,8 @@
   <script src="js/data.js?v=20261105_v3"></script>
   <script src="js/sandbox-database.js?v=20261105_v3"></script>
   <script src="js/app.js?v=20261105_v3"></script>
+
+  <!-- Enhancement Layer v4: Dark Mode, Toast Stack, Shortcuts, Scroll-to-Top, Counters, Pagination -->
+  <script src="js/enhancements.js?v=20261105_v4"></script>
 </body>
 </html>

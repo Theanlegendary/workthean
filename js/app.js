@@ -2579,7 +2579,7 @@ window.getCompanyMetadata = function(c) {
       ]
     },
     vinfast: {
-      coverImage: 'images/hero_editorial_photo.jpg',
+      coverImage: 'images/editorial_ai_logistics_hd.jpg',
       aboutPhoto: 'images/today_2.jpg',
       employees: '10,000+',
       countries: '35+',

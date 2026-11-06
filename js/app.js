@@ -1374,9 +1374,79 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     searchInput?.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') handleHeaderSearch();
+      if (e.key === 'Enter') {
+        closeSearchPopover();
+        handleHeaderSearch();
+      }
     });
-    searchIcon?.addEventListener('click', handleHeaderSearch);
+    searchIcon?.addEventListener('click', () => {
+      closeSearchPopover();
+      handleHeaderSearch();
+    });
+
+    // Premium Dynamic Search Features
+    const searchWrapper = document.getElementById('header-search-experience');
+    const searchCapsule = document.getElementById('header-search-capsule');
+    const searchPopover = document.getElementById('search-suggestions-popover');
+
+    const openSearchPopover = () => {
+      if (searchPopover) searchPopover.classList.add('active');
+      if (searchCapsule) searchCapsule.classList.add('focused');
+    };
+
+    const closeSearchPopover = () => {
+      if (searchPopover) searchPopover.classList.remove('active');
+      if (searchCapsule) searchCapsule.classList.remove('focused');
+    };
+
+    searchInput?.addEventListener('focus', openSearchPopover);
+    searchInput?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openSearchPopover();
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (searchWrapper && !searchWrapper.contains(e.target)) {
+        closeSearchPopover();
+      }
+    });
+
+    // Global Shortcut: Cmd+K / Ctrl+K
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        searchInput?.focus();
+        openSearchPopover();
+      } else if (e.key === 'Escape') {
+        closeSearchPopover();
+        searchInput?.blur();
+      }
+    });
+
+    // Global Quick Search Selector
+    window.selectQuickSearch = function(keyword) {
+      if (searchInput) searchInput.value = keyword;
+      closeSearchPopover();
+      handleHeaderSearch();
+    };
+
+    // Animated Rotating Placeholder
+    const trendingPlaceholders = [
+      '💼 Quản Lý Chuỗi Cung Ứng (Supply Chain)...',
+      '🚢 Giám Đốc Cảng Biển & Hàng Hải...',
+      '❄️ Giám Sát Kho Lạnh (Cold Chain)...',
+      '📦 Chuyên Viên Điều Phối Vận Tải 3PL...',
+      '🌐 Chuyên Viên Thủ Tục Hải Quan EDI...',
+      '🤖 Kỹ Sư Tự Động Hóa Kho Thông Minh...'
+    ];
+    let placeholderIdx = 0;
+    setInterval(() => {
+      if (searchInput && document.activeElement !== searchInput && !searchInput.value) {
+        placeholderIdx = (placeholderIdx + 1) % trendingPlaceholders.length;
+        searchInput.setAttribute('placeholder', trendingPlaceholders[placeholderIdx]);
+      }
+    }, 3200);
 
     // Sign In Submission
     formSignIn?.addEventListener('submit', (e) => {
@@ -4448,19 +4518,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.scrollToAbout = function() {
-  var el = document.getElementById('about');
-  if (!el) return;
-  if (window.state && window.state.currentView !== 'home' && typeof switchView === 'function') {
+  var homeView = document.getElementById('view-home');
+  var isHomeActive = homeView && homeView.classList.contains('active-view');
+
+  if (!isHomeActive && typeof switchView === 'function') {
     switchView('home');
-    setTimeout(function() {
-      var target = document.getElementById('about');
-      if (target) {
-        var top = target.getBoundingClientRect().top + window.pageYOffset - 90;
-        window.scrollTo({ top: top, behavior: 'smooth' });
-      }
-    }, 150);
-  } else {
-    var top = el.getBoundingClientRect().top + window.pageYOffset - 90;
-    window.scrollTo({ top: top, behavior: 'smooth' });
   }
+
+  setTimeout(function() {
+    var el = document.getElementById('about');
+    if (el) {
+      var top = el.getBoundingClientRect().top + window.pageYOffset - 90;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+  }, isHomeActive ? 10 : 250);
 };

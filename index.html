@@ -157,10 +157,74 @@
         <!-- Right: Modern Pill Search, Notification & User Profile with Role (Matching User Design) -->
         <div class="header-top-right-group modern-header-actions" id="header-top-right-modern">
           
-          <!-- Modern Pill Search (Matching Reference Mockup) -->
-          <div class="header-modern-search-capsule" id="header-search-capsule">
-            <i class="fa-solid fa-magnifying-glass search-capsule-icon" id="btn-top-capsule-search"></i>
-            <input type="text" id="top-capsule-search-input" placeholder="Search companies, jobs..." aria-label="Search companies, jobs...">
+          <!-- Premium Dynamic Header Search Experience -->
+          <div class="header-search-experience-wrapper" id="header-search-experience">
+            <div class="header-modern-search-capsule" id="header-search-capsule">
+              <div class="search-capsule-icon-wrap" id="btn-top-capsule-search">
+                <i class="fa-solid fa-magnifying-glass search-capsule-icon"></i>
+              </div>
+              <input type="text" id="top-capsule-search-input" placeholder="Tìm việc làm, kỹ năng, công ty..." aria-label="Search companies, jobs..." autocomplete="off">
+              <span class="search-trending-badge" id="search-dynamic-tag"><i class="fa-solid fa-fire"></i> Hot</span>
+              <kbd class="search-cmd-kbd" title="Nhấn Ctrl+K hoặc ⌘K để tìm kiếm nhanh"><span class="cmd-symbol">⌘</span>K</kbd>
+            </div>
+
+            <!-- Intelligent Quick Suggestions Dropdown Popover -->
+            <div class="search-suggestions-popover" id="search-suggestions-popover">
+              <div class="search-popover-header">
+                <span class="popover-title"><i class="fa-solid fa-fire-flame-curved" style="color:#ef4444;"></i> Tìm kiếm thịnh hành</span>
+                <span class="popover-sub">Cập nhật hôm nay</span>
+              </div>
+              <div class="trending-tags-row">
+                <button type="button" class="search-quick-tag" onclick="selectQuickSearch('Supply Chain Manager');">
+                  <i class="fa-solid fa-arrow-trend-up" style="color:#0A66C2;"></i> Supply Chain
+                </button>
+                <button type="button" class="search-quick-tag" onclick="selectQuickSearch('Cold Chain');">
+                  <i class="fa-solid fa-snowflake" style="color:#0ea5e9;"></i> Cold Chain
+                </button>
+                <button type="button" class="search-quick-tag" onclick="selectQuickSearch('Logistics Operations');">
+                  <i class="fa-solid fa-truck-fast" style="color:#10B981;"></i> Logistics Ops
+                </button>
+                <button type="button" class="search-quick-tag" onclick="selectQuickSearch('Customs EDI Broker');">
+                  <i class="fa-solid fa-file-shield" style="color:#F59E0B;"></i> Hải Quan EDI
+                </button>
+                <button type="button" class="search-quick-tag" onclick="selectQuickSearch('Port Terminal');">
+                  <i class="fa-solid fa-anchor" style="color:#0284c7;"></i> Cảng Biển
+                </button>
+              </div>
+
+              <div class="search-popover-divider"></div>
+
+              <div class="search-popover-section-title">
+                <i class="fa-solid fa-building"></i> Doanh nghiệp nổi bật
+              </div>
+              <div class="search-popover-employers">
+                <div class="popover-employer-item" onclick="selectQuickSearch('Maersk');">
+                  <img src="images/brands/maersk.svg" alt="Maersk" onerror="this.src='images/brands/vinfast.svg'">
+                  <div class="emp-info">
+                    <span class="emp-name">A.P. Moller - Maersk</span>
+                    <span class="emp-meta">Ocean &amp; Logistics Hub • 12 việc mở</span>
+                  </div>
+                </div>
+                <div class="popover-employer-item" onclick="selectQuickSearch('Shopee Express');">
+                  <img src="images/brands/shopee.svg" alt="Shopee Express" onerror="this.src='images/brands/vinfast.svg'">
+                  <div class="emp-info">
+                    <span class="emp-name">Shopee Express Logistics</span>
+                    <span class="emp-meta">E-Commerce Sortation • 18 việc mở</span>
+                  </div>
+                </div>
+                <div class="popover-employer-item" onclick="selectQuickSearch('VinFast');">
+                  <img src="images/brands/vinfast.svg" alt="VinFast">
+                  <div class="emp-info">
+                    <span class="emp-name">VinFast Smart Logistics</span>
+                    <span class="emp-meta">Cold Chain &amp; Fleet • 9 việc mở</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="search-popover-footer">
+                <span>Gợi ý: Nhấn <kbd>Enter</kbd> để tìm kiếm hoặc <kbd>Esc</kbd> để đóng</span>
+              </div>
+            </div>
           </div>
 
           <!-- Notification Bell (Matching Reference Mockup) -->
@@ -290,20 +354,20 @@
       <div class="container brand-nav-container">
         
         <div class="brand-nav-links-left">
-          <button type="button" class="brand-nav-item home-icon-btn active" data-view="home" onclick="switchView('home'); return false;" title="Trang chủ">
+          <button type="button" class="brand-nav-item home-icon-btn active" data-view="home" onclick="switchView('home'); return false;" title="Trang ch?">
             <i class="fa-solid fa-house"></i>
           </button>
-          <button type="button" class="brand-nav-item" data-view="article" onclick="openArticle(); return false;">
-            Thời Sự Tuyển Dụng
-          </button>
           <button type="button" class="brand-nav-item" data-view="browse" onclick="switchView('browse'); return false;">
-            Việc Làm Mới
+            Vi?c L?m M?i
           </button>
           <button type="button" class="brand-nav-item" data-view="companies" onclick="switchView('companies'); return false;">
-            Top Công Ty
+            Top C?ng Ty
           </button>
           <button type="button" class="brand-nav-item" data-view="courses" onclick="switchView('courses'); return false;">
-            Khóa Học &amp; Chứng Chỉ
+            Kh?a H?c &amp; Ch?ng Ch?
+          </button>
+          <button type="button" class="brand-nav-item" data-action="about" onclick="scrollToAbout(); return false;">
+            About Us
           </button>
         </div>
 
@@ -1754,6 +1818,7 @@
   <script src="js/data.js"></script>
   <script src="js/app.js" defer></script>
   <script src="js/courses.js" defer></script>
+  <script src="js/split-jobs.js" defer></script>
 
   <script>
     // Hero tab switcher

@@ -173,6 +173,33 @@
     }
   };
 
+
+  window.renderBrowseJobs = function(filter) {
+    renderBrowseJobs(filter);
+  };
+
+  // Automatically hook switchView so #view-browse renders every time user navigates to it
+  const checkSwitchView = () => {
+    if (typeof window.switchView === 'function' && !window.switchView._browseHooked) {
+      const originalSwitch = window.switchView;
+      window.switchView = function(viewId, updateHash) {
+        originalSwitch(viewId, updateHash);
+        if (viewId === 'browse' || viewId === 'view-browse') {
+          setTimeout(renderBrowseJobs, 20);
+        }
+      };
+      window.switchView._browseHooked = true;
+    }
+  };
+  checkSwitchView();
+  setInterval(checkSwitchView, 200);
+
+  window.addEventListener('hashchange', () => {
+    if (location.hash === '#browse') {
+      setTimeout(renderBrowseJobs, 20);
+    }
+  });
+
   // Setup DOM listeners
   function init() {
     renderBrowseJobs('all');

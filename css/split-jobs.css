@@ -729,50 +729,6 @@
 
 
 /* ==========================================================================
-   TRANSFORM SPLIT-JOB-LAYOUT INTO FULL-WIDTH CARD LIST (IMAGE 2 DESIGN)
-   Hides split-panel preview, expands job list to full width,
-   and presents clean cards matching Logistic Waves with 84px borderless logos.
-   ========================================================================== */
-
-.split-job-layout {
-  display: flex !important;
-  flex-direction: column !important;
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  min-height: auto !important;
-  max-height: none !important;
-  overflow: visible !important;
-  margin-top: 16px !important;
-  margin-bottom: 56px !important;
-  width: 100% !important;
-}
-
-.job-list-panel, .split-job-list-panel {
-  width: 100% !important;
-  max-width: 100% !important;
-  max-height: none !important;
-  border: none !important;
-  overflow: visible !important;
-  background: transparent !important;
-}
-
-.job-detail-panel, .split-job-detail-panel, #split-job-detail-panel, #home-split-detail-panel {
-  display: none !important;
-}
-
-.split-cards-container, .split-jobs-container, #split-jobs-list-container, #home-split-jobs-container {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 14px !important;
-  width: 100% !important;
-  max-height: none !important;
-  overflow: visible !important;
-}
-
-
-/* ==========================================================================
    ENHANCED SPLIT JOB VIEW (5 CARDS VISIBLE, EXPANDED SECTION, ZERO OVERLAP)
    ========================================================================== */
 .split-job-layout {

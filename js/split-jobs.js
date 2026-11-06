@@ -1,7 +1,7 @@
 /* ==========================================================================
-   FULL-WIDTH JOB CARDS ENGINE (MATCHING LOGISTIC WAVES & USER IMAGE 2)
-   Uses project theme CSS, 84px borderless transparent logos,
-   and navigates directly to #view-job-detail on card click.
+   VIỆC LÀM MỚI VIEW (#view-browse) - FULL-WIDTH JOB CARDS ENGINE
+   Renders ONLY for the 'Việc Làm Mới' view (#view-browse).
+   THE HOMEPAGE (#view-home) REMAINS 100% UNTOUCHED WITH ITS ORIGINAL 2-COLUMN SPLIT VIEW.
    ========================================================================== */
 
 (function () {
@@ -43,7 +43,7 @@
     return '#0A66C2';
   }
 
-  let activeFwFilter = 'all';
+  let activeBrowseFilter = 'all';
 
   function getJobsDatabase() {
     if (typeof enterpriseJobsDatabase !== 'undefined' && Array.isArray(enterpriseJobsDatabase) && enterpriseJobsDatabase.length > 0) {
@@ -79,7 +79,7 @@
     const salary = job.salary || job.salaryDisplay || 'Thỏa thuận';
 
     return `
-      <article class="fw-job-card" data-job-id="${job.id}" onclick="handleSplitJobCardClick('${job.id}', this)" style="--card-accent: ${accent};" role="button" tabindex="0" title="Click để xem chi tiết việc làm ${job.title}">
+      <article class="fw-job-card" onclick="openJobDetail('${job.id}')" style="--card-accent: ${accent};" role="button" tabindex="0" title="Click để xem chi tiết việc làm ${job.title}">
         <div class="fw-job-primary">
           <div class="fw-job-logo-box">
             <img src="${logoUrl}" alt="${company}" loading="lazy" onerror="this.onerror=null; this.src='images/brands/vinfast.svg';">
@@ -117,79 +117,29 @@
     `;
   }
 
-  function renderAllJobContainers(filterKey) {
-    activeFwFilter = filterKey || activeFwFilter;
-    const filtered = filterJobs(activeFwFilter);
+  function renderBrowseJobs(filterKey) {
+    const container = document.getElementById('browse-jobs-container');
+    if (!container) return;
+
+    activeBrowseFilter = filterKey || activeBrowseFilter;
+    const filtered = filterJobs(activeBrowseFilter);
     const cardsHtml = filtered.length > 0
       ? filtered.map(generateJobCardHtml).join('')
       : '<div style="padding:40px 20px; text-align:center; color:#64748B;">Không tìm thấy việc làm trong danh mục này.</div>';
 
-    const targets = document.querySelectorAll(
-      '#split-jobs-list-container, #home-split-jobs-container, .split-jobs-container, #browse-jobs-container, #home-jobs-container, .full-width-jobs-container, #full-width-jobs-container'
-    );
+    container.innerHTML = cardsHtml;
 
-    targets.forEach(container => {
-      container.innerHTML = cardsHtml;
-      if (container.id === 'home-split-jobs-container' || container.classList.contains('split-jobs-container')) {
-        const first = container.querySelector('.fw-job-card');
-        if (first) {
-          first.classList.add('active');
-          const firstId = first.getAttribute('data-job-id');
-          if (firstId && typeof window.renderSplitJobDetail === 'function') {
-            window.renderSplitJobDetail(firstId);
-          }
-        }
-      }
-    });
-
-    document.querySelectorAll('.split-openings-badge, #splitOpeningsBadge, #job-filter-count, #linkedin-jobs-counter').forEach(el => {
-      el.textContent = `${filtered.length} openings`;
+    const countBadges = document.querySelectorAll('#browse-openings-badge, #job-filter-count');
+    countBadges.forEach(el => {
+      el.textContent = `${filtered.length} việc làm`;
     });
   }
 
-  // Override window handlers
-  window.renderSplitJobList = function() {
-    renderAllJobContainers(activeFwFilter);
-  };
-
-  window.renderFullWidthJobs = function(filterKey) {
-    renderAllJobContainers(filterKey);
-  };
-
+  // Hook into Việc Làm Mới filter chips
   window.filterSplitJobs = function(filter, btn) {
     document.querySelectorAll('.job-chip-btn').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
-    renderAllJobContainers(filter);
-  };
-
-  window.setSplitJobFilterTab = function(btn, filter) {
-    document.querySelectorAll('.job-tab').forEach(b => {
-      b.classList.remove('active');
-      b.setAttribute('aria-selected', 'false');
-    });
-    if (btn) {
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-    }
-    renderAllJobContainers(filter);
-  };
-
-  window.filterFullWidthJobs = function(filter, btn) {
-    window.setSplitJobFilterTab(btn, filter);
-  };
-
-  
-  window.handleSplitJobCardClick = function(jobId, cardEl) {
-    const inSplit = cardEl && cardEl.closest('.split-job-list-panel');
-    if (inSplit) {
-      document.querySelectorAll('.split-job-list-panel .fw-job-card').forEach(c => c.classList.remove('active'));
-      cardEl.classList.add('active');
-      if (typeof window.renderSplitJobDetail === 'function') {
-        window.renderSplitJobDetail(jobId);
-      }
-    } else {
-      openJobDetail(jobId);
-    }
+    renderBrowseJobs(filter);
   };
 
   window.openJobDetail = function(jobId) {
@@ -225,16 +175,14 @@
 
   // Setup DOM listeners
   function init() {
-    renderAllJobContainers('all');
+    renderBrowseJobs('all');
 
+    // When returning from job detail, return smoothly to browse view
     document.getElementById('btn-back-to-jobs-feed')?.addEventListener('click', () => {
       setTimeout(() => {
-        const browseEl = document.getElementById('browse-jobs-container') || document.getElementById('split-jobs-list-container');
-        const homeJobs = document.getElementById('jobs') || document.getElementById('home-split-jobs-container');
+        const browseEl = document.getElementById('browse-jobs-container');
         if (browseEl && browseEl.offsetParent !== null) {
           browseEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else if (homeJobs) {
-          homeJobs.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }, 150);
     });

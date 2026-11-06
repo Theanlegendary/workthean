@@ -260,6 +260,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof viewId === 'string' && viewId.startsWith('view-')) {
       viewId = viewId.replace('view-', '');
     }
+    if (viewId === 'news') {
+      viewId = 'article';
+    }
     state.currentView = viewId;
 
     document.querySelectorAll('.app-view').forEach(view => view.classList.remove('active-view'));
@@ -308,8 +311,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const rawHash = window.location.hash.replace(/^#\/?/, '');
     const urlParams = new URLSearchParams(window.location.search);
 
+    // 1. Check Job Detail direct link
     let jobId = urlParams.get('id');
-
     if (!jobId && rawHash.includes('job?id=')) {
       const match = rawHash.match(/id=([^&]+)/);
       if (match) jobId = decodeURIComponent(match[1]);
@@ -322,9 +325,24 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // View routes: browse, courses, companies, news, home
+    // 2. Check Article / News direct link
+    if (rawHash.startsWith('article') || rawHash.startsWith('news')) {
+      let articleId = null;
+      if (rawHash.includes('id=')) {
+        const match = rawHash.match(/id=([^&]+)/);
+        if (match) articleId = decodeURIComponent(match[1]);
+      }
+      if (typeof window.openArticle === 'function') {
+        window.openArticle(articleId, false);
+      } else {
+        switchView('article', false);
+      }
+      return;
+    }
+
+    // 3. View routes: browse, courses, companies, home
     const route = rawHash.split('?')[0].toLowerCase();
-    if (['browse', 'courses', 'companies', 'news', 'home'].includes(route)) {
+    if (['browse', 'courses', 'companies', 'home'].includes(route)) {
       switchView(route, false);
     } else if (!rawHash) {
       switchView('home', false);
@@ -3474,7 +3492,7 @@ const articlesDatabase = [
 ];
 
 // Open and hydrate any article by ID
-window.openArticle = function(articleId) {
+window.openArticle = function(articleId, updateHash = true) {
   const art = articlesDatabase.find(a => a.id === articleId) || articlesDatabase[0];
 
   // Hydrate DOM elements
@@ -3597,7 +3615,13 @@ window.openArticle = function(articleId) {
 
   // Switch View
   if (typeof switchView === 'function') {
-    switchView('article');
+    switchView('article', false);
+  }
+  if (updateHash) {
+    window.location.hash = `article?id=${encodeURIComponent(art.id)}`;
+  }
+  if (typeof updateDynamicSEO === 'function') {
+    updateDynamicSEO('article', `${art.title} – Thời Sự Tuyển Dụng VietnamJobs`, art.lead);
   }
 };
 
@@ -4422,3 +4446,21 @@ document.addEventListener('DOMContentLoaded', () => {
   renderSplitJobList();
   renderSplitJobDetail(currentSplitJobId);
 });
+
+window.scrollToAbout = function() {
+  var el = document.getElementById('about');
+  if (!el) return;
+  if (window.state && window.state.currentView !== 'home' && typeof switchView === 'function') {
+    switchView('home');
+    setTimeout(function() {
+      var target = document.getElementById('about');
+      if (target) {
+        var top = target.getBoundingClientRect().top + window.pageYOffset - 90;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    }, 150);
+  } else {
+    var top = el.getBoundingClientRect().top + window.pageYOffset - 90;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+};

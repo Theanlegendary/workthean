@@ -154,34 +154,132 @@
           </div>
         </div>
 
-        <!-- Right: Capsule Search & Action Buttons (Exact User Reference Design) -->
-        <div class="header-top-right-group" style="display: flex; align-items: center; gap: 10px;">
-          <!-- Capsule Search with Rotating Placeholder -->
-          <div class="header-capsule-search" style="display: flex; align-items: center; background: #F1F5F9; border-radius: 9999px; padding: 6px 14px; gap: 8px; width: 250px; border: 1px solid #E2E8F0;">
-            <span style="font-size: 13px;">💼</span>
-            <input type="text" id="top-capsule-search-input" placeholder="Digital Marketing Manager Sh..." aria-label="Tìm kiếm nhanh" style="border: none; background: transparent; outline: none; font-size: 13px; color: #334155; width: 100%;">
-            <i class="fa-solid fa-magnifying-glass" id="btn-top-capsule-search" onclick="const q = document.getElementById('top-capsule-search-input')?.value; if(q){ switchView('browse'); }" style="color: #64748B; cursor: pointer; font-size: 12.5px;"></i>
+        <!-- Right: Modern Pill Search, Notification & User Profile with Role (Matching User Design) -->
+        <div class="header-top-right-group modern-header-actions" id="header-top-right-modern">
+          
+          <!-- Modern Pill Search (Matching Reference Mockup) -->
+          <div class="header-modern-search-capsule" id="header-search-capsule">
+            <i class="fa-solid fa-magnifying-glass search-capsule-icon" id="btn-top-capsule-search"></i>
+            <input type="text" id="top-capsule-search-input" placeholder="Search companies, jobs..." aria-label="Search companies, jobs...">
           </div>
 
-          <!-- Language Selector -->
-          <div class="flag-language-btn" title="Ngôn ngữ" style="background: #F1F5F9; border-radius: 9999px; padding: 6px 12px; font-size: 12px; font-weight: 700; color: #475569; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; border: 1px solid #E2E8F0;">
-            <span style="font-size: 11px; color: #64748B;">VN</span> <span>VN</span>
-          </div>
-
-          <!-- Auth Actions (Sign In / Sign Up) -->
-          <div class="header-auth-group" id="header-auth-guest" style="display: flex; align-items: center; gap: 8px;">
-            <button type="button" class="btn-auth-signin" id="btn-header-signin" onclick="openAuthModal('signin');" style="background: #ffffff; border: 1.5px solid #CBD5E1; color: #0F172A; font-size: 13px; font-weight: 700; padding: 6px 16px; border-radius: 9999px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.15s ease;">
-              <i class="fa-solid fa-arrow-right-to-bracket"></i> Đăng Nhập
+          <!-- Notification Bell (Matching Reference Mockup) -->
+          <div class="header-notification-wrapper" id="header-notification-wrapper">
+            <button type="button" class="header-bell-btn" id="btn-header-notifications" title="Thông báo" aria-label="Notifications">
+              <i class="fa-solid fa-bell"></i>
+              <span class="notification-indicator-badge"></span>
             </button>
-            <button type="button" class="btn-auth-signup" id="btn-header-signup" onclick="openAuthModal('signup');" style="background: #EFF6FF; border: 1.5px solid #BFDBFE; color: #0A66C2; font-size: 13px; font-weight: 700; padding: 6px 18px; border-radius: 9999px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.15s ease;">
-              <i class="fa-solid fa-user-plus"></i> Đăng Ký
-            </button>
+            <!-- Dropdown for Notifications -->
+            <div class="notification-popover" id="notification-popover">
+              <div class="notif-popover-header">
+                <span class="notif-popover-title">Thông Báo Mới</span>
+                <span class="notif-badge-pill">3 mới</span>
+              </div>
+              <div class="notif-popover-list">
+                <div class="notif-popover-item unread">
+                  <div class="notif-item-icon bg-blue"><i class="fa-solid fa-briefcase"></i></div>
+                  <div class="notif-item-content">
+                    <p class="notif-item-text">Việc làm mới phù hợp: <strong>Chuyên viên Logistics &amp; Supply Chain</strong></p>
+                    <span class="notif-item-time">10 phút trước</span>
+                  </div>
+                </div>
+                <div class="notif-popover-item unread">
+                  <div class="notif-item-icon bg-green"><i class="fa-solid fa-circle-check"></i></div>
+                  <div class="notif-item-content">
+                    <p class="notif-item-text">Hồ sơ ứng tuyển tại <strong>Cảng Quốc Tế Tân Cảng</strong> đã được duyệt</p>
+                    <span class="notif-item-time">1 giờ trước</span>
+                  </div>
+                </div>
+                <div class="notif-popover-item">
+                  <div class="notif-item-icon bg-purple"><i class="fa-solid fa-graduation-cap"></i></div>
+                  <div class="notif-item-content">
+                    <p class="notif-item-text">Khóa học mới: <strong>Quản Trị Chuỗi Cung Ứng Quốc Tế FIATA</strong></p>
+                    <span class="notif-item-time">Hôm qua</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!-- Post Job Button -->
-          <button type="button" class="btn-signup-red-solid" id="btn-open-post-project" onclick="showToast('Chức năng Đăng tin tuyển dụng dành cho Doanh nghiệp đối tác');" style="background: #0A66C2; border: 1.5px solid #0A66C2; color: #ffffff; font-size: 13.5px; font-weight: 700; padding: 7px 20px; border-radius: 9999px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; box-shadow: 0 2px 8px rgba(10,102,194,0.3); transition: all 0.15s ease;">
-            <i class="fa-solid fa-circle-plus"></i> Đăng Tin Tuyển Dụng
-          </button>
+          <!-- User Profile & Role Trigger (Matching Reference Mockup) -->
+          <div class="header-user-profile-capsule" id="header-user-profile">
+            <button type="button" class="header-avatar-trigger" id="btn-header-user-profile" aria-haspopup="true" aria-expanded="false" title="Tài khoản cá nhân">
+              <img src="images/user_avatar_header.png" alt="Avatar" class="header-user-avatar" id="header-avatar-img" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&auto=format&fit=crop&q=80';">
+              <i class="fa-solid fa-chevron-down header-profile-chevron"></i>
+            </button>
+
+            <!-- Role-Based Modern Profile Dropdown -->
+            <div class="modern-profile-menu" id="modern-profile-menu">
+              <!-- User Info Card -->
+              <div class="dropdown-profile-header">
+                <img src="images/user_avatar_header.png" alt="Avatar" class="dropdown-avatar-thumb" id="dropdown-avatar-img">
+                <div class="dropdown-user-details">
+                  <div class="dropdown-user-name" id="dropdown-user-name">Thean Lê</div>
+                  <div class="dropdown-user-role-badge" id="dropdown-user-role-badge">
+                    <span class="dropdown-role-badge role-badge-candidate">Ứng Viên Tìm Việc</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Role Switcher -->
+              <div class="profile-role-switcher">
+                <div class="role-switcher-label">Chế độ vai trò hoạt động:</div>
+                <div class="role-toggle-group">
+                  <button type="button" class="role-toggle-btn active" id="btn-role-candidate" onclick="switchUserRole('Candidate')">
+                    <i class="fa-solid fa-user-tie"></i> Ứng Viên
+                  </button>
+                  <button type="button" class="role-toggle-btn" id="btn-role-employer" onclick="switchUserRole('Employer')">
+                    <i class="fa-solid fa-building"></i> Tuyển Dụng
+                  </button>
+                </div>
+              </div>
+
+              <div class="dropdown-divider"></div>
+
+              <!-- Dynamic Role-Based Menu Items -->
+              <div class="dropdown-menu-links" id="dropdown-menu-links">
+                <!-- Candidate items -->
+                <a href="#candidate-cv" class="dropdown-link-item candidate-item" onclick="showToast('Chuyển tới Hồ Sơ & CV của bạn'); closeAllDropdowns(); return false;">
+                  <i class="fa-solid fa-file-lines"></i>
+                  <span>Hồ Sơ &amp; CV Của Tôi</span>
+                </a>
+                <a href="#saved-jobs" class="dropdown-link-item candidate-item" onclick="showToast('Xem các việc làm bạn đã lưu'); closeAllDropdowns(); return false;">
+                  <i class="fa-solid fa-bookmark"></i>
+                  <span>Việc Làm Đã Lưu</span>
+                </a>
+                <a href="#applied-jobs" class="dropdown-link-item candidate-item" onclick="showToast('Theo dõi trạng thái các hồ sơ đã ứng tuyển'); closeAllDropdowns(); return false;">
+                  <i class="fa-solid fa-paper-plane"></i>
+                  <span>Lịch Sử Ứng Tuyển</span>
+                </a>
+                
+                <!-- Employer items (hidden by default) -->
+                <a href="#post-job" class="dropdown-link-item employer-item" style="display:none;" onclick="showToast('Mở biểu mẫu Đăng Tin Tuyển Dụng'); closeAllDropdowns(); return false;">
+                  <i class="fa-solid fa-plus-circle"></i>
+                  <span>Đăng Tin Tuyển Dụng Mới</span>
+                </a>
+                <a href="#manage-jobs" class="dropdown-link-item employer-item" style="display:none;" onclick="showToast('Quản lý các tin tuyển dụng đang hiển thị'); closeAllDropdowns(); return false;">
+                  <i class="fa-solid fa-list-check"></i>
+                  <span>Quản Lý Tin Tuyển Dụng</span>
+                </a>
+                <a href="#candidate-resumes" class="dropdown-link-item employer-item" style="display:none;" onclick="showToast('Tìm kiếm danh bạ CV ứng viên tiềm năng'); closeAllDropdowns(); return false;">
+                  <i class="fa-solid fa-users"></i>
+                  <span>Tìm Hồ Sơ Ứng Viên</span>
+                </a>
+
+                <div class="dropdown-divider"></div>
+
+                <a href="#settings" class="dropdown-link-item" onclick="showToast('Cài đặt tài khoản & Bảo mật'); closeAllDropdowns(); return false;">
+                  <i class="fa-solid fa-gear"></i>
+                  <span>Cài Đặt Tài Khoản</span>
+                </a>
+                <a href="#" class="dropdown-link-item text-danger" id="btn-user-logout" onclick="openAuthModal('signin'); closeAllDropdowns(); return false;">
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                  <span>Đăng Nhập / Đổi Tài Khoản</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -195,17 +293,17 @@
           <button type="button" class="brand-nav-item home-icon-btn active" data-view="home" onclick="switchView('home'); return false;" title="Trang chủ">
             <i class="fa-solid fa-house"></i>
           </button>
+          <button type="button" class="brand-nav-item" data-view="article" onclick="openArticle(); return false;">
+            Thời Sự Tuyển Dụng
+          </button>
           <button type="button" class="brand-nav-item" data-view="browse" onclick="switchView('browse'); return false;">
             Việc Làm Mới
           </button>
           <button type="button" class="brand-nav-item" data-view="companies" onclick="switchView('companies'); return false;">
             Top Công Ty
           </button>
-          <button type="button" class="brand-nav-item" data-view="freelancers" onclick="switchView('freelancers'); return false;">
-            Dành Cho Ứng Viên
-          </button>
           <button type="button" class="brand-nav-item" data-view="courses" onclick="switchView('courses'); return false;">
-            Học Bổng &amp; Sinh Viên
+            Khóa Học &amp; Chứng Chỉ
           </button>
         </div>
 
@@ -423,10 +521,10 @@
               <path fill="#ffe083" d="M12.5 10.9c.3 2-2.5 3-2.5 5.4 0 1.8 1 2.9 2.7 2.9 1.9 0 3.1-1.4 3.1-3.2 0-1.5-1-3.1-3.3-5.1Z"/>
             </svg>Market Intelligence &bull; Video Broadcasts
           </button>
-          <button type="button" class="job-tab" role="tab" aria-selected="false" onclick="switchView('news')">Latest Briefs</button>
-          <button type="button" class="job-tab" role="tab" aria-selected="false" onclick="switchView('news')">Supply Chain Reports</button>
+          <button type="button" class="job-tab" role="tab" aria-selected="false" onclick="openArticle()">Latest Briefs</button>
+          <button type="button" class="job-tab" role="tab" aria-selected="false" onclick="openArticle()">Supply Chain Reports</button>
         </div>
-        <button type="button" class="more-link" onclick="switchView('news')">View All Intelligence <svg class="icon"><use href="#i-chevron"></use></svg></button>
+        <button type="button" class="more-link" onclick="openArticle()">View All Intelligence <svg class="icon"><use href="#i-chevron"></use></svg></button>
       </div>
 
       <div class="fw-yt-hub-grid">
@@ -818,28 +916,18 @@
       <span class="job-filter-count-badge" id="job-filter-count">20 Openings Available</span>
     </div>
 
-    <!-- Master-Detail Split Screen Grid (Picture 3) -->
-    <div class="split-job-layout">
-      
-      <!-- Left Column: Interactive Job Cards Scroll List -->
-      <div class="job-list-panel">
-        <div class="linkedin-list-header">
-          <div>
-            <span class="linkedin-list-title">Top job picks for you</span>
-            <span class="linkedin-list-sub">Based on your logistics profile &amp; search history</span>
-          </div>
-          <span class="linkedin-list-count" id="linkedin-jobs-counter">20 openings</span>
+    <!-- Full-Width Card Grid Layout (Image 2 Design for Việc Làm Mới) -->
+    <div class="browse-jobs-fullwidth-wrapper">
+      <div class="browse-jobs-feed-header">
+        <div>
+          <h3 class="feed-header-title">Danh sách việc làm mới nhất</h3>
+          <p class="feed-header-sub">Tuyển dụng trực tiếp từ các doanh nghiệp logistics hàng đầu</p>
         </div>
-        <div id="split-jobs-list-container">
-          <!-- Dynamically populated by JS -->
-        </div>
+        <span class="feed-header-badge" id="browse-openings-badge">21 việc làm</span>
       </div>
-
-      <!-- Right Column: Sticky Detail Panel -->
-      <div class="job-detail-panel" id="split-job-detail-panel">
-        <!-- Dynamically populated by JS -->
+      <div class="browse-jobs-cards-container" id="browse-jobs-container">
+        <!-- Dynamically rendered by js/split-jobs.js -->
       </div>
-
     </div>
 
   </div>

@@ -8457,3 +8457,314 @@ footer a:hover {
   color: #0A66C2;
   font-weight: 700;
 }
+
+/* ==========================================================================
+   HOMEPAGE HORIZONTAL JOB CARDS (PICTURE 2 STYLE - WITHOUT DESCRIPTION)
+   ========================================================================== */
+.jobs-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.job-card-horizontal {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-left: 5px solid #0A66C2 !important;
+  border-radius: 12px !important;
+  padding: 16px 24px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+.job-card-horizontal:hover {
+  border-color: #CBD5E1 !important;
+  border-left-color: #0A66C2 !important;
+  box-shadow: 0 6px 20px rgba(10, 102, 194, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+.job-card-left-block {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  min-width: 0 !important;
+}
+
+.job-card-logo-box {
+  width: 52px !important;
+  height: 52px !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 6px !important;
+  background: #FFFFFF !important;
+  flex-shrink: 0 !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03) !important;
+}
+
+.job-card-logo-box img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+.job-card-info-box {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  min-width: 0 !important;
+}
+
+.job-card-title-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+}
+
+.job-card-title-main {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: #0F172A !important;
+  line-height: 1.35 !important;
+  transition: color 0.15s ease !important;
+}
+
+.job-card-horizontal:hover .job-card-title-main {
+  color: #0A66C2 !important;
+}
+
+.badge-urgent-gap {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+  background: #FEE2E2 !important;
+  color: #DC2626 !important;
+  border-radius: 12px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  padding: 2px 8px !important;
+  letter-spacing: 0.3px !important;
+}
+
+.badge-urgent-hot {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+  background: #FEF3C7 !important;
+  color: #D97706 !important;
+  border-radius: 12px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  padding: 2px 8px !important;
+}
+
+.job-card-company-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 13.5px !important;
+  color: #475569 !important;
+  font-weight: 500 !important;
+  flex-wrap: wrap !important;
+}
+
+.job-card-company-name {
+  font-weight: 600 !important;
+  color: #334155 !important;
+}
+
+.job-card-verified-icon {
+  color: #0A66C2 !important;
+  font-size: 12.5px !important;
+}
+
+.job-card-dot-sep {
+  color: #94A3B8 !important;
+  font-size: 12px !important;
+}
+
+.job-card-loc {
+  color: #64748B !important;
+}
+
+.job-card-right-block {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  flex-shrink: 0 !important;
+  margin-left: 20px !important;
+}
+
+.job-card-salary-blue {
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  color: #0A66C2 !important;
+  letter-spacing: -0.2px !important;
+  text-align: right !important;
+}
+
+.btn-xem-chi-tiet-blue {
+  background: #0A66C2 !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  padding: 8px 22px !important;
+  border-radius: 20px !important;
+  font-weight: 700 !important;
+  font-size: 13.5px !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 6px rgba(10, 102, 194, 0.25) !important;
+}
+
+.btn-xem-chi-tiet-blue:hover {
+  background: #004182 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.4) !important;
+}
+
+/* ==========================================================================
+   MASTER-DETAIL SPLIT SCREEN LAYOUT (PICTURE 3)
+   ========================================================================== */
+.split-job-layout {
+  display: grid !important;
+  grid-template-columns: 460px 1fr !important;
+  background: #FFFFFF !important;
+  border-radius: 16px !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08) !important;
+  min-height: 700px !important;
+  max-height: 780px !important;
+  overflow: hidden !important;
+  margin-top: 18px !important;
+}
+
+.job-list-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  border-right: 1px solid #F1F5F9 !important;
+  height: 100% !important;
+  max-height: 780px !important;
+  overflow-y: auto !important;
+  background: #F8FAFC !important;
+  padding: 12px !important;
+}
+
+.job-list-panel::-webkit-scrollbar,
+.job-detail-panel::-webkit-scrollbar {
+  width: 5px !important;
+}
+.job-list-panel::-webkit-scrollbar-thumb,
+.job-detail-panel::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4) !important;
+  border-radius: 4px !important;
+}
+
+.linkedin-list-header {
+  padding: 8px 12px 14px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  margin-bottom: 10px !important;
+}
+.linkedin-list-title {
+  font-size: 14.5px !important;
+  font-weight: 800 !important;
+  color: #0F172A !important;
+  display: block !important;
+}
+.linkedin-list-sub {
+  font-size: 12px !important;
+  color: #64748B !important;
+  display: block !important;
+  margin-top: 1px !important;
+}
+.linkedin-list-count {
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  color: #0A66C2 !important;
+  background: #EFF6FF !important;
+  padding: 3px 8px !important;
+  border-radius: 10px !important;
+}
+
+.job-feed-card {
+  border: 1px solid transparent !important;
+  border-bottom: 1px solid #F1F5F9 !important;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  padding: 14px 16px !important;
+  margin-bottom: 6px !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  display: block !important;
+  text-decoration: none !important;
+}
+
+.job-feed-card:hover:not(.active) {
+  background: #F1F5F9 !important;
+  transform: translateX(2px) !important;
+}
+
+.job-feed-card.active {
+  background: #EFF6FF !important;
+  border: 1px solid #BFDBFE !important;
+  border-left: 4px solid #0A66C2 !important;
+  box-shadow: 0 2px 8px rgba(10, 102, 194, 0.1) !important;
+}
+
+.job-feed-card .job-card-title {
+  font-size: 14.5px !important;
+  font-weight: 700 !important;
+  color: #0F172A !important;
+  margin: 0 0 3px !important;
+  line-height: 1.35 !important;
+}
+
+.job-feed-card.active .job-card-title {
+  color: #0A66C2 !important;
+}
+
+.job-detail-panel {
+  background: #FFFFFF !important;
+  height: 100% !important;
+  max-height: 780px !important;
+  overflow-y: auto !important;
+  padding: 30px 36px !important;
+}
+
+@media (max-width: 900px) {
+  .split-job-layout {
+    grid-template-columns: 1fr !important;
+    max-height: none !important;
+  }
+  .job-list-panel {
+    max-height: 400px !important;
+  }
+  .job-card-horizontal {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .job-card-right-block {
+    align-items: flex-start !important;
+    margin-left: 0 !important;
+    margin-top: 12px !important;
+    width: 100% !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+  }
+}

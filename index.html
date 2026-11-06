@@ -308,138 +308,164 @@
 
         <div class="jobs-grid" id="jobs-grid">
           <!-- Job 1 -->
-          <article class="job-card" onclick="switchView('browse')">
-            <div class="job-card-top">
-              <span class="job-title" title="Supply Chain Solutions Architect (Cold Chain)">Supply Chain Solutions Architect (Cold Chain)</span>
-              <span class="job-salary">$35.000.000 - $55.000.000/mo</span>
+          <article class="job-card-horizontal" onclick="openJobDetailSplit('job-1');">
+            <div class="job-card-left-block">
+              <div class="job-card-logo-box">
+                <img src="images/brands/vinfast.svg" alt="VinFast Logistics">
+              </div>
+              <div class="job-card-info-box">
+                <div class="job-card-title-row">
+                  <span class="job-card-title-main">Supply Chain Solutions Architect (Cold Chain)</span>
+                  <span class="badge-urgent-gap"><i class="fa-solid fa-fire"></i> GẤP</span>
+                </div>
+                <div class="job-card-company-row">
+                  <span class="job-card-company-name">VinFast Logistics &amp; Battery Cold Chain</span>
+                  <i class="fa-solid fa-circle-check job-card-verified-icon"></i>
+                  <span class="job-card-dot-sep">•</span>
+                  <span class="job-card-loc"><i class="fa-solid fa-location-dot"></i> TP. Hồ Chí Minh (Hybrid)</span>
+                </div>
+              </div>
             </div>
-            <div class="job-card-middle">
-              <div class="job-tags"><span class="job-tag">Top Tier Enterprise</span><span class="job-tag">Cold Chain</span><span class="job-tag">Senior Level</span></div>
-              <span class="job-location"><svg class="icon"><use href="#i-pin"></use></svg> HCMC (Hybrid)</span>
-            </div>
-            <div class="job-company">
-              <img src="images/brands/vinfast.svg" alt="VinFast Logistics" style="width:30px; height:30px; object-fit:contain;">
-              <span class="job-company-name">VinFast Logistics &amp; Battery Cold Chain</span>
-              <span class="job-post-time" style="margin-left:auto; font-size:12px; color:#94A3B8;">3 hours ago</span>
+            <div class="job-card-right-block">
+              <span class="job-card-salary-blue">35 – 55 triệu/tháng</span>
+              <button type="button" class="btn-xem-chi-tiet-blue" onclick="event.stopPropagation(); openJobDetailSplit('job-1');">
+                Xem Chi Tiết &rarr;
+              </button>
             </div>
           </article>
 
           <!-- Job 2 -->
-          <article class="job-card" onclick="switchView('browse')">
-            <div class="job-card-top">
-              <span class="job-title" title="International Customs Clearance & Compliance Manager">International Customs Clearance &amp; Compliance Manager</span>
-              <span class="job-salary">$26.000.000 - $38.000.000/mo</span>
+          <article class="job-card-horizontal" onclick="openJobDetailSplit('job-ocean-freight');">
+            <div class="job-card-left-block">
+              <div class="job-card-logo-box">
+                <img src="images/brands/maersk.svg" alt="VietnamJobs Logistics Group">
+              </div>
+              <div class="job-card-info-box">
+                <div class="job-card-title-row">
+                  <span class="job-card-title-main">Senior Ocean Freight Forwarder &amp; Carrier Line Specialist</span>
+                  <span class="badge-urgent-hot"><i class="fa-solid fa-bolt"></i> HOT</span>
+                </div>
+                <div class="job-card-company-row">
+                  <span class="job-card-company-name">VietnamJobs Logistics Group</span>
+                  <i class="fa-solid fa-circle-check job-card-verified-icon"></i>
+                  <span class="job-card-dot-sep">•</span>
+                  <span class="job-card-loc"><i class="fa-solid fa-location-dot"></i> TP. Hồ Chí Minh (Quận 1 &amp; Thủ Đức)</span>
+                </div>
+              </div>
             </div>
-            <div class="job-card-middle">
-              <div class="job-tags"><span class="job-tag">Multinational</span><span class="job-tag">Customs Brokerage</span><span class="job-tag">Manager</span></div>
-              <span class="job-location"><svg class="icon"><use href="#i-pin"></use></svg> Hanoi (Hybrid)</span>
-            </div>
-            <div class="job-company">
-              <img src="images/brands/dhl.svg" alt="DHL Global Forwarding" style="width:30px; height:30px; object-fit:contain;">
-              <span class="job-company-name">DHL Global Forwarding Vietnam</span>
-              <span class="job-post-time" style="margin-left:auto; font-size:12px; color:#94A3B8;">6 hours ago</span>
+            <div class="job-card-right-block">
+              <span class="job-card-salary-blue">28 – 42 triệu/tháng</span>
+              <button type="button" class="btn-xem-chi-tiet-blue" onclick="event.stopPropagation(); openJobDetailSplit('job-ocean-freight');">
+                Xem Chi Tiết &rarr;
+              </button>
             </div>
           </article>
 
           <!-- Job 3 -->
-          <article class="job-card" onclick="switchView('browse')">
-            <div class="job-card-top">
-              <span class="job-title" title="Container Terminal Dispatch Coordinator (Shift)">Container Terminal Dispatch Coordinator (Shift)</span>
-              <span class="job-salary">$22.000.000 - $35.000.000/mo</span>
+          <article class="job-card-horizontal" onclick="openJobDetailSplit('job-2');">
+            <div class="job-card-left-block">
+              <div class="job-card-logo-box">
+                <img src="images/brands/dhl.svg" alt="DHL Global Forwarding">
+              </div>
+              <div class="job-card-info-box">
+                <div class="job-card-title-row">
+                  <span class="job-card-title-main">International Customs Clearance &amp; Compliance Manager</span>
+                  <span class="badge-urgent-gap"><i class="fa-solid fa-fire"></i> GẤP</span>
+                </div>
+                <div class="job-card-company-row">
+                  <span class="job-card-company-name">DHL Global Forwarding Vietnam</span>
+                  <i class="fa-solid fa-circle-check job-card-verified-icon"></i>
+                  <span class="job-card-dot-sep">•</span>
+                  <span class="job-card-loc"><i class="fa-solid fa-location-dot"></i> Hà Nội (Cầu Giấy)</span>
+                </div>
+              </div>
             </div>
-            <div class="job-card-middle">
-              <div class="job-tags"><span class="job-tag">Deep Sea Port</span><span class="job-tag">TOS Navis N4</span><span class="job-tag">Specialist</span></div>
-              <span class="job-location"><svg class="icon"><use href="#i-pin"></use></svg> Ba Ria - Vung Tau</span>
-            </div>
-            <div class="job-company">
-              <img src="images/brands/saigon-newport.svg" alt="Saigon Newport" style="width:30px; height:30px; object-fit:contain;">
-              <span class="job-company-name">Saigon Newport TCIT Cai Mep</span>
-              <span class="job-post-time" style="margin-left:auto; font-size:12px; color:#94A3B8;">1 day ago</span>
+            <div class="job-card-right-block">
+              <span class="job-card-salary-blue">26 – 38 triệu/tháng</span>
+              <button type="button" class="btn-xem-chi-tiet-blue" onclick="event.stopPropagation(); openJobDetailSplit('job-2');">
+                Xem Chi Tiết &rarr;
+              </button>
             </div>
           </article>
 
           <!-- Job 4 -->
-          <article class="job-card" onclick="switchView('browse')">
-            <div class="job-card-top">
-              <span class="job-title" title="Ocean Freight Procurement & Carrier Line Manager">Ocean Freight Procurement &amp; Carrier Line Manager</span>
-              <span class="job-salary">$28.000.000 - $42.000.000/mo</span>
+          <article class="job-card-horizontal" onclick="openJobDetailSplit('job-3');">
+            <div class="job-card-left-block">
+              <div class="job-card-logo-box">
+                <img src="images/brands/saigon-newport.svg" alt="Saigon Newport">
+              </div>
+              <div class="job-card-info-box">
+                <div class="job-card-title-row">
+                  <span class="job-card-title-main">Container Terminal Dispatch Coordinator (Shift Lead - TOS Navis N4)</span>
+                  <span class="badge-urgent-hot"><i class="fa-solid fa-bolt"></i> HOT</span>
+                </div>
+                <div class="job-card-company-row">
+                  <span class="job-card-company-name">Saigon Newport TCIT Cai Mep</span>
+                  <i class="fa-solid fa-circle-check job-card-verified-icon"></i>
+                  <span class="job-card-dot-sep">•</span>
+                  <span class="job-card-loc"><i class="fa-solid fa-location-dot"></i> Bà Rịa - Vũng Tàu</span>
+                </div>
+              </div>
             </div>
-            <div class="job-card-middle">
-              <div class="job-tags"><span class="job-tag">Ocean Freight</span><span class="job-tag">Carrier Pricing</span><span class="job-tag">Mid-Senior</span></div>
-              <span class="job-location"><svg class="icon"><use href="#i-pin"></use></svg> HCMC (District 1)</span>
-            </div>
-            <div class="job-company">
-              <img src="images/brands/kuehne-nagel.svg" alt="Kuehne+Nagel" style="width:30px; height:30px; object-fit:contain;">
-              <span class="job-company-name">Kuehne+Nagel Vietnam</span>
-              <span class="job-post-time" style="margin-left:auto; font-size:12px; color:#94A3B8;">1 day ago</span>
+            <div class="job-card-right-block">
+              <span class="job-card-salary-blue">22 – 35 triệu/tháng</span>
+              <button type="button" class="btn-xem-chi-tiet-blue" onclick="event.stopPropagation(); openJobDetailSplit('job-3');">
+                Xem Chi Tiết &rarr;
+              </button>
             </div>
           </article>
 
           <!-- Job 5 -->
-          <article class="job-card" onclick="switchView('browse')">
-            <div class="job-card-top">
-              <span class="job-title" title="Director of Cold Chain Storage Operations">Director of Cold Chain Storage Operations</span>
-              <span class="job-salary">$50.000.000 - $80.000.000/mo</span>
+          <article class="job-card-horizontal" onclick="openJobDetailSplit('job-5');">
+            <div class="job-card-left-block">
+              <div class="job-card-logo-box">
+                <img src="images/brands/slp-vietnam.svg" alt="SLP Vietnam">
+              </div>
+              <div class="job-card-info-box">
+                <div class="job-card-title-row">
+                  <span class="job-card-title-main">Director of Cold Chain Storage Operations (WHO-GDP Certified)</span>
+                  <span class="badge-urgent-gap"><i class="fa-solid fa-fire"></i> GẤP</span>
+                </div>
+                <div class="job-card-company-row">
+                  <span class="job-card-company-name">SLP Vietnam Modern Industrial Logistics</span>
+                  <i class="fa-solid fa-circle-check job-card-verified-icon"></i>
+                  <span class="job-card-dot-sep">•</span>
+                  <span class="job-card-loc"><i class="fa-solid fa-location-dot"></i> Long An / Bắc Ninh</span>
+                </div>
+              </div>
             </div>
-            <div class="job-card-middle">
-              <div class="job-tags"><span class="job-tag">Executive</span><span class="job-tag">Cold Storage</span><span class="job-tag">GDP Standard</span></div>
-              <span class="job-location"><svg class="icon"><use href="#i-pin"></use></svg> Long An / Bac Ninh</span>
-            </div>
-            <div class="job-company">
-              <img src="images/brands/slp-vietnam.svg" alt="SLP Vietnam" style="width:30px; height:30px; object-fit:contain;">
-              <span class="job-company-name">SLP Vietnam Modern Industrial Logistics</span>
-              <span class="job-post-time" style="margin-left:auto; font-size:12px; color:#94A3B8;">2 days ago</span>
+            <div class="job-card-right-block">
+              <span class="job-card-salary-blue">50 – 80 triệu/tháng</span>
+              <button type="button" class="btn-xem-chi-tiet-blue" onclick="event.stopPropagation(); openJobDetailSplit('job-5');">
+                Xem Chi Tiết &rarr;
+              </button>
             </div>
           </article>
 
           <!-- Job 6 -->
-          <article class="job-card" onclick="switchView('browse')">
-            <div class="job-card-top">
-              <span class="job-title" title="Deep-Sea Port Berth Planning Specialist">Deep-Sea Port Berth Planning Specialist</span>
-              <span class="job-salary">$24.000.000 - $36.000.000/mo</span>
+          <article class="job-card-horizontal" onclick="openJobDetailSplit('job-7');">
+            <div class="job-card-left-block">
+              <div class="job-card-logo-box">
+                <img src="images/brands/shopee.svg" alt="SPX Express">
+              </div>
+              <div class="job-card-info-box">
+                <div class="job-card-title-row">
+                  <span class="job-card-title-main">AI Computer Vision Logistics Robotics Engineer</span>
+                  <span class="badge-urgent-hot"><i class="fa-solid fa-bolt"></i> HOT</span>
+                </div>
+                <div class="job-card-company-row">
+                  <span class="job-card-company-name">SPX Express Vietnam Hub</span>
+                  <i class="fa-solid fa-circle-check job-card-verified-icon"></i>
+                  <span class="job-card-dot-sep">•</span>
+                  <span class="job-card-loc"><i class="fa-solid fa-location-dot"></i> TP. Hồ Chí Minh (Thủ Đức)</span>
+                </div>
+              </div>
             </div>
-            <div class="job-card-middle">
-              <div class="job-tags"><span class="job-tag">Gemalink Port</span><span class="job-tag">Berth Allocation</span><span class="job-tag">Maritime</span></div>
-              <span class="job-location"><svg class="icon"><use href="#i-pin"></use></svg> Vung Tau</span>
-            </div>
-            <div class="job-company">
-              <img src="images/brands/gemadept.svg" alt="Gemadept" style="width:30px; height:30px; object-fit:contain;">
-              <span class="job-company-name">Gemadept Corporation (Gemalink)</span>
-              <span class="job-post-time" style="margin-left:auto; font-size:12px; color:#94A3B8;">3 days ago</span>
-            </div>
-          </article>
-
-          <!-- Job 7 -->
-          <article class="job-card" onclick="switchView('browse')">
-            <div class="job-card-top">
-              <span class="job-title" title="AI Computer Vision Logistics Robotics Engineer">AI Computer Vision Logistics Robotics Engineer</span>
-              <span class="job-salary">$32.000.000 - $50.000.000/mo</span>
-            </div>
-            <div class="job-card-middle">
-              <div class="job-tags"><span class="job-tag">AI Logistics</span><span class="job-tag">Robotics Sorting</span><span class="job-tag">Computer Vision</span></div>
-              <span class="job-location"><svg class="icon"><use href="#i-pin"></use></svg> HCMC (Thu Duc)</span>
-            </div>
-            <div class="job-company">
-              <img src="images/brands/shopee.svg" alt="Shopee Express" style="width:30px; height:30px; object-fit:contain;">
-              <span class="job-company-name">SPX Express Vietnam Hub</span>
-              <span class="job-post-time" style="margin-left:auto; font-size:12px; color:#94A3B8;">4 days ago</span>
-            </div>
-          </article>
-
-          <!-- Job 8 -->
-          <article class="job-card" onclick="switchView('browse')">
-            <div class="job-card-top">
-              <span class="job-title" title="Cross-Border E-Commerce Logistics Operations Lead">Cross-Border E-Commerce Logistics Operations Lead</span>
-              <span class="job-salary">$25.000.000 - $40.000.000/mo</span>
-            </div>
-            <div class="job-card-middle">
-              <div class="job-tags"><span class="job-tag">Cross-Border</span><span class="job-tag">Air &amp; Sea Hub</span><span class="job-tag">Operations</span></div>
-              <span class="job-location"><svg class="icon"><use href="#i-pin"></use></svg> Tan Binh, HCMC</span>
-            </div>
-            <div class="job-company">
-              <img src="images/brands/tiki.svg" alt="Tiki Logistics" style="width:30px; height:30px; object-fit:contain;">
-              <span class="job-company-name">Tiki Supply Chain Corporation</span>
-              <span class="job-post-time" style="margin-left:auto; font-size:12px; color:#94A3B8;">5 days ago</span>
+            <div class="job-card-right-block">
+              <span class="job-card-salary-blue">32 – 50 triệu/tháng</span>
+              <button type="button" class="btn-xem-chi-tiet-blue" onclick="event.stopPropagation(); openJobDetailSplit('job-7');">
+                Xem Chi Tiết &rarr;
+              </button>
             </div>
           </article>
         </div>
@@ -805,67 +831,75 @@
     <!-- SPA VIEW 2: BROWSE ALL JOBS -->
     <section class="app-view" id="view-browse">
   <div class="container" style="padding: 24px 20px;">
-    <div class="section-header-row" style="margin-bottom: 20px;">
-      <div>
-        <h2 class="section-title">Danh Sách Việc Làm Đang Mở</h2>
-        <p class="section-subtitle">Tìm kiếm và ứng tuyển vào các vị trí phù hợp với năng lực của bạn</p>
+    
+    <!-- Top Context & Back Bar -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:12px;">
+      <button type="button" class="btn-back-to-news" onclick="switchView('home');">
+        <i class="fa-solid fa-arrow-left"></i> Quay lại Trang Chủ
+      </button>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-size:12.5px; color:#64748B;"><i class="fa-solid fa-shield-check" style="color:#059669;"></i> 100% Việc Làm Logistics Đã Xác Thực Doanh Nghiệp</span>
       </div>
     </div>
-    <div class="browse-layout-grid">
-      <!-- Filter Sidebar (Clean No-Icon Design) -->
-      <aside class="browse-filter-sidebar">
-        <div class="filter-sidebar-header">
-          <div class="filter-sidebar-title">
-            <span>Bộ Lọc Tìm Kiếm</span>
-          </div>
-          <button type="button" class="btn-reset-filters" id="btn-reset-browse-filters" title="Xóa tất cả bộ lọc">
-            Đặt lại
-          </button>
-        </div>
 
-        <div class="filter-group">
-          <div class="filter-group-label">Ngành nghề tuyển dụng</div>
-          <label class="filter-option"><input type="checkbox" value="web-dev" class="browse-cat-filter"> <span class="filter-opt-text">Công nghệ / IT</span> <span class="filter-count-badge">6.8k</span></label>
-          <label class="filter-option"><input type="checkbox" value="ai-ml" class="browse-cat-filter"> <span class="filter-opt-text">AI &amp; Dữ Liệu</span> <span class="filter-count-badge">2.4k</span></label>
-          <label class="filter-option"><input type="checkbox" value="mobile-apps" class="browse-cat-filter"> <span class="filter-opt-text">Mobile App</span> <span class="filter-count-badge">3.2k</span></label>
-          <label class="filter-option"><input type="checkbox" value="design" class="browse-cat-filter"> <span class="filter-opt-text">Design / UI-UX</span> <span class="filter-count-badge">3.8k</span></label>
-          <label class="filter-option"><input type="checkbox" value="recruitment" class="browse-cat-filter"> <span class="filter-opt-text">Kinh doanh / HR</span> <span class="filter-count-badge">4.1k</span></label>
-        </div>
-
-        <div class="filter-group">
-          <div class="filter-group-label">Hình thức làm việc</div>
-          <label class="filter-option"><input type="checkbox" value="Full-Time" class="browse-type-filter"> <span class="filter-opt-text">Toàn thời gian</span></label>
-          <label class="filter-option"><input type="checkbox" value="Part-Time" class="browse-type-filter"> <span class="filter-opt-text">Bán thời gian</span></label>
-          <label class="filter-option"><input type="checkbox" value="Remote" class="browse-type-filter"> <span class="filter-opt-text">Remote / WFH</span></label>
-        </div>
-
-        <div class="filter-group">
-          <div class="filter-group-label">Địa điểm làm việc</div>
-          <label class="filter-option"><input type="checkbox" value="hcm" class="browse-loc-filter"> <span class="filter-opt-text">TP. Hồ Chí Minh</span></label>
-          <label class="filter-option"><input type="checkbox" value="hanoi" class="browse-loc-filter"> <span class="filter-opt-text">Hà Nội</span></label>
-          <label class="filter-option"><input type="checkbox" value="danang" class="browse-loc-filter"> <span class="filter-opt-text">Đà Nẵng</span></label>
-          <label class="filter-option"><input type="checkbox" value="bacninh" class="browse-loc-filter"> <span class="filter-opt-text">Bắc Ninh</span></label>
-        </div>
-
-        <button class="btn-apply-filters-premium" id="btn-apply-browse-filters">
-          <span>Áp Dụng Lọc</span>
-          <span class="filter-active-count-badge" id="filter-active-badge" style="display:none;">0</span>
+    <!-- Marketplace Header & Live Stats Bar -->
+    <div class="split-jobs-header-row">
+      <div>
+        <h2 class="split-jobs-title">
+          <svg class="flame" viewBox="0 0 24 24" aria-hidden="true" style="width:22px; height:22px; vertical-align:-3px; margin-right:4px;">
+            <defs><linearGradient id="flame-grad" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#ff463e"/><stop offset="1" stop-color="#ffaf3d"/></linearGradient></defs>
+            <path fill="url(#flame-grad)" d="M13.2 1.2c.5 4.1-2.8 4.9-2 8.3-1.2-.6-2-1.8-2-3.5C5.9 8 4 11.1 4 14.1 4 19.2 7.6 22 12 22s8-3.1 8-7.5c0-3.8-2.4-7.4-6.8-13.3Z"/>
+            <path fill="#ffe083" d="M12.5 10.9c.3 2-2.5 3-2.5 5.4 0 1.8 1 2.9 2.7 2.9 1.9 0 3.1-1.4 3.1-3.2 0-1.5-1-3.1-3.3-5.1Z"/>
+          </svg>
+          Hot Positions &amp; Featured Openings
+        </h2>
+        <h4 class="split-jobs-sub">Direct hiring from accredited 3PLs, shipping lines &amp; port authorities</h4>
+      </div>
+      <div>
+        <button type="button" onclick="showToast('Mở cổng đăng tin tuyển dụng đối tác VIP');" style="background:#0A66C2; color:#FFFFFF; border:none; padding:10px 18px; border-radius:8px; font-weight:700; font-size:13.5px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 8px rgba(10,102,194,0.3);">
+          <i class="fa-solid fa-plus"></i> Đăng Tin Tuyển Dụng
         </button>
-      </aside>
-
-      <!-- Main Results -->
-      <div>
-        <div class="browse-results-header">
-          <div class="browse-results-count">Tìm thấy <span id="browse-results-count">0</span> việc làm</div>
-          <select class="browse-sort-select" id="browse-sort-select">
-            <option value="newest">Mới nhất</option>
-            <option value="salary">Lương cao nhất</option>
-            <option value="applicants">Nhiều ứng viên nhất</option>
-          </select>
-        </div>
-        <div class="projects-feed" id="browse-projects-feed"></div>
       </div>
     </div>
+
+    <!-- Live Interactive Filter Chips Bar -->
+    <div class="job-filters-bar">
+      <div class="job-chips-scroll" id="job-chips-scroll">
+        <button type="button" class="job-chip-btn active" data-filter="all" onclick="filterSplitJobs('all', this);">Tất Cả Vị Trí (20)</button>
+        <button type="button" class="job-chip-btn" data-filter="urgent" onclick="filterSplitJobs('urgent', this);">Easy Apply (8)</button>
+        <button type="button" class="job-chip-btn" data-filter="forwarding" onclick="filterSplitJobs('forwarding', this);">Freight Forwarding (6)</button>
+        <button type="button" class="job-chip-btn" data-filter="robotics" onclick="filterSplitJobs('robotics', this);">Smart Warehousing (4)</button>
+        <button type="button" class="job-chip-btn" data-filter="tech" onclick="filterSplitJobs('tech', this);">Cold Chain &amp; Tech (5)</button>
+        <button type="button" class="job-chip-btn" data-filter="port" onclick="filterSplitJobs('port', this);">Maritime &amp; Port (3)</button>
+        <button type="button" class="job-chip-btn" data-filter="customs" onclick="filterSplitJobs('customs', this);">Customs Brokerage (2)</button>
+      </div>
+      <span class="job-filter-count-badge" id="job-filter-count">20 Openings Available</span>
+    </div>
+
+    <!-- Master-Detail Split Screen Grid (Picture 3) -->
+    <div class="split-job-layout">
+      
+      <!-- Left Column: Interactive Job Cards Scroll List -->
+      <div class="job-list-panel">
+        <div class="linkedin-list-header">
+          <div>
+            <span class="linkedin-list-title">Top job picks for you</span>
+            <span class="linkedin-list-sub">Based on your logistics profile &amp; search history</span>
+          </div>
+          <span class="linkedin-list-count" id="linkedin-jobs-counter">20 openings</span>
+        </div>
+        <div id="split-jobs-list-container">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </div>
+
+      <!-- Right Column: Sticky Detail Panel -->
+      <div class="job-detail-panel" id="split-job-detail-panel">
+        <!-- Dynamically populated by JS -->
+      </div>
+
+    </div>
+
   </div>
 </section>
 

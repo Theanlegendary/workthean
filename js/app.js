@@ -3215,3 +3215,790 @@ window.cycleAudioSpeed = function(btn) {
   if (btn) btn.textContent = speed;
   showToast('Tốc độ đọc: ' + speed);
 };
+
+/* ==========================================================================
+   ENTERPRISE JOBS MASTER-DETAIL SPLIT-SCREEN ENGINE (PICTURE 3)
+   ========================================================================== */
+
+const enterpriseJobsDatabase = [
+  {
+    "id": "job-ocean-freight",
+    "title": "Senior Ocean Freight Forwarder",
+    "company": "VietnamJobs Logistics Group",
+    "companyLogo": "images/brands/maersk.svg",
+    "companyIcon": "fa-ship",
+    "salary": "$28,000,000 - $42,000,000 / mo",
+    "salaryVal": 35000000,
+    "location": "Ho Chi Minh City - District 1 & Thu Duc (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "forwarding",
+    "tags": ["Full-time • 3 - 5 Years", "Ocean Freight", "1,001 - 5,000 employees", "Skills match your profile"],
+    "isUrgent": true,
+    "isHighSalary": true,
+    "time": "2 hours ago",
+    "applicants": "30 applicants",
+    "specs": { "exp": "Full-time • 3 - 5 Years", "edu": "University Degree", "dept": "Ocean Freight Operations", "openings": "2 Positions" },
+    "overview": "VietnamJobs Logistics Group is seeking an experienced Senior Ocean Freight Forwarder to direct FCL/LCL ocean freight routing, carrier space allocation, and enterprise account management across major trans-pacific and European trade corridors.",
+    "responsibilities": [
+      "Coordinate ocean freight carrier space bookings, spot rate negotiations, and space allocation with major maritime shipping lines (Maersk, MSC, CMA CGM).",
+      "Ensure compliant export/import customs documentation, bill-of-lading (B/L) processing, and demurrage minimization for multinational accounts.",
+      "Track and report real-time milestone shipment statuses across multimodal corridors to ensure on-time delivery KPIs."
+    ],
+    "requirements": [
+      "Minimum 3 - 5 years direct experience in international ocean freight forwarding in Vietnam.",
+      "Comprehensive knowledge of Incoterms 2020, maritime cargo law, and customs manifest protocols.",
+      "Proficiency in bilingual professional English and Vietnamese."
+    ],
+    "benefits": [
+      "13th & 14th month salary with performance incentive bonuses.",
+      "Flexible hybrid work environment (1 day WFH per week).",
+      "Premium Bao Viet VIP Healthcare package for employee & family."
+    ]
+  },
+
+  // Page 1
+  {
+    "id": "job-1",
+    "title": "Supply Chain Solutions Architect (Cold Chain)",
+    "company": "VinFast Logistics & Cold Chain Solutions",
+    "companyLogo": "images/brands/vinfast.svg",
+    "companyIcon": "fa-snowflake",
+    "salary": "₫35.000.000 - ₫55.000.000/mo",
+    "salaryVal": 45000000,
+    "location": "Ho Chi Minh City, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "tech",
+    "tags": ["Top Tier Enterprise", "Cold Chain", "High Salary", "Strategy"],
+    "isUrgent": false,
+    "isHighSalary": true,
+    "time": "3 hours ago",
+    "applicants": "22 applicants",
+    "specs": { "exp": "Senior level (3 – 5 Yrs)", "edu": "Master / Engineering", "dept": "Strategic Network Optimization", "openings": "1 Position" },
+    "overview": "VinFast is seeking a seasoned Ocean Freight & Cold Chain Logistics Architect to lead refrigerated linehaul, battery transport, and multimodal carrier negotiations.",
+    "responsibilities": [
+      "Coordinate ocean freight routing, rate negotiations, and space allocation with major maritime alliances (2M, Ocean Alliance).",
+      "Manage complex customs clearance, FMC bill-of-lading (B/L) documentation, and cross-border demurrage minimization.",
+      "Act as direct strategic escalation lead for Tier-1 automotive and electronics enterprise shippers."
+    ],
+    "requirements": [
+      "Minimum 3 years direct container ocean freight or cold chain forwarding experience in Vietnam.",
+      "Proficiency with CargoWise ONE or equivalent enterprise freight forwarding ERP systems.",
+      "Proficiency in bilingual trade English & Vietnamese."
+    ],
+    "benefits": [
+      "14-month annual compensation with performance incentive bonuses.",
+      "Flexible 2-day work-from-home policy each week.",
+      "Premium healthcare insurance including outpatient and dental coverage."
+    ]
+  },
+  {
+    "id": "job-2",
+    "title": "International Customs Clearance & Compliance Manager",
+    "company": "DHL Global Forwarding Vietnam",
+    "companyLogo": "images/brands/dhl.svg",
+    "companyIcon": "fa-stamp",
+    "salary": "₫26.000.000 - ₫38.000.000/mo",
+    "salaryVal": 32000000,
+    "location": "Hanoi, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "customs",
+    "tags": ["Multinational", "Customs Brokerage", "Compliance", "Noi Bai"],
+    "isUrgent": true,
+    "isHighSalary": false,
+    "time": "6 hours ago",
+    "applicants": "33 applicants",
+    "specs": { "exp": "Manager (5+ Yrs)", "edu": "BA Foreign Trade / Customs", "dept": "Customs & Trade Governance", "openings": "1 Position" },
+    "overview": "Direct customs compliance, HS tariff classifications, and automated VNACCS/VCIS EDI transmissions for enterprise cargo moving through Northern Vietnam.",
+    "responsibilities": [
+      "Ensure zero regulatory non-compliance across 15,000+ annual sea/air declarations.",
+      "Act as chief liaison with General Department of Vietnam Customs on duty exemptions."
+    ],
+    "requirements": ["Active Customs Broker License", "5+ years managing trade compliance within major 3PL."],
+    "benefits": ["Competitive 13th-month salary", "Global mobility programs", "Full health insurance for family."]
+  },
+  {
+    "id": "job-3",
+    "title": "Container Terminal Dispatch Coordinator (Shift)",
+    "company": "Saigon Newport Corporation (Tan Cang - Cai Mep TCIT)",
+    "companyLogo": "images/brands/saigon-newport.svg",
+    "companyIcon": "fa-anchor",
+    "salary": "₫22.000.000 - ₫35.000.000/mo",
+    "salaryVal": 28000000,
+    "location": "Ba Ria - Vung Tau, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "port",
+    "tags": ["Deep Sea Port", "Maritime", "Terminal Ops", "Shift Work"],
+    "isUrgent": false,
+    "isHighSalary": false,
+    "time": "1 day ago",
+    "applicants": "34 applicants",
+    "specs": { "exp": "Specialist (2 – 4 Yrs)", "edu": "Maritime University / Logistics", "dept": "Terminal Operating Systems (TOS)", "openings": "3 Positions" },
+    "overview": "Manage quayside ship-to-shore gantry cranes and container yard straddle carrier dispatch using Navis N4 Terminal Operating Systems at Cai Mep deep-water port.",
+    "responsibilities": [
+      "Coordinate container vessel stowage planning and crane split sequences for ultra-large container vessels.",
+      "Optimize yard turn times for drayage tractor-trailers to under 28 minutes per transaction."
+    ],
+    "requirements": ["Bachelor in Maritime Navigation / Port Logistics", "Navis N4 TOS operating experience."],
+    "benefits": ["Hazard & shift allowances", "Daily shuttle bus from HCMC/Vung Tau", "State corporation benefits."]
+  },
+  {
+    "id": "job-4",
+    "title": "Fleet Telematics & Route Optimization Data Analyst",
+    "company": "Logivan Vietnam Freight Network",
+    "companyLogo": "images/brands/logivan.svg",
+    "companyIcon": "fa-truck",
+    "salary": "₫30.000.000 - ₫48.000.000/mo",
+    "salaryVal": 38000000,
+    "location": "Da Nang, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "tech",
+    "tags": ["Telematics", "Fleet Tech", "Data Analytics", "LogiTech"],
+    "isUrgent": false,
+    "isHighSalary": true,
+    "time": "1 day ago",
+    "applicants": "35 applicants",
+    "specs": { "exp": "Mid-Senior (2 – 4 Yrs)", "edu": "Data Science / Industrial Eng.", "dept": "Digital Freight Platform", "openings": "2 Positions" },
+    "overview": "Analyze GPS telemetry, fuel consumption rates, and empty-miles backtrack across a network of 40,000+ heavy trucks.",
+    "responsibilities": ["Build predictive dynamic routing models in Python/SQL", "Deploy driver safety scorecards."],
+    "requirements": ["Proficiency in Python/R, PostgreSQL/BigQuery", "Background in transport logistics."],
+    "benefits": ["Stock options program", "Flexible remote work", "MacBook Pro hardware provided."]
+  },
+  {
+    "id": "job-5",
+    "title": "Senior Ocean Freight Forwarder",
+    "company": "Viconship Logistics Group",
+    "companyLogo": "images/brands/viconship.svg",
+    "companyIcon": "fa-ship",
+    "salary": "₫28.000.000 - ₫42.000.000/mo",
+    "salaryVal": 35000000,
+    "location": "Ho Chi Minh City, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "forwarding",
+    "tags": ["Verified Employer", "Full-time", "Hybrid", "Ocean Freight"],
+    "isUrgent": false,
+    "isHighSalary": true,
+    "time": "2 days ago",
+    "applicants": "19 applicants",
+    "specs": { "exp": "3 – 5 Years", "edu": "Bachelor Degree", "dept": "Asia-Europe Trade Lane", "openings": "2 Positions" },
+    "overview": "Manage end-to-end container booking, multimodal carrier space allocations, and trade documentation for key accounts.",
+    "responsibilities": ["Manage ocean freight contracts with 2M and Ocean Alliance carriers.", "Resolve customs documentation issues."],
+    "requirements": ["3+ years ocean freight forwarding experience.", "Strong English and negotiation skills."],
+    "benefits": ["14-month salary", "Annual corporate training sponsorship", "Flexible WFH schedule."]
+  },
+  // Page 2
+  {
+    "id": "job-6",
+    "title": "AMR Robotics & Automation Systems Specialist",
+    "company": "Tiki Logistics Automated Mega Hub",
+    "companyLogo": "images/brands/tiki.svg",
+    "companyIcon": "fa-robot",
+    "salary": "₫32.000.000 - ₫48.000.000/mo",
+    "salaryVal": 40000000,
+    "location": "Binh Duong, Vietnam (On-site)",
+    "workplace": "On-site",
+    "category": "robotics",
+    "tags": ["Urgent Hiring", "Full-time", "On-site", "Warehouse Tech"],
+    "isUrgent": true,
+    "isHighSalary": true,
+    "time": "2 days ago",
+    "applicants": "28 applicants",
+    "specs": { "exp": "2 – 4 Years", "edu": "BS in Mechatronics/CS", "dept": "Automated Operations Group", "openings": "4 Positions" },
+    "overview": "Lead continuous deployment, route calibration, and preventative maintenance for 450+ autonomous mobile robots (AMRs).",
+    "responsibilities": ["Supervise Fleet Management Software (FMS)", "Calibrate LiDAR and SLAM sensors."],
+    "requirements": ["Degree in Mechatronics/Electrical/Robotics", "Hands-on experience with AGV/AMRs."],
+    "benefits": ["Attractive project completion bonuses", "Comprehensive healthcare", "Modern robotics lab."]
+  },
+  {
+    "id": "job-7",
+    "title": "Senior AI Computer Vision Engineer (Warehouse OCR)",
+    "company": "FPT Software AI & Digital Labs",
+    "companyLogo": "images/brands/fpt.svg",
+    "companyIcon": "fa-eye",
+    "salary": "₫40.000.000 - ₫65.000.000/mo",
+    "salaryVal": 52000000,
+    "location": "Hanoi, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "tech",
+    "tags": ["Generative AI", "Computer Vision", "PyTorch", "High Salary"],
+    "isUrgent": true,
+    "isHighSalary": true,
+    "time": "2 days ago",
+    "applicants": "41 applicants",
+    "specs": { "exp": "Senior (4+ Yrs)", "edu": "Master / CS Degree", "dept": "AI Research Lab", "openings": "3 Positions" },
+    "overview": "Train deep learning models for high-speed parcel barcode recognition, dimension measurement, and automated damage detection on conveyor belts.",
+    "responsibilities": ["Develop PyTorch / TensorRT computer vision pipelines", "Optimize inference latency to <50ms."],
+    "requirements": ["Strong PyTorch / OpenCV experience", "Knowledge of edge AI deployment."],
+    "benefits": ["Sign-on bonus ₫50M", "Annual overseas tech conferences", "Full remote flexibility."]
+  },
+  {
+    "id": "job-8",
+    "title": "Multimodal Freight Operations Lead (Air & Sea)",
+    "company": "Kuehne+Nagel Vietnam",
+    "companyLogo": "images/brands/kuehne-nagel.svg",
+    "companyIcon": "fa-plane-departure",
+    "salary": "₫30.000.000 - ₫45.000.000/mo",
+    "salaryVal": 37000000,
+    "location": "Ho Chi Minh City, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "forwarding",
+    "tags": ["Global 3PL", "Air Freight", "Multimodal", "Tan Son Nhat"],
+    "isUrgent": false,
+    "isHighSalary": true,
+    "time": "3 days ago",
+    "applicants": "18 applicants",
+    "specs": { "exp": "Mid-Senior (3 – 5 Yrs)", "edu": "Bachelor in Economics / Trade", "dept": "Air Cargo Services", "openings": "2 Positions" },
+    "overview": "Coordinate priority air charter bookings and sea-air multimodal transit connections through ASEAN transshipment hubs.",
+    "responsibilities": ["Negotiate block space agreements (BSA) with major airlines", "Manage pharmaceutical cool-chain air shipments."],
+    "requirements": ["IATA Cargo introductory certification", "3+ years international airfreight experience."],
+    "benefits": ["Global health insurance", "Annual performance review and bonuses", "18 days annual leave."]
+  },
+  {
+    "id": "job-9",
+    "title": "Director of Cold Chain Storage & Temperature Operations",
+    "company": "SLP Vietnam Logistics",
+    "companyLogo": "images/brands/slp-vietnam.svg",
+    "companyIcon": "fa-snowflake",
+    "salary": "₫50.000.000 - ₫80.000.000/mo",
+    "salaryVal": 65000000,
+    "location": "Long An & Bac Ninh (On-site)",
+    "workplace": "On-site",
+    "category": "tech",
+    "tags": ["Executive", "Cold Storage", "GDP Standard", "Pharma"],
+    "isUrgent": false,
+    "isHighSalary": true,
+    "time": "3 days ago",
+    "applicants": "12 applicants",
+    "specs": { "exp": "Director (8+ Yrs)", "edu": "BS / Master in Engineering", "dept": "Cold Storage Division", "openings": "1 Position" },
+    "overview": "Direct all cold storage operations, multi-zone temperature validation (-25°C to +8°C), and automated ammonia refrigeration systems.",
+    "responsibilities": ["Lead operational compliance with WHO-GDP and ISO 22000 standards", "Manage a team of 120 warehouse engineers and staff."],
+    "requirements": ["8+ years cold storage operations leadership", "Familiarity with modern WMS and IoT telematics."],
+    "benefits": ["Executive profit-sharing bonus", "Company car with driver", "Full family health coverage."]
+  },
+  {
+    "id": "job-10",
+    "title": "Deep-Sea Port Berth Planning Specialist",
+    "company": "Gemadept Port Logistics",
+    "companyLogo": "images/brands/gemadept.svg",
+    "companyIcon": "fa-ship",
+    "salary": "₫24.000.000 - ₫36.000.000/mo",
+    "salaryVal": 30000000,
+    "location": "Cai Mep - Gemalink Port, Vung Tau",
+    "workplace": "On-site",
+    "category": "port",
+    "tags": ["Deep Sea", "Gemalink", "Berth Planning", "Maritime"],
+    "isUrgent": false,
+    "isHighSalary": false,
+    "time": "4 days ago",
+    "applicants": "24 applicants",
+    "specs": { "exp": "Specialist (2 – 4 Yrs)", "edu": "Maritime Navigation / Logistics", "dept": "Port Operations", "openings": "2 Positions" },
+    "overview": "Coordinate vessel berthing schedules, tide window calculations, and pilotage allocations for mega container vessels.",
+    "responsibilities": ["Calculate tidal depths and draft requirements for 20,000+ TEU ships", "Liaise with maritime port authorities."],
+    "requirements": ["Bachelor in Maritime Studies", "Experience with CATOS or Navis berth planning software."],
+    "benefits": ["Port duty allowances", "Free housing at Cai Mep staff complex", "Yearly profit bonuses."]
+  },
+  // Page 3
+  {
+    "id": "job-11",
+    "title": "Senior Logistics Backend Go & Kafka Engineer",
+    "company": "Grab Vietnam Logistics Tech",
+    "companyLogo": "images/brands/grab.svg",
+    "companyIcon": "fa-code",
+    "salary": "₫45.000.000 - ₫75.000.000/mo",
+    "salaryVal": 60000000,
+    "location": "Ho Chi Minh City, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "tech",
+    "tags": ["Go", "Kafka", "High-Concurrency", "Microservices"],
+    "isUrgent": true,
+    "isHighSalary": true,
+    "time": "4 days ago",
+    "applicants": "39 applicants",
+    "specs": { "exp": "Senior (4+ Yrs)", "edu": "BS / MS Computer Science", "dept": "Express Delivery Core", "openings": "2 Positions" },
+    "overview": "Build low-latency dispatch and tracking microservices handling 2.5 million events per minute across Vietnam.",
+    "responsibilities": ["Architect event-driven pipelines using Go and Apache Kafka", "Optimize Redis cache clusters and PostgreSQL sharding."],
+    "requirements": ["Expert in Golang and distributed systems", "Experience with Kubernetes and high concurrency."],
+    "benefits": ["Grab equity RSUs", "Comprehensive wellness allowance", "Top-tier MacBook Pro M3 Max."]
+  },
+  {
+    "id": "job-12",
+    "title": "Cross-Border E-Commerce Fulfillment Lead",
+    "company": "Shopee Express Logistics Vietnam",
+    "companyLogo": "images/brands/shopee.svg",
+    "companyIcon": "fa-box-open",
+    "salary": "₫28.000.000 - ₫42.000.000/mo",
+    "salaryVal": 35000000,
+    "location": "Binh Duong Mega MegaHub",
+    "workplace": "On-site",
+    "category": "robotics",
+    "tags": ["E-Commerce", "Shopee", "Cross-Border", "Fulfillment"],
+    "isUrgent": false,
+    "isHighSalary": true,
+    "time": "5 days ago",
+    "applicants": "47 applicants",
+    "specs": { "exp": "Supervisor (3 – 5 Yrs)", "edu": "Bachelor in Business / Logistics", "dept": "Inbound & Customs Hub", "openings": "3 Positions" },
+    "overview": "Manage daily cross-docking and sorting for 800,000+ parcels arriving from regional cross-border distribution centers.",
+    "responsibilities": ["Ensure 99.6% on-time sortation rate", "Supervise automated cross-belt sorting machinery."],
+    "requirements": ["3+ years fulfillment hub operations leadership", "Familiarity with high-volume parcel sortation."],
+    "benefits": ["Quarterly fulfillment bonuses", "Subsidized meals and transport", "Full medical insurance."]
+  },
+  {
+    "id": "job-13",
+    "title": "Warehouse Management Systems (WMS) Solutions Architect",
+    "company": "BW Industrial Development JSC",
+    "companyLogo": "images/brands/bw-industrial.svg",
+    "companyIcon": "fa-warehouse",
+    "salary": "₫35.000.000 - ₫52.000.000/mo",
+    "salaryVal": 43000000,
+    "location": "Binh Duong & Hai Phong (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "tech",
+    "tags": ["WMS", "Industrial Real Estate", "Solutions Architect", "Automation"],
+    "isUrgent": false,
+    "isHighSalary": true,
+    "time": "5 days ago",
+    "applicants": "15 applicants",
+    "specs": { "exp": "Senior (5+ Yrs)", "edu": "BS / Master in Information Systems", "dept": "Smart Warehousing Advisory", "openings": "1 Position" },
+    "overview": "Design tailored WMS and automated storage solutions (AS/RS) for multinational manufacturing tenants across BW logistics parks.",
+    "responsibilities": ["Consult clients on Manhattan / Infor / SAP EWM implementations", "Draft industrial automation blueprints."],
+    "requirements": ["Deep mastery of tier-1 WMS platforms", "Excellent enterprise consulting and presentation skills."],
+    "benefits": ["Competitive executive bonus", "Flexible hybrid schedule", "International advisory projects."]
+  },
+  {
+    "id": "job-14",
+    "title": "Air Cargo Charter Operations & Dangerous Goods Lead",
+    "company": "DB Schenker Vietnam",
+    "companyLogo": "images/brands/db-schenker.svg",
+    "companyIcon": "fa-plane",
+    "salary": "₫32.000.000 - ₫48.000.000/mo",
+    "salaryVal": 40000000,
+    "location": "Hanoi (Noi Bai Airport Office)",
+    "workplace": "On-site",
+    "category": "forwarding",
+    "tags": ["Air Cargo", "Dangerous Goods", "Noi Bai", "IATA DGR"],
+    "isUrgent": false,
+    "isHighSalary": true,
+    "time": "6 days ago",
+    "applicants": "21 applicants",
+    "specs": { "exp": "Specialist (4+ Yrs)", "edu": "Aviation / Trade Degree", "dept": "Special Cargo Unit", "openings": "1 Position" },
+    "overview": "Supervise full charter aircraft operations, lithium-battery cargo acceptance, and runway tarmac loading compliance at Noi Bai.",
+    "responsibilities": ["Inspect Class 9 dangerous goods packages according to IATA DGR", "Direct tarmac aircraft loadmasters and ground handlers."],
+    "requirements": ["Valid IATA Dangerous Goods Regulations Category 6 certification", "Experience handling full-freighter aircraft."],
+    "benefits": ["Airport hazardous allowance", "Annual European training exchanges", "Full healthcare package."]
+  },
+  {
+    "id": "job-15",
+    "title": "Autonomous Heavy Trucking Dispatch Supervisor",
+    "company": "Transimex Logistics Corporation",
+    "companyLogo": "images/brands/transimex.svg",
+    "companyIcon": "fa-truck-moving",
+    "salary": "₫25.000.000 - ₫38.000.000/mo",
+    "salaryVal": 31000000,
+    "location": "Thu Duc City, HCMC",
+    "workplace": "On-site",
+    "category": "port",
+    "tags": ["Trucking", "Container Drayage", "Dispatch", "Transimex"],
+    "isUrgent": true,
+    "isHighSalary": false,
+    "time": "6 days ago",
+    "applicants": "32 applicants",
+    "specs": { "exp": "Supervisor (3+ Yrs)", "edu": "Transportation / Logistics Diploma", "dept": "Fleet Dispatch Center", "openings": "2 Positions" },
+    "overview": "Coordinate 250+ prime movers hauling import/export containers between Cat Lai Port, ICD Song Than, and industrial zones.",
+    "responsibilities": ["Dispatch trucks dynamically to minimize demurrage and gate waiting time", "Manage driver compliance and digital fuel logs."],
+    "requirements": ["3+ years container trucking dispatch experience", "Familiarity with digital TMS dispatch systems."],
+    "benefits": ["Monthly dispatch performance incentives", "Full social insurance and health benefits", "Year-end 13th and 14th month pay."]
+  },
+  // Page 4
+  {
+    "id": "job-16",
+    "title": "Supply Chain ESG & Green Logistics Analyst",
+    "company": "CJ Logistics Vietnam",
+    "companyLogo": "images/brands/cj-logistics.svg",
+    "companyIcon": "fa-leaf",
+    "salary": "₫27.000.000 - ₫40.000.000/mo",
+    "salaryVal": 33000000,
+    "location": "Ho Chi Minh City, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "tech",
+    "tags": ["ESG", "Green Logistics", "Carbon Accounting", "Sustainability"],
+    "isUrgent": false,
+    "isHighSalary": false,
+    "time": "1 week ago",
+    "applicants": "26 applicants",
+    "specs": { "exp": "Analyst (2 – 4 Yrs)", "edu": "Environmental Science / Economics", "dept": "Sustainability Office", "openings": "1 Position" },
+    "overview": "Measure Scope 1, 2, and 3 carbon emissions across warehousing and linehaul networks to meet EU CBAM and corporate ESG mandates.",
+    "responsibilities": ["Calculate fleet carbon intensity per ton-kilometer", "Recommend route adjustments and EV fleet transitions."],
+    "requirements": ["Familiarity with GHG Protocol and carbon accounting", "Strong analytical modeling skills in Python/Excel."],
+    "benefits": ["Hybrid work environment", "International sustainability credentials sponsorship", "Premium health insurance."]
+  },
+  {
+    "id": "job-17",
+    "title": "Senior Procurement & Carrier Sourcing Manager",
+    "company": "Sotrans Logistics Vietnam",
+    "companyLogo": "images/brands/sotrans.svg",
+    "companyIcon": "fa-handshake",
+    "salary": "₫35.000.000 - ₫55.000.000/mo",
+    "salaryVal": 45000000,
+    "location": "Ho Chi Minh City, Vietnam (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "forwarding",
+    "tags": ["Procurement", "Carrier Sourcing", "Ocean Lines", "Sotrans"],
+    "isUrgent": false,
+    "isHighSalary": true,
+    "time": "1 week ago",
+    "applicants": "19 applicants",
+    "specs": { "exp": "Manager (5+ Yrs)", "edu": "Foreign Trade / Logistics", "dept": "Global Procurement", "openings": "1 Position" },
+    "overview": "Lead tender negotiations and annual service contracts with major container shipping lines and regional feeder operators.",
+    "responsibilities": ["Manage ocean freight procurement budget of over $40M annually", "Benchmark carrier rates across Transpacific and Asia-Europe corridors."],
+    "requirements": ["5+ years procurement in top tier freight forwarders", "Exceptional commercial negotiation skills."],
+    "benefits": ["Lucrative annual performance bonus", "Global executive networking opportunities", "Flexible WFH schedule."]
+  },
+  {
+    "id": "job-18",
+    "title": "Logistics B2B EDI & API Integration Specialist",
+    "company": "Viettel Post Digital Solutions",
+    "companyLogo": "images/brands/viettel.svg",
+    "companyIcon": "fa-network-wired",
+    "salary": "₫30.000.000 - ₫45.000.000/mo",
+    "salaryVal": 37000000,
+    "location": "Hanoi & HCMC (Hybrid)",
+    "workplace": "Hybrid",
+    "category": "tech",
+    "tags": ["EDI", "API Integration", "Viettel", "B2B Logistics"],
+    "isUrgent": false,
+    "isHighSalary": true,
+    "time": "1 week ago",
+    "applicants": "29 applicants",
+    "specs": { "exp": "Specialist (3+ Yrs)", "edu": "Information Technology / Telecom", "dept": "Enterprise Solutions", "openings": "2 Positions" },
+    "overview": "Implement EDI (EDIFACT 204/214/300) and REST API connectors integrating enterprise ERP systems with national delivery networks.",
+    "responsibilities": ["Build automated data transformation pipelines", "Troubleshoot asynchronous message queues."],
+    "requirements": ["Solid knowledge of EDI standards and JSON/XML REST APIs", "3+ years technical integration experience."],
+    "benefits": ["Viettel Group comprehensive welfare", "Annual health checkups at Military Hospital 108", "Subsidized telecom packages."]
+  },
+  {
+    "id": "job-19",
+    "title": "Customs Brokerage Team Lead (Bonded Warehouse)",
+    "company": "Hai An Transport & Stevedoring",
+    "companyLogo": "images/brands/hai-an.svg",
+    "companyIcon": "fa-stamp",
+    "salary": "₫24.000.000 - ₫36.000.000/mo",
+    "salaryVal": 30000000,
+    "location": "Hai Phong (Dinh Vu Industrial Zone)",
+    "workplace": "On-site",
+    "category": "customs",
+    "tags": ["Customs", "Bonded Warehouse", "Hai An", "Dinh Vu"],
+    "isUrgent": true,
+    "isHighSalary": false,
+    "time": "1 week ago",
+    "applicants": "23 applicants",
+    "specs": { "exp": "Team Lead (4+ Yrs)", "edu": "Customs / International Business", "dept": "Bonded Customs Bureau", "openings": "1 Position" },
+    "overview": "Lead a team of 8 customs declarants managing bonded warehouse inventory, import raw materials, and finished goods re-exportation.",
+    "responsibilities": ["Review customs liquidation reports for export processing enterprises (EPE)", "Resolve customs audits and tariff appeals."],
+    "requirements": ["Active Customs Broker License", "Experience with Hai Phong port customs sub-departments."],
+    "benefits": ["Zone hazard allowance", "Company transport from Hai Phong center", "13th month salary and annual rewards."]
+  },
+  {
+    "id": "job-20",
+    "title": "Last-Mile Delivery Operations Regional Manager",
+    "company": "Grab Vietnam Express Division",
+    "companyLogo": "images/brands/grab.svg",
+    "companyIcon": "fa-motorcycle",
+    "salary": "₫35.000.000 - ₫55.000.000/mo",
+    "salaryVal": 45000000,
+    "location": "Ho Chi Minh City, Vietnam",
+    "workplace": "On-site",
+    "category": "robotics",
+    "tags": ["Last-Mile", "On-Demand", "Operations Lead", "GrabExpress"],
+    "isUrgent": false,
+    "isHighSalary": true,
+    "time": "1 week ago",
+    "applicants": "38 applicants",
+    "specs": { "exp": "Manager (5+ Yrs)", "edu": "Bachelor in Business / Operations", "dept": "GrabExpress Operations", "openings": "1 Position" },
+    "overview": "Oversee last-mile two-wheel delivery fulfillment, driver supply balancing, and SLAs across Greater Ho Chi Minh City.",
+    "responsibilities": ["Maintain 99.2% on-time pickup rate across peak lunch and evening hours", "Analyze cancellation heatmaps to allocate dynamic driver incentives."],
+    "requirements": ["5+ years on-demand or courier logistics management", "Strong data-driven mindset with SQL proficiency."],
+    "benefits": ["Grab competitive stock award", "Annual fitness and lifestyle allowance", "Top healthcare coverage."]
+  }
+];
+
+    let currentFilter = 'all';
+    let selectedJobId = enterpriseJobsDatabase[0] ? enterpriseJobsDatabase[0].id : null;
+
+    function getFilteredJobs() {
+      if (currentFilter === 'all') return enterpriseJobsDatabase;
+      if (currentFilter === 'urgent') return enterpriseJobsDatabase.filter(j => j.isUrgent);
+      return enterpriseJobsDatabase.filter(j => j.category === currentFilter);
+    }
+
+    function renderJobList() {
+      const container = document.getElementById('jobs-list-container');
+      const counterBadge = document.getElementById('job-filter-count');
+      const listCounter = document.getElementById('linkedin-jobs-counter');
+      const filtered = getFilteredJobs();
+
+      if (counterBadge) counterBadge.textContent = `${filtered.length} Openings Available`;
+      if (listCounter) listCounter.textContent = `${filtered.length} openings`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div style="padding:40px 20px; text-align:center; color:#64748B;">No openings found in this category.</div>`;
+        return;
+      }
+
+      if (!filtered.some(j => j.id === selectedJobId)) {
+        selectedJobId = filtered[0].id;
+      }
+
+      container.innerHTML = filtered.map(job => {
+        const isSelected = job.id === selectedJobId;
+        return `
+          <article class="job-feed-card ${isSelected ? 'active' : ''}" onclick="selectJob('${job.id}')">
+            <div style="display:flex; gap:12px; align-items:flex-start;">
+              <div style="width:42px; height:42px; flex-shrink:0;">
+                <img src="${job.companyLogo}" alt="${job.company}" style="width:100%; height:100%; object-fit:contain;">
+              </div>
+              <div style="flex:1; min-width:0;">
+                <h3 class="job-card-title">${job.title}</h3>
+                <div class="job-card-company">${job.company}</div>
+                <div class="job-card-location"><i class="fa-solid fa-location-dot" style="font-size:11px; margin-right:4px;"></i> ${job.location}</div>
+                <div class="job-card-salary">${job.salary}</div>
+                <div class="job-card-meta">
+                  <span>${job.time}</span>
+                  <span>•</span>
+                  <span>${job.applicants}</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      renderJobDetail(selectedJobId);
+    }
+
+    function selectJob(jobId) {
+      selectedJobId = jobId;
+      document.querySelectorAll('.job-feed-card').forEach(el => {
+        el.classList.remove('active');
+      });
+      const targetCard = document.querySelector(`.job-feed-card[onclick*="${jobId}"]`);
+      if (targetCard) targetCard.classList.add('active');
+      renderJobDetail(jobId);
+    }
+
+    
+
+let currentSplitJobId = 'job-ocean-freight';
+let currentSplitFilter = 'all';
+
+// Render the left-hand scrollable job feed cards
+window.renderSplitJobList = function() {
+  const container = document.getElementById('split-jobs-list-container');
+  if (!container) return;
+
+  let filtered = enterpriseJobsDatabase;
+  if (currentSplitFilter === 'urgent') {
+    filtered = enterpriseJobsDatabase.filter(j => j.isUrgent);
+  } else if (currentSplitFilter !== 'all') {
+    filtered = enterpriseJobsDatabase.filter(j => j.category === currentSplitFilter);
+  }
+
+  const countBadge = document.getElementById('job-filter-count');
+  const counterSub = document.getElementById('linkedin-jobs-counter');
+  if (countBadge) countBadge.textContent = `${filtered.length} Openings Available`;
+  if (counterSub) counterSub.textContent = `${filtered.length} openings`;
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<div style="padding:24px; text-align:center; color:#64748B; font-size:13.5px;">Không tìm thấy vị trí phù hợp trong nhóm này.</div>';
+    return;
+  }
+
+  container.innerHTML = filtered.map(job => {
+    const isActive = job.id === currentSplitJobId;
+    return `
+      <div class="job-feed-card ${isActive ? 'active' : ''}" id="feed-card-${job.id}" onclick="selectSplitJob('${job.id}');">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+          <div style="min-width:0; flex:1;">
+            <div class="job-card-title">${job.title}</div>
+            <div class="job-card-company" style="font-size:13px; color:#334155; font-weight:600; display:flex; align-items:center; gap:4px;">
+              ${job.company} <i class="fa-solid fa-circle-check" style="color:#0A66C2; font-size:11px;"></i>
+            </div>
+            <div class="job-card-location" style="font-size:12px; color:#64748B; margin-top:2px;">
+              <i class="fa-solid fa-location-dot" style="font-size:11px;"></i> ${job.location}
+            </div>
+          </div>
+          <div style="width:38px; height:38px; border:1px solid #E2E8F0; border-radius:8px; display:flex; align-items:center; justify-content:center; padding:4px; background:#fff; flex-shrink:0;">
+            <img src="${job.companyLogo}" alt="${job.company}" style="width:100%; height:100%; object-fit:contain;">
+          </div>
+        </div>
+        <div style="font-size:13.5px; font-weight:700; color:#0A66C2; margin:6px 0 4px;">${job.salary}</div>
+        <div style="display:flex; align-items:center; gap:8px; font-size:11.5px; color:#94A3B8;">
+          <span style="color:#059669; font-weight:600;"><i class="fa-solid fa-bolt"></i> Easy Apply</span>
+          <span>•</span>
+          <span>${job.time}</span>
+          <span>•</span>
+          <span>${job.applicants}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+};
+
+// Render the right-hand sticky job detail pane (matching Picture 3)
+window.renderSplitJobDetail = function(jobId) {
+  const panel = document.getElementById('split-job-detail-panel');
+  if (!panel) return;
+
+  const job = enterpriseJobsDatabase.find(j => j.id === jobId) || enterpriseJobsDatabase[0];
+  if (!job) return;
+
+  currentSplitJobId = job.id;
+
+  panel.innerHTML = `
+    <!-- Header Block Matching Picture 3 -->
+    <div style="padding-bottom: 22px; border-bottom: 1px solid #E2E8F0; margin-bottom: 24px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px;">
+        <div style="flex:1; min-width:0;">
+          <div style="display:flex; align-items:center; gap:6px; margin-bottom:4px;">
+            <span style="font-size:14px; font-weight:700; color:#0A66C2;">${job.company}</span>
+            <i class="fa-solid fa-circle-check" style="color:#059669; font-size:13px;" title="Verified Enterprise"></i>
+          </div>
+          <h1 style="font-size: 24px; font-weight: 800; color: #0F172A; margin: 0 0 8px 0; line-height: 1.25;">${job.title}</h1>
+          <div style="display:flex; align-items:center; gap:8px; font-size:13.5px; color:#64748B; flex-wrap:wrap; margin-bottom:14px;">
+            <span><i class="fa-solid fa-location-dot"></i> ${job.location}</span>
+            <span>•</span>
+            <span>Posted ${job.time}</span>
+            <span>•</span>
+            <span style="color:#059669; font-weight:600;"><i class="fa-solid fa-users"></i> ${job.applicants}</span>
+          </div>
+
+          <!-- Feature Tag Badges Matching Picture 3 -->
+          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;">
+            <span style="background:#F1F5F9; border:1px solid #E2E8F0; color:#334155; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:600; display:inline-flex; align-items:center; gap:6px;">
+              <i class="fa-solid fa-briefcase"></i> ${job.specs ? job.specs.exp : 'Full-time • 3 - 5 Years'}
+            </span>
+            <span style="background:#F1F5F9; border:1px solid #E2E8F0; color:#334155; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:600; display:inline-flex; align-items:center; gap:6px;">
+              <i class="fa-solid fa-building"></i> 1,001 - 5,000 employees
+            </span>
+            <span style="background:#EFF6FF; border:1px solid #BFDBFE; color:#0A66C2; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:700; display:inline-flex; align-items:center; gap:6px;">
+              <i class="fa-solid fa-money-bill-wave"></i> ${job.salary}
+            </span>
+            <span style="background:#ECFDF5; border:1px solid #A7F3D0; color:#059669; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:700; display:inline-flex; align-items:center; gap:6px;">
+              <i class="fa-solid fa-circle-check"></i> Skills match your profile
+            </span>
+          </div>
+        </div>
+        <div style="width:68px; height:68px; border:1px solid #E2E8F0; border-radius:12px; display:flex; align-items:center; justify-content:center; padding:8px; background:#fff; flex-shrink:0; box-shadow:0 2px 6px rgba(0,0,0,0.04);">
+          <img src="${job.companyLogo}" alt="${job.company}" style="width:100%; height:100%; object-fit:contain;">
+        </div>
+      </div>
+
+      <!-- Action Buttons Row Matching Picture 3 -->
+      <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+        <button type="button" onclick="showToast('Hồ sơ đã được gửi trực tiếp tới phòng nhân sự ${job.company}!'); this.innerHTML='<i class=\'fa-solid fa-check\'></i> Applied Successfully'; this.style.background='#059669';" style="background:#0A66C2; color:#FFFFFF; border:none; padding:11px 26px; border-radius:8px; font-weight:700; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:8px; box-shadow:0 3px 10px rgba(10,102,194,0.3); transition:all 0.2s;">
+          <i class="fa-solid fa-paper-plane"></i> Easy Apply with CV
+        </button>
+        <button type="button" onclick="this.innerHTML='<i class=\'fa-solid fa-bookmark\'></i> Saved'; this.style.color='#0A66C2'; this.style.borderColor='#0A66C2';" style="background:#FFFFFF; border:1px solid #CBD5E1; color:#475569; padding:11px 18px; border-radius:8px; font-weight:600; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; transition:all 0.15s;">
+          <i class="fa-regular fa-bookmark"></i> Save
+        </button>
+        <button type="button" onclick="navigator.clipboard?.writeText(window.location.href); showToast('Đã sao chép liên kết việc làm!');" style="background:#FFFFFF; border:1px solid #CBD5E1; color:#475569; padding:11px 16px; border-radius:8px; font-weight:600; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; transition:all 0.15s;">
+          <i class="fa-solid fa-share-nodes"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- About The Job -->
+    <div style="margin-bottom: 24px;">
+      <h3 style="font-size: 16px; font-weight: 800; color: #0F172A; margin: 0 0 10px 0;">About the job</h3>
+      <p style="font-size: 14.5px; color: #334155; line-height: 1.65; margin: 0;">${job.overview}</p>
+    </div>
+
+    <!-- Key Responsibilities -->
+    <div style="margin-bottom: 24px;">
+      <h3 style="font-size: 15px; font-weight: 800; color: #0F172A; margin: 0 0 10px 0; text-transform:uppercase; letter-spacing:0.4px;">Key Responsibilities</h3>
+      <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #475569; line-height: 1.7;">
+        ${(job.responsibilities || []).map(r => `<li style="margin-bottom: 8px;">${r}</li>`).join('')}
+      </ul>
+    </div>
+
+    <!-- Qualifications -->
+    <div style="margin-bottom: 24px;">
+      <h3 style="font-size: 15px; font-weight: 800; color: #0F172A; margin: 0 0 10px 0; text-transform:uppercase; letter-spacing:0.4px;">Qualifications &amp; Requirements</h3>
+      <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #475569; line-height: 1.7;">
+        ${(job.requirements || []).map(rq => `<li style="margin-bottom: 8px;">${rq}</li>`).join('')}
+      </ul>
+    </div>
+
+    <!-- Benefits -->
+    <div style="margin-bottom: 26px;">
+      <h3 style="font-size: 15px; font-weight: 800; color: #0F172A; margin: 0 0 10px 0; text-transform:uppercase; letter-spacing:0.4px;">Benefits &amp; Compensation</h3>
+      <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #475569; line-height: 1.7;">
+        ${(job.benefits || []).map(b => `<li style="margin-bottom: 8px;"><i class="fa-solid fa-circle-check" style="color:#059669; margin-right:6px;"></i>${b}</li>`).join('')}
+      </ul>
+    </div>
+
+    <!-- Company Badge Footer -->
+    <div style="padding-top: 20px; border-top: 1px solid #E2E8F0;">
+      <div style="display:flex; justify-content:space-between; align-items:center; background:#F8FAFC; padding:16px 20px; border-radius:12px; border:1px solid #E2E8F0;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div style="width:48px; height:48px; flex-shrink:0;">
+            <img src="${job.companyLogo}" alt="${job.company}" style="width:100%; height:100%; object-fit:contain;">
+          </div>
+          <div>
+            <div style="font-weight:800; font-size:15px; color:#0F172A;">${job.company}</div>
+            <div style="font-size:12.5px; color:#64748B;">Accredited Enterprise Logistics Hiring Partner</div>
+          </div>
+        </div>
+        <button type="button" onclick="this.textContent = 'Following'; this.style.background='#0F172A'; this.style.color='#fff';" style="background:#fff; border:1px solid #CBD5E1; color:#0F172A; padding:7px 18px; border-radius:20px; font-size:13px; font-weight:700; cursor:pointer;">
+          + Follow
+        </button>
+      </div>
+    </div>
+  `;
+
+  // Update active state in feed cards
+  document.querySelectorAll('.job-feed-card').forEach(card => card.classList.remove('active'));
+  const activeCard = document.getElementById(`feed-card-${job.id}`);
+  if (activeCard) activeCard.classList.add('active');
+
+  // Scroll detail panel to top
+  panel.scrollTop = 0;
+};
+
+// Select a job in the split-view
+window.selectSplitJob = function(jobId) {
+  renderSplitJobDetail(jobId);
+};
+
+// Filter split jobs by chip category
+window.filterSplitJobs = function(category, btn) {
+  currentSplitFilter = category;
+  document.querySelectorAll('.job-chip-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderSplitJobList();
+  
+  // Select first available job in filtered list
+  let filtered = enterpriseJobsDatabase;
+  if (currentSplitFilter === 'urgent') filtered = enterpriseJobsDatabase.filter(j => j.isUrgent);
+  else if (currentSplitFilter !== 'all') filtered = enterpriseJobsDatabase.filter(j => j.category === currentSplitFilter);
+  if (filtered.length > 0) {
+    renderSplitJobDetail(filtered[0].id);
+  }
+};
+
+// Open the Split-View Screen from Homepage or Any Link
+window.openJobDetailSplit = function(jobId) {
+  if (typeof switchView === 'function') {
+    switchView('browse');
+  }
+  currentSplitJobId = jobId || 'job-ocean-freight';
+  renderSplitJobList();
+  renderSplitJobDetail(currentSplitJobId);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+// Wire initialization on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('split-jobs-list-container')) {
+    renderSplitJobList();
+    renderSplitJobDetail(currentSplitJobId);
+  }
+});

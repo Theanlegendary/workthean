@@ -207,7 +207,8 @@
 
         <!-- Center: Hero Card (280px image + 60px 4-tab bar = 340px) -->
         <article class="hero-card" aria-label="VietnamJobs Featured Service Showcase">
-          <div class="hero-image-wrap">
+          <div class="hero-image-wrap" style="position: relative;">
+            <span class="editorial-badge badge-red" id="hero-editorial-badge">NATIONAL</span>
             <img id="hero-image" src="images/editorial_ai_logistics_hd.jpg" alt="AI Smart Logistics Infrastructure Vietnam" style="width:100%; height:100%; object-fit:cover;">
           </div>
           <div class="hero-tabs" role="tablist" aria-label="Featured Showcase Tabs">
@@ -1880,6 +1881,13 @@
       'images/today_1.jpg',
       'images/hero_team.jpg'
     ];
+    const heroBadges = [
+      { text: 'NATIONAL', cls: 'badge-red' },
+      { text: 'BUSINESS', cls: 'badge-blue' },
+      { text: 'NATIONAL', cls: 'badge-red' },
+      { text: 'BUSINESS', cls: 'badge-blue' }
+    ];
+
     window.switchHeroTab = function(index) {
       document.querySelectorAll('.hero-tab').forEach((tab, i) => {
         if(i === index) {
@@ -1893,6 +1901,11 @@
       const heroImg = document.getElementById('hero-image');
       if (heroImg && heroImages[index]) {
         heroImg.src = heroImages[index];
+      }
+      const badge = document.getElementById('hero-editorial-badge');
+      if (badge && heroBadges[index]) {
+        badge.textContent = heroBadges[index].text;
+        badge.className = 'editorial-badge ' + heroBadges[index].cls;
       }
     };
 

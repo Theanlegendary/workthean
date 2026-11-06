@@ -9984,3 +9984,570 @@ footer a:hover {
   border: 2px solid #FFFFFF !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
 }
+
+
+/* ==========================================================================
+   IMAGE 1 HEADER SEARCH & USER PROFILE DROPDOWN STYLES (PIXEL-PERFECT)
+   ========================================================================== */
+
+/* Notification indicator badge */
+.header-bell-btn {
+  position: relative !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background: #F1F5F9 !important;
+  border: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #334155 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.header-bell-btn:hover {
+  background: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+.notification-indicator-badge {
+  position: absolute !important;
+  top: 2px !important;
+  right: 2px !important;
+  min-width: 16px !important;
+  height: 16px !important;
+  padding: 0 4px !important;
+  background: #EF4444 !important;
+  color: #FFFFFF !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  border-radius: 9999px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 2px solid #FFFFFF !important;
+  line-height: 1 !important;
+}
+
+/* ── SEARCH DROPDOWN POPOVER ────────────────────────────────────────── */
+.image1-search-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0 !important;
+  left: auto !important;
+  width: 420px;
+  max-width: calc(100vw - 32px);
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 48px -12px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(15, 23, 42, 0.08);
+  padding: 16px 20px 18px;
+  z-index: 99999;
+  animation: dropdownFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.image1-search-dropdown.active {
+  display: block !important;
+}
+
+.image1-search-dropdown .search-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.image1-search-dropdown .section-title-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.image1-search-dropdown .section-title-group .text-blue {
+  color: #2563EB;
+  font-size: 13.5px;
+}
+
+.image1-search-dropdown .section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.image1-search-dropdown .btn-clear-recent {
+  background: transparent;
+  border: none;
+  color: #2563EB;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 4px;
+  transition: opacity 0.15s;
+}
+
+.image1-search-dropdown .btn-clear-recent:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+.image1-search-dropdown .btn-view-all-link {
+  color: #2563EB;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.image1-search-dropdown .btn-view-all-link:hover {
+  text-decoration: underline;
+}
+
+/* Recent Searches List */
+.image1-search-dropdown .recent-searches-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.image1-search-dropdown .recent-search-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.image1-search-dropdown .recent-search-row:hover {
+  background: #F8FAFC;
+}
+
+.image1-search-dropdown .recent-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #334155;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.image1-search-dropdown .recent-left i {
+  color: #94A3B8;
+  font-size: 14px;
+}
+
+.image1-search-dropdown .btn-remove-recent {
+  background: transparent;
+  border: none;
+  color: #94A3B8;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+
+.image1-search-dropdown .btn-remove-recent:hover {
+  color: #475569;
+  background: #E2E8F0;
+}
+
+/* Popular Search Pills */
+.image1-search-dropdown .popular-search-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.image1-search-dropdown .popular-search-pill {
+  background: #EFF6FF;
+  color: #1D4ED8;
+  border: 1px solid #DBEAFE;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.image1-search-dropdown .popular-search-pill:hover {
+  background: #DBEAFE;
+  color: #1E40AF;
+  border-color: #BFDBFE;
+  transform: translateY(-1px);
+}
+
+/* Companies Quick List */
+.image1-search-dropdown .companies-quick-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.image1-search-dropdown .company-quick-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.image1-search-dropdown .company-quick-row:hover {
+  background: #F8FAFC;
+}
+
+.image1-search-dropdown .company-logo-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  padding: 2px;
+}
+
+.image1-search-dropdown .company-logo-wrap img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.image1-search-dropdown .company-quick-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.image1-search-dropdown .company-quick-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.25;
+}
+
+.image1-search-dropdown .company-quick-tagline {
+  font-size: 11.5px;
+  color: #64748B;
+  margin-top: 2px;
+}
+
+.image1-search-dropdown .company-arrow {
+  color: #CBD5E1;
+  font-size: 12px;
+  transition: transform 0.15s, color 0.15s;
+}
+
+.image1-search-dropdown .company-quick-row:hover .company-arrow {
+  color: #0284C7;
+  transform: translateX(2px);
+}
+
+
+/* ── USER PROFILE DROPDOWN (IMAGE 1 STYLE) ───────────────────────────── */
+.image1-profile-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 310px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 20px 48px -12px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(15, 23, 42, 0.08);
+  padding: 18px 16px 16px;
+  z-index: 99999;
+  animation: dropdownFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.image1-profile-menu.show,
+.modern-profile-menu.show {
+  display: block !important;
+}
+
+/* Header with Avatar & Green Online Dot */
+.image1-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+}
+
+.image1-avatar-wrap {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.image1-avatar-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.1);
+}
+
+.image1-status-dot {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 12px;
+  height: 12px;
+  background: #22C55E;
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.image1-user-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.image1-user-name {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.2;
+}
+
+.image1-user-email {
+  font-size: 11.5px;
+  color: #64748B;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.image1-role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #EFF6FF;
+  color: #1D4ED8;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  margin-top: 5px;
+  border: 1px solid #DBEAFE;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.image1-role-badge:hover {
+  background: #DBEAFE;
+  color: #1E40AF;
+}
+
+.image1-role-badge .role-pill-chevron {
+  font-size: 9px;
+  color: #3B82F6;
+  margin-left: 2px;
+}
+
+/* Menu Section Rows (Explicit Full Width Flex to prevent wrapping bugs) */
+.image1-menu-section {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  width: 100% !important;
+}
+
+.image1-menu-row {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 9px 10px !important;
+  border-radius: 10px !important;
+  color: #1E293B !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: background 0.15s ease, color 0.15s ease !important;
+  cursor: pointer !important;
+}
+
+.image1-menu-row:hover {
+  background: #F8FAFC !important;
+  color: #0284C7 !important;
+}
+
+.image1-menu-row .row-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.image1-menu-row .row-icon {
+  width: 18px;
+  font-size: 14.5px;
+  color: #3B82F6;
+  text-align: center;
+}
+
+.image1-menu-row .row-label {
+  font-size: 13.5px;
+  color: #1E293B;
+  font-weight: 600;
+}
+
+.image1-menu-row:hover .row-label {
+  color: #0284C7;
+}
+
+.image1-menu-row .row-arrow {
+  font-size: 11.5px;
+  color: #94A3B8;
+  transition: transform 0.15s, color 0.15s;
+}
+
+.image1-menu-row:hover .row-arrow {
+  color: #0284C7;
+  transform: translateX(2px);
+}
+
+.image1-menu-row .row-right-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.image1-menu-row .count-badge-blue {
+  background: #2563EB;
+  color: #FFFFFF;
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 1px 7px;
+  border-radius: 9999px;
+  line-height: 1.4;
+}
+
+.image1-menu-divider {
+  height: 1px;
+  background: #F1F5F9;
+  margin: 8px 0;
+  width: 100%;
+}
+
+/* Full Width Logout Button */
+.image1-logout-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 9px !important;
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+  color: #334155 !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  margin: 10px 0 12px !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.image1-logout-btn:hover {
+  background: #FEF2F2 !important;
+  color: #DC2626 !important;
+  border-color: #FECACA !important;
+}
+
+/* Promo Card TheSandbox */
+.image1-promo-card {
+  background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%) !important;
+  border: 1px solid #BAE6FD !important;
+  border-radius: 14px !important;
+  padding: 12px 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+  text-decoration: none !important;
+}
+
+.image1-promo-card:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15) !important;
+  border-color: #7DD3FC !important;
+}
+
+.image1-promo-card .promo-text-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.image1-promo-card .promo-title {
+  font-size: 12px;
+  font-weight: 800;
+  color: #0369A1;
+  line-height: 1.35;
+}
+
+.image1-promo-card .promo-link {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #0284C7;
+  text-decoration: none;
+  margin-top: 3px;
+  transition: color 0.15s;
+}
+
+.image1-promo-card:hover .promo-link {
+  color: #0369A1;
+  text-decoration: underline;
+}
+
+.image1-promo-card .promo-graphic-wrap {
+  width: 38px;
+  height: 38px;
+  background: #0284C7;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+  flex-shrink: 0;
+}
+
+.image1-promo-card .promo-briefcase-icon {
+  color: #FFFFFF;
+  font-size: 17px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image1-promo-card .promo-plane-sub {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 10px;
+  color: #38BDF8;
+  transform: rotate(15deg);
+}

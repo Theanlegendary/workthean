@@ -1200,9 +1200,72 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.closeAllDropdowns = function() {
-      userDropdown?.classList.remove('show');
+      const menu = document.getElementById('modern-profile-menu') || document.getElementById('user-dropdown-menu');
+      if (menu) menu.classList.remove('show');
       userProfileCapsule?.classList.remove('open');
       notifPopover?.classList.remove('show');
+      const searchPopover = document.getElementById('search-suggestions-popover');
+      if (searchPopover) searchPopover.classList.remove('active');
+      const searchCapsule = document.getElementById('header-search-capsule');
+      if (searchCapsule) searchCapsule.classList.remove('focused');
+      const btn = document.getElementById('btn-header-user-profile');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    };
+
+    window.toggleFacebookProfileMenu = function(e) {
+      if (e) e.stopPropagation();
+      const menu = document.getElementById('modern-profile-menu') || document.getElementById('user-dropdown-menu');
+      const capsule = document.getElementById('header-user-profile');
+      const btn = document.getElementById('btn-header-user-profile');
+      const notifPopover = document.getElementById('notification-popover');
+      if (notifPopover) notifPopover.classList.remove('show');
+      const searchPopover = document.getElementById('search-suggestions-popover');
+      if (searchPopover) searchPopover.classList.remove('active');
+
+      if (!menu) return;
+      const isOpen = menu.classList.contains('show');
+      if (isOpen) {
+        menu.classList.remove('show');
+        if (capsule) capsule.classList.remove('open');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      } else {
+        menu.classList.add('show');
+        if (capsule) capsule.classList.add('open');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+      }
+    };
+
+    window.clearRecentSearches = function(e) {
+      if (e) e.stopPropagation();
+      const list = document.getElementById('recent-searches-list');
+      if (list) {
+        list.innerHTML = '<div style="padding: 10px; color: #94A3B8; font-size: 12px; text-align: center;">Chưa có tìm kiếm gần đây</div>';
+      }
+      showToast('Đã xóa tất cả tìm kiếm gần đây');
+    };
+
+    window.removeRecentSearch = function(e, btn) {
+      if (e) e.stopPropagation();
+      const row = btn?.closest('.recent-search-row');
+      if (row) {
+        row.remove();
+        const list = document.getElementById('recent-searches-list');
+        if (list && list.children.length === 0) {
+          list.innerHTML = '<div style="padding: 10px; color: #94A3B8; font-size: 12px; text-align: center;">Chưa có tìm kiếm gần đây</div>';
+        }
+      }
+    };
+
+    window.cycleUserRole = function(e) {
+      if (e) e.stopPropagation();
+      let user = null;
+      try {
+        user = JSON.parse(localStorage.getItem('vietnamjobs_auth_user'));
+      } catch(err) {}
+      if (!user) user = { name: 'Thean Lê', email: 'thean@example.com', role: 'Candidate' };
+      
+      const newRole = user.role === 'Candidate' ? 'Employer' : 'Candidate';
+      window.switchUserRole(newRole);
     };
 
     // Close button & backdrop click
@@ -1313,9 +1376,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (dropNameEl) dropNameEl.textContent = user.name || 'Thean Lê';
-      if (dropEmailEl) dropEmailEl.textContent = user.email || 'thean.le@vietnamjobs.vn';
+      if (dropEmailEl) dropEmailEl.textContent = user.email || 'thean@example.com';
 
       const isEmployer = (user.role === 'Employer');
+
+      const roleBadgeLabel = document.getElementById('badge-role-label');
+      if (roleBadgeLabel) {
+        roleBadgeLabel.textContent = isEmployer ? 'Nhà Tuyển Dụng' : 'Logistics Specialist';
+      }
 
       if (dropRoleEl) {
         if (isEmployer) {

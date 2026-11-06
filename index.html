@@ -188,78 +188,114 @@
         <!-- Right: Modern Pill Search, Notification & User Profile with Role (Matching User Design) -->
         <div class="header-top-right-group modern-header-actions" id="header-top-right-modern">
           
-          <!-- Premium Dynamic Header Search Experience -->
+          <!-- Premium Dynamic Header Search Experience (Image 1 Style) -->
           <div class="header-search-experience-wrapper" id="header-search-experience">
             <div class="header-modern-search-capsule" id="header-search-capsule">
               <div class="search-capsule-icon-wrap" id="btn-top-capsule-search">
                 <i class="fa-solid fa-magnifying-glass search-capsule-icon"></i>
               </div>
-              <input type="text" id="top-capsule-search-input" placeholder="Tìm việc làm, kỹ năng, công ty..." aria-label="Search companies, jobs..." autocomplete="off">
-              <span class="search-trending-badge" id="search-dynamic-tag"><i class="fa-solid fa-fire"></i> Hot</span>
-              <kbd class="search-cmd-kbd" title="Nhấn Ctrl+K hoặc ⌘K để tìm kiếm nhanh"><span class="cmd-symbol">⌘</span>K</kbd>
+              <input type="text" id="top-capsule-search-input" placeholder="Search for jobs, companies, or keywords..." aria-label="Search for jobs, companies, or keywords..." autocomplete="off">
+              <kbd class="search-cmd-kbd" title="Press Ctrl+K to search"><span class="cmd-symbol">Ctrl</span> K</kbd>
             </div>
 
-                        <!-- Intelligent Quick Suggestions Dropdown Popover -->
-            <div class="search-suggestions-popover" id="search-suggestions-popover" style="display:none; position:absolute; top:calc(100% + 8px); left:0; width:340px; background:#fff; border-radius:12px; box-shadow:0 12px 32px rgba(15,23,42,0.18); padding:14px 16px; border:1px solid #e2e8f0; z-index:99999;">
-              <div class="search-popover-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                <span class="popover-title" style="font-size:12.5px; font-weight:800; color:#0F172A;"><i class="fa-solid fa-fire-flame-curved" style="color:#ef4444;"></i> Tìm kiếm thịnh hành</span>
-                <span class="popover-sub" style="font-size:11px; color:#94A3B8;">Hôm nay</span>
-              </div>
-              <div class="trending-tags-row" style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px;">
-                <button type="button" class="search-quick-tag" onclick="selectQuickSearch('Supply Chain Manager');" style="background:#F8FAFC; border:1px solid #E2E8F0; color:#334155; font-size:11.5px; font-weight:600; padding:4px 9px; border-radius:6px; cursor:pointer;">
-                  <i class="fa-solid fa-arrow-trend-up" style="color:#0A66C2;"></i> Supply Chain
-                </button>
-                <button type="button" class="search-quick-tag" onclick="selectQuickSearch('Cold Chain');" style="background:#F8FAFC; border:1px solid #E2E8F0; color:#334155; font-size:11.5px; font-weight:600; padding:4px 9px; border-radius:6px; cursor:pointer;">
-                  <i class="fa-solid fa-snowflake" style="color:#0ea5e9;"></i> Cold Chain
-                </button>
-                <button type="button" class="search-quick-tag" onclick="selectQuickSearch('Logistics Operations');" style="background:#F8FAFC; border:1px solid #E2E8F0; color:#334155; font-size:11.5px; font-weight:600; padding:4px 9px; border-radius:6px; cursor:pointer;">
-                  <i class="fa-solid fa-truck-fast" style="color:#10B981;"></i> Logistics Ops
-                </button>
-                <button type="button" class="search-quick-tag" onclick="selectQuickSearch('Customs EDI Broker');" style="background:#F8FAFC; border:1px solid #E2E8F0; color:#334155; font-size:11.5px; font-weight:600; padding:4px 9px; border-radius:6px; cursor:pointer;">
-                  <i class="fa-solid fa-file-shield" style="color:#F59E0B;"></i> Hải Quan
-                </button>
-              </div>
-
-              <div class="search-popover-divider" style="height:1px; background:#F1F5F9; margin:8px -16px 8px;"></div>
-
-              <div class="search-popover-section-title" style="font-size:11.5px; font-weight:700; color:#64748B; margin-bottom:6px;">
-                <i class="fa-solid fa-building"></i> Doanh nghiệp nổi bật
-              </div>
-              <div class="search-popover-employers" style="display:flex; flex-direction:column; gap:4px;">
-                <div class="popover-employer-item" onclick="selectQuickSearch('Maersk');" style="display:flex; align-items:center; gap:10px; padding:6px 8px; border-radius:8px; cursor:pointer;">
-                  <img src="images/brands/maersk.svg" alt="Maersk" width="24" height="24" style="width:24px!important; height:24px!important; min-width:24px!important; max-width:24px!important; object-fit:contain; border-radius:4px; border:1px solid #E2E8F0; background:#fff; padding:1px; flex-shrink:0;">
-                  <div class="emp-info" style="display:flex; flex-direction:column;">
-                    <span class="emp-name" style="font-size:12.5px; font-weight:700; color:#0F172A;">A.P. Moller - Maersk</span>
-                    <span class="emp-meta" style="font-size:11px; color:#64748B;">Ocean &amp; Logistics Hub • 12 việc mở</span>
-                  </div>
+            <!-- Image 1 Intelligent Quick Suggestions Dropdown Popover -->
+            <div class="image1-search-dropdown" id="search-suggestions-popover">
+              <!-- Section 1: Recent Searches -->
+              <div class="search-section-header">
+                <div class="section-title-group">
+                  <i class="fa-solid fa-magnifying-glass text-blue"></i>
+                  <span class="section-title">Recent Searches</span>
                 </div>
-                <div class="popover-employer-item" onclick="selectQuickSearch('Shopee Express');" style="display:flex; align-items:center; gap:10px; padding:6px 8px; border-radius:8px; cursor:pointer;">
-                  <img src="images/brands/shopee.svg" alt="Shopee Express" width="24" height="24" style="width:24px!important; height:24px!important; min-width:24px!important; max-width:24px!important; object-fit:contain; border-radius:4px; border:1px solid #E2E8F0; background:#fff; padding:1px; flex-shrink:0;">
-                  <div class="emp-info" style="display:flex; flex-direction:column;">
-                    <span class="emp-name" style="font-size:12.5px; font-weight:700; color:#0F172A;">Shopee Express Logistics</span>
-                    <span class="emp-meta" style="font-size:11px; color:#64748B;">E-Commerce Hub • 18 việc mở</span>
+                <button type="button" class="btn-clear-recent" id="btn-clear-recent-searches" onclick="clearRecentSearches(event)">Clear All</button>
+              </div>
+              <div class="recent-searches-list" id="recent-searches-list">
+                <div class="recent-search-row" onclick="selectQuickSearch('Logistics Manager')">
+                  <div class="recent-left">
+                    <i class="fa-regular fa-clock"></i>
+                    <span class="recent-text">Logistics Manager</span>
                   </div>
+                  <button type="button" class="btn-remove-recent" onclick="removeRecentSearch(event, this)" title="Remove">✕</button>
                 </div>
-                <div class="popover-employer-item" onclick="selectQuickSearch('VinFast');" style="display:flex; align-items:center; gap:10px; padding:6px 8px; border-radius:8px; cursor:pointer;">
-                  <img src="images/brands/vinfast.svg" alt="VinFast" width="24" height="24" style="width:24px!important; height:24px!important; min-width:24px!important; max-width:24px!important; object-fit:contain; border-radius:4px; border:1px solid #E2E8F0; background:#fff; padding:1px; flex-shrink:0;">
-                  <div class="emp-info" style="display:flex; flex-direction:column;">
-                    <span class="emp-name" style="font-size:12.5px; font-weight:700; color:#0F172A;">VinFast Smart Logistics</span>
-                    <span class="emp-meta" style="font-size:11px; color:#64748B;">Cold Chain &amp; Fleet • 9 việc mở</span>
+                <div class="recent-search-row" onclick="selectQuickSearch('Maersk')">
+                  <div class="recent-left">
+                    <i class="fa-regular fa-clock"></i>
+                    <span class="recent-text">Maersk</span>
                   </div>
+                  <button type="button" class="btn-remove-recent" onclick="removeRecentSearch(event, this)" title="Remove">✕</button>
+                </div>
+                <div class="recent-search-row" onclick="selectQuickSearch('Supply Chain')">
+                  <div class="recent-left">
+                    <i class="fa-regular fa-clock"></i>
+                    <span class="recent-text">Supply Chain</span>
+                  </div>
+                  <button type="button" class="btn-remove-recent" onclick="removeRecentSearch(event, this)" title="Remove">✕</button>
                 </div>
               </div>
 
-              <div class="search-popover-footer" style="margin-top:8px; padding-top:6px; border-top:1px solid #F1F5F9; font-size:11px; color:#94A3B8; text-align:center;">
-                <span>Nhấn <kbd style="background:#F1F5F9; padding:1px 4px; border-radius:3px; border:1px solid #E2E8F0;">Enter</kbd> để tìm kiếm hoặc <kbd style="background:#F1F5F9; padding:1px 4px; border-radius:3px; border:1px solid #E2E8F0;">Esc</kbd> để đóng</span>
+              <!-- Section 2: Popular Searches -->
+              <div class="search-section-header" style="margin-top: 14px;">
+                <div class="section-title-group">
+                  <i class="fa-solid fa-briefcase text-blue"></i>
+                  <span class="section-title">Popular Searches</span>
+                </div>
+              </div>
+              <div class="popular-search-pills">
+                <button type="button" class="popular-search-pill" onclick="selectQuickSearch('Logistics')">Logistics</button>
+                <button type="button" class="popular-search-pill" onclick="selectQuickSearch('Supply Chain')">Supply Chain</button>
+                <button type="button" class="popular-search-pill" onclick="selectQuickSearch('International Trade')">International Trade</button>
+                <button type="button" class="popular-search-pill" onclick="selectQuickSearch('Cold Chain')">Cold Chain</button>
+                <button type="button" class="popular-search-pill" onclick="selectQuickSearch('AI & Technology')">AI &amp; Technology</button>
+                <button type="button" class="popular-search-pill" onclick="selectQuickSearch('Career Growth')">Career Growth</button>
+              </div>
+
+              <!-- Section 3: Companies -->
+              <div class="search-section-header" style="margin-top: 14px;">
+                <div class="section-title-group">
+                  <i class="fa-solid fa-building text-blue"></i>
+                  <span class="section-title">Companies</span>
+                </div>
+                <a href="#companies" class="btn-view-all-link" onclick="switchView('companies'); closeSearchPopover(); return false;">View all →</a>
+              </div>
+              <div class="companies-quick-list">
+                <div class="company-quick-row" onclick="selectQuickSearch('A.P. Moller - Maersk')">
+                  <div class="company-logo-wrap">
+                    <img src="images/brands/maersk.svg" alt="Maersk">
+                  </div>
+                  <div class="company-quick-info">
+                    <div class="company-quick-name">A.P. Moller - Maersk</div>
+                    <div class="company-quick-tagline">Logistics &amp; Supply Chain</div>
+                  </div>
+                  <i class="fa-solid fa-chevron-right company-arrow"></i>
+                </div>
+                <div class="company-quick-row" onclick="selectQuickSearch('VinFast Logistics')">
+                  <div class="company-logo-wrap">
+                    <img src="images/brands/vinfast.svg" alt="VinFast">
+                  </div>
+                  <div class="company-quick-info">
+                    <div class="company-quick-name">VinFast Logistics</div>
+                    <div class="company-quick-tagline">Logistics Tech</div>
+                  </div>
+                  <i class="fa-solid fa-chevron-right company-arrow"></i>
+                </div>
+                <div class="company-quick-row" onclick="selectQuickSearch('FPT Software')">
+                  <div class="company-logo-wrap">
+                    <img src="images/brands/fpt.svg" alt="FPT Software">
+                  </div>
+                  <div class="company-quick-info">
+                    <div class="company-quick-name">FPT Software</div>
+                    <div class="company-quick-tagline">IT &amp; Software</div>
+                  </div>
+                  <i class="fa-solid fa-chevron-right company-arrow"></i>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Notification Bell (Matching Reference Mockup) -->
+          <!-- Notification Bell (Matching Image 1 Design with Badge 3) -->
           <div class="header-notification-wrapper" id="header-notification-wrapper">
             <button type="button" class="header-bell-btn" id="btn-header-notifications" title="Thông báo" aria-label="Notifications">
               <i class="fa-solid fa-bell"></i>
-              <span class="notification-indicator-badge"></span>
+              <span class="notification-indicator-badge">3</span>
             </button>
             <!-- Dropdown for Notifications -->
             <div class="notification-popover" id="notification-popover">
@@ -293,7 +329,7 @@
             </div>
           </div>
 
-          <!-- User Profile & Role Trigger (Matching Reference Mockup) -->
+          <!-- User Profile & Role Trigger (Matching Image 1 Design) -->
           <div class="header-user-profile-capsule" id="header-user-profile">
             <button type="button" class="fb-profile-btn" id="btn-header-user-profile" onclick="toggleFacebookProfileMenu(event)" aria-haspopup="true" aria-expanded="false" title="Tài khoản cá nhân (Thean Lê)">
               <div class="fb-avatar-container">
@@ -304,74 +340,104 @@
               </div>
             </button>
 
-            <!-- Role-Based Modern Profile Dropdown -->
-            <div class="modern-profile-menu" id="modern-profile-menu">
-              <!-- User Info Card -->
-              <div class="dropdown-profile-header">
-                <img src="images/user_avatar_header.png" alt="Avatar" class="dropdown-avatar-thumb" id="dropdown-avatar-img">
-                <div class="dropdown-user-details">
-                  <div class="dropdown-user-name" id="dropdown-user-name">Thean Lê</div>
-                  <div class="dropdown-user-role-badge" id="dropdown-user-role-badge">
-                    <span class="dropdown-role-badge role-badge-candidate">Ứng Viên Tìm Việc</span>
+            <!-- Image 1 Pixel-Perfect Profile Dropdown Popover -->
+            <div class="image1-profile-menu modern-profile-menu" id="modern-profile-menu">
+              <!-- Profile Header: Avatar with Green Dot + Name + Role Pill -->
+              <div class="image1-profile-header">
+                <div class="image1-avatar-wrap">
+                  <img src="images/user_avatar_header.png" alt="Thean Lê" class="image1-avatar-img">
+                  <span class="image1-status-dot" title="Active Now"></span>
+                </div>
+                <div class="image1-user-details">
+                  <div class="image1-user-name" id="dropdown-user-name">Thean Lê</div>
+                  <div class="image1-user-email" id="dropdown-user-email">thean@example.com</div>
+                  <button type="button" class="image1-role-badge" id="dropdown-user-role-badge" onclick="cycleUserRole(event)" title="Nhấn để chuyển đổi vai trò">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span id="badge-role-label">Logistics Specialist</span>
+                    <i class="fa-solid fa-chevron-down role-pill-chevron"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Menu Section 1 -->
+              <div class="image1-menu-section">
+                <a href="#candidate-cv" class="image1-menu-row" onclick="showToast('Mở Hồ Sơ & CV cá nhân'); closeAllDropdowns(); return false;">
+                  <div class="row-left">
+                    <i class="fa-regular fa-user row-icon"></i>
+                    <span class="row-label">My Profile</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right row-arrow"></i>
+                </a>
+                <a href="#browse" class="image1-menu-row" onclick="switchView('browse'); closeAllDropdowns(); return false;">
+                  <div class="row-left">
+                    <i class="fa-solid fa-briefcase row-icon"></i>
+                    <span class="row-label">My Jobs</span>
+                  </div>
+                  <div class="row-right-group">
+                    <span class="count-badge-blue">12</span>
+                    <i class="fa-solid fa-chevron-right row-arrow"></i>
+                  </div>
+                </a>
+                <a href="#saved-jobs" class="image1-menu-row" onclick="switchView('browse'); showToast('Xem các công việc bạn đã lưu'); closeAllDropdowns(); return false;">
+                  <div class="row-left">
+                    <i class="fa-regular fa-bookmark row-icon"></i>
+                    <span class="row-label">Saved Jobs</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right row-arrow"></i>
+                </a>
+                <a href="#applications" class="image1-menu-row" onclick="showToast('Xem danh sách hồ sơ bạn đã ứng tuyển'); closeAllDropdowns(); return false;">
+                  <div class="row-left">
+                    <i class="fa-regular fa-rectangle-list row-icon"></i>
+                    <span class="row-label">My Applications</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right row-arrow"></i>
+                </a>
+              </div>
+
+              <div class="image1-menu-divider"></div>
+
+              <!-- Menu Section 2 -->
+              <div class="image1-menu-section">
+                <a href="#settings" class="image1-menu-row" onclick="showToast('Cài đặt tài khoản người dùng'); closeAllDropdowns(); return false;">
+                  <div class="row-left">
+                    <i class="fa-solid fa-gear row-icon"></i>
+                    <span class="row-label">Account Settings</span>
+                  </div>
+                </a>
+                <a href="#security" class="image1-menu-row" onclick="showToast('Cài đặt bảo mật & Xác thực 2 bước (2FA)'); closeAllDropdowns(); return false;">
+                  <div class="row-left">
+                    <i class="fa-solid fa-shield-halved row-icon"></i>
+                    <span class="row-label">Security &amp; 2FA</span>
+                  </div>
+                </a>
+                <a href="#help" class="image1-menu-row" onclick="showToast('Mở Trung Tâm Trợ Giúp VietnamJobs'); closeAllDropdowns(); return false;">
+                  <div class="row-left">
+                    <i class="fa-regular fa-circle-question row-icon"></i>
+                    <span class="row-label">Help Center</span>
+                  </div>
+                </a>
+              </div>
+
+              <!-- Full-Width Log Out Card Button -->
+              <button type="button" class="image1-logout-btn" id="btn-user-logout" onclick="openAuthModal('signin'); closeAllDropdowns();">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Log Out</span>
+              </button>
+
+              <!-- Bottom Career Promo Card (TheSandbox) -->
+              <div class="image1-promo-card" onclick="switchView('courses'); closeAllDropdowns();">
+                <div class="promo-text-wrap">
+                  <div class="promo-title">Build your career with TheSandbox</div>
+                  <a href="#courses" class="promo-link" onclick="event.stopPropagation(); switchView('courses'); closeAllDropdowns(); return false;">
+                    Explore Opportunities →
+                  </a>
+                </div>
+                <div class="promo-graphic-wrap">
+                  <div class="promo-briefcase-icon">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <i class="fa-solid fa-paper-plane promo-plane-sub"></i>
                   </div>
                 </div>
-              </div>
-
-              <!-- Quick Role Switcher -->
-              <div class="profile-role-switcher">
-                <div class="role-switcher-label">Chế độ vai trò hoạt động:</div>
-                <div class="role-toggle-group">
-                  <button type="button" class="role-toggle-btn active" id="btn-role-candidate" onclick="switchUserRole('Candidate')">
-                    <i class="fa-solid fa-user-tie"></i> Ứng Viên
-                  </button>
-                  <button type="button" class="role-toggle-btn" id="btn-role-employer" onclick="switchUserRole('Employer')">
-                    <i class="fa-solid fa-building"></i> Tuyển Dụng
-                  </button>
-                </div>
-              </div>
-
-              <div class="dropdown-divider"></div>
-
-              <!-- Dynamic Role-Based Menu Items -->
-              <div class="dropdown-menu-links" id="dropdown-menu-links">
-                <!-- Candidate items -->
-                <a href="#candidate-cv" class="dropdown-link-item candidate-item" onclick="showToast('Chuyển tới Hồ Sơ & CV của bạn'); closeAllDropdowns(); return false;">
-                  <i class="fa-solid fa-file-lines"></i>
-                  <span>Hồ Sơ &amp; CV Của Tôi</span>
-                </a>
-                <a href="#saved-jobs" class="dropdown-link-item candidate-item" onclick="showToast('Xem các việc làm bạn đã lưu'); closeAllDropdowns(); return false;">
-                  <i class="fa-solid fa-bookmark"></i>
-                  <span>Việc Làm Đã Lưu</span>
-                </a>
-                <a href="#applied-jobs" class="dropdown-link-item candidate-item" onclick="showToast('Theo dõi trạng thái các hồ sơ đã ứng tuyển'); closeAllDropdowns(); return false;">
-                  <i class="fa-solid fa-paper-plane"></i>
-                  <span>Lịch Sử Ứng Tuyển</span>
-                </a>
-                
-                <!-- Employer items (hidden by default) -->
-                <a href="#post-job" class="dropdown-link-item employer-item" style="display:none;" onclick="showToast('Mở biểu mẫu Đăng Tin Tuyển Dụng'); closeAllDropdowns(); return false;">
-                  <i class="fa-solid fa-plus-circle"></i>
-                  <span>Đăng Tin Tuyển Dụng Mới</span>
-                </a>
-                <a href="#manage-jobs" class="dropdown-link-item employer-item" style="display:none;" onclick="showToast('Quản lý các tin tuyển dụng đang hiển thị'); closeAllDropdowns(); return false;">
-                  <i class="fa-solid fa-list-check"></i>
-                  <span>Quản Lý Tin Tuyển Dụng</span>
-                </a>
-                <a href="#candidate-resumes" class="dropdown-link-item employer-item" style="display:none;" onclick="showToast('Tìm kiếm danh bạ CV ứng viên tiềm năng'); closeAllDropdowns(); return false;">
-                  <i class="fa-solid fa-users"></i>
-                  <span>Tìm Hồ Sơ Ứng Viên</span>
-                </a>
-
-                <div class="dropdown-divider"></div>
-
-                <a href="#settings" class="dropdown-link-item" onclick="showToast('Cài đặt tài khoản & Bảo mật'); closeAllDropdowns(); return false;">
-                  <i class="fa-solid fa-gear"></i>
-                  <span>Cài Đặt Tài Khoản</span>
-                </a>
-                <a href="#" class="dropdown-link-item text-danger" id="btn-user-logout" onclick="openAuthModal('signin'); closeAllDropdowns(); return false;">
-                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                  <span>Đăng Nhập / Đổi Tài Khoản</span>
-                </a>
               </div>
             </div>
           </div>

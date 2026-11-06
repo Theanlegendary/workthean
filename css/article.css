@@ -718,3 +718,42 @@
   #view-article .brand-link {width:auto!important;flex:1 1 40%}
   #view-article .video-card {flex-basis:82vw;width:82vw}
 }
+
+#view-article .topbar {
+  background: var(--topbar);
+  color: #fff;
+  font-size: 12.5px;
+}
+#view-article .topbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 31px;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+#view-article .topbar a {
+  color: #fff;
+  text-decoration: none;
+}
+#view-article .topbar a:hover {
+  color: #cfe2f5;
+}
+#view-article .topbar .sep {
+  margin: 0 7px;
+  color: #777;
+}
+#view-article .topbar .u-link {
+  font-weight: 700;
+}
+#view-article .topbar .u-link.underlined {
+  text-decoration: underline;
+}
+#view-article .topbar-right a {
+  margin-left: 26px;
+}
+#view-article .site-header {
+  background: #fafafa;
+  padding: 27px 0 26px;
+}

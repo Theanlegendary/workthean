@@ -287,8 +287,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (viewId === 'companies' && typeof initCompaniesDirectory === 'function') {
       setTimeout(() => initCompaniesDirectory(), 30);
     }
-    if (viewId === 'article' && typeof window.initFwCarousel === 'function') {
-      setTimeout(() => window.initFwCarousel(), 50);
+    if (viewId === 'article') {
+      const hub = document.getElementById('lw-hub-overview');
+      const reader = document.getElementById('lw-article-reader');
+      if (hub) hub.style.display = 'block';
+      if (reader) reader.style.display = 'none';
+      if (typeof window.initFwCarousel === 'function') {
+        setTimeout(() => window.initFwCarousel(), 50);
+      }
     }
     document.querySelectorAll('.nav-link[data-view]').forEach(btn => {
       if (btn.getAttribute('data-view') === viewId) btn.classList.add('active');
@@ -320,16 +326,18 @@ document.addEventListener('DOMContentLoaded', () => {
      URL ROUTING (SUPPORT DEEP LINKING FOR VIEWS & JOB IDS)
      ========================================================================== */
   function handleUrlRouting() {
-    const rawHash = window.location.hash.replace(/^#\/?/, '');
+    const rawHash = window.location.hash.replace(/^#\/?/, '').trim();
     const urlParams = new URLSearchParams(window.location.search);
+
+    console.log('[Router] Handling route:', rawHash);
 
     // 1. Check Job Detail direct link
     let jobId = urlParams.get('id');
-    if (!jobId && rawHash.includes('job?id=')) {
+    if (!jobId && (rawHash.includes('job?id=') || rawHash.includes('job-detail?id='))) {
       const match = rawHash.match(/id=([^&]+)/);
       if (match) jobId = decodeURIComponent(match[1]);
-    } else if (!jobId && rawHash.startsWith('job/')) {
-      jobId = decodeURIComponent(rawHash.replace('job/', ''));
+    } else if (!jobId && (rawHash.startsWith('job/') || rawHash.startsWith('job-detail/'))) {
+      jobId = decodeURIComponent(rawHash.split('/')[1]);
     }
 
     if (jobId) {
@@ -337,30 +345,150 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // 2. Check Article / News direct link (Logistics Waves Hub)
+    // 2. Check Article / News direct link
     if (rawHash.startsWith('article') || rawHash.startsWith('news')) {
       let articleId = null;
       if (rawHash.includes('id=')) {
         const match = rawHash.match(/id=([^&]+)/);
         if (match) articleId = decodeURIComponent(match[1]);
+      } else if (rawHash.includes('/')) {
+        const parts = rawHash.split('/');
+        if (parts[1]) articleId = decodeURIComponent(parts[1]);
       }
-      if (typeof window.openArticle === 'function') {
+      if (articleId && typeof window.openArticle === 'function') {
         window.openArticle(articleId, false);
       } else {
         switchView('article', false);
+        const hub = document.getElementById('lw-hub-overview');
+        const reader = document.getElementById('lw-article-reader');
+        if (hub) hub.style.display = 'block';
+        if (reader) reader.style.display = 'none';
+        if (typeof window.initFwCarousel === 'function') {
+          setTimeout(() => window.initFwCarousel(), 50);
+        }
       }
-      console.log('[handleUrlRouting] Finished article branch, active-views:', Array.from(document.querySelectorAll('.active-view')).map(e=>e.id));
       return;
     }
 
-    // 3. View routes
+    // 3. Candidate Profile, Saved Jobs, Applications & Settings Routes
+    if (rawHash === 'saved-jobs' || rawHash === 'saved') {
+      switchView('dashboard', false);
+      if (typeof window.switchDashboardTab === 'function') window.switchDashboardTab('saved');
+      return;
+    }
+    if (rawHash === 'candidate-cv' || rawHash === 'profile') {
+      switchView('dashboard', false);
+      if (typeof window.switchDashboardTab === 'function') window.switchDashboardTab('profile');
+      return;
+    }
+    if (rawHash === 'applications' || rawHash === 'applied-jobs' || rawHash === 'applied') {
+      switchView('dashboard', false);
+      if (typeof window.switchDashboardTab === 'function') window.switchDashboardTab('applications');
+      return;
+    }
+    if (rawHash === 'settings') {
+      switchView('dashboard', false);
+      if (typeof window.switchDashboardTab === 'function') window.switchDashboardTab('settings');
+      return;
+    }
+    if (rawHash.startsWith('dashboard')) {
+      switchView('dashboard', false);
+      if (rawHash.includes('tab=')) {
+        const tabMatch = rawHash.match(/tab=([^&]+)/);
+        if (tabMatch && typeof window.switchDashboardTab === 'function') {
+          window.switchDashboardTab(tabMatch[1]);
+        }
+      }
+      return;
+    }
+
+    // 4. View routes
     const route = rawHash.split('?')[0].toLowerCase();
-    if (['browse', 'courses', 'companies', 'article'].includes(route)) {
+    const validViews = ['home', 'browse', 'job-detail', 'freelancers', 'dashboard', 'courses', 'course-detail', 'companies', 'company-detail', 'article'];
+    if (validViews.includes(route)) {
       switchView(route, false);
     } else if (!rawHash || route === 'home') {
       switchView('home', false);
     }
   }
+
+  // Global Navigation Helper for dropdowns, nav buttons, and deep links
+  window.navigateTo = function(routeName, params = {}) {
+    if (typeof closeAllDropdowns === 'function') closeAllDropdowns();
+
+    if (routeName === 'home') {
+      switchView('home');
+    } else if (routeName === 'browse') {
+      switchView('browse');
+      if (params.filter === 'saved' && typeof filterJobsBySaved === 'function') {
+        filterJobsBySaved();
+      }
+    } else if (routeName === 'saved-jobs' || routeName === 'saved') {
+      switchView('dashboard');
+      if (typeof window.switchDashboardTab === 'function') window.switchDashboardTab('saved');
+      window.location.hash = 'saved-jobs';
+    } else if (routeName === 'profile' || routeName === 'candidate-cv') {
+      switchView('dashboard');
+      if (typeof window.switchDashboardTab === 'function') window.switchDashboardTab('profile');
+      window.location.hash = 'candidate-cv';
+    } else if (routeName === 'applications' || routeName === 'applied-jobs') {
+      switchView('dashboard');
+      if (typeof window.switchDashboardTab === 'function') window.switchDashboardTab('applications');
+      window.location.hash = 'applications';
+    } else if (routeName === 'settings') {
+      switchView('dashboard');
+      if (typeof window.switchDashboardTab === 'function') window.switchDashboardTab('settings');
+      window.location.hash = 'settings';
+    } else if (routeName === 'dashboard') {
+      switchView('dashboard');
+      if (params.tab && typeof window.switchDashboardTab === 'function') {
+        window.switchDashboardTab(params.tab);
+        window.location.hash = `dashboard?tab=${params.tab}`;
+      } else {
+        window.location.hash = 'dashboard';
+      }
+    } else if (routeName === 'courses') {
+      switchView('courses');
+    } else if (routeName === 'course-detail') {
+      switchView('course-detail');
+    } else if (routeName === 'companies') {
+      switchView('companies');
+    } else if (routeName === 'company-detail') {
+      switchView('company-detail');
+    } else if (routeName === 'article' || routeName === 'news') {
+      if (params.id && typeof window.openArticle === 'function') {
+        window.openArticle(params.id, true);
+      } else {
+        window.openArticle(null, true);
+      }
+    } else if (routeName === 'job-detail' && params.id) {
+      showJobDetail(params.id);
+    } else {
+      switchView(routeName);
+    }
+  };
+
+  // Dashboard Tab Switcher
+  window.switchDashboardTab = function(tabName) {
+    console.log('[Dashboard] Switching to tab:', tabName);
+    document.querySelectorAll('.dash-tab-btn').forEach(btn => {
+      if (btn.getAttribute('data-tab') === tabName) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    document.querySelectorAll('.dash-tab-panel').forEach(panel => {
+      if (panel.id === `dash-panel-${tabName}`) {
+        panel.style.display = 'block';
+      } else {
+        panel.style.display = 'none';
+      }
+    });
+
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
 
   function initJobDetailPage() {
     document.getElementById('btn-back-to-jobs-feed')?.addEventListener('click', () => {
@@ -3507,7 +3635,84 @@ document.addEventListener('DOMContentLoaded', () => {
    ========================================================================== */
 
 const articlesDatabase = [
+  
   {
+    id: 'art-cargo-theft',
+    tag: 'Freight Security',
+    sec: 'Supply Chain Risk',
+    title: 'Cargo Theft Prevention Strategies in Transshipment Depots & Inland ICDs',
+    author: 'Logistics Waves Security Desk',
+    location: 'Bình Dương & Đồng Nai Corridors',
+    date: 'Published 06 November 2026',
+    heroImg: 'images/editorial_tech_salaries_hd.png',
+    caption: 'Advanced IoT seal tracking and high-resolution biometric yard surveillance across southern transshipment hubs.',
+    listenMeta: '3 mins • Audio Brief',
+    lead: 'Báo cáo an ninh logistics ghi nhận giải pháp triển khai seal điện tử định vị GPS và camera giám sát AI nhằm triệt tiêu thất thoát hàng hóa container.',
+    paragraphs: [
+      'Trước sự gia tăng mạnh mẽ của lưu lượng xuất nhập khẩu qua các ICD tại khu vực kinh tế trọng điểm phía Nam, các doanh nghiệp vận tải đang nhanh chóng chuyển đổi từ niêm phong chì truyền thống sang seal điện tử tích hợp cảm biến gia tốc và GPS.',
+      'Hệ thống quản lý kho bãi WMS hiện đại cho phép kết nối dữ liệu tức thời với các đơn vị bảo hiểm hàng hải quốc tế, giảm thiểu 95% rủi ro mất cắp tại bãi lưu container.',
+      'Việc đồng bộ hóa dữ liệu kiểm tra ngoại quan cùng công nghệ phân tích hành vi qua camera an ninh hỗ trợ đội ngũ an ninh bến cảng phản ứng kịp thời trước các dấu hiệu bất thường.'
+    ],
+    topics: ['Cargo Security', 'ICD Depots', 'IoT Seals', 'Supply Chain Risk', 'Container Tracking']
+  },
+  {
+    id: 'art-conrail',
+    tag: 'Infrastructure',
+    sec: 'Rail Logistics & Intermodal',
+    title: 'North-South High-Speed Freight Rail Connectivity Assessment & Port Integration',
+    author: 'Transport Policy Team',
+    location: 'Hà Nội & Hải Phòng Corridor',
+    date: 'Published 05 November 2026',
+    heroImg: 'images/hero_3.jpg',
+    caption: 'Kết nối đường sắt tốc độ cao chuyên chở hàng hóa liên vận quốc tế Việt - Trung và kết nối cảng nước sâu.',
+    listenMeta: '4 mins • Audio Brief',
+    lead: 'Quy hoạch đường sắt tốc độ cao mở ra hành lang vận tải xanh, cắt giảm 40% thời gian vận chuyển container từ các khu công nghiệp phía Bắc ra cụm cảng quốc tế.',
+    paragraphs: [
+      'Dự án hiện đại hóa trục vận tải đường sắt Bắc - Nam đang định hình lại diện mạo logistics nội địa, cho phép các đoàn tàu hàng container chạy với vận tốc 120-160 km/h.',
+      'Sự liên thông giữa ga đường sắt Yên Viên, Đồng Đăng với mạng lưới đường sắt liên vận Á - Âu giúp doanh nghiệp Việt Nam tiếp cận thị trường Trung Á và châu Âu nhanh hơn đáng kể so với đường biển.',
+      'Mô hình vận tải đa phương thức kết hợp đường sắt - đường bộ - hàng hải đang nhận được sự ưu tiên hàng đầu về nguồn vốn tài khóa và ưu đãi thuế hạ tầng logistics.'
+    ],
+    topics: ['Railways', 'Intermodal', 'Container Freight', 'Green Logistics', 'Infrastructure']
+  },
+  {
+    id: 'art-stb-order',
+    tag: 'Maritime Policy',
+    sec: 'Port Authority & Customs',
+    title: 'Maritime Port Authority Issues New Digital Manifest & Green Port Directives',
+    author: 'Maritime Intelligence Bureau',
+    location: 'Vũng Tàu & Cái Mép',
+    date: 'Published 04 November 2026',
+    heroImg: 'images/lead_story.jpg',
+    caption: 'Cục Hàng hải triển khai tiêu chuẩn Cảng Xanh và hệ thống khai báo manifest số hóa tự động.',
+    listenMeta: '3 mins • Audio Brief',
+    lead: 'Văn bản hướng dẫn mới bắt buộc tất cả hãng tàu và đại lý forwarder áp dụng quy chuẩn chứng từ điện tử không giấy tờ tại toàn bộ cụm cảng nhóm 5.',
+    paragraphs: [
+      'Nhằm đẩy nhanh tốc độ giải phóng tàu và cắt giảm thời gian lưu bãi, Cục Hàng hải chính thức đưa vào vận hành cổng tích hợp manifest điện tử chuẩn quốc tế IMO FAL.',
+      'Các tàu container quốc tế ra vào luồng Cái Mép - Thị Vải giờ đây có thể hoàn thành thủ tục hoa tiêu, kiểm dịch và thông quan từ 12 giờ trước khi cập bến thực tế.',
+      'Quy chuẩn Cảng Xanh 2026 đồng thời quy định lộ trình thay thế xe nâng và cẩu giàn sang năng lượng điện 100%, hướng tới mục tiêu Net Zero cho chuỗi cảng biển Việt Nam.'
+    ],
+    topics: ['Maritime', 'Green Port', 'Port Authority', 'Digital Manifest', 'Cái Mép']
+  },
+  {
+    id: 'art-humble-robotics',
+    tag: 'Automation & AI',
+    sec: 'Warehouse Robotics',
+    title: 'Next-Gen Automated Guided Vehicles (AGV) Transform Smart Warehousing in Vietnam',
+    author: 'Tech & Automation Lab',
+    location: 'Bình Dương Industrial Park',
+    date: 'Published 03 November 2026',
+    heroImg: 'images/editorial_ai_robotics_hd.jpg',
+    caption: 'Hệ thống robot tự hành AGV và cẩu tự động ASRS trong trung tâm phân phối thông minh thương mại điện tử.',
+    listenMeta: '3 mins • Audio Brief',
+    lead: 'Làn sóng đầu tư trung tâm logistics cấp độ 4 (4PL) ứng dụng robot tự hành AGV giúp tăng năng suất soạn hàng lên 350% so với phương pháp thủ công.',
+    paragraphs: [
+      'Các trung tâm hoàn tất đơn hàng (Fulfillment Center) quy mô trên 50,000m2 tại Bình Dương và Bắc Ninh đang đi đầu trong việc triển khai hàng trăm robot AGV hoạt động tự động 24/7.',
+      'Nhờ tích hợp thuật toán phân bổ vị trí lưu kho tối ưu dựa trên Machine Learning, thời gian di chuyển nội kho của nhân viên giảm hơn 70%, loại bỏ hoàn toàn các lỗi nhầm lẫn mã vạch hàng hóa.',
+      'Sự phát triển của công nghệ robot cũng dẫn đến nhu cầu tăng vọt về kỹ sư vận hành robot tự động, chuyên viên phân tích dữ liệu kho vận và quản trị hệ thống WMS.'
+    ],
+    topics: ['Robotics', 'AGV', 'Smart Warehouses', 'Automation', 'AI Logistics']
+  },
+{
     id: 'art-gdi',
     tag: 'National',
     sec: 'Immigration & Border Trade',
@@ -3656,7 +3861,9 @@ window.openArticle = function(articleId, updateHash = true) {
     if (reader) reader.style.display = 'none';
     if (hub) hub.style.display = 'block';
     if (updateHash) window.location.hash = 'article';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
     if (typeof updateDynamicSEO === 'function') {
       updateDynamicSEO('article', 'Thời Sự Tuyển Dụng & Logistics Waves – VietnamJobs', 'Cập nhật tin tức thị trường Logistics, Hàng hải, Chuỗi cung ứng và Xu hướng tuyển dụng AI.');
     }
@@ -3665,7 +3872,15 @@ window.openArticle = function(articleId, updateHash = true) {
 
   // 2. Reading a specific article
   if (hub) hub.style.display = 'none';
-  if (reader) reader.style.display = 'block';
+  if (reader) {
+    reader.style.display = 'block';
+  }
+  if (updateHash) {
+    window.location.hash = `article?id=${articleId}`;
+  }
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
 
   const art = (typeof articlesDatabase !== 'undefined' ? articlesDatabase.find(a => a.id === articleId) : null) || {
     id: articleId,
@@ -3736,8 +3951,10 @@ window.openArticle = function(articleId, updateHash = true) {
   }
 
   setTimeout(() => {
-    if (reader) reader.scrollIntoView({ behavior: 'smooth' });
-  }, 60);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, 30);
 };
 
 window.hideArticleReader = function() {
@@ -3746,9 +3963,11 @@ window.hideArticleReader = function() {
   const overview = document.getElementById('lw-hub-overview');
   if (overview) {
     overview.style.display = 'block';
-    overview.scrollIntoView({ behavior: 'smooth' });
   }
   window.location.hash = 'article';
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
 };
 
 window.scrollLwCarousel = function(dir) {
@@ -4596,3 +4815,18 @@ window.scrollToAbout = function() {
     }
   }, isHomeActive ? 10 : 250);
 };
+
+
+  // FreightWaves search toggle
+  const fwSearchToggle = document.getElementById('searchToggle');
+  const fwSearchPanel = document.getElementById('searchPanel');
+  if (fwSearchToggle && fwSearchPanel) {
+    fwSearchToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      const isOpen = fwSearchPanel.classList.toggle('open');
+      fwSearchToggle.setAttribute('aria-expanded', isOpen);
+      if (isOpen) {
+        fwSearchPanel.querySelector('input')?.focus();
+      }
+    });
+  }

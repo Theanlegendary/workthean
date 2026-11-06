@@ -10551,3 +10551,93 @@ footer a:hover {
   color: #38BDF8;
   transform: rotate(15deg);
 }
+
+
+/* ==========================================================================
+   ENHANCED CANDIDATE DASHBOARD & PROFILE DROPDOWN FIXES
+   ========================================================================== */
+.image1-profile-menu .image1-menu-row {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 10px 14px !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  color: #1e293b !important;
+  transition: all 0.15s ease !important;
+}
+
+.image1-profile-menu .image1-menu-row:hover {
+  background: #f1f5f9 !important;
+  color: #0a66c2 !important;
+}
+
+.image1-profile-menu .image1-menu-row .row-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.image1-profile-menu .image1-menu-row .row-icon {
+  font-size: 15px !important;
+  width: 18px !important;
+  text-align: center !important;
+}
+
+.image1-profile-menu .image1-menu-row .row-label {
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+}
+
+/* Candidate Dashboard Tabs Styling */
+.dash-tabs-bar .dash-tab-btn {
+  transition: all 0.18s ease;
+}
+.dash-tabs-bar .dash-tab-btn:hover {
+  color: #0a66c2 !important;
+  background: rgba(10, 102, 194, 0.04) !important;
+  border-radius: 8px 8px 0 0;
+}
+.dash-tabs-bar .dash-tab-btn.active {
+  color: #0a66c2 !important;
+  border-bottom: 3px solid #0a66c2 !important;
+}
+
+/* Article Reader Styling Enhancements */
+#lw-article-reader {
+  background: #ffffff !important;
+  animation: viewFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+#lw-article-reader .headline {
+  font-size: 30px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  line-height: 1.35 !important;
+  margin: 14px 0 16px !important;
+}
+
+#lw-article-reader .byline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 18px;
+}
+
+#lw-article-reader .hero-art {
+  margin: 20px 0;
+}
+
+#lw-article-reader .hero-art img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}

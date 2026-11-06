@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://vietnamjobs.vn/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://vietnamjobs.vn/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vietnamjobs.vn/en/"/>
+  </url>
+
+  <!-- Job Listings -->
+  <url>
+    <loc>https://vietnamjobs.vn/viec-lam/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Companies -->
+  <url>
+    <loc>https://vietnamjobs.vn/cong-ty/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Courses & Certifications -->
+  <url>
+    <loc>https://vietnamjobs.vn/khoa-hoc/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Career Guides & Articles -->
+  <url>
+    <loc>https://vietnamjobs.vn/bai-viet/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Candidates / Freelancers Directory -->
+  <url>
+    <loc>https://vietnamjobs.vn/ung-vien/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Market Intelligence / News -->
+  <url>
+    <loc>https://vietnamjobs.vn/tin-thi-truong/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://vietnamjobs.vn/chinh-sach-bao-mat/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Terms of Service -->
+  <url>
+    <loc>https://vietnamjobs.vn/dieu-khoan-su-dung/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>

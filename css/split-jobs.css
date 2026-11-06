@@ -770,3 +770,212 @@
   max-height: none !important;
   overflow: visible !important;
 }
+
+
+/* ==========================================================================
+   ENHANCED SPLIT JOB VIEW (5 CARDS VISIBLE, EXPANDED SECTION, ZERO OVERLAP)
+   ========================================================================== */
+.split-job-layout {
+  display: grid !important;
+  grid-template-columns: 520px 1fr !important;
+  min-height: 960px !important;
+  max-height: 960px !important;
+  background: #FFFFFF !important;
+  border-radius: 16px !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06) !important;
+  overflow: hidden !important;
+  margin-top: 16px !important;
+  margin-bottom: 56px !important;
+  width: 100% !important;
+}
+
+.split-job-list-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  border-right: 1px solid #E2E8F0 !important;
+  height: 960px !important;
+  max-height: 960px !important;
+  overflow-y: auto !important;
+  background: #F8FAFC !important;
+  padding: 14px !important;
+}
+
+.split-job-detail-panel {
+  height: 960px !important;
+  max-height: 960px !important;
+  overflow-y: auto !important;
+  background: #FFFFFF !important;
+  padding: 28px 32px !important;
+}
+
+/* Card formatting inside split-job-list-panel to display 5 cards cleanly without overlapping */
+.split-job-list-panel .fw-job-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  gap: 10px !important;
+  padding: 14px 16px !important;
+  border-radius: 12px !important;
+  margin-bottom: 10px !important;
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-left: 5px solid var(--card-accent, #0A66C2) !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+  cursor: pointer !important;
+  transition: all 0.18s ease !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.split-job-list-panel .fw-job-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08) !important;
+  border-color: #CBD5E1 !important;
+}
+
+.split-job-list-panel .fw-job-card.active {
+  background: #EFF6FF !important;
+  border-color: #93C5FD !important;
+  border-left: 5px solid #0A66C2 !important;
+  box-shadow: 0 2px 10px rgba(10, 102, 194, 0.12) !important;
+}
+
+.split-job-list-panel .fw-job-primary {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  width: 100% !important;
+}
+
+.split-job-list-panel .fw-job-logo-box {
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  border-radius: 8px !important;
+  border: 1px solid #E2E8F0 !important;
+  background: #FFFFFF !important;
+  padding: 4px !important;
+  flex-shrink: 0 !important;
+}
+
+.split-job-list-panel .fw-job-logo-box img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 40px !important;
+  max-height: 40px !important;
+  object-fit: contain !important;
+}
+
+.split-job-list-panel .fw-job-info {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 3px !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+.split-job-list-panel .fw-job-company-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.split-job-list-panel .fw-job-company {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #475569 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.split-job-list-panel .fw-job-title {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #0F172A !important;
+  line-height: 1.3 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  margin: 0 !important;
+}
+
+.split-job-list-panel .fw-job-meta-chips {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+  margin-top: 2px !important;
+}
+
+.split-job-list-panel .fw-meta-pill {
+  font-size: 11.5px !important;
+  color: #64748B !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  white-space: nowrap !important;
+}
+
+.split-job-list-panel .fw-meta-time {
+  background: #EFF6FF !important;
+  color: #1E40AF !important;
+  padding: 2px 7px !important;
+  border-radius: 9999px !important;
+  font-weight: 600 !important;
+  font-size: 11px !important;
+}
+
+.split-job-list-panel .fw-job-actions-block {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  padding-top: 8px !important;
+  border-top: 1px dashed #E2E8F0 !important;
+  margin-top: 2px !important;
+}
+
+.split-job-list-panel .fw-job-salary-col {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 2px !important;
+}
+
+.split-job-list-panel .fw-job-salary {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #0A66C2 !important;
+  letter-spacing: -0.01em !important;
+  text-align: left !important;
+}
+
+.split-job-list-panel .fw-job-level {
+  font-size: 11.5px !important;
+  color: #64748B !important;
+}
+
+.split-job-list-panel .fw-job-btns-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-top: 0 !important;
+}
+
+.split-job-list-panel .fw-bookmark-btn {
+  width: 30px !important;
+  height: 30px !important;
+  font-size: 11px !important;
+}
+
+.split-job-list-panel .fw-view-btn {
+  padding: 5px 12px !important;
+  font-size: 12px !important;
+  height: 30px !important;
+}

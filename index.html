@@ -1,11 +1,97 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#ff4743">
   <meta name="description" content="VietnamJobs - National Smart Logistics & Enterprise Career Marketplace. Discover verified jobs, industry certifications, and intelligent career tools.">
   <title>VietnamJobs - National Smart Logistics &amp; Enterprise Career Platform</title>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SEO & OPEN GRAPH
+       ═══════════════════════════════════════════════════════ -->
+  <meta name="keywords" content="việc làm logistics, tuyển dụng logistics, việc làm supply chain, việc làm hàng hải, việc làm AI, tìm việc hồ chí minh, tuyển dụng hà nội, logistics vietnam, shipping jobs, vietnamjobs">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://vietnamjobs.vn/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="VietnamJobs – Tuyển Dụng & Việc Làm Logistics, AI, Hàng Hải">
+  <meta property="og:description" content="Khám phá 50,000+ việc làm Logistics, Supply Chain, AI và Hàng hải chất lượng cao. Kết nối ứng viên với 500+ doanh nghiệp hàng đầu Việt Nam.">
+  <meta property="og:image" content="https://vietnamjobs.vn/images/editorial_ai_logistics_hd.jpg">
+  <meta property="og:url" content="https://vietnamjobs.vn/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="VietnamJobs">
+  <meta property="og:locale" content="vi_VN">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@VietnamJobs">
+  <meta name="twitter:title" content="VietnamJobs – Tuyển Dụng & Việc Làm Logistics, AI, Hàng Hải">
+  <meta name="twitter:description" content="Khám phá 50,000+ việc làm Logistics, Supply Chain, AI chất lượng cao.">
+  <meta name="twitter:image" content="https://vietnamjobs.vn/images/editorial_ai_logistics_hd.jpg">
+
+  <!-- PWA & Icons -->
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="/images/brand_vj.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/pwa-icon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/pwa-icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="VietnamJobs">
+
+  <!-- Google Search Console verification -->
+  <meta name="google-site-verification" content="REPLACE_WITH_REAL_VERIFICATION_CODE">
+
+  <!-- Google Analytics 4 (replace G-XXXXXXXXXX with real ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', {anonymize_ip: true});
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "VietnamJobs",
+        "url": "https://vietnamjobs.vn/",
+        "description": "Nền tảng tuyển dụng và việc làm hàng đầu Việt Nam chuyên về Logistics, Supply Chain và AI",
+        "inLanguage": "vi-VN",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://vietnamjobs.vn/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "name": "VietnamJobs",
+        "url": "https://vietnamjobs.vn/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://vietnamjobs.vn/images/brand_vj.svg"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+84-1900-6868",
+          "contactType": "customer service",
+          "areaServed": "VN",
+          "availableLanguage": ["Vietnamese", "English"]
+        },
+        "sameAs": [
+          "https://www.facebook.com/vietnamjobs",
+          "https://zalo.me/vietnamjobs",
+          "https://www.linkedin.com/company/vietnamjobs"
+        ]
+      }
+    ]
+  }
+  </script>
 
   <!-- Google Fonts: Plus Jakarta Sans & Be Vietnam Pro & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,6 +106,7 @@
   <link rel="stylesheet" href="css/companies.css">
 </head>
 <body id="top">
+  <a href="#main-content" class="skip-to-main" style="position:absolute;left:-9999px;top:4px;z-index:9999;padding:8px 16px;background:#ff4743;color:#fff;font-weight:700;border-radius:4px;text-decoration:none;" onfocus="this.style.left='4px';" onblur="this.style.left='-9999px';">Chuyển đến nội dung chính</a>
 
   <!-- SVG Sprite Symbols for High-Speed Crisp Icons -->
   <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -143,7 +230,7 @@
     <!-- ========================================================================
          VIEW 1: HOMEPAGE (#view-home)
          ======================================================================== -->
-    <section class="app-view active-view" id="view-home">
+    <section class="app-view active-view" id="view-home" role="main">
 
             <!-- HERO SEARCH & CONVERSION PANEL (ABOVE TRENDING ROLES) -->
       <section class="recruitment-hero-section" aria-label="Tuyển dụng và tìm việc làm" style="border: 1px solid #E2E8F0 !important; border-left: none !important; border-radius: 16px; background: #FFFFFF; padding: 32px 36px 26px 36px; margin: 0 0 24px 0; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05); position: relative;">
@@ -232,7 +319,7 @@
         <article class="hero-card" aria-label="VietnamJobs Featured Service Showcase">
           <div class="hero-image-wrap" style="position: relative;">
             <span class="editorial-badge badge-red" id="hero-editorial-badge">NATIONAL</span>
-            <img id="hero-image" src="images/editorial_ai_logistics_hd.jpg" alt="AI Smart Logistics Infrastructure Vietnam" style="width:100%; height:100%; object-fit:cover;">
+            <img id="hero-image" src="images/editorial_ai_logistics_hd.jpg" alt="AI Smart Logistics Infrastructure Vietnam" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
           </div>
           <div class="hero-tabs" role="tablist" aria-label="Featured Showcase Tabs">
             <button type="button" class="hero-tab active" role="tab" aria-selected="true" data-slide="0" onclick="switchHeroTab(0)">Smart Logistics</button>
@@ -266,26 +353,26 @@
         </div>
         <div class="university-grid" id="university-grid">
           <!-- 20 Partner Cards in 10-column layout -->
-          <div class="university" onclick="openCompanyDetail('vinfast');" title="Xem hồ sơ VinFast Logistics"><img src="images/brands/vinfast.svg" alt="VinFast" style="width:60px; height:60px; object-fit:contain;"><span>VinFast Logistics</span></div>
-          <div class="university"><img src="images/brands/dhl.svg" alt="DHL" style="width:60px; height:60px; object-fit:contain;"><span>DHL Global</span></div>
-          <div class="university"><img src="images/brands/gemadept.svg" alt="Gemadept" style="width:60px; height:60px; object-fit:contain;"><span>Gemadept</span></div>
-          <div class="university" onclick="openCompanyDetail('saigon-newport');" title="Xem hồ sơ Saigon Newport"><img src="images/brands/saigon-newport.svg" alt="Saigon Newport" style="width:60px; height:60px; object-fit:contain;"><span>Saigon Newport</span></div>
-          <div class="university"><img src="images/brands/kuehne-nagel.svg" alt="Kuehne+Nagel" style="width:60px; height:60px; object-fit:contain;"><span>Kuehne+Nagel</span></div>
-          <div class="university"><img src="images/brands/slp-vietnam.svg" alt="SLP" style="width:60px; height:60px; object-fit:contain;"><span>SLP Logistics</span></div>
-          <div class="university" onclick="openCompanyDetail('fpt');" title="Xem hồ sơ FPT Software"><img src="images/brands/fpt.svg" alt="FPT Software" style="width:60px; height:60px; object-fit:contain;"><span>FPT Logistics</span></div>
-          <div class="university"><img src="images/brands/viettel.svg" alt="Viettel Post" style="width:60px; height:60px; object-fit:contain;"><span>Viettel Post</span></div>
-          <div class="university"><img src="images/brands/shopee.svg" alt="Shopee" style="width:60px; height:60px; object-fit:contain;"><span>Shopee Express</span></div>
-          <div class="university"><img src="images/brands/grab.svg" alt="Grab" style="width:60px; height:60px; object-fit:contain;"><span>Grab Vietnam</span></div>
-          <div class="university"><img src="images/brands/samsung.svg" alt="Samsung" style="width:60px; height:60px; object-fit:contain;"><span>Samsung SDS</span></div>
-          <div class="university"><img src="images/brands/nike.svg" alt="Nike" style="width:60px; height:60px; object-fit:contain;"><span>Nike Logistics</span></div>
-          <div class="university"><img src="images/brands/adidas.svg" alt="Adidas" style="width:60px; height:60px; object-fit:contain;"><span>Adidas Global</span></div>
-          <div class="university"><img src="images/brands/unilever.svg" alt="Unilever" style="width:60px; height:60px; object-fit:contain;"><span>Unilever SC</span></div>
-          <div class="university"><img src="images/brands/loreal.svg" alt="L'Oreal" style="width:60px; height:60px; object-fit:contain;"><span>L'Oreal Hub</span></div>
-          <div class="university"><img src="images/brands/zara.svg" alt="Zara" style="width:60px; height:60px; object-fit:contain;"><span>Inditex Zara</span></div>
-          <div class="university" onclick="openCompanyDetail('tiki');" title="Xem hồ sơ Tiki Supply Chain"><img src="images/brands/tiki.svg" alt="Tiki" style="width:60px; height:60px; object-fit:contain;"><span>Tiki Supply</span></div>
-          <div class="university"><img src="images/brands/momo.svg" alt="MoMo" style="width:60px; height:60px; object-fit:contain;"><span>MoMo Pay</span></div>
-          <div class="university"><img src="images/brands/vng.svg" alt="VNG" style="width:60px; height:60px; object-fit:contain;"><span>VNG Tech</span></div>
-          <div class="university"><img src="images/brands/vpbank.svg" alt="VPBank" style="width:60px; height:60px; object-fit:contain;"><span>VPBank Trade</span></div>
+          <div class="university" onclick="openCompanyDetail('vinfast');" title="Xem hồ sơ VinFast Logistics"><img src="images/brands/vinfast.svg" alt="VinFast" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>VinFast Logistics</span></div>
+          <div class="university"><img src="images/brands/dhl.svg" alt="DHL" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>DHL Global</span></div>
+          <div class="university"><img src="images/brands/gemadept.svg" alt="Gemadept" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>Gemadept</span></div>
+          <div class="university" onclick="openCompanyDetail('saigon-newport');" title="Xem hồ sơ Saigon Newport"><img src="images/brands/saigon-newport.svg" alt="Saigon Newport" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>Saigon Newport</span></div>
+          <div class="university"><img src="images/brands/kuehne-nagel.svg" alt="Kuehne+Nagel" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>Kuehne+Nagel</span></div>
+          <div class="university"><img src="images/brands/slp-vietnam.svg" alt="SLP" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>SLP Logistics</span></div>
+          <div class="university" onclick="openCompanyDetail('fpt');" title="Xem hồ sơ FPT Software"><img src="images/brands/fpt.svg" alt="FPT Software" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>FPT Logistics</span></div>
+          <div class="university"><img src="images/brands/viettel.svg" alt="Viettel Post" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>Viettel Post</span></div>
+          <div class="university"><img src="images/brands/shopee.svg" alt="Shopee" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>Shopee Express</span></div>
+          <div class="university"><img src="images/brands/grab.svg" alt="Grab" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>Grab Vietnam</span></div>
+          <div class="university"><img src="images/brands/samsung.svg" alt="Samsung" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>Samsung SDS</span></div>
+          <div class="university"><img src="images/brands/nike.svg" alt="Nike" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>Nike Logistics</span></div>
+          <div class="university"><img src="images/brands/adidas.svg" alt="Adidas" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>Adidas Global</span></div>
+          <div class="university"><img src="images/brands/unilever.svg" alt="Unilever" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>Unilever SC</span></div>
+          <div class="university"><img src="images/brands/loreal.svg" alt="L'Oreal" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>L'Oreal Hub</span></div>
+          <div class="university"><img src="images/brands/zara.svg" alt="Zara" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>Inditex Zara</span></div>
+          <div class="university" onclick="openCompanyDetail('tiki');" title="Xem hồ sơ Tiki Supply Chain"><img src="images/brands/tiki.svg" alt="Tiki" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>Tiki Supply</span></div>
+          <div class="university"><img src="images/brands/momo.svg" alt="MoMo" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>MoMo Pay</span></div>
+          <div class="university"><img src="images/brands/vng.svg" alt="VNG" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>VNG Tech</span></div>
+          <div class="university"><img src="images/brands/vpbank.svg" alt="VPBank" style="width:60px; height:60px; object-fit:contain;" loading="lazy"><span>VPBank Trade</span></div>
         </div>
       </section>
 
@@ -405,7 +492,7 @@
             <!-- Episode 1 (Active) -->
             <div class="fw-yt-item active" data-yt-id="8d5d_HXGeMA" data-title="How Ocean Shipping Works (And Why It's Broken)" data-category="Global Trade &amp; Maritime" data-date="Sep 28, 2026" data-duration="17:42" data-excerpt="Global maritime economics, container supply networks &amp; port logistics analysis.">
               <div class="fw-yt-item-thumb-wrap">
-                <img src="images/yt_thumb_1.jpg" alt="Ocean Shipping Breakdown" class="fw-yt-item-thumb">
+                <img src="images/yt_thumb_1.jpg" alt="Ocean Shipping Breakdown" class="fw-yt-item-thumb" loading="lazy">
                 <span class="fw-yt-duration-pill">17:42</span>
                 <div class="fw-yt-play-btn-overlay">
                   <div class="fw-yt-btn-icon">
@@ -423,7 +510,7 @@
             <!-- Episode 2 -->
             <div class="fw-yt-item" data-yt-id="ba_uXz5m0P0" data-title="How Amazon's Super-Complex Shipping System Works" data-category="E-Commerce &amp; Intralogistics" data-date="Sep 27, 2026" data-duration="14:15" data-excerpt="Deep dive into Amazon's algorithmic routing, middle-mile sortation hubs, and predictive inventory placement reducing click-to-delivery windows down to sub-12 hours.">
               <div class="fw-yt-item-thumb-wrap">
-                <img src="images/yt_thumb_2.jpg" alt="Amazon Shipping System" class="fw-yt-item-thumb">
+                <img src="images/yt_thumb_2.jpg" alt="Amazon Shipping System" class="fw-yt-item-thumb" loading="lazy">
                 <span class="fw-yt-duration-pill">14:15</span>
                 <div class="fw-yt-play-btn-overlay">
                   <div class="fw-yt-btn-icon">
@@ -441,7 +528,7 @@
             <!-- Episode 3 -->
             <div class="fw-yt-item" data-yt-id="4DKrcpa8Z_E" data-title="Inside A Warehouse Where Thousands Of Robots Pack Groceries" data-category="Warehouse Automation &amp; AI" data-date="Sep 26, 2026" data-duration="11:38" data-excerpt="An exclusive look at autonomous automated grid systems, intelligent robotics, and real-time swarm logistics transforming high-density distribution centers.">
               <div class="fw-yt-item-thumb-wrap">
-                <img src="images/yt_thumb_3.jpg" alt="Automated Robotics Warehouse" class="fw-yt-item-thumb">
+                <img src="images/yt_thumb_3.jpg" alt="Automated Robotics Warehouse" class="fw-yt-item-thumb" loading="lazy">
                 <span class="fw-yt-duration-pill">11:38</span>
                 <div class="fw-yt-play-btn-overlay">
                   <div class="fw-yt-btn-icon">
@@ -459,7 +546,7 @@
             <!-- Episode 4 -->
             <div class="fw-yt-item" data-yt-id="Mi1QBxVjZAw" data-title="What is Supply Chain Management? Industry Fundamentals" data-category="Workforce Education" data-date="Sep 25, 2026" data-duration="10:20" data-excerpt="Foundational analysis of end-to-end supply chain mechanics, procurement protocols, inventory optimization, and operational talent requirements across global enterprises.">
               <div class="fw-yt-item-thumb-wrap">
-                <img src="images/yt_thumb_4.jpg" alt="Supply Chain Fundamentals" class="fw-yt-item-thumb">
+                <img src="images/yt_thumb_4.jpg" alt="Supply Chain Fundamentals" class="fw-yt-item-thumb" loading="lazy">
                 <span class="fw-yt-duration-pill">10:20</span>
                 <div class="fw-yt-play-btn-overlay">
                   <div class="fw-yt-btn-icon">
@@ -501,9 +588,9 @@
           </div>
           <div class="events-content">
             <div class="event-posters">
-              <button type="button" class="image-button" onclick="showToast('Opening Summit 1 detail');"><img src="images/today_1.jpg" alt="Vietnam Maritime Deep-Sea Summit"></button>
-              <button type="button" class="image-button" onclick="showToast('Opening Summit 2 detail');"><img src="images/today_2.jpg" alt="Green Logistics & Cold Chain Forum"></button>
-              <button type="button" class="image-button" onclick="showToast('Opening Summit 3 detail');"><img src="images/today_3.jpg" alt="National Port Terminal Virtual Job Fair"></button>
+              <button type="button" class="image-button" onclick="showToast('Opening Summit 1 detail');"><img src="images/today_1.jpg" alt="Vietnam Maritime Deep-Sea Summit" loading="lazy"></button>
+              <button type="button" class="image-button" onclick="showToast('Opening Summit 2 detail');"><img src="images/today_2.jpg" alt="Green Logistics & Cold Chain Forum" loading="lazy"></button>
+              <button type="button" class="image-button" onclick="showToast('Opening Summit 3 detail');"><img src="images/today_3.jpg" alt="National Port Terminal Virtual Job Fair" loading="lazy"></button>
             </div>
             <div class="event-list" id="event-list">
               <div class="event-item">
@@ -542,19 +629,19 @@
           </div>
           <div class="exam-highlights" id="exam-highlights">
             <button type="button" class="exam-highlight" onclick="switchView('courses');">
-              <img src="images/brands/cj-logistics.svg" alt="FIATA Diploma" style="width:50px; height:50px; object-fit:contain; margin:0 auto 3px;">
+              <img src="images/brands/cj-logistics.svg" alt="FIATA Diploma" style="width:50px; height:50px; object-fit:contain; margin:0 auto 3px;" loading="lazy">
               <div>FIATA Higher Diploma in Supply Chain</div>
             </button>
             <button type="button" class="exam-highlight" onclick="switchView('courses');">
-              <img src="images/brands/db-schenker.svg" alt="Customs Broker" style="width:50px; height:50px; object-fit:contain; margin:0 auto 3px;">
+              <img src="images/brands/db-schenker.svg" alt="Customs Broker" style="width:50px; height:50px; object-fit:contain; margin:0 auto 3px;" loading="lazy">
               <div>National Customs Broker EDI License</div>
             </button>
             <button type="button" class="exam-highlight" onclick="switchView('courses');">
-              <img src="images/brands/transimex.svg" alt="IATA Cargo" style="width:50px; height:50px; object-fit:contain; margin:0 auto 3px;">
+              <img src="images/brands/transimex.svg" alt="IATA Cargo" style="width:50px; height:50px; object-fit:contain; margin:0 auto 3px;" loading="lazy">
               <div>IATA Air Cargo Introductory &amp; DGR</div>
             </button>
             <button type="button" class="exam-highlight" onclick="switchView('courses');">
-              <img src="images/brands/bw-industrial.svg" alt="Cold Chain GDP" style="width:50px; height:50px; object-fit:contain; margin:0 auto 3px;">
+              <img src="images/brands/bw-industrial.svg" alt="Cold Chain GDP" style="width:50px; height:50px; object-fit:contain; margin:0 auto 3px;" loading="lazy">
               <div>WHO-GDP Cold Chain Management</div>
             </button>
           </div>
@@ -612,7 +699,7 @@
             <button type="button" class="more-link" onclick="switchView('courses');">View More <svg class="icon"><use href="#i-chevron"></use></svg></button>
           </div>
           <button type="button" class="career-card" onclick="switchView('courses');">
-            <img src="images/lead_story.jpg" alt="Career Strategy: 2 Methods to Accelerate Supply Chain Leadership">
+            <img src="images/lead_story.jpg" alt="Career Strategy: 2 Methods to Accelerate Supply Chain Leadership" loading="lazy">
             <span class="career-title">Accelerating Executive Supply Chain Leadership: 2 Strategic Pathways</span>
             <span class="course-meta">
               <span><svg class="icon"><use href="#i-calendar"></use></svg> 4 Modules</span>
@@ -649,7 +736,7 @@
         <div class="course-grid" id="course-grid">
           <!-- Course 1 -->
           <article class="course-card" onclick="if(window.hydrateCourseDetail){ hydrateCourseDetail(1); switchView('view-course-detail'); } else { switchView('courses'); }">
-            <img src="images/course_1.jpg" alt="FIATA Higher International Diploma" style="width:100%; aspect-ratio:274/142; object-fit:cover;">
+            <img src="images/course_1.jpg" alt="FIATA Higher International Diploma" style="width:100%; aspect-ratio:274/142; object-fit:cover;" loading="lazy">
             <div class="course-card-title">FIATA Higher International Diploma in Supply Chain Management</div>
             <div class="course-meta">
               <span><i class="fa-solid fa-graduation-cap"></i> 120 Hours</span>
@@ -658,7 +745,7 @@
           </article>
           <!-- Course 2 -->
           <article class="course-card" onclick="if(window.hydrateCourseDetail){ hydrateCourseDetail(2); switchView('view-course-detail'); } else { switchView('courses'); }">
-            <img src="images/course_2.jpg" alt="Customs Brokerage & VNACCS EDI" style="width:100%; aspect-ratio:274/142; object-fit:cover;">
+            <img src="images/course_2.jpg" alt="Customs Brokerage & VNACCS EDI" style="width:100%; aspect-ratio:274/142; object-fit:cover;" loading="lazy">
             <div class="course-card-title">National Customs Broker Certification &amp; VNACCS/VCIS EDI</div>
             <div class="course-meta">
               <span><i class="fa-solid fa-stamp"></i> 60 Hours</span>
@@ -667,7 +754,7 @@
           </article>
           <!-- Course 3 -->
           <article class="course-card" onclick="if(window.hydrateCourseDetail){ hydrateCourseDetail(3); switchView('view-course-detail'); } else { switchView('courses'); }">
-            <img src="images/course_3.jpg" alt="Port Stevedoring & IMDG Dangerous Goods" style="width:100%; aspect-ratio:274/142; object-fit:cover;">
+            <img src="images/course_3.jpg" alt="Port Stevedoring & IMDG Dangerous Goods" style="width:100%; aspect-ratio:274/142; object-fit:cover;" loading="lazy">
             <div class="course-card-title">Deep-Sea Port Terminal Stevedoring &amp; IMO IMDG Dangerous Goods</div>
             <div class="course-meta">
               <span><i class="fa-solid fa-ship"></i> 45 Hours</span>
@@ -676,7 +763,7 @@
           </article>
           <!-- Course 4 -->
           <article class="course-card" onclick="if(window.hydrateCourseDetail){ hydrateCourseDetail(4); switchView('view-course-detail'); } else { switchView('courses'); }">
-            <img src="images/course_4.jpg" alt="Cold Chain Logistics & ASRS Automation" style="width:100%; aspect-ratio:274/142; object-fit:cover;">
+            <img src="images/course_4.jpg" alt="Cold Chain Logistics & ASRS Automation" style="width:100%; aspect-ratio:274/142; object-fit:cover;" loading="lazy">
             <div class="course-card-title">Cold Chain Logistics &amp; Automated ASRS High-Bay Warehousing</div>
             <div class="course-meta">
               <span><i class="fa-solid fa-snowflake"></i> 40 Hours</span>
@@ -794,7 +881,7 @@
                   <span class="badge-verified-green"><i class="fa-solid fa-circle-check"></i> ĐÃ XÁC THỰC</span>
                   <span class="detail-id-inline" id="detail-id-inline"><i class="fa-solid fa-fingerprint"></i> ID: prj-101</span>
                 </div>
-                <h1 class="detail-job-title" id="detail-job-title">Chuyên Viên Phân Tích Dữ Liệu & AI Solution Architect</h1>
+                <h2 class="detail-job-title" id="detail-job-title">Chuyên Viên Phân Tích Dữ Liệu & AI Solution Architect</h2>
                 <div class="detail-company-meta">
                   <span class="detail-company-name" id="detail-company-name">Ngân Hàng Vietcombank</span>
                   <i class="fa-solid fa-circle-check career-verified-check"></i>
@@ -1112,7 +1199,7 @@
         </div>
 
         <div class="wf-detail-header-block">
-          <h1 class="wf-detail-main-title" id="crsDetailTitleTop">Calculus and Algebra with Symbolic Arrays</h1>
+          <h2 class="wf-detail-main-title" id="crsDetailTitleTop">Calculus and Algebra with Symbolic Arrays</h2>
           <div class="wf-detail-meta-line" id="crsDetailMetaTop">
             <span id="crsDetailFormatTop">Video Lesson</span>
             <span class="wf-meta-pipe">|</span>
@@ -1151,7 +1238,7 @@
           <!-- Video Player Display Frame -->
           <div class="wf-video-frame-container" id="crsVideoContainer">
             <div class="wf-video-player-box">
-              <img src="images/course_1.jpg" alt="Video Preview" class="wf-video-poster" id="crsVideoPoster">
+              <img src="images/course_1.jpg" alt="Video Preview" class="wf-video-poster" id="crsVideoPoster" loading="lazy">
               <div class="wf-video-overlay-gradient"></div>
               
               <!-- Video Title Overlay -->
@@ -1257,7 +1344,7 @@
         <div class="co-section-header">
           <div class="co-header-left">
             <div class="co-accent-bar"></div>
-            <h1 class="co-section-title">Top Employers</h1>
+            <h2 class="co-section-title">Top Employers</h2>
             <p class="co-section-subtitle">Join leading companies and take the next step in your career.</p>
           </div>
           <div class="co-header-right">
@@ -1345,7 +1432,7 @@
             <a class="sec" href="#" id="art-sec" onclick="return false;">Immigration &amp; Border Trade</a>
           </div>
 
-          <h1 class="headline" id="art-headline">GDI identify more than 5,000 attempts to illegally enter/exit Kingdom; 373 charged</h1>
+          <h2 class="headline" id="art-headline">GDI identify more than 5,000 attempts to illegally enter/exit Kingdom; 373 charged</h2>
 
           <div class="byline">
             <span class="who" id="art-author">Niem Chheng</span>
@@ -1377,7 +1464,7 @@
 
           <!-- Hero Figure -->
           <figure>
-            <img id="art-hero-img" src="images/editorial_ai_logistics_hd.jpg" alt="Foreign nationals queue at an immigration counter in Cambodia">
+            <img id="art-hero-img" src="images/editorial_ai_logistics_hd.jpg" alt="Foreign nationals queue at an immigration counter in Cambodia" loading="lazy">
             <figcaption id="art-caption">The recent deportation of foreign nationals who committed offences in Cambodia &amp; cross-border inspection. <b>GDI / VJ Intelligence</b></figcaption>
           </figure>
 
@@ -1511,13 +1598,13 @@
 
       <!-- Middle Row: Centered Navigation Links -->
       <div class="portal-footer-mid-nav">
-        <a href="#about" onclick="showToast('Tuyên bố bản quyền & quy chế'); return false;">Quy chế Hoạt động</a>
+        <a href="/terms.html">Điều khoản Dịch vụ</a>
         <span class="p-sep">|</span>
-        <a href="#" onclick="switchView('browse'); return false;">Sơ đồ Website</a>
+        <a href="/privacy.html">Chính sách Bảo mật</a>
         <span class="p-sep">|</span>
-        <a href="#" onclick="showToast('Tổng đài hỗ trợ: 1900 6868 - Email: support@vietnamjobs.vn'); return false;">Liên hệ Chúng tôi</a>
+        <a href="/sitemap.xml" target="_blank">Sơ đồ Sitemap (XML)</a>
         <span class="p-sep">|</span>
-        <a href="#" onclick="showToast('Chính sách Bảo mật Thông tin Cá nhân'); return false;">Chính sách Bảo mật</a>
+        <a href="mailto:support@vietnamjobs.vn">Liên hệ Hỗ trợ</a>
       </div>
 
       <!-- Bottom Row: Centered Badges + Official License Details -->
@@ -1585,8 +1672,8 @@
 
   <!-- Scripts -->
   <script src="js/data.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/courses.js"></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/courses.js" defer></script>
 
   <script>
     // Hero tab switcher
@@ -1792,5 +1879,44 @@
 
       </div>
     </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       COOKIE CONSENT BANNER
+       ═══════════════════════════════════════════════════ -->
+  <div id="cookie-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#0f172a;color:#fff;padding:1rem 1.5rem;z-index:99999;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;box-shadow:0 -4px 20px rgba(0,0,0,0.3);">
+    <div style="flex:1;min-width:200px;">
+      <p style="margin:0;font-size:.875rem;line-height:1.5;">
+        🍪 Chúng tôi sử dụng cookie để cải thiện trải nghiệm của bạn. Bằng cách tiếp tục sử dụng VietnamJobs, bạn đồng ý với
+        <a href="/privacy.html" style="color:#ff4743;text-decoration:underline;">Chính Sách Quyền Riêng Tư</a> của chúng tôi.
+      </p>
+    </div>
+    <div style="display:flex;gap:.75rem;flex-shrink:0;">
+      <button onclick="acceptCookies()" style="background:#ff4743;color:#fff;border:none;padding:.5rem 1.25rem;border-radius:6px;font-weight:700;cursor:pointer;font-size:.875rem;">Chấp Nhận</button>
+      <button onclick="document.getElementById('cookie-consent-banner').remove()" style="background:transparent;color:#94a3b8;border:1px solid #334155;padding:.5rem 1.25rem;border-radius:6px;font-weight:600;cursor:pointer;font-size:.875rem;">Từ Chối</button>
+    </div>
+  </div>
+  <script>
+    function acceptCookies() {
+      localStorage.setItem('cookie_consent', 'accepted');
+      document.getElementById('cookie-consent-banner').style.display = 'none';
+    }
+    // Show banner if no consent stored
+    if (!localStorage.getItem('cookie_consent')) {
+      window.addEventListener('DOMContentLoaded', function() {
+        var b = document.getElementById('cookie-consent-banner');
+        if (b) b.style.display = 'flex';
+      });
+    }
+  </script>
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+          .then(function(reg) { console.log('[SW] Registered:', reg.scope); })
+          .catch(function(err) { console.log('[SW] Registration failed:', err); });
+      });
+    }
+  </script>
 </body>
 </html>

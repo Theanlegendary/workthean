@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 – Trang Không Tìm Thấy | VietnamJobs</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .error-code {
+      font-size: clamp(80px, 15vw, 140px);
+      font-weight: 900;
+      color: #ff4743;
+      line-height: 1;
+      letter-spacing: -4px;
+    }
+    .error-title {
+      font-size: clamp(18px, 4vw, 28px);
+      font-weight: 800;
+      color: #0f172a;
+      margin-top: 12px;
+    }
+    .error-desc {
+      font-size: 15px;
+      color: #64748b;
+      margin-top: 10px;
+      max-width: 420px;
+      line-height: 1.6;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 28px;
+      padding: 12px 28px;
+      background: #ff4743;
+      color: #fff;
+      border: none;
+      border-radius: 9999px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .back-btn:hover { background: #e03e3b; }
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 9999px;
+      padding: 10px 20px;
+      width: 100%;
+      max-width: 400px;
+      margin-top: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .search-box input {
+      border: none;
+      outline: none;
+      font-size: 14px;
+      color: #0f172a;
+      width: 100%;
+      font-family: inherit;
+    }
+    .search-box i { color: #94a3b8; }
+    .quick-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+    .quick-link {
+      padding: 7px 16px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #334155;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .quick-link:hover { border-color: #ff4743; color: #ff4743; }
+    .logo { font-size: 22px; font-weight: 900; color: #ff4743; margin-bottom: 32px; }
+    .logo span { color: #0f172a; }
+  </style>
+</head>
+<body>
+  <div class="logo">Vietnam<span>Jobs</span></div>
+  <div class="error-code">404</div>
+  <div class="error-title">Trang Không Tìm Thấy</div>
+  <p class="error-desc">Rất tiếc! Trang bạn tìm kiếm không tồn tại hoặc đã được di chuyển. Hãy thử tìm kiếm hoặc quay về trang chủ.</p>
+
+  <div class="search-box">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="text" placeholder="Tìm kiếm việc làm, công ty..." id="err-search" onkeydown="if(event.key==='Enter') window.location.href='/?q='+encodeURIComponent(this.value)">
+  </div>
+
+  <div class="quick-links">
+    <a href="/" class="quick-link"><i class="fa-solid fa-house"></i> Trang Chủ</a>
+    <a href="/?view=browse" class="quick-link"><i class="fa-solid fa-briefcase"></i> Việc Làm</a>
+    <a href="/companies.html" class="quick-link"><i class="fa-solid fa-building"></i> Top Công Ty</a>
+    <a href="/?view=courses" class="quick-link"><i class="fa-solid fa-graduation-cap"></i> Khóa Học</a>
+  </div>
+
+  <a href="/" class="back-btn" style="margin-top:28px;">
+    <i class="fa-solid fa-arrow-left"></i> Quay Về Trang Chủ
+  </a>
+</body>
+</html>

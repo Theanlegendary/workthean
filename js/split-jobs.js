@@ -79,7 +79,7 @@
     const salary = job.salary || job.salaryDisplay || 'Thỏa thuận';
 
     return `
-      <article class="fw-job-card" onclick="openJobDetail('${job.id}')" style="--card-accent: ${accent};" role="button" tabindex="0" title="Click để xem chi tiết việc làm ${job.title}">
+      <article class="fw-job-card" data-job-id="${job.id}" onclick="handleSplitJobCardClick('${job.id}', this)" style="--card-accent: ${accent};" role="button" tabindex="0" title="Click để xem chi tiết việc làm ${job.title}">
         <div class="fw-job-primary">
           <div class="fw-job-logo-box">
             <img src="${logoUrl}" alt="${company}" loading="lazy" onerror="this.onerror=null; this.src='images/brands/vinfast.svg';">
@@ -130,6 +130,16 @@
 
     targets.forEach(container => {
       container.innerHTML = cardsHtml;
+      if (container.id === 'home-split-jobs-container' || container.classList.contains('split-jobs-container')) {
+        const first = container.querySelector('.fw-job-card');
+        if (first) {
+          first.classList.add('active');
+          const firstId = first.getAttribute('data-job-id');
+          if (firstId && typeof window.renderSplitJobDetail === 'function') {
+            window.renderSplitJobDetail(firstId);
+          }
+        }
+      }
     });
 
     document.querySelectorAll('.split-openings-badge, #splitOpeningsBadge, #job-filter-count, #linkedin-jobs-counter').forEach(el => {
@@ -166,6 +176,20 @@
 
   window.filterFullWidthJobs = function(filter, btn) {
     window.setSplitJobFilterTab(btn, filter);
+  };
+
+  
+  window.handleSplitJobCardClick = function(jobId, cardEl) {
+    const inSplit = cardEl && cardEl.closest('.split-job-list-panel');
+    if (inSplit) {
+      document.querySelectorAll('.split-job-list-panel .fw-job-card').forEach(c => c.classList.remove('active'));
+      cardEl.classList.add('active');
+      if (typeof window.renderSplitJobDetail === 'function') {
+        window.renderSplitJobDetail(jobId);
+      }
+    } else {
+      openJobDetail(jobId);
+    }
   };
 
   window.openJobDetail = function(jobId) {

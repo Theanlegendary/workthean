@@ -1,0 +1,8 @@
+# Netlify _redirects
+# SPA fallback
+/*    /index.html   200
+
+# Legacy URL redirects
+/jobs  /index.html  200
+/companies  /companies.html  200
+/company/:slug  /company-detail.html  200

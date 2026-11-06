@@ -1661,156 +1661,309 @@
          ARTICLE & EDITORIAL VIEW (#view-article)
          ====================================================================== -->
     <section class="app-view" id="view-article">
-      <!-- Breadcrumb & Back Strip -->
+      
+      <!-- Top Navigation & Breadcrumb -->
       <div class="article-nav-strip">
         <div class="wrap">
-          <button type="button" class="btn-back-to-news" onclick="switchView('home'); document.getElementById('news')?.scrollIntoView({behavior:'smooth'});">
-            <i class="fa-solid fa-arrow-left"></i> Quay lại Thời Sự Tuyển Dụng
+          <button type="button" class="btn-back-to-news" onclick="switchView('home');">
+            <i class="fa-solid fa-arrow-left"></i> Quay lại Trang Chủ
           </button>
           <div class="breadcrumbs">
             <a href="#" onclick="switchView('home'); return false;">Trang Chủ</a>
             <span>&bull;</span>
-            <a href="#" onclick="openArticle(); return false;">Thời Sự Tuyển Dụng</a>
+            <span style="color:#0056B3; font-weight:700;">Logistics Waves Editorial</span>
             <span>&bull;</span>
-            <span id="art-crumb-cat">National &amp; Trade</span>
-            <span>&bull;</span>
-            <span id="art-crumb-title" style="color:var(--art-ink); font-weight:600;">GDI Identify attempts</span>
+            <span id="art-crumb-cat">Top Stories &amp; Market Intelligence</span>
           </div>
         </div>
       </div>
 
-      <!-- Main Editorial Layout -->
-      <div class="article-layout">
-        <!-- Article Main Content -->
-        <main>
-          <div class="kicker">
-            <span class="tag" id="art-tag">NATIONAL</span>
-            <a class="sec" href="#" id="art-sec" onclick="return false;">Immigration &amp; Border Trade</a>
-          </div>
-
-          <h2 class="headline" id="art-headline">GDI identify more than 5,000 attempts to illegally enter/exit Kingdom; 373 charged</h2>
-
-          <div class="byline">
-            <span class="who" id="art-author">Niem Chheng</span>
-            <span class="rule"></span>
-            <span id="art-location">Phnom Penh</span>
-            <span class="rule"></span>
-            <span id="art-date">Published 30 October 2026, 09:15 ICT</span>
-          </div>
-
-          <!-- Share Strip -->
-          <div class="share-strip">
-            <span class="lbl">Share</span>
-            <a class="icirc fb" href="#" onclick="showToast('Chia sẻ bài viết qua Facebook'); return false;" aria-label="Share on Facebook">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg>
-            </a>
-            <a class="icirc tw" href="#" onclick="showToast('Chia sẻ bài viết qua X (Twitter)'); return false;" aria-label="Share on X">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3l-6.6 7.6L21.8 21h-6l-4.3-5.6L6.4 21h-3l7-8L2.6 3h6.2l4 5.2zm-1 16h1.7L7.6 4.7H5.8z"/></svg>
-            </a>
-            <a class="icirc wa" href="#" onclick="showToast('Chia sẻ bài viết qua WhatsApp'); return false;" aria-label="Share on WhatsApp">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3zm0 16.2c-1.4 0-2.7-.4-3.9-1.1l-.3-.2-2.7.7.7-2.6-.2-.3A7.2 7.2 0 1 1 12 19.2zm4-5.2c-.2-.1-1.3-.6-1.5-.7-.2-.1-.3-.1-.5.1l-.7.8c-.1.2-.3.2-.5.1-.6-.2-1.3-.6-1.8-1.1-.4-.5-.8-1.1-1-1.7 0-.2 0-.3.1-.4l.5-.6c.1-.2.1-.3 0-.5l-.6-1.4c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.4-.2.3-.8.8-.8 1.9s.8 2.2.9 2.3c.1.2 1.6 2.5 3.9 3.4 1.9.8 2.3.6 2.7.6.4 0 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1 0-.1-.1-.2-.3-.2z"/></svg>
-            </a>
-            <a class="icirc mail" href="#" onclick="showToast('Chia sẻ bài viết qua Email'); return false;" aria-label="Share by email">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></svg>
-            </a>
-            <a class="icirc" href="#" onclick="navigator.clipboard?.writeText(window.location.href); showToast('Đã sao chép liên kết bài viết vào bộ nhớ tạm!'); return false;" aria-label="Copy link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg>
-            </a>
-          </div>
-
-          <!-- Hero Figure -->
-          <figure>
-            <img id="art-hero-img" src="images/editorial_ai_logistics_hd.jpg" alt="Foreign nationals queue at an immigration counter in Cambodia" loading="lazy">
-            <figcaption id="art-caption">The recent deportation of foreign nationals who committed offences in Cambodia &amp; cross-border inspection. <b>GDI / VJ Intelligence</b></figcaption>
-          </figure>
-
-          <!-- Listen to this article panel -->
-          <div class="listen">
-            <button class="play" id="btn-art-listen" onclick="toggleArticleAudio();" aria-label="Listen to this article">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" id="art-listen-icon"><path d="M8 5l11 7-11 7z"/></svg>
-            </button>
-            <div class="meta-min">
-              <b id="art-listen-title">Listen to this article</b>
-              <span id="art-listen-meta">3 mins &bull; AI voice</span>
-            </div>
-            <div class="right">
-              <svg width="28" height="18" viewBox="0 0 28 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <path d="M2 9h0M6 5v8M10 2v14M14 6v6M18 4v10M22 7h0M26 9h0"/>
-              </svg>
-              <button class="speed" onclick="cycleAudioSpeed(this);">1.0&times;</button>
+      <!-- ========================================================================
+           LOGISTICS WAVES EDITORIAL MEDIA HUB (IMAGES 1, 2, 3 MATCHING DESIGN)
+           ======================================================================== -->
+      <div class="lw-hub-container" id="lw-hub-overview">
+        
+        <!-- ── 1. TOP STORIES SECTION (IMAGE 1 DESIGN) ── -->
+        <section class="lw-hub-section">
+          <div class="lw-section-header">
+            <div class="lw-section-title-wrap">
+              <h2 class="lw-section-title">Top Stories</h2>
             </div>
           </div>
 
-          <!-- Article Body -->
-          <div class="body" id="art-body">
-            <!-- Populated dynamically by openArticle() -->
-          </div>
-
-          <!-- More on this story -->
-          <section class="most">
-            <h2>More on this story</h2>
-            <ul id="art-more-list">
-              <li><a href="#" onclick="openArticle('art-ai-dispatch'); return false;"><span class="dot"></span><span>Autonomous AI Dispatch Engines in Southern Vietnam Container Corridors<span class="sz">6 November 2026</span></span></a></li>
-              <li><a href="#" onclick="openArticle('art-cross-border'); return false;"><span class="dot"></span><span>Cross-Border Tech Hiring Guidelines &amp; Global Remote Tax Treaties for 2026<span class="sz">5 November 2026</span></span></a></li>
-              <li><a href="#" onclick="openArticle('art-cold-chain'); return false;"><span class="dot"></span><span>WHO-GDP Cold Storage Infrastructure Standards for Pharma Logistics<span class="sz">4 November 2026</span></span></a></li>
-            </ul>
-          </section>
-
-          <!-- Related topics -->
-          <section class="topics">
-            <h2>Related topics</h2>
-            <div class="pills" id="art-topics-list">
-              <a class="pill" href="#" onclick="showToast('Chủ đề: Cambodia'); return false;">Cambodia <span>+</span></a>
-              <a class="pill" href="#" onclick="showToast('Chủ đề: Immigration'); return false;">Immigration <span>+</span></a>
-              <a class="pill" href="#" onclick="showToast('Chủ đề: Logistics Quốc Tế'); return false;">Logistics Quốc Tế <span>+</span></a>
-              <a class="pill" href="#" onclick="showToast('Chủ đề: Customs Policy'); return false;">Customs Policy <span>+</span></a>
-              <a class="pill" href="#" onclick="showToast('Chủ đề: ASEAN Corridors'); return false;">ASEAN Corridors <span>+</span></a>
-            </div>
-          </section>
-
-          <!-- Keep reading -->
-          <div class="divider">
-            <h2>Keep reading</h2>
-            <a class="more" href="#" onclick="showToast('Tải thêm các bài viết chuyên sâu...'); return false;">See all</a>
-          </div>
-          <div class="grid3" id="art-keep-reading-grid">
-            <!-- Populated dynamically -->
-          </div>
-        </main>
-
-        <!-- Sidebar -->
-        <aside>
-          <div class="adbox">
-            <div class="lbl">SPONSORED BRIEFING</div>
-            <img src="images/career_banner_1.svg" alt="VietnamJobs Intelligence Report">
-            <div style="padding: 10px 4px 4px;">
-              <h4 style="font-size: 13px; font-weight: 700; margin: 0 0 4px 0; color: #141414;">Vietnam Logistics Salary Index 2026</h4>
-              <p style="font-size: 11.5px; color: #64748B; margin: 0 0 8px 0;">Báo cáo phân tích thu nhập thực tế ngành Forwarding, Cảng biển &amp; Kho vận.</p>
-              <a href="#" onclick="switchView('courses'); return false;" style="font-size: 12px; font-weight: 700; color: var(--art-red); text-decoration: none;">Tải Báo Cáo Ngay &rarr;</a>
-            </div>
-          </div>
-
-          <div class="side-head">
-            <h2>Latest news</h2>
-          </div>
-          <ul class="newslist" id="art-sidebar-newslist">
-            <!-- Populated dynamically -->
-          </ul>
-
-          <div class="promo">
-            <div class="k">VietnamJobs &bull; Newsletter</div>
-            <h3>Vietnam Supply Chain This Week</h3>
-            <p>The regulatory updates, port volumes and tech stories that matter, delivered to your inbox every Friday morning.</p>
-            <div class="promo-input-row">
-              <input type="email" id="promo-email-input" placeholder="Your work email...">
-              <button class="btn" type="button" onclick="const em = document.getElementById('promo-email-input').value; if(em){ showToast('Đăng ký bản tin thành công cho: ' + em); document.getElementById('promo-email-input').value=''; } else { showToast('Vui lòng nhập địa chỉ email của bạn.'); }">
-                Sign up
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          <div class="lw-top-stories-grid">
+            
+            <!-- Left Hero Story (Image 1 Large Featured) -->
+            <div class="lw-hero-story-card" onclick="openArticle('art-union-pacific');">
+              <div class="lw-hero-img-wrap">
+                <img src="images/leader_news.svg" alt="Union Pacific CEO" onerror="this.src='images/gov_summit_real.jpg';">
+                <span class="lw-hero-badge">Top Stories</span>
+              </div>
+              <div class="lw-hero-kicker">Top Stories</div>
+              <h3 class="lw-hero-headline">EXCLUSIVE: 'Humor is good,' Union Pacific CEO says of video rate threat</h3>
+              <p class="lw-hero-excerpt">Union Pacific CEO said his threat to raise rates on shippers in a now-released video was an attempt at humor, speaking candidly on multimodal freight pricing.</p>
+              <button type="button" class="lw-btn-readmore" onclick="openArticle('art-union-pacific'); event.stopPropagation();">
+                Read More &raquo;
               </button>
             </div>
+
+            <!-- Middle Column (4 Stories) -->
+            <div class="lw-stories-col">
+              
+              <div class="lw-story-list-item" onclick="openArticle('art-drivers-workforce');">
+                <img src="images/news_1.jpg" alt="Drivers & Workforce" class="lw-story-thumb">
+                <div class="lw-story-meta">
+                  <span class="lw-story-category">Drivers &amp; Workforce</span>
+                  <h4 class="lw-story-title">Teamsters say they've organized Amazon employees in Indiana; company demurs</h4>
+                </div>
+              </div>
+
+              <div class="lw-story-list-item" onclick="openArticle('art-trade-tariffs');">
+                <img src="images/news_2.jpg" alt="Trade & Tariffs" class="lw-story-thumb">
+                <div class="lw-story-meta">
+                  <span class="lw-story-category">Trade &amp; Tariffs</span>
+                  <h4 class="lw-story-title">US Army enlists FedEx to modernize logistics at depots &amp; distribution centers</h4>
+                </div>
+              </div>
+
+              <div class="lw-story-list-item" onclick="openArticle('art-cold-chain');">
+                <img src="images/news_3.jpg" alt="Cold Chain & Warehouses" class="lw-story-thumb">
+                <div class="lw-story-meta">
+                  <span class="lw-story-category">Trade &amp; Tariffs</span>
+                  <h4 class="lw-story-title">Americold raises full-year outlook as warehouse performance &amp; cold capacity improve</h4>
+                </div>
+              </div>
+
+              <div class="lw-story-list-item" onclick="openArticle('art-compliance');">
+                <img src="images/news_4.jpg" alt="Compliance & Regulation" class="lw-story-thumb">
+                <div class="lw-story-meta">
+                  <span class="lw-story-category">Compliance &amp; Regulation</span>
+                  <h4 class="lw-story-title">Transportation committee in House set for overhaul post-election</h4>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right Column (4 Stories) -->
+            <div class="lw-stories-col">
+              
+              <div class="lw-story-list-item" onclick="openArticle('art-tech-startups');">
+                <img src="images/news_5.jpg" alt="Technology & Startups" class="lw-story-thumb">
+                <div class="lw-story-meta">
+                  <span class="lw-story-category">Technology &amp; Startups</span>
+                  <h4 class="lw-story-title">Harbinger raises $240M to expand EV platform beyond trucks</h4>
+                </div>
+              </div>
+
+              <div class="lw-story-list-item" onclick="openArticle('art-maersk');">
+                <img src="images/maersk_cover.jpg" alt="Maritime Maersk" class="lw-story-thumb">
+                <div class="lw-story-meta">
+                  <span class="lw-story-category">Maritime</span>
+                  <h4 class="lw-story-title">Maersk raises profit outlook as earnings surge, but shares slide on expectations miss</h4>
+                </div>
+              </div>
+
+              <div class="lw-story-list-item" onclick="openArticle('art-port-strike');">
+                <img src="images/hero_1.jpg" alt="Maritime Port Strike" class="lw-story-thumb">
+                <div class="lw-story-meta">
+                  <span class="lw-story-category">Maritime</span>
+                  <h4 class="lw-story-title">Port strike delayed again at Los Angeles, Long Beach ports after mediation</h4>
+                </div>
+              </div>
+
+              <div class="lw-story-list-item" onclick="openArticle('art-asia-rates');">
+                <img src="images/hero_2.jpg" alt="Asia Container Rates" class="lw-story-thumb">
+                <div class="lw-story-meta">
+                  <span class="lw-story-category">Maritime</span>
+                  <h4 class="lw-story-title">Asia-US container rates hold as carriers seek $3,000 November rate hikes</h4>
+                </div>
+              </div>
+
+            </div>
+
           </div>
-        </aside>
+        </section>
+
+        <!-- ── 2. LATEST HEADLINES SECTION (IMAGE 2 DESIGN) ── -->
+        <section class="lw-hub-section">
+          <div class="lw-section-header">
+            <div class="lw-section-title-wrap">
+              <h2 class="lw-section-title">Latest Headlines</h2>
+            </div>
+          </div>
+
+          <div class="lw-headlines-grid">
+            
+            <!-- Card 1 -->
+            <div class="lw-headline-card" onclick="openArticle('art-cargo-theft');">
+              <img src="images/editorial_tech_salaries_hd.png" alt="Truckload" class="lw-headline-thumb">
+              <span class="lw-headline-category">Truckload</span>
+              <h3 class="lw-headline-title">Mexico cargo thieves shift tactics as Q3 truck parking thefts surge</h3>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="lw-headline-card" onclick="openArticle('art-conrail');">
+              <img src="images/hero_3.jpg" alt="Rail" class="lw-headline-thumb">
+              <span class="lw-headline-category">Rail</span>
+              <h3 class="lw-headline-title">Conrail tabs Wright as president and chief operating officer</h3>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="lw-headline-card" onclick="openArticle('art-stb-order');">
+              <img src="images/lead_story.jpg" alt="Rail STB" class="lw-headline-thumb">
+              <span class="lw-headline-category">Rail</span>
+              <h3 class="lw-headline-title">STB orders Union Pacific to make alleged rate hike threat video public</h3>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="lw-headline-card" onclick="openArticle('art-humble-robotics');">
+              <img src="images/editorial_ai_robotics_hd.jpg" alt="Technology & Startups" class="lw-headline-thumb">
+              <span class="lw-headline-category">Technology &amp; Startups</span>
+              <h3 class="lw-headline-title">Humble Robotics raises $51M for cabless hauler pilots</h3>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ── 3. FREIGHTWAVES / LOGISTICS WAVES TODAY (IMAGE 3 DESIGN) ── -->
+        <section class="lw-hub-section">
+          <div class="lw-section-header">
+            <div class="lw-section-title-wrap">
+              <h2 class="lw-section-title">FreightWaves Today</h2>
+            </div>
+            <div class="lw-carousel-controls">
+              <button type="button" class="lw-carousel-arrow" onclick="scrollLwCarousel(-1);" aria-label="Previous">&lsaquo;</button>
+              <button type="button" class="lw-carousel-arrow active" onclick="scrollLwCarousel(1);" aria-label="Next">&rsaquo;</button>
+            </div>
+          </div>
+
+          <div class="lw-today-carousel" id="lw-today-carousel">
+            
+            <!-- Video Card 1 -->
+            <div class="lw-today-card" onclick="openArticle('art-fw-today-1');">
+              <div class="lw-video-thumb-wrap">
+                <img src="images/fw_today_1.svg" alt="FreightWaves Today">
+                <div class="lw-play-badge"><i class="fa-solid fa-play"></i></div>
+                <div class="lw-video-share-btn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
+              </div>
+              <h3 class="lw-today-title">FreightWaves Today</h3>
+              <div class="lw-today-date">Nov 6, 2026</div>
+              <p class="lw-today-excerpt">Join FreightWaves Today live from Cape Canaveral, Florida, at UP.Summit, where the innovators, founders, and government leaders meet...</p>
+              <span class="lw-today-readmore">Read more...</span>
+            </div>
+
+            <!-- Video Card 2 -->
+            <div class="lw-today-card" onclick="openArticle('art-fw-today-2');">
+              <div class="lw-video-thumb-wrap">
+                <img src="images/fw_today_2.svg" alt="Flying Taxis">
+                <div class="lw-play-badge"><i class="fa-solid fa-play"></i></div>
+                <div class="lw-video-share-btn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
+              </div>
+              <h3 class="lw-today-title">Flying Taxis &amp; Cargo: Electric Aviation's Future Takes Off</h3>
+              <div class="lw-today-date">Nov 6, 2026</div>
+              <p class="lw-today-excerpt">BETA Technologies just secured landmark FAA authorization for passenger flights in their electric VTOL aircraft, marking a monumental milestone...</p>
+              <span class="lw-today-readmore">Read more...</span>
+            </div>
+
+            <!-- Video Card 3 -->
+            <div class="lw-today-card" onclick="openArticle('art-fw-today-3');">
+              <div class="lw-video-thumb-wrap">
+                <img src="images/fw_today_3.svg" alt="Florida Space Race">
+                <div class="lw-play-badge"><i class="fa-solid fa-play"></i></div>
+                <div class="lw-video-share-btn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
+              </div>
+              <h3 class="lw-today-title">Florida's Space Race: 95% Cost Drop Fuels Private Sector Boom</h3>
+              <div class="lw-today-date">Nov 6, 2026</div>
+              <p class="lw-today-excerpt">Florida is rapidly becoming the epicenter of the new space race, with groundbreaking public-private partnerships driving down costs and payload launch barriers...</p>
+              <span class="lw-today-readmore">Read more...</span>
+            </div>
+
+            <!-- Video Card 4 -->
+            <div class="lw-today-card" onclick="openArticle('art-fw-today-4');">
+              <div class="lw-video-thumb-wrap">
+                <img src="images/fw_today_4.svg" alt="Electric Flying Boat">
+                <div class="lw-play-badge"><i class="fa-solid fa-play"></i></div>
+                <div class="lw-video-share-btn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
+              </div>
+              <h3 class="lw-today-title">Electric 'Flying Boat' Lands $5 Billion in Orders</h3>
+              <div class="lw-today-date">Nov 6, 2026</div>
+              <p class="lw-today-excerpt">REGENT is building electric seagliders that merge the best of boats and planes, operating on a cushion of air over the water known as ground effect...</p>
+              <span class="lw-today-readmore">Read more...</span>
+            </div>
+
+            <!-- Video Card 5 -->
+            <div class="lw-today-card" onclick="openArticle('art-fw-today-5');">
+              <div class="lw-video-thumb-wrap">
+                <img src="images/fw_today_5.svg" alt="Flying Cars">
+                <div class="lw-play-badge"><i class="fa-solid fa-play"></i></div>
+                <div class="lw-video-share-btn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
+              </div>
+              <h3 class="lw-today-title">Flying Cars Are HERE: Joby Aviation on eVTOL Revolution</h3>
+              <div class="lw-today-date">Nov 6, 2026</div>
+              <p class="lw-today-excerpt">Joby Aviation's Chief Policy Officer discusses the commercial timeline for electric air mobility in major global logistics corridors...</p>
+              <span class="lw-today-readmore">Read more...</span>
+            </div>
+
+          </div>
+        </section>
+
       </div>
+
+      <!-- ========================================================================
+           FULL STORY READER CONTAINER (REVEALED WHEN READING AN ARTICLE)
+           ======================================================================== -->
+      <div id="lw-article-reader" style="display:none; border-top:1px solid #E2E8F0; background:#FFFFFF;">
+        <div class="wrap" style="max-width:1240px; margin:0 auto; padding:18px 20px 0;">
+          <button type="button" class="btn-back-to-news" onclick="hideArticleReader();">
+            <i class="fa-solid fa-arrow-left"></i> Quay lại Hub Tin Tức Logistics Waves
+          </button>
+        </div>
+
+        <div class="article-layout">
+          <main>
+            <div class="kicker">
+              <span class="tag" id="art-tag">NATIONAL</span>
+              <a class="sec" href="#" id="art-sec" onclick="return false;">Immigration &amp; Border Trade</a>
+            </div>
+
+            <h2 class="headline" id="art-headline">GDI identify more than 5,000 attempts to illegally enter/exit Kingdom; 373 charged</h2>
+
+            <div class="byline">
+              <span class="who" id="art-author">FreightWaves Editorial Board</span>
+              <span class="rule"></span>
+              <span id="art-location">Washington / Ho Chi Minh City</span>
+              <span class="rule"></span>
+              <span id="art-date">Published 06 November 2026</span>
+            </div>
+
+            <!-- Share Strip -->
+            <div class="share-strip">
+              <span class="lbl">Share</span>
+              <a class="icirc fb" href="#" onclick="showToast('Chia sẻ qua Facebook'); return false;"><i class="fa-brands fa-facebook-f"></i></a>
+              <a class="icirc tw" href="#" onclick="showToast('Chia sẻ qua X'); return false;"><i class="fa-brands fa-x-twitter"></i></a>
+              <a class="icirc wa" href="#" onclick="showToast('Chia sẻ qua WhatsApp'); return false;"><i class="fa-brands fa-whatsapp"></i></a>
+              <a class="icirc mail" href="#" onclick="showToast('Chia sẻ qua Email'); return false;"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+
+            <figure class="hero-art">
+              <img src="images/editorial_ai_logistics_hd.jpg" alt="Article Hero" id="art-hero-img">
+              <figcaption id="art-caption">National Logistics Corridors and Multimodal Transport Intelligence Report.</figcaption>
+            </figure>
+
+            <div class="art-body" id="art-body">
+              <!-- Populated dynamically by openArticle() -->
+            </div>
+          </main>
+
+          <aside class="sidebar">
+            <h3 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:14px; border-bottom:2px solid #0056B3; padding-bottom:6px;">Latest Industry Briefs</h3>
+            <ul id="art-sidebar-newslist" class="sidebar-news">
+              <!-- Hydrated by app.js -->
+            </ul>
+          </aside>
+        </div>
+      </div>
+
     </section>
 
   </main>

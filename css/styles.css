@@ -889,8 +889,10 @@ font-size: 11px;
   font-weight: 400;
 }
 
-.fw-yt-hub-grid {
-grid-template-columns: 1fr;
+@media (max-width: 991px) {
+  .fw-yt-hub-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 .fw-yt-playlist-list {
@@ -6608,4 +6610,34 @@ footer a:hover {
   background: #141416 !important;
   color: #FFFFFF !important;
   text-shadow: 0 0 12px rgba(255, 255, 255, 0.8) !important;
+}
+
+
+/* Market Intelligence Video Broadcasts Layout: Main Player on Left, 4 Sub-Videos on Right */
+.fw-yt-hub-grid {
+  display: grid !important;
+  grid-template-columns: 1.62fr 1fr !important;
+  gap: 24px !important;
+  align-items: start !important;
+}
+
+.fw-yt-playlist-card {
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+  padding: 18px 16px !important;
+}
+
+.fw-yt-playlist-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  max-height: 480px !important;
+  overflow-y: auto !important;
+}
+
+@media (max-width: 991px) {
+  .fw-yt-hub-grid {
+    grid-template-columns: 1fr !important;
+  }
 }

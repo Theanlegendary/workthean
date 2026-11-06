@@ -154,30 +154,138 @@
           </div>
         </div>
 
-        <!-- Right: Capsule Search & Action Buttons -->
-        <div class="header-top-right-group">
-          <div class="header-capsule-search">
-            <input type="text" id="top-capsule-search-input" placeholder="AI &amp; Machine Learning Solution..." aria-label="Tìm kiếm nhanh">
-            <i class="fa-solid fa-magnifying-glass" id="btn-top-capsule-search" onclick="const q = document.getElementById('top-capsule-search-input')?.value; if(q){ switchView('browse'); }"></i>
+        <!-- Right: Modern Pill Search, Notification & User Profile with Role (Matching User Design) -->
+        <div class="header-top-right-group modern-header-actions" id="header-top-right-modern">
+          
+          <!-- Modern Pill Search (Matching Image 1) -->
+          <div class="header-modern-search-capsule" id="header-search-capsule">
+            <i class="fa-solid fa-magnifying-glass search-capsule-icon" id="btn-top-capsule-search"></i>
+            <input type="text" id="top-capsule-search-input" placeholder="Search companies, jobs..." aria-label="Search companies, jobs...">
           </div>
 
-          <div class="flag-language-btn" title="Ngôn ngữ">
-            <span>🇻🇳 VN</span>
-          </div>
-
-          <!-- Auth Actions: Guest vs Logged-In State -->
-          <div class="header-auth-group" id="header-auth-guest">
-            <button type="button" class="btn-auth-signin" id="btn-header-signin" onclick="showToast('Chào mừng bạn đến với Cổng tuyển dụng VietnamJobs');">
-              <i class="fa-solid fa-right-to-bracket"></i> Đăng Nhập
+          <!-- Notification Bell (Matching Image 1) -->
+          <div class="header-notification-wrapper" id="header-notification-wrapper">
+            <button type="button" class="header-bell-btn" id="btn-header-notifications" title="Thông báo" aria-label="Notifications">
+              <i class="fa-solid fa-bell"></i>
+              <span class="notification-indicator-badge"></span>
             </button>
-            <button type="button" class="btn-auth-signup" id="btn-header-signup" onclick="showToast('Đăng ký tài khoản ứng viên / doanh nghiệp mới');">
-              <i class="fa-solid fa-user-plus"></i> Đăng Ký
-            </button>
+            <!-- Dropdown for Notifications -->
+            <div class="notification-popover" id="notification-popover">
+              <div class="notif-popover-header">
+                <span class="notif-popover-title">Thông Báo Mới</span>
+                <span class="notif-badge-pill">3 mới</span>
+              </div>
+              <div class="notif-popover-list">
+                <div class="notif-popover-item unread">
+                  <div class="notif-item-icon bg-blue"><i class="fa-solid fa-briefcase"></i></div>
+                  <div class="notif-item-content">
+                    <p class="notif-item-text">Việc làm mới phù hợp: <strong>Chuyên viên Logistics &amp; Supply Chain</strong></p>
+                    <span class="notif-item-time">10 phút trước</span>
+                  </div>
+                </div>
+                <div class="notif-popover-item unread">
+                  <div class="notif-item-icon bg-green"><i class="fa-solid fa-circle-check"></i></div>
+                  <div class="notif-item-content">
+                    <p class="notif-item-text">Hồ sơ ứng tuyển tại <strong>Cảng Quốc Tế Tân Cảng</strong> đã được duyệt</p>
+                    <span class="notif-item-time">1 giờ trước</span>
+                  </div>
+                </div>
+                <div class="notif-popover-item">
+                  <div class="notif-item-icon bg-purple"><i class="fa-solid fa-graduation-cap"></i></div>
+                  <div class="notif-item-content">
+                    <p class="notif-item-text">Khóa học mới: <strong>Quản Trị Chuỗi Cung Ứng Quốc Tế FIATA</strong></p>
+                    <span class="notif-item-time">Hôm qua</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <button type="button" class="btn-signup-red-solid" id="btn-open-post-project" onclick="showToast('Chức năng Đăng tin tuyển dụng dành cho Nhà tuyển dụng');">
-            <i class="fa-solid fa-plus-circle"></i> Đăng Tin Tuyển Dụng
-          </button>
+          <!-- User Profile & Role Trigger (Matching Image 1) -->
+          <div class="header-user-profile-capsule" id="header-user-profile">
+            <button type="button" class="header-avatar-trigger" id="btn-user-profile-menu" aria-label="Tài khoản &amp; Vai trò">
+              <img src="images/user_avatar_header.png" alt="User Profile" class="header-avatar-img" id="header-user-avatar-img" onerror="this.onerror=null; this.src='images/sophie.jpg';">
+              <i class="fa-solid fa-chevron-down avatar-chevron-icon" id="profile-chevron-icon"></i>
+            </button>
+
+            <!-- Sleek Profile Dropdown with Role Management -->
+            <div class="user-dropdown-menu modern-profile-menu" id="user-dropdown-menu">
+              <div class="user-dropdown-header">
+                <div class="user-header-info-row">
+                  <img src="images/user_avatar_header.png" alt="User Avatar" class="dropdown-avatar-thumb" id="dropdown-user-avatar-thumb" onerror="this.onerror=null; this.src='images/sophie.jpg';">
+                  <div class="dropdown-user-details">
+                    <div class="dropdown-user-name" id="dropdown-user-name">Thean Lê</div>
+                    <div class="dropdown-user-email" id="dropdown-user-email">thean.le@vietnamjobs.vn</div>
+                  </div>
+                </div>
+
+                <!-- Current Role Status Badge -->
+                <div class="role-badge-container">
+                  <span class="dropdown-role-badge role-badge-candidate" id="dropdown-user-role">
+                    <i class="fa-solid fa-user-check"></i> Ứng Viên (Candidate)
+                  </span>
+                </div>
+
+                <!-- Interactive Role Switcher Toggle -->
+                <div class="profile-role-switcher" id="profile-role-switcher">
+                  <div class="role-switcher-label">Chuyển đổi vai trò:</div>
+                  <div class="role-toggle-group">
+                    <button type="button" class="role-toggle-btn active" id="btn-role-candidate" onclick="switchUserRole('Candidate')">
+                      <i class="fa-solid fa-user"></i> Ứng Viên
+                    </button>
+                    <button type="button" class="role-toggle-btn" id="btn-role-employer" onclick="switchUserRole('Employer')">
+                      <i class="fa-solid fa-building"></i> Nhà Tuyển Dụng
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Role-Adaptive Menu Items -->
+              <div class="user-dropdown-body">
+                <!-- Candidate Items -->
+                <div class="role-menu-section" id="role-menu-candidate">
+                  <button type="button" class="dropdown-item" onclick="switchView('browse'); closeAllDropdowns();">
+                    <i class="fa-solid fa-magnifying-glass"></i> Tìm Việc Làm Phù Hợp
+                  </button>
+                  <button type="button" class="dropdown-item" id="dropdown-btn-saved">
+                    <i class="fa-solid fa-heart" style="color:#ef4444;"></i> Việc Làm Đã Lưu (<span id="menu-saved-count">0</span>)
+                  </button>
+                  <button type="button" class="dropdown-item" id="dropdown-btn-applied">
+                    <i class="fa-solid fa-paper-plane" style="color:#0ea5e9;"></i> Việc Làm Đã Ứng Tuyển
+                  </button>
+                  <button type="button" class="dropdown-item" onclick="switchView('courses'); closeAllDropdowns();">
+                    <i class="fa-solid fa-graduation-cap" style="color:#8b5cf6;"></i> Chứng Chỉ &amp; Khóa Học
+                  </button>
+                </div>
+
+                <!-- Employer Items -->
+                <div class="role-menu-section" id="role-menu-employer" style="display:none;">
+                  <button type="button" class="dropdown-item highlight-employer-action" id="dropdown-btn-post-job">
+                    <i class="fa-solid fa-plus-circle" style="color:#ef4444;"></i> <strong>Đăng Tin Tuyển Dụng Mới</strong>
+                  </button>
+                  <button type="button" class="dropdown-item" onclick="showToast('Quản lý các tin tuyển dụng đang hoạt động'); closeAllDropdowns();">
+                    <i class="fa-solid fa-list-check" style="color:#10b981;"></i> Quản Lý Tin Tuyển Dụng
+                  </button>
+                  <button type="button" class="dropdown-item" onclick="showToast('Xem 14 hồ sơ ứng viên mới nộp gần đây'); closeAllDropdowns();">
+                    <i class="fa-solid fa-users" style="color:#f59e0b;"></i> Danh Sách Ứng Viên (14 mới)
+                  </button>
+                  <button type="button" class="dropdown-item" onclick="switchView('companies'); closeAllDropdowns();">
+                    <i class="fa-solid fa-building" style="color:#6366f1;"></i> Hồ Sơ Doanh Nghiệp
+                  </button>
+                </div>
+
+                <div class="dropdown-divider"></div>
+
+                <button type="button" class="dropdown-item" id="btn-open-switch-auth" onclick="openAuthModal('signin'); closeAllDropdowns();">
+                  <i class="fa-solid fa-arrows-rotate"></i> Đổi Tài Khoản / Đăng Nhập Khác
+                </button>
+                <button type="button" class="dropdown-item dropdown-logout-btn" id="btn-user-logout">
+                  <i class="fa-solid fa-right-from-bracket"></i> Đăng Xuất
+                </button>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -190,9 +298,6 @@
         <div class="brand-nav-links-left">
           <button type="button" class="brand-nav-item home-icon-btn active" data-view="home" onclick="switchView('home'); return false;" title="Trang chủ">
             <i class="fa-solid fa-house"></i>
-          </button>
-          <button type="button" class="brand-nav-item" data-view="news" onclick="openArticle(); return false;">
-            Thời Sự Tuyển Dụng
           </button>
           <button type="button" class="brand-nav-item" data-view="browse" onclick="switchView('browse'); return false;">
             Việc Làm Mới
@@ -1918,5 +2023,118 @@
       });
     }
   </script>
+
+  <!-- ==========================================================================
+       AUTH MODAL (ĐĂNG NHẬP / ĐĂNG KÝ VỚI LỰA CHỌN VAI TRÒ ROLE-BASED)
+       ========================================================================== -->
+  <div class="modal-backdrop" id="modal-auth" hidden>
+    <div class="quick-apply-modal-box modern-auth-box">
+      <div class="modal-auth-header">
+        <div class="modal-auth-brand">
+          <span class="auth-brand-logo">Vietnam<span style="color:#ff4743">Jobs</span></span>
+          <span class="auth-brand-divider">|</span>
+          <span class="auth-brand-subtitle">Cổng Thông Tin &amp; Tuyển Dụng</span>
+        </div>
+        <button type="button" class="modal-close-btn" id="close-auth-modal" aria-label="Đóng">&times;</button>
+      </div>
+
+      <!-- Two-Tab Switcher -->
+      <div class="auth-tabs-row">
+        <button type="button" class="auth-tab-btn active" id="tab-auth-signin">Đăng Nhập</button>
+        <button type="button" class="auth-tab-btn" id="tab-auth-signup">Tạo Tài Khoản Mới</button>
+      </div>
+
+      <!-- FORM 1: ĐĂNG NHẬP (SIGN IN) -->
+      <form id="auth-signin-form">
+        <div class="form-group">
+          <label for="signin-email">Email hoặc Số điện thoại *</label>
+          <input type="text" id="signin-email" class="form-control" placeholder="name@company.com hoặc 0912 345 678" required>
+        </div>
+        <div class="form-group">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+            <label for="signin-password" style="margin:0;">Mật khẩu *</label>
+            <a href="#" id="link-forgot-pass" style="font-size:12px; color:var(--fl-primary); text-decoration:none; font-weight:600;" onclick="showToast('Liên hệ bộ phận hỗ trợ: support@vietnamjobs.vn'); return false;">Quên mật khẩu?</a>
+          </div>
+          <input type="password" id="signin-password" class="form-control" placeholder="••••••••" required>
+        </div>
+
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;">
+          <label style="font-size:12.5px; color:var(--fl-text-muted); display:flex; align-items:center; gap:6px; cursor:pointer;">
+            <input type="checkbox" id="signin-remember" checked> Ghi nhớ đăng nhập
+          </label>
+        </div>
+
+        <button type="submit" class="btn-signup-red-solid" style="width: 100%; justify-content: center; padding: 11px; font-size:14px; font-weight:800;">
+          <i class="fa-solid fa-right-to-bracket"></i> Đăng Nhập
+        </button>
+
+        <div class="auth-demo-divider"><span>HOẶC ĐĂNG NHẬP NHANH BẰNG DEMO</span></div>
+
+        <div class="auth-quick-demo-grid">
+          <button type="button" class="btn-demo-auth demo-candidate-btn" id="btn-quick-demo-candidate">
+            <i class="fa-solid fa-user-tie"></i> 👤 Ứng Viên (Thean Lê)
+          </button>
+          <button type="button" class="btn-demo-auth demo-employer-btn" id="btn-quick-demo-employer">
+            <i class="fa-solid fa-building"></i> 🏢 Nhà Tuyển Dụng (Vinamilk HR)
+          </button>
+        </div>
+      </form>
+
+      <!-- FORM 2: ĐĂNG KÝ (SIGN UP) VỚI LỰA CHỌN VAI TRÒ -->
+      <form id="auth-signup-form" style="display: none;">
+        <div class="form-group">
+          <label for="signup-name">Họ và Tên Đầy Đủ *</label>
+          <input type="text" id="signup-name" class="form-control" placeholder="Nguyễn Văn A" required>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <div class="form-group">
+            <label for="signup-email">Địa Chỉ Email *</label>
+            <input type="email" id="signup-email" class="form-control" placeholder="user@gmail.com" required>
+          </div>
+          <div class="form-group">
+            <label for="signup-phone">Số Điện Thoại *</label>
+            <input type="tel" id="signup-phone" class="form-control" placeholder="0988 123 456" required>
+          </div>
+        </div>
+
+        <!-- Role Selection in Sign Up -->
+        <div class="form-group">
+          <label class="signup-role-title">Chọn Vai Trò Của Bạn Trong Hệ Thống *</label>
+          <div class="signup-role-card-grid">
+            <div class="signup-role-card selected" id="card-role-candidate" onclick="selectSignupRole('Candidate')">
+              <div class="role-card-content">
+                <div class="role-card-icon"><i class="fa-solid fa-user-tie"></i></div>
+                <div class="role-card-info">
+                  <div class="role-card-heading">Ứng Viên Tìm Việc</div>
+                  <div class="role-card-desc">Tìm việc, tạo CV &amp; nộp hồ sơ trực tuyến</div>
+                </div>
+              </div>
+            </div>
+            <div class="signup-role-card" id="card-role-employer" onclick="selectSignupRole('Employer')">
+              <div class="role-card-content">
+                <div class="role-card-icon"><i class="fa-solid fa-building"></i></div>
+                <div class="role-card-info">
+                  <div class="role-card-heading">Nhà Tuyển Dụng</div>
+                  <div class="role-card-desc">Đăng tin tuyển dụng &amp; tiếp cận ứng viên</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" id="signup-role" value="Candidate">
+        </div>
+
+        <div class="form-group">
+          <label for="signup-password">Mật Khẩu *</label>
+          <input type="password" id="signup-password" class="form-control" placeholder="Tối thiểu 6 ký tự" required>
+        </div>
+
+        <button type="submit" class="btn-signup-red-solid" style="width: 100%; justify-content: center; padding: 11px; font-size:14px; font-weight:800; margin-top:6px;">
+          <i class="fa-solid fa-user-check"></i> Hoàn Tất Đăng Ký Tài Khoản
+        </button>
+      </form>
+    </div>
+  </div>
+
 </body>
 </html>

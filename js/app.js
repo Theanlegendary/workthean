@@ -4,6 +4,83 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  /* ==========================================================================
+     ROUTE METADATA & DYNAMIC SEO / SCHEMA.ORG
+     ========================================================================== */
+  const routeMetadata = {
+    home: {
+      title: 'VietnamJobs – Cổng Tuyển Dụng & Việc Làm Logistics, AI Quốc Gia',
+      description: 'Nền tảng tuyển dụng thông minh chuyên ngành Logistics, Chuỗi cung ứng, Hàng hải và Kỹ sư AI hàng đầu Việt Nam.'
+    },
+    browse: {
+      title: 'Khám Phá Việc Làm Logistics & AI – VietnamJobs',
+      description: 'Tìm kiếm 50,000+ việc làm Logistics, Hàng hải, Xuất nhập khẩu và Kỹ sư AI với mức lương hấp dẫn.'
+    },
+    courses: {
+      title: 'Khóa Học & Chứng Chỉ Quốc Tế Logistics – VietnamJobs',
+      description: 'Chương trình đào tạo và cấp chứng chỉ nghề nghiệp FIATA, IATA, CSCP chuẩn quốc tế.'
+    },
+    companies: {
+      title: 'Danh Bạ 500+ Doanh Nghiệp Hàng Đầu – VietnamJobs',
+      description: 'Khám phá hồ sơ, văn hóa doanh nghiệp và cơ hội nghề nghiệp tại 500+ tập đoàn uy tín.'
+    },
+    news: {
+      title: 'Thời Sự Tuyển Dụng & Thị Trường Lao Động – VietnamJobs',
+      description: 'Tin tức thời sự thị trường lao động, xu hướng tuyển dụng Logistics & AI mới nhất.'
+    }
+  };
+
+  function updateDynamicSEO(viewId, customTitle, customDesc) {
+    const meta = routeMetadata[viewId] || routeMetadata.home;
+    const title = customTitle || meta.title;
+    const desc = customDesc || meta.description;
+    
+    document.title = title;
+    const descEl = document.querySelector('meta[name="description"]');
+    if (descEl) descEl.setAttribute('content', desc);
+    
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', title);
+    
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', desc);
+  }
+
+  function injectJobSchema(job) {
+    let script = document.getElementById('schema-job-posting');
+    if (!script) {
+      script = document.createElement('script');
+      script.id = 'schema-job-posting';
+      script.type = 'application/ld+json';
+      document.head.appendChild(script);
+    }
+    const schemaData = {
+      "@context": "https://schema.org/",
+      "@type": "JobPosting",
+      "title": job.title,
+      "description": job.description || ("Cơ hội việc làm tại " + (job.company || "VietnamJobs")),
+      "datePosted": "2026-11-01",
+      "validThrough": "2026-12-31",
+      "employmentType": job.workType === "Toàn thời gian" ? "FULL_TIME" : "CONTRACTOR",
+      "hiringOrganization": {
+        "@type": "Organization",
+        "name": job.company || "Doanh Nghiệp Tuyển Dụng",
+        "sameAs": "https://vietnamjobs.vn/"
+      },
+      "jobLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": job.location || "TP. Hồ Chí Minh",
+          "addressCountry": "VN"
+        }
+      }
+    };
+    script.textContent = JSON.stringify(schemaData, null, 2);
+  }
+
+  
+
   // Central Application State
   
   // Reliable Brand Logo Resolver
@@ -176,6 +253,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+    /* ==========================================================================
+     VIEW SWITCHER WITH HISTORY & HASH ROUTING
+     ========================================================================== */
   function switchView(viewId, updateHash = true) {
     if (typeof viewId === 'string' && viewId.startsWith('view-')) {
       viewId = viewId.replace('view-', '');
@@ -185,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.app-view').forEach(view => view.classList.remove('active-view'));
     const activeEl = document.getElementById(`view-${viewId}`);
     if (activeEl) {
-      void activeEl.offsetWidth; // Trigger reflow for fresh entrance animation
+      void activeEl.offsetWidth;
       activeEl.classList.add('active-view');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -200,37 +280,54 @@ document.addEventListener('DOMContentLoaded', () => {
       else btn.classList.remove('active');
     });
 
-    // Sync Top Tier-2 Brand Nav Items
     document.querySelectorAll('.brand-nav-item').forEach(btn => {
       if (btn.getAttribute('data-view') === viewId) btn.classList.add('active');
       else btn.classList.remove('active');
     });
 
     if (updateHash && viewId !== 'job-detail') {
-      history.replaceState(null, null, ' ');
+      if (viewId === 'home') {
+        if (window.location.hash) {
+          history.pushState(null, null, window.location.pathname + window.location.search);
+        }
+      } else {
+        window.location.hash = viewId;
+      }
     }
 
+    updateDynamicSEO(viewId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     if (viewId === 'browse') renderBrowseProjects();
   }
 
   /* ==========================================================================
-     URL ROUTING (SUPPORT DIRECT LINK WITH JOB ID)
+     URL ROUTING (SUPPORT DEEP LINKING FOR VIEWS & JOB IDS)
      ========================================================================== */
   function handleUrlRouting() {
-    const hash = window.location.hash;
+    const rawHash = window.location.hash.replace(/^#\/?/, '');
     const urlParams = new URLSearchParams(window.location.search);
 
     let jobId = urlParams.get('id');
 
-    if (!jobId && hash.includes('id=')) {
-      const match = hash.match(/id=([^&]+)/);
+    if (!jobId && rawHash.includes('job?id=')) {
+      const match = rawHash.match(/id=([^&]+)/);
       if (match) jobId = decodeURIComponent(match[1]);
+    } else if (!jobId && rawHash.startsWith('job/')) {
+      jobId = decodeURIComponent(rawHash.replace('job/', ''));
     }
 
     if (jobId) {
       showJobDetail(jobId, false);
+      return;
+    }
+
+    // View routes: browse, courses, companies, news, home
+    const route = rawHash.split('?')[0].toLowerCase();
+    if (['browse', 'courses', 'companies', 'news', 'home'].includes(route)) {
+      switchView(route, false);
+    } else if (!rawHash) {
+      switchView('home', false);
     }
   }
 
@@ -391,6 +488,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Switch View & Update Hash
     switchView('job-detail', false);
+    updateDynamicSEO('job-detail', `${p.title} – ${p.company || 'VietnamJobs'}`, `Tuyển dụng ${p.title} tại ${p.company || 'Việt Nam'}. Xem mô tả công việc, mức lương và nộp hồ sơ ngay.`);
+    injectJobSchema(p);
 
     if (updateHash) {
       window.location.hash = `job?id=${encodeURIComponent(p.id)}`;

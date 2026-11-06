@@ -4063,12 +4063,24 @@ button, input, select, textarea {
   }
 
   .header-top-right-group .flag-language-btn,
-  .header-top-right-group .header-capsule-search {
-    display: none;
+  .header-top-right-group .header-capsule-search,
+  .header-top-right-group .btn-signup-red-solid {
+    display: none !important;
   }
 
   .header-top-right-group {
-    gap: 6px;
+    gap: 4px;
+    flex-wrap: nowrap;
+    margin-left: auto;
+  }
+
+  .header-auth-group {
+    gap: 4px;
+  }
+
+  .btn-auth-signin, .btn-auth-signup {
+    padding: 6px 8px !important;
+    font-size: 11px !important;
   }
 
   .header-top-right-group .btn-login-red-outline {
@@ -8766,5 +8778,25 @@ footer a:hover {
     width: 100% !important;
     flex-direction: row !important;
     justify-content: space-between !important;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .header-top-container {
+    padding: 0 8px !important;
+  }
+  .header-brand-group .logo-sub-text {
+    display: none !important;
+  }
+  .header-brand-group .logo-main-text {
+    font-size: 1.2rem !important;
+  }
+  .header-auth-group {
+    gap: 4px !important;
+  }
+  .btn-auth-signin, .btn-auth-signup {
+    padding: 4px 8px !important;
+    font-size: 11px !important;
   }
 }

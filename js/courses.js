@@ -813,48 +813,100 @@
   let _searchTerm = '';
   let _bookmarks  = new Set();
 
-  // ── RENDER COURSE CARD ───────────────────────────────────────
+    // ── RENDER COURSE CARD (WOLFRAM U STYLE - LOGISTICS TOPICS) ──────────
+  const WF_BADGES = {
+    1: { label: 'ON DEMAND', cls: 'wf-badge-demand' },
+    2: { label: 'ON DEMAND', cls: 'wf-badge-demand' },
+    3: { label: 'UPDATED', cls: 'wf-badge-updated', edition: '3rd Edition' },
+    4: { label: 'NEW', cls: 'wf-badge-new' },
+    5: { label: 'NEW', cls: 'wf-badge-new' },
+    6: { label: 'NEW', cls: 'wf-badge-new' },
+    7: { label: 'NEW', cls: 'wf-badge-new' },
+    8: { label: 'NEW', cls: 'wf-badge-new' },
+    9: { label: 'POPULAR', cls: 'wf-badge-popular' },
+    10: { label: 'ON DEMAND', cls: 'wf-badge-demand' },
+    11: { label: 'UPDATED', cls: 'wf-badge-updated', edition: '2026 Edition' },
+    12: { label: 'POPULAR', cls: 'wf-badge-popular' },
+    13: { label: 'NEW', cls: 'wf-badge-new' },
+    14: { label: 'ON DEMAND', cls: 'wf-badge-demand' },
+    15: { label: 'UPDATED', cls: 'wf-badge-updated', edition: '2nd Edition' },
+    16: { label: 'POPULAR', cls: 'wf-badge-popular' }
+  };
+
+  function getBadgeForCourse(c) {
+    if (WF_BADGES[c.id]) return WF_BADGES[c.id];
+    const types = ['ON DEMAND', 'NEW', 'UPDATED', 'POPULAR'];
+    const idx = (c.id || 0) % 4;
+    const label = types[idx];
+    const clses = ['wf-badge-demand', 'wf-badge-new', 'wf-badge-updated', 'wf-badge-popular'];
+    return { label, cls: clses[idx], edition: label === 'UPDATED' ? '2026 Edition' : null };
+  }
+
+  const FORMAT_MAP = {
+    1: '16 weeks | FIATA Certified',
+    2: '40 Hours | IATA Certification',
+    3: '60 Hours | Masterclass',
+    4: '12 Modules | Executive Diploma',
+    5: '1 h | Webinar',
+    6: '1 h 15 min | Webinar',
+    7: '7 h | Interactive Course',
+    8: '22 min | Video Lesson',
+    9: '42 min | Video Course',
+    10: '2 h 30 min | Interactive Course',
+    11: '5 h | Study Group',
+    12: '5 h | Study Group',
+    13: '2 h | Interactive Lab',
+    14: '3 h 45 min | Webinar',
+    15: '8 h | Certified Course',
+    16: '30 min | Video Lesson',
+    17: '1 h 30 min | Technical Seminar',
+    18: '6 h | Masterclass',
+    19: '45 min | Video Lesson',
+    20: '10 h | Interactive Course',
+    21: '4 h | Executive Briefing',
+    22: '1 h 10 min | Webinar',
+    23: '3 h | Study Group',
+    24: '12 h | Advanced Diploma'
+  };
+
+  function getFormatForCourse(c) {
+    if (FORMAT_MAP[c.id]) return FORMAT_MAP[c.id];
+    const formats = ['Webinar', 'Interactive Course', 'Video Lesson', 'Study Group'];
+    const fmt = formats[(c.id || 0) % formats.length];
+    const dur = c.duration || (c.hours ? c.hours + ' h' : '2 h');
+    return `${dur} | ${fmt}`;
+  }
+
   function renderCard(c) {
-    const img  = c.image || IMG_CYCLE[(c.id - 1) % 4];
-    const pct  = Math.min(100, Math.round((c.enrolled / 5000) * 100));
-    const badgeHtml = c.badge && BADGE_CONFIG[c.badge]
-      ? `<span class="course-card-badge ${BADGE_CONFIG[c.badge].cls}">${BADGE_CONFIG[c.badge].label}</span>` : '';
-    const catColor = CAT_COLORS[c.category] || '#0a2342';
-    const catBg    = CAT_BG[c.category]    || 'rgba(10,35,66,0.12)';
-    const isBookmarked = _bookmarks.has(c.id);
+    const img = c.image || 'images/course_1.jpg';
+    const badge = getBadgeForCourse(c);
+    const formatText = getFormatForCourse(c);
+    const editionTag = badge.edition ? `<span class="wf-edition-tag">${badge.edition}</span>` : '';
 
     return `
-    <div class="course-card" data-category="${c.category}" data-price="${c.price}" data-rating="${c.rating}" data-enrolled="${c.enrolled}" data-id="${c.id}" data-title="${c.title.toLowerCase()}" onclick="hydrateCourseDetail(${c.id}); switchView('view-course-detail')">
-      <div class="card-accent-bar" style="background:${catColor}"></div>
-      <div class="card-thumb-wrap">
-        <img src="${img}" alt="${c.title}" class="card-thumb" loading="lazy" onerror="this.src='images/course_1.jpg'" />
-        <span class="card-cat-pill" style="background:${catBg};color:${catColor}">${c.categoryLabel}</span>
-        ${badgeHtml}
-        <button class="card-bookmark ${isBookmarked ? 'bookmarked' : ''}" title="Bookmark" onclick="event.stopPropagation(); bookmarkCourse(${c.id}, this)">
-          <i class="fa-${isBookmarked ? 'solid' : 'regular'} fa-bookmark"></i>
-        </button>
+    <div class="wf-course-card" data-category="${c.category}" data-id="${c.id}" onclick="hydrateCourseDetail(${c.id}); switchView('view-course-detail')">
+      <div class="wf-card-header">
+        <div class="wf-header-top-row">
+          <span class="wf-badge ${badge.cls}">${badge.label}</span>
+          <div class="wf-feature-icons">
+            <span class="wf-feat-icon" title="Certificate Included">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>
+            </span>
+            <span class="wf-feat-icon" title="Accredited Certification">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2L4 6v6c0 5.5 3.8 10.7 8 12 4.2-1.3 8-6.5 8-12V6l-8-4z"/></svg>
+            </span>
+          </div>
+        </div>
+        <h4 class="wf-card-title">${c.title}</h4>
       </div>
-      <div class="card-body">
-        <h4 class="card-title">${c.title}</h4>
-        <div class="card-instructor"><i class="fa-solid fa-user-tie"></i> ${c.instructor} · <span class="card-org">${c.org}</span></div>
-        <div class="card-rating">
-          <span class="card-rating-num">${c.rating.toFixed(1)}</span>
-          <span class="card-stars">${STAR_HTML(c.rating)}</span>
-          <span class="card-review-count">(${c.reviews.toLocaleString()})</span>
-        </div>
-        <div class="card-progress-wrap">
-          <div class="card-progress-bar" style="width:${pct}%"></div>
-        </div>
-        <div class="card-progress-label">${c.enrolled.toLocaleString()} enrolled</div>
-        <div class="card-chips">
-          <span class="chip"><i class="fa-solid fa-clock"></i> ${c.duration}</span>
-          <span class="chip"><i class="fa-solid fa-layer-group"></i> ${c.modules} mod.</span>
-          <span class="chip"><i class="fa-solid fa-signal"></i> ${c.level}</span>
-        </div>
+
+      <div class="wf-card-media">
+        <img src="${img}" alt="${c.title}" class="wf-card-img" loading="lazy" onerror="this.src='images/course_1.jpg'" />
+        ${editionTag}
       </div>
-      <div class="card-footer">
-        <div class="card-price">${c.priceFormatted}</div>
-        <button class="course-enroll-btn" onclick="event.stopPropagation(); hydrateCourseDetail(${c.id}); switchView('view-course-detail')">Enroll Now</button>
+
+      <div class="wf-card-footer-strip">
+        <span>${formatText}</span>
       </div>
     </div>`;
   }
@@ -863,7 +915,7 @@
   function renderGrid(courses) {
     const grid  = document.getElementById('coursesGrid');
     const empty = document.getElementById('coursesEmpty');
-    const countBadge = document.getElementById('coursesGridCount');
+    const countEl = document.getElementById('wfResultsCount') || document.getElementById('coursesGridCount');
     if (!grid) return;
     if (courses.length === 0) {
       grid.innerHTML = '';
@@ -872,72 +924,109 @@
       if (empty) empty.style.display = 'none';
       grid.innerHTML = courses.map(renderCard).join('');
     }
-    if (countBadge) countBadge.textContent = courses.length;
+    if (countEl) countEl.textContent = `${courses.length} results`;
   }
 
-  // ── GET FILTERED + SORTED LIST ───────────────────────────────
   function getFilteredCourses() {
+    return COURSES_DB.slice();
+  }
+
+  // ── FILTER FUNCTIONALITY (WOLFRAM U TOOLBAR) ──────────────────
+  window.applyWolframFilters = function() {
+    const type = document.getElementById('wfFilterType')?.value || '';
+    const diff = document.getElementById('wfFilterDifficulty')?.value || '';
+    const cert = document.getElementById('wfFilterCertification')?.value || '';
+    const time = document.getElementById('wfFilterTime')?.value || '';
+    const sort = document.getElementById('wfFilterSort')?.value || 'popular';
+    const q = (document.getElementById('wfSearchInput')?.value || '').trim().toLowerCase();
+
     let list = COURSES_DB.slice();
-    if (_activePill !== 'all') list = list.filter(c => c.category === _activePill);
-    if (_searchTerm) {
-      const q = _searchTerm.toLowerCase();
+
+    if (type && type !== 'all') {
+      const typeKeywords = {
+        'interactive': ['interactive', 'course', 'lab', 'workshop', 'diploma'],
+        'webinar': ['webinar', 'seminar', 'briefing', 'session'],
+        'video': ['video', 'lesson', 'lecture'],
+        'studygroup': ['study', 'group', 'cohort', 'masterclass']
+      };
+      const allowed = typeKeywords[type] || [type];
+      list = list.filter(c => {
+        const fmt = getFormatForCourse(c).toLowerCase();
+        return allowed.some(k => fmt.includes(k));
+      });
+    }
+
+    if (diff && diff !== 'all') {
+      list = list.filter(c => (c.level || '').toLowerCase() === diff.toLowerCase());
+    }
+
+    if (cert && cert !== 'all') {
+      list = list.filter(c => {
+        const cat = (c.category || '').toLowerCase();
+        const title = (c.title || '').toLowerCase();
+        const tags = (c.tags || []).join(' ').toLowerCase();
+        const org = (c.org || '').toLowerCase();
+        return cat.includes(cert) || title.includes(cert) || tags.includes(cert) || org.includes(cert);
+      });
+    }
+
+    if (time && time !== 'all') {
+      if (time === 'short') list = list.filter(c => (c.hours || 10) < 5);
+      else if (time === 'medium') list = list.filter(c => (c.hours || 10) >= 5 && (c.hours || 10) <= 20);
+      else if (time === 'long') list = list.filter(c => (c.hours || 10) > 20);
+    }
+
+    if (q) {
       list = list.filter(c =>
         c.title.toLowerCase().includes(q) ||
-        c.instructor.toLowerCase().includes(q) ||
-        c.org.toLowerCase().includes(q) ||
-        (c.tags || []).some(t => t.includes(q))
+        (c.instructor || '').toLowerCase().includes(q) ||
+        (c.org || '').toLowerCase().includes(q) ||
+        (c.tags || []).some(t => t.toLowerCase().includes(q))
       );
     }
-    switch (_activeSort) {
-      case 'popular':   list.sort((a,b) => b.enrolled - a.enrolled); break;
-      case 'newest':    list.sort((a,b) => b.id - a.id); break;
-      case 'price-asc': list.sort((a,b) => a.price - b.price); break;
-      case 'price-desc':list.sort((a,b) => b.price - a.price); break;
-    }
-    return list;
-  }
 
-  // ── PUBLIC: Filter by pill ───────────────────────────────────
+    if (sort === 'popular') list.sort((a,b) => (b.enrolled || 0) - (a.enrolled || 0));
+    else if (sort === 'newest') list.sort((a,b) => b.id - a.id);
+    else if (sort === 'title') list.sort((a,b) => a.title.localeCompare(b.title));
+    else if (sort === 'rating') list.sort((a,b) => (b.rating || 0) - (a.rating || 0));
+
+    renderGrid(list);
+  };
+
+  window.resetWolframFilters = function() {
+    if (document.getElementById('wfFilterType')) document.getElementById('wfFilterType').value = '';
+    if (document.getElementById('wfFilterDifficulty')) document.getElementById('wfFilterDifficulty').value = '';
+    if (document.getElementById('wfFilterCertification')) document.getElementById('wfFilterCertification').value = '';
+    if (document.getElementById('wfFilterTime')) document.getElementById('wfFilterTime').value = '';
+    if (document.getElementById('wfFilterSort')) document.getElementById('wfFilterSort').value = 'popular';
+    if (document.getElementById('wfSearchInput')) document.getElementById('wfSearchInput').value = '';
+    renderGrid(COURSES_DB.slice());
+  };
+
   window.filterCoursesByPill = function(btn, filter) {
-    _activePill = filter;
-    document.querySelectorAll('#coursePills .course-pill').forEach(p => p.classList.remove('active'));
-    if (btn) btn.classList.add('active');
-    const titleEl = document.getElementById('coursesGridTitle');
-    if (titleEl) {
-      const count = getFilteredCourses().length;
-      const label = filter === 'all' ? 'All Courses' : btn ? btn.textContent.replace(/\d+/,'').trim() : filter;
-      titleEl.innerHTML = `${label} <span id="coursesGridCount" class="grid-count-badge">${count}</span>`;
+    if (document.getElementById('wfFilterCertification')) {
+      document.getElementById('wfFilterCertification').value = filter === 'all' ? '' : filter;
+      applyWolframFilters();
     }
-    renderGrid(getFilteredCourses());
   };
 
-  // ── PUBLIC: Filter by search ─────────────────────────────────
   window.filterCourseCards = function() {
-    const inp = document.getElementById('courseSearchInput');
-    _searchTerm = inp ? inp.value.trim() : '';
-    renderGrid(getFilteredCourses());
+    applyWolframFilters();
   };
 
-  // ── PUBLIC: Sort ─────────────────────────────────────────────
   window.sortCourses = function(sort) {
-    _activeSort = sort;
-    renderGrid(getFilteredCourses());
-  };
-
-  // ── PUBLIC: Bookmark ─────────────────────────────────────────
-  window.bookmarkCourse = function(courseId, btn) {
-    if (_bookmarks.has(courseId)) {
-      _bookmarks.delete(courseId);
-      btn.classList.remove('bookmarked');
-      btn.innerHTML = '<i class="fa-regular fa-bookmark"></i>';
-    } else {
-      _bookmarks.add(courseId);
-      btn.classList.add('bookmarked');
-      btn.innerHTML = '<i class="fa-solid fa-bookmark"></i>';
+    if (document.getElementById('wfFilterSort')) {
+      document.getElementById('wfFilterSort').value = sort;
+      applyWolframFilters();
     }
   };
 
-  // ── PUBLIC: Toggle curriculum module ─────────────────────────
+  window.bookmarkCourse = function(courseId, btn) {
+    // Stub
+  };
+
+
+  // ── PUBLIC: Accordion toggle ─────────────────────────────────
   window.toggleCourseModule = function(headerEl) {
     const row = headerEl.closest('.crs-module-row');
     if (!row) return;

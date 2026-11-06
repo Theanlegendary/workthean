@@ -292,8 +292,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showJobDetail(projectId, updateHash = true) {
-    const p = state.projects.find(x => x.id === projectId) || 
-              initialProjects.find(x => x.id === projectId) || 
+    const p = (typeof enterpriseJobsDatabase !== 'undefined' ? enterpriseJobsDatabase.find(x => x.id === projectId) : null) ||
+              state.projects.find(x => x.id === projectId) || 
+              (typeof initialProjects !== 'undefined' ? initialProjects.find(x => x.id === projectId) : null) || 
               state.projects[0];
 
     if (!p) return;
@@ -395,6 +396,13 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.hash = `job?id=${encodeURIComponent(p.id)}`;
     }
   }
+
+  // Expose to window cleanly
+  window.showJobDetail = function(id) {
+    showJobDetail(id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  window.openJobDetail = window.showJobDetail;
 
   /* ==========================================================================
      SEARCH & FILTERING
@@ -4002,3 +4010,5 @@ document.addEventListener('DOMContentLoaded', () => {
     renderSplitJobDetail(currentSplitJobId);
   }
 });
+
+

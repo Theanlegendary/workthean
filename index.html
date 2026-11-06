@@ -41,81 +41,99 @@
   </svg>
 
   <!-- ==========================================================================
-       1. TOP UTILITY BAR
+       APP HEADER (TIER 1: CLEAN WHITE TOP BAR + TIER 2: BRAND BLUE NAVIGATION)
        ========================================================================== -->
-  <div class="utility-bar">
-    <div class="site-width utility-inner">
-      <div class="utility-left">
-        <span class="utility-tagline">National Smart Logistics &amp; Enterprise Career Platform</span>
-        <span class="location"><svg class="icon"><use href="#i-pin"></use></svg><span id="current-location">Vietnam (All Regions)</span></span>
-        <button type="button" class="location-switch" data-action="location" onclick="showToast('Active Region: Nationwide (HCMC, Hanoi, Da Nang, Cai Mep, Hai Phong)');">Switch</button>
-      </div>
-      <div class="utility-links" aria-label="Quick Navigation">
-        <details><summary>Website Navigation <svg class="icon"><use href="#i-down"></use></svg></summary><div class="utility-popover"><a href="#jobs" onclick="switchView('browse')">Job Openings</a><a href="#events">Career Summits</a><a href="#courses" onclick="switchView('courses')">Course Center</a></div></details>
-        <details><summary>Candidate Tools <svg class="icon"><use href="#i-down"></use></svg></summary><div class="utility-popover"><button type="button" onclick="showToast('AI Resume: Real-time ATS CV Builder loaded');">AI Resume</button><button type="button" onclick="showToast('AI Mock Interview: 3-Minute Video Simulation');">AI Interview</button><a href="#certificates">Certifications</a></div></details>
-        <details><summary>Recommended Courses <svg class="icon"><use href="#i-down"></use></svg></summary><div class="utility-popover"><a href="#courses" onclick="switchView('courses')">FIATA Maritime</a><a href="#courses" onclick="switchView('courses')">Customs EDI</a><a href="#courses" onclick="switchView('courses')">Cold Chain 4.0</a></div></details>
-        <details><summary>Enterprise Solutions <svg class="icon"><use href="#i-down"></use></svg></summary><div class="utility-popover"><a href="#about">Enterprise Network</a><a href="#qualifications">Accreditations</a><a href="#footer">Contact Us</a></div></details>
-        <details><summary>Official Channels <svg class="icon"><use href="#i-down"></use></svg></summary><div class="utility-popover"><button type="button" onclick="window.open('https://youtube.com', '_blank')">YouTube Channel</button><button type="button" onclick="showToast('Direct Hotline: 1900 6868 (24/7 Support)');">Online Support</button></div></details>
-      </div>
-      <a class="utility-phone" href="tel:19006868"><svg class="icon"><use href="#i-phone"></use></svg>1900-6868</a>
-    </div>
-  </div>
+  <header class="app-header" role="banner">
+    
+    <!-- Tier 1: Pure Clean White Top Bar -->
+    <div class="header-top-white-bar">
+      <div class="container header-top-container">
+        
+        <!-- Brand Logo & Social Utilities on Left -->
+        <div class="header-brand-group">
+          <a href="#" class="brand-logo-red" data-view="home" onclick="switchView('home'); return false;">
+            <div class="logo-main-text">Vietnam<span>Jobs</span></div>
+            <div class="logo-sub-text">VIETNAM RECRUITMENT &amp; CAREER MARKETPLACE</div>
+          </a>
+          <div class="header-social-pills">
+            <a href="#" class="social-circle-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" class="social-circle-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="social-circle-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="tel:19006868" class="social-circle-btn" title="Hotline 1900 6868"><i class="fa-solid fa-phone"></i></a>
+          </div>
+        </div>
 
-  <!-- ==========================================================================
-       2. MAIN HEADER (SOLID RED BRAND STRIP)
-       ========================================================================== -->
-  <header class="main-header">
-    <div class="site-width nav-inner">
-      <a class="brand" href="#" onclick="switchView('home'); return false;" aria-label="VietnamJobs Home">
-        <img src="images/brand_vj.svg" alt="VietnamJobs" width="103" height="42" style="width:103px; height:42px; object-fit:contain;">
-      </a>
-      <nav id="main-navigation" class="nav-links" aria-label="Main Navigation">
-        <a class="nav-link active" href="#" data-view="home" onclick="switchView('home'); return false;">Home</a>
-        <a class="nav-link" href="#" data-view="browse" onclick="switchView('browse'); return false;">Job Search</a>
-        <a class="nav-link" href="#" data-view="companies" onclick="switchView('companies'); return false;">Top Công Ty &amp; Giải Pháp</a>
-        <a class="nav-link" href="#" data-view="courses" onclick="switchView('courses'); return false;">Courses &amp; Certifications</a>
-        <a class="nav-link" href="#events" onclick="document.getElementById('events')?.scrollIntoView({behavior:'smooth'});">Career Summits</a>
-        <a class="nav-link" href="#news" onclick="document.getElementById('news')?.scrollIntoView({behavior:'smooth'});">Market Intelligence</a>
-        <a class="nav-link" href="#" data-view="freelancers" onclick="switchView('freelancers'); return false;">Candidates &amp; CV</a>
-        <a class="nav-link" href="#" data-view="dashboard" onclick="switchView('dashboard'); return false;">Enterprise Portal</a>
-      </nav>
-      <div class="nav-actions">
-        <button type="button" class="header-search" aria-label="Quick Search" onclick="document.getElementById('search-input')?.focus();"><svg class="icon"><use href="#i-search"></use></svg></button>
-        <button type="button" class="auth-button" id="auth-button" onclick="showToast('Welcome to VietnamJobs Recruitment Portal');">Sign In <span>|</span> Register</button>
-        <button type="button" class="mobile-menu" id="mobile-menu" aria-label="Open Navigation"><svg class="icon"><use href="#i-menu"></use></svg></button>
+        <!-- Right: Capsule Search & Action Buttons -->
+        <div class="header-top-right-group">
+          <div class="header-capsule-search">
+            <input type="text" id="top-capsule-search-input" placeholder="AI &amp; Machine Learning Solution..." aria-label="Tìm kiếm nhanh">
+            <i class="fa-solid fa-magnifying-glass" id="btn-top-capsule-search" onclick="const q = document.getElementById('top-capsule-search-input')?.value; if(q){ switchView('browse'); }"></i>
+          </div>
+
+          <div class="flag-language-btn" title="Ngôn ngữ">
+            <span>🇻🇳 VN</span>
+          </div>
+
+          <!-- Auth Actions: Guest vs Logged-In State -->
+          <div class="header-auth-group" id="header-auth-guest">
+            <button type="button" class="btn-auth-signin" id="btn-header-signin" onclick="showToast('Chào mừng bạn đến với Cổng tuyển dụng VietnamJobs');">
+              <i class="fa-solid fa-right-to-bracket"></i> Đăng Nhập
+            </button>
+            <button type="button" class="btn-auth-signup" id="btn-header-signup" onclick="showToast('Đăng ký tài khoản ứng viên / doanh nghiệp mới');">
+              <i class="fa-solid fa-user-plus"></i> Đăng Ký
+            </button>
+          </div>
+
+          <button type="button" class="btn-signup-red-solid" id="btn-open-post-project" onclick="showToast('Chức năng Đăng tin tuyển dụng dành cho Nhà tuyển dụng');">
+            <i class="fa-solid fa-plus-circle"></i> Đăng Tin Tuyển Dụng
+          </button>
+        </div>
+
       </div>
     </div>
+
+    <!-- Tier 2: Solid Brand Navigation Strip (VLR Style) -->
+    <nav class="header-brand-nav-strip" role="navigation" aria-label="Primary Navigation">
+      <div class="container brand-nav-container">
+        
+        <div class="brand-nav-links-left">
+          <button type="button" class="brand-nav-item home-icon-btn active" data-view="home" onclick="switchView('home'); return false;" title="Trang chủ">
+            <i class="fa-solid fa-house"></i>
+          </button>
+          <button type="button" class="brand-nav-item" data-view="news" onclick="document.getElementById('news')?.scrollIntoView({behavior:'smooth'}); return false;">
+            Thời Sự Tuyển Dụng
+          </button>
+          <button type="button" class="brand-nav-item" data-view="browse" onclick="switchView('browse'); return false;">
+            Việc Làm Mới
+          </button>
+          <button type="button" class="brand-nav-item" data-view="companies" onclick="switchView('companies'); return false;">
+            Top Công Ty
+          </button>
+          <button type="button" class="brand-nav-item" data-view="freelancers" onclick="switchView('freelancers'); return false;">
+            Dành Cho Ứng Viên
+          </button>
+          <button type="button" class="brand-nav-item" data-view="courses" onclick="switchView('courses'); return false;">
+            Học Bổng &amp; Sinh Viên
+          </button>
+          <button type="button" class="brand-nav-item" data-view="companies" onclick="openCompanyDetail('fpt'); return false;">
+            Công Nghệ &amp; IT
+          </button>
+          <button type="button" class="brand-nav-item" data-view="freelancers" onclick="switchView('freelancers'); return false;">
+            Kỹ Năng &amp; CV
+          </button>
+          <button type="button" class="brand-nav-item" data-view="dashboard" onclick="switchView('dashboard'); return false;" id="nav-btn-headhunt-trigger">
+            Doanh Nghiệp / Headhunt
+          </button>
+        </div>
+
+        <div class="brand-nav-badge-right" id="nav-btn-hot-badge" data-view="browse" onclick="switchView('browse');">
+          <i class="fa-solid fa-fire"></i> HOT JOB
+        </div>
+
+      </div>
+    </nav>
   </header>
 
-  <!-- ==========================================================================
-       3. ANNOUNCEMENT BAR & SEARCH FORM
-       ========================================================================== -->
-  <div class="announcement-bar">
-    <div class="site-width announcement-inner">
-      <button type="button" class="announcement-title">
-        <svg class="flame hot-flame" viewBox="0 0 24 24" aria-hidden="true" style="width:20px; height:27px; flex:0 0 auto;">
-          <defs><linearGradient id="flame-grad-top" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#ff463e"/><stop offset="1" stop-color="#ffaf3d"/></linearGradient></defs>
-          <path fill="url(#flame-grad-top)" d="M13.2 1.2c.5 4.1-2.8 4.9-2 8.3-1.2-.6-2-1.8-2-3.5C5.9 8 4 11.1 4 14.1 4 19.2 7.6 22 12 22s8-3.1 8-7.5c0-3.8-2.4-7.4-6.8-13.3Z"/>
-          <path fill="#ffe083" d="M12.5 10.9c.3 2-2.5 3-2.5 5.4 0 1.8 1 2.9 2.7 2.9 1.9 0 3.1-1.4 3.1-3.2 0-1.5-1-3.1-3.3-5.1Z"/>
-        </svg>
-        <span style="font-weight:700; color:#DC2626;">Market Alert:</span>
-        <span>Vietnam deep-sea port logistics &amp; cold chain hiring surges 34% with 15,000+ open positions in 2026.</span>
-      </button>
-      <form class="search-form" id="site-search" role="search" onsubmit="event.preventDefault(); const q=document.getElementById('search-input')?.value; if(q){ switchView('browse'); const s=document.getElementById('search-input-browse'); if(s){ s.value=q; applyFilters(); } }">
-        <select id="search-type" aria-label="Search Type">
-          <option value="jobs">Jobs</option>
-          <option value="courses">Courses</option>
-          <option value="news">Intelligence</option>
-        </select>
-        <input id="search-input" type="search" placeholder="Search jobs, skills, freight forwarders, certifications..." autocomplete="off">
-        <button type="submit"><svg class="icon"><use href="#i-search"></use></svg> Search</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- ==========================================================================
-       MAIN CONTENT CONTAINER (SPA VIEWS)
-       ========================================================================== -->
   <main class="site-width page-main">
 
     <!-- ========================================================================

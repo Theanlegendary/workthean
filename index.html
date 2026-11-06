@@ -25,6 +25,7 @@
     <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"></path><circle cx="12" cy="10" r="2.2"></circle></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 2a16 16 0 0 0 5.5 5.5l2-2.5 5 2v4c0 1.1-.9 2-2 2C10.2 20.5 3.5 13.8 3 5c0-1.1.9-2 2-2Z"></path><path d="M15 4c2.5.5 4.5 2.5 5 5M15 7c1 .3 1.7 1 2 2"></path></symbol>
+    <symbol id="i-zalo" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#0068FF"/><text x="16" y="20.5" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10.5" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="-0.3px">Zalo</text></symbol>
     <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M4 12h16"></path><rect x="8" y="8" width="8" height="8" rx="1"></rect></symbol>
     <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h9l4 4v6M6 3v18h7M15 3v5h4M9 11h6M9 15h4M15 19l5-5 1 1-5 5-2 .5z"></path></symbol>
     <symbol id="i-headphones" viewBox="0 0 24 24"><path d="M4 13v-2a8 8 0 0 1 16 0v2M4 13v3a2 2 0 0 0 2 2h1v-7H6a2 2 0 0 0-2 2ZM20 13v3a2 2 0 0 1-2 2h-1v-7h1a2 2 0 0 1 2 2ZM18 18c-.6 2-2.3 3-5 3"></path></symbol>
@@ -1596,6 +1597,9 @@
           <button type="button" class="company-nav-tab-btn" data-tab="events" onclick="switchCompanyTab('events');">
             <i class="fa-solid fa-calendar-star"></i> Sự Kiện &amp; Tech Talks
           </button>
+          <button type="button" class="company-nav-tab-btn" data-tab="life" onclick="switchCompanyTab('life');">
+            <i class="fa-brands fa-linkedin"></i> Life &amp; Employee Posts
+          </button>
           <button type="button" class="company-nav-tab-btn" data-tab="jobs" onclick="switchCompanyTab('jobs');">
             <i class="fa-solid fa-briefcase"></i> Tuyển Dụng
           </button>
@@ -1611,57 +1615,96 @@
   </main>
 
   <!-- ==========================================================================
-       FOOTER (4-COLUMN GRID MATCHING USER STRUCTURE)
+       ENHANCED BRAND FOOTER (HARMONIZED WITH HEADER THEME)
        ========================================================================== -->
-  <footer class="footer" id="footer">
-    <div class="site-width footer-columns">
-      <div>
-        <h3>About Us</h3>
-        <a href="#about">About VietnamJobs</a>
-        <a href="#about">Partner Network</a>
-        <a href="#" onclick="switchView('browse'); return false;">Site Directory</a>
-        <a href="#" onclick="showToast('Hiring Safety Guidelines'); return false;">Safety Guidelines</a>
-        <a href="#" onclick="showToast('Terms of Service'); return false;">Terms of Service</a>
+  <footer class="portal-compact-footer" id="footer" role="contentinfo">
+    <div class="container">
+      
+      <!-- Top Row: Horizontal Partner Links + Regional Select -->
+      <div class="portal-footer-top-row">
+        <nav class="portal-partner-nav" aria-label="Cổng liên kết đối tác">
+          <a href="#" onclick="showToast('Bộ Lao động - Thương binh và Xã hội'); return false;">Bộ Lao động - TB&amp;XH</a>
+          <span class="p-sep">|</span>
+          <a href="#" onclick="showToast('Cổng Tuyển dụng Quốc gia'); return false;">Cổng Tuyển dụng Quốc gia</a>
+          <span class="p-sep">|</span>
+          <a href="#" onclick="showToast('Hiệp hội Doanh nghiệp Dịch vụ Logistics Việt Nam'); return false;">Hiệp hội Logistics (VLA)</a>
+          <span class="p-sep">|</span>
+          <a href="#" onclick="showToast('Cục Hàng hải Việt Nam'); return false;">Cục Hàng hải Việt Nam</a>
+          <span class="p-sep">|</span>
+          <a href="#" onclick="showToast('Viện Nghiên cứu Phát triển Nhân lực'); return false;">Viện Nhân lực Quốc gia</a>
+          <span class="p-sep">|</span>
+          <a href="#" onclick="showToast('Hệ thống Đánh giá Kỹ năng Nghề'); return false;">Đánh giá Kỹ năng Nghề</a>
+        </nav>
+        <div class="portal-regional-select-wrap">
+          <select class="portal-regional-select" aria-label="Cổng thông tin địa phương" onchange="showToast('Chuyển tới cổng địa phương: ' + this.value);">
+            <option value="">Cổng thông tin địa phương ▾</option>
+            <option value="HN">Hà Nội</option>
+            <option value="HCM">TP. Hồ Chí Minh</option>
+            <option value="DN">Đà Nẵng</option>
+            <option value="HP">Hải Phòng</option>
+            <option value="BD">Bình Dương</option>
+            <option value="DN2">Đồng Nai</option>
+            <option value="BRVT">Bà Rịa - Vũng Tàu</option>
+          </select>
+        </div>
       </div>
-      <div>
-        <h3>Products &amp; Solutions</h3>
-        <a href="#" onclick="switchView('browse'); return false;">Enterprise Recruitment</a>
-        <a href="#" onclick="switchView('courses'); return false;">Accredited Certifications</a>
-        <a href="#" onclick="switchView('browse'); return false;">Headhunt VIP Service</a>
-        <a href="#" onclick="switchView('freelancers'); return false;">Candidate Database</a>
-        <a href="#" onclick="switchView('dashboard'); return false;">Employer ATS Portal</a>
+
+      <div class="portal-footer-divider"></div>
+
+      <!-- Middle Row: Centered Navigation Links -->
+      <div class="portal-footer-mid-nav">
+        <a href="#about" onclick="showToast('Tuyên bố bản quyền & quy chế'); return false;">Quy chế Hoạt động</a>
+        <span class="p-sep">|</span>
+        <a href="#" onclick="switchView('browse'); return false;">Sơ đồ Website</a>
+        <span class="p-sep">|</span>
+        <a href="#" onclick="showToast('Tổng đài hỗ trợ: 1900 6868 - Email: support@vietnamjobs.vn'); return false;">Liên hệ Chúng tôi</a>
+        <span class="p-sep">|</span>
+        <a href="#" onclick="showToast('Chính sách Bảo mật Thông tin Cá nhân'); return false;">Chính sách Bảo mật</a>
       </div>
-      <div>
-        <h3>Enterprise Partnerships</h3>
-        <p>Inquiries: Director of Alliances</p>
-        <p>Direct: (+84) 28 3910 6868</p>
-        <p>Email: enterprise@vietnamjobs.vn</p>
+
+      <!-- Bottom Row: Centered Badges + Official License Details -->
+      <div class="portal-footer-bottom-block">
+        
+        <!-- Left Official Emblem -->
+        <div class="portal-seal-left" title="Cơ quan Chủ quản Cổng Quốc gia">
+          <svg viewBox="0 0 44 52" width="40" height="48" class="seal-svg">
+            <path d="M22 2 L42 8 V26 C42 37 31 47 22 50 C13 47 2 37 2 26 V8 Z" fill="#1e3a8a" stroke="#3b82f6" stroke-width="1.5"/>
+            <path d="M22 5 L39 10 V25 C39 34 29 44 22 47 C15 44 5 34 5 25 V10 Z" fill="#2563eb"/>
+            <!-- Star -->
+            <polygon points="22,13 24.5,19 31,19.5 26,24 27.5,30.5 22,27 16.5,30.5 18,24 13,19.5 19.5,19" fill="#fbbf24"/>
+            <text x="22" y="38" font-size="5" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">VIETNAM</text>
+            <text x="22" y="43" font-size="3.5" font-weight="700" fill="#93c5fd" text-anchor="middle">JOBS</text>
+          </svg>
+        </div>
+
+        <!-- Center License & Operational Text -->
+        <div class="portal-license-text">
+          <div class="license-line"><strong>Cơ quan chủ quản:</strong> Trung tâm Hướng nghiệp &amp; Đào tạo Kỹ thuật Nhân lực Quốc gia</div>
+          <div class="license-line">Giấy phép ICP số: <strong>09079694/GP-BTTTT</strong> &bull; Mã định danh An toàn Mạng: <strong>110401200230</strong></div>
+          <div class="license-line">Mã định danh Website: <strong>bm15000006</strong> &bull; Bản quyền &copy; 2026 VietnamJobs. All Rights Reserved.</div>
+        </div>
+
+        <!-- Right Official Verification Badge (Red Box) -->
+        <a href="#" onclick="showToast('Cổng tiếp nhận phản ánh & giám sát dịch vụ công trực tuyến'); return false;" class="portal-seal-right" title="Cổng giám sát chất lượng & báo lỗi">
+          <div class="seal-red-box">
+            <div class="seal-red-icon">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="seal-red-labels">
+              <span class="line-1">Cổng Quốc Gia</span>
+              <span class="line-2">GIÁM SÁT &bull; BÁO LỖI</span>
+            </div>
+          </div>
+        </a>
+
       </div>
-      <div>
-        <h3>Academic &amp; Port Cooperation</h3>
-        <p>Lead: Vietnam Logistics Review</p>
-        <p>Hotline: 1900 6868</p>
-        <p>Email: support@vietnamjobs.vn</p>
-      </div>
-    </div>
-    <div class="footer-links">
-      <div class="site-width">
-        <strong>Affiliated Portals:</strong>
-        <a href="#" onclick="switchView('home'); return false;">VietnamJobs</a>
-        <a href="#" onclick="switchView('courses'); return false;">Logistics Academy</a>
-        <a href="#" onclick="switchView('browse'); return false;">Port Terminal Careers</a>
-        <a href="#" onclick="switchView('browse'); return false;">Air Cargo Exchange</a>
-        <a href="#" onclick="switchView('freelancers'); return false;">Customs Specialist Hub</a>
-      </div>
-    </div>
-    <div class="copyright">
-      Ministry of Industry and Trade Reg #2026046552 &bull; ISO 27001 Security Standard &bull; Copyright &copy; 2026 VietnamJobs Corporation. All Rights Reserved.
+
     </div>
   </footer>
 
   <!-- Floating Quick Tools Sidebar -->
   <aside class="quick-tools" aria-label="Quick Utilities">
-    <button type="button" onclick="showToast('Scan QR Code for VietnamJobs Mobile App');"><svg class="icon coral"><use href="#i-scan"></use></svg><span>QR App</span></button>
+    <button type="button" onclick="showToast('Connecting to Zalo Support...'); window.open('https://zalo.me', '_blank');" title="Chat via Zalo"><svg class="icon zalo-icon"><use href="#i-zalo"></use></svg><span>Zalo</span></button>
     <button type="button" onclick="switchView('courses');"><svg class="icon blue"><use href="#i-file"></use></svg><span>Courses</span></button>
     <button type="button" onclick="showToast('Connecting to 24/7 Logistics Career Specialist...');"><svg class="icon orange"><use href="#i-headphones"></use></svg><span>Support</span></button>
     <button type="button" onclick="showToast('Thank you for your feedback!');"><svg class="icon orange"><use href="#i-mail"></use></svg><span>Feedback</span></button>

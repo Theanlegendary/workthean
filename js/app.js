@@ -1227,7 +1227,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const avatarImg = f.photoUrl ? `<img src="${f.photoUrl}" alt="${f.name}" style="width:52px; height:52px; border-radius:50%; object-fit:cover; border:2px solid #fff; box-shadow:var(--shadow-sm);" />` : `<div style="width:52px; height:52px; border-radius:50%; background:var(--fl-primary-light); color:var(--fl-primary); font-weight:800; display:flex; align-items:center; justify-content:center; font-size:16px;">${f.avatarText}</div>`;
 
       return `
-        <div class="career-job-card" style="display:flex; flex-direction:column; justify-content:space-between; padding:22px; cursor:default;">
+        <div class="career-job-card candidate-clean-card" style="display:flex; flex-direction:column; justify-content:space-between; padding:22px; cursor:default; border:1px solid #E2E8F0 !important; border-left:1px solid #E2E8F0 !important; border-radius:14px; box-shadow:0 1px 3px rgba(0,0,0,0.04);">
           <div>
             <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:14px;">
               <div style="display:flex; align-items:center; gap:14px;">
@@ -2681,6 +2681,114 @@ window.switchCompanyTab = function(tabName) {
               <button type="button" class="btn-company-view-profile" onclick="openCompanyContactModal('${company.id}', 'Hợp tác tổ chức sự kiện: ${e.title.replace(/'/g, "\'")}')" style="flex:1;">
                 Liên Hệ Hợp Tác
               </button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  } else if (tabName === 'life') {
+    const posts = company.lifePosts || [
+      {
+        id: 'post-1',
+        author: 'Alex Byelyavtsev',
+        authorBadge: '3rd+',
+        authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=160&q=80',
+        authorTitle: `Master Mariner (Captain) | ${company.name}`,
+        websiteLink: 'Visit my website',
+        time: '4d • 🌐',
+        text: 'New on illuminem Voices: The Resilience Test: Heatwave (3 of 3). In summer 2026 heat raised Europe\'s cooling demands while green maritime technologies navigated unprecedented conditions across global supply chain corridors.',
+        image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=800&q=80',
+        likesCount: 2,
+        commentsCount: 1,
+        repostsCount: 1
+      },
+      {
+        id: 'post-2',
+        author: 'Kristina Garbe',
+        authorBadge: '3rd+',
+        authorAvatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=160&q=80',
+        authorTitle: `Key Client Director Automotive at ${company.name}`,
+        websiteLink: '',
+        time: '5d • 🌐',
+        text: 'Beyond Ambition: What 25 Electric Trucks in Germany teach Us About Scaling Zero-Emission Logistics across multi-modal networks and accelerating supply chain decarbonization.',
+        image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80',
+        likesCount: 91,
+        commentsCount: 6,
+        repostsCount: 3
+      },
+      {
+        id: 'post-3',
+        author: 'Đặng Minh Tuấn',
+        authorBadge: '1st',
+        authorAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80',
+        authorTitle: `Head of Ocean Freight & Port Operations | ${company.name} Vietnam`,
+        websiteLink: '',
+        time: '2d • 🌐',
+        text: 'Tự hào đón siêu tàu mẹ 24,000 TEUs cập cảng nước sâu Cái Mép tuần này! Đội ngũ logistics tại chỗ vận hành 24/7 bảo đảm giải phóng hàng thông suốt cho khách hàng xuất khẩu dệt may & thủy sản sang Bắc Mỹ.',
+        image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80',
+        likesCount: 142,
+        commentsCount: 18,
+        repostsCount: 12
+      }
+    ];
+
+    contentArea.innerHTML = `
+      <div style="margin-bottom: 24px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+          <div>
+            <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 4px 0;">
+              Trending employee content
+            </h2>
+            <p style="font-size: 14px; color: #64748B; margin: 0;">
+              Posts from ${company.name} employees &amp; leaders
+            </p>
+          </div>
+          <button type="button" class="btn-company-contact-now" onclick="openCompanyContactModal('${company.id}', 'Gặp gỡ và kết nối đội ngũ ${company.name}')">
+            <i class="fa-solid fa-user-plus"></i> Kết Nối Với Đội Ngũ
+          </button>
+        </div>
+      </div>
+
+      <div class="company-life-posts-grid">
+        ${posts.map(p => `
+          <div class="linkedin-post-card">
+            <div class="li-post-header">
+              <img src="${p.authorAvatar}" alt="${p.author}" class="li-author-avatar">
+              <div class="li-author-info">
+                <div class="li-author-name-row">
+                  <span class="li-author-name">${p.author}</span>
+                  <span class="li-degree-badge">${p.authorBadge}</span>
+                </div>
+                <div class="li-author-title">${p.authorTitle}</div>
+                ${p.websiteLink ? `<a href="#" onclick="showToast('Mở liên kết tác giả: ${p.websiteLink}'); return false;" class="li-author-link">${p.websiteLink}</a>` : ''}
+                <div class="li-post-timestamp">${p.time}</div>
+              </div>
+            </div>
+            <div class="li-post-content">
+              <p>${p.text}</p>
+            </div>
+            ${p.image ? `
+              <div class="li-post-media">
+                <img src="${p.image}" alt="Post Media" loading="lazy">
+              </div>
+            ` : ''}
+            <div class="li-post-social-counts">
+              <div class="li-reaction-icons">
+                <span class="reaction-badge thumb">👍</span>
+                <span class="reaction-badge light">💡</span>
+                <span class="reaction-badge clap">👏</span>
+                <span class="li-count-text">${p.likesCount}</span>
+              </div>
+              <div class="li-comments-count">
+                <span>${p.commentsCount} comments</span>
+                ${p.repostsCount ? `<span>• ${p.repostsCount} reposts</span>` : ''}
+              </div>
+            </div>
+            <div class="li-post-actions-row">
+              <button type="button" class="li-action-btn" onclick="this.classList.toggle('active');"><i class="fa-regular fa-thumbs-up"></i> Like</button>
+              <button type="button" class="li-action-btn" onclick="showToast('Bình luận trên bài viết của ${p.author}');"><i class="fa-regular fa-comment-dots"></i> Comment</button>
+              <button type="button" class="li-action-btn" onclick="showToast('Đã chia sẻ bài viết của ${p.author}');"><i class="fa-solid fa-retweet"></i> Repost</button>
+              <button type="button" class="li-action-btn" onclick="openCompanyContactModal('${company.id}', 'Liên hệ trực tiếp với nhân sự: ${p.author}');"><i class="fa-regular fa-paper-plane"></i> Send</button>
             </div>
           </div>
         `).join('')}

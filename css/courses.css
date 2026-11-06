@@ -1917,3 +1917,109 @@ body.dark-mode .crs-instructor-bio { color: var(--fl-text-body); }
   .featured-course-banner__right { display: none; }
   .crs-detail-hero { padding: 24px 0; }
 }
+
+/* ==========================================================================
+   VIETNAMJOBS BRAND BLUE HARMONIZATION FOR COURSES (MATCHES HEADER STYLE)
+   ========================================================================== */
+.courses-hero {
+  background: linear-gradient(135deg, #0A2540 0%, #0A66C2 60%, #004182 100%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.crs-detail-hero {
+  background: linear-gradient(135deg, #0A2540 0%, #0A66C2 100%) !important;
+  border-bottom: none !important;
+  box-shadow: 0 4px 20px rgba(10, 102, 194, 0.15) !important;
+}
+
+#crsDetailHero {
+  border-bottom: none !important;
+}
+
+/* Harmonized Buttons & Badges */
+.hero-search-btn,
+.course-enroll-btn,
+.crs-enroll-btn,
+.crs-enroll-big-btn,
+.featured-enroll-btn,
+.crs-sidebar-enroll-btn,
+.crs-sticky-enroll,
+.featured-course-banner__cta {
+  background: #0A66C2 !important;
+  background-image: none !important;
+  color: #FFFFFF !important;
+  border: 1px solid #0A66C2 !important;
+  font-weight: 700 !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.25) !important;
+}
+
+.hero-search-btn:hover,
+.course-enroll-btn:hover,
+.crs-enroll-btn:hover,
+.crs-enroll-big-btn:hover,
+.featured-enroll-btn:hover,
+.crs-sidebar-enroll-btn:hover,
+.crs-sticky-enroll:hover,
+.featured-course-banner__cta:hover {
+  background: #004182 !important;
+  border-color: #004182 !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(10, 102, 194, 0.4) !important;
+}
+
+/* Category Filter Pills */
+.course-pill.active {
+  background: #0A66C2 !important;
+  border-color: #0A66C2 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(10, 102, 194, 0.3) !important;
+}
+
+.course-pill:hover:not(.active) {
+  border-color: #0A66C2 !important;
+  color: #0A66C2 !important;
+}
+
+/* Outcomes and Features */
+.crs-outcomes-box {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 12px !important;
+}
+
+.crs-outcomes-list li i {
+  color: #38bdf8 !important;
+}
+
+.crs-breadcrumb .crs-bc-link,
+.crs-breadcrumb a {
+  color: #93c5fd !important;
+}
+
+.crs-try-btn {
+  color: #0A66C2 !important;
+  border-color: #0A66C2 !important;
+}
+
+.crs-try-btn:hover {
+  background: #0A66C2 !important;
+  color: #FFFFFF !important;
+}
+
+.crs-section-title i,
+.crs-instructor-title,
+.mod-item-icon,
+.crs-guarantee i,
+.crs-includes-list li i {
+  color: #0A66C2 !important;
+}
+
+.featured-course-banner {
+  background: linear-gradient(135deg, #0A2540 0%, #0A66C2 100%) !important;
+}
+
+.crs-progress-fill {
+  background: linear-gradient(90deg, #0A66C2, #38bdf8) !important;
+}

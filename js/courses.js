@@ -775,12 +775,12 @@
 
   // ── CATEGORY COLORS ─────────────────────────────────────────
   const CAT_COLORS = {
-    fiata:    '#0a2342',
+    fiata:    '#0A66C2',
     aviation: '#0284c7',
-    customs:  '#d97706',
-    warehouse:'#0d7a6b',
-    coldchain:'#0891b2',
-    esg:      '#16a34a',
+    customs:  '#0A66C2',
+    warehouse:'#004182',
+    coldchain:'#0284c7',
+    esg:      '#059669',
   };
   const CAT_BG = {
     fiata:    'rgba(10,35,66,0.12)',
@@ -990,7 +990,7 @@
 
     // Hero accent color
     const hero = document.getElementById('crsDetailHero');
-    if (hero) hero.style.borderBottom = `4px solid ${CAT_COLORS[c.category] || '#0d7a6b'}`;
+    if (hero) hero.style.borderBottom = 'none';
 
     // Sidebar image
     const img = document.getElementById('crsSidebarImg');

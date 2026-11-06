@@ -1174,7 +1174,43 @@
     }
   }
 
+  
+  // ── HOME PAGE COURSE CENTER CONTROLLER (USES OUR 24 COURSES) ──────
+  window.renderHomeCourses = function(cat = 'all') {
+    const grid = document.getElementById('course-grid');
+    if (!grid) return;
+
+    let list = COURSES_DB.slice();
+    if (cat && cat !== 'all') {
+      list = list.filter(c => c.category === cat || (cat === 'aviation' && c.category === 'air') || (cat === 'air' && c.category === 'aviation') || (cat === 'cold' && c.category === 'coldchain') || (cat === 'coldchain' && c.category === 'cold'));
+    }
+
+    const items = list.slice(0, 4);
+
+    grid.innerHTML = items.map(c => `
+      <article class="course-card" onclick="hydrateCourseDetail(${c.id}); switchView('view-course-detail')">
+        <div style="position:relative; width:100%; aspect-ratio:274/142; overflow:hidden; background:#f1f5f9;">
+          <img src="${c.image || 'images/course_1.jpg'}" alt="${c.title}" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='images/course_1.jpg'">
+          <span style="position:absolute; top:8px; left:8px; background:rgba(15,43,72,0.88); color:#ffffff; font-size:10px; font-weight:800; padding:2.5px 8px; border-radius:3px; text-transform:uppercase; letter-spacing:0.3px;">${c.categoryLabel}</span>
+        </div>
+        <div class="course-card-title">${c.title}</div>
+        <div class="course-meta">
+          <span><i class="fa-solid fa-graduation-cap"></i> ${c.duration || (c.hours ? c.hours + ' Hours' : '60 Hours')}</span>
+          <span style="color:#DC2626; font-weight:700;">★ ${c.rating.toFixed(1)} (${c.reviews.toLocaleString()})</span>
+        </div>
+      </article>
+    `).join('');
+  };
+
+  window.setCourseTab = function(btn, cat) {
+    document.querySelectorAll('.course-tab').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    renderHomeCourses(cat);
+  };
+
   function initCoursesView() {
+    renderHomeCourses("all");
+
     renderGrid(COURSES_DB.slice());
   }
 

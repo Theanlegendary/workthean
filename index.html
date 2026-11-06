@@ -334,15 +334,19 @@
       <!-- 5. MARKET INTELLIGENCE VIDEO BROADCASTS (#section-today) -->
       <section class="fw-today-section reveal" id="section-today" aria-label="Market Intelligence Video Broadcasts">
     <div class="container">
-      <div class="fw-today-header" style="display:flex; align-items:center; gap:10px; margin-bottom:20px;">
-        <span class="fw-section-bar" style="width:4px; height:22px; background:#D97706; border-radius:2px; display:inline-block;"></span>
-        <h2 class="fw-today-title" style="margin:0; font-size:20px; font-weight:700; color:#0F172A; display:inline-flex; align-items:center; gap:10px;">
-          Market Intelligence &bull; Video Broadcasts
-          <span class="fw-yt-official-badge" style="background:#FEE2E2; color:#DC2626; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px; display:inline-flex; align-items:center; gap:4px;">
-            <i class="fa-brands fa-youtube"></i> Official Channel
-          </span>
-        </h2>
-        <a href="#" class="section-view-all-link" data-view="news" style="color: #0A66C2; font-weight: 600; font-size: 13.5px; text-decoration: none; margin-left: auto;">View All Intelligence &gt;</a>
+      <div class="section-toolbar job-toolbar fw-today-toolbar" style="margin-bottom: 22px;">
+        <div class="job-tabs fw-today-tabs" role="tablist" aria-label="Market Intelligence Tabs">
+          <button type="button" class="job-tab active" role="tab" aria-selected="true">
+            <svg class="flame" viewBox="0 0 24 24" aria-hidden="true" style="width:19px; height:20px; vertical-align:-3px; margin-right:4px;">
+              <defs><linearGradient id="flame-gradient-today" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#ff463e"/><stop offset="1" stop-color="#ffaf3d"/></linearGradient></defs>
+              <path fill="url(#flame-gradient-today)" d="M13.2 1.2c.5 4.1-2.8 4.9-2 8.3-1.2-.6-2-1.8-2-3.5C5.9 8 4 11.1 4 14.1 4 19.2 7.6 22 12 22s8-3.1 8-7.5c0-3.8-2.4-7.4-6.8-13.3Z"/>
+              <path fill="#ffe083" d="M12.5 10.9c.3 2-2.5 3-2.5 5.4 0 1.8 1 2.9 2.7 2.9 1.9 0 3.1-1.4 3.1-3.2 0-1.5-1-3.1-3.3-5.1Z"/>
+            </svg>Market Intelligence &bull; Video Broadcasts
+          </button>
+          <button type="button" class="job-tab" role="tab" aria-selected="false" onclick="switchView('news')">Latest Briefs</button>
+          <button type="button" class="job-tab" role="tab" aria-selected="false" onclick="switchView('news')">Supply Chain Reports</button>
+        </div>
+        <button type="button" class="more-link" onclick="switchView('news')">View All Intelligence <svg class="icon"><use href="#i-chevron"></use></svg></button>
       </div>
 
       <div class="fw-yt-hub-grid">

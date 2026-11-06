@@ -4861,19 +4861,21 @@ function initFreightWavesInteractivity() {
       if (brandLink.classList.contains('b-fw')) {
         hub.scrollIntoView({ behavior: 'smooth' });
       } else if (brandLink.classList.contains('b-modern')) {
-        document.getElementById('modern-title')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const el = document.getElementById('modern-title') || document.getElementById('top-stories-title');
+        el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else if (brandLink.classList.contains('b-amship')) {
-        document.getElementById('amship-title')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const el = document.getElementById('amship-title') || document.getElementById('top-stories-title');
+        el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else if (brandLink.classList.contains('b-sonar')) {
-        document.getElementById('sonar-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (typeof showToast === 'function') showToast('SONAR: Dữ liệu phân tích logistics & giá cước vận tải thời gian thực');
       } else if (brandLink.classList.contains('b-trains')) {
         document.getElementById('cdl-title')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else if (brandLink.classList.contains('b-playbook')) {
         document.querySelector('.nav-cards')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else if (brandLink.classList.contains('b-postal')) {
-        document.getElementById('earnings-title')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        document.getElementById('mont-title')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else if (brandLink.classList.contains('b-forums')) {
-        if (typeof showToast === 'function') showToast('FreightWaves Community: Diễn đàn Logistics, Vận tải và Chuỗi cung ứng mở');
+        if (typeof showToast === 'function') showToast('FreightWaves Community: Diễn đàn Logistics & Vận Tải Quốc Tế');
       }
       return;
     }

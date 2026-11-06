@@ -192,6 +192,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (viewId === 'courses' && window.coursesController) {
       setTimeout(() => window.coursesController.init(), 30);
     }
+    if (viewId === 'companies' && typeof initCompaniesDirectory === 'function') {
+      setTimeout(() => initCompaniesDirectory(), 30);
+    }
+    document.querySelectorAll('.nav-link[data-view]').forEach(btn => {
+      if (btn.getAttribute('data-view') === viewId) btn.classList.add('active');
+      else btn.classList.remove('active');
+    });
 
     // Sync Top Tier-2 Brand Nav Items
     document.querySelectorAll('.brand-nav-item').forEach(btn => {
@@ -1795,4 +1802,1012 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+});
+
+/* ==========================================================================
+   ENTERPRISE COMPANIES SHOWCASE, TECH + AI, PRICING, EVENTS & B2B LEADS JS
+   ========================================================================== */
+
+const enterpriseCompaniesData = [
+  {
+    id: 'maersk',
+    name: 'A.P. Moller - Maersk (Vietnam & Greater Mekong)',
+    logo: 'images/brands/maersk.svg',
+    industry: 'Integrated Ocean & Inland Logistics',
+    category: 'logistics',
+    tagline: 'Connecting and simplifying global supply chains with digital ocean & inland solutions',
+    location: 'TP. Hồ Chí Minh & Hà Nội, Việt Nam',
+    size: '100,000+ toàn cầu (2,500+ tại VN)',
+    founded: '1904',
+    website: 'https://www.maersk.com',
+    desc: 'A.P. Moller - Maersk là tập đoàn logistics tích hợp hàng đầu thế giới, kết nối vận tải container đường biển, kho bãi thông minh, logistics hàng không và chuỗi cung ứng lạnh xuyên lục địa với công nghệ số hóa toàn diện.',
+    techStack: ['IoT Remote Container Management (RCM)', 'AI Trade Visibility Platform', 'Maersk Flow Cloud API', 'Automated Cold Storage AMR', 'Cybersecurity ISO 27001', 'Decarbonization Data Engine'],
+    stats: { services: 4, plans: 3, events: 2, jobs: 8 },
+    services: [
+      {
+        id: 'srv-maersk-1',
+        title: 'Hệ Thống IoT RCM (Remote Container Management) Giám Sát Container Lạnh',
+        icon: 'fa-snowflake',
+        desc: 'Giám sát nhiệt độ, độ ẩm và thông số khí quyển của container lạnh 24/7 từ cảng xuất phát đến cảng đích với cảm biến thông minh và vệ tinh theo thời gian thực.',
+        features: [
+          'Truy cập dữ liệu trực tiếp 24/7 từ nền tảng web & ứng dụng di động Maersk',
+          'Tự động gửi thông báo khi phát hiện bất thường về chuỗi làm lạnh',
+          'Chứng thực tiêu chuẩn bảo quản cho hàng nông thủy sản xuất khẩu EU và Mỹ'
+        ]
+      },
+      {
+        id: 'srv-maersk-2',
+        title: 'Tích Hợp API Maersk Flow & Vận Đơn Điện Tử e-BL',
+        icon: 'fa-network-wired',
+        desc: 'Số hóa 100% hồ sơ hải quan, booking trực tuyến và theo dõi lô hàng thời gian thực qua giao diện API doanh nghiệp kết nối trực tiếp với hệ thống ERP của bạn.',
+        features: [
+          'Booking container đường biển và vận tải nội địa tức thì (Instant Booking Guarantee)',
+          'Đồng bộ hóa vận đơn điện tử e-BL loại bỏ rủi ro thất lạc chứng từ giấy',
+          'Bảo mật dữ liệu cấp ngân hàng với mã hóa AES-256'
+        ]
+      },
+      {
+        id: 'srv-maersk-3',
+        title: 'Mạng Lưới Kho Bãi Logistics Xanh Đạt Chuẩn LEED Gold',
+        icon: 'fa-warehouse',
+        desc: 'Trung tâm phân phối tự động hóa tại Bình Dương và Bắc Ninh ứng dụng robot AMR và hệ thống quản lý WMS thông minh, vận hành 100% năng lượng mặt trời.',
+        features: [
+          'Tối ưu hóa vị trí lưu kho bằng thuật toán AI phân bổ hàng hóa',
+          'Tốc độ hoàn tất đơn hàng nhanh gấp 3 lần so với kho truyền thống',
+          'Đạt tiêu chuẩn chứng nhận công trình xanh quốc tế LEED Gold'
+        ]
+      },
+      {
+        id: 'srv-maersk-4',
+        title: 'Giải Pháp Vận Tải Giảm Phát Thải ECO Delivery',
+        icon: 'fa-leaf',
+        desc: 'Dịch vụ vận tải container trung hòa carbon ứng dụng nhiên liệu sinh học tiên tiến thế hệ mới với chứng chỉ xác thực giảm phát thải khí nhà kính theo chuẩn quốc tế.',
+        features: [
+          'Giảm tới 82% lượng phát thải CO2 so với vận tải nhiên liệu hóa thạch truyền thống',
+          'Cung cấp chứng chỉ kiểm toán phát thải carbon độc lập cho báo cáo ESG doanh nghiệp',
+          'Tích hợp liền mạch trên mọi tuyến vận tải đường biển quốc tế'
+        ]
+      }
+    ],
+    pricing: [
+      {
+        id: 'price-maersk-pilot',
+        name: 'Gói Kết Nối Số Hóa (Digital Connect Tier)',
+        price: '5.500.000 đ',
+        period: '/tháng hoặc theo lô hàng',
+        badge: 'Dành Cho SME',
+        popular: false,
+        desc: 'Phù hợp cho các doanh nghiệp xuất nhập khẩu vừa và nhỏ bắt đầu số hóa quy trình đặt chỗ và theo dõi vận đơn container.',
+        features: [
+          'Tra cứu giá cước đường biển tức thì (Spot Rates) trên 300+ cảng toàn cầu',
+          'Theo dõi trực tuyến định vị container theo thời gian thực',
+          'Tạo và phê duyệt vận đơn trực tuyến e-BL',
+          'Hỗ trợ kỹ thuật 24/7 từ chuyên viên logistics Maersk'
+        ],
+        ctaText: 'Đăng Ký Dùng Thử Ngay'
+      },
+      {
+        id: 'price-maersk-pro',
+        name: 'Gói Doanh Nghiệp Tích Hợp (Integrated Pro Tier)',
+        price: '18.500.000 đ',
+        period: '/tháng',
+        badge: 'Doanh Nghiệp Đề Xuất',
+        popular: true,
+        desc: 'Giải pháp tích hợp toàn diện đường biển, đường bộ nội địa và kho bãi phân phối tự động cho doanh nghiệp quy mô lớn.',
+        features: [
+          'Toàn bộ tính năng của Gói Kết Nối Số Hóa',
+          'Tích hợp 2 chiều API Maersk Flow vào hệ thống ERP / TMS của khách hàng',
+          'Dịch vụ giám sát container lạnh cao cấp IoT RCM với cảnh báo tự động',
+          'Cam kết giữ chỗ container mùa cao điểm (Priority Loading Guarantee)',
+          'Quản lý tài khoản doanh nghiệp chuyên trách (Dedicated Account Manager)'
+        ],
+        ctaText: 'Đăng Ký Gói Pro'
+      },
+      {
+        id: 'price-maersk-ent',
+        name: 'Gói Chiến Lược Chuỗi Cung Ứng (Strategic Custom Enterprise)',
+        price: 'May đo linh hoạt',
+        period: 'theo hợp đồng năm',
+        badge: 'Tập Đoàn Đa Quốc Gia',
+        popular: false,
+        desc: 'Thiết kế chuỗi cung ứng đầu-cuối riêng biệt cho tập đoàn sản xuất, chuỗi bán lẻ đa quốc gia và thương mại điện tử xuyên biên giới.',
+        features: [
+          'Toàn bộ tính năng của Gói Doanh Nghiệp Tích Hợp',
+          'Thuê riêng kho bãi trung chuyển tự động AMR tại Hải Phòng / Bình Dương',
+          'Giải pháp vận tải xanh ECO Delivery đạt tiêu chuẩn trung hòa carbon',
+          'Cam kết chất lượng dịch vụ SLA 99.9% có bồi hoàn hợp đồng',
+          'Kiến trúc sư giải pháp chuỗi cung ứng hỗ trợ tư vấn 1-1'
+        ],
+        ctaText: 'Liên Hệ Báo Giá May Đo'
+      }
+    ],
+    events: [
+      {
+        id: 'evt-maersk-1',
+        title: 'Maersk Tech Talk: Tương Lai Chuỗi Cung Ứng Xanh & Khử Carbon Logistics 2026',
+        date: '15 Tháng 12, 2026',
+        time: '09:00 - 11:30',
+        type: 'Hội Thảo Trực Tuyến & Trực Tiếp',
+        location: 'Maersk Innovation Center, TP. Hồ Chí Minh & Zoom Webinar',
+        speaker: 'Alex Byelyavtsev (Master Mariner & Digital Transformation Director)',
+        desc: 'Chia sẻ các điển hình thực tế về việc chuyển đổi 25+ đoàn xe tải điện, khử carbon vận tải đường biển và ứng dụng IoT viễn thông vào chuỗi cung ứng lạnh.',
+        badge: 'Sắp Diễn Ra'
+      },
+      {
+        id: 'evt-maersk-2',
+        title: 'B2B Summit: Tối Ưu Lộ Trình & Khắc Phục Đứt Gãy Chuỗi Cung Ứng Bằng AI',
+        date: '28 Tháng 12, 2026',
+        time: '14:00 - 17:00',
+        type: 'Hội Nghị Doanh Nghiệp Cấp Cao',
+        location: 'Khách sạn JW Marriott, Hà Nội',
+        speaker: 'Kristina Garbe (Key Client Director Automotive & Supply Chain)',
+        desc: 'Hội nghị kết nối các giám đốc chuỗi cung ứng (CSCO) và chuyên gia công nghệ bàn về chiến lược thích ứng với biến động thương mại toàn cầu.',
+        badge: 'Đăng Ký Giới Hạn'
+      }
+    ],
+    jobs: [
+      {
+        id: 'job-maersk-1',
+        title: 'Senior Supply Chain Solution Architect (Ocean & Inland)',
+        salary: '55 - 80 triệu / tháng',
+        location: 'TP. Hồ Chí Minh (Quận 1)',
+        type: 'Toàn thời gian',
+        tags: ['Supply Chain Design', 'ERP Integration', 'Logistics AI']
+      },
+      {
+        id: 'job-maersk-2',
+        title: 'IoT Cold Chain Telematics & Operations Specialist',
+        salary: '35 - 55 triệu / tháng',
+        location: 'Hải Phòng & Hà Nội',
+        type: 'Toàn thời gian',
+        tags: ['IoT', 'Reefer Telematics', 'Cold Chain']
+      },
+      {
+        id: 'job-maersk-3',
+        title: 'Logistics API Integration Engineer (EDI & CargoWise)',
+        salary: '40 - 65 triệu / tháng',
+        location: 'TP. Hồ Chí Minh / Hybrid',
+        type: 'Toàn thời gian',
+        tags: ['API Integration', 'CargoWise', 'Python/Cloud']
+      }
+    ]
+  },
+  {
+    id: 'vinfast',
+    name: 'VinFast Logistics & Cold Chain Solutions',
+    logo: 'images/brands/vinfast.svg',
+    industry: 'Logistics Tech & AI Cold Chain',
+    category: 'ai',
+    tagline: 'Kiến trúc chuỗi cung ứng lạnh thông minh & vận tải tự hành thế hệ mới',
+    location: 'Hải Phòng & TP. Hồ Chí Minh, Việt Nam',
+    size: '10,000+ nhân sự',
+    founded: '2017',
+    website: 'https://vinfastauto.com',
+    desc: 'VinFast Logistics tiên phong ứng dụng trí tuệ nhân tạo (AI) và mạng lưới viễn thông IoT để tối ưu hóa tuyến vận tải pin xe điện, logistics chuỗi cung ứng lạnh xuyên biên giới ASEAN và mạng lưới trạm phân phối thông minh.',
+    techStack: ['Vision AI', 'Route Optimization ML', 'IoT Telematics', 'PyTorch', 'Kubernetes', 'Apache Kafka'],
+    stats: { services: 4, plans: 3, events: 2, jobs: 6 },
+    services: [
+      {
+        id: 'srv-vf-1',
+        title: 'Hệ Thống IoT Telematics Chuỗi Lạnh Thông Minh',
+        icon: 'fa-snowflake',
+        desc: 'Giám sát nhiệt độ, độ ẩm và định vị thời gian thực cho đội xe container lạnh và kho lạnh sâu với độ chính xác 99.98%. Cảnh báo nguy cơ lệch nhiệt tự động qua AI.',
+        features: [
+          'Độ trễ truyền dữ liệu dưới 1.5 giây qua mạng 5G/IoT vệ tinh',
+          'Tích hợp tự động hệ thống khai báo hải quan điện tử VNACCS',
+          'Báo cáo tự động chuẩn GDP (Good Distribution Practice) cho dược phẩm và vắc xin'
+        ]
+      },
+      {
+        id: 'srv-vf-2',
+        title: 'AI Dynamic Route Optimization Engine',
+        icon: 'fa-route',
+        desc: 'Thuật toán học máy phân tích dữ liệu lưu lượng giao thông lịch sử và thời gian thực để tính toán hải trình và lộ trình xe tải tối ưu, giảm 18% chi phí tiêu hao nhiên liệu.',
+        features: [
+          'Cân bằng tải động giữa 40+ cụm trung chuyển phân phối Bắc - Nam',
+          'Dự đoán thời gian cập cảng (ETA) chính xác tới từng phút',
+          'Giảm thiểu tối đa tình trạng chạy rỗng (Empty-Miles Reduction)'
+        ]
+      },
+      {
+        id: 'srv-vf-3',
+        title: 'Cổng Tích Hợp API B2B EDI & Logistics Microservices',
+        icon: 'fa-network-wired',
+        desc: 'Hạ tầng kết nối API cấp doanh nghiệp cho phép đối tác ERP (SAP, Oracle, CargoWise) đồng bộ hóa vận đơn điện tử e-BL và hóa đơn cước vận chuyển tức thì.',
+        features: [
+          'Chuẩn bảo mật ngân hàng OAuth2, mTLS và mã hóa dữ liệu AES-256',
+          'Khả năng chịu tải 150,000 requests/phút thời điểm cao điểm',
+          'Cam kết SLA hệ thống vận hành 99.99%'
+        ]
+      }
+    ],
+    pricing: [
+      {
+        id: 'price-vf-pilot',
+        name: 'Gói Thử Nghiệm (Pilot Tier)',
+        price: '₫15.000.000',
+        period: '/tháng',
+        desc: 'Phù hợp cho các doanh nghiệp thử nghiệm giải pháp theo dõi chuỗi lạnh và định vị AI trên quy mô nhỏ.',
+        popular: false,
+        features: [
+          'Triển khai tối đa 10 cảm biến IoT & xe vận tải',
+          'Truy cập bảng điều khiển phân tích AI cơ bản',
+          'Xuất báo cáo định kỳ hàng tuần',
+          'Hỗ trợ kỹ thuật qua Email & Ticket (giờ hành chính)'
+        ]
+      },
+      {
+        id: 'price-vf-pro',
+        name: 'Gói Doanh Nghiệp (Growth Pro)',
+        price: '₫45.000.000',
+        period: '/tháng',
+        desc: 'Giải pháp toàn diện tối ưu hóa lộ trình xe tải và quản lý kho vận thông minh thời gian thực.',
+        popular: true,
+        features: [
+          'Triển khai không giới hạn tới 80 phương tiện / kho bãi',
+          'Đầy đủ thuật toán AI tối ưu hóa lộ trình đa điểm',
+          'Cảnh báo nhiệt độ & sự cố tức thì qua SMS / Telegram / App',
+          'Cam kết SLA vận hành 99.9% và hỗ trợ kỹ thuật 24/7'
+        ]
+      },
+      {
+        id: 'price-vf-ent',
+        name: 'Gói May Đo Doanh Nghiệp (Enterprise Custom)',
+        price: 'Theo Quy Mô',
+        period: '',
+        desc: 'Kiến trúc hạ tầng dành riêng cho các tập đoàn đa quốc gia và tổng công ty logistics.',
+        popular: false,
+        features: [
+          'Triển khai On-Premise hoặc Dedicated Private Cloud',
+          'Huấn luyện riêng mô hình AI trên dữ liệu logistics nội bộ',
+          'Chuyên gia Solutions Architect trực tiếp đồng hành dự án',
+          'Tích hợp sâu hệ sinh thái ERP / WMS / TMS theo yêu cầu'
+        ]
+      }
+    ],
+    events: [
+      {
+        id: 'evt-vf-1',
+        title: 'Vietnam AI & Smart Logistics Innovation Summit 2026',
+        format: 'Live Summit & Hybrid',
+        date: '15/12/2026 • 08:30 - 17:00',
+        location: 'GEM Center, Quận 1, TP. Hồ Chí Minh & Trực tuyến',
+        desc: 'Diễn đàn thường niên quy tụ 800+ lãnh đạo chuỗi cung ứng, chuyên gia AI và cơ quan ban ngành cùng thảo luận lộ trình chuyển đổi số và trung hòa carbon.'
+      },
+      {
+        id: 'evt-vf-2',
+        title: 'Workshop Kỹ Thuật: Tối Ưu Hóa Tuyến Đường Vận Tải Bằng AI & Digital Twins',
+        format: 'Hands-on Webinar',
+        date: '28/11/2026 • 14:00 - 16:30',
+        location: 'Virtual Zoom / Google Meet Webinar',
+        desc: 'Chia sẻ kiến trúc thực chiến từ đội ngũ kỹ sư AI VinFast về cách mô phỏng bản sao số (Digital Twin) để cắt giảm 18% chi phí nhiên liệu.'
+      }
+    ]
+  },
+  {
+    id: 'fpt',
+    name: 'FPT Software AI & Digital Labs',
+    logo: 'images/brands/fpt.svg',
+    industry: 'Enterprise AI & Cloud Engineering',
+    category: 'tech',
+    tagline: 'Tiên phong phát triển các mô hình Generative AI và giải pháp chuyển đổi số toàn cầu',
+    location: 'Hà Nội, Đà Nẵng & TP. Hồ Chí Minh',
+    size: '30,000+ nhân sự',
+    founded: '1999',
+    website: 'https://fpt-software.com',
+    desc: 'FPT Software cung cấp các giải pháp trí tuệ nhân tạo toàn diện từ Generative AI, Computer Vision, xử lý ngôn ngữ tự nhiên (NLP) cho tới các hệ thống đám mây phân tán cho hàng trăm tập đoàn trong danh sách Fortune 500.',
+    techStack: ['Generative AI', 'Large Language Models', 'Computer Vision', 'Python', 'Go', 'AWS / Azure'],
+    stats: { services: 5, plans: 3, events: 3, jobs: 8 },
+    services: [
+      {
+        id: 'srv-fpt-1',
+        title: 'FPT AI Mentor & Agentic AI Workflow Solutions',
+        icon: 'fa-brain',
+        desc: 'Hệ thống trợ lý ảo và Agentic AI tự hành có khả năng xử lý nghiệp vụ tự động, phân tích tài liệu hợp đồng và tự động hóa quy trình khách hàng (RPA).',
+        features: [
+          'Hỗ trợ mô hình ngôn ngữ tiếng Việt chuyên ngành chính xác cao',
+          'Tự động hóa 80% tác vụ giải đáp và xử lý ticket nội bộ',
+          'Bảo mật dữ liệu tuyệt đối theo tiêu chuẩn ISO 27001'
+        ]
+      },
+      {
+        id: 'srv-fpt-2',
+        title: 'Computer Vision & OCR Trích Xuất Dữ Liệu Tự Động',
+        icon: 'fa-eye',
+        desc: 'Nhận diện và số hóa tức thì chứng từ vận tải, hóa đơn GTGT, căn cước công dân và hợp đồng kinh tế với độ chính xác trên 99.2%.',
+        features: [
+          'Xử lý hơn 200 định dạng hóa đơn và bill of lading quốc tế',
+          'Thời gian nhận diện dưới 0.8 giây / trang tài liệu',
+          'Tích hợp trực tiếp hệ thống kho dữ liệu Data Lakehouse'
+        ]
+      }
+    ],
+    pricing: [
+      {
+        id: 'price-fpt-starter',
+        name: 'Gói Khởi Động AI (AI Starter Pack)',
+        price: '₫25.000.000',
+        period: '/tháng',
+        desc: 'Bộ công cụ OCR và Chatbot AI cơ bản cho doanh nghiệp số hóa chứng từ và tương tác khách hàng.',
+        popular: false,
+        features: [
+          'Xử lý 10,000 trang chứng từ OCR / tháng',
+          '1 Trợ lý AI hỏi đáp nội bộ chuyên nghiệp',
+          'Tích hợp API Webhook cơ bản',
+          'Hỗ trợ kỹ thuật 8/5'
+        ]
+      },
+      {
+        id: 'price-fpt-scale',
+        name: 'Gói Chuyển Đổi Số (Enterprise Scale)',
+        price: '₫75.000.000',
+        period: '/tháng',
+        desc: 'Tích hợp Agentic AI và xử lý thị giác máy tính vào toàn bộ chu trình nghiệp vụ doanh nghiệp.',
+        popular: true,
+        features: [
+          'Xử lý 100,000 trang chứng từ OCR / tháng',
+          'Triển khai đa Agent AI kết nối cơ sở dữ liệu nội bộ',
+          'Mô hình Fine-tuned chuyên biệt theo dữ liệu công ty',
+          'Hỗ trợ kỹ thuật 24/7 với Dedicated Account Manager'
+        ]
+      },
+      {
+        id: 'price-fpt-custom',
+        name: 'Gói May Đo Dự Án (Strategic Custom)',
+        price: 'Báo Giá Dự Án',
+        period: '',
+        desc: 'Phát triển giải pháp công nghệ và hệ sinh thái phần mềm quy mô lớn.',
+        popular: false,
+        features: [
+          'Đội ngũ kỹ sư chuyên trách biệt phái (Dedicated Engineering Squad)',
+          'Tư vấn chiến lược kiến trúc tổng thể Enterprise Architecture',
+          'Bàn giao toàn bộ mã nguồn và bản quyền sở hữu trí tuệ',
+          'Bảo hành và tối ưu hóa hệ thống lâu dài'
+        ]
+      }
+    ],
+    events: [
+      {
+        id: 'evt-fpt-1',
+        title: 'FPT AI Summit 2026: The Age of Autonomous Agentic AI',
+        format: 'Grand Technology Conference',
+        date: '20/12/2026 • 09:00 - 16:30',
+        location: 'Trung tâm Hội nghị Quốc gia, Hà Nội & Livestream toàn cầu',
+        desc: 'Sự kiện công nghệ thường niên lớn nhất của FPT giới thiệu các giải pháp Agentic AI tự hành và ứng dụng thực tiễn trong ngân hàng, sản xuất và logistics.'
+      }
+    ]
+  },
+  {
+    id: 'saigon-newport',
+    name: 'Saigon Newport Corporation (TCIT / SNP)',
+    logo: 'images/brands/saigon-newport.svg',
+    industry: 'Cảng Biển & Hạ Tầng Logistics Số Hóa',
+    category: 'logistics',
+    tagline: 'Nhà khai thác cảng biển hàng đầu Việt Nam chiếm trên 50% thị phần container xuất nhập khẩu',
+    location: 'Cát Lái, Cái Mép & Hải Phòng',
+    size: '8,000+ nhân sự',
+    founded: '1989',
+    website: 'https://saigonnewport.com.vn',
+    desc: 'Tổng công ty Tân Cảng Sài Gòn là biểu tượng dẫn đầu ngành cảng biển Việt Nam, ứng dụng hệ thống quản trị khai thác cảng tự động hóa cao cấp Navis N4 và mạng lưới cảng cạn ICD hiện đại.',
+    techStack: ['Navis N4 TOS', 'Automated Quayside Dispatch', 'Port EDI Hub', 'IoT Crane Sensors'],
+    stats: { services: 4, plans: 3, events: 2, jobs: 4 },
+    services: [
+      {
+        id: 'srv-snp-1',
+        title: 'Hệ Thống Thủ Tục Cảng Điện Tử ePort & Lệnh Giao Hàng eDO',
+        icon: 'fa-file-invoice',
+        desc: 'Giải pháp thanh toán và làm thủ tục trực tuyến 100%, giảm 90% thời gian chờ đợi nhận container tại cổng cảng.',
+        features: [
+          'Thanh toán trực tuyến bảo mật qua Napas, Vietcombank, MBBank',
+          'Tự động kết nối cơ sở dữ liệu Hải quan điện tử một cửa quốc gia',
+          'Tra cứu tình trạng container 24/7 trên ứng dụng di động'
+        ]
+      }
+    ],
+    pricing: [
+      {
+        id: 'price-snp-custom',
+        name: 'Gói Dịch Vụ Cảng & Kho Bãi Chuyên Biệt',
+        price: 'Liên Hệ Báo Giá',
+        period: '',
+        desc: 'Báo giá chính thức các dịch vụ nâng hạ, lưu bãi, đóng rút hàng và chuyển cảng theo biểu cước quy định.',
+        popular: true,
+        features: [
+          'Biểu cước minh bạch theo quy chuẩn Bộ Giao thông Vận tải',
+          'Chính sách chiết khấu ưu đãi cho hãng tàu và chủ hàng lớn',
+          'Hỗ trợ làm thủ tục hải quan và kiểm hóa nhanh tại bãi'
+        ]
+      }
+    ],
+    events: [
+      {
+        id: 'evt-snp-1',
+        title: 'Hội Thảo Logistics Xanh & Cảng Biển Thông Minh 2026',
+        format: 'Industry Conference',
+        date: '10/01/2027 • 08:30 - 12:00',
+        location: 'Khách sạn Lotte Hotel Saigon, TP. Hồ Chí Minh',
+        desc: 'Định hướng chuyển đổi hạ tầng cẩu điện chạy pin, năng lượng mặt trời áp mái và giải pháp cảng thông minh giảm phát thải ròng.'
+      }
+    ]
+  },
+  {
+    id: 'logivan',
+    name: 'Logivan Vietnam Freight Network',
+    logo: 'images/brands/logivan.svg',
+    industry: 'LogiTech & Nền Tảng Vận Tải Số',
+    category: 'tech',
+    tagline: 'Uber của ngành vận tải xe tải hàng hóa đường dài tại Việt Nam',
+    location: 'Hà Nội & TP. Hồ Chí Minh',
+    size: '300+ nhân sự',
+    founded: '2017',
+    website: 'https://logivan.com',
+    desc: 'Logivan kết nối mạng lưới hơn 40,000 chủ xe tải với hàng nghìn doanh nghiệp sản xuất, ứng dụng thuật toán trí tuệ nhân tạo để ghép chuyến hàng chiều về, cắt giảm chi phí vận tải lên đến 30%.',
+    techStack: ['AI Matching Algorithm', 'Dynamic Rate Index', 'Geospatial Analytics', 'Snowflake', 'BigQuery'],
+    stats: { services: 3, plans: 3, events: 1, jobs: 5 },
+    services: [
+      {
+        id: 'srv-logi-1',
+        title: 'Nền Tảng Điều Phối Xe Tải Ghép Chuyến Bằng AI',
+        icon: 'fa-truck-fast',
+        desc: 'Tự động ghép đơn hàng với xe tải trống chiều về trên toàn tuyến Quốc lộ 1A và các khu công nghiệp trọng điểm.',
+        features: [
+          'Tiết kiệm từ 20% đến 30% chi phí vận chuyển so với cước truyền thống',
+          'Bảo hiểm hàng hóa lên tới 1 tỷ đồng / chuyến vận chuyển',
+          'Định vị GPS vị trí phương tiện thời gian thực'
+        ]
+      }
+    ],
+    pricing: [
+      {
+        id: 'price-logi-starter',
+        name: 'Gói Doanh Nghiệp Tiêu Chuẩn',
+        price: 'Theo Chuyến Hàng',
+        period: '',
+        desc: 'Minh bạch cước phí theo từng cung đường vận tải với hóa đơn GTGT đầy đủ.',
+        popular: true,
+        features: [
+          'Báo giá cước cạnh tranh trong vòng 15 phút',
+          'Không phụ phí duy trì phần mềm',
+          'Theo dõi hành trình xe trực tuyến qua portal',
+          'Thanh toán linh hoạt công nợ 30 ngày cho đối tác xác thực'
+        ]
+      }
+    ],
+    events: [
+      {
+        id: 'evt-logi-1',
+        title: 'Tech Talk: Tối Ưu Hóa Dữ Liệu Không Gian Lớn (Big Data) Cho Logistics',
+        format: 'Technical Webinar',
+        date: '05/12/2026 • 19:30 - 21:00',
+        location: 'Online Webinar (Google Meet)',
+        desc: 'Cách Logivan xử lý hơn 5 triệu điểm dữ liệu GPS mỗi ngày để đưa ra chỉ số cước vận tải động sát với thị trường.'
+      }
+    ]
+  },
+  {
+    id: 'tiki',
+    name: 'Tiki Smart Automation MegaHub',
+    logo: 'images/brands/tiki.svg',
+    industry: 'E-Commerce Fulfillment & Robotics Automation',
+    category: 'ai',
+    tagline: 'Trung tâm xử lý đơn hàng tự động hóa với hơn 500 robot tự hành AMR hiện đại',
+    location: 'Bình Dương & Bắc Ninh, Việt Nam',
+    size: '3,000+ nhân sự',
+    founded: '2010',
+    website: 'https://tiki.vn',
+    desc: 'TikiNOW Smart Logistics vận hành chuỗi trung tâm kho vận thông minh thế hệ mới, ứng dụng hệ thống robot tự hành AMR và thuật toán điều phối thông minh giúp giao hàng siêu tốc trong 2 giờ.',
+    techStack: ['Autonomous Mobile Robots (AMR)', 'Kiva Fleet Orchestrator', 'SLAM Navigation', 'Edge AI'],
+    stats: { services: 3, plans: 3, events: 2, jobs: 4 },
+    services: [
+      {
+        id: 'srv-tiki-1',
+        title: 'Dịch Vụ Kho Vận Hoàn Tất Đơn Hàng Tự Động Bằng Robot (Fulfillment by Tiki)',
+        icon: 'fa-robot',
+        desc: 'Lưu kho, nhặt hàng tự động bằng cánh tay robot và đội xe AMR, đóng gói và xuất hàng siêu tốc trong 15 phút từ lúc nhận đơn.',
+        features: [
+          'Độ chính xác soạn hàng đạt 99.99%',
+          'Tối ưu diện tích lưu trữ kho gấp 2.5 lần so với kho truyền thống',
+          'Tích hợp đa kênh bán hàng Shopee, TikTok Shop, Lazada, Tiki'
+        ]
+      }
+    ],
+    pricing: [
+      {
+        id: 'price-tiki-ful',
+        name: 'Gói Hoàn Tất Đơn Hàng Thông Minh',
+        price: 'Từ ₫8.000 / đơn',
+        period: '',
+        desc: 'Toàn bộ chi phí lưu kho, nhặt hàng bằng robot, đóng gói vật tư và dán nhãn vận chuyển.',
+        popular: true,
+        features: [
+          'Miễn phí 30 ngày lưu kho đầu tiên cho sản phẩm mới',
+          'Đảm bảo tốc độ đóng gói sẵn sàng giao trong 2 giờ',
+          'Bảo hiểm 100% giá trị hàng hóa nếu xảy ra thất thoát'
+        ]
+      }
+    ],
+    events: [
+      {
+        id: 'evt-tiki-1',
+        title: 'Tech Tour: Trải Nghiệm Kho Tự Động Hóa 500+ Robot AMR Tại Bình Dương',
+        format: 'On-site Experience',
+        date: '10/01/2027 • 09:00 - 14:00',
+        location: 'Tiki Smart MegaHub, VSIP II, Bến Cát, Bình Dương',
+        desc: 'Chương trình tham quan độc quyền dành cho các kỹ sư và nhà quản lý chuỗi cung ứng tận mắt quan sát hạm đội robot AMR tự hành.'
+      }
+    ]
+  },
+  {
+    id: 'viconship',
+    name: 'Viconship Logistics Group',
+    logo: 'images/brands/viconship.svg',
+    industry: 'Maritime Port Operations & Multimodal Shipping',
+    category: 'logistics',
+    tagline: 'Tập đoàn khai thác cảng và dịch vụ đại lý vận tải biển truyền thống hàng đầu Hải Phòng',
+    location: 'Hải Phòng, Đà Nẵng & TP. Hồ Chí Minh',
+    size: '2,500+ nhân sự',
+    founded: '1985',
+    website: 'https://viconship.com',
+    desc: 'Viconship sở hữu hệ thống cảng cạn, bãi container và dịch vụ giao nhận vận tải đa phương thức quốc tế, kết nối mạng lưới các liên minh tàu biển lớn nhất thế giới.',
+    techStack: ['Multimodal Shipping ERP', 'Automated Customs EDI', 'Container Gate Vision OCR'],
+    stats: { services: 3, plans: 2, events: 1, jobs: 4 },
+    services: [
+      {
+        id: 'srv-vic-1',
+        title: 'Dịch Vụ Đại Lý Hãng Tàu & Vận Tải Đường Biển Quốc Tế',
+        icon: 'fa-ship',
+        desc: 'Cung cấp booking tải trọng và container từ Việt Nam đi Mỹ, Châu Âu và nội Á với biểu cước cạnh tranh.',
+        features: [
+          'Hợp đồng bảo đảm chỗ (Space Guarantee) trong mùa cao điểm',
+          'Đại diện giải quyết thủ tục chứng từ vận đơn hải ngoại 24/7',
+          'Theo dõi vị trí tàu biển thời gian thực'
+        ]
+      }
+    ],
+    pricing: [
+      {
+        id: 'price-vic-quote',
+        name: 'Gói Cước Vận Tải Hợp Đồng Doanh Nghiệp',
+        price: 'Báo Giá Theo Tuyến',
+        period: '',
+        desc: 'Biểu cước linh hoạt theo từng mùa vụ với điều khoản thanh toán thuận lợi cho các nhà xuất khẩu lớn.',
+        popular: true,
+        features: [
+          'Cố định giá cước hợp đồng kỳ hạn dài hạn 6-12 tháng',
+          'Miễn phí 14 ngày lưu bãi và lưu vỏ container (Free Demurrage/Detention)',
+          'Đội ngũ chăm sóc tài khoản khách hàng VIP chuyên nghiệp'
+        ]
+      }
+    ],
+    events: [
+      {
+        id: 'evt-vic-1',
+        title: 'Hội Thảo Dự Báo Xu Hướng Giá Cước Vận Tải Biển Quốc Tế 2026',
+        format: 'Executive Seminar',
+        date: '22/12/2026 • 14:00 - 17:30',
+        location: 'Khách sạn Nam Cường, TP. Hải Phòng',
+        desc: 'Phân tích biến động các liên minh hãng tàu (Gemini Cooperation, Premier Alliance) và tác động tới chi phí xuất khẩu của doanh nghiệp dệt may, da giày, điện tử.'
+      }
+    ]
+  }
+];
+
+// Current state for active company detail
+let currentSelectedCompanyId = 'vinfast';
+
+// Initialize Companies Directory in #view-companies
+function initCompaniesDirectory() {
+  const grid = document.getElementById('companies-cards-grid');
+  if (!grid) return;
+
+  const searchInput = document.getElementById('companies-search-input');
+  const tabPills = document.querySelectorAll('.companies-tab-pill');
+
+  let currentCategory = 'all';
+  let searchQuery = '';
+
+  function renderCompanies() {
+    let filtered = enterpriseCompaniesData;
+    if (currentCategory !== 'all') {
+      filtered = filtered.filter(c => c.category === currentCategory);
+    }
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase().trim();
+      filtered = filtered.filter(c => 
+        c.name.toLowerCase().includes(q) || 
+        c.industry.toLowerCase().includes(q) || 
+        c.techStack.some(t => t.toLowerCase().includes(q))
+      );
+    }
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `
+        <div style="grid-column: 1/-1; padding: 60px 20px; text-align: center; color: #64748B;">
+          <i class="fa-solid fa-building-circle-xmark" style="font-size: 40px; color: #94A3B8; margin-bottom: 12px; display:inline-block;"></i>
+          <h3 style="font-size: 17px; color: #1E293B; margin-bottom: 6px; font-weight: 700;">Không tìm thấy doanh nghiệp phù hợp</h3>
+          <p style="font-size: 13.5px; color: #64748B;">Vui lòng thử từ khóa tìm kiếm khác hoặc chọn tab "Tất cả".</p>
+        </div>
+      `;
+      return;
+    }
+
+    grid.innerHTML = filtered.map(c => `
+      <article class="company-card-enterprise">
+        <div>
+          <div class="company-card-top">
+            <div class="company-brand-logo-wrap">
+              <img src="${c.logo}" alt="${c.name}" class="company-brand-logo-img">
+            </div>
+            <div class="company-card-header-info">
+              <div class="company-card-name-row">
+                <h3 class="company-card-name">${c.name}</h3>
+                <i class="fa-solid fa-circle-check company-card-verified-badge" title="Doanh Nghiệp Đã Được Xác Thực"></i>
+              </div>
+              <div class="company-card-tagline">${c.tagline}</div>
+              <div class="company-card-meta-pills">
+                <span class="company-meta-pill"><i class="fa-solid fa-briefcase"></i> ${c.industry}</span>
+                <span class="company-meta-pill"><i class="fa-solid fa-location-dot"></i> ${c.location.split('&')[0].trim()}</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="company-card-desc">${c.desc}</p>
+
+          <div class="company-card-tech-row">
+            ${c.techStack.slice(0, 4).map(t => `<span class="company-tech-tag">${t}</span>`).join('')}
+          </div>
+
+          <div class="company-card-stats-grid">
+            <div>
+              <div class="company-stat-num">${c.stats.services}</div>
+              <div class="company-stat-label">Dịch Vụ & SP</div>
+            </div>
+            <div>
+              <div class="company-stat-num">${c.stats.events}</div>
+              <div class="company-stat-label">Sự Kiện Tech</div>
+            </div>
+            <div>
+              <div class="company-stat-num">${c.stats.jobs}</div>
+              <div class="company-stat-label">Vị Trí Mở</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="company-card-actions">
+          <button type="button" class="btn-company-view-profile" onclick="openCompanyDetail('${c.id}')">
+            Xem Hồ Sơ &amp; Báo Giá
+          </button>
+          <button type="button" class="btn-company-contact-now" onclick="openCompanyContactModal('${c.id}')">
+            <i class="fa-solid fa-paper-plane"></i> Contact Now
+          </button>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  // Bind tabs
+  tabPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      tabPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      currentCategory = pill.dataset.category || 'all';
+      renderCompanies();
+    });
+  });
+
+  // Bind search input
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderCompanies();
+    });
+  }
+
+  renderCompanies();
+}
+
+// Open Company Detail View
+window.openCompanyDetail = function(companyId) {
+  const company = enterpriseCompaniesData.find(c => c.id === companyId) || enterpriseCompaniesData[0];
+  currentSelectedCompanyId = company.id;
+
+  if (typeof switchView === 'function') {
+    switchView('company-detail');
+  }
+
+  // Populate Header
+  const logoEl = document.getElementById('company-profile-logo-img');
+  const nameEl = document.getElementById('company-profile-name-text');
+  const tagEl = document.getElementById('company-profile-tagline-text');
+  const indEl = document.getElementById('company-profile-ind-text');
+  const locEl = document.getElementById('company-profile-loc-text');
+  const sizeEl = document.getElementById('company-profile-size-text');
+  const webEl = document.getElementById('company-profile-web-link');
+
+  if (logoEl) logoEl.src = company.logo;
+  if (nameEl) nameEl.textContent = company.name;
+  if (tagEl) tagEl.textContent = company.tagline;
+  if (indEl) indEl.textContent = company.industry;
+  if (locEl) locEl.textContent = company.location;
+  if (sizeEl) sizeEl.textContent = company.size;
+  if (webEl) {
+    webEl.href = company.website;
+    webEl.textContent = company.website.replace('https://', '');
+  }
+
+  // Wire Top "Contact Now" Button
+  const topContactBtn = document.getElementById('btn-profile-contact-now-top');
+  if (topContactBtn) {
+    topContactBtn.onclick = () => openCompanyContactModal(company.id);
+  }
+
+  // Render Default Tab: Services
+  switchCompanyTab('services');
+};
+
+// Switch Tabs inside Company Profile (services, tech, pricing, events, jobs)
+window.switchCompanyTab = function(tabName) {
+  const company = enterpriseCompaniesData.find(c => c.id === currentSelectedCompanyId) || enterpriseCompaniesData[0];
+  document.querySelectorAll('.company-nav-tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === tabName);
+  });
+
+  const contentArea = document.getElementById('company-profile-tab-content');
+  if (!contentArea) return;
+
+  if (tabName === 'services') {
+    contentArea.innerHTML = `
+      <div style="margin-bottom: 24px;">
+        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Dịch Vụ &amp; Giải Pháp Cung Cấp</h2>
+        <p style="font-size: 14px; color: #64748B; margin: 0;">Các giải pháp công nghệ, AI và dịch vụ vận hành đã được xác thực của ${company.name}.</p>
+      </div>
+      <div class="services-showcase-grid">
+        ${(company.services || []).map(s => `
+          <div class="service-card-item">
+            <div>
+              <div class="service-icon-box"><i class="fa-solid ${s.icon}"></i></div>
+              <h3 class="service-title">${s.title}</h3>
+              <p class="service-desc">${s.desc}</p>
+              <ul class="service-features-list">
+                ${(s.features || []).map(f => `<li><i class="fa-solid fa-circle-check"></i> ${f}</li>`).join('')}
+              </ul>
+            </div>
+            <button type="button" class="btn-company-contact-now" onclick="openCompanyContactModal('${company.id}', 'Tư vấn giải pháp: ${s.title.replace(/'/g, "\'")}')" style="width:100%;">
+              <i class="fa-solid fa-paper-plane"></i> Contact Now
+            </button>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  } else if (tabName === 'tech') {
+    contentArea.innerHTML = `
+      <div style="margin-bottom: 24px;">
+        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Công Nghệ Nền Tảng &amp; Ứng Dụng Trí Tuệ Nhân Tạo (AI)</h2>
+        <p style="font-size: 14px; color: #64748B; margin: 0;">Kiến trúc phần mềm phân tán, mô hình Machine Learning và công nghệ đang vận hành tại ${company.name}.</p>
+      </div>
+
+      <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:14px; padding:28px; margin-bottom:28px;">
+        <h3 style="font-size:16px; font-weight:700; color:#0F172A; margin:0 0 14px 0;">Ngăn Xếp Công Nghệ (Core Tech Stack)</h3>
+        <div style="display:flex; flex-wrap:wrap; gap:10px;">
+          ${company.techStack.map(t => `
+            <span style="background:#FFFFFF; border:1px solid #CBD5E1; color:#0F172A; padding:8px 18px; border-radius:8px; font-size:13.5px; font-weight:700; display:inline-flex; align-items:center; gap:8px; box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+              <i class="fa-solid fa-microchip" style="color:var(--fl-primary);"></i> ${t}
+            </span>
+          `).join('')}
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px; margin-bottom:28px;">
+        <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:12px; padding:22px;">
+          <div style="font-size:16px; font-weight:700; color:var(--fl-primary); margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+            <i class="fa-solid fa-brain"></i> Mô Hình Học Máy &amp; AI Tối Ưu Lộ Trình
+          </div>
+          <p style="font-size:13.5px; color:#475569; line-height:1.6; margin:0;">
+            Hệ thống huấn luyện trên hơn 12 triệu lượt chuyến xe tải thực tế tại Việt Nam, tích hợp xử lý dữ liệu cảm biến IoT thời gian thực để đưa ra quyết định dispatch tự động với độ trễ dưới 2 giây.
+          </p>
+        </div>
+        <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:12px; padding:22px;">
+          <div style="font-size:16px; font-weight:700; color:var(--fl-primary); margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+            <i class="fa-solid fa-shield-halved"></i> Bảo Mật &amp; Chuẩn An Toàn Dữ Liệu
+          </div>
+          <p style="font-size:13.5px; color:#475569; line-height:1.6; margin:0;">
+            Hạ tầng tuân thủ tiêu chuẩn ISO/IEC 27001 và SOC 2 Type II, hỗ trợ mã hóa đầu cuối mTLS và phân quyền dữ liệu theo vai trò (RBAC) nghiêm ngặt cho đối tác doanh nghiệp.
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align:center; padding:32px; background:linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); border-radius:14px;">
+        <h3 style="font-size:18px; font-weight:800; color:#1E3A8A; margin:0 0 8px 0;">Cần tư vấn kiến trúc công nghệ &amp; AI phù hợp cho doanh nghiệp của bạn?</h3>
+        <p style="font-size:14px; color:#1E40AF; margin:0 0 18px 0;">Đội ngũ Solutions Architect của ${company.name} sẵn sàng đồng hành cùng bạn thiết kế lộ trình chuyển đổi.</p>
+        <button type="button" class="btn-profile-contact-primary" onclick="openCompanyContactModal('${company.id}', 'Tư vấn giải pháp kiến trúc công nghệ &amp; AI')" style="margin:0 auto;">
+          <i class="fa-solid fa-paper-plane"></i> Contact Now Để Nhận Tư Vấn
+        </button>
+      </div>
+    `;
+  } else if (tabName === 'pricing') {
+    contentArea.innerHTML = `
+      <div style="margin-bottom: 24px;">
+        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Bảng Giá &amp; Gói Dịch Vụ Doanh Nghiệp</h2>
+        <p style="font-size: 14px; color: #64748B; margin: 0;">Minh bạch chi phí, linh hoạt mở rộng quy mô từ thử nghiệm đến tập đoàn đa quốc gia.</p>
+      </div>
+
+      <div class="pricing-showcase-grid">
+        ${(company.pricing || []).map(p => `
+          <div class="pricing-plan-card ${p.popular ? 'highlighted' : ''}">
+            ${p.popular ? '<div class="pricing-badge-popular">ĐƯỢC ƯA CHUỘNG</div>' : ''}
+            <div>
+              <h3 class="pricing-plan-name">${p.name}</h3>
+              <p class="pricing-plan-desc">${p.desc}</p>
+              <div class="pricing-plan-price-row">
+                <span class="pricing-price-num">${p.price}</span>
+                <span class="pricing-price-period">${p.period}</span>
+              </div>
+              <ul class="pricing-features-list">
+                ${(p.features || []).map(f => `<li><i class="fa-solid fa-check"></i> ${f}</li>`).join('')}
+              </ul>
+            </div>
+            <button type="button" class="${p.popular ? 'btn-company-contact-now' : 'btn-company-view-profile'}" onclick="openCompanyContactModal('${company.id}', 'Đăng ký tư vấn gói cước: ${p.name.replace(/'/g, "\'")}')" style="width:100%; justify-content:center;">
+              <i class="fa-solid fa-paper-plane"></i> ${p.price.includes('₫') ? 'Inquire This Plan' : 'Contact Now'}
+            </button>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  } else if (tabName === 'events') {
+    contentArea.innerHTML = `
+      <div style="margin-bottom: 24px;">
+        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Sự Kiện, Hội Thảo Công Nghệ &amp; Tech Talks</h2>
+        <p style="font-size: 14px; color: #64748B; margin: 0;">Đăng ký tham gia các sự kiện chuyên môn, workshop thực chiến và diễn đàn chuyển đổi số do ${company.name} tổ chức.</p>
+      </div>
+
+      <div class="events-showcase-grid">
+        ${(company.events || []).map(e => `
+          <div class="event-card-item">
+            <div>
+              <div class="event-meta-badge-row">
+                <span class="event-format-pill">${e.format || e.type || e.badge || "Trực Tuyến &amp; Trực Tiếp"}</span>
+                <span class="event-date-text"><i class="fa-regular fa-calendar-days"></i> ${e.date.split('•')[0].trim()}</span>
+              </div>
+              <h3 class="event-card-title">${e.title}</h3>
+              <p class="event-card-desc">${e.desc}</p>
+              <div class="event-card-location">
+                <i class="fa-solid fa-location-dot" style="color:var(--fl-primary);"></i> ${e.location}
+              </div>
+            </div>
+            <div style="display:flex; gap:10px; margin-top:16px;">
+              <button type="button" class="btn-company-contact-now" onclick="alert('Đăng ký vé tham gia thành công: ${e.title.replace(/'/g, "\'")}\nBan tổ chức sẽ gửi mã QR vào email của bạn.'); this.innerHTML='<i class=\'fa-solid fa-check\'></i> Đã Đăng Ký';" style="flex:1;">
+                <i class="fa-solid fa-ticket"></i> Đăng Ký Tham Gia (RSVP)
+              </button>
+              <button type="button" class="btn-company-view-profile" onclick="openCompanyContactModal('${company.id}', 'Hợp tác tổ chức sự kiện: ${e.title.replace(/'/g, "\'")}')" style="flex:1;">
+                Liên Hệ Hợp Tác
+              </button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  } else if (tabName === 'jobs') {
+    contentArea.innerHTML = `
+      <div style="margin-bottom: 24px;">
+        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Vị Trí Tuyển Dụng Đang Mở Tại ${company.name}</h2>
+        <p style="font-size: 14px; color: #64748B; margin: 0;">Gia nhập đội ngũ kỹ sư và chuyên gia hàng đầu kiến tạo giải pháp tương lai.</p>
+      </div>
+      <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:12px; padding:24px; text-align:center;">
+        <i class="fa-solid fa-briefcase" style="font-size:36px; color:var(--fl-primary); margin-bottom:12px; display:inline-block;"></i>
+        <h3 style="font-size:16px; font-weight:700; color:#0F172A; margin-bottom:8px;">Các Vị Trí Tuyển Dụng Trực Tiếp</h3>
+        <p style="font-size:13.5px; color:#64748B; max-width:500px; margin:0 auto 18px;">
+          Xem danh sách đầy đủ các cơ hội nghề nghiệp và nộp hồ sơ trực tuyến qua bảng việc làm VietnamJobs.
+        </p>
+        <button type="button" class="btn-company-contact-now" onclick="switchView('browse');" style="margin:0 auto;">
+          <i class="fa-solid fa-arrow-right"></i> Mở Bảng Việc Làm Tuyển Dụng
+        </button>
+      </div>
+    `;
+  }
+};
+
+// 4. Dedicated B2B "Contact Now" Modal Controller
+window.openCompanyContactModal = function(companyId, preselectedSubject = '', preselectedNote = '') {
+  const company = enterpriseCompaniesData.find(c => c.id === companyId) || enterpriseCompaniesData[0];
+  const overlay = document.getElementById('company-contact-modal');
+  if (!overlay) return;
+
+  const nameEl = document.getElementById('contact-modal-company-name');
+  if (nameEl) nameEl.textContent = company.name;
+
+  const companyInput = document.getElementById('contact-target-company-id');
+  if (companyInput) companyInput.value = company.id;
+
+  const subjectSelect = document.getElementById('contact-inquiry-subject');
+  if (subjectSelect && preselectedSubject) {
+    subjectSelect.value = preselectedSubject;
+  }
+
+  const messageTextarea = document.getElementById('contact-inquiry-message');
+  if (messageTextarea && preselectedNote) {
+    messageTextarea.value = preselectedNote;
+  }
+
+  // Reset modal state
+  const formWrap = document.getElementById('contact-modal-form-wrap');
+  const successWrap = document.getElementById('contact-modal-success-wrap');
+  if (formWrap) formWrap.style.display = 'block';
+  if (successWrap) successWrap.style.display = 'none';
+
+  overlay.classList.add('open');
+};
+
+window.closeCompanyContactModal = function() {
+  const overlay = document.getElementById('company-contact-modal');
+  if (overlay) overlay.classList.remove('open');
+};
+
+window.submitCompanyContactForm = function(e) {
+  if (e) e.preventDefault();
+  const form = document.getElementById('company-contact-form');
+  if (!form) return;
+
+  const fullname = form.elements['contact_fullname']?.value?.trim();
+  const email = form.elements['contact_email']?.value?.trim();
+  const phone = form.elements['contact_phone']?.value?.trim();
+  const clientCompany = form.elements['contact_company']?.value?.trim();
+  const subject = form.elements['contact_service']?.value || 'Tư vấn giải pháp';
+  const message = form.elements['contact_message']?.value?.trim();
+  const targetCompanyId = document.getElementById('contact-target-company-id')?.value || currentSelectedCompanyId;
+  const targetCompany = enterpriseCompaniesData.find(c => c.id === targetCompanyId) || enterpriseCompaniesData[0];
+
+  if (!fullname || !email || !phone || !clientCompany) {
+    alert('Vui lòng điền đầy đủ các trường thông tin bắt buộc (*)');
+    return;
+  }
+
+  // Generate reference lead code
+  const leadId = 'LEAD-' + Math.floor(100000 + Math.random() * 900000);
+
+  // Store in localStorage for demo persistence
+  const existingLeads = JSON.parse(localStorage.getItem('vietnamjobs_company_leads') || '[]');
+  existingLeads.unshift({
+    leadId,
+    timestamp: new Date().toISOString(),
+    targetCompany: targetCompany.name,
+    fullname,
+    email,
+    phone,
+    clientCompany,
+    subject,
+    message
+  });
+  localStorage.setItem('vietnamjobs_company_leads', JSON.stringify(existingLeads));
+
+  // Show Success Box inside Modal
+  const formWrap = document.getElementById('contact-modal-form-wrap');
+  const successWrap = document.getElementById('contact-modal-success-wrap');
+  const successRef = document.getElementById('lead-success-ref-code');
+  const successCompanyText = document.getElementById('lead-success-company-text');
+
+  if (successRef) successRef.textContent = `Mã Hồ Sơ Yêu Cầu: ${leadId}`;
+  if (successCompanyText) {
+    successCompanyText.innerHTML = `Thông tin liên hệ của bạn đã được chuyển trực tiếp tới đại diện của <strong>${targetCompany.name}</strong>. Đại diện giải pháp sẽ liên hệ với bạn qua email <strong>${email}</strong> hoặc số điện thoại <strong>${phone}</strong> trong vòng 24 giờ làm việc.`;
+  }
+
+  if (formWrap) formWrap.style.display = 'none';
+  if (successWrap) successWrap.style.display = 'block';
+
+  // Clear form
+  form.reset();
+};
+
+// Wire Top Nav "Companies" Button
+document.addEventListener('DOMContentLoaded', () => {
+  initCompaniesDirectory();
+
+  // Ensure any [data-view="companies"] button opens companies directory
+  document.querySelectorAll('[data-view="companies"]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (typeof switchView === 'function') {
+        switchView('companies');
+      }
+    });
+  });
 });

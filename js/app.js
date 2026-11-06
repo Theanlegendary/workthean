@@ -1036,36 +1036,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const formSignIn = document.getElementById('auth-signin-form');
     const formSignUp = document.getElementById('auth-signup-form');
 
-    const guestGroup = document.getElementById('header-auth-guest');
-    const userProfile = document.getElementById('header-user-profile');
-    const userAvatarEl = document.getElementById('header-user-avatar');
-    const userNameEl = document.getElementById('header-user-name');
+    const userProfileCapsule = document.getElementById('header-user-profile');
+    const userMenuTrigger = document.getElementById('btn-user-profile-menu');
+    const userDropdown = document.getElementById('user-dropdown-menu');
+    const notifBtn = document.getElementById('btn-header-notifications');
+    const notifPopover = document.getElementById('notification-popover');
+    
     const dropNameEl = document.getElementById('dropdown-user-name');
     const dropEmailEl = document.getElementById('dropdown-user-email');
     const dropRoleEl = document.getElementById('dropdown-user-role');
-    const userMenuTrigger = document.getElementById('btn-user-profile-menu');
-    const userDropdown = document.getElementById('user-dropdown-menu');
     const logoutBtn = document.getElementById('btn-user-logout');
 
-    const openModal = (tab = 'signin') => {
+    const roleCandidateSection = document.getElementById('role-menu-candidate');
+    const roleEmployerSection = document.getElementById('role-menu-employer');
+    const btnRoleCandidate = document.getElementById('btn-role-candidate');
+    const btnRoleEmployer = document.getElementById('btn-role-employer');
+
+    // Global Modal Helpers
+    window.openAuthModal = function(tab = 'signin') {
       if (tab === 'signup') {
         tabSignUp?.click();
       } else {
         tabSignIn?.click();
       }
-      modal?.classList.add('show');
+      if (modal) {
+        modal.removeAttribute('hidden');
+        modal.classList.add('show');
+      }
     };
 
-    const closeModal = () => modal?.classList.remove('show');
+    window.closeAuthModal = function() {
+      if (modal) {
+        modal.setAttribute('hidden', '');
+        modal.classList.remove('show');
+      }
+    };
 
-    // Header Trigger Buttons
-    document.getElementById('btn-header-signin')?.addEventListener('click', () => openModal('signin'));
-    document.getElementById('btn-header-signup')?.addEventListener('click', () => openModal('signup'));
-    document.getElementById('btn-open-auth-modal-mobile')?.addEventListener('click', () => openModal('signin'));
-    closeBtn?.addEventListener('click', closeModal);
+    window.closeAllDropdowns = function() {
+      userDropdown?.classList.remove('show');
+      userProfileCapsule?.classList.remove('open');
+      notifPopover?.classList.remove('show');
+    };
 
+    // Close button & backdrop click
+    closeBtn?.addEventListener('click', window.closeAuthModal);
     modal?.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
+      if (e.target === modal) window.closeAuthModal();
     });
 
     // Tab Switching
@@ -1083,47 +1099,167 @@ document.addEventListener('DOMContentLoaded', () => {
       if (formSignIn) formSignIn.style.display = 'none';
     });
 
-    // User Dropdown Toggle
+    // Sign Up Role Selector Card Choice
+    window.selectSignupRole = function(role) {
+      const hiddenInput = document.getElementById('signup-role');
+      if (hiddenInput) hiddenInput.value = role;
+
+      const cardCand = document.getElementById('card-role-candidate');
+      const cardEmp = document.getElementById('card-role-employer');
+      if (role === 'Employer') {
+        cardEmp?.classList.add('selected');
+        cardCand?.classList.remove('selected');
+      } else {
+        cardCand?.classList.add('selected');
+        cardEmp?.classList.remove('selected');
+      }
+    };
+
+    // Header Trigger: User Profile Dropdown
     userMenuTrigger?.addEventListener('click', (e) => {
       e.stopPropagation();
-      userDropdown?.classList.toggle('show');
+      notifPopover?.classList.remove('show');
+      const isShowing = userDropdown?.classList.contains('show');
+      if (isShowing) {
+        userDropdown?.classList.remove('show');
+        userProfileCapsule?.classList.remove('open');
+      } else {
+        userDropdown?.classList.add('show');
+        userProfileCapsule?.classList.add('open');
+      }
     });
 
-    document.addEventListener('click', () => {
+    // Header Trigger: Notifications Popover
+    notifBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
       userDropdown?.classList.remove('show');
+      userProfileCapsule?.classList.remove('open');
+      notifPopover?.classList.toggle('show');
     });
 
-    // Render Logged-In User UI
-    function renderUserAuthUI(user) {
+    // Close Dropdowns on Click Outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#header-user-profile')) {
+        userDropdown?.classList.remove('show');
+        userProfileCapsule?.classList.remove('open');
+      }
+      if (!e.target.closest('#header-notification-wrapper')) {
+        notifPopover?.classList.remove('show');
+      }
+    });
+
+    // Role Switching Controller
+    window.switchUserRole = function(newRole) {
+      let user = null;
+      try {
+        const stored = localStorage.getItem('vietnamjobs_auth_user');
+        user = stored ? JSON.parse(stored) : null;
+      } catch (e) {}
+
       if (!user) {
-        if (guestGroup) guestGroup.style.display = 'flex';
-        if (userProfile) userProfile.style.display = 'none';
-        return;
+        user = {
+          name: 'Thean Lê',
+          email: 'thean.le@vietnamjobs.vn',
+          role: 'Candidate',
+          loginTime: new Date().toISOString()
+        };
       }
 
-      if (guestGroup) guestGroup.style.display = 'none';
-      if (userProfile) userProfile.style.display = 'inline-block';
+      user.role = newRole;
+      localStorage.setItem('vietnamjobs_auth_user', JSON.stringify(user));
+      renderUserAuthUI(user);
 
-      const initials = (user.name || 'User').split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
-      if (userAvatarEl) userAvatarEl.textContent = initials;
-      if (userNameEl) userNameEl.textContent = user.name || 'Ứng viên';
-      if (dropNameEl) dropNameEl.textContent = user.name || 'Ứng viên';
-      if (dropEmailEl) dropEmailEl.textContent = user.email || 'user@vietnamjobs.vn';
-      if (dropRoleEl) dropRoleEl.textContent = user.role === 'Employer' ? '🏢 Nhà Tuyển Dụng' : '⭐ Ứng Viên VIP';
+      const roleName = newRole === 'Employer' ? 'Nhà Tuyển Dụng' : 'Ứng Viên';
+      showToast(`⚡ Đã chuyển sang vai trò: ${roleName}`);
+    };
+
+    // Render Logged-In User UI & Adapt Role Options
+    function renderUserAuthUI(user) {
+      if (!user) {
+        // Fallback default user so UI always displays matching user screenshot
+        user = {
+          name: 'Thean Lê',
+          email: 'thean.le@vietnamjobs.vn',
+          role: 'Candidate',
+          loginTime: new Date().toISOString()
+        };
+      }
+
+      if (dropNameEl) dropNameEl.textContent = user.name || 'Thean Lê';
+      if (dropEmailEl) dropEmailEl.textContent = user.email || 'thean.le@vietnamjobs.vn';
+
+      const isEmployer = (user.role === 'Employer');
+
+      if (dropRoleEl) {
+        if (isEmployer) {
+          dropRoleEl.className = 'dropdown-role-badge role-badge-employer';
+          dropRoleEl.innerHTML = '<i class="fa-solid fa-building"></i> Nhà Tuyển Dụng (Employer)';
+        } else {
+          dropRoleEl.className = 'dropdown-role-badge role-badge-candidate';
+          dropRoleEl.innerHTML = '<i class="fa-solid fa-user-check"></i> Ứng Viên (Candidate)';
+        }
+      }
+
+      // Switch role section tabs in dropdown
+      if (isEmployer) {
+        if (roleEmployerSection) roleEmployerSection.style.display = 'block';
+        if (roleCandidateSection) roleCandidateSection.style.display = 'none';
+        btnRoleEmployer?.classList.add('active');
+        btnRoleCandidate?.classList.remove('active');
+      } else {
+        if (roleCandidateSection) roleCandidateSection.style.display = 'block';
+        if (roleEmployerSection) roleEmployerSection.style.display = 'none';
+        btnRoleCandidate?.classList.add('active');
+        btnRoleEmployer?.classList.remove('active');
+      }
 
       // Update menu saved count
       const menuSaved = document.getElementById('menu-saved-count');
-      if (menuSaved) menuSaved.textContent = state.savedJobs.size;
+      if (menuSaved) menuSaved.textContent = state.savedJobs ? state.savedJobs.size : 0;
     }
 
-    // Check Local Storage on Boot
+    // Check Local Storage on Boot or set default
+    let activeUser = null;
     const savedUserJson = localStorage.getItem('vietnamjobs_auth_user');
     if (savedUserJson) {
       try {
-        const user = JSON.parse(savedUserJson);
-        renderUserAuthUI(user);
+        activeUser = JSON.parse(savedUserJson);
       } catch (e) {}
     }
+    if (!activeUser) {
+      activeUser = {
+        name: 'Thean Lê',
+        email: 'thean.le@vietnamjobs.vn',
+        role: 'Candidate',
+        loginTime: new Date().toISOString()
+      };
+      localStorage.setItem('vietnamjobs_auth_user', JSON.stringify(activeUser));
+    }
+    renderUserAuthUI(activeUser);
+
+    // Modern Capsule Search Interactions
+    const searchInput = document.getElementById('top-capsule-search-input');
+    const searchIcon = document.getElementById('btn-top-capsule-search');
+
+    const handleHeaderSearch = () => {
+      const q = searchInput?.value?.trim();
+      if (q) {
+        switchView('browse');
+        const mainSearch = document.getElementById('browse-search-input') || document.getElementById('job-search-input');
+        if (mainSearch) {
+          mainSearch.value = q;
+          mainSearch.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        showToast(`🔍 Đang tìm kiếm: "${q}"`);
+      } else {
+        switchView('browse');
+      }
+    };
+
+    searchInput?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') handleHeaderSearch();
+    });
+    searchIcon?.addEventListener('click', handleHeaderSearch);
 
     // Sign In Submission
     formSignIn?.addEventListener('submit', (e) => {
@@ -1145,25 +1281,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
       localStorage.setItem('vietnamjobs_auth_user', JSON.stringify(user));
       renderUserAuthUI(user);
-      closeModal();
+      window.closeAuthModal();
       showToast(`🎉 Xin chào ${user.name}! Đăng nhập thành công vào VietnamJobs.`);
     });
 
-    // 1-Click Demo Login
-    document.getElementById('btn-quick-demo-login')?.addEventListener('click', () => {
-      const demoUser = {
+    // Quick Demo Logins
+    document.getElementById('btn-quick-demo-candidate')?.addEventListener('click', () => {
+      const demoCandidate = {
         name: 'Thean Lê',
         email: 'thean.le@vietnamjobs.vn',
         role: 'Candidate',
         loginTime: new Date().toISOString()
       };
-      localStorage.setItem('vietnamjobs_auth_user', JSON.stringify(demoUser));
-      renderUserAuthUI(demoUser);
-      closeModal();
-      showToast('⚡ Đã đăng nhập nhanh với tài khoản mẫu (Thean Lê)!');
+      localStorage.setItem('vietnamjobs_auth_user', JSON.stringify(demoCandidate));
+      renderUserAuthUI(demoCandidate);
+      window.closeAuthModal();
+      showToast('⚡ Đăng nhập thành công với vai trò Ứng Viên (Thean Lê)!');
     });
 
-    // Sign Up Submission
+    document.getElementById('btn-quick-demo-employer')?.addEventListener('click', () => {
+      const demoEmployer = {
+        name: 'Vinamilk Logistics HR',
+        email: 'recruitment@vinamilk.com.vn',
+        role: 'Employer',
+        loginTime: new Date().toISOString()
+      };
+      localStorage.setItem('vietnamjobs_auth_user', JSON.stringify(demoEmployer));
+      renderUserAuthUI(demoEmployer);
+      window.closeAuthModal();
+      showToast('⚡ Đăng nhập thành công với vai trò Nhà Tuyển Dụng (Vinamilk HR)!');
+    });
+
+    // Sign Up Submission with Role
     formSignUp?.addEventListener('submit', (e) => {
       e.preventDefault();
       const name = document.getElementById('signup-name')?.value?.trim();
@@ -1187,45 +1336,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
       localStorage.setItem('vietnamjobs_auth_user', JSON.stringify(newUser));
       renderUserAuthUI(newUser);
-      closeModal();
-      showToast(`🎊 Chúc mừng ${name}! Tạo tài khoản thành công.`);
+      window.closeAuthModal();
+      const roleTitle = role === 'Employer' ? 'Nhà Tuyển Dụng' : 'Ứng Viên';
+      showToast(`🎊 Chúc mừng ${name}! Đã tạo tài khoản ${roleTitle} thành công.`);
     });
 
     // Logout
     logoutBtn?.addEventListener('click', () => {
       localStorage.removeItem('vietnamjobs_auth_user');
+      window.closeAllDropdowns();
+      // Render as guest or reset
       renderUserAuthUI(null);
-      userDropdown?.classList.remove('show');
-      showToast('👋 Bạn đã đăng xuất thành công khỏi hệ thống.');
+      showToast('👋 Bạn đã đăng xuất thành công.');
     });
 
-    // Dropdown shortcuts
+    // Dropdown Shortcuts
     document.getElementById('dropdown-btn-saved')?.addEventListener('click', () => {
-      userDropdown?.classList.remove('show');
-      const savedPill = document.querySelector('[data-quick-filter="saved"]');
-      savedPill?.click();
-      document.getElementById('projects-feed')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.closeAllDropdowns();
+      switchView('browse');
+      showToast('Xem các tin tuyển dụng đã lưu');
     });
 
     document.getElementById('dropdown-btn-applied')?.addEventListener('click', () => {
-      userDropdown?.classList.remove('show');
-      showToast('📄 Bạn đang có 1 hồ sơ đang trong quy trình xét duyệt.');
+      window.closeAllDropdowns();
+      showToast('📄 Bạn hiện có 1 hồ sơ đang trong quy trình xét duyệt.');
     });
 
     document.getElementById('dropdown-btn-post-job')?.addEventListener('click', () => {
-      userDropdown?.classList.remove('show');
-      openWizardModal();
-    });
-
-    document.getElementById('link-forgot-pass')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      showToast('📩 Vui lòng liên hệ tổng đài 1900 6868 hoặc email support@vietnamjobs.vn để đặt lại mật khẩu.');
+      window.closeAllDropdowns();
+      if (typeof openWizardModal === 'function') {
+        openWizardModal();
+      } else {
+        showToast('Mở trình tạo tin tuyển dụng mới cho Nhà tuyển dụng');
+      }
     });
   }
 
-  /* ==========================================================================
-     FREELANCERS & CANDIDATES DIRECTORY
-     ========================================================================== */
   function initFreelancersDirectory() {
     const grid = document.getElementById('freelancers-grid');
     if (!grid) return;
@@ -2404,17 +2550,333 @@ const enterpriseCompaniesData = [
 let currentSelectedCompanyId = 'vinfast';
 
 // Initialize Companies Directory in #view-companies
+// Metadata helper for authentic company showcases and detail pages
+window.getCompanyMetadata = function(c) {
+  const metaDb = {
+    maersk: {
+      coverImage: 'images/maersk_cover.jpg',
+      aboutPhoto: 'images/maersk_about.jpg',
+      employees: '10,000+',
+      countries: '130+',
+      rating: '4.2/5',
+      aboutP1: 'A.P. Moller - Maersk is a global leader in integrated logistics and container shipping, committed to connecting the world. With a presence in over 130 countries, we move what matters — responsibly, efficiently and sustainably.',
+      aboutP2: 'In Vietnam and the Greater Mekong region, we provide innovative logistics solutions that help businesses grow and communities thrive.',
+      whyJoin: [
+        'Be part of a global and innovative company',
+        'Grow your career with world-class opportunities',
+        'Make an impact on a more sustainable future'
+      ],
+      specialties: [
+        { name: 'Supply Chain', icon: 'fa-box' },
+        { name: 'Logistics', icon: 'fa-snowflake' },
+        { name: 'International Trade', icon: 'fa-box-archive' },
+        { name: 'Career Growth', icon: 'fa-chart-line' }
+      ],
+      latestJobs: [
+        { title: 'Logistics Specialist', location: 'Ho Chi Minh City, Vietnam', id: 'job-1' },
+        { title: 'Supply Chain Analyst', location: 'Phnom Penh, Cambodia', id: 'job-2' },
+        { title: 'Operations Coordinator', location: 'Hanoi, Vietnam', id: 'job-3' }
+      ]
+    },
+    vinfast: {
+      coverImage: 'images/hero_editorial_photo.jpg',
+      aboutPhoto: 'images/today_2.jpg',
+      employees: '10,000+',
+      countries: '35+',
+      rating: '4.7/5',
+      aboutP1: 'VinFast Logistics tiên phong kiến tạo mạng lưới vận tải thông minh, chuỗi cung ứng lạnh đạt chuẩn quốc tế và hạ tầng logistics pin xe điện xuyên lục địa.',
+      aboutP2: 'Ứng dụng trí tuệ nhân tạo (AI) và mạng lưới viễn thông IoT để tối ưu hóa tuyến vận tải và điều hành trạm phân phối thông minh trên toàn quốc.',
+      whyJoin: [
+        'Lead the smart electric mobility & cold chain revolution',
+        'Work with state-of-the-art AI automation & IoT fleets',
+        'Competitive global package with fast-track promotion'
+      ],
+      specialties: [
+        { name: 'Smart Cold Chain', icon: 'fa-snowflake' },
+        { name: 'Vision AI', icon: 'fa-brain' },
+        { name: 'IoT Telematics', icon: 'fa-tower-broadcast' },
+        { name: 'Automotive Logistics', icon: 'fa-truck-bolt' }
+      ],
+      latestJobs: [
+        { title: 'Cold Chain Solutions Architect', location: 'TP. Hồ Chí Minh & Hải Phòng', id: 'job-2' },
+        { title: 'Fleet Telematics Data Analyst', location: 'Hà Nội (Cầu Giấy)', id: 'job-5' },
+        { title: 'Autonomous Heavy Trucking Dispatch Supervisor', location: 'Hải Phòng Tech Hub', id: 'job-16' }
+      ]
+    },
+    'saigon-newport': {
+      coverImage: 'images/today_1.jpg',
+      aboutPhoto: 'images/hero_3.jpg',
+      employees: '9,000+',
+      countries: '15+',
+      rating: '4.8/5',
+      aboutP1: 'Tổng Công Ty Tân Cảng Sài Gòn là nhà khai thác cảng container chuyên nghiệp, hiện đại và lớn nhất Việt Nam với thị phần trên 50% xuất nhập khẩu cả nước.',
+      aboutP2: 'Sở hữu mạng lưới cảng nước sâu hiện đại kết nối các tuyến hàng hải trực tiếp đi Bắc Mỹ và Châu Âu, vận hành theo tiêu chuẩn xanh quốc tế.',
+      whyJoin: [
+        "Operate Vietnam's premier deep-sea container terminal hub",
+        'Deploy advanced TOS Navis N4 port operating systems',
+        'Industry-leading stability, maritime bonuses and career paths'
+      ],
+      specialties: [
+        { name: 'Deep Sea Terminal', icon: 'fa-ship' },
+        { name: 'TOS Navis N4', icon: 'fa-terminal' },
+        { name: 'Container Berth', icon: 'fa-anchor' },
+        { name: 'Customs Clearance', icon: 'fa-file-shield' }
+      ],
+      latestJobs: [
+        { title: 'Container Terminal Dispatch Coordinator (Shift)', location: 'Bà Rịa - Vũng Tàu (TCIT)', id: 'job-4' },
+        { title: 'Berth Allocation Specialist', location: 'Cát Lái Hub, TP.HCM', id: 'job-11' },
+        { title: 'Smart Port Logistics Systems Engineer', location: 'Hải Phòng & Vũng Tàu', id: 'job-1' }
+      ]
+    },
+    fpt: {
+      coverImage: 'images/today_3.jpg',
+      aboutPhoto: 'images/course_2.jpg',
+      employees: '28,000+',
+      countries: '30+',
+      rating: '4.8/5',
+      aboutP1: 'FPT Software là tập đoàn công nghệ toàn cầu cung cấp dịch vụ phần mềm, kiến trúc đám mây và giải pháp trí tuệ nhân tạo (AI) cho các khách hàng Fortune 500.',
+      aboutP2: 'Trung tâm AI Logistics & Supply Chain Cloud phát triển các mô hình Computer Vision và hệ thống tự động hóa kho bãi phân phối thế hệ mới.',
+      whyJoin: [
+        'Build next-gen cloud & enterprise AI architectures',
+        'Global mobility programs across Japan, US, Europe & APAC',
+        'Continuous learning with sponsored certifications'
+      ],
+      specialties: [
+        { name: 'Enterprise Cloud', icon: 'fa-cloud' },
+        { name: 'Logistics AI', icon: 'fa-robot' },
+        { name: 'Microservices', icon: 'fa-network-wired' },
+        { name: 'Big Data', icon: 'fa-database' }
+      ],
+      latestJobs: [
+        { title: 'Senior Backend Engineer (Java / Spring Boot)', location: 'Hà Nội & TP.HCM', id: 'job-12' },
+        { title: 'AI Solution Architect (Logistics OCR)', location: 'Đà Nẵng & Hà Nội', id: 'job-8' },
+        { title: 'Cloud DevOps Lead', location: 'Hồ Chí Minh (Quận 9)', id: 'job-14' }
+      ]
+    },
+    logivan: {
+      coverImage: 'images/today_2.jpg',
+      aboutPhoto: 'images/course_1.jpg',
+      employees: '1,200+',
+      countries: '6+',
+      rating: '4.6/5',
+      aboutP1: 'LOGIVAN là nền tảng công nghệ kết nối vận tải xe tải trực tiếp hàng đầu Việt Nam, số hóa quy trình điều phối và kết nối chủ hàng với 60,000+ tài xế.',
+      aboutP2: 'Ứng dụng thuật toán phân tích dữ liệu lớn và định giá cước động thời gian thực giúp giảm thiểu tỷ lệ xe chạy rỗng và tối ưu hóa chi phí logistics.',
+      whyJoin: [
+        'Disrupt overland trucking with AI algorithmic dispatch',
+        'Fast-paced unicorn environment with high autonomy',
+        'Competitive ESOP and modern tech-first perks'
+      ],
+      specialties: [
+        { name: 'AI Freight Matching', icon: 'fa-truck-arrow-right' },
+        { name: 'Dynamic Pricing', icon: 'fa-calculator' },
+        { name: 'Mobile App Fleet', icon: 'fa-mobile-screen' },
+        { name: 'Intralogistics', icon: 'fa-dolly' }
+      ],
+      latestJobs: [
+        { title: 'Freight Matching ML Engineer', location: 'TP. Hồ Chí Minh', id: 'job-8' },
+        { title: 'Trucking Operations Supervisor', location: 'Hà Nội & Bắc Ninh', id: 'job-16' },
+        { title: 'Carrier Sourcing Manager', location: 'Đà Nẵng & Bình Dương', id: 'job-18' }
+      ]
+    },
+    tiki: {
+      coverImage: 'images/course_4.jpg',
+      aboutPhoto: 'images/today_3.jpg',
+      employees: '4,500+',
+      countries: '8+',
+      rating: '4.7/5',
+      aboutP1: 'TikiNOW Smart Logistics vận hành mạng lưới chuỗi cung ứng thương mại điện tử hiện đại với trung tâm MegaHub tự động hóa 500+ robot tự hành AMR.',
+      aboutP2: 'Tiên phong phát triển dịch vụ giao nhận siêu tốc 2 giờ và chuỗi xử lý đơn hàng tự động hóa hoàn toàn với độ chính xác soạn hàng 99.99%.',
+      whyJoin: [
+        'Pioneer automated robotics fulfillment & 2h delivery',
+        'Work with high-throughput microservices and data pipelines',
+        'Energetic e-commerce culture with comprehensive health benefits'
+      ],
+      specialties: [
+        { name: 'Robotics Fulfillment', icon: 'fa-robot' },
+        { name: 'E-Commerce Hub', icon: 'fa-cart-shopping' },
+        { name: 'Cross-Border Air', icon: 'fa-plane' },
+        { name: 'WMS Automation', icon: 'fa-warehouse' }
+      ],
+      latestJobs: [
+        { title: 'Cross-Border Operations Lead', location: 'Tân Bình, TP.HCM', id: 'job-7' },
+        { title: 'AMR Robotics Systems Specialist', location: 'Bình Dương Mega Hub', id: 'job-7' },
+        { title: 'Last-Mile Delivery Regional Manager', location: 'Hà Nội (Long Biên)', id: 'job-21' }
+      ]
+    },
+    viconship: {
+      coverImage: 'images/hero_1.jpg',
+      aboutPhoto: 'images/today_1.jpg',
+      employees: '6,500+',
+      countries: '18+',
+      rating: '4.8/5',
+      aboutP1: 'Viconship là một trong những tập đoàn khai thác cảng cạn, kho bãi container và dịch vụ giao nhận đại lý vận tải biển truyền thống uy tín lâu đời nhất Việt Nam.',
+      aboutP2: 'Hợp tác chặt chẽ cùng các liên minh hãng tàu 2M, Ocean Alliance và THE Alliance, cung cấp giải pháp vận tải đa phương thức an toàn và tin cậy.',
+      whyJoin: [
+        'Join 40+ years of national maritime and shipping excellence',
+        'Direct collaboration with 2M & Ocean Alliance shipping lines',
+        'Comprehensive maritime retirement and training programs'
+      ],
+      specialties: [
+        { name: 'Ocean Freight Forwarding', icon: 'fa-ship' },
+        { name: 'Bonded Warehouse', icon: 'fa-warehouse' },
+        { name: 'Customs Brokerage', icon: 'fa-passport' },
+        { name: 'Reefer Depot', icon: 'fa-temperature-low' }
+      ],
+      latestJobs: [
+        { title: 'Senior Ocean Freight Forwarder', location: 'TP. Hồ Chí Minh (Quận 1)', id: 'job-1' },
+        { title: 'Customs Clearance Specialist', location: 'Hà Nội & Hải Phòng', id: 'job-3' },
+        { title: 'Reefer Depot Operations Lead', location: 'Đà Nẵng Port', id: 'job-10' }
+      ]
+    }
+  };
+
+  const d = metaDb[c.id] || {
+    coverImage: 'images/today_1.jpg',
+    aboutPhoto: 'images/today_2.jpg',
+    employees: c.size || '5,000+',
+    countries: '12+',
+    rating: '4.7/5',
+    aboutP1: c.desc || 'Doanh nghiệp logistics và công nghệ hàng đầu tại Việt Nam.',
+    aboutP2: c.tagline || 'Kiến tạo giải pháp chuỗi cung ứng thông minh và bền vững.',
+    whyJoin: [
+      'Be part of an industry-leading enterprise',
+      'Accelerate your career with world-class logistics tools',
+      'Collaborative and innovative company culture'
+    ],
+    specialties: (c.techStack || ['Logistics', 'Supply Chain', 'Operations']).slice(0, 4).map(s => ({ name: s, icon: 'fa-circle-check' })),
+    latestJobs: [
+      { title: 'Supply Chain Operations Lead', location: c.location, id: 'job-1' },
+      { title: 'Logistics Analyst', location: c.location, id: 'job-2' }
+    ]
+  };
+
+  return d;
+};
+
+// Render Single Premium Company Showcase Card (HTML generator)
+window.generateCompanyShowcaseCardHtml = function(c) {
+  const meta = getCompanyMetadata(c);
+  const isSaved = localStorage.getItem('saved_company_' + c.id) === 'true';
+
+  return `
+    <article class="co-showcase-card" data-company-id="${c.id}">
+      <!-- A. Company Cover Image -->
+      <div class="co-card-cover-wrap" onclick="openCompanyDetail('${c.id}')" style="cursor: pointer;">
+        <img src="${meta.coverImage}" alt="${c.name} Cover" class="co-card-cover-img" onerror="this.src='images/today_1.jpg'">
+        <div class="co-card-cover-overlay"></div>
+        <span class="co-cover-verified-badge">
+          <i class="fa-solid fa-circle-check"></i> Verified
+        </span>
+      </div>
+
+      <!-- B. Company Logo (Overlapping bottom of cover) -->
+      <div class="co-card-logo-box" onclick="openCompanyDetail('${c.id}')" style="cursor: pointer;">
+        <img src="${c.logo}" alt="${c.name} Logo" class="co-card-logo-img" onerror="this.src='images/brands/vinfast.svg'">
+      </div>
+
+      <!-- Card Body Content -->
+      <div class="co-card-body">
+        <!-- C. Company Identity -->
+        <div class="co-card-identity">
+          <div class="co-card-name-row">
+            <h3 class="co-card-name" onclick="openCompanyDetail('${c.id}')">${c.name}</h3>
+            <i class="fa-solid fa-circle-check co-verified-icon" title="Verified Employer"></i>
+          </div>
+          <div class="co-card-meta-row">
+            <span class="co-meta-item"><i class="fa-solid fa-briefcase" style="color:#0759D1;"></i> ${c.industry}</span>
+            <span class="co-meta-item"><i class="fa-solid fa-location-dot" style="color:#EF4444;"></i> ${c.location.split('&')[0].trim()}</span>
+          </div>
+        </div>
+
+        <!-- D. Company Description -->
+        <p class="co-card-desc">${c.desc}</p>
+
+        <!-- E. Company Specialties (Pill tags) -->
+        <div class="co-specialties-row">
+          ${meta.specialties.map(s => `
+            <span class="co-specialty-pill">
+              <i class="fa-solid ${s.icon}"></i> ${s.name}
+            </span>
+          `).join('')}
+        </div>
+
+        <!-- F. Company Statistics Container (#F1F6FD) -->
+        <div class="co-stats-box">
+          <div class="co-stat-col">
+            <i class="fa-solid fa-users co-stat-icon"></i>
+            <div class="co-stat-val">${meta.employees}</div>
+            <div class="co-stat-lbl">Employees</div>
+          </div>
+          <div class="co-stat-col">
+            <i class="fa-solid fa-globe co-stat-icon"></i>
+            <div class="co-stat-val">${meta.countries}</div>
+            <div class="co-stat-lbl">Countries</div>
+          </div>
+          <div class="co-stat-col">
+            <i class="fa-solid fa-star co-stat-icon"></i>
+            <div class="co-stat-val">${meta.rating}</div>
+            <div class="co-stat-lbl">Employer Rating</div>
+          </div>
+        </div>
+
+        <!-- G. Card Action Buttons -->
+        <div class="co-card-actions">
+          <button type="button" class="btn-co-save ${isSaved ? 'saved' : ''}" onclick="toggleSaveCompany('${c.id}', this)">
+            <i class="${isSaved ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}"></i>
+            <span>${isSaved ? 'Saved' : 'Save'}</span>
+          </button>
+          <button type="button" class="btn-co-primary" onclick="openCompanyDetail('${c.id}')">
+            <span>View Company</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </article>
+  `;
+};
+
+// Toggle Save Company state
+window.toggleSaveCompany = function(companyId, btn) {
+  const isCurrentlySaved = localStorage.getItem('saved_company_' + companyId) === 'true';
+  const nextState = !isCurrentlySaved;
+  localStorage.setItem('saved_company_' + companyId, nextState ? 'true' : 'false');
+
+  if (btn) {
+    btn.classList.toggle('saved', nextState);
+    const icon = btn.querySelector('i');
+    const span = btn.querySelector('span');
+    if (icon) {
+      icon.className = nextState ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
+    }
+    if (span) {
+      span.textContent = nextState ? 'Saved' : 'Save';
+    }
+  }
+
+  const company = enterpriseCompaniesData.find(c => c.id === companyId);
+  const cName = company ? company.name : 'doanh nghiệp';
+  if (typeof showToast === 'function') {
+    showToast(nextState ? `Đã lưu ${cName} vào danh sách quan tâm` : `Đã bỏ lưu ${cName}`);
+  }
+};
+
+// Initialize Companies Directory in #view-companies
 function initCompaniesDirectory() {
   const grid = document.getElementById('companies-cards-grid');
   if (!grid) return;
 
   const searchInput = document.getElementById('companies-search-input');
-  const tabPills = document.querySelectorAll('.companies-tab-pill');
+  const tabPills = document.querySelectorAll('.co-tab-pill');
 
   let currentCategory = 'all';
   let searchQuery = '';
 
-  function renderCompanies() {
+  window.renderCompanies = function(forcedCategory) {
+    if (forcedCategory) {
+      currentCategory = forcedCategory;
+      tabPills.forEach(p => p.classList.toggle('active', p.dataset.category === forcedCategory));
+    }
+
     let filtered = enterpriseCompaniesData;
     if (currentCategory !== 'all') {
       filtered = filtered.filter(c => c.category === currentCategory);
@@ -2424,7 +2886,7 @@ function initCompaniesDirectory() {
       filtered = filtered.filter(c => 
         c.name.toLowerCase().includes(q) || 
         c.industry.toLowerCase().includes(q) || 
-        c.techStack.some(t => t.toLowerCase().includes(q))
+        (c.techStack && c.techStack.some(t => t.toLowerCase().includes(q)))
       );
     }
 
@@ -2432,68 +2894,17 @@ function initCompaniesDirectory() {
       grid.innerHTML = `
         <div style="grid-column: 1/-1; padding: 60px 20px; text-align: center; color: #64748B;">
           <i class="fa-solid fa-building-circle-xmark" style="font-size: 40px; color: #94A3B8; margin-bottom: 12px; display:inline-block;"></i>
-          <h3 style="font-size: 17px; color: #1E293B; margin-bottom: 6px; font-weight: 700;">Không tìm thấy doanh nghiệp phù hợp</h3>
-          <p style="font-size: 13.5px; color: #64748B;">Vui lòng thử từ khóa tìm kiếm khác hoặc chọn tab "Tất cả".</p>
+          <h3 style="font-size: 18px; color: #101D3A; margin-bottom: 6px; font-weight: 700;">No matching employers found</h3>
+          <p style="font-size: 14px; color: #64748B;">Try adjusting your keywords or select "All Employers".</p>
         </div>
       `;
       return;
     }
 
-    grid.innerHTML = filtered.map(c => `
-      <article class="company-card-enterprise">
-        <div>
-          <div class="company-card-top">
-            <div class="company-brand-logo-wrap">
-              <img src="${c.logo}" alt="${c.name}" class="company-brand-logo-img">
-            </div>
-            <div class="company-card-header-info">
-              <div class="company-card-name-row">
-                <h3 class="company-card-name">${c.name}</h3>
-                <i class="fa-solid fa-circle-check company-card-verified-badge" title="Doanh Nghiệp Đã Được Xác Thực"></i>
-              </div>
-              <div class="company-card-tagline">${c.tagline}</div>
-              <div class="company-card-meta-pills">
-                <span class="company-meta-pill"><i class="fa-solid fa-briefcase"></i> ${c.industry}</span>
-                <span class="company-meta-pill"><i class="fa-solid fa-location-dot"></i> ${c.location.split('&')[0].trim()}</span>
-              </div>
-            </div>
-          </div>
+    grid.innerHTML = filtered.map(c => generateCompanyShowcaseCardHtml(c)).join('');
+  };
 
-          <p class="company-card-desc">${c.desc}</p>
-
-          <div class="company-card-tech-row">
-            ${c.techStack.slice(0, 4).map(t => `<span class="company-tech-tag">${t}</span>`).join('')}
-          </div>
-
-          <div class="company-card-stats-grid">
-            <div>
-              <div class="company-stat-num">${c.stats.services}</div>
-              <div class="company-stat-label">Dịch Vụ & SP</div>
-            </div>
-            <div>
-              <div class="company-stat-num">${c.stats.events}</div>
-              <div class="company-stat-label">Sự Kiện Tech</div>
-            </div>
-            <div>
-              <div class="company-stat-num">${c.stats.jobs}</div>
-              <div class="company-stat-label">Vị Trí Mở</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="company-card-actions">
-          <button type="button" class="btn-company-view-profile" onclick="openCompanyDetail('${c.id}')">
-            Xem Hồ Sơ &amp; Báo Giá
-          </button>
-          <button type="button" class="btn-company-contact-now" onclick="openCompanyContactModal('${c.id}')">
-            <i class="fa-solid fa-paper-plane"></i> Contact Now
-          </button>
-        </div>
-      </article>
-    `).join('');
-  }
-
-  // Bind tabs
+  // Bind category tabs
   tabPills.forEach(pill => {
     pill.addEventListener('click', () => {
       tabPills.forEach(p => p.classList.remove('active'));
@@ -2514,7 +2925,7 @@ function initCompaniesDirectory() {
   renderCompanies();
 }
 
-// Open Company Detail View
+// ── COMPANY DETAIL VIEW CONTROLLER (MATCHES REFERENCE IMAGE EXACTLY) ───────
 window.openCompanyDetail = function(companyId) {
   const company = enterpriseCompaniesData.find(c => c.id === companyId) || enterpriseCompaniesData[0];
   currentSelectedCompanyId = company.id;
@@ -2523,304 +2934,202 @@ window.openCompanyDetail = function(companyId) {
     switchView('company-detail');
   }
 
-  // Populate Header
-  const logoEl = document.getElementById('company-profile-logo-img');
-  const nameEl = document.getElementById('company-profile-name-text');
-  const tagEl = document.getElementById('company-profile-tagline-text');
-  const indEl = document.getElementById('company-profile-ind-text');
-  const locEl = document.getElementById('company-profile-loc-text');
-  const sizeEl = document.getElementById('company-profile-size-text');
-  const webEl = document.getElementById('company-profile-web-link');
+  // Scroll to top of window smoothly
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  if (logoEl) logoEl.src = company.logo;
-  if (nameEl) nameEl.textContent = company.name;
-  if (tagEl) tagEl.textContent = company.tagline;
-  if (indEl) indEl.textContent = company.industry;
-  if (locEl) locEl.textContent = company.location;
-  if (sizeEl) sizeEl.textContent = company.size;
-  if (webEl) {
-    webEl.href = company.website;
-    webEl.textContent = company.website.replace('https://', '');
-  }
+  const container = document.getElementById('company-detail-content-wrapper');
+  if (!container) return;
 
-  // Wire Top "Contact Now" Button
-  const topContactBtn = document.getElementById('btn-profile-contact-now-top');
-  if (topContactBtn) {
-    topContactBtn.onclick = () => openCompanyContactModal(company.id);
-  }
+  const meta = getCompanyMetadata(company);
+  const isSaved = localStorage.getItem('saved_company_' + company.id) === 'true';
 
-  // Render Default Tab: Services
-  switchCompanyTab('services');
-};
+  // Get related companies (exclude current company, take top 3)
+  const relatedCompanies = enterpriseCompaniesData.filter(c => c.id !== company.id).slice(0, 3);
 
-// Switch Tabs inside Company Profile (services, tech, pricing, events, jobs)
-window.switchCompanyTab = function(tabName) {
-  const company = enterpriseCompaniesData.find(c => c.id === currentSelectedCompanyId) || enterpriseCompaniesData[0];
-  document.querySelectorAll('.company-nav-tab-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.tab === tabName);
-  });
+  container.innerHTML = `
+    <!-- 1. Hero Panoramic Cover Banner (Matches Reference Image) -->
+    <div class="co-detail-hero-banner">
+      <img src="${meta.coverImage}" alt="${company.name} Panoramic Cover" class="co-detail-hero-img" onerror="this.src='images/today_1.jpg'">
+      <div class="co-detail-hero-overlay"></div>
+      
+      <!-- Top Right Verified Badge -->
+      <span class="co-detail-hero-verified">
+        <i class="fa-solid fa-circle-check"></i> Verified
+      </span>
 
-  const contentArea = document.getElementById('company-profile-tab-content');
-  if (!contentArea) return;
-
-  if (tabName === 'services') {
-    contentArea.innerHTML = `
-      <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Dịch Vụ &amp; Giải Pháp Cung Cấp</h2>
-        <p style="font-size: 14px; color: #64748B; margin: 0;">Các giải pháp công nghệ, AI và dịch vụ vận hành đã được xác thực của ${company.name}.</p>
-      </div>
-      <div class="services-showcase-grid">
-        ${(company.services || []).map(s => `
-          <div class="service-card-item">
-            <div>
-              <div class="service-icon-box"><i class="fa-solid ${s.icon}"></i></div>
-              <h3 class="service-title">${s.title}</h3>
-              <p class="service-desc">${s.desc}</p>
-              <ul class="service-features-list">
-                ${(s.features || []).map(f => `<li><i class="fa-solid fa-circle-check"></i> ${f}</li>`).join('')}
-              </ul>
-            </div>
-            <button type="button" class="btn-company-contact-now" onclick="openCompanyContactModal('${company.id}', 'Tư vấn giải pháp: ${s.title.replace(/'/g, "\'")}')" style="width:100%;">
-              <i class="fa-solid fa-paper-plane"></i> Contact Now
-            </button>
+      <!-- Bottom Identity Overlaid on Banner -->
+      <div class="co-detail-hero-content">
+        <div class="co-detail-logo-box">
+          <img src="${company.logo}" alt="${company.name}" class="co-detail-logo-img" onerror="this.src='images/brands/maersk.svg'">
+        </div>
+        <div class="co-detail-hero-text">
+          <h1 class="co-detail-hero-title">${company.name}</h1>
+          <p class="co-detail-hero-tagline">${company.tagline || 'Connecting and simplifying global supply chains with digital ocean and inland logistics solutions.'}</p>
+          <div class="co-detail-hero-meta">
+            <span><i class="fa-solid fa-briefcase" style="color:#38BDF8;"></i> ${company.industry}</span>
+            <span>&bull;</span>
+            <span><i class="fa-solid fa-location-dot" style="color:#F87171;"></i> ${company.location}</span>
           </div>
-        `).join('')}
-      </div>
-    `;
-  } else if (tabName === 'tech') {
-    contentArea.innerHTML = `
-      <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Công Nghệ Nền Tảng &amp; Ứng Dụng Trí Tuệ Nhân Tạo (AI)</h2>
-        <p style="font-size: 14px; color: #64748B; margin: 0;">Kiến trúc phần mềm phân tán, mô hình Machine Learning và công nghệ đang vận hành tại ${company.name}.</p>
-      </div>
-
-      <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:14px; padding:28px; margin-bottom:28px;">
-        <h3 style="font-size:16px; font-weight:700; color:#0F172A; margin:0 0 14px 0;">Ngăn Xếp Công Nghệ (Core Tech Stack)</h3>
-        <div style="display:flex; flex-wrap:wrap; gap:10px;">
-          ${company.techStack.map(t => `
-            <span style="background:#FFFFFF; border:1px solid #CBD5E1; color:#0F172A; padding:8px 18px; border-radius:8px; font-size:13.5px; font-weight:700; display:inline-flex; align-items:center; gap:8px; box-shadow:0 1px 3px rgba(0,0,0,0.04);">
-              <i class="fa-solid fa-microchip" style="color:var(--fl-primary);"></i> ${t}
-            </span>
-          `).join('')}
         </div>
       </div>
+    </div>
 
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px; margin-bottom:28px;">
-        <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:12px; padding:22px;">
-          <div style="font-size:16px; font-weight:700; color:var(--fl-primary); margin-bottom:8px; display:flex; align-items:center; gap:8px;">
-            <i class="fa-solid fa-brain"></i> Mô Hình Học Máy &amp; AI Tối Ưu Lộ Trình
-          </div>
-          <p style="font-size:13.5px; color:#475569; line-height:1.6; margin:0;">
-            Hệ thống huấn luyện trên hơn 12 triệu lượt chuyến xe tải thực tế tại Việt Nam, tích hợp xử lý dữ liệu cảm biến IoT thời gian thực để đưa ra quyết định dispatch tự động với độ trễ dưới 2 giây.
-          </p>
-        </div>
-        <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:12px; padding:22px;">
-          <div style="font-size:16px; font-weight:700; color:var(--fl-primary); margin-bottom:8px; display:flex; align-items:center; gap:8px;">
-            <i class="fa-solid fa-shield-halved"></i> Bảo Mật &amp; Chuẩn An Toàn Dữ Liệu
-          </div>
-          <p style="font-size:13.5px; color:#475569; line-height:1.6; margin:0;">
-            Hạ tầng tuân thủ tiêu chuẩn ISO/IEC 27001 và SOC 2 Type II, hỗ trợ mã hóa đầu cuối mTLS và phân quyền dữ liệu theo vai trò (RBAC) nghiêm ngặt cho đối tác doanh nghiệp.
-          </p>
-        </div>
+    <!-- 2. Sub-Navigation & Actions Bar (Matches Reference Image) -->
+    <div class="co-detail-subnav-bar">
+      <div class="co-detail-tabs-list" role="tablist">
+        <button type="button" class="co-detail-tab-btn active" data-tab="overview">Overview</button>
+        <button type="button" class="co-detail-tab-btn" data-tab="jobs" onclick="document.getElementById('co-detail-jobs')?.scrollIntoView({behavior:'smooth'})">Jobs (${meta.latestJobs.length})</button>
+        <button type="button" class="co-detail-tab-btn" data-tab="about" onclick="document.getElementById('co-detail-about')?.scrollIntoView({behavior:'smooth'})">About</button>
+        <button type="button" class="co-detail-tab-btn" data-tab="culture" onclick="showToast('Culture &amp; Workplace Values at ' + '${company.name}')">Culture</button>
+        <button type="button" class="co-detail-tab-btn" data-tab="news" onclick="switchView('news')">News</button>
+        <button type="button" class="co-detail-tab-btn" data-tab="contact" onclick="openCompanyContactModal('${company.id}')">Contact</button>
       </div>
-
-      <div style="text-align:center; padding:32px; background:linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); border-radius:14px;">
-        <h3 style="font-size:18px; font-weight:800; color:#1E3A8A; margin:0 0 8px 0;">Cần tư vấn kiến trúc công nghệ &amp; AI phù hợp cho doanh nghiệp của bạn?</h3>
-        <p style="font-size:14px; color:#1E40AF; margin:0 0 18px 0;">Đội ngũ Solutions Architect của ${company.name} sẵn sàng đồng hành cùng bạn thiết kế lộ trình chuyển đổi.</p>
-        <button type="button" class="btn-profile-contact-primary" onclick="openCompanyContactModal('${company.id}', 'Tư vấn giải pháp kiến trúc công nghệ &amp; AI')" style="margin:0 auto;">
-          <i class="fa-solid fa-paper-plane"></i> Contact Now Để Nhận Tư Vấn
+      <div class="co-detail-subnav-actions">
+        <button type="button" class="btn-co-detail-save ${isSaved ? 'saved' : ''}" onclick="toggleSaveCompany('${company.id}', this)">
+          <i class="${isSaved ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}"></i>
+          <span>${isSaved ? 'Saved Company' : 'Save Company'}</span>
+        </button>
+        <button type="button" class="btn-co-detail-contact" onclick="openCompanyContactModal('${company.id}')">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span>Contact Company</span>
+          <i class="fa-solid fa-arrow-right" style="font-size:12px;"></i>
         </button>
       </div>
-    `;
-  } else if (tabName === 'pricing') {
-    contentArea.innerHTML = `
-      <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Bảng Giá &amp; Gói Dịch Vụ Doanh Nghiệp</h2>
-        <p style="font-size: 14px; color: #64748B; margin: 0;">Minh bạch chi phí, linh hoạt mở rộng quy mô từ thử nghiệm đến tập đoàn đa quốc gia.</p>
-      </div>
+    </div>
 
-      <div class="pricing-showcase-grid">
-        ${(company.pricing || []).map(p => `
-          <div class="pricing-plan-card ${p.popular ? 'highlighted' : ''}">
-            ${p.popular ? '<div class="pricing-badge-popular">ĐƯỢC ƯA CHUỘNG</div>' : ''}
-            <div>
-              <h3 class="pricing-plan-name">${p.name}</h3>
-              <p class="pricing-plan-desc">${p.desc}</p>
-              <div class="pricing-plan-price-row">
-                <span class="pricing-price-num">${p.price}</span>
-                <span class="pricing-price-period">${p.period}</span>
-              </div>
-              <ul class="pricing-features-list">
-                ${(p.features || []).map(f => `<li><i class="fa-solid fa-check"></i> ${f}</li>`).join('')}
-              </ul>
+    <!-- 3. Two-Column Main Content Grid (Matches Reference Image) -->
+    <div class="co-detail-main-grid">
+      
+      <!-- Left Column: About & Specialties -->
+      <div class="co-detail-left-col">
+        
+        <!-- About Section with Sunset Cranes Photo -->
+        <div class="co-detail-card" id="co-detail-about">
+          <h2 class="co-detail-card-heading">
+            <span>About ${company.name.split('(')[0].trim()}</span>
+          </h2>
+          <div class="co-about-layout">
+            <div class="co-about-text-col">
+              <p class="co-about-p">${meta.aboutP1}</p>
+              <p class="co-about-p">${meta.aboutP2}</p>
+              <a href="${company.website || '#'}" target="_blank" rel="noopener" class="co-about-readmore">
+                Read more <i class="fa-solid fa-arrow-right"></i>
+              </a>
             </div>
-            <button type="button" class="${p.popular ? 'btn-company-contact-now' : 'btn-company-view-profile'}" onclick="openCompanyContactModal('${company.id}', 'Đăng ký tư vấn gói cước: ${p.name.replace(/'/g, "\'")}')" style="width:100%; justify-content:center;">
-              <i class="fa-solid fa-paper-plane"></i> ${p.price.includes('₫') ? 'Inquire This Plan' : 'Contact Now'}
-            </button>
-          </div>
-        `).join('')}
-      </div>
-    `;
-  } else if (tabName === 'events') {
-    contentArea.innerHTML = `
-      <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Sự Kiện, Hội Thảo Công Nghệ &amp; Tech Talks</h2>
-        <p style="font-size: 14px; color: #64748B; margin: 0;">Đăng ký tham gia các sự kiện chuyên môn, workshop thực chiến và diễn đàn chuyển đổi số do ${company.name} tổ chức.</p>
-      </div>
-
-      <div class="events-showcase-grid">
-        ${(company.events || []).map(e => `
-          <div class="event-card-item">
-            <div>
-              <div class="event-meta-badge-row">
-                <span class="event-format-pill">${e.format || e.type || e.badge || "Trực Tuyến &amp; Trực Tiếp"}</span>
-                <span class="event-date-text"><i class="fa-regular fa-calendar-days"></i> ${e.date.split('•')[0].trim()}</span>
-              </div>
-              <h3 class="event-card-title">${e.title}</h3>
-              <p class="event-card-desc">${e.desc}</p>
-              <div class="event-card-location">
-                <i class="fa-solid fa-location-dot" style="color:var(--fl-primary);"></i> ${e.location}
-              </div>
-            </div>
-            <div style="display:flex; gap:10px; margin-top:16px;">
-              <button type="button" class="btn-company-contact-now" onclick="alert('Đăng ký vé tham gia thành công: ${e.title.replace(/'/g, "\'")}\nBan tổ chức sẽ gửi mã QR vào email của bạn.'); this.innerHTML='<i class=\'fa-solid fa-check\'></i> Đã Đăng Ký';" style="flex:1;">
-                <i class="fa-solid fa-ticket"></i> Đăng Ký Tham Gia (RSVP)
-              </button>
-              <button type="button" class="btn-company-view-profile" onclick="openCompanyContactModal('${company.id}', 'Hợp tác tổ chức sự kiện: ${e.title.replace(/'/g, "\'")}')" style="flex:1;">
-                Liên Hệ Hợp Tác
-              </button>
+            <div class="co-about-img-wrap">
+              <img src="${meta.aboutPhoto}" alt="About ${company.name}" class="co-about-img" onerror="this.src='images/maersk_about.jpg'">
             </div>
           </div>
-        `).join('')}
-      </div>
-    `;
-  } else if (tabName === 'life') {
-    const posts = company.lifePosts || [
-      {
-        id: 'post-1',
-        author: 'Alex Byelyavtsev',
-        authorBadge: '3rd+',
-        authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=160&q=80',
-        authorTitle: `Master Mariner (Captain) | ${company.name}`,
-        websiteLink: 'Visit my website',
-        time: '4d • 🌐',
-        text: 'New on illuminem Voices: The Resilience Test: Heatwave (3 of 3). In summer 2026 heat raised Europe\'s cooling demands while green maritime technologies navigated unprecedented conditions across global supply chain corridors.',
-        image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=800&q=80',
-        likesCount: 2,
-        commentsCount: 1,
-        repostsCount: 1
-      },
-      {
-        id: 'post-2',
-        author: 'Kristina Garbe',
-        authorBadge: '3rd+',
-        authorAvatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=160&q=80',
-        authorTitle: `Key Client Director Automotive at ${company.name}`,
-        websiteLink: '',
-        time: '5d • 🌐',
-        text: 'Beyond Ambition: What 25 Electric Trucks in Germany teach Us About Scaling Zero-Emission Logistics across multi-modal networks and accelerating supply chain decarbonization.',
-        image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80',
-        likesCount: 91,
-        commentsCount: 6,
-        repostsCount: 3
-      },
-      {
-        id: 'post-3',
-        author: 'Đặng Minh Tuấn',
-        authorBadge: '1st',
-        authorAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80',
-        authorTitle: `Head of Ocean Freight & Port Operations | ${company.name} Vietnam`,
-        websiteLink: '',
-        time: '2d • 🌐',
-        text: 'Tự hào đón siêu tàu mẹ 24,000 TEUs cập cảng nước sâu Cái Mép tuần này! Đội ngũ logistics tại chỗ vận hành 24/7 bảo đảm giải phóng hàng thông suốt cho khách hàng xuất khẩu dệt may & thủy sản sang Bắc Mỹ.',
-        image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80',
-        likesCount: 142,
-        commentsCount: 18,
-        repostsCount: 12
-      }
-    ];
-
-    contentArea.innerHTML = `
-      <div style="margin-bottom: 24px;">
-        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
-          <div>
-            <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 4px 0;">
-              Trending employee content
-            </h2>
-            <p style="font-size: 14px; color: #64748B; margin: 0;">
-              Posts from ${company.name} employees &amp; leaders
-            </p>
-          </div>
-          <button type="button" class="btn-company-contact-now" onclick="openCompanyContactModal('${company.id}', 'Gặp gỡ và kết nối đội ngũ ${company.name}')">
-            <i class="fa-solid fa-user-plus"></i> Kết Nối Với Đội Ngũ
-          </button>
         </div>
+
+        <!-- Our Specialties Section -->
+        <div class="co-detail-card">
+          <h2 class="co-detail-card-heading">
+            <span>Our Specialties</span>
+          </h2>
+          <div class="co-specialties-row">
+            ${meta.specialties.map(s => `
+              <span class="co-specialty-pill" style="font-size: 14px; padding: 8px 18px;">
+                <i class="fa-solid ${s.icon}"></i> ${s.name}
+              </span>
+            `).join('')}
+          </div>
+        </div>
+
       </div>
 
-      <div class="company-life-posts-grid">
-        ${posts.map(p => `
-          <div class="linkedin-post-card">
-            <div class="li-post-header">
-              <img src="${p.authorAvatar}" alt="${p.author}" class="li-author-avatar">
-              <div class="li-author-info">
-                <div class="li-author-name-row">
-                  <span class="li-author-name">${p.author}</span>
-                  <span class="li-degree-badge">${p.authorBadge}</span>
+      <!-- Right Column: Company Highlights & Why Join -->
+      <div class="co-detail-right-col">
+        
+        <!-- Company Highlights -->
+        <div class="co-detail-card">
+          <h2 class="co-detail-card-heading">
+            <span>Company Highlights</span>
+          </h2>
+          <div class="co-highlights-stats-grid">
+            <div class="co-hl-stat-col">
+              <i class="fa-solid fa-users co-hl-stat-icon"></i>
+              <div class="co-hl-stat-num">${meta.employees}</div>
+              <div class="co-hl-stat-lbl">Employees</div>
+            </div>
+            <div class="co-hl-stat-col">
+              <i class="fa-solid fa-globe co-hl-stat-icon"></i>
+              <div class="co-hl-stat-num">${meta.countries}</div>
+              <div class="co-hl-stat-lbl">Countries</div>
+            </div>
+            <div class="co-hl-stat-col">
+              <i class="fa-solid fa-star co-hl-stat-icon"></i>
+              <div class="co-hl-stat-num">${meta.rating}</div>
+              <div class="co-hl-stat-lbl">Employer Rating</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Why Join Card (Light Blue with Watermark) -->
+        <div class="co-why-join-card">
+          <i class="fa-solid fa-certificate co-why-join-watermark"></i>
+          <h2 class="co-why-join-title">Why Join ${company.name.split('(')[0].trim()}?</h2>
+          <ul class="co-why-join-list">
+            ${meta.whyJoin.map(point => `
+              <li class="co-why-join-item">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>${point}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 4. Latest Jobs at Company (Matches Reference Image) -->
+    <div class="co-detail-jobs-section" id="co-detail-jobs">
+      <div class="co-jobs-header-row">
+        <h2 class="co-jobs-header-title">Latest Jobs at ${company.name.split('(')[0].trim()}</h2>
+        <a href="#" onclick="switchView('browse'); return false;" class="co-jobs-view-all-link">
+          View All Jobs <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="co-detail-jobs-grid">
+        ${meta.latestJobs.map(j => `
+          <div class="co-detail-job-card">
+            <div class="co-job-card-top">
+              <div class="co-job-icon-box">
+                <i class="fa-solid fa-briefcase"></i>
+              </div>
+              <div>
+                <h3 class="co-job-card-title">${j.title}</h3>
+                <div class="co-job-card-loc">
+                  <i class="fa-solid fa-location-dot"></i> ${j.location}
                 </div>
-                <div class="li-author-title">${p.authorTitle}</div>
-                ${p.websiteLink ? `<a href="#" onclick="showToast('Mở liên kết tác giả: ${p.websiteLink}'); return false;" class="li-author-link">${p.websiteLink}</a>` : ''}
-                <div class="li-post-timestamp">${p.time}</div>
               </div>
             </div>
-            <div class="li-post-content">
-              <p>${p.text}</p>
-            </div>
-            ${p.image ? `
-              <div class="li-post-media">
-                <img src="${p.image}" alt="Post Media" loading="lazy">
-              </div>
-            ` : ''}
-            <div class="li-post-social-counts">
-              <div class="li-reaction-icons">
-                <span class="reaction-badge thumb">👍</span>
-                <span class="reaction-badge light">💡</span>
-                <span class="reaction-badge clap">👏</span>
-                <span class="li-count-text">${p.likesCount}</span>
-              </div>
-              <div class="li-comments-count">
-                <span>${p.commentsCount} comments</span>
-                ${p.repostsCount ? `<span>• ${p.repostsCount} reposts</span>` : ''}
-              </div>
-            </div>
-            <div class="li-post-actions-row">
-              <button type="button" class="li-action-btn" onclick="this.classList.toggle('active');"><i class="fa-regular fa-thumbs-up"></i> Like</button>
-              <button type="button" class="li-action-btn" onclick="showToast('Bình luận trên bài viết của ${p.author}');"><i class="fa-regular fa-comment-dots"></i> Comment</button>
-              <button type="button" class="li-action-btn" onclick="showToast('Đã chia sẻ bài viết của ${p.author}');"><i class="fa-solid fa-retweet"></i> Repost</button>
-              <button type="button" class="li-action-btn" onclick="openCompanyContactModal('${company.id}', 'Liên hệ trực tiếp với nhân sự: ${p.author}');"><i class="fa-regular fa-paper-plane"></i> Send</button>
-            </div>
+            <button type="button" class="btn-co-job-apply" onclick="openJobDetail('${j.id}');">
+              <span>Apply Now</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
           </div>
         `).join('')}
       </div>
-    `;
-  } else if (tabName === 'jobs') {
-    contentArea.innerHTML = `
-      <div style="margin-bottom: 24px;">
-        <h2 style="font-size: 20px; font-weight: 800; color: #0F172A; margin: 0 0 6px 0;">Vị Trí Tuyển Dụng Đang Mở Tại ${company.name}</h2>
-        <p style="font-size: 14px; color: #64748B; margin: 0;">Gia nhập đội ngũ kỹ sư và chuyên gia hàng đầu kiến tạo giải pháp tương lai.</p>
+    </div>
+
+    <!-- 5. Related Top Employers Section Underneath (Per User Request) -->
+    <div class="co-related-section">
+      <div class="co-related-header">
+        <div class="co-accent-bar"></div>
+        <h2 class="co-related-title">Related Top Employers</h2>
+        <p class="co-related-subtitle">Explore other leading enterprises in Logistics, Port Operations &amp; Technology</p>
       </div>
-      <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:12px; padding:24px; text-align:center;">
-        <i class="fa-solid fa-briefcase" style="font-size:36px; color:var(--fl-primary); margin-bottom:12px; display:inline-block;"></i>
-        <h3 style="font-size:16px; font-weight:700; color:#0F172A; margin-bottom:8px;">Các Vị Trí Tuyển Dụng Trực Tiếp</h3>
-        <p style="font-size:13.5px; color:#64748B; max-width:500px; margin:0 auto 18px;">
-          Xem danh sách đầy đủ các cơ hội nghề nghiệp và nộp hồ sơ trực tuyến qua bảng việc làm VietnamJobs.
-        </p>
-        <button type="button" class="btn-company-contact-now" onclick="switchView('browse');" style="margin:0 auto;">
-          <i class="fa-solid fa-arrow-right"></i> Mở Bảng Việc Làm Tuyển Dụng
-        </button>
+
+      <div class="co-related-cards-grid">
+        ${relatedCompanies.map(rc => generateCompanyShowcaseCardHtml(rc)).join('')}
       </div>
-    `;
-  }
+    </div>
+  `;
 };
+
 
 // 4. Dedicated B2B "Contact Now" Modal Controller
 window.openCompanyContactModal = function(companyId, preselectedSubject = '', preselectedNote = '') {
@@ -3859,8 +4168,8 @@ window.renderSplitJobDetail = function(jobId) {
   currentSplitJobId = job.id;
 
   const detailHtml = `
-    <!-- Header Block Matching Picture 3 -->
-    <div style="padding-bottom: 22px; border-bottom: 1px solid #E2E8F0; margin-bottom: 24px;">
+    <!-- Header Block (Border Free) -->
+    <div style="padding-bottom: 20px; margin-bottom: 22px;">
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px;">
         <div style="flex:1; min-width:0;">
           <div style="display:flex; align-items:center; gap:6px; margin-bottom:4px;">
@@ -3876,37 +4185,37 @@ window.renderSplitJobDetail = function(jobId) {
             <span style="color:#059669; font-weight:600;"><i class="fa-solid fa-users"></i> ${job.applicants}</span>
           </div>
 
-          <!-- Feature Tag Badges Matching Picture 3 -->
+          <!-- Feature Tag Badges (No borders) -->
           <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;">
-            <span class="split-chip" style="background:#F1F5F9; border:1px solid #E2E8F0; color:#334155; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:600; display:inline-flex; align-items:center; gap:6px;">
+            <span class="split-chip" style="background:#F1F5F9; border:none; color:#334155; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:600; display:inline-flex; align-items:center; gap:6px;">
               <i class="fa-solid fa-briefcase"></i> ${job.specs ? job.specs.exp : 'Manager (5+ Yrs)'}
             </span>
-            <span class="split-chip" style="background:#F1F5F9; border:1px solid #E2E8F0; color:#334155; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:600; display:inline-flex; align-items:center; gap:6px;">
+            <span class="split-chip" style="background:#F1F5F9; border:none; color:#334155; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:600; display:inline-flex; align-items:center; gap:6px;">
               <i class="fa-solid fa-building"></i> 1,001 - 5,000 employees
             </span>
-            <span class="split-chip split-chip-salary" style="background:#EFF6FF; border:1px solid #BFDBFE; color:#0A66C2; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:700; display:inline-flex; align-items:center; gap:6px;">
+            <span class="split-chip split-chip-salary" style="background:#EFF6FF; border:none; color:#0A66C2; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:700; display:inline-flex; align-items:center; gap:6px;">
               <i class="fa-solid fa-money-bill-wave"></i> ${job.salary}
             </span>
-            <span class="split-chip split-chip-match" style="background:#ECFDF5; border:1px solid #A7F3D0; color:#059669; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:600; display:inline-flex; align-items:center; gap:6px;">
+            <span class="split-chip split-chip-match" style="background:#ECFDF5; border:none; color:#059669; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:600; display:inline-flex; align-items:center; gap:6px;">
               <i class="fa-solid fa-circle-check"></i> Skills match your profile
             </span>
           </div>
         </div>
-        <!-- Detail Brand Logo bigger just a little (76px) -->
-        <div class="split-detail-logo-box" style="width:76px; height:76px; border:1.5px solid #E2E8F0; border-radius:12px; display:flex; align-items:center; justify-content:center; padding:8px; background:#fff; flex-shrink:0; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+        <!-- Detail Brand Logo (No border) -->
+        <div class="split-detail-logo-box" style="width:76px; height:76px; border:none; border-radius:12px; display:flex; align-items:center; justify-content:center; padding:8px; background:#F8FAFC; flex-shrink:0;">
           <img src="${job.companyLogo}" alt="${job.company}" style="width:100%; height:100%; object-fit:contain;" onerror="this.src='images/brands/vinfast.svg'">
         </div>
       </div>
 
-      <!-- Action Buttons Row (NO 'Easy Apply' as requested) -->
+      <!-- Action Buttons Row (NO borders) -->
       <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
         <button type="button" class="btn-split-apply" onclick="openJobDetail('${job.id}');" style="background:#0A66C2; color:#fff; border:none; padding:11px 26px; border-radius:8px; font-weight:700; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:8px; box-shadow:0 4px 12px rgba(10,102,194,0.28); transition:all 0.2s;">
           <i class="fa-solid fa-paper-plane"></i> Ứng Tuyển Với CV
         </button>
-        <button type="button" class="btn-split-save" onclick="this.innerHTML='<i class=\'fa-solid fa-bookmark\'></i> Saved'; this.style.color='#0A66C2'; this.style.borderColor='#0A66C2'; if(typeof showToast==='function') showToast('Đã lưu công việc');" style="background:#fff; border:1px solid #CBD5E1; color:#334155; padding:10px 18px; border-radius:8px; font-weight:600; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+        <button type="button" class="btn-split-save" onclick="this.innerHTML='<i class=\'fa-solid fa-bookmark\'></i> Saved'; this.style.color='#0A66C2'; this.style.background='#EFF6FF'; if(typeof showToast==='function') showToast('Đã lưu công việc');" style="background:#F1F5F9; border:none; color:#334155; padding:11px 18px; border-radius:8px; font-weight:600; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
           <i class="fa-regular fa-bookmark"></i> Save
         </button>
-        <button type="button" class="btn-split-share" onclick="if(typeof showToast==='function') showToast('Đã sao chép liên kết công việc');" title="Chia sẻ" style="background:#fff; border:1px solid #CBD5E1; color:#334155; width:42px; height:42px; border-radius:8px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; font-size:15px;">
+        <button type="button" class="btn-split-share" onclick="if(typeof showToast==='function') showToast('Đã sao chép liên kết công việc');" title="Chia sẻ" style="background:#F1F5F9; border:none; color:#334155; width:42px; height:42px; border-radius:8px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; font-size:15px;">
           <i class="fa-solid fa-share-nodes"></i>
         </button>
       </div>
@@ -3942,9 +4251,9 @@ window.renderSplitJobDetail = function(jobId) {
       </ul>
     </div>
 
-    <!-- Company Badge Footer -->
-    <div style="padding-top: 20px; border-top: 1px solid #E2E8F0;">
-      <div style="display:flex; justify-content:space-between; align-items:center; background:#F8FAFC; padding:16px 20px; border-radius:12px; border:1px solid #E2E8F0;">
+    <!-- Company Badge Footer (NO borders) -->
+    <div style="padding-top: 16px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; background:#F8FAFC; padding:16px 20px; border-radius:12px; border:none;">
         <div style="display:flex; align-items:center; gap:14px;">
           <div style="width:48px; height:48px; flex-shrink:0;">
             <img src="${job.companyLogo}" alt="${job.company}" style="width:100%; height:100%; object-fit:contain;" onerror="this.src='images/brands/vinfast.svg'">
@@ -3954,7 +4263,7 @@ window.renderSplitJobDetail = function(jobId) {
             <div style="font-size:12.5px; color:#64748B;">Accredited Enterprise Logistics Hiring Partner</div>
           </div>
         </div>
-        <button type="button" onclick="this.textContent = 'Following'; this.style.background='#0F172A'; this.style.color='#fff';" style="background:#fff; border:1px solid #CBD5E1; color:#0F172A; padding:7px 18px; border-radius:20px; font-size:13px; font-weight:700; cursor:pointer;">
+        <button type="button" onclick="this.textContent = 'Following'; this.style.background='#0F172A'; this.style.color='#fff';" style="background:#E2E8F0; border:none; color:#0F172A; padding:8px 18px; border-radius:20px; font-size:13px; font-weight:700; cursor:pointer;">
           + Follow
         </button>
       </div>

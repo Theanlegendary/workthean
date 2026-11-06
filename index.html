@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="css/courses.css">
   <link rel="stylesheet" href="css/split-jobs.css">
   <link rel="stylesheet" href="css/article.css">
+  <link rel="stylesheet" href="css/companies.css">
 </head>
 <body id="top">
 
@@ -1252,123 +1253,62 @@
 <section class="app-view" id="view-companies">
       <div class="companies-directory-container">
         
-        <!-- Header Banner -->
-        <div class="companies-header-banner">
-          <div>
-            <h1 class="companies-header-title">Hồ Sơ Doanh Nghiệp Công Nghệ, AI &amp; Logistics</h1>
-            <p class="companies-header-subtitle">
-              Nền tảng kết nối trực tiếp doanh nghiệp với khách hàng tiềm năng: Giới thiệu dịch vụ, sản phẩm công nghệ AI, bảng giá giải pháp và đăng ký tham gia sự kiện chuyên đề.
-            </p>
+        <!-- Header -->
+        <div class="co-section-header">
+          <div class="co-header-left">
+            <div class="co-accent-bar"></div>
+            <h1 class="co-section-title">Top Employers</h1>
+            <p class="co-section-subtitle">Join leading companies and take the next step in your career.</p>
           </div>
-          <div>
-            <button type="button" class="btn-company-contact-now" onclick="openCompanyContactModal('vinfast', 'Đăng ký giới thiệu giải pháp doanh nghiệp')" style="padding: 12px 24px; font-size: 14.5px;">
-              <i class="fa-solid fa-building-circle-check"></i> Đăng Ký Hồ Sơ Doanh Nghiệp
+          <div class="co-header-right">
+            <button type="button" class="btn-co-view-all" onclick="renderCompanies('all');">
+              View All Companies <i class="fa-solid fa-arrow-right"></i>
             </button>
           </div>
         </div>
 
         <!-- Filter & Search Controls -->
-        <div class="companies-filter-bar">
-          <div class="companies-category-tabs">
-            <button type="button" class="companies-tab-pill active" data-category="all">Tất Cả (6)</button>
-            <button type="button" class="companies-tab-pill" data-category="ai"><i class="fa-solid fa-brain"></i> AI &amp; Tự Động Hóa</button>
-            <button type="button" class="companies-tab-pill" data-category="tech"><i class="fa-solid fa-cloud"></i> Công Nghệ &amp; Cloud</button>
-            <button type="button" class="companies-tab-pill" data-category="logistics"><i class="fa-solid fa-ship"></i> Cảng Biển &amp; Logistics</button>
+        <div class="co-controls-bar">
+          <div class="co-category-tabs">
+            <button type="button" class="co-tab-pill active" data-category="all">All Employers</button>
+            <button type="button" class="co-tab-pill" data-category="logistics"><i class="fa-solid fa-ship"></i> Ocean &amp; Logistics</button>
+            <button type="button" class="co-tab-pill" data-category="ai"><i class="fa-solid fa-brain"></i> AI &amp; Smart Mobility</button>
+            <button type="button" class="co-tab-pill" data-category="tech"><i class="fa-solid fa-cloud"></i> Software &amp; Cloud</button>
           </div>
-          <div class="companies-search-wrap">
-            <i class="fa-solid fa-magnifying-glass companies-search-icon"></i>
-            <input type="text" id="companies-search-input" class="companies-search-input" placeholder="Tìm theo tên doanh nghiệp, công nghệ AI...">
+          <div class="co-search-wrap">
+            <i class="fa-solid fa-magnifying-glass co-search-icon"></i>
+            <input type="text" id="companies-search-input" class="co-search-input" placeholder="Search companies, industry or tech stack...">
           </div>
         </div>
 
-        <!-- Companies Grid -->
+        <!-- Companies Grid (3-column layout) -->
         <div class="companies-cards-grid" id="companies-cards-grid">
-          <!-- Dynamically populated by initCompaniesDirectory() -->
+          <!-- Dynamically populated by renderCompanies() -->
         </div>
 
       </div>
     </section>
 
-<section class="app-view" id="view-company-detail">
+    <!-- ========================================================================
+         SPA VIEW 9: COMPANY PROFILE DETAIL (#view-company-detail)
+         Matches user reference image design 1-to-1
+         ======================================================================== -->
+    <section class="app-view" id="view-company-detail">
       <div class="company-profile-wrapper">
         
         <!-- Top Back Nav -->
-        <div class="company-profile-top-bar">
-          <button type="button" class="btn-back-companies" onclick="switchView('companies');">
-            <i class="fa-solid fa-arrow-left"></i> Quay lại danh sách doanh nghiệp
+        <div class="co-detail-back-bar">
+          <button type="button" class="btn-co-detail-back" onclick="switchView('companies');">
+            <i class="fa-solid fa-arrow-left"></i> Back to Top Employers
           </button>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-size:12.5px; color:#64748B;"><i class="fa-solid fa-shield-check" style="color:#059669;"></i> Hồ Sơ Đã Được Phê Duyệt B2B</span>
-          </div>
+          <span style="font-size:13px; font-weight:600; color:#0759D1; background:#EFF6FF; border:1px solid #BFDBFE; border-radius:9999px; padding:4px 14px; display:inline-flex; align-items:center; gap:6px;">
+            <i class="fa-solid fa-shield-check" style="color:#059669;"></i> Verified Enterprise Employer
+          </span>
         </div>
 
-        <!-- Hero Dossier Banner -->
-        <div class="company-profile-banner-card">
-          <div class="company-profile-cover"></div>
-          <div class="company-profile-header-content">
-            <div class="company-profile-avatar-row">
-              <div class="company-profile-logo-box">
-                <img src="images/brands/vinfast.svg" alt="Company Logo" id="company-profile-logo-img">
-              </div>
-              <div class="company-profile-action-btns">
-                <button type="button" class="btn-profile-contact-primary" id="btn-profile-contact-now-top">
-                  <i class="fa-solid fa-paper-plane"></i> Contact Now
-                </button>
-                <button type="button" class="btn-profile-follow" onclick="this.innerHTML='<i class=\'fa-solid fa-check\'></i> Đang Theo Dõi'; this.style.color='var(--fl-primary)';">
-                  + Theo Dõi
-                </button>
-                <button type="button" class="btn-profile-follow" onclick="alert('Đã sao chép liên kết hồ sơ doanh nghiệp!');" title="Chia sẻ">
-                  <i class="fa-solid fa-share-nodes"></i>
-                </button>
-              </div>
-            </div>
-
-            <div>
-              <h1 class="company-profile-name">
-                <span id="company-profile-name-text">VinFast Logistics &amp; Cold Chain Solutions</span>
-                <i class="fa-solid fa-circle-check" style="color:var(--fl-primary); font-size:20px;" title="Xác thực doanh nghiệp"></i>
-              </h1>
-              <p class="company-profile-tagline" id="company-profile-tagline-text">
-                Kiến trúc chuỗi cung ứng lạnh thông minh &amp; vận tải tự hành thế hệ mới
-              </p>
-              <div class="company-profile-badges-row">
-                <span><i class="fa-solid fa-briefcase" style="color:var(--fl-primary);"></i> <strong id="company-profile-ind-text">Logistics Tech &amp; AI</strong></span>
-                <span>•</span>
-                <span><i class="fa-solid fa-location-dot" style="color:#EF4444;"></i> <span id="company-profile-loc-text">Hải Phòng &amp; TP.HCM</span></span>
-                <span>•</span>
-                <span><i class="fa-solid fa-users"></i> <span id="company-profile-size-text">10,000+ nhân sự</span></span>
-                <span>•</span>
-                <span><i class="fa-solid fa-globe"></i> <a href="#" id="company-profile-web-link" target="_blank" style="color:var(--fl-primary); text-decoration:none;">vinfastauto.com</a></span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Navigation Tabs for Services, Products & AI, Pricing, Events, Jobs -->
-        <div class="company-profile-tabs-nav">
-          <button type="button" class="company-nav-tab-btn active" data-tab="services" onclick="switchCompanyTab('services');">
-            <i class="fa-solid fa-cube"></i> Dịch Vụ &amp; Giải Pháp
-          </button>
-          <button type="button" class="company-nav-tab-btn" data-tab="tech" onclick="switchCompanyTab('tech');">
-            <i class="fa-solid fa-microchip"></i> Sản Phẩm &amp; Công Nghệ AI
-          </button>
-          <button type="button" class="company-nav-tab-btn" data-tab="pricing" onclick="switchCompanyTab('pricing');">
-            <i class="fa-solid fa-tags"></i> Bảng Giá &amp; Gói Cước
-          </button>
-          <button type="button" class="company-nav-tab-btn" data-tab="events" onclick="switchCompanyTab('events');">
-            <i class="fa-solid fa-calendar-star"></i> Sự Kiện &amp; Tech Talks
-          </button>
-          <button type="button" class="company-nav-tab-btn" data-tab="life" onclick="switchCompanyTab('life');">
-            <i class="fa-brands fa-linkedin"></i> Life &amp; Employee Posts
-          </button>
-          <button type="button" class="company-nav-tab-btn" data-tab="jobs" onclick="switchCompanyTab('jobs');">
-            <i class="fa-solid fa-briefcase"></i> Tuyển Dụng
-          </button>
-        </div>
-
-        <!-- Active Tab Content Area -->
-        <div id="company-profile-tab-content">
-          <!-- Dynamically populated by switchCompanyTab() -->
+        <!-- Dynamic Content Container -->
+        <div id="company-detail-content-wrapper">
+          <!-- Hydrated by openCompanyDetail(companyId) -->
         </div>
 
       </div>
@@ -1640,7 +1580,8 @@
     </section>
   </div>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <!-- Dynamic Toast Notification Container -->
+  <div id="toast-container" aria-live="polite"></div>
 
   <!-- Scripts -->
   <script src="js/data.js"></script>

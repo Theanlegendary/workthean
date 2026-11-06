@@ -15,6 +15,7 @@
   
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/courses.css">
+  <link rel="stylesheet" href="css/article.css">
 </head>
 <body id="top">
 
@@ -101,7 +102,7 @@
           <button type="button" class="brand-nav-item home-icon-btn active" data-view="home" onclick="switchView('home'); return false;" title="Trang chủ">
             <i class="fa-solid fa-house"></i>
           </button>
-          <button type="button" class="brand-nav-item" data-view="news" onclick="document.getElementById('news')?.scrollIntoView({behavior:'smooth'}); return false;">
+          <button type="button" class="brand-nav-item" data-view="news" onclick="openArticle(); return false;">
             Thời Sự Tuyển Dụng
           </button>
           <button type="button" class="brand-nav-item" data-view="browse" onclick="switchView('browse'); return false;">
@@ -694,21 +695,21 @@
               <button type="button" class="news-tab" onclick="setNewsTab(this, 'tech')">Smart Logistics</button>
               <button type="button" class="news-tab" onclick="setNewsTab(this, 'customs')">Customs Policy</button>
             </div>
-            <button type="button" class="more-link news-more" onclick="showToast('All industry articles loaded');">View More <svg class="icon"><use href="#i-chevron"></use></svg></button>
+            <button type="button" class="more-link news-more" onclick="openArticle();">View More <svg class="icon"><use href="#i-chevron"></use></svg></button>
           </div>
           <div class="news-list" id="news-list">
             <article class="news-item">
-              <a href="#" class="news-item-title" onclick="showToast('Article: Cross-Border Logistics opened'); return false;">Cross-Border Tech Hiring Guidelines &amp; Global Remote Tax Treaties for 2026</a>
+              <a href="#" class="news-item-title" onclick="openArticle('art-cross-border'); return false;">Cross-Border Tech Hiring Guidelines &amp; Global Remote Tax Treaties for 2026</a>
               <p class="news-excerpt">Comprehensive framework on cross-border logistics workforce management, bilateral tax treaties, and overseas compliance standards for enterprise forwarders operating in ASEAN.</p>
               <span class="news-date">Sep 28, 2026 &bull; Vietnam Logistics Review</span>
             </article>
             <article class="news-item">
-              <a href="#" class="news-item-title" onclick="showToast('Article: AI Fleet Scheduling opened'); return false;">Autonomous AI Dispatch Engines in Southern Vietnam Container Corridors</a>
+              <a href="#" class="news-item-title" onclick="openArticle('art-ai-dispatch'); return false;">Autonomous AI Dispatch Engines in Southern Vietnam Container Corridors</a>
               <p class="news-excerpt">How deep learning algorithms and telematics are cutting port gate waiting times at Cai Mep - Thi Vai deep-water terminals by over 42%.</p>
               <span class="news-date">Oct 02, 2026 &bull; Supply Chain Intelligence</span>
             </article>
             <article class="news-item">
-              <a href="#" class="news-item-title" onclick="showToast('Article: Cold Chain GDP opened'); return false;">WHO-GDP Cold Storage Infrastructure Standards for Pharma Logistics</a>
+              <a href="#" class="news-item-title" onclick="openArticle('art-cold-chain'); return false;">WHO-GDP Cold Storage Infrastructure Standards for Pharma Logistics</a>
               <p class="news-excerpt">Key operational updates for multi-zone temperature validation (-25°C to +8°C) across modern logistics warehouses in Long An and Bac Ninh.</p>
               <span class="news-date">Oct 12, 2026 &bull; Trade Policy Monitor</span>
             </article>
@@ -1612,6 +1613,163 @@
 
       </div>
     </section>
+  
+    <!-- ======================================================================
+         ARTICLE & EDITORIAL VIEW (#view-article)
+         ====================================================================== -->
+    <section class="app-view" id="view-article">
+      <!-- Breadcrumb & Back Strip -->
+      <div class="article-nav-strip">
+        <div class="wrap">
+          <button type="button" class="btn-back-to-news" onclick="switchView('home'); document.getElementById('news')?.scrollIntoView({behavior:'smooth'});">
+            <i class="fa-solid fa-arrow-left"></i> Quay lại Thời Sự Tuyển Dụng
+          </button>
+          <div class="breadcrumbs">
+            <a href="#" onclick="switchView('home'); return false;">Trang Chủ</a>
+            <span>&bull;</span>
+            <a href="#" onclick="openArticle(); return false;">Thời Sự Tuyển Dụng</a>
+            <span>&bull;</span>
+            <span id="art-crumb-cat">National &amp; Trade</span>
+            <span>&bull;</span>
+            <span id="art-crumb-title" style="color:var(--art-ink); font-weight:600;">GDI Identify attempts</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Editorial Layout -->
+      <div class="article-layout">
+        <!-- Article Main Content -->
+        <main>
+          <div class="kicker">
+            <span class="tag" id="art-tag">NATIONAL</span>
+            <a class="sec" href="#" id="art-sec" onclick="return false;">Immigration &amp; Border Trade</a>
+          </div>
+
+          <h1 class="headline" id="art-headline">GDI identify more than 5,000 attempts to illegally enter/exit Kingdom; 373 charged</h1>
+
+          <div class="byline">
+            <span class="who" id="art-author">Niem Chheng</span>
+            <span class="rule"></span>
+            <span id="art-location">Phnom Penh</span>
+            <span class="rule"></span>
+            <span id="art-date">Published 30 October 2026, 09:15 ICT</span>
+          </div>
+
+          <!-- Share Strip -->
+          <div class="share-strip">
+            <span class="lbl">Share</span>
+            <a class="icirc fb" href="#" onclick="showToast('Chia sẻ bài viết qua Facebook'); return false;" aria-label="Share on Facebook">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg>
+            </a>
+            <a class="icirc tw" href="#" onclick="showToast('Chia sẻ bài viết qua X (Twitter)'); return false;" aria-label="Share on X">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3l-6.6 7.6L21.8 21h-6l-4.3-5.6L6.4 21h-3l7-8L2.6 3h6.2l4 5.2zm-1 16h1.7L7.6 4.7H5.8z"/></svg>
+            </a>
+            <a class="icirc wa" href="#" onclick="showToast('Chia sẻ bài viết qua WhatsApp'); return false;" aria-label="Share on WhatsApp">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3zm0 16.2c-1.4 0-2.7-.4-3.9-1.1l-.3-.2-2.7.7.7-2.6-.2-.3A7.2 7.2 0 1 1 12 19.2zm4-5.2c-.2-.1-1.3-.6-1.5-.7-.2-.1-.3-.1-.5.1l-.7.8c-.1.2-.3.2-.5.1-.6-.2-1.3-.6-1.8-1.1-.4-.5-.8-1.1-1-1.7 0-.2 0-.3.1-.4l.5-.6c.1-.2.1-.3 0-.5l-.6-1.4c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.4-.2.3-.8.8-.8 1.9s.8 2.2.9 2.3c.1.2 1.6 2.5 3.9 3.4 1.9.8 2.3.6 2.7.6.4 0 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1 0-.1-.1-.2-.3-.2z"/></svg>
+            </a>
+            <a class="icirc mail" href="#" onclick="showToast('Chia sẻ bài viết qua Email'); return false;" aria-label="Share by email">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></svg>
+            </a>
+            <a class="icirc" href="#" onclick="navigator.clipboard?.writeText(window.location.href); showToast('Đã sao chép liên kết bài viết vào bộ nhớ tạm!'); return false;" aria-label="Copy link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg>
+            </a>
+          </div>
+
+          <!-- Hero Figure -->
+          <figure>
+            <img id="art-hero-img" src="images/editorial_ai_logistics_hd.jpg" alt="Foreign nationals queue at an immigration counter in Cambodia">
+            <figcaption id="art-caption">The recent deportation of foreign nationals who committed offences in Cambodia &amp; cross-border inspection. <b>GDI / VJ Intelligence</b></figcaption>
+          </figure>
+
+          <!-- Listen to this article panel -->
+          <div class="listen">
+            <button class="play" id="btn-art-listen" onclick="toggleArticleAudio();" aria-label="Listen to this article">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" id="art-listen-icon"><path d="M8 5l11 7-11 7z"/></svg>
+            </button>
+            <div class="meta-min">
+              <b id="art-listen-title">Listen to this article</b>
+              <span id="art-listen-meta">3 mins &bull; AI voice</span>
+            </div>
+            <div class="right">
+              <svg width="28" height="18" viewBox="0 0 28 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M2 9h0M6 5v8M10 2v14M14 6v6M18 4v10M22 7h0M26 9h0"/>
+              </svg>
+              <button class="speed" onclick="cycleAudioSpeed(this);">1.0&times;</button>
+            </div>
+          </div>
+
+          <!-- Article Body -->
+          <div class="body" id="art-body">
+            <!-- Populated dynamically by openArticle() -->
+          </div>
+
+          <!-- More on this story -->
+          <section class="most">
+            <h2>More on this story</h2>
+            <ul id="art-more-list">
+              <li><a href="#" onclick="openArticle('art-ai-dispatch'); return false;"><span class="dot"></span><span>Autonomous AI Dispatch Engines in Southern Vietnam Container Corridors<span class="sz">6 November 2026</span></span></a></li>
+              <li><a href="#" onclick="openArticle('art-cross-border'); return false;"><span class="dot"></span><span>Cross-Border Tech Hiring Guidelines &amp; Global Remote Tax Treaties for 2026<span class="sz">5 November 2026</span></span></a></li>
+              <li><a href="#" onclick="openArticle('art-cold-chain'); return false;"><span class="dot"></span><span>WHO-GDP Cold Storage Infrastructure Standards for Pharma Logistics<span class="sz">4 November 2026</span></span></a></li>
+            </ul>
+          </section>
+
+          <!-- Related topics -->
+          <section class="topics">
+            <h2>Related topics</h2>
+            <div class="pills" id="art-topics-list">
+              <a class="pill" href="#" onclick="showToast('Chủ đề: Cambodia'); return false;">Cambodia <span>+</span></a>
+              <a class="pill" href="#" onclick="showToast('Chủ đề: Immigration'); return false;">Immigration <span>+</span></a>
+              <a class="pill" href="#" onclick="showToast('Chủ đề: Logistics Quốc Tế'); return false;">Logistics Quốc Tế <span>+</span></a>
+              <a class="pill" href="#" onclick="showToast('Chủ đề: Customs Policy'); return false;">Customs Policy <span>+</span></a>
+              <a class="pill" href="#" onclick="showToast('Chủ đề: ASEAN Corridors'); return false;">ASEAN Corridors <span>+</span></a>
+            </div>
+          </section>
+
+          <!-- Keep reading -->
+          <div class="divider">
+            <h2>Keep reading</h2>
+            <a class="more" href="#" onclick="showToast('Tải thêm các bài viết chuyên sâu...'); return false;">See all</a>
+          </div>
+          <div class="grid3" id="art-keep-reading-grid">
+            <!-- Populated dynamically -->
+          </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside>
+          <div class="adbox">
+            <div class="lbl">SPONSORED BRIEFING</div>
+            <img src="images/career_banner_1.svg" alt="VietnamJobs Intelligence Report">
+            <div style="padding: 10px 4px 4px;">
+              <h4 style="font-size: 13px; font-weight: 700; margin: 0 0 4px 0; color: #141414;">Vietnam Logistics Salary Index 2026</h4>
+              <p style="font-size: 11.5px; color: #64748B; margin: 0 0 8px 0;">Báo cáo phân tích thu nhập thực tế ngành Forwarding, Cảng biển &amp; Kho vận.</p>
+              <a href="#" onclick="switchView('courses'); return false;" style="font-size: 12px; font-weight: 700; color: var(--art-red); text-decoration: none;">Tải Báo Cáo Ngay &rarr;</a>
+            </div>
+          </div>
+
+          <div class="side-head">
+            <h2>Latest news</h2>
+          </div>
+          <ul class="newslist" id="art-sidebar-newslist">
+            <!-- Populated dynamically -->
+          </ul>
+
+          <div class="promo">
+            <div class="k">VietnamJobs &bull; Newsletter</div>
+            <h3>Vietnam Supply Chain This Week</h3>
+            <p>The regulatory updates, port volumes and tech stories that matter, delivered to your inbox every Friday morning.</p>
+            <div class="promo-input-row">
+              <input type="email" id="promo-email-input" placeholder="Your work email...">
+              <button class="btn" type="button" onclick="const em = document.getElementById('promo-email-input').value; if(em){ showToast('Đăng ký bản tin thành công cho: ' + em); document.getElementById('promo-email-input').value=''; } else { showToast('Vui lòng nhập địa chỉ email của bạn.'); }">
+                Sign up
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
   </main>
 
   <!-- ==========================================================================

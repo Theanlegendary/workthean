@@ -2919,3 +2919,299 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+/* ==========================================================================
+   ARTICLE & EDITORIAL INTELLIGENCE ENGINE (PHNOM PENH POST / EDITORIAL STYLE)
+   ========================================================================== */
+
+const articlesDatabase = [
+  {
+    id: 'art-gdi',
+    tag: 'National',
+    sec: 'Immigration & Border Trade',
+    title: 'GDI identify more than 5,000 attempts to illegally enter/exit Kingdom; 373 charged',
+    author: 'Niem Chheng',
+    location: 'Phnom Penh & Mekong Region',
+    date: 'Published 30 October 2026, 09:15 ICT',
+    heroImg: 'images/editorial_ai_logistics_hd.jpg',
+    caption: 'The recent deportation of foreign nationals who committed offences in Cambodia & cross-border trade inspection. <b>GDI / VJ Intelligence</b>',
+    listenMeta: '3 mins • AI voice',
+    lead: 'Officials at Cambodia’s immigration checkpoints identified almost 3,000 criminal violations in the first nine months of the year, with the majority involving the use of forged documents.',
+    paragraphs: [
+      'They identified 2,921 cases, involving 5,262 people from 93 nationalities attempting unauthorized cross-border transitions along key ASEAN trade corridors.',
+      'Of the total, 2,287 involved attempts to enter the Kingdom by 4,271 people, while 634 cases involved 991 people attempting to exit, according to the Ministry of Interior’s General Department of Immigration (GDI).',
+      'Among those attempting to enter, 103 people were arrested and sent to court, while the remainder were denied entry and recorded on international biometric registries.',
+      'Several of the individuals were barred from entry due to their place on watchlists, while others used forged passports, fake visas, counterfeit entry and exit stamps or other falsified customs papers.',
+      'Others had no clear purpose for travel or held invalid trade passports, disrupting regional logistics clearance protocols.',
+      'Of the 991 individuals who attempted to leave the Kingdom, immigration officials detained 270, then sent them to court. Another 721 were identified as victims of human trafficking and allowed to return safely to their homes under humanitarian assistance programs.',
+      'During the same period, GDI officials prevented 218 Cambodian nationals from exiting the country, after suspicions were raised that they were at risk of being trafficked into illicit operations.',
+      'It reported that during the same nine-month period, 5,410 Cambodian nationals left the country through legitimate recruitment and certified cross-border logistics workforce agreements.',
+      'The GDI also coordinated the repatriation of 5,568 Cambodian nationals from foreign jurisdictions, reinforcing digital border verification protocols with Vietnam, Thailand, and regional trade partners.'
+    ],
+    topics: ['Cambodia', 'Immigration', 'Ministry of Interior', 'Border Trade', 'Deportation', 'Cross-Border Logistics', 'ASEAN Corridor'],
+    relatedStories: [
+      { id: 'art-cross-border', title: 'Cross-Border Tech Hiring Guidelines & Global Remote Tax Treaties for 2026', time: '6 November 2026' },
+      { id: 'art-ai-dispatch', title: 'Autonomous AI Dispatch Engines in Southern Vietnam Container Corridors', time: '5 November 2026' },
+      { id: 'art-cai-mep', title: 'Siêu Tàu Container 24,000 TEUs Cập Cảng Cái Mép: Bước Ngoặt Chuỗi Cung Ứng', time: '4 November 2026' }
+    ]
+  },
+  {
+    id: 'art-cross-border',
+    tag: 'Policy & Tax',
+    sec: 'Cross-Border Logistics',
+    title: 'Cross-Border Tech Hiring Guidelines & Global Remote Tax Treaties for 2026',
+    author: 'Dr. Phạm Minh Quân',
+    location: 'Hà Nội & Singapore',
+    date: 'Published 28 September 2026, 14:30 ICT',
+    heroImg: 'images/lead_story.jpg',
+    caption: 'Hội nghị điều phối chuỗi cung ứng và hiệp định tránh đánh thuế 2 lần giữa Việt Nam & các nước thành viên ASEAN. <b>VJ Policy Center</b>',
+    listenMeta: '4 mins • AI voice',
+    lead: 'Tổng cục Thuế cùng Bộ Tài chính ban hành hướng dẫn thực thi hiệp định tránh đánh thuế hai lần (DTA) và quy chuẩn lao động xuyên biên giới đối với nhân sự công nghệ logistics và vận tải quốc tế.',
+    paragraphs: [
+      'Khung quy định mới thiết lập cơ chế xác thực thuế suất ưu đãi đối với các chuyên gia kỹ thuật phần mềm logistics, điều vận hàng hải và kỹ sư giải pháp làm việc từ xa giữa Việt Nam, Singapore và Malaysia.',
+      'Doanh nghiệp vận tải giao nhận hàng hóa (Forwarder) đa quốc gia giờ đây được phép hạch toán chi phí nhân sự kỹ thuật số xuyên biên giới vào chi phí hoạt động hợp lệ khi có hợp đồng số hóa có chứng thực chữ ký điện tử quốc tế.',
+      'Hệ thống tự động liên thông dữ liệu mã số thuế cá nhân và mã định danh doanh nghiệp giúp giảm thiểu 80% thời gian giải trình hồ sơ hoàn thuế khấu trừ tại nguồn (Withholding Tax).',
+      'Đại diện Hiệp hội Doanh nghiệp Dịch vụ Logistics Việt Nam (VLA) nhận định đây là bước tiến đột phá, giúp các công ty logistics nội địa dễ dàng thuê mướn các chuyên gia công nghệ chuỗi cung ứng hàng đầu toàn cầu mà không vướng rào cản pháp lý thuế quan.'
+    ],
+    topics: ['Tax Treaty', 'Cross-Border', 'Labor Law', 'Logistics Workforce', 'ASEAN', 'Remote Work'],
+    relatedStories: [
+      { id: 'art-gdi', title: 'GDI identify more than 5,000 attempts to illegally enter/exit Kingdom; 373 charged', time: '30 October 2026' },
+      { id: 'art-ai-dispatch', title: 'Autonomous AI Dispatch Engines in Southern Vietnam Container Corridors', time: '2 October 2026' },
+      { id: 'art-cold-chain', title: 'WHO-GDP Cold Storage Infrastructure Standards for Pharma Logistics', time: '12 October 2026' }
+    ]
+  },
+  {
+    id: 'art-ai-dispatch',
+    tag: 'Smart Logistics',
+    sec: 'AI & Automation',
+    title: 'Autonomous AI Dispatch Engines in Southern Vietnam Container Corridors',
+    author: 'Kỹ sư Lê Hoàng Nam',
+    location: 'TP. Hồ Chí Minh & Bà Rịa - Vũng Tàu',
+    date: 'Published 2 October 2026, 08:00 ICT',
+    heroImg: 'images/editorial_ai_robotics_hd.jpg',
+    caption: 'Hệ thống phân luồng container thông minh bằng AI tại cụm cảng nước sâu Cái Mép - Thị Vải. <b>VPA / Logistics Tech</b>',
+    listenMeta: '3 mins • AI voice',
+    lead: 'Các thuật toán học sâu (Deep Learning) kết hợp mạng cảm biến IoT trên quốc lộ 51 đang rút ngắn hơn 42% thời gian chờ tại cổng cảng Cái Mép - Thị Vải, tiết kiệm hàng triệu lít nhiên liệu mỗi tháng.',
+    paragraphs: [
+      'Mô hình điều vận thời gian thực phân tích lưu lượng giao thông, tình trạng bến bãi và lịch trình cập cầu của các tàu mẹ siêu trọng tải để phát hành khung giờ Gate-in tối ưu cho từng xe container kéo hàng.',
+      'Tài xế nhận lệnh điện tử thông qua ứng dụng di động kết nối trực tiếp với hệ thống TOS (Terminal Operating System) của cảng, tự động mở barie nhận dạng biển số và mã container qua camera AI trong vòng 1.8 giây.',
+      'Kết quả thử nghiệm 6 tháng qua cho thấy độ trễ trung bình của các chuyến hàng xuất khẩu từ Bình Dương và Đồng Nai về cảng đã giảm từ 4.5 giờ xuống còn 2.6 giờ.',
+      'Dự án dự kiến sẽ được mở rộng ra toàn bộ các trung tâm ICD tại Thủ Đức và Long Bình trong quý 1 năm tới.'
+    ],
+    topics: ['AI Dispatch', 'Cai Mep Port', 'Smart Logistics', 'IoT Sensors', 'Automation', 'Container'],
+    relatedStories: [
+      { id: 'art-cai-mep', title: 'Siêu Tàu Container 24,000 TEUs Cập Cảng Cái Mép: Bước Ngoặt Chuỗi Cung Ứng', time: '4 November 2026' },
+      { id: 'art-cross-border', title: 'Cross-Border Tech Hiring Guidelines & Global Remote Tax Treaties for 2026', time: '28 September 2026' },
+      { id: 'art-cold-chain', title: 'WHO-GDP Cold Storage Infrastructure Standards for Pharma Logistics', time: '12 October 2026' }
+    ]
+  },
+  {
+    id: 'art-cold-chain',
+    tag: 'Healthcare Logistics',
+    sec: 'Cold Chain 4.0',
+    title: 'WHO-GDP Cold Storage Infrastructure Standards for Pharma Logistics',
+    author: 'Dược sĩ Trần Bích Ngọc',
+    location: 'Long An & Bắc Ninh',
+    date: 'Published 12 October 2026, 11:20 ICT',
+    heroImg: 'images/editorial_tech_salaries_hd.png',
+    caption: 'Kho lạnh đạt tiêu chuẩn WHO-GDP với dải nhiệt kiểm soát tự động từ -25°C đến +8°C tại KCN Long Hậu. <b>VJ Pharma Logistics</b>',
+    listenMeta: '5 mins • AI voice',
+    lead: 'Bộ Y tế cùng Cục Quản lý Dược công bố lộ trình áp dụng bắt buộc tiêu chuẩn Thực hành tốt phân phối thuốc (GDP) của WHO đối với toàn bộ kho vận và xe lạnh vận chuyển dược phẩm từ 01/2027.',
+    paragraphs: [
+      'Quy chuẩn mới yêu cầu 100% phương tiện vận tải dược phẩm chuyên dụng phải lắp đặt thiết bị ghi nhiệt độ liên tục có kết nối truyền dữ liệu đám mây và hệ thống cảnh báo xâm nhập nhiệt tức thời.',
+      'Các trung tâm phân phối kho lạnh bắt buộc duy trì hệ thống điện dự phòng 3 lớp và kiểm định mapping nhiệt độ định kỳ 6 tháng một lần theo tiêu chuẩn quốc tế ISPE.',
+      'Sự chuyển dịch này đang tạo ra làn sóng đầu tư mạnh mẽ vào các kho lạnh thế hệ mới tại các vùng kinh tế trọng điểm phía Nam và phía Bắc.',
+      'Các doanh nghiệp sở hữu chứng chỉ GDP đạt chuẩn sẽ được cấp luồng xanh ưu tiên thủ tục thông quan tại các cửa khẩu hàng không Nội Bài và Tân Sơn Nhất.'
+    ],
+    topics: ['Cold Chain', 'Pharma Logistics', 'WHO-GDP', 'Vaccine Storage', 'Temperature Control'],
+    relatedStories: [
+      { id: 'art-gdi', title: 'GDI identify more than 5,000 attempts to illegally enter/exit Kingdom; 373 charged', time: '30 October 2026' },
+      { id: 'art-ai-dispatch', title: 'Autonomous AI Dispatch Engines in Southern Vietnam Container Corridors', time: '2 October 2026' },
+      { id: 'art-cross-border', title: 'Cross-Border Tech Hiring Guidelines & Global Remote Tax Treaties for 2026', time: '28 September 2026' }
+    ]
+  },
+  {
+    id: 'art-cai-mep',
+    tag: 'Maritime',
+    sec: 'Deep Sea Ports',
+    title: 'Siêu Tàu Container 24,000 TEUs Cập Cảng Cái Mép: Bước Ngoặt Chuỗi Cung Ứng Xuyên Thái Bình Dương',
+    author: 'Đặng Minh Tuấn & Nhóm Phóng Viên Hàng Hải',
+    location: 'Cái Mép - Thị Vải',
+    date: 'Published 4 November 2026, 16:45 ICT',
+    heroImg: 'images/hero_1.jpg',
+    caption: 'Siêu tàu mẹ container thế hệ mới nhất cập cảng Cái Mép đi thẳng bờ Tây Hoa Kỳ không qua trung chuyển. <b>Port Authority</b>',
+    listenMeta: '4 mins • AI voice',
+    lead: 'Cụm cảng Cái Mép chính thức đón chuyến tàu mẹ trọng tải 24,000 TEUs, kết nối trực tiếp hàng xuất khẩu dệt may, da giày và điện tử của Việt Nam đến California chỉ trong 16 ngày.',
+    paragraphs: [
+      'Chuyến tàu thuộc liên minh hàng hải lớn nhất thế giới cập cầu cảng an toàn vào sáng nay, đánh dấu cột mốc năng lực tiếp nhận các tàu có mớn nước sâu lên tới -16.5m của Việt Nam.',
+      'Việc kết nối tuyến biển trực tiếp (Direct service) không qua trung chuyển tại Singapore hay Hong Kong giúp các nhà xuất khẩu Việt Nam tiết kiệm từ 150 đến 250 USD cho mỗi container tiêu chuẩn.',
+      'Đồng thời, thời gian vận chuyển trên biển được rút ngắn 5-7 ngày, tạo lợi thế cạnh tranh áp đảo cho nông sản tươi và hàng may mặc xuất khẩu mùa cao điểm cuối năm.',
+      'Bộ Giao thông Vận tải khẳng định tiếp tục đẩy nhanh tiến độ nạo vét luồng hàng hải Vũng Tàu - Thị Vải để đón các thế hệ siêu tàu container lớn hơn nữa trong tương lai.'
+    ],
+    topics: ['Cái Mép', 'Container Shipping', 'Ocean Freight', 'Trans-Pacific', 'Ports', 'Direct Service'],
+    relatedStories: [
+      { id: 'art-ai-dispatch', title: 'Autonomous AI Dispatch Engines in Southern Vietnam Container Corridors', time: '2 October 2026' },
+      { id: 'art-gdi', title: 'GDI identify more than 5,000 attempts to illegally enter/exit Kingdom; 373 charged', time: '30 October 2026' },
+      { id: 'art-cold-chain', title: 'WHO-GDP Cold Storage Infrastructure Standards for Pharma Logistics', time: '12 October 2026' }
+    ]
+  }
+];
+
+// Open and hydrate any article by ID
+window.openArticle = function(articleId) {
+  const art = articlesDatabase.find(a => a.id === articleId) || articlesDatabase[0];
+
+  // Hydrate DOM elements
+  const elTag = document.getElementById('art-tag');
+  const elSec = document.getElementById('art-sec');
+  const elHeadline = document.getElementById('art-headline');
+  const elAuthor = document.getElementById('art-author');
+  const elLocation = document.getElementById('art-location');
+  const elDate = document.getElementById('art-date');
+  const elHeroImg = document.getElementById('art-hero-img');
+  const elCaption = document.getElementById('art-caption');
+  const elListenMeta = document.getElementById('art-listen-meta');
+  const elBody = document.getElementById('art-body');
+  const elCrumbCat = document.getElementById('art-crumb-cat');
+  const elCrumbTitle = document.getElementById('art-crumb-title');
+
+  if (elTag) elTag.textContent = art.tag.toUpperCase();
+  if (elSec) elSec.textContent = art.sec;
+  if (elHeadline) elHeadline.textContent = art.title;
+  if (elAuthor) elAuthor.textContent = art.author;
+  if (elLocation) elLocation.textContent = art.location;
+  if (elDate) elDate.textContent = art.date;
+  if (elHeroImg) {
+    elHeroImg.src = art.heroImg;
+    elHeroImg.alt = art.title;
+  }
+  if (elCaption) elCaption.innerHTML = art.caption;
+  if (elListenMeta) elListenMeta.textContent = art.listenMeta;
+
+  if (elCrumbCat) elCrumbCat.textContent = art.sec;
+  if (elCrumbTitle) {
+    elCrumbTitle.textContent = art.title.length > 35 ? art.title.slice(0, 35) + '...' : art.title;
+  }
+
+  // Hydrate Body
+  if (elBody) {
+    elBody.innerHTML = `
+      <p class="lead">${art.lead}</p>
+      ${art.paragraphs.map((p, idx) => {
+        if (idx === 2) {
+          return `
+            <p>${p}</p>
+            <blockquote>
+              "Minh bạch pháp lý và số hóa quy trình thông quan là chìa khóa then chốt để hạ tầng logistics Việt Nam &amp; ASEAN bứt phá cạnh tranh toàn cầu."
+            </blockquote>
+          `;
+        }
+        return `<p>${p}</p>`;
+      }).join('')}
+    `;
+  }
+
+  // Hydrate More on this story
+  const elMoreList = document.getElementById('art-more-list');
+  if (elMoreList) {
+    elMoreList.innerHTML = (art.relatedStories || []).map(r => `
+      <li>
+        <a href="#" onclick="openArticle('${r.id}'); return false;">
+          <span class="dot"></span>
+          <span>${r.title}<span class="sz">${r.time}</span></span>
+        </a>
+      </li>
+    `).join('');
+  }
+
+  // Hydrate Related Topics
+  const elTopics = document.getElementById('art-topics-list');
+  if (elTopics) {
+    elTopics.innerHTML = (art.topics || []).map(t => `
+      <a class="pill" href="#" onclick="showToast('Chủ đề: ${t}'); return false;">${t} <span>+</span></a>
+    `).join('');
+  }
+
+  // Hydrate Keep Reading 3x2 Grid
+  const elGrid3 = document.getElementById('art-keep-reading-grid');
+  if (elGrid3) {
+    const otherArticles = articlesDatabase.filter(a => a.id !== art.id);
+    const displayList = [...otherArticles, ...articlesDatabase].slice(0, 6);
+    elGrid3.innerHTML = displayList.map(item => `
+      <a class="card" href="#" onclick="openArticle('${item.id}'); return false;">
+        <div class="thumb"><img src="${item.heroImg}" alt="${item.title}" loading="lazy"></div>
+        <span class="cat">${item.tag}</span>
+        <h3>${item.title}</h3>
+        <span class="t">
+          <svg class="clock" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          ${item.date.split(',')[0].replace('Published ', '')}
+        </span>
+      </a>
+    `).join('');
+  }
+
+  // Hydrate Sidebar Latest News
+  const elSidebarNews = document.getElementById('art-sidebar-newslist');
+  if (elSidebarNews) {
+    const newsItems = [
+      { id: 'art-gdi', title: 'GDI identify more than 5,000 attempts to illegally enter/exit Kingdom', time: '12 mins ago', img: 'images/editorial_ai_logistics_hd.jpg' },
+      { id: 'art-cai-mep', title: 'Cụm cảng Cái Mép đón chuyến tàu mẹ container 24,000 TEUs sang bờ Tây Mỹ', time: '35 mins ago', img: 'images/hero_1.jpg' },
+      { id: 'art-ai-dispatch', title: 'AI điều vận bến bãi rút ngắn 42% thời gian chờ giải phóng hàng', time: '1 hr ago', img: 'images/editorial_ai_robotics_hd.jpg' },
+      { id: 'art-cross-border', title: 'Tổng cục Thuế hướng dẫn biểu thuế tránh đánh thuế hai lần cho chuyên gia', time: '2 hrs ago', img: 'images/lead_story.jpg' },
+      { id: 'art-cold-chain', title: 'Chuẩn WHO-GDP áp dụng cho 100% kho lạnh dược phẩm từ năm 2027', time: '3 hrs ago', img: 'images/editorial_tech_salaries_hd.png' },
+      { id: 'art-cai-mep', title: 'Tân Cảng Sài Gòn tự động hóa hoàn toàn luồng khai báo hải quan điện tử', time: '5 hrs ago', img: 'images/news_1.jpg' },
+      { id: 'art-cross-border', title: 'Hàng không Nội Bài mở thêm đường bay chuyên chở hàng hóa đi Frankfurt', time: '7 hrs ago', img: 'images/news_2.jpg' },
+      { id: 'art-ai-dispatch', title: 'Ra mắt cổng thông tin truy xuất nguồn gốc container chuỗi lạnh xuất khẩu', time: '9 hrs ago', img: 'images/news_3.jpg' }
+    ];
+    elSidebarNews.innerHTML = newsItems.map(item => `
+      <li>
+        <a href="#" onclick="openArticle('${item.id}'); return false;">
+          <img src="${item.img}" alt="" loading="lazy">
+          <div>
+            <h3>${item.title}</h3>
+            <span class="t">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              ${item.time}
+            </span>
+          </div>
+        </a>
+      </li>
+    `).join('');
+  }
+
+  // Switch View
+  if (typeof switchView === 'function') {
+    switchView('article');
+  }
+};
+
+// Interactive Article Audio Toggle
+let isAudioPlaying = false;
+window.toggleArticleAudio = function() {
+  isAudioPlaying = !isAudioPlaying;
+  const btn = document.getElementById('btn-art-listen');
+  const icon = document.getElementById('art-listen-icon');
+  const title = document.getElementById('art-listen-title');
+
+  if (isAudioPlaying) {
+    if (btn) btn.style.background = '#059669';
+    if (icon) icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+    if (title) title.innerHTML = 'Đang phát âm thanh AI...';
+    showToast('Đang phát giọng đọc trí tuệ nhân tạo (AI Voice)...');
+  } else {
+    if (btn) btn.style.background = 'var(--art-red)';
+    if (icon) icon.innerHTML = '<path d="M8 5l11 7-11 7z"/>';
+    if (title) title.innerHTML = 'Listen to this article';
+    showToast('Đã tạm dừng bài đọc.');
+  }
+};
+
+// Cycle Audio Playback Speed
+const audioSpeeds = ['1.0×', '1.25×', '1.5×', '2.0×'];
+let currentSpeedIdx = 0;
+window.cycleAudioSpeed = function(btn) {
+  currentSpeedIdx = (currentSpeedIdx + 1) % audioSpeeds.length;
+  const speed = audioSpeeds[currentSpeedIdx];
+  if (btn) btn.textContent = speed;
+  showToast('Tốc độ đọc: ' + speed);
+};

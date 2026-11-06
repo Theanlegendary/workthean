@@ -816,14 +816,13 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="career-main-details">
               <div class="career-title-row">
                 <h3 class="career-job-title">${p.title}</h3>
-                <span class="badge-hot-tag"><i class="fa-solid fa-fire"></i> GẤP</span>
+                <span class="badge-hot-tag">GẤP</span>
               </div>
 
               <div class="career-company-row">
                 <span class="company-name-bold">${p.company || p.clientName || 'Doanh Nghiệp'}</span>
-                <i class="fa-solid fa-circle-check career-verified-check"></i>
                 <span class="career-meta-sep">•</span>
-                <span class="career-location-text"><i class="fa-solid fa-location-dot" style="color:var(--fl-primary);"></i> ${p.location || 'Hà Nội & TP.HCM'}</span>
+                <span class="career-location-text">${p.location || 'Hà Nội & TP.HCM'}</span>
               </div>
 
               <p style="font-size:13px; color:var(--fl-text-body); margin-top:4px; line-height:1.4;">
@@ -839,7 +838,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <div class="career-action-buttons-group">
               <button class="btn-apply-prominent" data-action="view-detail">
-                Xem Chi Tiết <i class="fa-solid fa-arrow-right"></i>
+                Xem Chi Tiết
               </button>
             </div>
           </div>

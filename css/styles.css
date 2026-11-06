@@ -9902,3 +9902,85 @@ footer a:hover {
   font-size: 12px !important;
   height: 30px !important;
 }
+
+
+/* ── FACEBOOK-STYLE PROFILE AVATAR ─────────────────────────────────────── */
+.header-user-profile-capsule {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.fb-profile-btn {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.15s ease, filter 0.15s ease !important;
+  outline: none !important;
+}
+
+.fb-profile-btn:hover {
+  filter: brightness(0.92) !important;
+  transform: scale(1.05) !important;
+}
+
+.fb-profile-btn:active {
+  transform: scale(0.96) !important;
+}
+
+.fb-avatar-container {
+  position: relative !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  display: block !important;
+}
+
+.fb-avatar-img {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  display: block !important;
+  border: 2px solid #FFFFFF !important;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.fb-chevron-badge {
+  position: absolute !important;
+  bottom: -2px !important;
+  right: -2px !important;
+  width: 15px !important;
+  height: 15px !important;
+  background: #E4E6EB !important;
+  color: #050505 !important;
+  border: 2px solid #FFFFFF !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 8px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+  pointer-events: none !important;
+  transition: transform 0.2s ease !important;
+}
+
+.header-user-profile-capsule.open .fb-chevron-badge,
+.fb-profile-btn[aria-expanded="true"] .fb-chevron-badge {
+  transform: rotate(180deg) !important;
+}
+
+.dropdown-avatar-thumb {
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  border: 2px solid #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+}

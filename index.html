@@ -267,9 +267,13 @@
 
           <!-- User Profile & Role Trigger (Matching Reference Mockup) -->
           <div class="header-user-profile-capsule" id="header-user-profile">
-            <button type="button" class="header-avatar-trigger" id="btn-header-user-profile" aria-haspopup="true" aria-expanded="false" title="Tài khoản cá nhân">
-              <img src="images/user_avatar_header.png" alt="Avatar" class="header-user-avatar" id="header-avatar-img" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&auto=format&fit=crop&q=80';">
-              <i class="fa-solid fa-chevron-down header-profile-chevron"></i>
+            <button type="button" class="fb-profile-btn" id="btn-header-user-profile" onclick="toggleFacebookProfileMenu(event)" aria-haspopup="true" aria-expanded="false" title="Tài khoản cá nhân (Thean Lê)">
+              <div class="fb-avatar-container">
+                <img src="images/user_avatar_header.png" alt="Thean Lê" class="fb-avatar-img" id="header-avatar-img">
+                <span class="fb-chevron-badge" aria-hidden="true">
+                  <i class="fa-solid fa-chevron-down"></i>
+                </span>
+              </div>
             </button>
 
             <!-- Role-Based Modern Profile Dropdown -->
@@ -937,68 +941,149 @@
 
     <!-- SPA VIEW 2: BROWSE ALL JOBS -->
     <section class="app-view" id="view-browse">
-  <div class="container" style="padding: 24px 20px;">
-    
-    <!-- Top Context & Back Bar -->
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:12px;">
-      <button type="button" class="btn-back-to-news" onclick="switchView('home');">
-        <i class="fa-solid fa-arrow-left"></i> Quay lại Trang Chủ
-      </button>
-      <div style="display:flex; align-items:center; gap:8px;">
-        <span style="font-size:12.5px; color:#64748B;"><i class="fa-solid fa-shield-check" style="color:#059669;"></i> 100% Việc Làm Logistics Đã Xác Thực Doanh Nghiệp</span>
-      </div>
-    </div>
-
-    <!-- Marketplace Header & Live Stats Bar -->
-    <div class="split-jobs-header-row">
-      <div>
-        <h2 class="split-jobs-title">
-          <svg class="flame" viewBox="0 0 24 24" aria-hidden="true" style="width:22px; height:22px; vertical-align:-3px; margin-right:4px;">
-            <defs><linearGradient id="flame-grad" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#ff463e"/><stop offset="1" stop-color="#ffaf3d"/></linearGradient></defs>
-            <path fill="url(#flame-grad)" d="M13.2 1.2c.5 4.1-2.8 4.9-2 8.3-1.2-.6-2-1.8-2-3.5C5.9 8 4 11.1 4 14.1 4 19.2 7.6 22 12 22s8-3.1 8-7.5c0-3.8-2.4-7.4-6.8-13.3Z"/>
-            <path fill="#ffe083" d="M12.5 10.9c.3 2-2.5 3-2.5 5.4 0 1.8 1 2.9 2.7 2.9 1.9 0 3.1-1.4 3.1-3.2 0-1.5-1-3.1-3.3-5.1Z"/>
-          </svg>
-          Hot Positions &amp; Featured Openings
-        </h2>
-        <h4 class="split-jobs-sub">Direct hiring from accredited 3PLs, shipping lines &amp; port authorities</h4>
-      </div>
-      <div>
-        <button type="button" onclick="showToast('Mở cổng đăng tin tuyển dụng đối tác VIP');" style="background:#0A66C2; color:#FFFFFF; border:none; padding:10px 18px; border-radius:8px; font-weight:700; font-size:13.5px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 8px rgba(10,102,194,0.3);">
-          <i class="fa-solid fa-plus"></i> Đăng Tin Tuyển Dụng
-        </button>
-      </div>
-    </div>
-
-    <!-- Live Interactive Filter Chips Bar -->
-    <div class="job-filters-bar">
-      <div class="job-chips-scroll" id="job-chips-scroll">
-        <button type="button" class="job-chip-btn active" data-filter="all" onclick="filterSplitJobs('all', this);">Tất Cả Vị Trí (20)</button>
-        <button type="button" class="job-chip-btn" data-filter="urgent" onclick="filterSplitJobs('urgent', this);">Easy Apply (8)</button>
-        <button type="button" class="job-chip-btn" data-filter="forwarding" onclick="filterSplitJobs('forwarding', this);">Freight Forwarding (6)</button>
-        <button type="button" class="job-chip-btn" data-filter="robotics" onclick="filterSplitJobs('robotics', this);">Smart Warehousing (4)</button>
-        <button type="button" class="job-chip-btn" data-filter="tech" onclick="filterSplitJobs('tech', this);">Cold Chain &amp; Tech (5)</button>
-        <button type="button" class="job-chip-btn" data-filter="port" onclick="filterSplitJobs('port', this);">Maritime &amp; Port (3)</button>
-        <button type="button" class="job-chip-btn" data-filter="customs" onclick="filterSplitJobs('customs', this);">Customs Brokerage (2)</button>
-      </div>
-      <span class="job-filter-count-badge" id="job-filter-count">20 Openings Available</span>
-    </div>
-
-    <!-- Full-Width Card Grid Layout (Image 2 Design for Việc Làm Mới) -->
-    <div class="browse-jobs-fullwidth-wrapper">
-      <div class="browse-jobs-feed-header">
-        <div>
-          <h3 class="feed-header-title">Danh sách việc làm mới nhất</h3>
-          <p class="feed-header-sub">Tuyển dụng trực tiếp từ các doanh nghiệp logistics hàng đầu</p>
+      <div class="container" style="padding: 20px 20px 60px 20px;">
+        
+        <!-- Top Back Nav -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:12px;">
+          <button type="button" class="btn-back-to-news" onclick="switchView('home');">
+            <i class="fa-solid fa-arrow-left"></i> Quay lại Trang Chủ
+          </button>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:12.5px; color:#64748B;"><i class="fa-solid fa-shield-check" style="color:#059669;"></i> 100% Việc Làm Logistics Đã Xác Thực Doanh Nghiệp</span>
+          </div>
         </div>
-        <span class="feed-header-badge" id="browse-openings-badge">21 việc làm</span>
-      </div>
-      <div class="browse-jobs-cards-container" id="browse-jobs-container">
-        <!-- Dynamically rendered by js/split-jobs.js -->
-      </div>
-    </div>
 
-  </div>
-</section>
+        <!-- IMAGE 3: MODERN BLUE GRADIENT SEARCH & FILTER HERO -->
+        <div class="browse-hero-gradient-banner">
+          
+          <!-- Row 1: 3 White Pill Search Inputs -->
+          <div class="browse-search-inputs-row">
+            
+            <!-- Input 1: Keyword -->
+            <div class="browse-search-input-pill">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="browse-search-keyword" placeholder="Job Title, Company or Keyword" oninput="applyBrowseFilters();">
+            </div>
+
+            <!-- Input 2: Work Type (Remote/Hybrid) -->
+            <div class="browse-search-input-pill">
+              <i class="fa-solid fa-briefcase"></i>
+              <select id="browse-filter-workplace" onchange="applyBrowseFilters();">
+                <option value="all">Remote / Hybrid / On-site</option>
+                <option value="Remote">Remote</option>
+                <option value="Hybrid">Hybrid</option>
+                <option value="On-site">On-site / Tại văn phòng</option>
+              </select>
+              <i class="fa-solid fa-chevron-down select-chevron"></i>
+            </div>
+
+            <!-- Input 3: Location -->
+            <div class="browse-search-input-pill">
+              <i class="fa-solid fa-location-dot"></i>
+              <select id="browse-filter-location" onchange="applyBrowseFilters();">
+                <option value="all">Toàn quốc (All Locations)</option>
+                <option value="Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                <option value="Hà Nội">Hà Nội</option>
+                <option value="Đà Nẵng">Đà Nẵng</option>
+                <option value="Hải Phòng">Hải Phòng</option>
+                <option value="Bình Dương">Bình Dương</option>
+              </select>
+              <i class="fa-solid fa-chevron-down select-chevron"></i>
+            </div>
+
+          </div>
+
+          <!-- Row 2: Secondary Filter Pills & Actions (Matching Image 3) -->
+          <div class="browse-filters-chips-row">
+            <div class="browse-filters-left-group">
+              
+              <!-- Filter: New Jobs -->
+              <div class="browse-filter-pill-select" id="pill-filter-new" onclick="toggleNewJobsFilter(this);">
+                <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i>
+                <span>New Jobs</span>
+              </div>
+
+              <!-- Filter: Job Category -->
+              <div class="browse-filter-pill-select" id="pill-filter-category">
+                <span id="pill-category-label">Job Category</span>
+                <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i>
+                <select id="browse-select-category" onchange="updateCategoryPill(this); applyBrowseFilters();">
+                  <option value="all">Job Category (Tất cả)</option>
+                  <option value="forwarding">Freight Forwarding</option>
+                  <option value="robotics">Smart Warehousing &amp; AI</option>
+                  <option value="tech">Cold Chain &amp; Tech</option>
+                  <option value="port">Maritime &amp; Port Logistics</option>
+                  <option value="customs">Customs Brokerage</option>
+                </select>
+              </div>
+
+              <!-- Filter: Experience -->
+              <div class="browse-filter-pill-select" id="pill-filter-exp">
+                <span id="pill-exp-label">Experience</span>
+                <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i>
+                <select id="browse-select-exp" onchange="updateExpPill(this); applyBrowseFilters();">
+                  <option value="all">Experience (Tất cả)</option>
+                  <option value="Fresher">Dưới 1 năm / Fresher</option>
+                  <option value="1-3">1 – 3 năm</option>
+                  <option value="Senior">Senior level (3 – 5 năm)</option>
+                  <option value="Manager">Manager / Trưởng phòng (5+ năm)</option>
+                </select>
+              </div>
+
+              <!-- Filter: Industry -->
+              <div class="browse-filter-pill-select" id="pill-filter-industry">
+                <span id="pill-industry-label">Industry</span>
+                <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i>
+                <select id="browse-select-industry" onchange="updateIndustryPill(this); applyBrowseFilters();">
+                  <option value="all">Industry (Tất cả)</option>
+                  <option value="3pl">Logistics &amp; 3PL</option>
+                  <option value="shipping">Hãng tàu &amp; Cảng biển</option>
+                  <option value="supplychain">Chuỗi cung ứng &amp; Bán lẻ</option>
+                  <option value="tech">Công nghệ AI &amp; Tự động hóa</option>
+                </select>
+              </div>
+
+              <!-- Filter: All Filters -->
+              <div class="browse-filter-pill-select" onclick="showToast('Đang áp dụng toàn bộ 20 bộ lọc thông minh');">
+                <i class="fa-solid fa-sliders" style="font-size:11px;"></i>
+                <span>All Filters</span>
+              </div>
+
+              <!-- Reset Action -->
+              <button type="button" class="browse-btn-reset-filters" onclick="resetAllBrowseFilters();">Reset</button>
+
+            </div>
+
+            <!-- Right Action: Save Job Alert -->
+            <button type="button" class="browse-btn-save-alert" onclick="showToast('🔔 Đã bật thông báo nhận việc làm phù hợp qua Email / Thông báo!');">
+              <i class="fa-regular fa-bell"></i> SAVE JOB ALERT
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Feed Meta Bar (Results Count & Sorting) -->
+        <div class="browse-feed-meta-bar">
+          <div class="browse-results-count-text">
+            Hiển thị <span id="browse-results-count">21</span> việc làm phù hợp
+          </div>
+          <div class="browse-sort-controls">
+            <span style="font-size:13px; color:#64748B; font-weight:600;">Sắp xếp:</span>
+            <select class="browse-sort-select" id="browse-sort-select" onchange="applyBrowseFilters();">
+              <option value="latest">Mới nhất (Latest)</option>
+              <option value="salary-high">Lương cao nhất</option>
+              <option value="relevance">Phù hợp nhất</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Full-Width Card Grid Container -->
+        <div class="browse-jobs-cards-container" id="browse-jobs-container">
+          <!-- Dynamically rendered by js/split-jobs.js -->
+        </div>
+
+      </div>
+    </section>
 
     <!-- SPA VIEW 3: JOB DETAIL -->
     <section class="app-view" id="view-job-detail">
@@ -2151,5 +2236,36 @@
     </div>
   </div>
 
+<script>
+    // Facebook Profile Dropdown Toggle
+    window.toggleFacebookProfileMenu = function(e) {
+      if (e) e.stopPropagation();
+      const menu = document.getElementById('modern-profile-menu') || document.getElementById('user-dropdown-menu');
+      const capsule = document.getElementById('header-user-profile');
+      const btn = document.getElementById('btn-header-user-profile');
+      if (!menu) return;
+      const isOpen = menu.classList.contains('show');
+      if (isOpen) {
+        menu.classList.remove('show');
+        if (capsule) capsule.classList.remove('open');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      } else {
+        menu.classList.add('show');
+        if (capsule) capsule.classList.add('open');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+      }
+    };
+
+    document.addEventListener('click', (e) => {
+      const capsule = document.getElementById('header-user-profile');
+      const menu = document.getElementById('modern-profile-menu') || document.getElementById('user-dropdown-menu');
+      if (capsule && !capsule.contains(e.target)) {
+        if (menu) menu.classList.remove('show');
+        capsule.classList.remove('open');
+        const btn = document.getElementById('btn-header-user-profile');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+</script>
 </body>
 </html>

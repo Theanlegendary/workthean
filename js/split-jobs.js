@@ -220,4 +220,181 @@
   } else {
     init();
   }
+
+  /* ==========================================================================
+     IMAGE 3: ADVANCED CLIENT-SIDE FILTER & SEARCH ENGINE
+     ========================================================================== */
+  let isNewJobsFilterActive = false;
+
+  window.toggleNewJobsFilter = function(el) {
+    isNewJobsFilterActive = !isNewJobsFilterActive;
+    if (el) {
+      if (isNewJobsFilterActive) el.classList.add('active');
+      else el.classList.remove('active');
+    }
+    window.applyBrowseFilters();
+  };
+
+  window.updateCategoryPill = function(sel) {
+    const label = document.getElementById('pill-category-label');
+    const pill = document.getElementById('pill-filter-category');
+    if (label && sel) {
+      const selectedText = sel.options[sel.selectedIndex].text;
+      label.textContent = sel.value === 'all' ? 'Job Category' : selectedText;
+      if (pill) {
+        if (sel.value !== 'all') pill.classList.add('active');
+        else pill.classList.remove('active');
+      }
+    }
+  };
+
+  window.updateExpPill = function(sel) {
+    const label = document.getElementById('pill-exp-label');
+    const pill = document.getElementById('pill-filter-exp');
+    if (label && sel) {
+      const selectedText = sel.options[sel.selectedIndex].text;
+      label.textContent = sel.value === 'all' ? 'Experience' : selectedText;
+      if (pill) {
+        if (sel.value !== 'all') pill.classList.add('active');
+        else pill.classList.remove('active');
+      }
+    }
+  };
+
+  window.updateIndustryPill = function(sel) {
+    const label = document.getElementById('pill-industry-label');
+    const pill = document.getElementById('pill-filter-industry');
+    if (label && sel) {
+      const selectedText = sel.options[sel.selectedIndex].text;
+      label.textContent = sel.value === 'all' ? 'Industry' : selectedText;
+      if (pill) {
+        if (sel.value !== 'all') pill.classList.add('active');
+        else pill.classList.remove('active');
+      }
+    }
+  };
+
+  window.resetAllBrowseFilters = function() {
+    isNewJobsFilterActive = false;
+    const pillNew = document.getElementById('pill-filter-new');
+    if (pillNew) pillNew.classList.remove('active');
+
+    const kw = document.getElementById('browse-search-keyword');
+    if (kw) kw.value = '';
+
+    const wp = document.getElementById('browse-filter-workplace');
+    if (wp) wp.value = 'all';
+
+    const loc = document.getElementById('browse-filter-location');
+    if (loc) loc.value = 'all';
+
+    const cat = document.getElementById('browse-select-category');
+    if (cat) {
+      cat.value = 'all';
+      window.updateCategoryPill(cat);
+    }
+
+    const exp = document.getElementById('browse-select-exp');
+    if (exp) {
+      exp.value = 'all';
+      window.updateExpPill(exp);
+    }
+
+    const ind = document.getElementById('browse-select-industry');
+    if (ind) {
+      ind.value = 'all';
+      window.updateIndustryPill(ind);
+    }
+
+    window.applyBrowseFilters();
+  };
+
+  window.applyBrowseFilters = function() {
+    const container = document.getElementById('browse-jobs-container');
+    if (!container) return;
+
+    let jobs = getJobsDatabase();
+
+    // 1. Keyword search (Title, Company, Description, Tags)
+    const kw = document.getElementById('browse-search-keyword')?.value.trim().toLowerCase();
+    if (kw) {
+      jobs = jobs.filter(j => {
+        const text = `${j.title || ''} ${j.company || j.clientName || ''} ${j.description || ''} ${(j.tags || []).join(' ')}`.toLowerCase();
+        return text.includes(kw);
+      });
+    }
+
+    // 2. Workplace filter (Remote, Hybrid, On-site)
+    const wp = document.getElementById('browse-filter-workplace')?.value;
+    if (wp && wp !== 'all') {
+      jobs = jobs.filter(j => {
+        const place = `${j.workplace || ''} ${j.workType || ''}`.toLowerCase();
+        return place.includes(wp.toLowerCase());
+      });
+    }
+
+    // 3. Location filter
+    const loc = document.getElementById('browse-filter-location')?.value;
+    if (loc && loc !== 'all') {
+      jobs = jobs.filter(j => {
+        return (j.location || '').toLowerCase().includes(loc.toLowerCase());
+      });
+    }
+
+    // 4. Category filter
+    const cat = document.getElementById('browse-select-category')?.value;
+    if (cat && cat !== 'all') {
+      jobs = jobs.filter(j => j.category === cat);
+    }
+
+    // 5. Experience filter
+    const exp = document.getElementById('browse-select-exp')?.value;
+    if (exp && exp !== 'all') {
+      jobs = jobs.filter(j => {
+        const jExp = `${j.specs?.exp || ''} ${j.level || ''}`.toLowerCase();
+        if (exp === 'Fresher') return jExp.includes('fresher') || jExp.includes('1 năm') || jExp.includes('junior');
+        if (exp === '1-3') return jExp.includes('1') || jExp.includes('2') || jExp.includes('3');
+        if (exp === 'Senior') return jExp.includes('senior') || jExp.includes('3') || jExp.includes('4') || jExp.includes('5');
+        if (exp === 'Manager') return jExp.includes('manager') || jExp.includes('lead') || jExp.includes('trưởng');
+        return true;
+      });
+    }
+
+    // 6. New Jobs Only
+    if (isNewJobsFilterActive) {
+      jobs = jobs.filter(j => j.isUrgent || j.hot || (j.time && (j.time.includes('giờ') || j.time.includes('phút') || j.time.includes('min') || j.time.includes('hour'))));
+    }
+
+    // 7. Sort
+    const sortVal = document.getElementById('browse-sort-select')?.value || 'latest';
+    if (sortVal === 'salary-high') {
+      jobs.sort((a, b) => (b.salaryVal || 0) - (a.salaryVal || 0));
+    }
+
+    // Render cards
+    if (jobs.length > 0) {
+      container.innerHTML = jobs.map(generateJobCardHtml).join('');
+    } else {
+      container.innerHTML = `
+        <div style="background:#FFFFFF; border-radius:16px; padding:60px 20px; text-align:center; border:1px solid #E2E8F0; margin-top:10px;">
+          <div style="font-size:44px; margin-bottom:12px;">🔍</div>
+          <h3 style="font-size:18px; font-weight:700; color:#0F172A; margin-bottom:6px;">Không tìm thấy việc làm phù hợp</h3>
+          <p style="font-size:14px; color:#64748B; margin-bottom:20px;">Vui lòng thử điều chỉnh lại từ khóa hoặc xóa bớt bộ lọc.</p>
+          <button type="button" onclick="resetAllBrowseFilters();" style="background:#0A66C2; color:#FFFFFF; border:none; padding:10px 22px; border-radius:9999px; font-weight:700; font-size:13.5px; cursor:pointer;">
+            Xóa Toàn Bộ Bộ Lọc
+          </button>
+        </div>
+      `;
+    }
+
+    // Update counter
+    const countEl = document.getElementById('browse-results-count');
+    if (countEl) countEl.textContent = jobs.length;
+  };
+
+  // Re-hook renderBrowseJobs to use applyBrowseFilters
+  window.renderBrowseJobs = function() {
+    window.applyBrowseFilters();
+  };
+
 })();

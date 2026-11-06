@@ -8800,3 +8800,17 @@ footer a:hover {
     font-size: 11px !important;
   }
 }
+
+
+@media (max-width: 640px) {
+  .section-toolbar, .hero-tabs-wrap, .news-tabs-row, .course-tabs-row, .job-toolbar {
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+  .section-toolbar::-webkit-scrollbar {
+    display: none;
+  }
+}

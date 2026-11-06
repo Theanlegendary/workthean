@@ -1036,244 +1036,157 @@
   };
 
   // ── PUBLIC: Hydrate course detail ────────────────────────────
+  // ── PUBLIC: Hydrate Wolfram-Style Course Detail ──────────────
+  let _isVideoPlaying = false;
+  let _videoTimer = null;
+
+  window.togglePlayPreviewVideo = function() {
+    _isVideoPlaying = !_isVideoPlaying;
+    const playIcon = document.getElementById('crsPlayIcon');
+    const bigPlayBtn = document.getElementById('crsBigPlayBtn');
+    const progressFill = document.getElementById('crsVideoProgress');
+    const timeDisplay = document.getElementById('crsVideoTime');
+
+    if (_isVideoPlaying) {
+      if (playIcon) playIcon.className = 'fa-solid fa-pause';
+      if (bigPlayBtn) bigPlayBtn.style.opacity = '0';
+      showToast('Đang phát video bài giảng xem trước (HD)...');
+      
+      let progress = 32;
+      clearInterval(_videoTimer);
+      _videoTimer = setInterval(() => {
+        progress = (progress + 1) % 100;
+        if (progressFill) progressFill.style.width = progress + '%';
+        const mins = Math.floor((progress / 100) * 22);
+        const secs = Math.floor(((progress / 100) * 22 * 60) % 60);
+        if (timeDisplay) timeDisplay.textContent = `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')} / 22:00`;
+      }, 1000);
+    } else {
+      if (playIcon) playIcon.className = 'fa-solid fa-play';
+      if (bigPlayBtn) bigPlayBtn.style.opacity = '1';
+      clearInterval(_videoTimer);
+      showToast('Đã tạm dừng video.');
+    }
+  };
+
+  window.seekVideoPreview = function(e) {
+    const track = e.currentTarget;
+    const rect = track.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const pct = Math.max(0, Math.min(100, Math.round((clickX / rect.width) * 100)));
+    const progressFill = document.getElementById('crsVideoProgress');
+    if (progressFill) progressFill.style.width = pct + '%';
+    const mins = Math.floor((pct / 100) * 22);
+    const secs = Math.floor(((pct / 100) * 22 * 60) % 60);
+    const timeDisplay = document.getElementById('crsVideoTime');
+    if (timeDisplay) timeDisplay.textContent = `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')} / 22:00`;
+  };
+
+  window.toggleVideoFullscreen = function() {
+    const box = document.getElementById('crsVideoContainer');
+    if (!box) return;
+    if (!document.fullscreenElement) {
+      box.requestFullscreen().catch(() => showToast('Chế độ xem toàn màn hình'));
+    } else {
+      document.exitFullscreen().catch(() => {});
+    }
+  };
+
   window.hydrateCourseDetail = function(courseId) {
-    const c = COURSES_DB.find(x => x.id === courseId);
+    const c = COURSES_DB.find(x => x.id === courseId) || COURSES_DB[0];
     if (!c) return;
+
+    // Reset video state
+    _isVideoPlaying = false;
+    clearInterval(_videoTimer);
+    const playIcon = document.getElementById('crsPlayIcon');
+    if (playIcon) playIcon.className = 'fa-solid fa-play';
+    const bigPlayBtn = document.getElementById('crsBigPlayBtn');
+    if (bigPlayBtn) bigPlayBtn.style.opacity = '1';
 
     const setText = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
     const setHtml = (id, val) => { const el = document.getElementById(id); if (el) el.innerHTML = val; };
 
-    setText('crsDetailCategory',    c.categoryLabel);
-    setText('crsDetailBreadTitle',  c.title.length > 40 ? c.title.substring(0, 40) + '…' : c.title);
-    setText('crsDetailTitle',       c.title);
-    setText('crsDetailSub',         c.description);
-    setText('crsDetailInstructor',  c.instructor);
-    setText('crsDetailOrg',         c.org);
-    setText('crsDetailEnrolled',    c.enrolled.toLocaleString());
-    setText('crsDetailUpdated',     c.updated || 'Oct 2026');
-    setText('crsDetailLang',        c.language || 'Vietnamese');
-    setText('crsSidebarPrice',      c.priceFormatted);
-    setText('crsDetailBigRating',   c.rating.toFixed(1));
-    setText('crsInstructorName',    c.instructor);
-    setText('crsInstructorTitle',   c.org);
+    // 1. Top Header & Meta
+    setText('crsDetailTitleTop', c.title);
+    setText('crsDetailTitleCard', c.title);
+    setText('crsDetailFormatTop', getFormatForCourse(c).split('|')[1]?.trim() || 'Interactive Course');
+    setText('crsDetailDurationTop', c.duration || (c.hours ? c.hours + ' Hours' : '22 min'));
+    setText('crsDetailLevelTop', c.level || 'Advanced');
+    setText('crsDetailAuthor', c.instructor || 'TS. Nguyễn Thành Long');
+    setText('crsDetailOrg', c.org || 'VALOMA Institute & Logistics Research');
 
-    // Rating
-    const ratingEl = document.getElementById('crsDetailRating');
-    if (ratingEl) {
-      ratingEl.innerHTML = `<span class="crs-rating-num">${c.rating.toFixed(1)}</span>
-        <span class="crs-rating-stars">${STAR_HTML(c.rating)}</span>
-        <span class="crs-rating-count">(${c.reviews.toLocaleString()} ratings)</span>`;
+    // 2. Video Poster & Title
+    const poster = document.getElementById('crsVideoPoster');
+    if (poster) {
+      poster.src = c.image || 'images/course_1.jpg';
+      poster.onerror = () => { poster.src = 'images/course_1.jpg'; };
     }
+    setText('crsVideoOverlayTitle', `${c.title} • Lecture Preview`);
 
-    // Badge
-    const badgeEl = document.getElementById('crsDetailBadge');
-    if (badgeEl) {
-      if (c.badge && BADGE_CONFIG[c.badge]) {
-        badgeEl.textContent = BADGE_CONFIG[c.badge].label;
-        badgeEl.className   = `crs-meta-badge ${BADGE_CONFIG[c.badge].cls}`;
-        badgeEl.style.display = 'inline-flex';
-      } else {
-        badgeEl.style.display = 'none';
-      }
-    }
+    // 3. Overview Description & Frameworks
+    setText('crsDetailDesc', c.description || 'Nội dung đào tạo thực tiễn kết hợp chuẩn mực quốc tế FIATA, IATA và quy định Hải quan Việt Nam.');
+    const stds = (c.tags || ['logistics', 'supply chain', 'trade compliance']).map(t => t.toUpperCase()).join(', ');
+    setText('crsDetailStandards', `${stds} • FIATA Multimodal Standards • ISO 27001 Security Compliance`);
 
-    // Hero accent color
-    const hero = document.getElementById('crsDetailHero');
-    if (hero) hero.style.borderBottom = 'none';
+    // 4. You'll Learn To Grid (6 Bullets)
+    const outcomesGrid = document.getElementById('crsDetailOutcomesGrid');
+    if (outcomesGrid) {
+      const defaultOutcomes = [
+        'Master end-to-end multimodal transport documentation & FIATA standards',
+        'Design resilient supply chain networks and international risk mitigation plans',
+        'Operate VNACCS/VCIS electronic customs clearance & tariff classifications',
+        'Optimize deep-sea container dispatch and port terminal yard allocations',
+        'Apply cold chain GDP storage standards to temperature-sensitive cargo',
+        'Implement automated warehouse management systems (WMS) & robotics workflows'
+      ];
+      const items = (c.outcomes && c.outcomes.length >= 4) ? c.outcomes : defaultOutcomes;
+      const col1 = items.slice(0, 3);
+      const col2 = items.slice(3, 6);
 
-    // Sidebar image
-    const img = document.getElementById('crsSidebarImg');
-    if (img) img.src = c.image || IMG_CYCLE[(c.id - 1) % 4];
-
-    // Outcomes
-    if (c.outcomes && c.outcomes.length) {
-      const outEl = document.getElementById('crsDetailOutcomes');
-      if (outEl) {
-        outEl.innerHTML = `<h4><i class="fa-solid fa-check-circle"></i> What You'll Learn</h4>
-          <ul class="crs-outcomes-list">${c.outcomes.map(o => `<li><i class="fa-solid fa-check"></i> ${o}</li>`).join('')}</ul>`;
-      }
-    }
-
-    // Requirements
-    if (c.requirements && c.requirements.length) {
-      setHtml('crsDetailRequirements', c.requirements.map(r => `<li>${r}</li>`).join(''));
-    }
-
-    // Curriculum
-    const currEl = document.getElementById('crsDetailCurriculum');
-    if (currEl && c.curriculum) {
-      const totalLessons = c.curriculum.reduce((s, m) => s + (m.lessons || 0), 0);
-      const metaEl = document.getElementById('crsCurriculumMeta');
-      if (metaEl) metaEl.textContent = `${c.modules} modules · ${c.hours} hours · ${totalLessons} lessons`;
-
-      currEl.innerHTML = c.curriculum.map((mod, idx) => `
-        <div class="crs-module-row" id="crsModule${c.id}_${idx}">
-          <div class="crs-module-header" onclick="toggleCourseModule(this)">
-            <div class="mod-left">
-              <i class="fa-solid fa-chevron-right mod-chevron" style="transition:transform .25s"></i>
-              <span class="mod-title">${mod.title}</span>
-            </div>
-            <div class="mod-right">
-              <span class="mod-meta">${mod.lessons} lessons · ${mod.duration}</span>
-            </div>
-          </div>
-          <div class="crs-module-body">
-            <ul class="mod-content-list">
-              ${(mod.content || []).map(item => `<li><i class="fa-solid fa-play-circle mod-item-icon"></i> ${item}</li>`).join('')}
-            </ul>
-          </div>
+      const renderCol = (list) => list.map(txt => `
+        <div class="wf-learn-item">
+          <span class="wf-bullet">&bull;</span>
+          <span class="wf-learn-txt">${txt}</span>
         </div>`).join('');
-    }
 
-    // Sidebar includes
-    const includesEl = document.getElementById('crsSidebarIncludes');
-    if (includesEl) {
-      includesEl.innerHTML = `
-        <li><i class="fa-solid fa-video"></i> ${c.hours} hours of content</li>
-        <li><i class="fa-solid fa-layer-group"></i> ${c.modules} downloadable modules</li>
-        <li><i class="fa-solid fa-certificate"></i> ${c.categoryLabel}-accredited certificate</li>
-        <li><i class="fa-solid fa-infinity"></i> Lifetime access</li>
-        <li><i class="fa-solid fa-mobile-screen"></i> Mobile &amp; desktop access</li>
-        <li><i class="fa-solid fa-trophy"></i> Certificate of completion</li>`;
-    }
-
-    // Update sidebar enroll button
-    const enrollBtn = document.getElementById('crsSidebarEnrollBtn');
-    if (enrollBtn) {
-      enrollBtn.onclick = function() {
-        alert(`✅ You are enrolling in:\n"${c.title}"\n\nPrice: ${c.priceFormatted}\n\nRedirecting to payment...`);
-      };
-    }
-
-    // Instructor bio
-    const bioEl = document.getElementById('crsInstructorBio');
-    if (bioEl) {
-      bioEl.textContent = `${c.instructor} is a certified ${c.categoryLabel} professional with extensive experience in Vietnamese logistics operations. As a trainer at ${c.org}, they bring real-world expertise to every session, combining international standards with local market knowledge. This course has consistently received top ratings for its practical, case-study-driven approach.`;
-    }
-
-    // Scroll to top of detail view
-    const detailView = document.getElementById('view-course-detail');
-    if (detailView) detailView.scrollTop = 0;
-    window.scrollTo(0, 0);
-  };
-
-  // ── ANIMATED COUNTER ─────────────────────────────────────────
-  function animateCounters() {
-    document.querySelectorAll('.cstats-num').forEach(el => {
-      const target = parseInt(el.dataset.target);
-      const suffix = el.dataset.suffix || '';
-      if (isNaN(target)) return;
-      let current = 0;
-      const step  = Math.ceil(target / 60);
-      const timer = setInterval(() => {
-        current = Math.min(current + step, target);
-        el.textContent = current.toLocaleString() + suffix;
-        if (current >= target) clearInterval(timer);
-      }, 25);
-    });
-  }
-
-  // ── PARTICLES ────────────────────────────────────────────────
-  function initParticles() {
-    const container = document.getElementById('coursesParticles');
-    if (!container) return;
-    container.innerHTML = '';
-    for (let i = 0; i < 28; i++) {
-      const dot = document.createElement('span');
-      dot.className = 'particle-dot';
-      dot.style.cssText = `
-        left:${Math.random() * 100}%;
-        top:${Math.random() * 100}%;
-        width:${3 + Math.random() * 6}px;
-        height:${3 + Math.random() * 6}px;
-        animation-delay:${Math.random() * 6}s;
-        animation-duration:${5 + Math.random() * 7}s;
-        opacity:${0.1 + Math.random() * 0.4};
+      outcomesGrid.innerHTML = `
+        <div class="wf-learn-col">${renderCol(col1)}</div>
+        <div class="wf-learn-col">${renderCol(col2)}</div>
       `;
-      container.appendChild(dot);
+    }
+
+    // 5. Related Resources (2x2 Grid of Other Courses)
+    const relGrid = document.getElementById('crsRelatedResourcesGrid');
+    if (relGrid) {
+      const related = COURSES_DB.filter(x => x.id !== c.id).slice(0, 4);
+      const types = ['INTERACTIVE COURSE', 'VIDEO COURSE', 'REGULATION & DOCUMENTATION', 'INTERACTIVE COURSE'];
+      
+      relGrid.innerHTML = related.map((r, i) => `
+        <div class="wf-resource-card" onclick="hydrateCourseDetail(${r.id}); window.scrollTo({top:0, behavior:'smooth'})">
+          <img src="${r.image || 'images/course_1.jpg'}" alt="${r.title}" class="wf-res-thumb" onerror="this.src='images/course_1.jpg'" />
+          <div class="wf-res-content">
+            <span class="wf-res-type">${types[i % types.length]}</span>
+            <div class="wf-res-title">${r.title}</div>
+          </div>
+        </div>
+      `).join('');
     }
   }
 
-  // ── STICKY FILTER BAR ────────────────────────────────────────
-  function initStickyFilter() {
-    const bar = document.getElementById('courseFilterBar');
-    if (!bar) return;
-    const heroEl = document.querySelector('.courses-hero');
-    if (!heroEl) return;
-    const heroH = heroEl.offsetHeight;
-    function onScroll() {
-      const coursesView = document.getElementById('view-courses');
-      if (!coursesView) return;
-      const scrollTop = coursesView.scrollTop || window.scrollY;
-      bar.classList.toggle('sticky-active', scrollTop > heroH - 80);
-    }
-    const coursesView = document.getElementById('view-courses');
-    if (coursesView) coursesView.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('scroll', onScroll, { passive: true });
-  }
-
-  // ── INTERSECTION OBSERVER for counters ───────────────────────
-  function observeStatsBanner() {
-    const banner = document.querySelector('.courses-stats-banner');
-    if (!banner || !('IntersectionObserver' in window)) { animateCounters(); return; }
-    const obs = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) { animateCounters(); obs.disconnect(); }
-    }, { threshold: 0.3 });
-    obs.observe(banner);
-  }
-
-  // ── INIT ─────────────────────────────────────────────────────
   function initCoursesView() {
-    initParticles();
-    renderGrid(getFilteredCourses());
-    observeStatsBanner();
-    initStickyFilter();
+    renderGrid(COURSES_DB.slice());
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     initCoursesView();
   });
 
-  // Also expose for re-init when view is switched to
   window.coursesController = {
     init: initCoursesView,
     getDB: () => COURSES_DB,
     renderGrid,
-    getFilteredCourses,
+    getFilteredCourses: () => COURSES_DB.slice()
   };
-
-  // Hook into switchView if available
-  const _origSwitch = window.switchView;
-  if (typeof _origSwitch === 'function') {
-    window.switchView = function(viewName) {
-      _origSwitch(viewName);
-      if (viewName === 'view-courses') {
-        setTimeout(() => {
-          initParticles();
-          observeStatsBanner();
-          initStickyFilter();
-          renderGrid(getFilteredCourses());
-        }, 50);
-      }
-    };
-  } else {
-    // Retry after app.js loads
-    window.addEventListener('load', () => {
-      const _orig = window.switchView;
-      if (typeof _orig === 'function') {
-        window.switchView = function(viewName) {
-          _orig(viewName);
-          if (viewName === 'view-courses') {
-            setTimeout(() => {
-              initParticles();
-              observeStatsBanner();
-              initStickyFilter();
-              renderGrid(getFilteredCourses());
-            }, 50);
-          }
-        };
-      }
-    });
-  }
 
 })();

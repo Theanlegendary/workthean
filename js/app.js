@@ -3794,13 +3794,13 @@ const enterpriseJobsDatabase = [
 
     
 
-let currentSplitJobId = 'job-ocean-freight';
+let currentSplitJobId = 'job-2'; // Default to DHL job as in user's reference image
 let currentSplitFilter = 'all';
 
-// Render the left-hand scrollable job feed cards
+// Render the left-hand scrollable job feed cards (Matches Picture 3, bigger logo, no easy apply)
 window.renderSplitJobList = function() {
-  const container = document.getElementById('split-jobs-list-container');
-  if (!container) return;
+  const containers = document.querySelectorAll('.split-jobs-container, #split-jobs-list-container, #home-split-jobs-container');
+  if (containers.length === 0) return;
 
   let filtered = enterpriseJobsDatabase;
   if (currentSplitFilter === 'urgent') {
@@ -3809,38 +3809,32 @@ window.renderSplitJobList = function() {
     filtered = enterpriseJobsDatabase.filter(j => j.category === currentSplitFilter);
   }
 
-  const countBadge = document.getElementById('job-filter-count');
-  const counterSub = document.getElementById('linkedin-jobs-counter');
-  if (countBadge) countBadge.textContent = `${filtered.length} Openings Available`;
-  if (counterSub) counterSub.textContent = `${filtered.length} openings`;
+  document.querySelectorAll('.split-openings-badge, #splitOpeningsBadge, #job-filter-count, #linkedin-jobs-counter').forEach(el => {
+    el.textContent = `${filtered.length} openings`;
+  });
 
-  if (filtered.length === 0) {
-    container.innerHTML = '<div style="padding:24px; text-align:center; color:#64748B; font-size:13.5px;">Không tìm thấy vị trí phù hợp trong nhóm này.</div>';
-    return;
-  }
-
-  container.innerHTML = filtered.map(job => {
+  const cardsHtml = filtered.map(job => {
     const isActive = job.id === currentSplitJobId;
     return `
-      <div class="job-feed-card ${isActive ? 'active' : ''}" id="feed-card-${job.id}" onclick="selectSplitJob('${job.id}');">
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+      <div class="job-feed-card split-job-card ${isActive ? 'active' : ''}" data-job-id="${job.id}" id="feed-card-${job.id}" onclick="selectSplitJob('${job.id}');">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px;">
           <div style="min-width:0; flex:1;">
-            <div class="job-card-title">${job.title}</div>
-            <div class="job-card-company" style="font-size:13px; color:#334155; font-weight:600; display:flex; align-items:center; gap:4px;">
-              ${job.company} <i class="fa-solid fa-circle-check" style="color:#0A66C2; font-size:11px;"></i>
+            <div class="job-card-title split-card-title">${job.title}</div>
+            <div class="job-card-company split-card-company" style="font-size:13px; color:#334155; font-weight:600; display:flex; align-items:center; gap:5px;">
+              ${job.company} <i class="fa-solid fa-circle-check" style="color:#0A66C2; font-size:12px;"></i>
             </div>
-            <div class="job-card-location" style="font-size:12px; color:#64748B; margin-top:2px;">
+            <div class="job-card-location split-card-loc" style="font-size:12px; color:#64748B; margin-top:2px;">
               <i class="fa-solid fa-location-dot" style="font-size:11px;"></i> ${job.location}
             </div>
           </div>
-          <div style="width:38px; height:38px; border:1px solid #E2E8F0; border-radius:8px; display:flex; align-items:center; justify-content:center; padding:4px; background:#fff; flex-shrink:0;">
-            <img src="${job.companyLogo}" alt="${job.company}" style="width:100%; height:100%; object-fit:contain;">
+          <!-- Brand logo bigger just a little as requested (54px) -->
+          <div class="split-card-logo-box" style="width:54px; height:54px; border:1px solid #E2E8F0; border-radius:10px; display:flex; align-items:center; justify-content:center; padding:6px; background:#fff; flex-shrink:0; box-shadow:0 1px 3px rgba(0,0,0,0.02);">
+            <img src="${job.companyLogo}" alt="${job.company}" style="width:100%; height:100%; object-fit:contain;" onerror="this.src='images/brands/vinfast.svg'">
           </div>
         </div>
-        <div style="font-size:13.5px; font-weight:700; color:#0A66C2; margin:6px 0 4px;">${job.salary}</div>
-        <div style="display:flex; align-items:center; gap:8px; font-size:11.5px; color:#94A3B8;">
-          <span style="color:#059669; font-weight:600;"><i class="fa-solid fa-bolt"></i> Easy Apply</span>
-          <span>•</span>
+        <div class="job-card-salary split-card-salary" style="font-size:13.5px; font-weight:700; color:#0A66C2; margin:6px 0 4px;">${job.salary}</div>
+        <!-- Removed 'Easy Apply' as explicitly requested -->
+        <div class="split-card-meta" style="display:flex; align-items:center; gap:8px; font-size:11.5px; color:#94A3B8;">
           <span>${job.time}</span>
           <span>•</span>
           <span>${job.applicants}</span>
@@ -3848,19 +3842,23 @@ window.renderSplitJobList = function() {
       </div>
     `;
   }).join('');
+
+  containers.forEach(c => {
+    c.innerHTML = cardsHtml;
+  });
 };
 
-// Render the right-hand sticky job detail pane (matching Picture 3)
+// Render the right-hand sticky job detail pane (matching Picture 3, bigger logo, no easy apply)
 window.renderSplitJobDetail = function(jobId) {
-  const panel = document.getElementById('split-job-detail-panel');
-  if (!panel) return;
+  const panels = document.querySelectorAll('.split-detail-panel, #split-job-detail-panel, #home-split-detail-panel');
+  if (panels.length === 0) return;
 
   const job = enterpriseJobsDatabase.find(j => j.id === jobId) || enterpriseJobsDatabase[0];
   if (!job) return;
 
   currentSplitJobId = job.id;
 
-  panel.innerHTML = `
+  const detailHtml = `
     <!-- Header Block Matching Picture 3 -->
     <div style="padding-bottom: 22px; border-bottom: 1px solid #E2E8F0; margin-bottom: 24px;">
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px;">
@@ -3869,7 +3867,7 @@ window.renderSplitJobDetail = function(jobId) {
             <span style="font-size:14px; font-weight:700; color:#0A66C2;">${job.company}</span>
             <i class="fa-solid fa-circle-check" style="color:#059669; font-size:13px;" title="Verified Enterprise"></i>
           </div>
-          <h1 style="font-size: 24px; font-weight: 800; color: #0F172A; margin: 0 0 8px 0; line-height: 1.25;">${job.title}</h1>
+          <h1 class="split-detail-title" style="font-size: 24px; font-weight: 800; color: #0F172A; margin: 0 0 8px 0; line-height: 1.25;">${job.title}</h1>
           <div style="display:flex; align-items:center; gap:8px; font-size:13.5px; color:#64748B; flex-wrap:wrap; margin-bottom:14px;">
             <span><i class="fa-solid fa-location-dot"></i> ${job.location}</span>
             <span>•</span>
@@ -3880,34 +3878,35 @@ window.renderSplitJobDetail = function(jobId) {
 
           <!-- Feature Tag Badges Matching Picture 3 -->
           <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;">
-            <span style="background:#F1F5F9; border:1px solid #E2E8F0; color:#334155; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:600; display:inline-flex; align-items:center; gap:6px;">
-              <i class="fa-solid fa-briefcase"></i> ${job.specs ? job.specs.exp : 'Full-time • 3 - 5 Years'}
+            <span class="split-chip" style="background:#F1F5F9; border:1px solid #E2E8F0; color:#334155; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:600; display:inline-flex; align-items:center; gap:6px;">
+              <i class="fa-solid fa-briefcase"></i> ${job.specs ? job.specs.exp : 'Manager (5+ Yrs)'}
             </span>
-            <span style="background:#F1F5F9; border:1px solid #E2E8F0; color:#334155; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:600; display:inline-flex; align-items:center; gap:6px;">
+            <span class="split-chip" style="background:#F1F5F9; border:1px solid #E2E8F0; color:#334155; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:600; display:inline-flex; align-items:center; gap:6px;">
               <i class="fa-solid fa-building"></i> 1,001 - 5,000 employees
             </span>
-            <span style="background:#EFF6FF; border:1px solid #BFDBFE; color:#0A66C2; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:700; display:inline-flex; align-items:center; gap:6px;">
+            <span class="split-chip split-chip-salary" style="background:#EFF6FF; border:1px solid #BFDBFE; color:#0A66C2; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:700; display:inline-flex; align-items:center; gap:6px;">
               <i class="fa-solid fa-money-bill-wave"></i> ${job.salary}
             </span>
-            <span style="background:#ECFDF5; border:1px solid #A7F3D0; color:#059669; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:700; display:inline-flex; align-items:center; gap:6px;">
+            <span class="split-chip split-chip-match" style="background:#ECFDF5; border:1px solid #A7F3D0; color:#059669; padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:600; display:inline-flex; align-items:center; gap:6px;">
               <i class="fa-solid fa-circle-check"></i> Skills match your profile
             </span>
           </div>
         </div>
-        <div style="width:68px; height:68px; border:1px solid #E2E8F0; border-radius:12px; display:flex; align-items:center; justify-content:center; padding:8px; background:#fff; flex-shrink:0; box-shadow:0 2px 6px rgba(0,0,0,0.04);">
-          <img src="${job.companyLogo}" alt="${job.company}" style="width:100%; height:100%; object-fit:contain;">
+        <!-- Detail Brand Logo bigger just a little (76px) -->
+        <div class="split-detail-logo-box" style="width:76px; height:76px; border:1.5px solid #E2E8F0; border-radius:12px; display:flex; align-items:center; justify-content:center; padding:8px; background:#fff; flex-shrink:0; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+          <img src="${job.companyLogo}" alt="${job.company}" style="width:100%; height:100%; object-fit:contain;" onerror="this.src='images/brands/vinfast.svg'">
         </div>
       </div>
 
-      <!-- Action Buttons Row Matching Picture 3 -->
+      <!-- Action Buttons Row (NO 'Easy Apply' as requested) -->
       <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
-        <button type="button" onclick="showToast('Hồ sơ đã được gửi trực tiếp tới phòng nhân sự ${job.company}!'); this.innerHTML='<i class=\'fa-solid fa-check\'></i> Applied Successfully'; this.style.background='#059669';" style="background:#0A66C2; color:#FFFFFF; border:none; padding:11px 26px; border-radius:8px; font-weight:700; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:8px; box-shadow:0 3px 10px rgba(10,102,194,0.3); transition:all 0.2s;">
-          <i class="fa-solid fa-paper-plane"></i> Easy Apply with CV
+        <button type="button" class="btn-split-apply" onclick="openJobDetail('${job.id}');" style="background:#0A66C2; color:#fff; border:none; padding:11px 26px; border-radius:8px; font-weight:700; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:8px; box-shadow:0 4px 12px rgba(10,102,194,0.28); transition:all 0.2s;">
+          <i class="fa-solid fa-paper-plane"></i> Ứng Tuyển Với CV
         </button>
-        <button type="button" onclick="this.innerHTML='<i class=\'fa-solid fa-bookmark\'></i> Saved'; this.style.color='#0A66C2'; this.style.borderColor='#0A66C2';" style="background:#FFFFFF; border:1px solid #CBD5E1; color:#475569; padding:11px 18px; border-radius:8px; font-weight:600; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; transition:all 0.15s;">
+        <button type="button" class="btn-split-save" onclick="this.innerHTML='<i class=\'fa-solid fa-bookmark\'></i> Saved'; this.style.color='#0A66C2'; this.style.borderColor='#0A66C2'; if(typeof showToast==='function') showToast('Đã lưu công việc');" style="background:#fff; border:1px solid #CBD5E1; color:#334155; padding:10px 18px; border-radius:8px; font-weight:600; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
           <i class="fa-regular fa-bookmark"></i> Save
         </button>
-        <button type="button" onclick="navigator.clipboard?.writeText(window.location.href); showToast('Đã sao chép liên kết việc làm!');" style="background:#FFFFFF; border:1px solid #CBD5E1; color:#475569; padding:11px 16px; border-radius:8px; font-weight:600; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; transition:all 0.15s;">
+        <button type="button" class="btn-split-share" onclick="if(typeof showToast==='function') showToast('Đã sao chép liên kết công việc');" title="Chia sẻ" style="background:#fff; border:1px solid #CBD5E1; color:#334155; width:42px; height:42px; border-radius:8px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; font-size:15px;">
           <i class="fa-solid fa-share-nodes"></i>
         </button>
       </div>
@@ -3921,7 +3920,7 @@ window.renderSplitJobDetail = function(jobId) {
 
     <!-- Key Responsibilities -->
     <div style="margin-bottom: 24px;">
-      <h3 style="font-size: 15px; font-weight: 800; color: #0F172A; margin: 0 0 10px 0; text-transform:uppercase; letter-spacing:0.4px;">Key Responsibilities</h3>
+      <h3 style="font-size: 13px; font-weight: 800; color: #0F172A; margin: 0 0 10px 0; text-transform:uppercase; letter-spacing:0.05em;">KEY RESPONSIBILITIES</h3>
       <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #475569; line-height: 1.7;">
         ${(job.responsibilities || []).map(r => `<li style="margin-bottom: 8px;">${r}</li>`).join('')}
       </ul>
@@ -3929,7 +3928,7 @@ window.renderSplitJobDetail = function(jobId) {
 
     <!-- Qualifications -->
     <div style="margin-bottom: 24px;">
-      <h3 style="font-size: 15px; font-weight: 800; color: #0F172A; margin: 0 0 10px 0; text-transform:uppercase; letter-spacing:0.4px;">Qualifications &amp; Requirements</h3>
+      <h3 style="font-size: 13px; font-weight: 800; color: #0F172A; margin: 0 0 10px 0; text-transform:uppercase; letter-spacing:0.05em;">QUALIFICATIONS &amp; REQUIREMENTS</h3>
       <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #475569; line-height: 1.7;">
         ${(job.requirements || []).map(rq => `<li style="margin-bottom: 8px;">${rq}</li>`).join('')}
       </ul>
@@ -3937,9 +3936,9 @@ window.renderSplitJobDetail = function(jobId) {
 
     <!-- Benefits -->
     <div style="margin-bottom: 26px;">
-      <h3 style="font-size: 15px; font-weight: 800; color: #0F172A; margin: 0 0 10px 0; text-transform:uppercase; letter-spacing:0.4px;">Benefits &amp; Compensation</h3>
-      <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #475569; line-height: 1.7;">
-        ${(job.benefits || []).map(b => `<li style="margin-bottom: 8px;"><i class="fa-solid fa-circle-check" style="color:#059669; margin-right:6px;"></i>${b}</li>`).join('')}
+      <h3 style="font-size: 13px; font-weight: 800; color: #0F172A; margin: 0 0 10px 0; text-transform:uppercase; letter-spacing:0.05em;">BENEFITS &amp; COMPENSATION</h3>
+      <ul style="margin: 0; padding-left: 0; list-style:none; font-size: 14px; color: #475569; line-height: 1.7;">
+        ${(job.benefits || []).map(b => `<li style="margin-bottom: 8px; display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-circle-check" style="color:#059669; font-size:14px; flex-shrink:0;"></i> <span>${b}</span></li>`).join('')}
       </ul>
     </div>
 
@@ -3948,7 +3947,7 @@ window.renderSplitJobDetail = function(jobId) {
       <div style="display:flex; justify-content:space-between; align-items:center; background:#F8FAFC; padding:16px 20px; border-radius:12px; border:1px solid #E2E8F0;">
         <div style="display:flex; align-items:center; gap:14px;">
           <div style="width:48px; height:48px; flex-shrink:0;">
-            <img src="${job.companyLogo}" alt="${job.company}" style="width:100%; height:100%; object-fit:contain;">
+            <img src="${job.companyLogo}" alt="${job.company}" style="width:100%; height:100%; object-fit:contain;" onerror="this.src='images/brands/vinfast.svg'">
           </div>
           <div>
             <div style="font-weight:800; font-size:15px; color:#0F172A;">${job.company}</div>
@@ -3962,13 +3961,17 @@ window.renderSplitJobDetail = function(jobId) {
     </div>
   `;
 
-  // Update active state in feed cards
-  document.querySelectorAll('.job-feed-card').forEach(card => card.classList.remove('active'));
-  const activeCard = document.getElementById(`feed-card-${job.id}`);
-  if (activeCard) activeCard.classList.add('active');
+  panels.forEach(p => {
+    p.innerHTML = detailHtml;
+  });
 
-  // Scroll detail panel to top
-  panel.scrollTop = 0;
+  document.querySelectorAll('.split-job-card, .job-feed-card').forEach(card => {
+    if (card.getAttribute('data-job-id') === job.id || card.id === `feed-card-${job.id}`) {
+      card.classList.add('active');
+    } else {
+      card.classList.remove('active');
+    }
+  });
 };
 
 // Select a job in the split-view
@@ -3982,8 +3985,7 @@ window.filterSplitJobs = function(category, btn) {
   document.querySelectorAll('.job-chip-btn').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
   renderSplitJobList();
-  
-  // Select first available job in filtered list
+
   let filtered = enterpriseJobsDatabase;
   if (currentSplitFilter === 'urgent') filtered = enterpriseJobsDatabase.filter(j => j.isUrgent);
   else if (currentSplitFilter !== 'all') filtered = enterpriseJobsDatabase.filter(j => j.category === currentSplitFilter);
@@ -3992,23 +3994,23 @@ window.filterSplitJobs = function(category, btn) {
   }
 };
 
-// Open the Split-View Screen from Homepage or Any Link
-window.openJobDetailSplit = function(jobId) {
-  if (typeof switchView === 'function') {
-    switchView('browse');
-  }
-  currentSplitJobId = jobId || 'job-ocean-freight';
+window.setSplitFilter = function(btn, filterKey) {
+  document.querySelectorAll('.job-tab').forEach(t => t.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  currentSplitFilter = filterKey;
   renderSplitJobList();
   renderSplitJobDetail(currentSplitJobId);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
-// Wire initialization on DOM ready
+// Open the Split-View Screen from Homepage or Any Link
+window.openJobDetailSplit = function(jobId) {
+  currentSplitJobId = jobId || 'job-2';
+  renderSplitJobList();
+  renderSplitJobDetail(currentSplitJobId);
+};
+
+// Auto initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
-  if (document.getElementById('split-jobs-list-container')) {
-    renderSplitJobList();
-    renderSplitJobDetail(currentSplitJobId);
-  }
+  renderSplitJobList();
+  renderSplitJobDetail(currentSplitJobId);
 });
-
-

@@ -1,0 +1,479 @@
+/* ==========================================================================
+   VIETNAMJOBS — SPLIT-VIEW MASTER-DETAIL JOBS SECTION
+   Matches user image concept (clean cards, bigger brand logo, no easy apply)
+   ========================================================================== */
+
+.split-job-layout {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+  min-height: 680px;
+  max-height: 720px;
+  overflow: hidden;
+  margin-top: 16px;
+  width: 100%;
+}
+
+/* ── LEFT COLUMN: JOB LIST PANEL ─────────────────────────────────────────── */
+.split-job-list-panel {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #E2E8F0;
+  height: 100%;
+  max-height: 720px;
+  overflow-y: auto;
+  background: #FFFFFF;
+}
+
+.split-job-list-panel::-webkit-scrollbar,
+.split-job-detail-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.split-job-list-panel::-webkit-scrollbar-thumb,
+.split-job-detail-panel::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+.split-list-header {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #FFFFFF;
+  border-bottom: 1px solid #F1F5F9;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.split-list-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.3;
+}
+
+.split-list-sub {
+  font-size: 12px;
+  color: #64748B;
+  margin-top: 2px;
+}
+
+.split-openings-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0A66C2;
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.split-cards-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.split-job-card {
+  padding: 16px 20px;
+  border-bottom: 1px solid #F1F5F9;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  background: #FFFFFF;
+  user-select: none;
+}
+
+.split-job-card:hover:not(.active) {
+  background: #F8FAFC;
+}
+
+.split-job-card.active {
+  background: #F0F7FF;
+  border-left: 4px solid #0A66C2;
+  border-bottom-color: #DBEAFE;
+}
+
+.split-card-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.split-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 4px;
+  line-height: 1.35;
+}
+
+.split-job-card.active .split-card-title {
+  color: #0A66C2;
+}
+
+.split-card-company {
+  font-size: 13px;
+  color: #334155;
+  font-weight: 500;
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.split-verified-icon {
+  color: #0A66C2;
+  font-size: 12px;
+}
+
+.split-card-loc {
+  font-size: 12.5px;
+  color: #64748B;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.split-card-loc i {
+  font-size: 11px;
+  color: #64748B;
+}
+
+.split-card-salary {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0A66C2;
+  margin-bottom: 5px;
+}
+
+.split-card-meta {
+  font-size: 12px;
+  color: #94A3B8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Bigger brand logo box on the left card as requested */
+.split-card-logo-box {
+  width: 54px;
+  height: 54px;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 6px;
+  background: #FFFFFF;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.split-card-logo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ── RIGHT COLUMN: JOB DETAIL PANEL ──────────────────────────────────────── */
+.split-job-detail-panel {
+  background: #FFFFFF;
+  height: 100%;
+  max-height: 720px;
+  overflow-y: auto;
+  padding: 32px 36px;
+}
+
+.split-detail-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+  gap: 16px;
+}
+
+.split-detail-company-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0A66C2;
+}
+
+.split-verified-green {
+  color: #10B981;
+  font-size: 13px;
+}
+
+/* Bigger brand logo box on detail pane as requested */
+.split-detail-logo-box {
+  width: 76px;
+  height: 76px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 8px;
+  background: #FFFFFF;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.split-detail-logo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.split-detail-title {
+  font-size: 23px;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 8px 0 10px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.split-detail-meta-row {
+  font-size: 13px;
+  color: #64748B;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.split-detail-meta-row i {
+  color: #64748B;
+}
+
+.split-applicants-green {
+  color: #059669;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.split-applicants-green i {
+  color: #059669;
+}
+
+.meta-dot {
+  color: #CBD5E1;
+}
+
+.split-chips-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.split-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #F1F5F9;
+  color: #334155;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #E2E8F0;
+}
+
+.split-chip i {
+  color: #64748B;
+}
+
+.split-chip-salary {
+  background: #EFF6FF;
+  color: #0A66C2;
+  border-color: #BFDBFE;
+}
+
+.split-chip-salary i {
+  color: #0A66C2;
+}
+
+.split-chip-match {
+  background: #ECFDF5;
+  color: #059669;
+  border-color: #A7F3D0;
+}
+
+.split-chip-match i {
+  color: #059669;
+}
+
+.split-action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.btn-split-apply {
+  background: #0A66C2;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 11px 26px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.28);
+  transition: all 0.2s ease;
+}
+
+.btn-split-apply:hover {
+  background: #084E96;
+  transform: translateY(-1px);
+}
+
+.btn-split-save {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: #334155;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.btn-split-save:hover {
+  background: #F8FAFC;
+  border-color: #94A3B8;
+}
+
+.btn-split-save.saved {
+  background: #EFF6FF;
+  border-color: #0A66C2;
+  color: #0A66C2;
+}
+
+.btn-split-share {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: #334155;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: all 0.15s ease;
+}
+
+.btn-split-share:hover {
+  background: #F8FAFC;
+  border-color: #94A3B8;
+  color: #0A66C2;
+}
+
+.split-detail-body {
+  border-top: 1px solid #E2E8F0;
+  padding-top: 24px;
+}
+
+.split-detail-section {
+  margin-bottom: 24px;
+}
+
+.split-sec-heading-main {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0 0 10px;
+}
+
+.split-sec-heading-sub {
+  font-size: 13px;
+  font-weight: 800;
+  color: #0F172A;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 10px;
+}
+
+.split-sec-text {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.split-sec-bullets {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.65;
+}
+
+.split-sec-bullets li {
+  margin-bottom: 6px;
+}
+
+.split-benefits-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.split-benefits-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.split-check-green {
+  color: #10B981;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* Responsive for Mobile & Tablet */
+@media (max-width: 900px) {
+  .split-job-layout {
+    grid-template-columns: 1fr;
+    max-height: none;
+  }
+  .split-job-list-panel {
+    max-height: 420px;
+    border-right: none;
+    border-bottom: 1px solid #E2E8F0;
+  }
+  .split-job-detail-panel {
+    max-height: none;
+    padding: 24px 18px;
+  }
+}

@@ -15,6 +15,7 @@
   
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/courses.css">
+  <link rel="stylesheet" href="css/split-jobs.css">
   <link rel="stylesheet" href="css/article.css">
 </head>
 <body id="top">
@@ -293,181 +294,38 @@
       <section class="jobs-section" id="jobs">
         <div class="section-toolbar job-toolbar">
           <div class="job-tabs" role="tablist" aria-label="Job Openings Tabs">
-            <button type="button" class="job-tab active" role="tab" aria-selected="true" data-job-tab="hot" onclick="setJobFilterTab(this, 'hot')">
+            <button type="button" class="job-tab active" role="tab" aria-selected="true" data-job-tab="hot" onclick="setSplitJobFilterTab(this, 'hot')">
               <svg class="flame" viewBox="0 0 24 24" aria-hidden="true" style="width:19px; height:20px; vertical-align:-3px; margin-right:4px;">
                 <defs><linearGradient id="flame-gradient" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#ff463e"/><stop offset="1" stop-color="#ffaf3d"/></linearGradient></defs>
                 <path fill="url(#flame-gradient)" d="M13.2 1.2c.5 4.1-2.8 4.9-2 8.3-1.2-.6-2-1.8-2-3.5C5.9 8 4 11.1 4 14.1 4 19.2 7.6 22 12 22s8-3.1 8-7.5c0-3.8-2.4-7.4-6.8-13.3Z"/>
                 <path fill="#ffe083" d="M12.5 10.9c.3 2-2.5 3-2.5 5.4 0 1.8 1 2.9 2.7 2.9 1.9 0 3.1-1.4 3.1-3.2 0-1.5-1-3.1-3.3-5.1Z"/>
               </svg>Hot Positions
             </button>
-            <button type="button" class="job-tab" role="tab" aria-selected="false" data-job-tab="latest" onclick="setJobFilterTab(this, 'latest')">Latest Openings</button>
-            <button type="button" class="job-tab" role="tab" aria-selected="false" data-job-tab="multinational" onclick="setJobFilterTab(this, 'multinational')">Top Multinationals</button>
+            <button type="button" class="job-tab" role="tab" aria-selected="false" data-job-tab="latest" onclick="setSplitJobFilterTab(this, 'latest')">Latest Openings</button>
+            <button type="button" class="job-tab" role="tab" aria-selected="false" data-job-tab="multinational" onclick="setSplitJobFilterTab(this, 'multinational')">Top Multinationals</button>
           </div>
           <button type="button" class="more-link" data-action="all-jobs" onclick="switchView('browse')">View All Jobs <svg class="icon"><use href="#i-chevron"></use></svg></button>
         </div>
 
-        <div class="jobs-grid" id="jobs-grid">
-          <!-- Job 1 -->
-          <article class="job-card-horizontal" onclick="openJobDetail('job-1');">
-            <div class="job-card-left-block">
-              <div class="job-card-logo-box">
-                <img src="images/brands/vinfast.svg" alt="VinFast Logistics">
+        <div class="split-job-layout" id="splitJobLayout">
+          <!-- Left Column: Feed with 21 openings -->
+          <div class="split-job-list-panel">
+            <div class="split-list-header">
+              <div>
+                <div class="split-list-title">Top job picks for you</div>
+                <div class="split-list-sub">Based on your logistics profile &amp; search history</div>
               </div>
-              <div class="job-card-info-box">
-                <div class="job-card-title-row">
-                  <span class="job-card-title-main">Supply Chain Solutions Architect (Cold Chain)</span>
-                  <span class="badge-urgent-gap"><i class="fa-solid fa-fire"></i> GẤP</span>
-                </div>
-                <div class="job-card-company-row">
-                  <span class="job-card-company-name">VinFast Logistics &amp; Battery Cold Chain</span>
-                  <i class="fa-solid fa-circle-check job-card-verified-icon"></i>
-                  <span class="job-card-dot-sep">•</span>
-                  <span class="job-card-loc"><i class="fa-solid fa-location-dot"></i> TP. Hồ Chí Minh (Hybrid)</span>
-                </div>
-              </div>
+              <span class="split-openings-badge" id="splitOpeningsBadge">21 openings</span>
             </div>
-            <div class="job-card-right-block">
-              <span class="job-card-salary-blue">35 – 55 triệu/tháng</span>
-              <button type="button" class="btn-xem-chi-tiet-blue" onclick="event.stopPropagation(); openJobDetail('job-1');">
-                Xem Chi Tiết &rarr;
-              </button>
+            <div class="split-cards-container split-jobs-container" id="home-split-jobs-container">
+              <!-- Rendered by js/split-jobs.js -->
             </div>
-          </article>
+          </div>
 
-          <!-- Job 2 -->
-          <article class="job-card-horizontal" onclick="openJobDetail('job-ocean-freight');">
-            <div class="job-card-left-block">
-              <div class="job-card-logo-box">
-                <img src="images/brands/maersk.svg" alt="VietnamJobs Logistics Group">
-              </div>
-              <div class="job-card-info-box">
-                <div class="job-card-title-row">
-                  <span class="job-card-title-main">Senior Ocean Freight Forwarder &amp; Carrier Line Specialist</span>
-                  <span class="badge-urgent-hot"><i class="fa-solid fa-bolt"></i> HOT</span>
-                </div>
-                <div class="job-card-company-row">
-                  <span class="job-card-company-name">VietnamJobs Logistics Group</span>
-                  <i class="fa-solid fa-circle-check job-card-verified-icon"></i>
-                  <span class="job-card-dot-sep">•</span>
-                  <span class="job-card-loc"><i class="fa-solid fa-location-dot"></i> TP. Hồ Chí Minh (Quận 1 &amp; Thủ Đức)</span>
-                </div>
-              </div>
-            </div>
-            <div class="job-card-right-block">
-              <span class="job-card-salary-blue">28 – 42 triệu/tháng</span>
-              <button type="button" class="btn-xem-chi-tiet-blue" onclick="event.stopPropagation(); openJobDetail('job-ocean-freight');">
-                Xem Chi Tiết &rarr;
-              </button>
-            </div>
-          </article>
-
-          <!-- Job 3 -->
-          <article class="job-card-horizontal" onclick="openJobDetail('job-2');">
-            <div class="job-card-left-block">
-              <div class="job-card-logo-box">
-                <img src="images/brands/dhl.svg" alt="DHL Global Forwarding">
-              </div>
-              <div class="job-card-info-box">
-                <div class="job-card-title-row">
-                  <span class="job-card-title-main">International Customs Clearance &amp; Compliance Manager</span>
-                  <span class="badge-urgent-gap"><i class="fa-solid fa-fire"></i> GẤP</span>
-                </div>
-                <div class="job-card-company-row">
-                  <span class="job-card-company-name">DHL Global Forwarding Vietnam</span>
-                  <i class="fa-solid fa-circle-check job-card-verified-icon"></i>
-                  <span class="job-card-dot-sep">•</span>
-                  <span class="job-card-loc"><i class="fa-solid fa-location-dot"></i> Hà Nội (Cầu Giấy)</span>
-                </div>
-              </div>
-            </div>
-            <div class="job-card-right-block">
-              <span class="job-card-salary-blue">26 – 38 triệu/tháng</span>
-              <button type="button" class="btn-xem-chi-tiet-blue" onclick="event.stopPropagation(); openJobDetail('job-2');">
-                Xem Chi Tiết &rarr;
-              </button>
-            </div>
-          </article>
-
-          <!-- Job 4 -->
-          <article class="job-card-horizontal" onclick="openJobDetail('job-3');">
-            <div class="job-card-left-block">
-              <div class="job-card-logo-box">
-                <img src="images/brands/saigon-newport.svg" alt="Saigon Newport">
-              </div>
-              <div class="job-card-info-box">
-                <div class="job-card-title-row">
-                  <span class="job-card-title-main">Container Terminal Dispatch Coordinator (Shift Lead - TOS Navis N4)</span>
-                  <span class="badge-urgent-hot"><i class="fa-solid fa-bolt"></i> HOT</span>
-                </div>
-                <div class="job-card-company-row">
-                  <span class="job-card-company-name">Saigon Newport TCIT Cai Mep</span>
-                  <i class="fa-solid fa-circle-check job-card-verified-icon"></i>
-                  <span class="job-card-dot-sep">•</span>
-                  <span class="job-card-loc"><i class="fa-solid fa-location-dot"></i> Bà Rịa - Vũng Tàu</span>
-                </div>
-              </div>
-            </div>
-            <div class="job-card-right-block">
-              <span class="job-card-salary-blue">22 – 35 triệu/tháng</span>
-              <button type="button" class="btn-xem-chi-tiet-blue" onclick="event.stopPropagation(); openJobDetail('job-3');">
-                Xem Chi Tiết &rarr;
-              </button>
-            </div>
-          </article>
-
-          <!-- Job 5 -->
-          <article class="job-card-horizontal" onclick="openJobDetail('job-5');">
-            <div class="job-card-left-block">
-              <div class="job-card-logo-box">
-                <img src="images/brands/slp-vietnam.svg" alt="SLP Vietnam">
-              </div>
-              <div class="job-card-info-box">
-                <div class="job-card-title-row">
-                  <span class="job-card-title-main">Director of Cold Chain Storage Operations (WHO-GDP Certified)</span>
-                  <span class="badge-urgent-gap"><i class="fa-solid fa-fire"></i> GẤP</span>
-                </div>
-                <div class="job-card-company-row">
-                  <span class="job-card-company-name">SLP Vietnam Modern Industrial Logistics</span>
-                  <i class="fa-solid fa-circle-check job-card-verified-icon"></i>
-                  <span class="job-card-dot-sep">•</span>
-                  <span class="job-card-loc"><i class="fa-solid fa-location-dot"></i> Long An / Bắc Ninh</span>
-                </div>
-              </div>
-            </div>
-            <div class="job-card-right-block">
-              <span class="job-card-salary-blue">50 – 80 triệu/tháng</span>
-              <button type="button" class="btn-xem-chi-tiet-blue" onclick="event.stopPropagation(); openJobDetail('job-5');">
-                Xem Chi Tiết &rarr;
-              </button>
-            </div>
-          </article>
-
-          <!-- Job 6 -->
-          <article class="job-card-horizontal" onclick="openJobDetail('job-7');">
-            <div class="job-card-left-block">
-              <div class="job-card-logo-box">
-                <img src="images/brands/shopee.svg" alt="SPX Express">
-              </div>
-              <div class="job-card-info-box">
-                <div class="job-card-title-row">
-                  <span class="job-card-title-main">AI Computer Vision Logistics Robotics Engineer</span>
-                  <span class="badge-urgent-hot"><i class="fa-solid fa-bolt"></i> HOT</span>
-                </div>
-                <div class="job-card-company-row">
-                  <span class="job-card-company-name">SPX Express Vietnam Hub</span>
-                  <i class="fa-solid fa-circle-check job-card-verified-icon"></i>
-                  <span class="job-card-dot-sep">•</span>
-                  <span class="job-card-loc"><i class="fa-solid fa-location-dot"></i> TP. Hồ Chí Minh (Thủ Đức)</span>
-                </div>
-              </div>
-            </div>
-            <div class="job-card-right-block">
-              <span class="job-card-salary-blue">32 – 50 triệu/tháng</span>
-              <button type="button" class="btn-xem-chi-tiet-blue" onclick="event.stopPropagation(); openJobDetail('job-7');">
-                Xem Chi Tiết &rarr;
-              </button>
-            </div>
-          </article>
+          <!-- Right Column: Detail Panel -->
+          <div class="split-job-detail-panel split-detail-panel" id="home-split-detail-panel">
+            <!-- Rendered by js/split-jobs.js -->
+          </div>
         </div>
       </section>
 
@@ -1238,193 +1096,150 @@
 
 
 <section class="app-view" id="view-course-detail">
+    <div class="wf-detail-page">
+      <div class="container">
 
-  <!-- ===== DETAIL HERO ===== -->
-  <div class="crs-detail-hero" id="crsDetailHero">
-    <div class="crs-detail-hero__inner">
-      <div class="crs-detail-hero__content">
-        <!-- Breadcrumb -->
-        <div class="crs-breadcrumb">
-          <span onclick="switchView('view-courses')" class="crs-bc-link"><i class="fa-solid fa-house"></i> Courses</span>
-          <i class="fa-solid fa-chevron-right crs-bc-sep"></i>
-          <span class="crs-bc-current" id="crsDetailCategory">FIATA &amp; Maritime</span>
-          <i class="fa-solid fa-chevron-right crs-bc-sep"></i>
-          <span class="crs-bc-current" id="crsDetailBreadTitle">FIATA Higher Diploma</span>
+        <!-- Top Header & Meta Line -->
+        <div class="wf-detail-top-nav">
+          <a href="#" onclick="switchView('courses'); return false;" class="wf-detail-back-link">
+            <i class="fa-solid fa-arrow-left"></i> All Courses
+          </a>
         </div>
 
-        <!-- Title -->
-        <h1 class="crs-detail-title" id="crsDetailTitle">FIATA Higher International Diploma in Supply Chain Management</h1>
-        <p class="crs-detail-sub" id="crsDetailSub">Master the world's most recognized logistics qualification with Vietnam-accredited curriculum.</p>
-
-        <!-- Meta row -->
-        <div class="crs-detail-meta">
-          <span class="crs-meta-badge crs-badge-bestseller" id="crsDetailBadge">Best Seller</span>
-          <span class="crs-meta-rating" id="crsDetailRating">
-            <span class="crs-rating-num">4.9</span>
-            <span class="crs-rating-stars">★★★★★</span>
-            <span class="crs-rating-count">(847 ratings)</span>
-          </span>
-          <span class="crs-meta-item"><i class="fa-solid fa-users"></i> <span id="crsDetailEnrolled">2,847</span> students</span>
-          <span class="crs-meta-item"><i class="fa-solid fa-calendar-days"></i> Updated <span id="crsDetailUpdated">Oct 2026</span></span>
-          <span class="crs-meta-item"><i class="fa-solid fa-language"></i> <span id="crsDetailLang">Vietnamese / English</span></span>
+        <div class="wf-detail-header-block">
+          <h1 class="wf-detail-main-title" id="crsDetailTitleTop">Calculus and Algebra with Symbolic Arrays</h1>
+          <div class="wf-detail-meta-line" id="crsDetailMetaTop">
+            <span id="crsDetailFormatTop">Video Lesson</span>
+            <span class="wf-meta-pipe">|</span>
+            <span id="crsDetailDurationTop">22 min</span>
+            <span class="wf-meta-pipe">|</span>
+            <a href="#" onclick="showToast('Tải đề cương &amp; tài liệu khóa học (PDF)...'); return false;" class="wf-meta-notebook-link">
+              <i class="fa-solid fa-file-arrow-down"></i> Open Course Syllabus &amp; Materials
+            </a>
+            <span class="wf-meta-pipe">|</span>
+            <span id="crsDetailLevelTop">Advanced</span>
+          </div>
         </div>
 
-        <!-- Instructor -->
-        <div class="crs-detail-instructor">
-          <i class="fa-solid fa-chalkboard-user"></i>
-          <span>Created by <strong id="crsDetailInstructor">TS. Nguyễn Thành Long</strong> · <span id="crsDetailOrg">VALOMA Institute</span></span>
+        <!-- Main Video Showcase Card (White Elevated Card) -->
+        <div class="wf-video-showcase-card">
+          
+          <div class="wf-card-inner-top">
+            <!-- Brand Badge -->
+            <div class="wf-card-brand-badge">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#1e3a8a" stroke-width="2">
+                <path d="M12 2L4 6v6c0 5.5 3.8 10.7 8 12 4.2-1.3 8-6.5 8-12V6l-8-4z"/>
+              </svg>
+              <span>VIETNAMJOBS ACADEMY</span>
+            </div>
+
+            <!-- Inside Card Title -->
+            <h2 class="wf-card-inner-title" id="crsDetailTitleCard">Calculus and Algebra with Symbolic Arrays</h2>
+            
+            <!-- Author Line (Orange Accent) -->
+            <div class="wf-card-author-line" id="crsDetailAuthorLine">
+              <span class="wf-author-name" id="crsDetailAuthor">TS. Nguyễn Thành Long</span>, 
+              <span class="wf-author-org" id="crsDetailOrg">VALOMA Institute &amp; Vietnam Logistics Review</span>
+            </div>
+          </div>
+
+          <!-- Video Player Display Frame -->
+          <div class="wf-video-frame-container" id="crsVideoContainer">
+            <div class="wf-video-player-box">
+              <img src="images/course_1.jpg" alt="Video Preview" class="wf-video-poster" id="crsVideoPoster">
+              <div class="wf-video-overlay-gradient"></div>
+              
+              <!-- Video Title Overlay -->
+              <div class="wf-video-watermark">
+                <span id="crsVideoOverlayTitle">Interactive Masterclass Preview</span>
+              </div>
+
+              <!-- Big Play Button Overlay -->
+              <button type="button" class="wf-big-play-btn" id="crsBigPlayBtn" onclick="togglePlayPreviewVideo()" title="Play Preview Video">
+                <i class="fa-solid fa-play"></i>
+              </button>
+
+              <!-- Video Player Control Bar -->
+              <div class="wf-video-controls-bar">
+                <button type="button" class="wf-ctrl-btn" onclick="togglePlayPreviewVideo()"><i class="fa-solid fa-play" id="crsPlayIcon"></i></button>
+                <div class="wf-progress-bar-track" onclick="seekVideoPreview(event)">
+                  <div class="wf-progress-fill" id="crsVideoProgress"></div>
+                </div>
+                <span class="wf-time-display" id="crsVideoTime">04:15 / 22:00</span>
+                <button type="button" class="wf-ctrl-btn" onclick="showToast('Âm lượng: 100%')"><i class="fa-solid fa-volume-high"></i></button>
+                <button type="button" class="wf-ctrl-btn" onclick="toggleVideoFullscreen()"><i class="fa-solid fa-expand"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Teal Banner Across Card Bottom -->
+          <div class="wf-card-teal-banner">
+            <div class="wf-teal-banner-text">
+              <i class="fa-solid fa-building-columns"></i>
+              <span>Find out if you already have access to VietnamJobs training through your enterprise or university &raquo;</span>
+            </div>
+            <button type="button" class="wf-teal-enroll-btn" onclick="showToast('Đăng ký khóa học thành công! Chào mừng bạn tham gia.');">
+              Enroll Now &bull; Free Preview
+            </button>
+          </div>
+
         </div>
 
-        <!-- What you'll learn -->
-        <div class="crs-outcomes-box" id="crsDetailOutcomes">
-          <h4><i class="fa-solid fa-check-circle"></i> What You'll Learn</h4>
-          <ul class="crs-outcomes-list">
-            <li><i class="fa-solid fa-check"></i> Master FIATA documentation and international trade compliance</li>
-            <li><i class="fa-solid fa-check"></i> Design end-to-end supply chain strategies for Vietnamese markets</li>
-            <li><i class="fa-solid fa-check"></i> Apply lean and Six Sigma methodologies to logistics operations</li>
-            <li><i class="fa-solid fa-check"></i> Manage multimodal transport and customs clearance processes</li>
-          </ul>
+        <!-- Course Overview Section -->
+        <div class="wf-section-container wf-overview-section">
+          <h3 class="wf-section-heading">Course Overview</h3>
+          <p class="wf-overview-desc" id="crsDetailDesc">
+            Learn comprehensive logistics operations, international supply chain frameworks, and digital documentation standards. Master end-to-end multimodal transport solutions, port cargo handling, and regulatory compliance.
+          </p>
+
+          <!-- Featured Standards & Frameworks -->
+          <div class="wf-featured-tech-box">
+            <strong>Featured Standards &amp; Frameworks:</strong> 
+            <span id="crsDetailStandards">FIATA Multimodal Rules, VNACCS/VCIS Customs EDI, Incoterms 2020, ISO 27001 Security Standard</span>
+          </div>
+
+          <!-- You'll Learn To Grid (2 Columns of Bullets) -->
+          <div class="wf-learn-block">
+            <h4 class="wf-learn-title">You'll Learn To</h4>
+            <div class="wf-learn-grid" id="crsDetailOutcomesGrid">
+              <div class="wf-learn-col">
+                <div class="wf-learn-item"><span class="wf-bullet">&bull;</span> <span class="wf-learn-txt">Master FIATA international trade documentation &amp; bill of lading standards</span></div>
+                <div class="wf-learn-item"><span class="wf-bullet">&bull;</span> <span class="wf-learn-txt">Design resilient multi-modal freight networks and risk mitigation plans</span></div>
+                <div class="wf-learn-item"><span class="wf-bullet">&bull;</span> <span class="wf-learn-txt">Operate VNACCS/VCIS electronic customs clearance &amp; HS code classification</span></div>
+              </div>
+              <div class="wf-learn-col">
+                <div class="wf-learn-item"><span class="wf-bullet">&bull;</span> <span class="wf-learn-txt">Optimize deep-sea container dispatch and port terminal yard allocations</span></div>
+                <div class="wf-learn-item"><span class="wf-bullet">&bull;</span> <span class="wf-learn-txt">Apply cold chain GDP storage standards to temperature-sensitive pharma</span></div>
+                <div class="wf-learn-item"><span class="wf-bullet">&bull;</span> <span class="wf-learn-txt">Implement autonomous warehouse WMS robotics &amp; lean distribution flows</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Community Callout Link -->
+          <div class="wf-community-callout">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#2dd4bf" stroke-width="2">
+              <circle cx="6" cy="6" r="3"/>
+              <circle cx="18" cy="6" r="3"/>
+              <circle cx="12" cy="18" r="3"/>
+              <path d="M8.5 7.5L10 15M15.5 7.5L14 15"/>
+            </svg>
+            <a href="#" onclick="showToast('Mở Diễn đàn Thảo luận &amp; Hỏi đáp Logistics VietnamJobs...'); return false;">
+              Ask questions or start a discussion about related logistics topics on VietnamJobs Community &raquo;
+            </a>
+          </div>
         </div>
+
+        <!-- Related Resources Section (2x2 Grid) -->
+        <div class="wf-section-container wf-resources-section">
+          <h3 class="wf-section-heading">Related Resources</h3>
+          <div class="wf-resources-grid" id="crsRelatedResourcesGrid">
+            <!-- Populated dynamically: 4 clean cards in 2x2 grid -->
+          </div>
+        </div>
+
       </div>
     </div>
-  </div>
-
-  <!-- ===== DETAIL BODY (content + sidebar) ===== -->
-  <div class="crs-detail-body">
-    <div class="crs-detail-body__inner">
-
-      <!-- LEFT: Main Content -->
-      <div class="crs-detail-main">
-
-        <!-- Requirements -->
-        <div class="crs-section-card">
-          <h3 class="crs-section-title"><i class="fa-solid fa-list-check"></i> Requirements</h3>
-          <ul class="crs-req-list" id="crsDetailRequirements">
-            <li>Basic understanding of import/export operations</li>
-            <li>At least 1 year of experience in logistics or related field</li>
-            <li>Proficiency in Vietnamese; English reading ability is advantageous</li>
-            <li>Access to a computer with internet connection for online modules</li>
-          </ul>
-        </div>
-
-        <!-- Curriculum -->
-        <div class="crs-section-card">
-          <h3 class="crs-section-title"><i class="fa-solid fa-book-open"></i> Course Curriculum</h3>
-          <div class="crs-curriculum-meta" id="crsCurriculumMeta">12 modules · 160 hours · 48 lessons</div>
-          <div class="crs-curriculum" id="crsDetailCurriculum">
-            <!-- Populated by JS -->
-          </div>
-        </div>
-
-        <!-- Instructor Bio -->
-        <div class="crs-section-card">
-          <h3 class="crs-section-title"><i class="fa-solid fa-user-tie"></i> Your Instructor</h3>
-          <div class="crs-instructor-card">
-            <div class="crs-instructor-avatar">
-              <i class="fa-solid fa-user-graduate"></i>
-            </div>
-            <div class="crs-instructor-info">
-              <div class="crs-instructor-name" id="crsInstructorName">TS. Nguyễn Thành Long</div>
-              <div class="crs-instructor-title" id="crsInstructorTitle">FIATA Certified Trainer · VALOMA Institute</div>
-              <div class="crs-instructor-stats">
-                <span><i class="fa-solid fa-star" style="color:#f59e0b"></i> 4.9 Instructor Rating</span>
-                <span><i class="fa-solid fa-users"></i> 3,200+ Students</span>
-                <span><i class="fa-solid fa-book"></i> 5 Courses</span>
-              </div>
-              <p class="crs-instructor-bio" id="crsInstructorBio">With over 20 years in Vietnamese logistics and supply chain management, TS. Long holds FIATA, CILT, and APICS certifications. He has consulted for leading companies including Vingroup Logistics, Maersk Vietnam, and the Ministry of Transport. His practical, case-study-based teaching approach has earned him top instructor ratings across all cohorts.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Student Reviews -->
-        <div class="crs-section-card">
-          <h3 class="crs-section-title"><i class="fa-solid fa-star"></i> Student Reviews</h3>
-          <div class="crs-reviews-overview">
-            <div class="crs-reviews-score">
-              <div class="crs-reviews-big-num" id="crsDetailBigRating">4.9</div>
-              <div class="crs-reviews-big-stars">★★★★★</div>
-              <div class="crs-reviews-label">Course Rating</div>
-            </div>
-            <div class="crs-reviews-bars">
-              <div class="crs-review-bar-row"><span class="crs-rbar-stars">★★★★★</span><div class="crs-rbar-track"><div class="crs-rbar-fill" style="width:78%"></div></div><span class="crs-rbar-pct">78%</span></div>
-              <div class="crs-review-bar-row"><span class="crs-rbar-stars">★★★★☆</span><div class="crs-rbar-track"><div class="crs-rbar-fill" style="width:16%"></div></div><span class="crs-rbar-pct">16%</span></div>
-              <div class="crs-review-bar-row"><span class="crs-rbar-stars">★★★☆☆</span><div class="crs-rbar-track"><div class="crs-rbar-fill" style="width:4%"></div></div><span class="crs-rbar-pct">4%</span></div>
-              <div class="crs-review-bar-row"><span class="crs-rbar-stars">★★☆☆☆</span><div class="crs-rbar-track"><div class="crs-rbar-fill" style="width:1%"></div></div><span class="crs-rbar-pct">1%</span></div>
-              <div class="crs-review-bar-row"><span class="crs-rbar-stars">★☆☆☆☆</span><div class="crs-rbar-track"><div class="crs-rbar-fill" style="width:1%"></div></div><span class="crs-rbar-pct">1%</span></div>
-            </div>
-          </div>
-          <div class="crs-reviews-list">
-            <div class="crs-review-item">
-              <div class="crs-rev-avatar"><i class="fa-solid fa-user"></i></div>
-              <div class="crs-rev-body">
-                <div class="crs-rev-header">
-                  <span class="crs-rev-name">Lê Hoàng Nam</span>
-                  <span class="crs-rev-stars">★★★★★</span>
-                  <span class="crs-rev-date">3 weeks ago</span>
-                </div>
-                <p class="crs-rev-text">"Absolutely world-class content. The case studies on Vietnamese port operations and customs procedures were exactly what I needed. The instructor's industry connections make this course invaluable."</p>
-              </div>
-            </div>
-            <div class="crs-review-item">
-              <div class="crs-rev-avatar"><i class="fa-solid fa-user"></i></div>
-              <div class="crs-rev-body">
-                <div class="crs-rev-header">
-                  <span class="crs-rev-name">Võ Thị Mai Linh</span>
-                  <span class="crs-rev-stars">★★★★★</span>
-                  <span class="crs-rev-date">1 month ago</span>
-                </div>
-                <p class="crs-rev-text">"Completed this while working full-time. The blended learning format is perfect. Live sessions on weekends, self-paced materials during the week. Got my FIATA certificate and a promotion within 2 months!"</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- end crs-detail-main -->
-
-      <!-- RIGHT: Sticky Sidebar -->
-      <div class="crs-sidebar-wrapper">
-        <div class="crs-sidebar" id="crsSidebar">
-          <div class="crs-sidebar__preview">
-            <img id="crsSidebarImg" src="images/course_1.jpg" alt="Course Preview" />
-            <div class="crs-sidebar__play-overlay">
-              <div class="crs-play-btn"><i class="fa-solid fa-play"></i></div>
-              <span>Preview this course</span>
-            </div>
-          </div>
-          <div class="crs-sidebar__body">
-            <div class="crs-sidebar__price" id="crsSidebarPrice">24,900,000 ₫</div>
-            <button class="crs-enroll-big-btn" id="crsSidebarEnrollBtn">
-              <i class="fa-solid fa-graduation-cap"></i> Enroll Now
-            </button>
-            <button class="crs-try-btn">Try Free Preview</button>
-            <div class="crs-guarantee"><i class="fa-solid fa-shield-halved"></i> 30-Day Money-Back Guarantee</div>
-            <div class="crs-includes-title">This course includes:</div>
-            <ul class="crs-includes-list" id="crsSidebarIncludes">
-              <li><i class="fa-solid fa-video"></i> 160 hours of video content</li>
-              <li><i class="fa-solid fa-layer-group"></i> 12 downloadable modules</li>
-              <li><i class="fa-solid fa-certificate"></i> FIATA-accredited certificate</li>
-              <li><i class="fa-solid fa-infinity"></i> Lifetime access</li>
-              <li><i class="fa-solid fa-mobile-screen"></i> Mobile &amp; desktop access</li>
-              <li><i class="fa-solid fa-trophy"></i> Certificate of completion</li>
-            </ul>
-            <div class="crs-share-row">
-              <button class="crs-share-btn"><i class="fa-solid fa-share-nodes"></i> Share</button>
-              <button class="crs-gift-btn"><i class="fa-solid fa-gift"></i> Gift</button>
-              <button class="crs-coupon-btn"><i class="fa-solid fa-tag"></i> Apply Coupon</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- end crs-detail-body__inner -->
-  </div><!-- end crs-detail-body -->
-
-  <!-- Back button -->
-  <div class="crs-detail-back-bar">
-    <button class="crs-back-btn" onclick="switchView('view-courses')"><i class="fa-solid fa-arrow-left"></i> Back to All Courses</button>
-  </div>
-
-</section>
+  </section>
 
   
     <!-- ========================================================================

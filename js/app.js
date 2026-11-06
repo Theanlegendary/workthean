@@ -183,6 +183,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Listen to browser forward/back & hash change
   window.addEventListener('hashchange', handleUrlRouting);
+  if (typeof initFreightWavesInteractivity === 'function') {
+    initFreightWavesInteractivity();
+  }
   window.handleUrlRouting = handleUrlRouting;
   window.addEventListener('load', () => setTimeout(handleUrlRouting, 60));
   setTimeout(handleUrlRouting, 100);
@@ -293,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (hub) hub.style.display = 'block';
       if (reader) reader.style.display = 'none';
       if (typeof window.initFwCarousel === 'function') {
-        setTimeout(() => window.initFwCarousel(), 50);
+        setTimeout(() => { if (typeof window.initFwCarousel === 'function') window.initFwCarousel(); if (typeof initFreightWavesInteractivity === 'function') initFreightWavesInteractivity(); }, 50);
       }
     }
     document.querySelectorAll('.nav-link[data-view]').forEach(btn => {
@@ -364,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (hub) hub.style.display = 'block';
         if (reader) reader.style.display = 'none';
         if (typeof window.initFwCarousel === 'function') {
-          setTimeout(() => window.initFwCarousel(), 50);
+          setTimeout(() => { if (typeof window.initFwCarousel === 'function') window.initFwCarousel(); if (typeof initFreightWavesInteractivity === 'function') initFreightWavesInteractivity(); }, 50);
         }
       }
       return;
@@ -4830,3 +4833,170 @@ window.scrollToAbout = function() {
       }
     });
   }
+
+
+/* ==========================================================================
+   FREIGHTWAVES INTERACTIVE & RESPONSIVE EVENT DELEGATION
+   Prevents dead href="#" resets and provides rich article interactions
+   ========================================================================== */
+function initFreightWavesInteractivity() {
+  const hub = document.getElementById('lw-hub-overview');
+  if (!hub || hub.dataset.interactiveBound === 'true') return;
+  hub.dataset.interactiveBound = 'true';
+
+  // 1. Delegated click handler on the entire FreightWaves media hub
+  hub.addEventListener('click', function(e) {
+    const target = e.target;
+    
+    // Prevent dead href="#" links from resetting URL to / or jumping to top
+    const anchor = target.closest('a');
+    if (anchor && (anchor.getAttribute('href') === '#' || !anchor.getAttribute('href'))) {
+      e.preventDefault();
+    }
+
+    // Brand navigation links scrolling
+    const brandLink = target.closest('.brand-link');
+    if (brandLink) {
+      e.preventDefault();
+      if (brandLink.classList.contains('b-fw')) {
+        hub.scrollIntoView({ behavior: 'smooth' });
+      } else if (brandLink.classList.contains('b-modern')) {
+        document.getElementById('modern-title')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else if (brandLink.classList.contains('b-amship')) {
+        document.getElementById('amship-title')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else if (brandLink.classList.contains('b-sonar')) {
+        document.getElementById('sonar-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (brandLink.classList.contains('b-trains')) {
+        document.getElementById('cdl-title')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else if (brandLink.classList.contains('b-playbook')) {
+        document.querySelector('.nav-cards')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else if (brandLink.classList.contains('b-postal')) {
+        document.getElementById('earnings-title')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else if (brandLink.classList.contains('b-forums')) {
+        if (typeof showToast === 'function') showToast('FreightWaves Community: Diễn đàn Logistics, Vận tải và Chuỗi cung ứng mở');
+      }
+      return;
+    }
+
+    // Secondary subnav links scrolling
+    const subnavLink = target.closest('.subnav-item > a');
+    if (subnavLink) {
+      e.preventDefault();
+      const txt = subnavLink.textContent.trim().toLowerCase();
+      if (txt.includes('news')) {
+        document.getElementById('top-stories-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (txt.includes('market') || txt.includes('data')) {
+        document.getElementById('chart-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (txt.includes('sonar')) {
+        document.getElementById('sonar-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (txt.includes('media')) {
+        document.getElementById('fw-today-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (txt.includes('events')) {
+        if (typeof showToast === 'function') showToast('Sự kiện: Hội nghị Thượng đỉnh Chuỗi Cung Ứng & Vận Tải Quốc Tế 2026');
+      } else if (txt.includes('awards')) {
+        document.getElementById('mont-title')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else if (txt.includes('resources')) {
+        document.querySelector('.shipper-cols')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+
+    // Article cards click handler -> opens reader view with dynamic data
+    const card = target.closest('.feature-card, .mini, .video-card, .card, .sonar-article, .sonar-list-item, .more-sonar-card, .chart-feature, .chart-minis .mini, .shipper-lead, .shipper-item');
+    if (card) {
+      e.preventDefault();
+      const titleEl = card.querySelector('h3, h4, .title');
+      const title = titleEl ? titleEl.textContent.trim() : 'Bản Tin Thị Trường & Logistics Intelligence';
+      const catEl = card.querySelector('.cat, .kicker, .sub-tag');
+      const cat = catEl ? catEl.textContent.trim() : 'LOGISTICS WAVES';
+      const imgEl = card.querySelector('img');
+      const heroImg = imgEl && imgEl.src && !imgEl.src.startsWith('data:image/svg') ? imgEl.src : 'images/editorial_ai_logistics_hd.jpg';
+
+      // Call openArticle with dynamic story
+      openDynamicFreightWavesStory(title, cat, heroImg);
+    }
+  });
+
+  // 2. Touch swipe gestures for FreightWaves Today video carousel
+  const carousel = document.getElementById('videoCarousel');
+  const track = document.getElementById('carouselTrack');
+  if (carousel && track) {
+    let startX = 0;
+    let currentX = 0;
+    let isSwiping = false;
+
+    carousel.addEventListener('touchstart', function(e) {
+      if (e.touches.length === 1) {
+        startX = e.touches[0].clientX;
+        isSwiping = true;
+      }
+    }, { passive: true });
+
+    carousel.addEventListener('touchmove', function(e) {
+      if (!isSwiping || e.touches.length !== 1) return;
+      currentX = e.touches[0].clientX;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', function() {
+      if (!isSwiping) return;
+      isSwiping = false;
+      const diffX = startX - currentX;
+      if (Math.abs(diffX) > 40) {
+        if (diffX > 0) {
+          document.getElementById('carNext')?.click();
+        } else {
+          document.getElementById('carPrev')?.click();
+        }
+      }
+    }, { passive: true });
+  }
+}
+
+// Open and hydrate any FreightWaves story dynamically
+function openDynamicFreightWavesStory(title, tag, heroImg) {
+  const hub = document.getElementById('lw-hub-overview');
+  const reader = document.getElementById('lw-article-reader');
+  if (!reader) return;
+
+  if (typeof switchView === 'function') {
+    switchView('article', false);
+  }
+  if (hub) hub.style.display = 'none';
+  reader.style.display = 'block';
+
+  // Hydrate reader elements
+  const elTag = document.getElementById('art-tag');
+  if (elTag) elTag.textContent = tag.toUpperCase();
+
+  const elHeadline = document.getElementById('art-headline');
+  if (elHeadline) elHeadline.textContent = title;
+
+  const elHeroImg = document.getElementById('art-hero-img');
+  if (elHeroImg && heroImg) elHeroImg.src = heroImg;
+
+  const elCaption = document.getElementById('art-caption');
+  if (elCaption) elCaption.textContent = title + ' — Báo cáo độc quyền từ FreightWaves & VietnamJobs Market Intelligence.';
+
+  const elBody = document.getElementById('art-body');
+  if (elBody) {
+    elBody.innerHTML = `
+      <p class="lead" style="font-size:17.5px; font-weight:600; line-height:1.6; color:#1E293B; margin-bottom:18px;">
+        ${title}: Phân tích chuyên sâu về dữ liệu thị trường vận tải, chuỗi cung ứng quốc tế và biến động chi phí logistics thời gian thực.
+      </p>
+      <p style="font-size:15.5px; line-height:1.75; color:#334155; margin-bottom:16px;">
+        Theo thống kê mới nhất từ hệ thống giám sát tần suất cao SONAR và các cảng biển trung chuyển lớn, hoạt động vận tải hàng hóa đang ghi nhận sự dịch chuyển đáng kể trong biểu cước và năng lực xử lý bãi container.
+      </p>
+      <p style="font-size:15.5px; line-height:1.75; color:#334155; margin-bottom:16px;">
+        Các doanh nghiệp logistics lớn đang đẩy nhanh việc ứng dụng trí tuệ nhân tạo vào hệ thống điều phối đội xe và tự động hóa chứng từ hải quan, giúp rút ngắn 35% thời gian quay vòng phương tiện.
+      </p>
+      <div style="background:#F8FAFC; border-left:4px solid #3475B6; padding:16px 20px; border-radius:0 8px 8px 0; margin:24px 0;">
+        <h4 style="color:#0F172A; font-weight:700; margin-bottom:6px;">Điểm Tin Thị Trường Nổi Bật</h4>
+        <p style="color:#475569; font-size:14px; margin:0;">
+          Dữ liệu thời gian thực phản ánh nhu cầu tuyển dụng các vị trí Quản lý Chuỗi cung ứng và Chuyên viên EDI Hải quan tăng trưởng 28% so với cùng kỳ năm trước.
+        </p>
+      </div>
+    `;
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}

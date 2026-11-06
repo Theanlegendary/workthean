@@ -757,3 +757,110 @@
   background: #fafafa;
   padding: 27px 0 26px;
 }
+
+
+/* ==========================================================================
+   ENHANCED RESPONSIVE & INTERACTIVE STYLING FOR FREIGHTWAVES PORTAL
+   ========================================================================== */
+
+#view-article .brand-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 6px 16px;
+}
+#view-article .brand-row::-webkit-scrollbar {
+  display: none;
+}
+#view-article .brand-link {
+  flex: 0 0 auto;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+#view-article .brand-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  border-color: var(--blue);
+}
+#view-article .brand-link:active {
+  transform: translateY(0);
+}
+
+/* Make cards have pointer cursor and smooth hover elevation */
+#view-article .feature-card,
+#view-article .mini,
+#view-article .video-card,
+#view-article .card,
+#view-article .sonar-article,
+#view-article .sonar-list-item,
+#view-article .more-sonar-card,
+#view-article .chart-feature,
+#view-article .chart-mini,
+#view-article .shipper-lead,
+#view-article .shipper-item {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#view-article .feature-card:hover,
+#view-article .card:hover,
+#view-article .video-card:hover,
+#view-article .more-sonar-card:hover {
+  transform: translateY(-2px);
+}
+
+#view-article .mini:hover h4,
+#view-article .shipper-item:hover h4,
+#view-article .sonar-list-item:hover h4 {
+  color: var(--blue);
+}
+
+/* Touch & Mobile Enhancements */
+@media (max-width: 900px) {
+  #view-article .site-header {
+    padding: 14px 0 12px;
+  }
+  #view-article .subnav-wrap {
+    padding: 12px 0 0;
+  }
+  #view-article .subnav {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    height: 50px;
+    padding: 0 16px;
+    gap: 18px;
+    justify-content: flex-start;
+  }
+  #view-article .subnav::-webkit-scrollbar {
+    display: none;
+  }
+  #view-article .subnav-item {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  #view-article .topbar {
+    height: auto;
+    padding: 6px 0;
+  }
+  #view-article .topbar .container {
+    flex-direction: column;
+    height: auto;
+    gap: 4px;
+    text-align: center;
+    padding: 0 12px;
+  }
+  #view-article .topbar-right {
+    display: none;
+  }
+  #view-article .article-top-nav-bar {
+    padding: 8px 14px !important;
+  }
+}

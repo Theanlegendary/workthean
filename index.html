@@ -122,6 +122,74 @@
          ======================================================================== -->
     <section class="app-view active-view" id="view-home">
 
+            <!-- HERO SEARCH & CONVERSION PANEL (ABOVE TRENDING ROLES) -->
+      <section class="recruitment-hero-section" aria-label="Tuyển dụng và tìm việc làm" style="border: 1px solid #E2E8F0 !important; border-left: none !important; border-radius: 16px; background: #FFFFFF; padding: 32px 36px 26px 36px; margin: 0 0 24px 0; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05); position: relative;">
+        <div class="hero-main-content" style="max-width: 960px;">
+          <h1 class="hero-headline" style="font-size: 34px; font-weight: 800; color: #0F172A; line-height: 1.25; margin: 0 0 8px 0; letter-spacing: -0.02em;">
+            Tuyển đúng người. <span style="color: #0A66C2;">Nhanh hơn.</span>
+          </h1>
+          <p class="hero-subheadline" style="font-size: 15px; color: #64748B; line-height: 1.6; margin: 0 0 20px 0;">
+            Tiếp cận hàng trăm nghìn ứng viên chất lượng cao và kết nối cơ hội nghề nghiệp đột phá tại các doanh nghiệp hàng đầu.
+          </p>
+
+          <!-- Integrated Search Bar -->
+          <form class="hero-search-box" id="hero-search-form" onsubmit="event.preventDefault();" style="display: flex; align-items: center; background: #ffffff; border: 1.5px solid #CBD5E1; border-radius: 9999px; padding: 6px 6px 6px 18px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06); gap: 12px; margin-bottom: 0;">
+            <div class="search-input-col" style="flex: 1.6; display: flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-magnifying-glass" style="color: #0A66C2; font-size: 15px;"></i>
+              <input type="text" id="header-search-input" placeholder="AI &amp; Machine Learning Solution Architect..." aria-label="Tìm kiếm việc làm" style="width: 100%; border: none; outline: none; font-size: 14.5px; font-weight: 500; color: #0F172A; background: transparent;">
+            </div>
+            <div class="search-divider" style="width: 1px; height: 28px; background: #E2E8F0; flex-shrink: 0;"></div>
+            <div class="search-select-col" style="flex: 1.1; display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-location-dot" style="color: #0A66C2; font-size: 14px;"></i>
+              <select id="hero-location-select" aria-label="Chọn địa điểm" style="width: 100%; border: none; outline: none; background: transparent; font-size: 14px; color: #334155; font-weight: 600; cursor: pointer;">
+                <option value="all">Tất cả địa điểm</option>
+                <option value="hanoi">Hà Nội</option>
+                <option value="hcm">TP. Hồ Chí Minh</option>
+                <option value="danang">Đà Nẵng</option>
+                <option value="remote">Làm việc từ xa (Remote)</option>
+              </select>
+            </div>
+            <button type="button" class="btn-hero-search" id="btn-hero-submit-search" onclick="switchView('browse')" style="background: #0A66C2; color: #ffffff; border: none; font-weight: 700; font-size: 14px; padding: 11px 24px; border-radius: 9999px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; box-shadow: 0 2px 8px rgba(10, 102, 194, 0.25);">
+              <i class="fa-solid fa-magnifying-glass"></i> Tìm Việc Ngay
+            </button>
+          </form>
+
+          <!-- Hero Quick Search Tags -->
+          <div class="quick-search-tags-row" style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 14px;">
+            <span class="quick-search-label" style="font-size: 12.5px; color: #64748B; font-weight: 600; white-space: nowrap;">Tìm nhanh:</span>
+            <button type="button" class="quick-search-tag" onclick="filterJobsByCategory('tech');" style="background: #ffffff; border: 1px solid #E2E8F0; color: #334155; font-size: 12.5px; font-weight: 600; padding: 4px 12px; border-radius: 9999px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;"><i class="fa-brands fa-java" style="color:#e76f00;"></i> Java</button>
+            <button type="button" class="quick-search-tag" onclick="filterJobsByCategory('tech');" style="background: #ffffff; border: 1px solid #E2E8F0; color: #334155; font-size: 12.5px; font-weight: 600; padding: 4px 12px; border-radius: 9999px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;"><i class="fa-brands fa-react" style="color:#00d8ff;"></i> React</button>
+            <button type="button" class="quick-search-tag" onclick="filterJobsByCategory('tech');" style="background: #ffffff; border: 1px solid #E2E8F0; color: #334155; font-size: 12.5px; font-weight: 600; padding: 4px 12px; border-radius: 9999px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">🐍 Python</button>
+            <button type="button" class="quick-search-tag" onclick="filterJobsByCategory('forwarding');" style="background: #ffffff; border: 1px solid #E2E8F0; color: #334155; font-size: 12.5px; font-weight: 600; padding: 4px 12px; border-radius: 9999px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;"><i class="fa-solid fa-chart-line" style="color:#10b981;"></i> Marketing</button>
+            <button type="button" class="quick-search-tag" onclick="filterJobsByCategory('tech');" style="background: #ffffff; border: 1px solid #E2E8F0; color: #334155; font-size: 12.5px; font-weight: 600; padding: 4px 12px; border-radius: 9999px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;"><i class="fa-solid fa-pen-nib" style="color:#8b5cf6;"></i> UI/UX</button>
+            <button type="button" class="quick-search-tag" onclick="switchView('browse');" style="background: #ffffff; border: 1px solid #E2E8F0; color: #334155; font-size: 12.5px; font-weight: 600; padding: 4px 12px; border-radius: 9999px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;"><i class="fa-solid fa-laptop-house" style="color:#0a66c2;"></i> Remote</button>
+          </div>
+
+          <!-- Hero Stats -->
+          <div class="hero-stats-row" style="display: flex; align-items: center; gap: 28px; margin-top: 20px; flex-wrap: wrap;">
+            <div class="hero-stat-item" style="display: flex; flex-direction: column; align-items: flex-start;">
+              <div class="hero-stat-number" id="stat-candidates" style="font-size: 22px; font-weight: 800; color: #0A66C2; line-height: 1.1;">520,000+</div>
+              <div class="hero-stat-label" style="font-size: 12px; color: #64748B; font-weight: 600; margin-top: 2px;">Ứng Viên</div>
+            </div>
+            <div class="hero-stat-divider" style="width: 1px; height: 32px; background: #E2E8F0;"></div>
+            <div class="hero-stat-item" style="display: flex; flex-direction: column; align-items: flex-start;">
+              <div class="hero-stat-number" id="stat-jobs" style="font-size: 22px; font-weight: 800; color: #0A66C2; line-height: 1.1;">15,000+</div>
+              <div class="hero-stat-label" style="font-size: 12px; color: #64748B; font-weight: 600; margin-top: 2px;">Việc Làm</div>
+            </div>
+            <div class="hero-stat-divider" style="width: 1px; height: 32px; background: #E2E8F0;"></div>
+            <div class="hero-stat-item" style="display: flex; flex-direction: column; align-items: flex-start;">
+              <div class="hero-stat-number" id="stat-companies" style="font-size: 22px; font-weight: 800; color: #0A66C2; line-height: 1.1;">3,200+</div>
+              <div class="hero-stat-label" style="font-size: 12px; color: #64748B; font-weight: 600; margin-top: 2px;">Doanh Nghiệp</div>
+            </div>
+            <div class="hero-stat-divider" style="width: 1px; height: 32px; background: #E2E8F0;"></div>
+            <div class="hero-stat-item" style="display: flex; flex-direction: column; align-items: flex-start;">
+              <div class="hero-stat-number" style="font-size: 22px; font-weight: 800; color: #0A66C2; line-height: 1.1;">98%</div>
+              <div class="hero-stat-label" style="font-size: 12px; color: #64748B; font-weight: 600; margin-top: 2px;">Tỷ Lệ Phản Hồi</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- 1. INTRO GRID (3 COLUMNS: RECOMMENDATIONS | HERO CARD | FEATURED) -->
       <section class="intro-grid" aria-label="Trending Recommendations and Featured Programs">
         

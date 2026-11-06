@@ -3664,6 +3664,7 @@ window.openArticle = function(articleId, updateHash = true) {
   }
 
   // 2. Reading a specific article
+  if (hub) hub.style.display = 'none';
   if (reader) reader.style.display = 'block';
 
   const art = (typeof articlesDatabase !== 'undefined' ? articlesDatabase.find(a => a.id === articleId) : null) || {
@@ -3742,9 +3743,12 @@ window.openArticle = function(articleId, updateHash = true) {
 window.hideArticleReader = function() {
   const reader = document.getElementById('lw-article-reader');
   if (reader) reader.style.display = 'none';
-  window.location.hash = 'article';
   const overview = document.getElementById('lw-hub-overview');
-  if (overview) overview.scrollIntoView({ behavior: 'smooth' });
+  if (overview) {
+    overview.style.display = 'block';
+    overview.scrollIntoView({ behavior: 'smooth' });
+  }
+  window.location.hash = 'article';
 };
 
 window.scrollLwCarousel = function(dir) {

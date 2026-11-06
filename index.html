@@ -1727,7 +1727,8 @@
     <!-- ======================================================================
          ARTICLE & EDITORIAL VIEW (#view-article)
          ====================================================================== -->
-    <section class="app-view" id="view-article">
+    <div class="app-view" id="view-article">
+      <div id="lw-hub-overview">
       <div class="article-top-nav-bar" style="background:#FFFFFF; border-bottom:1px solid #DFDFDF; padding:12px 24px; margin-bottom:16px;">
         <div style="max-width:1426px; margin:0 auto; display:flex; justify-content:space-between; align-items:center;">
           <button type="button" onclick="switchView('home');" style="background:#F1F5F9; border:1px solid #DFDFDF; border-radius:6px; padding:7px 18px; font-weight:700; color:#3475b6; cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-size:13.5px;">
@@ -2266,132 +2267,7 @@
   window.initFwCarousel = initFwCarousel;
 })();
 </script>
-    </section>
-
-        <!-- ── 2. LATEST HEADLINES SECTION (IMAGE 2 DESIGN) ── -->
-        <section class="lw-hub-section">
-          <div class="lw-section-header">
-            <div class="lw-section-title-wrap">
-              <h2 class="lw-section-title">Latest Headlines</h2>
-            </div>
-          </div>
-
-          <div class="lw-headlines-grid">
-            
-            <!-- Card 1 -->
-            <div class="lw-headline-card" onclick="openArticle('art-cargo-theft');">
-              <img src="images/editorial_tech_salaries_hd.png" alt="Truckload" class="lw-headline-thumb">
-              <span class="lw-headline-category">Truckload</span>
-              <h3 class="lw-headline-title">Mexico cargo thieves shift tactics as Q3 truck parking thefts surge</h3>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="lw-headline-card" onclick="openArticle('art-conrail');">
-              <img src="images/hero_3.jpg" alt="Rail" class="lw-headline-thumb">
-              <span class="lw-headline-category">Rail</span>
-              <h3 class="lw-headline-title">Conrail tabs Wright as president and chief operating officer</h3>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="lw-headline-card" onclick="openArticle('art-stb-order');">
-              <img src="images/lead_story.jpg" alt="Rail STB" class="lw-headline-thumb">
-              <span class="lw-headline-category">Rail</span>
-              <h3 class="lw-headline-title">STB orders Union Pacific to make alleged rate hike threat video public</h3>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="lw-headline-card" onclick="openArticle('art-humble-robotics');">
-              <img src="images/editorial_ai_robotics_hd.jpg" alt="Technology & Startups" class="lw-headline-thumb">
-              <span class="lw-headline-category">Technology &amp; Startups</span>
-              <h3 class="lw-headline-title">Humble Robotics raises $51M for cabless hauler pilots</h3>
-            </div>
-
-          </div>
-        </section>
-
-        <!-- ── 3. FREIGHTWAVES / LOGISTICS WAVES TODAY (IMAGE 3 DESIGN) ── -->
-        <section class="lw-hub-section">
-          <div class="lw-section-header">
-            <div class="lw-section-title-wrap">
-              <h2 class="lw-section-title">FreightWaves Today</h2>
-            </div>
-            <div class="lw-carousel-controls">
-              <button type="button" class="lw-carousel-arrow" onclick="scrollLwCarousel(-1);" aria-label="Previous">&lsaquo;</button>
-              <button type="button" class="lw-carousel-arrow active" onclick="scrollLwCarousel(1);" aria-label="Next">&rsaquo;</button>
-            </div>
-          </div>
-
-          <div class="lw-today-carousel" id="lw-today-carousel">
-            
-            <!-- Video Card 1 -->
-            <div class="lw-today-card" onclick="openArticle('art-fw-today-1');">
-              <div class="lw-video-thumb-wrap">
-                <img src="images/fw_today_1.svg" alt="FreightWaves Today">
-                <div class="lw-play-badge"><i class="fa-solid fa-play"></i></div>
-                <div class="lw-video-share-btn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
-              </div>
-              <h3 class="lw-today-title">FreightWaves Today</h3>
-              <div class="lw-today-date">Nov 6, 2026</div>
-              <p class="lw-today-excerpt">Join FreightWaves Today live from Cape Canaveral, Florida, at UP.Summit, where the innovators, founders, and government leaders meet...</p>
-              <span class="lw-today-readmore">Read more...</span>
-            </div>
-
-            <!-- Video Card 2 -->
-            <div class="lw-today-card" onclick="openArticle('art-fw-today-2');">
-              <div class="lw-video-thumb-wrap">
-                <img src="images/fw_today_2.svg" alt="Flying Taxis">
-                <div class="lw-play-badge"><i class="fa-solid fa-play"></i></div>
-                <div class="lw-video-share-btn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
-              </div>
-              <h3 class="lw-today-title">Flying Taxis &amp; Cargo: Electric Aviation's Future Takes Off</h3>
-              <div class="lw-today-date">Nov 6, 2026</div>
-              <p class="lw-today-excerpt">BETA Technologies just secured landmark FAA authorization for passenger flights in their electric VTOL aircraft, marking a monumental milestone...</p>
-              <span class="lw-today-readmore">Read more...</span>
-            </div>
-
-            <!-- Video Card 3 -->
-            <div class="lw-today-card" onclick="openArticle('art-fw-today-3');">
-              <div class="lw-video-thumb-wrap">
-                <img src="images/fw_today_3.svg" alt="Florida Space Race">
-                <div class="lw-play-badge"><i class="fa-solid fa-play"></i></div>
-                <div class="lw-video-share-btn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
-              </div>
-              <h3 class="lw-today-title">Florida's Space Race: 95% Cost Drop Fuels Private Sector Boom</h3>
-              <div class="lw-today-date">Nov 6, 2026</div>
-              <p class="lw-today-excerpt">Florida is rapidly becoming the epicenter of the new space race, with groundbreaking public-private partnerships driving down costs and payload launch barriers...</p>
-              <span class="lw-today-readmore">Read more...</span>
-            </div>
-
-            <!-- Video Card 4 -->
-            <div class="lw-today-card" onclick="openArticle('art-fw-today-4');">
-              <div class="lw-video-thumb-wrap">
-                <img src="images/fw_today_4.svg" alt="Electric Flying Boat">
-                <div class="lw-play-badge"><i class="fa-solid fa-play"></i></div>
-                <div class="lw-video-share-btn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
-              </div>
-              <h3 class="lw-today-title">Electric 'Flying Boat' Lands $5 Billion in Orders</h3>
-              <div class="lw-today-date">Nov 6, 2026</div>
-              <p class="lw-today-excerpt">REGENT is building electric seagliders that merge the best of boats and planes, operating on a cushion of air over the water known as ground effect...</p>
-              <span class="lw-today-readmore">Read more...</span>
-            </div>
-
-            <!-- Video Card 5 -->
-            <div class="lw-today-card" onclick="openArticle('art-fw-today-5');">
-              <div class="lw-video-thumb-wrap">
-                <img src="images/fw_today_5.svg" alt="Flying Cars">
-                <div class="lw-play-badge"><i class="fa-solid fa-play"></i></div>
-                <div class="lw-video-share-btn"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
-              </div>
-              <h3 class="lw-today-title">Flying Cars Are HERE: Joby Aviation on eVTOL Revolution</h3>
-              <div class="lw-today-date">Nov 6, 2026</div>
-              <p class="lw-today-excerpt">Joby Aviation's Chief Policy Officer discusses the commercial timeline for electric air mobility in major global logistics corridors...</p>
-              <span class="lw-today-readmore">Read more...</span>
-            </div>
-
-          </div>
-        </section>
-
-      </div>
+      </div><!-- /#lw-hub-overview -->
 
       <!-- ========================================================================
            FULL STORY READER CONTAINER (REVEALED WHEN READING AN ARTICLE)
@@ -2404,7 +2280,7 @@
         </div>
 
         <div class="article-layout">
-          <main>
+          <div class="article-reader-content">
             <div class="kicker">
               <span class="tag" id="art-tag">NATIONAL</span>
               <a class="sec" href="#" id="art-sec" onclick="return false;">Immigration &amp; Border Trade</a>
@@ -2437,7 +2313,7 @@
             <div class="art-body" id="art-body">
               <!-- Populated dynamically by openArticle() -->
             </div>
-          </main>
+          </div><!-- /.article-reader-content -->
 
           <aside class="sidebar">
             <h3 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:14px; border-bottom:2px solid #0056B3; padding-bottom:6px;">Latest Industry Briefs</h3>
@@ -2448,7 +2324,7 @@
         </div>
       </div>
 
-    </section>
+    </div><!-- /#view-article -->
 
   </main>
 

@@ -287,6 +287,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (viewId === 'companies' && typeof initCompaniesDirectory === 'function') {
       setTimeout(() => initCompaniesDirectory(), 30);
     }
+    if (viewId === 'article' && typeof window.initFwCarousel === 'function') {
+      setTimeout(() => window.initFwCarousel(), 50);
+    }
     document.querySelectorAll('.nav-link[data-view]').forEach(btn => {
       if (btn.getAttribute('data-view') === viewId) btn.classList.add('active');
       else btn.classList.remove('active');

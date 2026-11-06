@@ -158,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateSavedJobsCountUI();
   initMobileNav();
   initBrowseFilters();
+  console.log('[DOM] Starting initializations...');
   initNavigation();
   initTaobaoSearchTicker();
   initLiveActivityTicker();
@@ -173,10 +174,18 @@ document.addEventListener('DOMContentLoaded', () => {
   initAuthSystem();
   initFreelancersDirectory();
   loadProjectsFromAPI();
-  handleUrlRouting();
+  try {
+    console.log('[DOM] Executing handleUrlRouting now...');
+    handleUrlRouting();
+  } catch(err) {
+    console.error('[ROUTER INIT ERROR]:', err);
+  }
 
   // Listen to browser forward/back & hash change
   window.addEventListener('hashchange', handleUrlRouting);
+  window.handleUrlRouting = handleUrlRouting;
+  window.addEventListener('load', () => setTimeout(handleUrlRouting, 60));
+  setTimeout(handleUrlRouting, 100);
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -325,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // 2. Check Article / News direct link
+    // 2. Check Article / News direct link (Logistics Waves Hub)
     if (rawHash.startsWith('article') || rawHash.startsWith('news')) {
       let articleId = null;
       if (rawHash.includes('id=')) {
@@ -337,21 +346,19 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         switchView('article', false);
       }
+      console.log('[handleUrlRouting] Finished article branch, active-views:', Array.from(document.querySelectorAll('.active-view')).map(e=>e.id));
       return;
     }
 
-    // 3. View routes: browse, courses, companies, home
+    // 3. View routes
     const route = rawHash.split('?')[0].toLowerCase();
-    if (['browse', 'courses', 'companies', 'home'].includes(route)) {
+    if (['browse', 'courses', 'companies', 'article'].includes(route)) {
       switchView(route, false);
-    } else if (!rawHash) {
+    } else if (!rawHash || route === 'home') {
       switchView('home', false);
     }
   }
 
-  /* ==========================================================================
-     JOB DETAIL PAGE WITH ID (#view-job-detail)
-     ========================================================================== */
   function initJobDetailPage() {
     document.getElementById('btn-back-to-jobs-feed')?.addEventListener('click', () => {
       switchView('home');
@@ -3563,7 +3570,48 @@ const articlesDatabase = [
 
 // Open and hydrate any article by ID
 window.openArticle = function(articleId, updateHash = true) {
-  const art = articlesDatabase.find(a => a.id === articleId) || articlesDatabase[0];
+  const hub = document.getElementById('lw-hub-overview');
+  const reader = document.getElementById('lw-article-reader');
+
+  // Switch to article view
+  if (typeof window.switchView === 'function') {
+    window.switchView('article', false);
+  } else if (typeof switchView === 'function') {
+    switchView('article', false);
+  }
+
+  // 1. Browsing the Logistics Waves Hub (no specific article ID)
+  if (!articleId) {
+    if (reader) reader.style.display = 'none';
+    if (hub) hub.style.display = 'block';
+    if (updateHash) window.location.hash = 'article';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (typeof updateDynamicSEO === 'function') {
+      updateDynamicSEO('article', 'Thời Sự Tuyển Dụng & Logistics Waves – VietnamJobs', 'Cập nhật tin tức thị trường Logistics, Hàng hải, Chuỗi cung ứng và Xu hướng tuyển dụng AI.');
+    }
+    return;
+  }
+
+  // 2. Reading a specific article
+  if (reader) reader.style.display = 'block';
+
+  const art = (typeof articlesDatabase !== 'undefined' ? articlesDatabase.find(a => a.id === articleId) : null) || {
+    id: articleId,
+    tag: 'LOGISTICS WAVES',
+    sec: 'Industry Intelligence',
+    title: 'Chiến Lược Tối Ưu Hóa Chuỗi Cung Ứng & Chuyển Đổi Số Logistics 2026',
+    author: 'Logistics Waves Editorial Board',
+    location: 'Ho Chi Minh City',
+    date: 'Published 06 November 2026',
+    heroImg: 'images/editorial_ai_logistics_hd.jpg',
+    caption: 'Báo cáo độc quyền về xu hướng tự động hóa bến cảng và cảng biển nước sâu Cái Mép.',
+    lead: 'Tổng hợp phân tích chuyên sâu về làn sóng đầu tư hạ tầng chuỗi cung ứng, kho lạnh thông minh và giải pháp tự động hóa cảng biển tại Việt Nam.',
+    paragraphs: [
+      'Ngành logistics Việt Nam đang bước vào giai đoạn chuyển mình mạnh mẽ với sự gia tăng đột biến của các dự án kho tự động (ASRS) và cảng biển nước sâu tích hợp AI.',
+      'Các doanh nghiệp hàng đầu như Tân Cảng Sài Gòn, VinFast và Maersk đang đẩy nhanh tốc độ số hóa chứng từ điện tử EDI, tối ưu hóa tuyến đường điều vận và giảm thiểu khí thải carbon.',
+      'Sự kết hợp giữa chính sách hỗ trợ phát triển logistics quốc gia và dòng vốn FDI chất lượng cao đang mở ra hàng chục nghìn vị trí việc làm chuyên môn cao.'
+    ]
+  };
 
   // Hydrate DOM elements
   const elTag = document.getElementById('art-tag');
@@ -3574,10 +3622,8 @@ window.openArticle = function(articleId, updateHash = true) {
   const elDate = document.getElementById('art-date');
   const elHeroImg = document.getElementById('art-hero-img');
   const elCaption = document.getElementById('art-caption');
-  const elListenMeta = document.getElementById('art-listen-meta');
   const elBody = document.getElementById('art-body');
   const elCrumbCat = document.getElementById('art-crumb-cat');
-  const elCrumbTitle = document.getElementById('art-crumb-title');
 
   if (elTag) elTag.textContent = art.tag.toUpperCase();
   if (elSec) elSec.textContent = art.sec;
@@ -3589,109 +3635,51 @@ window.openArticle = function(articleId, updateHash = true) {
     elHeroImg.src = art.heroImg;
     elHeroImg.alt = art.title;
   }
-  if (elCaption) elCaption.innerHTML = art.caption;
-  if (elListenMeta) elListenMeta.textContent = art.listenMeta;
-
+  if (elCaption) elCaption.innerHTML = art.caption || '';
   if (elCrumbCat) elCrumbCat.textContent = art.sec;
-  if (elCrumbTitle) {
-    elCrumbTitle.textContent = art.title.length > 35 ? art.title.slice(0, 35) + '...' : art.title;
-  }
 
   // Hydrate Body
   if (elBody) {
     elBody.innerHTML = `
-      <p class="lead">${art.lead}</p>
-      ${art.paragraphs.map((p, idx) => {
-        if (idx === 2) {
+      <p class="lead" style="font-size:17px; font-weight:600; line-height:1.7; color:#1E293B; margin-bottom:18px;">${art.lead}</p>
+      ${(art.paragraphs || []).map((p, idx) => {
+        if (idx === 1) {
           return `
-            <p>${p}</p>
-            <blockquote>
-              "Minh bạch pháp lý và số hóa quy trình thông quan là chìa khóa then chốt để hạ tầng logistics Việt Nam &amp; ASEAN bứt phá cạnh tranh toàn cầu."
+            <p style="margin-bottom:16px; line-height:1.75; font-size:15px; color:#334155;">${p}</p>
+            <blockquote style="border-left:4px solid #0056B3; padding:12px 20px; margin:24px 0; background:#F8FAFC; font-style:italic; font-size:15px; color:#0F172A; border-radius:0 8px 8px 0;">
+              "Minh bạch hóa dòng chảy hàng hóa và tự động hóa quy trình bốc dỡ là chìa khóa then chốt để hạ tầng logistics Việt Nam nâng cao năng lực cạnh tranh toàn cầu."
             </blockquote>
           `;
         }
-        return `<p>${p}</p>`;
+        return `<p style="margin-bottom:16px; line-height:1.75; font-size:15px; color:#334155;">${p}</p>`;
       }).join('')}
     `;
   }
 
-  // Hydrate More on this story
-  const elMoreList = document.getElementById('art-more-list');
-  if (elMoreList) {
-    elMoreList.innerHTML = (art.relatedStories || []).map(r => `
-      <li>
-        <a href="#" onclick="openArticle('${r.id}'); return false;">
-          <span class="dot"></span>
-          <span>${r.title}<span class="sz">${r.time}</span></span>
-        </a>
-      </li>
-    `).join('');
-  }
-
-  // Hydrate Related Topics
-  const elTopics = document.getElementById('art-topics-list');
-  if (elTopics) {
-    elTopics.innerHTML = (art.topics || []).map(t => `
-      <a class="pill" href="#" onclick="showToast('Chủ đề: ${t}'); return false;">${t} <span>+</span></a>
-    `).join('');
-  }
-
-  // Hydrate Keep Reading 3x2 Grid
-  const elGrid3 = document.getElementById('art-keep-reading-grid');
-  if (elGrid3) {
-    const otherArticles = articlesDatabase.filter(a => a.id !== art.id);
-    const displayList = [...otherArticles, ...articlesDatabase].slice(0, 6);
-    elGrid3.innerHTML = displayList.map(item => `
-      <a class="card" href="#" onclick="openArticle('${item.id}'); return false;">
-        <div class="thumb"><img src="${item.heroImg}" alt="${item.title}" loading="lazy"></div>
-        <span class="cat">${item.tag}</span>
-        <h3>${item.title}</h3>
-        <span class="t">
-          <svg class="clock" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-          ${item.date.split(',')[0].replace('Published ', '')}
-        </span>
-      </a>
-    `).join('');
-  }
-
-  // Hydrate Sidebar Latest News
-  const elSidebarNews = document.getElementById('art-sidebar-newslist');
-  if (elSidebarNews) {
-    const newsItems = [
-      { id: 'art-gdi', title: 'GDI identify more than 5,000 attempts to illegally enter/exit Kingdom', time: '12 mins ago', img: 'images/editorial_ai_logistics_hd.jpg' },
-      { id: 'art-cai-mep', title: 'Cụm cảng Cái Mép đón chuyến tàu mẹ container 24,000 TEUs sang bờ Tây Mỹ', time: '35 mins ago', img: 'images/hero_1.jpg' },
-      { id: 'art-ai-dispatch', title: 'AI điều vận bến bãi rút ngắn 42% thời gian chờ giải phóng hàng', time: '1 hr ago', img: 'images/editorial_ai_robotics_hd.jpg' },
-      { id: 'art-cross-border', title: 'Tổng cục Thuế hướng dẫn biểu thuế tránh đánh thuế hai lần cho chuyên gia', time: '2 hrs ago', img: 'images/lead_story.jpg' },
-      { id: 'art-cold-chain', title: 'Chuẩn WHO-GDP áp dụng cho 100% kho lạnh dược phẩm từ năm 2027', time: '3 hrs ago', img: 'images/editorial_tech_salaries_hd.png' },
-      { id: 'art-cai-mep', title: 'Tân Cảng Sài Gòn tự động hóa hoàn toàn luồng khai báo hải quan điện tử', time: '5 hrs ago', img: 'images/news_1.jpg' },
-      { id: 'art-cross-border', title: 'Hàng không Nội Bài mở thêm đường bay chuyên chở hàng hóa đi Frankfurt', time: '7 hrs ago', img: 'images/news_2.jpg' },
-      { id: 'art-ai-dispatch', title: 'Ra mắt cổng thông tin truy xuất nguồn gốc container chuỗi lạnh xuất khẩu', time: '9 hrs ago', img: 'images/news_3.jpg' }
-    ];
-    elSidebarNews.innerHTML = newsItems.map(item => `
-      <li>
-        <a href="#" onclick="openArticle('${item.id}'); return false;">
-          <img src="${item.img}" alt="" loading="lazy">
-          <div>
-            <h3>${item.title}</h3>
-            <span class="t">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-              ${item.time}
-            </span>
-          </div>
-        </a>
-      </li>
-    `).join('');
-  }
-
-  // Switch View
-  if (typeof switchView === 'function') {
-    switchView('article', false);
-  }
   if (updateHash) {
     window.location.hash = `article?id=${encodeURIComponent(art.id)}`;
   }
   if (typeof updateDynamicSEO === 'function') {
-    updateDynamicSEO('article', `${art.title} – Thời Sự Tuyển Dụng VietnamJobs`, art.lead);
+    updateDynamicSEO('article', `${art.title} – Logistics Waves`, art.lead);
+  }
+
+  setTimeout(() => {
+    if (reader) reader.scrollIntoView({ behavior: 'smooth' });
+  }, 60);
+};
+
+window.hideArticleReader = function() {
+  const reader = document.getElementById('lw-article-reader');
+  if (reader) reader.style.display = 'none';
+  window.location.hash = 'article';
+  const overview = document.getElementById('lw-hub-overview');
+  if (overview) overview.scrollIntoView({ behavior: 'smooth' });
+};
+
+window.scrollLwCarousel = function(dir) {
+  const c = document.getElementById('lw-today-carousel');
+  if (c) {
+    c.scrollBy({ left: dir * 320, behavior: 'smooth' });
   }
 };
 

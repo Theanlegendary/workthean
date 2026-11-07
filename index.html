@@ -912,19 +912,12 @@
                 </div>
               </div>
 
-              <!-- Menu Section 1 -->
+              <!-- Menu Section 1 (Pixel-Perfect Matching Reference Image 4) -->
               <div class="image1-menu-section">
                 <a href="#candidate-cv" class="image1-menu-row" onclick="navigateTo('profile'); return false;">
                   <div class="row-left">
                     <i class="fa-regular fa-user row-icon"></i>
                     <span class="row-label">My Profile</span>
-                  </div>
-                  <i class="fa-solid fa-chevron-right row-arrow"></i>
-                </a>
-                <a href="#post-job" class="image1-menu-row" onclick="navigateTo('post-job'); return false;">
-                  <div class="row-left">
-                    <i class="fa-solid fa-file-circle-plus row-icon" style="color: #0A66C2;"></i>
-                    <span class="row-label" style="font-weight: 600; color: #0A66C2;">Post a Job Opening</span>
                   </div>
                   <i class="fa-solid fa-chevron-right row-arrow"></i>
                 </a>
@@ -956,25 +949,28 @@
 
               <div class="image1-menu-divider"></div>
 
-              <!-- Menu Section 2 (Matching Reference Image: Clean rows without right chevrons) -->
+              <!-- Menu Section 2 (Pixel-Perfect Matching Reference Image 4) -->
               <div class="image1-menu-section">
                 <a href="#settings" class="image1-menu-row" onclick="navigateTo('settings'); return false;">
                   <div class="row-left">
                     <i class="fa-solid fa-gear row-icon"></i>
                     <span class="row-label">Account Settings</span>
                   </div>
+                  <i class="fa-solid fa-chevron-right row-arrow"></i>
                 </a>
                 <a href="#security" class="image1-menu-row" onclick="showToast('Security & 2FA Settings'); closeAllDropdowns(); return false;">
                   <div class="row-left">
                     <i class="fa-solid fa-shield-halved row-icon"></i>
                     <span class="row-label">Security &amp; 2FA</span>
                   </div>
+                  <i class="fa-solid fa-chevron-right row-arrow"></i>
                 </a>
                 <a href="#help" class="image1-menu-row" onclick="showToast('VietnamJobs Help Center: 1900-8888'); closeAllDropdowns(); return false;">
                   <div class="row-left">
                     <i class="fa-regular fa-circle-question row-icon"></i>
                     <span class="row-label">Help Center</span>
                   </div>
+                  <i class="fa-solid fa-chevron-right row-arrow"></i>
                 </a>
               </div>
 
@@ -1032,8 +1028,13 @@
           </button>
         </div>
 
-        <div class="brand-nav-badge-right" id="nav-btn-hot-badge" data-view="browse" onclick="switchView('browse');">
-          <i class="fa-solid fa-fire"></i> HOT JOB
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="brand-nav-badge-right" id="nav-btn-hot-badge" data-view="browse" onclick="switchView('browse');">
+            <i class="fa-solid fa-fire"></i> HOT JOB
+          </div>
+          <button type="button" class="brand-nav-post-job-btn" id="nav-btn-post-job" onclick="switchView('post-job');" title="Post a Job Opening">
+            Post a Job
+          </button>
         </div>
 
       </div>

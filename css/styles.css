@@ -11108,3 +11108,31 @@ button.university:active {
   box-shadow: none !important;
   transform: none !important;
 }
+
+/* Post a Job Navigation Button (Matching Image 5) */
+.brand-nav-post-job-btn {
+  background: #0A66C2 !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  border-radius: 9999px !important;
+  padding: 6px 18px !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
+  font-family: inherit !important;
+}
+.brand-nav-post-job-btn:hover {
+  background: #084e96 !important;
+  border-color: #FFFFFF !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22) !important;
+}
+.brand-nav-post-job-btn:active {
+  transform: translateY(0) !important;
+}

@@ -454,6 +454,25 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    // 3b. Company Detail direct link & deep routing
+    if (rawHash.startsWith('company-detail') || (rawHash.startsWith('company') && !rawHash.startsWith('companies'))) {
+      let companyId = urlParams.get('companyId') || urlParams.get('id');
+      if (!companyId && rawHash.includes('id=')) {
+        const match = rawHash.match(/id=([^&]+)/);
+        if (match) companyId = decodeURIComponent(match[1]);
+      } else if (!companyId && rawHash.includes('/') && !rawHash.startsWith('company-detail?')) {
+        const parts = rawHash.split('/');
+        if (parts[1]) companyId = decodeURIComponent(parts[1]);
+      }
+      const targetCompany = companyId || (typeof currentSelectedCompanyId !== 'undefined' && currentSelectedCompanyId) || 'maersk';
+      if (typeof window.openCompanyDetail === 'function') {
+        window.openCompanyDetail(targetCompany);
+      } else {
+        switchView('company-detail', false);
+      }
+      return;
+    }
+
     // 4. View routes
     const route = rawHash.split('?')[0].toLowerCase();
     const validViews = ['home', 'browse', 'job-detail', 'freelancers', 'dashboard', 'courses', 'course-detail', 'companies', 'company-detail', 'article'];
@@ -3482,6 +3501,9 @@ function _executeOpenCompanyDetail(companyId) {
   if (typeof switchView === 'function') {
     switchView('company-detail');
   }
+  try {
+    history.replaceState(null, '', '#company-detail?id=' + encodeURIComponent(company.id));
+  } catch (e) {}
 
   // Scroll to top of window smoothly
   window.scrollTo({ top: 0, behavior: 'smooth' });

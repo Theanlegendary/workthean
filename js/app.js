@@ -1,3 +1,38 @@
+
+// ── GLOBAL PAGE LOADER (YOUTUBE / GITHUB STYLE REALTIME FEEDBACK) ───────────
+window.startPageLoading = function() {
+  const loader = document.getElementById('global-page-loader');
+  const bar = loader?.querySelector('.global-loader-bar');
+  if (loader && bar) {
+    loader.classList.add('active');
+    bar.style.transition = 'width 0.18s cubic-bezier(0.16, 1, 0.3, 1)';
+    bar.style.width = '35%';
+    setTimeout(() => {
+      if (loader.classList.contains('active')) {
+        bar.style.width = '80%';
+      }
+    }, 60);
+  }
+};
+
+window.finishPageLoading = function(callback) {
+  const loader = document.getElementById('global-page-loader');
+  const bar = loader?.querySelector('.global-loader-bar');
+  if (loader && bar) {
+    bar.style.transition = 'width 0.15s ease-out';
+    bar.style.width = '100%';
+    setTimeout(() => {
+      loader.classList.remove('active');
+      if (typeof callback === 'function') callback();
+      setTimeout(() => {
+        bar.style.width = '0%';
+      }, 180);
+    }, 120);
+  } else if (typeof callback === 'function') {
+    callback();
+  }
+};
+
 /* ==========================================================================
    VIETNAM RECRUITMENT MARKETPLACE - APP LOGIC & SPA CONTROLLER
    ========================================================================== */
@@ -2270,7 +2305,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // Expose switchView globally for external triggers (like Courses and Category clicks)
-  window.switchView = switchView;
+  window.switchView = function(viewId, updateHash = true) {
+  window.startPageLoading();
+  setTimeout(() => {
+    switchView(viewId, updateHash);
+    window.finishPageLoading();
+  }, 100);
+};
 
   // 1. YouTube Broadcasts Hub Controller
   function initYouTubeHub() {
@@ -3367,8 +3408,75 @@ window.handleDirectCompanyContact = function(e, companyName) {
   document.getElementById('co-direct-contact-form')?.reset();
 };
 
+window._isCompanyOpening = false;
+
 window.openCompanyDetail = function(companyId) {
-  const company = enterpriseCompaniesData.find(c => c.id === companyId) || enterpriseCompaniesData[0];
+  // Prevent double-click glitch / debounce
+  if (window._isCompanyOpening) return;
+  window._isCompanyOpening = true;
+
+  // 1. Instantly trigger top progress bar for immediate feedback on SINGLE click
+  if (typeof window.startPageLoading === 'function') {
+    window.startPageLoading();
+  }
+
+  // 2. Smooth micro-delay (120ms) gives perfect tactile responsiveness
+  setTimeout(() => {
+    try {
+      _executeOpenCompanyDetail(companyId);
+    } finally {
+      if (typeof window.finishPageLoading === 'function') {
+        window.finishPageLoading();
+      }
+      setTimeout(() => {
+        window._isCompanyOpening = false;
+      }, 250);
+    }
+  }, 120);
+};
+
+function _executeOpenCompanyDetail(companyId) {
+  // Brand dictionary for all 20 homepage partner brands
+  const brandDict = {
+    nike: { name: 'Nike Logistics & Sourcing Vietnam', industry: 'Sportswear & Footwear Supply Chain', location: 'TP. Hồ Chí Minh & Đồng Nai', logo: 'images/brands/nike.svg', tagline: 'Sustainable sourcing, automated inventory routing and international export distribution across ASEAN.' },
+    dhl: { name: 'DHL Global Forwarding (Vietnam)', industry: 'International Freight Forwarding & 3PL', location: 'Hà Nội & TP. Hồ Chí Minh', logo: 'images/brands/dhl.svg', tagline: 'World leader in multimodal air and ocean freight forwarding with modern bonded customs facilities.' },
+    gemadept: { name: 'Gemadept Corporation', industry: 'Port Operations & Integrated Logistics', location: 'Cảng Gemalink, Cái Mép & Hải Phòng', logo: 'images/brands/gemadept.svg', tagline: 'Vietnam top port operator and pioneer in deep-sea green maritime terminals connecting to North America and Europe.' },
+    'kuehne-nagel': { name: 'Kuehne+Nagel Vietnam', industry: 'Global Air & Sea Logistics', location: 'Hà Nội & TP. Hồ Chí Minh', logo: 'images/brands/kuehne-nagel.svg', tagline: 'Global logistics titan delivering sea freight, air logistics, and contract warehousing solutions with net zero carbon tracking.' },
+    'slp-vietnam': { name: 'SLP Logistics Vietnam (GLP Joint Venture)', industry: 'Industrial Logistics Real Estate & Smart Warehousing', location: 'Bắc Ninh, Hải Phòng, Long An', logo: 'images/brands/slp-vietnam.svg', tagline: 'Leading developer of modern Grade-A logistics facilities and high-throughput distribution hubs across Vietnam.' },
+    viettel: { name: 'Viettel Post Corporation', industry: 'Express Logistics & E-Commerce Delivery', location: 'Hà Nội & Toàn Quốc', logo: 'images/brands/viettel.svg', tagline: 'Hạ tầng logistics số 1 Việt Nam với mạng lưới chuyển phát bưu chính và trung tâm phân loại thông minh AI trên 63 tỉnh thành.' },
+    shopee: { name: 'Shopee Express (SPX Vietnam)', industry: 'E-Commerce Last-Mile Logistics', location: 'TP. Hồ Chí Minh & Hà Nội', logo: 'images/brands/shopee.svg', tagline: 'Đơn vị vận hành hệ thống logistics và hoàn tất đơn hàng TMĐT tự động hóa hàng đầu Đông Nam Á.' },
+    grab: { name: 'Grab Vietnam Express & 3PL', industry: 'On-Demand Urban Delivery & Supply Chain', location: 'TP. Hồ Chí Minh & Hà Nội', logo: 'images/brands/grab.svg', tagline: 'Hệ sinh thái giao hàng siêu tốc và giải pháp chuỗi cung ứng đô thị thông minh lớn nhất khu vực.' },
+    samsung: { name: 'Samsung SDS Vietnam', industry: 'Smart Logistics IT & Global SCM', location: 'Hà Nội, Thái Nguyên, Bắc Ninh', logo: 'images/brands/samsung.svg', tagline: 'Digital logistics platform Cello powering global semiconductor and high-tech electronics supply chains.' },
+    adidas: { name: 'Adidas Global Supply Chain Vietnam', industry: 'Sporting Goods Sourcing & Freight SCM', location: 'TP. Hồ Chí Minh & Bình Dương', logo: 'images/brands/adidas.svg', tagline: 'Hệ thống quản lý chuỗi cung ứng sản xuất và xuất nhập khẩu nguyên phụ liệu thể thao toàn cầu.' },
+    unilever: { name: 'Unilever Supply Chain Vietnam', industry: 'FMCG Logistics & Zero-Carbon SCM', location: 'TP. Hồ Chí Minh & Bắc Ninh', logo: 'images/brands/unilever.svg', tagline: 'Mạng lưới cung ứng hàng tiêu dùng hàng đầu với các trung tâm phân phối MegaHub tự động hóa 100%.' },
+    loreal: { name: "L'Oreal Hub & Beauty Logistics", industry: 'Cosmetics Supply Chain & Warehousing', location: 'TP. Hồ Chí Minh', logo: 'images/brands/loreal.svg', tagline: 'Chuỗi cung ứng mỹ phẩm và kho bãi tiêu chuẩn xanh quốc tế phục vụ thị trường Đông Nam Á.' },
+    zara: { name: 'Inditex Zara Fashion Logistics', industry: 'Fast-Fashion SCM & RFID Distribution', location: 'TP. Hồ Chí Minh & Hà Nội', logo: 'images/brands/zara.svg', tagline: 'Mô hình logistics thời trang nhanh hàng đầu thế giới với công nghệ kiểm soát RFID tự động.' },
+    momo: { name: 'MoMo Fintech & Logistics Solutions', industry: 'Fintech, Payment & Logistics API', location: 'TP. Hồ Chí Minh', logo: 'images/brands/momo.svg', tagline: 'Giải pháp thanh toán số COD và kết nối API logistics toàn diện cho hàng triệu nhà bán hàng.' },
+    vng: { name: 'VNG Tech & Digital Logistics Platform', industry: 'Logistics Technology & Cloud Infrastructure', location: 'TP. Hồ Chí Minh (VNG Campus)', logo: 'images/brands/vng.svg', tagline: 'Hạ tầng điện toán đám mây và giải pháp số hóa chuỗi cung ứng thông minh.' },
+    vpbank: { name: 'VPBank Trade Finance & Logistics Hub', industry: 'Supply Chain Finance & Maritime Banking', location: 'Hà Nội & TP. Hồ Chí Minh', logo: 'images/brands/vpbank.svg', tagline: 'Dịch vụ tài trợ chuỗi cung ứng, LC quốc tế và bảo lãnh thanh toán xuất nhập khẩu hàng đầu.' }
+  };
+
+  let company = enterpriseCompaniesData.find(c => c.id === companyId);
+  if (!company) {
+    const b = brandDict[companyId] || {
+      name: companyId.toUpperCase() + ' Logistics Group',
+      industry: 'Logistics & Supply Chain Solutions',
+      location: 'Vietnam & Regional Hub',
+      logo: `images/brands/${companyId}.svg`,
+      tagline: 'Leading enterprise partner in logistics, terminal infrastructure, and international freight transport.'
+    };
+    company = {
+      id: companyId,
+      name: b.name,
+      industry: b.industry,
+      location: b.location,
+      logo: b.logo,
+      tagline: b.tagline,
+      website: 'https://vietnamjobs.vn',
+      category: 'logistics'
+    };
+  }
+
   currentSelectedCompanyId = company.id;
 
   if (typeof switchView === 'function') {
@@ -4008,7 +4116,7 @@ window.openCompanyDetail = function(companyId) {
       </div>
     </div>
   `;
-};
+}
 
 
 // 4. Dedicated B2B "Contact Now" Modal Controller

@@ -10930,3 +10930,44 @@ footer a:hover {
   align-items: center;
   gap: 4px;
 }
+
+
+/* ==========================================================================
+   GLOBAL TOP PROGRESS LOADER (YOUTUBE / GITHUB STYLE FAST & SMOOTH)
+   ========================================================================== */
+.global-page-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 9999999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.global-page-loader.active {
+  opacity: 1;
+}
+.global-loader-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #2477E4, #00D2FF, #38BDF8);
+  box-shadow: 0 0 10px rgba(36, 119, 228, 0.8), 0 0 5px #00D2FF;
+  border-radius: 0 2px 2px 0;
+  transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ensure button.university behaves as clean instant-clickable cards */
+button.university {
+  font-family: inherit;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+button.university:active {
+  transform: scale(0.96);
+}

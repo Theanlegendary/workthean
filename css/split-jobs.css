@@ -68,11 +68,10 @@
 .split-openings-badge {
   font-size: 12px;
   font-weight: 600;
-  color: #0A66C2;
-  background: #EFF6FF;
-  border: 1px solid #BFDBFE;
-  padding: 4px 10px;
-  border-radius: 9999px;
+  color: #64748B;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
   white-space: nowrap;
 }
 

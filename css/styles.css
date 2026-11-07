@@ -10971,3 +10971,140 @@ button.university {
 button.university:active {
   transform: scale(0.96);
 }
+
+
+/* ==========================================================================
+   GLOBAL DESIGN RULE: NO BACKGROUND COLOR FOR BADGES (ONLY FOR BUTTONS)
+   Badges are informational indicators: transparent background with clean typography & icons.
+   ========================================================================== */
+.brand-nav-badge-right,
+#nav-btn-hot-badge {
+  background: transparent !important;
+  background-image: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  color: #FEF08A !important;
+  box-shadow: none !important;
+}
+.brand-nav-badge-right:hover,
+#nav-btn-hot-badge:hover {
+  background: transparent !important;
+  background-image: none !important;
+  border-color: rgba(255, 255, 255, 0.8) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+.brand-nav-badge-right::after,
+#nav-btn-hot-badge::after {
+  display: none !important;
+}
+
+.split-openings-badge,
+#splitOpeningsBadge {
+  background: transparent !important;
+  border: none !important;
+  color: #64748B !important;
+  padding: 0 !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+}
+
+.fw-yt-badge-count {
+  background: transparent !important;
+  border: none !important;
+  color: #64748B !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.fw-yt-category-badge {
+  background: transparent !important;
+  border: none !important;
+  color: #0A66C2 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.badge-hot-tag {
+  background: transparent !important;
+  border: none !important;
+  color: #EF4444 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.badge-verified-green,
+.badge-verified-blue {
+  background: transparent !important;
+  border: none !important;
+  color: #0A66C2 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.section-badge-live,
+.hero-live-badge,
+.hero-eyebrow-badge,
+.vj-section-badge,
+.market-insights-badge {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ==========================================================================
+   STRICT USER RULE: NO BACKGROUND COLOR FOR BADGES (ONLY FOR BUTTONS)
+   "no bg color for badge, only for button"
+   ========================================================================== */
+.brand-nav-badge-right,
+#nav-btn-hot-badge,
+.split-openings-badge,
+#splitOpeningsBadge,
+.fw-yt-badge-count,
+.fw-yt-category-badge,
+.badge-hot-tag,
+.badge-new-yellow,
+.badge-top100-star,
+.badge-verified-green,
+.badge-verified-blue,
+.badge-urgent-gap,
+.badge-urgent-hot,
+.post-job-badge-secure,
+.section-badge-live,
+.hero-live-badge,
+.hero-eyebrow-badge,
+.vj-section-badge,
+.market-insights-badge,
+.calc-currency-badge,
+.badge-tag,
+.preview-live-indicator,
+.dropdown-role-badge,
+.notif-badge-pill,
+.badge-bestseller,
+.badge-hot,
+.badge-new {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.brand-nav-badge-right,
+#nav-btn-hot-badge {
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  color: #FEF08A !important;
+}
+
+.brand-nav-badge-right::after,
+#nav-btn-hot-badge::after {
+  display: none !important;
+  content: none !important;
+}
+
+.brand-nav-badge-right:hover,
+#nav-btn-hot-badge:hover {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.8) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}

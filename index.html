@@ -100,113 +100,213 @@
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <link rel="stylesheet" href="css/styles.css?v=2.3">
+  <link rel="stylesheet" href="css/styles.css?v=2.4">
   <link rel="stylesheet" href="css/courses.css?v=2.3">
   <link rel="stylesheet" href="css/split-jobs.css?v=2.2">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/article.css?v=2.3">
   <link rel="stylesheet" href="css/companies.css?v=2.3">
   <style id="critical-header-search-style">
-    /* Header Top Actions Flex Group (Pixel-Perfect Clean Layout Matching Reference) */
+    /* Header Top Actions Flex Group (Pixel-Perfect Matching Image 2 Design) */
     .header-top-right-group.modern-header-actions {
       display: flex !important;
       align-items: center !important;
-      gap: 22px !important;
+      gap: 12px !important;
       position: relative !important;
+      margin-left: auto !important;
     }
 
-    /* Clean Pill Search Bar */
-    .header-search-experience-wrapper {
-      position: relative !important;
-      z-index: 1000 !important;
-    }
-    .header-modern-search-capsule {
-      display: flex !important;
+    /* Clean Search Icon Button */
+    .header-search-icon-btn {
+      display: inline-flex !important;
       align-items: center !important;
-      background: #FFFFFF !important;
-      border: 1.5px solid #E2E8F0 !important;
+      justify-content: center !important;
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 50% !important;
+      background: transparent !important;
+      border: none !important;
+      color: #334155 !important;
+      font-size: 17px !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+      padding: 0 !important;
+    }
+    .header-search-icon-btn:hover {
+      background: #F1F5F9 !important;
+      color: #2477E4 !important;
+    }
+
+    /* Clean Bell Notification Button */
+    .header-notification-wrapper {
+      position: relative !important;
+    }
+    .clean-bell-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 50% !important;
+      background: transparent !important;
+      border: none !important;
+      color: #334155 !important;
+      font-size: 17px !important;
+      cursor: pointer !important;
+      position: relative !important;
+      transition: all 0.2s ease !important;
+      padding: 0 !important;
+    }
+    .clean-bell-btn:hover {
+      background: #F1F5F9 !important;
+      color: #2477E4 !important;
+    }
+    .notification-indicator-badge {
+      position: absolute !important;
+      top: 4px !important;
+      right: 4px !important;
+      background: #EF4444 !important;
+      color: #FFFFFF !important;
+      font-size: 9.5px !important;
+      font-weight: 700 !important;
+      min-width: 15px !important;
+      height: 15px !important;
       border-radius: 9999px !important;
-      padding: 0 14px 0 18px !important;
-      height: 46px !important;
-      width: 480px !important;
-      box-sizing: border-box !important;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04) !important;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-      cursor: text !important;
-    }
-    .header-modern-search-capsule:focus-within,
-    .header-modern-search-capsule.focused {
-      border-color: #2563EB !important;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12), 0 4px 14px rgba(15, 23, 42, 0.08) !important;
-      width: 500px !important;
-    }
-    .search-capsule-icon-wrap {
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      margin-right: 12px !important;
-      background: transparent !important;
-      width: auto !important;
-      height: auto !important;
-    }
-    .search-capsule-icon {
-      color: #2563EB !important;
-      font-size: 16px !important;
-    }
-    .header-modern-search-capsule input {
-      border: none !important;
-      outline: none !important;
-      background: transparent !important;
-      font-size: 14px !important;
-      font-weight: 400 !important;
-      font-family: inherit !important;
-      color: #0F172A !important;
-      flex: 1 !important;
-      min-width: 0 !important;
-    }
-    .header-modern-search-capsule input::placeholder {
-      color: #64748B !important;
-      opacity: 1 !important;
-      font-weight: 400 !important;
-      font-size: 14px !important;
-    }
-    .search-cmd-kbd {
-      font-size: 11.5px !important;
-      font-weight: 600 !important;
-      color: #64748B !important;
-      background: #F1F5F9 !important;
-      border: 1px solid #E2E8F0 !important;
-      border-radius: 6px !important;
-      padding: 4px 8px !important;
-      margin-left: 10px !important;
-      white-space: nowrap !important;
-      line-height: 1.2 !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 4px !important;
-      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+      border: 1.5px solid #FFFFFF !important;
+      line-height: 1 !important;
+      padding: 0 3px !important;
     }
 
-    /* Popover Container: Strictly Hidden Unless Active */
+    /* Elegant Vertical Action Divider */
+    .header-action-divider {
+      width: 1px !important;
+      height: 20px !important;
+      background: #E0E9F7 !important;
+      margin: 0 2px !important;
+    }
+
+    /* Vibrant Blue Post a Job Pill Button (Exact Match to Image 2) */
+    .header-post-job-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background: #2477E4 !important;
+      color: #FFFFFF !important;
+      font-family: inherit !important;
+      font-size: 13.5px !important;
+      font-weight: 700 !important;
+      padding: 8px 18px !important;
+      border-radius: 9999px !important;
+      border: none !important;
+      cursor: pointer !important;
+      white-space: nowrap !important;
+      box-shadow: 0 2px 6px rgba(36, 119, 228, 0.25) !important;
+      transition: all 0.2s ease !important;
+      letter-spacing: 0.1px !important;
+    }
+    .header-post-job-btn:hover {
+      background: #1B65C7 !important;
+      box-shadow: 0 4px 12px rgba(36, 119, 228, 0.35) !important;
+      transform: translateY(-1px) !important;
+    }
+    .header-post-job-btn:active {
+      transform: translateY(0) !important;
+    }
+
+    /* Circular User Profile Button (Exact Match to Image 2 User Silhouette) */
+    .header-user-profile-capsule {
+      position: relative !important;
+    }
+    .clean-profile-trigger-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 50% !important;
+      background: #EDF2F9 !important;
+      border: none !important;
+      cursor: pointer !important;
+      padding: 0 !important;
+      transition: all 0.2s ease !important;
+    }
+    .clean-profile-trigger-btn:hover {
+      background: #E2E8F0 !important;
+      transform: scale(1.05) !important;
+    }
+    .clean-avatar-circle-icon {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      height: 100% !important;
+      border-radius: 50% !important;
+      color: #64748B !important;
+      font-size: 15px !important;
+    }
+    .clean-avatar-circle-icon.in-menu {
+      width: 44px !important;
+      height: 44px !important;
+      background: #EDF2F9 !important;
+      font-size: 20px !important;
+    }
+
+    /* Search Dropdown / Popover */
     #search-suggestions-popover,
     .image1-search-dropdown {
       display: none !important;
       position: absolute !important;
       top: calc(100% + 12px) !important;
-      left: 0 !important;
-      right: auto !important;
-      width: 480px !important;
+      right: 0 !important;
+      left: auto !important;
+      width: 440px !important;
       max-width: calc(100vw - 32px) !important;
       background: #FFFFFF !important;
-      border-radius: 20px !important;
-      box-shadow: 0 24px 50px -10px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(226, 232, 240, 0.8) !important;
-      padding: 22px 24px !important;
+      border-radius: 16px !important;
+      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(226, 232, 240, 0.9) !important;
+      padding: 18px 20px !important;
       z-index: 99999 !important;
       box-sizing: border-box !important;
     }
     #search-suggestions-popover.active,
     .image1-search-dropdown.active {
       display: block !important;
+    }
+
+    .search-popover-input-bar {
+      display: flex !important;
+      align-items: center !important;
+      background: #F8FAFC !important;
+      border: 1.5px solid #E2E8F0 !important;
+      border-radius: 10px !important;
+      padding: 8px 12px !important;
+      margin-bottom: 14px !important;
+      transition: all 0.2s ease !important;
+    }
+    .search-popover-input-bar:focus-within {
+      background: #FFFFFF !important;
+      border-color: #2477E4 !important;
+      box-shadow: 0 0 0 3px rgba(36, 119, 228, 0.12) !important;
+    }
+    .search-popover-input-icon {
+      color: #2477E4 !important;
+      font-size: 15px !important;
+      margin-right: 10px !important;
+    }
+    .search-popover-input-bar input {
+      flex: 1 !important;
+      border: none !important;
+      outline: none !important;
+      background: transparent !important;
+      font-size: 14px !important;
+      color: #0F172A !important;
+      font-family: inherit !important;
+    }
+    .search-popover-input-bar input::placeholder {
+      color: #94A3B8 !important;
     }
 
     /* Section Headers */
@@ -222,337 +322,313 @@
       gap: 8px !important;
     }
     .image1-search-dropdown .section-title-group .text-blue {
-      color: #2563EB !important;
-      font-size: 15px !important;
+      color: #2477E4 !important;
+      font-size: 14px !important;
     }
     .image1-search-dropdown .section-title {
-      font-size: 15px !important;
+      font-size: 13.5px !important;
       font-weight: 700 !important;
       color: #0F172A !important;
     }
     .image1-search-dropdown .btn-clear-recent {
       background: transparent !important;
       border: none !important;
-      color: #2563EB !important;
-      font-size: 13px !important;
+      color: #64748B !important;
+      font-size: 12px !important;
       font-weight: 600 !important;
       cursor: pointer !important;
-      padding: 2px 4px !important;
+      padding: 2px 6px !important;
+      border-radius: 4px !important;
     }
     .image1-search-dropdown .btn-clear-recent:hover {
-      text-decoration: underline !important;
-    }
-    .image1-search-dropdown .btn-view-all-link {
-      color: #2563EB !important;
-      font-size: 13px !important;
-      font-weight: 600 !important;
-      text-decoration: none !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 4px !important;
-    }
-    .image1-search-dropdown .btn-view-all-link:hover {
-      text-decoration: underline !important;
+      color: #EF4444 !important;
+      background: #FEE2E2 !important;
     }
 
-    /* Recent Searches */
-    .image1-search-dropdown .recent-searches-list {
+    /* Recent Searches Rows */
+    .recent-searches-list {
       display: flex !important;
       flex-direction: column !important;
-      gap: 2px !important;
+      gap: 4px !important;
     }
-    .image1-search-dropdown .recent-search-row {
+    .recent-search-row {
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
-      padding: 9px 12px !important;
-      border-radius: 10px !important;
+      padding: 8px 10px !important;
+      border-radius: 8px !important;
       cursor: pointer !important;
       transition: background 0.15s ease !important;
     }
-    .image1-search-dropdown .recent-search-row:hover {
+    .recent-search-row:hover {
       background: #F8FAFC !important;
     }
-    .image1-search-dropdown .recent-left {
+    .recent-left {
       display: flex !important;
       align-items: center !important;
       gap: 10px !important;
-      color: #1E293B !important;
+      color: #475569 !important;
+      font-size: 13.5px !important;
+    }
+    .recent-left i {
+      color: #94A3B8 !important;
       font-size: 14px !important;
+    }
+    .recent-text {
       font-weight: 500 !important;
+      color: #1E293B !important;
     }
-    .image1-search-dropdown .recent-left i {
-      color: #64748B !important;
-      font-size: 14px !important;
-    }
-    .image1-search-dropdown .btn-remove-recent {
+    .btn-remove-recent {
       background: transparent !important;
       border: none !important;
       color: #94A3B8 !important;
-      font-size: 12px !important;
+      font-size: 13px !important;
       cursor: pointer !important;
-      padding: 4px 6px !important;
+      padding: 4px !important;
       border-radius: 4px !important;
-      transition: all 0.15s ease !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
     }
-    .image1-search-dropdown .btn-remove-recent:hover {
-      color: #0F172A !important;
-      background: #E2E8F0 !important;
+    .btn-remove-recent:hover {
+      color: #EF4444 !important;
+      background: #FEE2E2 !important;
     }
 
-    /* Popular Searches (Pills) */
-    .image1-search-dropdown .popular-search-pills {
+    /* Popular Search Pills */
+    .popular-search-pills {
       display: flex !important;
       flex-wrap: wrap !important;
-      gap: 8px !important;
-      margin-top: 6px !important;
+      gap: 6px !important;
     }
-    .image1-search-dropdown .popular-search-pill {
-      background: #EFF6FF !important;
-      color: #1D4ED8 !important;
-      border: none !important;
+    .popular-search-pill {
+      background: #F1F5F9 !important;
+      border: 1px solid #E2E8F0 !important;
       border-radius: 9999px !important;
-      padding: 6px 14px !important;
-      font-size: 13px !important;
+      padding: 5px 12px !important;
+      font-size: 12.5px !important;
       font-weight: 500 !important;
+      color: #334155 !important;
       cursor: pointer !important;
       transition: all 0.15s ease !important;
-      text-decoration: none !important;
-      display: inline-block !important;
     }
-    .image1-search-dropdown .popular-search-pill:hover {
-      background: #DBEAFE !important;
-      transform: translateY(-1px) !important;
+    .popular-search-pill:hover {
+      background: #2477E4 !important;
+      border-color: #2477E4 !important;
+      color: #FFFFFF !important;
     }
 
-    /* Companies List */
-    .image1-search-dropdown .company-quick-list {
+    /* Companies Quick List */
+    .companies-quick-list {
       display: flex !important;
       flex-direction: column !important;
       gap: 4px !important;
-      margin-top: 6px !important;
     }
-    .image1-search-dropdown .company-quick-row {
+    .company-quick-row {
       display: flex !important;
       align-items: center !important;
-      padding: 8px 10px !important;
-      border-radius: 10px !important;
-      text-decoration: none !important;
-      transition: background 0.15s ease !important;
+      padding: 6px 8px !important;
+      border-radius: 8px !important;
       cursor: pointer !important;
-      gap: 12px !important;
+      transition: background 0.15s ease !important;
     }
-    .image1-search-dropdown .company-quick-row:hover {
+    .company-quick-row:hover {
       background: #F8FAFC !important;
     }
-    .image1-search-dropdown .company-logo-badge {
-      width: 40px !important;
-      height: 40px !important;
-      border-radius: 10px !important;
-      object-fit: contain !important;
+    .company-logo-wrap {
+      width: 32px !important;
+      height: 32px !important;
+      border-radius: 6px !important;
+      background: #F1F5F9 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin-right: 10px !important;
       flex-shrink: 0 !important;
     }
-    .image1-search-dropdown .company-info-meta {
+    .company-quick-info {
       flex: 1 !important;
       min-width: 0 !important;
     }
-    .image1-search-dropdown .company-name {
-      font-size: 14.5px !important;
+    .company-quick-name {
+      font-size: 13px !important;
       font-weight: 600 !important;
       color: #0F172A !important;
-      line-height: 1.3 !important;
     }
-    .image1-search-dropdown .company-sub {
-      font-size: 12.5px !important;
+    .company-quick-tagline {
+      font-size: 11.5px !important;
       color: #64748B !important;
-      line-height: 1.3 !important;
     }
-    .image1-search-dropdown .company-arrow {
-      color: #94A3B8 !important;
+    .company-arrow {
+      color: #CBD5E1 !important;
       font-size: 12px !important;
-      margin-left: auto !important;
     }
-
-    /* Clean Notification Bell (Matching Reference Image) */
-    .clean-bell-btn {
-      background: transparent !important;
-      border: none !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      width: 42px !important;
-      height: 42px !important;
-      border-radius: 50% !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      position: relative !important;
-      cursor: pointer !important;
-      transition: background 0.15s ease !important;
-      outline: none !important;
-    }
-    .clean-bell-btn:hover {
-      background: rgba(15, 23, 42, 0.04) !important;
-    }
-    .clean-bell-icon {
-      color: #1E3A8A !important;
-      font-size: 21px !important;
-    }
-    .clean-bell-badge {
-      position: absolute !important;
-      top: 2px !important;
-      right: 2px !important;
-      min-width: 17px !important;
-      height: 17px !important;
-      padding: 0 4px !important;
-      background: #EF4444 !important;
-      color: #FFFFFF !important;
-      font-size: 10.5px !important;
-      font-weight: 700 !important;
-      border-radius: 9999px !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      border: 2px solid #FFFFFF !important;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
-    }
-
-    /* Clean Profile Trigger (Avatar Circle + Standalone Down Chevron) */
-    .clean-profile-trigger-btn {
-      background: transparent !important;
-      border: none !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      cursor: pointer !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 8px !important;
-      outline: none !important;
-    }
-    .clean-avatar-circle {
-      width: 42px !important;
-      height: 42px !important;
-      border-radius: 50% !important;
-      object-fit: cover !important;
-      border: 2px solid #FFFFFF !important;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.1) !important;
-      transition: transform 0.15s ease !important;
-    }
-    .clean-profile-trigger-btn:hover .clean-avatar-circle {
-      transform: scale(1.04) !important;
-    }
-    .clean-avatar-chevron {
+    .view-all-companies-link {
+      color: #2477E4 !important;
       font-size: 12px !important;
-      color: #0F172A !important;
-      font-weight: 700 !important;
-      transition: transform 0.2s ease !important;
+      font-weight: 600 !important;
+      text-decoration: none !important;
+    }
+    .view-all-companies-link:hover {
+      text-decoration: underline !important;
     }
 
-    /* Profile Menu Popover (Matching Reference Image) */
-    .header-user-profile-capsule {
-      position: relative !important;
-    }
-    .image1-profile-menu {
+    /* Notification Popover */
+    .notification-popover {
       display: none !important;
       position: absolute !important;
       top: calc(100% + 12px) !important;
       right: 0 !important;
-      width: 320px !important;
+      left: auto !important;
+      width: 360px !important;
+      max-width: calc(100vw - 32px) !important;
       background: #FFFFFF !important;
-      border-radius: 20px !important;
-      box-shadow: 0 24px 50px -10px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(226, 232, 240, 0.8) !important;
-      padding: 22px !important;
+      border-radius: 16px !important;
+      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(226, 232, 240, 0.9) !important;
+      padding: 16px !important;
       z-index: 99999 !important;
       box-sizing: border-box !important;
-      animation: dropdownFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
     }
-    @keyframes dropdownFadeIn {
-      from { opacity: 0; transform: translateY(-6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .image1-profile-menu.active,
-    .image1-profile-menu.open {
+    .notification-popover.show {
       display: block !important;
     }
+    .notif-popover-header {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding-bottom: 12px !important;
+      border-bottom: 1px solid #E2E8F0 !important;
+      margin-bottom: 8px !important;
+    }
+    .notif-popover-title {
+      font-size: 15px !important;
+      font-weight: 700 !important;
+      color: #0F172A !important;
+    }
+    .notif-badge-pill {
+      background: #EFF6FF !important;
+      color: #2477E4 !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      padding: 3px 8px !important;
+      border-radius: 9999px !important;
+    }
+    .notif-popover-list {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 6px !important;
+    }
+    .notif-popover-item {
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 12px !important;
+      padding: 10px !important;
+      border-radius: 8px !important;
+      transition: background 0.15s ease !important;
+      cursor: pointer !important;
+    }
+    .notif-popover-item:hover {
+      background: #F8FAFC !important;
+    }
+    .notif-popover-item.unread {
+      background: #F0F7FF !important;
+    }
+    .notif-item-icon {
+      width: 32px !important;
+      height: 32px !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 13px !important;
+      flex-shrink: 0 !important;
+    }
+    .notif-item-icon.bg-blue { background: #DBEAFE !important; color: #2477E4 !important; }
+    .notif-item-icon.bg-green { background: #DCFCE7 !important; color: #16A34A !important; }
+    .notif-item-icon.bg-purple { background: #F3E8FF !important; color: #9333EA !important; }
+    .notif-item-content { flex: 1 !important; min-width: 0 !important; }
+    .notif-item-text { font-size: 12.5px !important; color: #334155 !important; line-height: 1.4 !important; margin: 0 0 2px !important; }
+    .notif-item-time { font-size: 11px !important; color: #94A3B8 !important; }
 
-    /* Profile Header */
+    /* Profile Menu Popover */
+    .image1-profile-menu,
+    .modern-profile-menu {
+      display: none !important;
+      position: absolute !important;
+      top: calc(100% + 12px) !important;
+      right: 0 !important;
+      left: auto !important;
+      width: 320px !important;
+      max-width: calc(100vw - 32px) !important;
+      background: #FFFFFF !important;
+      border-radius: 16px !important;
+      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(226, 232, 240, 0.9) !important;
+      padding: 16px !important;
+      z-index: 99999 !important;
+      box-sizing: border-box !important;
+    }
+    .image1-profile-menu.show,
+    .modern-profile-menu.show {
+      display: block !important;
+    }
     .image1-profile-header {
       display: flex !important;
       align-items: center !important;
-      gap: 14px !important;
-      margin-bottom: 16px !important;
+      gap: 12px !important;
+      padding-bottom: 14px !important;
+      border-bottom: 1px solid #E2E8F0 !important;
+      margin-bottom: 10px !important;
     }
     .image1-avatar-wrap {
       position: relative !important;
-      width: 54px !important;
-      height: 54px !important;
-      flex-shrink: 0 !important;
-    }
-    .image1-avatar-img {
-      width: 54px !important;
-      height: 54px !important;
-      border-radius: 50% !important;
-      object-fit: cover !important;
-      border: 2px solid #FFFFFF !important;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
     }
     .image1-status-dot {
       position: absolute !important;
-      bottom: 0px !important;
-      right: 0px !important;
-      width: 14px !important;
-      height: 14px !important;
-      background: #22C55E !important;
-      border: 2.5px solid #FFFFFF !important;
+      bottom: 2px !important;
+      right: 2px !important;
+      width: 10px !important;
+      height: 10px !important;
       border-radius: 50% !important;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.12) !important;
+      background: #22C55E !important;
+      border: 2px solid #FFFFFF !important;
     }
     .image1-user-details {
-      display: flex !important;
-      flex-direction: column !important;
+      flex: 1 !important;
       min-width: 0 !important;
     }
     .image1-user-name {
-      font-size: 16.5px !important;
+      font-size: 15px !important;
       font-weight: 700 !important;
       color: #0F172A !important;
-      line-height: 1.2 !important;
     }
     .image1-user-email {
-      font-size: 13px !important;
+      font-size: 12px !important;
       color: #64748B !important;
-      margin: 2px 0 6px !important;
+      margin-bottom: 4px !important;
+    }
+    .image1-role-row {
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
     }
     .image1-role-badge {
       background: #EFF6FF !important;
-      color: #1D4ED8 !important;
-      font-size: 12px !important;
-      font-weight: 600 !important;
-      padding: 4px 12px !important;
+      color: #2477E4 !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      padding: 2px 8px !important;
       border-radius: 9999px !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 6px !important;
+    }
+    .image1-switch-role-btn {
+      background: transparent !important;
       border: none !important;
+      color: #2477E4 !important;
+      font-size: 11.5px !important;
+      font-weight: 600 !important;
       cursor: pointer !important;
-      transition: background 0.15s ease !important;
-      width: fit-content !important;
+      padding: 0 !important;
     }
-    .image1-role-badge:hover {
-      background: #DBEAFE !important;
+    .image1-switch-role-btn:hover {
+      text-decoration: underline !important;
     }
-    .image1-role-badge i {
-      font-size: 12px !important;
-    }
-    .role-pill-chevron {
-      font-size: 10px !important;
-      margin-left: 2px !important;
-    }
-
-    /* Menu Sections */
-    .image1-menu-section {
+    .image1-menu-links {
       display: flex !important;
       flex-direction: column !important;
       gap: 2px !important;
@@ -561,135 +637,197 @@
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
-      padding: 9px 8px !important;
+      padding: 8px 10px !important;
       border-radius: 8px !important;
+      color: #334155 !important;
       text-decoration: none !important;
-      color: #0F172A !important;
+      font-size: 13px !important;
       transition: background 0.15s ease !important;
-      cursor: pointer !important;
     }
     .image1-menu-row:hover {
       background: #F8FAFC !important;
+      color: #2477E4 !important;
     }
-    .row-left {
+    .image1-menu-row .row-left {
       display: flex !important;
       align-items: center !important;
-      gap: 12px !important;
+      gap: 10px !important;
     }
-    .row-icon {
-      color: #0F172A !important;
-      font-size: 15px !important;
-      width: 18px !important;
+    .image1-menu-row .row-icon {
+      color: #64748B !important;
+      font-size: 14px !important;
+      width: 16px !important;
       text-align: center !important;
     }
-    .row-label {
-      color: #0F172A !important;
-      font-size: 14px !important;
-      font-weight: 500 !important;
-    }
-    .row-arrow {
-      color: #94A3B8 !important;
-      font-size: 12px !important;
-    }
-    .row-right-group {
-      display: flex !important;
-      align-items: center !important;
-      gap: 8px !important;
-    }
-    .count-badge-blue {
-      background: #2563EB !important;
-      color: #FFFFFF !important;
+    .row-count-badge {
+      background: #F1F5F9 !important;
+      color: #475569 !important;
       font-size: 11px !important;
       font-weight: 700 !important;
+      padding: 2px 6px !important;
       border-radius: 9999px !important;
-      padding: 2px 8px !important;
     }
-    .image1-menu-divider {
-      height: 1px !important;
-      background: #F1F5F9 !important;
-      margin: 10px 0 !important;
-    }
-
-    /* Log Out Button */
     .image1-logout-btn {
       width: 100% !important;
-      height: 42px !important;
-      background: #F8FAFC !important;
-      border: 1px solid #E2E8F0 !important;
-      border-radius: 12px !important;
-      color: #334155 !important;
-      font-size: 14px !important;
-      font-weight: 600 !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
       gap: 8px !important;
-      margin: 14px 0 !important;
+      padding: 9px !important;
+      margin-top: 10px !important;
+      border-radius: 8px !important;
+      border: 1px solid #FEE2E2 !important;
+      background: #FEF2F2 !important;
+      color: #DC2626 !important;
+      font-size: 13px !important;
+      font-weight: 600 !important;
       cursor: pointer !important;
       transition: all 0.15s ease !important;
-      outline: none !important;
     }
     .image1-logout-btn:hover {
-      background: #F1F5F9 !important;
-      border-color: #CBD5E1 !important;
-      color: #0F172A !important;
+      background: #FEE2E2 !important;
     }
-    .image1-logout-btn i {
-      font-size: 14px !important;
-    }
-
-    /* Promo Card (TheSandbox) */
     .image1-promo-card {
-      background: linear-gradient(135deg, #EEF4FF 0%, #DCE8FE 100%) !important;
-      border-radius: 16px !important;
-      padding: 14px 18px !important;
+      margin-top: 12px !important;
+      background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%) !important;
+      border-radius: 12px !important;
+      padding: 12px 14px !important;
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
-      gap: 12px !important;
-      border: none !important;
       cursor: pointer !important;
-      transition: transform 0.15s ease !important;
+      border: 1px solid #BFDBFE !important;
     }
-    .image1-promo-card:hover {
-      transform: translateY(-1px) !important;
-    }
-    .promo-text-wrap {
-      flex: 1 !important;
-      min-width: 0 !important;
-    }
-    .promo-title {
-      font-size: 13.5px !important;
-      font-weight: 700 !important;
-      color: #0F172A !important;
-      line-height: 1.35 !important;
-      margin-bottom: 4px !important;
-    }
-    .promo-link {
+    .promo-text-wrap .promo-title {
       font-size: 12px !important;
       font-weight: 700 !important;
-      color: #2563EB !important;
+      color: #1E3A8A !important;
+      line-height: 1.3 !important;
+    }
+    .promo-link {
+      font-size: 11px !important;
+      color: #2477E4 !important;
+      font-weight: 700 !important;
       text-decoration: none !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 4px !important;
-    }
-    .promo-link:hover {
-      text-decoration: underline !important;
-    }
-    .promo-graphic-wrap {
-      flex-shrink: 0 !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
     }
     .promo-briefcase-3d-img {
-      width: 68px !important;
-      height: 50px !important;
+      width: 36px !important;
+      height: 36px !important;
       object-fit: contain !important;
-      filter: drop-shadow(0 4px 10px rgba(37, 99, 235, 0.2)) !important;
     }
-</style>
+
+    /* Tier 2 Brand Nav Strip Post a Job Pill */
+    .brand-nav-post-job-pill {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      background: #2477E4 !important;
+      color: #FFFFFF !important;
+      font-family: inherit !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      padding: 6px 16px !important;
+      border-radius: 9999px !important;
+      border: none !important;
+      cursor: pointer !important;
+      letter-spacing: 0.2px !important;
+      box-shadow: 0 2px 8px rgba(36, 119, 228, 0.4) !important;
+      transition: all 0.2s ease !important;
+      margin-left: auto !important;
+    }
+    .brand-nav-post-job-pill:hover {
+      background: #1B65C7 !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 12px rgba(36, 119, 228, 0.5) !important;
+    }
+
+    /* Post a Job Modal Styles */
+    .modern-post-job-box {
+      max-width: 620px !important;
+      width: 90% !important;
+      background: #FFFFFF !important;
+      border-radius: 16px !important;
+      padding: 24px 28px !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+      max-height: 90vh !important;
+      overflow-y: auto !important;
+    }
+    .post-job-header-desc {
+      margin: 10px 0 18px !important;
+      border-bottom: 1px solid #E2E8F0 !important;
+      padding-bottom: 12px !important;
+    }
+    .post-job-header-desc h3 {
+      font-size: 19px !important;
+      font-weight: 700 !important;
+      color: #0F172A !important;
+      margin: 0 0 4px !important;
+    }
+    .post-job-header-desc p {
+      font-size: 13px !important;
+      color: #64748B !important;
+      margin: 0 !important;
+      line-height: 1.4 !important;
+    }
+    .form-row-2col {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 14px !important;
+    }
+    @media (max-width: 600px) {
+      .form-row-2col {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    .post-job-actions {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      gap: 12px !important;
+      margin-top: 20px !important;
+      padding-top: 16px !important;
+      border-top: 1px solid #E2E8F0 !important;
+    }
+    .btn-cancel-post-job {
+      background: #F1F5F9 !important;
+      color: #475569 !important;
+      border: 1px solid #E2E8F0 !important;
+      border-radius: 8px !important;
+      padding: 9px 18px !important;
+      font-size: 13.5px !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+    .btn-cancel-post-job:hover {
+      background: #E2E8F0 !important;
+      color: #0F172A !important;
+    }
+    .btn-submit-post-job {
+      background: #2477E4 !important;
+      color: #FFFFFF !important;
+      border: none !important;
+      border-radius: 8px !important;
+      padding: 9px 22px !important;
+      font-size: 13.5px !important;
+      font-weight: 700 !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      box-shadow: 0 2px 8px rgba(36, 119, 228, 0.3) !important;
+      transition: all 0.2s ease !important;
+    }
+    .btn-submit-post-job:hover {
+      background: #1B65C7 !important;
+      box-shadow: 0 4px 14px rgba(36, 119, 228, 0.4) !important;
+    }
+    .required-star {
+      color: #EF4444 !important;
+      font-weight: 700 !important;
+    }
+
+  </style>
 </head>
 <body id="top">
   <a href="#main-content" class="skip-to-main" style="position:absolute;left:-9999px;top:4px;z-index:9999;padding:8px 16px;background:#ff4743;color:#fff;font-weight:700;border-radius:4px;text-decoration:none;" onfocus="this.style.left='4px';" onblur="this.style.left='-9999px';">Chuyển đến nội dung chính</a>
@@ -741,24 +879,25 @@
         </div>
 
         <!-- Right: Modern Pill Search, Notification & User Profile with Role (Matching User Design) -->
-        <div class="header-top-right-group modern-header-actions" id="header-top-right-modern">
+                <div class="header-top-right-group modern-header-actions" id="header-top-right-modern">
           
-          <!-- Premium Dynamic Header Search Experience (Image 1 Style) -->
+          <!-- Search Icon Button (Matching Image 2) -->
           <div class="header-search-experience-wrapper" id="header-search-experience">
-            <div class="header-modern-search-capsule" id="header-search-capsule">
-              <div class="search-capsule-icon-wrap" id="btn-top-capsule-search">
-                <i class="fa-solid fa-magnifying-glass search-capsule-icon"></i>
-              </div>
-              <input type="text" id="top-capsule-search-input" placeholder="Search for jobs, companies, or keywords..." aria-label="Search for jobs, companies, or keywords..." autocomplete="off">
-              <kbd class="search-cmd-kbd" title="Press Ctrl+K to search"><span class="cmd-symbol">Ctrl</span> K</kbd>
-            </div>
+            <button type="button" class="header-search-icon-btn" id="btn-top-capsule-search" onclick="toggleHeaderSearch(event)" title="Search jobs, companies (Ctrl+K)" aria-label="Search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
 
-            <!-- Image 1 Intelligent Quick Suggestions Dropdown Popover -->
+            <!-- Search Popover with Input, Recent & Popular Searches -->
             <div class="image1-search-dropdown" id="search-suggestions-popover" style="display: none;">
+              <div class="search-popover-input-bar">
+                <i class="fa-solid fa-magnifying-glass search-popover-input-icon"></i>
+                <input type="text" id="top-capsule-search-input" placeholder="Search for jobs, companies, or keywords..." aria-label="Search for jobs, companies, or keywords..." autocomplete="off">
+              </div>
+
               <!-- Section 1: Recent Searches -->
               <div class="search-section-header">
                 <div class="section-title-group">
-                  <i class="fa-solid fa-magnifying-glass text-blue"></i>
+                  <i class="fa-solid fa-clock-rotate-left text-blue"></i>
                   <span class="section-title">Recent Searches</span>
                 </div>
                 <button type="button" class="btn-clear-recent" id="btn-clear-recent-searches" onclick="clearRecentSearches(event)">Clear All</button>
@@ -807,14 +946,14 @@
               <div class="search-section-header" style="margin-top: 14px;">
                 <div class="section-title-group">
                   <i class="fa-solid fa-building text-blue"></i>
-                  <span class="section-title">Companies</span>
+                  <span class="section-title">Top Companies</span>
                 </div>
-                <a href="#companies" class="btn-view-all-link" onclick="switchView('companies'); closeSearchPopover(); return false;">View all →</a>
+                <a href="#companies" class="view-all-companies-link" onclick="switchView('companies'); closeAllDropdowns();">View all &rarr;</a>
               </div>
               <div class="companies-quick-list">
-                <div class="company-quick-row" onclick="selectQuickSearch('A.P. Moller - Maersk')">
-                  <div class="company-logo-wrap" style="width:32px!important; height:32px!important; min-width:32px!important; max-width:32px!important; min-height:32px!important; max-height:32px!important; display:flex!important; align-items:center!important; justify-content:center!important; overflow:hidden!important;">
-                    <img src="images/brands/maersk.svg" alt="Maersk" width="24" height="24" style="width:24px!important; height:24px!important; max-width:24px!important; max-height:24px!important; object-fit:contain!important; display:block!important;">
+                <div class="company-quick-row" onclick="selectQuickSearch('Maersk')">
+                  <div class="company-logo-wrap">
+                    <img src="images/brands/maersk.svg" alt="Maersk" width="20" height="20" style="width:20px; height:20px; object-fit:contain;">
                   </div>
                   <div class="company-quick-info">
                     <div class="company-quick-name">A.P. Moller - Maersk</div>
@@ -822,9 +961,9 @@
                   </div>
                   <i class="fa-solid fa-chevron-right company-arrow"></i>
                 </div>
-                <div class="company-quick-row" onclick="selectQuickSearch('VinFast Logistics')">
-                  <div class="company-logo-wrap" style="width:32px!important; height:32px!important; min-width:32px!important; max-width:32px!important; min-height:32px!important; max-height:32px!important; display:flex!important; align-items:center!important; justify-content:center!important; overflow:hidden!important;">
-                    <img src="images/brands/vinfast.svg" alt="VinFast" width="24" height="24" style="width:24px!important; height:24px!important; max-width:24px!important; max-height:24px!important; object-fit:contain!important; display:block!important;">
+                <div class="company-quick-row" onclick="selectQuickSearch('VinFast')">
+                  <div class="company-logo-wrap">
+                    <img src="images/brands/vinfast.svg" alt="VinFast" width="20" height="20" style="width:20px; height:20px; object-fit:contain;">
                   </div>
                   <div class="company-quick-info">
                     <div class="company-quick-name">VinFast Logistics</div>
@@ -833,8 +972,8 @@
                   <i class="fa-solid fa-chevron-right company-arrow"></i>
                 </div>
                 <div class="company-quick-row" onclick="selectQuickSearch('FPT Software')">
-                  <div class="company-logo-wrap" style="width:32px!important; height:32px!important; min-width:32px!important; max-width:32px!important; min-height:32px!important; max-height:32px!important; display:flex!important; align-items:center!important; justify-content:center!important; overflow:hidden!important;">
-                    <img src="images/brands/fpt.svg" alt="FPT Software" width="24" height="24" style="width:24px!important; height:24px!important; max-width:24px!important; max-height:24px!important; object-fit:contain!important; display:block!important;">
+                  <div class="company-logo-wrap">
+                    <img src="images/brands/fpt.svg" alt="FPT Software" width="20" height="20" style="width:20px; height:20px; object-fit:contain;">
                   </div>
                   <div class="company-quick-info">
                     <div class="company-quick-name">FPT Software</div>
@@ -846,8 +985,7 @@
             </div>
           </div>
 
-          <!-- Notification Bell (Matching Image 1 Design with Badge 3) -->
-                    <!-- Notification Bell (Matching Reference Image) -->
+          <!-- Notification Bell with Red Badge -->
           <div class="header-notification-wrapper" id="header-notification-wrapper">
             <button type="button" class="clean-bell-btn" id="btn-header-notifications" title="Notifications" aria-label="Notifications" onclick="toggleNotificationPopover(event)">
               <i class="fa-solid fa-bell"></i>
@@ -885,78 +1023,69 @@
             </div>
           </div>
 
-          <!-- User Profile & Role Trigger (Matching Reference Image: Avatar Circle + Chevron next to it) -->
+          <!-- Vertical Divider (Matching Image 2) -->
+          <div class="header-action-divider" aria-hidden="true"></div>
+
+          <!-- Blue Pill Button: Post a Job (Matching Image 2) -->
+          <button type="button" class="header-post-job-btn" id="btn-header-post-job" onclick="openPostJobModal();" title="Post a Job">
+            Post a Job
+          </button>
+
+          <!-- Circular User Profile Button (Matching Image 2 User Silhouette) -->
           <div class="header-user-profile-capsule" id="header-user-profile">
-            <button type="button" class="clean-profile-trigger-btn" id="btn-header-user-profile" onclick="toggleFacebookProfileMenu(event)" aria-haspopup="true" aria-expanded="false" title="Account (Thean Lê)">
-              <img src="images/user_avatar_header.png?v=3" alt="Thean Lê" class="clean-avatar-circle" id="header-avatar-img">
-              <i class="fa-solid fa-chevron-down clean-avatar-chevron" aria-hidden="true"></i>
+            <button type="button" class="clean-profile-trigger-btn" id="btn-header-user-profile" onclick="toggleFacebookProfileMenu(event)" aria-haspopup="true" aria-expanded="false" title="Account">
+              <div class="clean-avatar-circle-icon"><i class="fa-solid fa-user"></i></div>
             </button>
 
-            <!-- Image 1 Pixel-Perfect Profile Dropdown Popover -->
+            <!-- Profile Dropdown Popover -->
             <div class="image1-profile-menu modern-profile-menu" id="modern-profile-menu" style="display: none;">
               <!-- Profile Header: Avatar with Green Dot + Name + Role Pill -->
               <div class="image1-profile-header">
                 <div class="image1-avatar-wrap">
-                  <img src="images/user_avatar_header.png?v=3" alt="Thean Lê" class="image1-avatar-img">
+                  <div class="clean-avatar-circle-icon in-menu"><i class="fa-solid fa-user"></i></div>
                   <span class="image1-status-dot" title="Active Now"></span>
                 </div>
                 <div class="image1-user-details">
                   <div class="image1-user-name" id="dropdown-user-name">Thean Lê</div>
                   <div class="image1-user-email" id="dropdown-user-email">thean@example.com</div>
-                  <button type="button" class="image1-role-badge" id="dropdown-user-role-badge" onclick="cycleUserRole(event)" title="Click to switch role">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <span id="badge-role-label">Logistics Specialist</span>
-                    <i class="fa-solid fa-chevron-down role-pill-chevron"></i>
-                  </button>
+                  <div class="image1-role-row">
+                    <span class="image1-role-badge" id="dropdown-user-role-badge">Candidate</span>
+                    <button type="button" class="image1-switch-role-btn" id="btn-switch-role" onclick="cycleUserRole(event)" title="Switch between Candidate and Employer role">
+                      Switch &harr;
+                    </button>
+                  </div>
                 </div>
               </div>
 
-              <!-- Menu Section 1 -->
-              <div class="image1-menu-section">
-                <a href="#candidate-cv" class="image1-menu-row" onclick="navigateTo('profile'); return false;">
-                  <div class="row-left">
-                    <i class="fa-regular fa-user row-icon"></i>
-                    <span class="row-label">My Profile</span>
-                  </div>
-                  <i class="fa-solid fa-chevron-right row-arrow"></i>
-                </a>
-                <a href="#browse" class="image1-menu-row" onclick="navigateTo('browse'); return false;">
+              <!-- Quick Action / Menu Links -->
+              <div class="image1-menu-links">
+                <a href="#browse" class="image1-menu-row" onclick="switchView('browse'); closeAllDropdowns(); return false;">
                   <div class="row-left">
                     <i class="fa-solid fa-briefcase row-icon"></i>
-                    <span class="row-label">My Jobs</span>
+                    <span class="row-label">My Applications &amp; Saved Jobs</span>
                   </div>
-                  <div class="row-right-group">
-                    <span class="count-badge-blue">12</span>
-                    <i class="fa-solid fa-chevron-right row-arrow"></i>
-                  </div>
+                  <span class="row-count-badge">5</span>
                 </a>
-                <a href="#saved-jobs" class="image1-menu-row" onclick="navigateTo('saved-jobs'); return false;">
+                <a href="#post-job" class="image1-menu-row" onclick="openPostJobModal(); return false;">
                   <div class="row-left">
-                    <i class="fa-regular fa-bookmark row-icon"></i>
-                    <span class="row-label">Saved Jobs</span>
+                    <i class="fa-solid fa-file-circle-plus row-icon"></i>
+                    <span class="row-label">Post a Job Opening</span>
                   </div>
-                  <i class="fa-solid fa-chevron-right row-arrow"></i>
                 </a>
-                <a href="#applications" class="image1-menu-row" onclick="navigateTo('applications'); return false;">
+                <a href="#courses" class="image1-menu-row" onclick="switchView('courses'); closeAllDropdowns(); return false;">
                   <div class="row-left">
-                    <i class="fa-regular fa-rectangle-list row-icon"></i>
-                    <span class="row-label">My Applications</span>
+                    <i class="fa-solid fa-graduation-cap row-icon"></i>
+                    <span class="row-label">Enrolled Courses &amp; Certs</span>
                   </div>
-                  <i class="fa-solid fa-chevron-right row-arrow"></i>
+                  <span class="row-count-badge">2</span>
                 </a>
-              </div>
-
-              <div class="image1-menu-divider"></div>
-
-              <!-- Menu Section 2 (Matching Reference Image: Clean rows without right chevrons) -->
-              <div class="image1-menu-section">
-                <a href="#settings" class="image1-menu-row" onclick="navigateTo('settings'); return false;">
+                <a href="#settings" class="image1-menu-row" onclick="showToast('Cài đặt tài khoản người dùng'); closeAllDropdowns(); return false;">
                   <div class="row-left">
                     <i class="fa-solid fa-gear row-icon"></i>
                     <span class="row-label">Account Settings</span>
                   </div>
                 </a>
-                <a href="#security" class="image1-menu-row" onclick="showToast('Security & 2FA Settings'); closeAllDropdowns(); return false;">
+                <a href="#security" class="image1-menu-row" onclick="showToast('Bảo mật &amp; Xác thực 2 bước'); closeAllDropdowns(); return false;">
                   <div class="row-left">
                     <i class="fa-solid fa-shield-halved row-icon"></i>
                     <span class="row-label">Security &amp; 2FA</span>
@@ -1021,9 +1150,7 @@
           </button>
         </div>
 
-        <div class="brand-nav-badge-right" id="nav-btn-hot-badge" data-view="browse" onclick="switchView('browse');">
-          <i class="fa-solid fa-fire"></i> HOT JOB
-        </div>
+        <button type="button" class="brand-nav-post-job-pill" id="nav-btn-hot-badge" onclick="openPostJobModal();" title="Post a Job Opening"><i class="fa-solid fa-plus"></i> Post a Job</button>
 
       </div>
     </nav>
@@ -3343,6 +3470,98 @@
   <!-- ==========================================================================
        AUTH MODAL (ĐĂNG NHẬP / ĐĂNG KÝ VỚI LỰA CHỌN VAI TRÒ ROLE-BASED)
        ========================================================================== -->
+    <!-- ==========================================================================
+       POST A JOB MODAL (#modal-post-job)
+       ========================================================================== -->
+  <div class="modal-backdrop" id="modal-post-job" hidden>
+    <div class="quick-apply-modal-box modern-post-job-box">
+      <div class="modal-auth-header">
+        <div class="modal-auth-brand">
+          <span class="auth-brand-logo">Vietnam<span style="color:#2477E4">Jobs</span></span>
+          <span class="auth-brand-divider">|</span>
+          <span class="auth-brand-subtitle">Employer Portal &bull; Post a Job</span>
+        </div>
+        <button type="button" class="modal-close-btn" id="close-post-job-modal" onclick="closePostJobModal();" aria-label="Close">&times;</button>
+      </div>
+
+      <div class="post-job-header-desc">
+        <h3>Post a New Job Opening</h3>
+        <p>Reach over 50,000+ verified logistics, supply chain and forwarding professionals across Vietnam.</p>
+      </div>
+
+      <form id="form-post-job" onsubmit="handlePostJobSubmit(event)">
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="post-job-title">Job Title <span class="required-star">*</span></label>
+            <input type="text" id="post-job-title" class="form-control" placeholder="e.g. Senior Ocean Freight Forwarder" required>
+          </div>
+          <div class="form-group">
+            <label for="post-job-company">Company Name <span class="required-star">*</span></label>
+            <input type="text" id="post-job-company" class="form-control" placeholder="e.g. DHL Global Forwarding" required>
+          </div>
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="post-job-category">Specialization / Mode <span class="required-star">*</span></label>
+            <select id="post-job-category" class="form-control" required>
+              <option value="Freight Forwarding">Freight Forwarding (Sea / Air)</option>
+              <option value="Supply Chain">Supply Chain &amp; Logistics Management</option>
+              <option value="Customs & Compliance">Customs Clearance &amp; Compliance</option>
+              <option value="Warehouse & 3PL">Warehouse Operations &amp; 3PL</option>
+              <option value="Cold Chain">Cold Chain Logistics</option>
+              <option value="Logistics Tech">Logistics Software &amp; Tech</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="post-job-type">Employment Type</label>
+            <select id="post-job-type" class="form-control">
+              <option value="Full-time">Full-time (Toàn thời gian)</option>
+              <option value="Hybrid">Hybrid (Linh hoạt)</option>
+              <option value="Remote">Remote (Từ xa)</option>
+              <option value="Contract">Contract / Dự án</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="post-job-location">Location <span class="required-star">*</span></label>
+            <select id="post-job-location" class="form-control" required>
+              <option value="Ho Chi Minh City">Ho Chi Minh City (TP. Hồ Chí Minh)</option>
+              <option value="Hanoi">Hanoi (Hà Nội)</option>
+              <option value="Hai Phong">Hai Phong (Hải Phòng)</option>
+              <option value="Da Nang">Da Nang (Đà Nẵng)</option>
+              <option value="Binh Duong / Dong Nai">Bình Dương / Đồng Nai</option>
+              <option value="Nationwide / Remote">Toàn quốc (Nationwide)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="post-job-salary">Salary Range</label>
+            <input type="text" id="post-job-salary" class="form-control" placeholder="e.g. ₫25.000.000 - ₫40.000.000 / mo" value="₫25.000.000 - ₫40.000.000 / mo">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="post-job-desc">Job Description &amp; Requirements <span class="required-star">*</span></label>
+          <textarea id="post-job-desc" class="form-control" rows="4" placeholder="Briefly describe key responsibilities, requirements, and benefits..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="post-job-email">Contact / Application Email <span class="required-star">*</span></label>
+          <input type="email" id="post-job-email" class="form-control" placeholder="hr@company.com" required>
+        </div>
+
+        <div class="post-job-actions">
+          <button type="button" class="btn-cancel-post-job" onclick="closePostJobModal();">Cancel</button>
+          <button type="submit" class="btn-submit-post-job">
+            <i class="fa-solid fa-paper-plane"></i> Publish Job Opening
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <div class="modal-backdrop" id="modal-auth" hidden>
     <div class="quick-apply-modal-box modern-auth-box">
       <div class="modal-auth-header">

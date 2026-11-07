@@ -2,7 +2,88 @@
    VIETNAM RECRUITMENT MARKETPLACE - APP LOGIC & SPA CONTROLLER
    ========================================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+
+    // Post a Job Modal Functions
+    window.openPostJobModal = function() {
+      if (typeof window.closeAllDropdowns === 'function') window.closeAllDropdowns();
+      const modal = document.getElementById('modal-post-job');
+      if (modal) {
+        modal.removeAttribute('hidden');
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }
+    };
+
+    window.closePostJobModal = function() {
+      const modal = document.getElementById('modal-post-job');
+      if (modal) {
+        modal.setAttribute('hidden', '');
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+    };
+
+    window.handlePostJobSubmit = function(e) {
+      if (e) e.preventDefault();
+      const title = document.getElementById('post-job-title')?.value || 'Job Opening';
+      if (typeof window.showToast === 'function') {
+        window.showToast(`🎉 Tin tuyển dụng "${title}" đã được đăng thành công! Tin sẽ được duyệt trong 15 phút.`);
+      }
+      window.closePostJobModal();
+      document.getElementById('form-post-job')?.reset();
+    };
+
+    // Header Search Toggle Function
+    window.toggleHeaderSearch = function(e) {
+      if (e) e.stopPropagation();
+      const searchPopover = document.getElementById('search-suggestions-popover');
+      const userMenu = document.getElementById('modern-profile-menu') || document.getElementById('user-dropdown-menu');
+      const notifPopover = document.getElementById('notification-popover');
+      if (userMenu) userMenu.classList.remove('show');
+      if (notifPopover) {
+        notifPopover.classList.remove('show');
+        notifPopover.style.display = 'none';
+      }
+      if (searchPopover) {
+        const isShowing = searchPopover.classList.contains('active') || searchPopover.style.display === 'block';
+        if (isShowing) {
+          searchPopover.classList.remove('active');
+          searchPopover.style.display = 'none';
+        } else {
+          searchPopover.classList.add('active');
+          searchPopover.style.display = 'block';
+          setTimeout(() => {
+            const input = document.getElementById('top-capsule-search-input');
+            if (input) input.focus();
+          }, 50);
+        }
+      }
+    };
+
+    // Notification Popover Toggle Function
+    window.toggleNotificationPopover = function(e) {
+      if (e) e.stopPropagation();
+      const notifPopover = document.getElementById('notification-popover');
+      const userMenu = document.getElementById('modern-profile-menu') || document.getElementById('user-dropdown-menu');
+      const searchPopover = document.getElementById('search-suggestions-popover');
+      if (userMenu) userMenu.classList.remove('show');
+      if (searchPopover) {
+        searchPopover.classList.remove('active');
+        searchPopover.style.display = 'none';
+      }
+      if (notifPopover) {
+        const isShowing = notifPopover.classList.contains('show') || notifPopover.style.display === 'block';
+        if (isShowing) {
+          notifPopover.classList.remove('show');
+          notifPopover.style.display = 'none';
+        } else {
+          notifPopover.classList.add('show');
+          notifPopover.style.display = 'block';
+        }
+      }
+    };
+
+  document.addEventListener('DOMContentLoaded', () => {
 
   /* ==========================================================================
      ROUTE METADATA & DYNAMIC SEO / SCHEMA.ORG
@@ -1346,7 +1427,8 @@ document.addEventListener('DOMContentLoaded', () => {
       userProfileCapsule?.classList.remove('open');
       notifPopover?.classList.remove('show');
       const searchPopover = document.getElementById('search-suggestions-popover');
-      if (searchPopover) searchPopover.classList.remove('active');
+      if (searchPopover) { searchPopover.classList.remove('active'); searchPopover.style.display = 'none'; }
+      if (notifPopover) { notifPopover.classList.remove('show'); notifPopover.style.display = 'none'; }
       const searchCapsule = document.getElementById('header-search-capsule');
       if (searchCapsule) searchCapsule.classList.remove('focused');
       const btn = document.getElementById('btn-header-user-profile');
@@ -1361,7 +1443,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const notifPopover = document.getElementById('notification-popover');
       if (notifPopover) notifPopover.classList.remove('show');
       const searchPopover = document.getElementById('search-suggestions-popover');
-      if (searchPopover) searchPopover.classList.remove('active');
+      if (searchPopover) { searchPopover.classList.remove('active'); searchPopover.style.display = 'none'; }
+      if (notifPopover) { notifPopover.classList.remove('show'); notifPopover.style.display = 'none'; }
 
       if (!menu) return;
       const isOpen = menu.classList.contains('show');
@@ -1614,7 +1697,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const closeSearchPopover = () => {
-      if (searchPopover) searchPopover.classList.remove('active');
+      if (searchPopover) { searchPopover.classList.remove('active'); searchPopover.style.display = 'none'; }
+      if (notifPopover) { notifPopover.classList.remove('show'); notifPopover.style.display = 'none'; }
       if (searchCapsule) searchCapsule.classList.remove('focused');
     };
 
@@ -3616,7 +3700,88 @@ window.submitCompanyContactForm = function(e) {
 };
 
 // Wire Top Nav "Companies" Button
-document.addEventListener('DOMContentLoaded', () => {
+
+    // Post a Job Modal Functions
+    window.openPostJobModal = function() {
+      if (typeof window.closeAllDropdowns === 'function') window.closeAllDropdowns();
+      const modal = document.getElementById('modal-post-job');
+      if (modal) {
+        modal.removeAttribute('hidden');
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }
+    };
+
+    window.closePostJobModal = function() {
+      const modal = document.getElementById('modal-post-job');
+      if (modal) {
+        modal.setAttribute('hidden', '');
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+    };
+
+    window.handlePostJobSubmit = function(e) {
+      if (e) e.preventDefault();
+      const title = document.getElementById('post-job-title')?.value || 'Job Opening';
+      if (typeof window.showToast === 'function') {
+        window.showToast(`🎉 Tin tuyển dụng "${title}" đã được đăng thành công! Tin sẽ được duyệt trong 15 phút.`);
+      }
+      window.closePostJobModal();
+      document.getElementById('form-post-job')?.reset();
+    };
+
+    // Header Search Toggle Function
+    window.toggleHeaderSearch = function(e) {
+      if (e) e.stopPropagation();
+      const searchPopover = document.getElementById('search-suggestions-popover');
+      const userMenu = document.getElementById('modern-profile-menu') || document.getElementById('user-dropdown-menu');
+      const notifPopover = document.getElementById('notification-popover');
+      if (userMenu) userMenu.classList.remove('show');
+      if (notifPopover) {
+        notifPopover.classList.remove('show');
+        notifPopover.style.display = 'none';
+      }
+      if (searchPopover) {
+        const isShowing = searchPopover.classList.contains('active') || searchPopover.style.display === 'block';
+        if (isShowing) {
+          searchPopover.classList.remove('active');
+          searchPopover.style.display = 'none';
+        } else {
+          searchPopover.classList.add('active');
+          searchPopover.style.display = 'block';
+          setTimeout(() => {
+            const input = document.getElementById('top-capsule-search-input');
+            if (input) input.focus();
+          }, 50);
+        }
+      }
+    };
+
+    // Notification Popover Toggle Function
+    window.toggleNotificationPopover = function(e) {
+      if (e) e.stopPropagation();
+      const notifPopover = document.getElementById('notification-popover');
+      const userMenu = document.getElementById('modern-profile-menu') || document.getElementById('user-dropdown-menu');
+      const searchPopover = document.getElementById('search-suggestions-popover');
+      if (userMenu) userMenu.classList.remove('show');
+      if (searchPopover) {
+        searchPopover.classList.remove('active');
+        searchPopover.style.display = 'none';
+      }
+      if (notifPopover) {
+        const isShowing = notifPopover.classList.contains('show') || notifPopover.style.display === 'block';
+        if (isShowing) {
+          notifPopover.classList.remove('show');
+          notifPopover.style.display = 'none';
+        } else {
+          notifPopover.classList.add('show');
+          notifPopover.style.display = 'block';
+        }
+      }
+    };
+
+  document.addEventListener('DOMContentLoaded', () => {
   initCompaniesDirectory();
 
   // Ensure any [data-view="companies"] button opens companies directory
@@ -4822,7 +4987,88 @@ window.openJobDetailSplit = function(jobId) {
 };
 
 // Auto initialize on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
+
+    // Post a Job Modal Functions
+    window.openPostJobModal = function() {
+      if (typeof window.closeAllDropdowns === 'function') window.closeAllDropdowns();
+      const modal = document.getElementById('modal-post-job');
+      if (modal) {
+        modal.removeAttribute('hidden');
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }
+    };
+
+    window.closePostJobModal = function() {
+      const modal = document.getElementById('modal-post-job');
+      if (modal) {
+        modal.setAttribute('hidden', '');
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+    };
+
+    window.handlePostJobSubmit = function(e) {
+      if (e) e.preventDefault();
+      const title = document.getElementById('post-job-title')?.value || 'Job Opening';
+      if (typeof window.showToast === 'function') {
+        window.showToast(`🎉 Tin tuyển dụng "${title}" đã được đăng thành công! Tin sẽ được duyệt trong 15 phút.`);
+      }
+      window.closePostJobModal();
+      document.getElementById('form-post-job')?.reset();
+    };
+
+    // Header Search Toggle Function
+    window.toggleHeaderSearch = function(e) {
+      if (e) e.stopPropagation();
+      const searchPopover = document.getElementById('search-suggestions-popover');
+      const userMenu = document.getElementById('modern-profile-menu') || document.getElementById('user-dropdown-menu');
+      const notifPopover = document.getElementById('notification-popover');
+      if (userMenu) userMenu.classList.remove('show');
+      if (notifPopover) {
+        notifPopover.classList.remove('show');
+        notifPopover.style.display = 'none';
+      }
+      if (searchPopover) {
+        const isShowing = searchPopover.classList.contains('active') || searchPopover.style.display === 'block';
+        if (isShowing) {
+          searchPopover.classList.remove('active');
+          searchPopover.style.display = 'none';
+        } else {
+          searchPopover.classList.add('active');
+          searchPopover.style.display = 'block';
+          setTimeout(() => {
+            const input = document.getElementById('top-capsule-search-input');
+            if (input) input.focus();
+          }, 50);
+        }
+      }
+    };
+
+    // Notification Popover Toggle Function
+    window.toggleNotificationPopover = function(e) {
+      if (e) e.stopPropagation();
+      const notifPopover = document.getElementById('notification-popover');
+      const userMenu = document.getElementById('modern-profile-menu') || document.getElementById('user-dropdown-menu');
+      const searchPopover = document.getElementById('search-suggestions-popover');
+      if (userMenu) userMenu.classList.remove('show');
+      if (searchPopover) {
+        searchPopover.classList.remove('active');
+        searchPopover.style.display = 'none';
+      }
+      if (notifPopover) {
+        const isShowing = notifPopover.classList.contains('show') || notifPopover.style.display === 'block';
+        if (isShowing) {
+          notifPopover.classList.remove('show');
+          notifPopover.style.display = 'none';
+        } else {
+          notifPopover.classList.add('show');
+          notifPopover.style.display = 'block';
+        }
+      }
+    };
+
+  document.addEventListener('DOMContentLoaded', () => {
   renderSplitJobList();
   renderSplitJobDetail(currentSplitJobId);
 });

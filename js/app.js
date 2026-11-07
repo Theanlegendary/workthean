@@ -277,6 +277,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     state.currentView = viewId;
 
+    // Ensure all header dropdowns and popovers are closed on view switch
+    const searchPop = document.getElementById('search-suggestions-popover');
+    if (searchPop) searchPop.classList.remove('active');
+    const searchCapsule = document.getElementById('header-search-capsule');
+    if (searchCapsule) searchCapsule.classList.remove('focused');
+    const notifPop = document.getElementById('notification-popover');
+    if (notifPop) notifPop.classList.remove('show');
+    const profMenu = document.getElementById('modern-profile-menu') || document.getElementById('user-dropdown-menu');
+    if (profMenu) profMenu.classList.remove('show');
+
     document.querySelectorAll('.app-view').forEach(view => view.classList.remove('active-view'));
     const activeEl = document.getElementById(`view-${viewId}`);
     if (activeEl) {

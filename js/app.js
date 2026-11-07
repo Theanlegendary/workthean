@@ -399,6 +399,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (typeof window.switchDashboardTab === 'function') window.switchDashboardTab('applications');
       return;
     }
+    if (rawHash === 'post-job' || rawHash === 'postajob' || rawHash === 'employer' || rawHash === 'dang-tin') {
+      switchView('post-job', false);
+      return;
+    }
     if (rawHash === 'settings') {
       switchView('dashboard', false);
       if (typeof window.switchDashboardTab === 'function') window.switchDashboardTab('settings');
@@ -452,6 +456,9 @@ document.addEventListener('DOMContentLoaded', () => {
       switchView('dashboard');
       if (typeof window.switchDashboardTab === 'function') window.switchDashboardTab('settings');
       window.location.hash = 'settings';
+    } else if (routeName === 'post-job' || routeName === 'employer' || routeName === 'postajob' || routeName === 'dang-tin') {
+      switchView('post-job');
+      window.location.hash = 'post-job';
     } else if (routeName === 'dashboard') {
       switchView('dashboard');
       if (params.tab && typeof window.switchDashboardTab === 'function') {

@@ -105,7 +105,8 @@
   <link rel="stylesheet" href="css/split-jobs.css?v=2.2">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/article.css?v=2.3">
-  <link rel="stylesheet" href="css/companies.css?v=2.4">
+  <link rel="stylesheet" href="css/companies.css?v=2.3">
+  <link rel="stylesheet" href="css/post-job.css?v=1.0">
   <style id="critical-header-search-style">
     /* Header Top Actions Flex Group (Pixel-Perfect Clean Layout Matching Reference) */
     .header-top-right-group.modern-header-actions {
@@ -920,6 +921,13 @@
                   </div>
                   <i class="fa-solid fa-chevron-right row-arrow"></i>
                 </a>
+                <a href="#post-job" class="image1-menu-row" onclick="navigateTo('post-job'); return false;">
+                  <div class="row-left">
+                    <i class="fa-solid fa-file-circle-plus row-icon" style="color: #0A66C2;"></i>
+                    <span class="row-label" style="font-weight: 600; color: #0A66C2;">Post a Job Opening</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right row-arrow"></i>
+                </a>
                 <a href="#browse" class="image1-menu-row" onclick="navigateTo('browse'); return false;">
                   <div class="row-left">
                     <i class="fa-solid fa-briefcase row-icon"></i>
@@ -1015,6 +1023,9 @@
           </button>
           <button type="button" class="brand-nav-item" data-view="courses" onclick="switchView('courses'); return false;">
             Khóa Học &amp; Chứng Chỉ
+          </button>
+          <button type="button" class="brand-nav-item" data-view="post-job" onclick="navigateTo('post-job'); return false;">
+            <i class="fa-solid fa-file-circle-plus" style="margin-right: 5px; color: #93C5FD; font-size: 13px;"></i> Đăng Tin Tuyển Dụng
           </button>
           <button type="button" class="brand-nav-item" data-action="about" onclick="scrollToAbout(); return false;">
             About Us
@@ -3005,6 +3016,387 @@
 
     </div><!-- /#view-article -->
 
+  
+    <!-- ========================================================================
+         VIEW: POST A JOB / EMPLOYER PORTAL (#view-post-job)
+         ======================================================================== -->
+    <section class="app-view" id="view-post-job" role="region" aria-label="Đăng Tin Tuyển Dụng">
+      <div class="post-job-view-wrapper">
+        
+        <!-- Top Navigation Bar -->
+        <div class="post-job-top-bar">
+          <button type="button" class="btn-back-to-home" onclick="navigateTo('home'); return false;">
+            <i class="fa-solid fa-arrow-left"></i> Quay lại Trang Chủ
+          </button>
+          <div class="post-job-badge-secure">
+            <i class="fa-solid fa-shield-halved"></i> Cổng Doanh Nghiệp &amp; Tuyển Dụng Quốc Gia Xác Thực
+          </div>
+        </div>
+
+        <!-- Employer Hero Banner -->
+        <div class="post-job-hero">
+          <div class="post-job-hero-tag">
+            <i class="fa-solid fa-building"></i> EMPLOYER &amp; RECRUITER PORTAL
+          </div>
+          <h1 class="post-job-hero-title">Đăng Tin Tuyển Dụng Mới (Post a Job Opening)</h1>
+          <p class="post-job-hero-sub">
+            Tiếp cận hơn 500.000+ nhân sự logistics, supply chain, xuất nhập khẩu và công nghệ hàng đầu tại Việt Nam. Tin đăng của bạn sẽ được kiểm duyệt và hiển thị trực tuyến trong vòng 15 phút.
+          </p>
+          <div class="post-job-hero-perks">
+            <div class="hero-perk-item"><i class="fa-solid fa-bolt"></i> Duyệt tin nhanh 15 phút</div>
+            <div class="hero-perk-item"><i class="fa-solid fa-bullseye"></i> AI Matching ứng viên tự động</div>
+            <div class="hero-perk-item"><i class="fa-solid fa-chart-line"></i> Báo cáo tiếp cận thời gian thực</div>
+            <div class="hero-perk-item"><i class="fa-solid fa-circle-check"></i> Huy hiệu Nhà tuyển dụng uy tín</div>
+          </div>
+        </div>
+
+        <!-- 2-Column Layout Grid -->
+        <div class="post-job-layout-grid">
+          
+          <!-- Left Column: Comprehensive Job Creation Form -->
+          <form class="post-job-form-col" id="form-create-job-posting" onsubmit="handlePublishJob(event)">
+            
+            <!-- Card 1: Job Basics -->
+            <div class="post-job-card">
+              <div class="post-job-card-header">
+                <div class="card-header-left">
+                  <div class="card-step-badge">1</div>
+                  <div>
+                    <h2 class="card-header-title">Thông Tin Vị Trí Tuyển Dụng</h2>
+                    <p class="card-header-sub">Tiêu đề, ngành nghề, cấp bậc và địa điểm làm việc</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pj-form-group">
+                <label class="pj-label" for="pj-job-title">Tiêu đề công việc <span class="req">*</span></label>
+                <input type="text" id="pj-job-title" class="pj-input" placeholder="Ví dụ: Senior Logistics Operations Specialist" value="Senior Logistics Operations Specialist" required>
+                <div class="quick-chip-wrap">
+                  <span style="font-size: 11.5px; color: #64748B; margin-right: 4px; display: inline-flex; align-items: center;">Gợi ý nhanh:</span>
+                  <button type="button" class="chip-btn" onclick="setJobTitleFromChip('Freight Forwarding Specialist')">Freight Forwarding Specialist</button>
+                  <button type="button" class="chip-btn" onclick="setJobTitleFromChip('Warehouse Operations Supervisor')">Warehouse Supervisor</button>
+                  <button type="button" class="chip-btn" onclick="setJobTitleFromChip('Customs Clearance Lead')">Customs Clearance Lead</button>
+                  <button type="button" class="chip-btn" onclick="setJobTitleFromChip('Supply Chain Planner')">Supply Chain Planner</button>
+                  <button type="button" class="chip-btn" onclick="setJobTitleFromChip('Logistics Tech Product Manager')">Logistics Tech PM</button>
+                </div>
+              </div>
+
+              <div class="form-row-2col">
+                <div class="pj-form-group">
+                  <label class="pj-label" for="pj-category">Ngành nghề / Lĩnh vực <span class="req">*</span></label>
+                  <select id="pj-category" class="pj-select">
+                    <option value="logistics-freight" selected>Logistics &amp; Vận Tải Quốc Tế</option>
+                    <option value="warehouse-fulfillment">Kho Bãi &amp; Fulfillment</option>
+                    <option value="import-export">Xuất Nhập Khẩu &amp; Hải Quan</option>
+                    <option value="supply-chain">Quản Lý Chuỗi Cung Ứng</option>
+                    <option value="it-logistics">Công Nghệ &amp; IT Logistics</option>
+                    <option value="procurement">Thu Mua &amp; Quản Lý Nhà Cung Cấp</option>
+                  </select>
+                </div>
+
+                <div class="pj-form-group">
+                  <label class="pj-label" for="pj-experience-level">Cấp bậc / Kinh nghiệm <span class="req">*</span></label>
+                  <select id="pj-experience-level" class="pj-select">
+                    <option value="Thực tập sinh / Mới tốt nghiệp">Thực tập sinh / Mới tốt nghiệp</option>
+                    <option value="Nhân viên (1-2 năm)">Nhân viên (1-2 năm)</option>
+                    <option value="Chuyên viên (2-4 năm)" selected>Chuyên viên (2-4 năm)</option>
+                    <option value="Trưởng nhóm / Giám sát (3-5 năm)">Trưởng nhóm / Giám sát (3-5 năm)</option>
+                    <option value="Quản lý / Trưởng phòng (5+ năm)">Quản lý / Trưởng phòng (5+ năm)</option>
+                    <option value="Giám đốc / Lãnh đạo">Giám đốc / Lãnh đạo</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="pj-form-group">
+                <label class="pj-label">Hình thức &amp; Chế độ làm việc <span class="req">*</span></label>
+                <div class="radio-pill-group">
+                  <label class="radio-pill-item">
+                    <input type="radio" name="pj_work_mode" value="Hybrid" checked>
+                    <span class="radio-pill-label"><i class="fa-solid fa-building-user"></i> Hybrid (Linh hoạt)</span>
+                  </label>
+                  <label class="radio-pill-item">
+                    <input type="radio" name="pj_work_mode" value="On-site">
+                    <span class="radio-pill-label"><i class="fa-solid fa-briefcase"></i> Tại văn phòng (On-site)</span>
+                  </label>
+                  <label class="radio-pill-item">
+                    <input type="radio" name="pj_work_mode" value="Remote">
+                    <span class="radio-pill-label"><i class="fa-solid fa-house-laptop"></i> Từ xa (Remote)</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-row-2col">
+                <div class="pj-form-group">
+                  <label class="pj-label" for="pj-location-province">Tỉnh / Thành phố làm việc <span class="req">*</span></label>
+                  <select id="pj-location-province" class="pj-select">
+                    <option value="TP. Hồ Chí Minh" selected>TP. Hồ Chí Minh</option>
+                    <option value="Hà Nội">Hà Nội</option>
+                    <option value="Bình Dương">Bình Dương</option>
+                    <option value="Hải Phòng">Hải Phòng</option>
+                    <option value="Đà Nẵng">Đà Nẵng</option>
+                    <option value="Đồng Nai">Đồng Nai</option>
+                    <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                    <option value="Bắc Ninh">Bắc Ninh</option>
+                  </select>
+                </div>
+
+                <div class="pj-form-group">
+                  <label class="pj-label" for="pj-vacancies">Số lượng tuyển dụng</label>
+                  <input type="number" id="pj-vacancies" class="pj-input" value="2" min="1" max="50">
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Compensation & Perks -->
+            <div class="post-job-card">
+              <div class="post-job-card-header">
+                <div class="card-header-left">
+                  <div class="card-step-badge">2</div>
+                  <div>
+                    <h2 class="card-header-title">Mức Lương &amp; Đãi Ngộ</h2>
+                    <p class="card-header-sub">Thu hút ứng viên tiềm năng bằng chính sách đãi ngộ cạnh tranh</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pj-form-group">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                  <label class="pj-label" style="margin-bottom: 0;">Khoảng lương hàng tháng (VNĐ) <span class="req">*</span></label>
+                  <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #0A66C2; cursor: pointer;">
+                    <input type="checkbox" id="pj-salary-negotiable" onchange="toggleSalaryInputs()">
+                    <span>Lương Thỏa thuận</span>
+                  </label>
+                </div>
+
+                <div class="form-row-2col">
+                  <div>
+                    <input type="number" id="pj-salary-min" class="pj-input" placeholder="Tối thiểu (VND)" value="28000000" step="1000000">
+                    <span class="pj-hint">Ví dụ: 28.000.000 VND</span>
+                  </div>
+                  <div>
+                    <input type="number" id="pj-salary-max" class="pj-input" placeholder="Tối đa (VND)" value="42000000" step="1000000">
+                    <span class="pj-hint">Ví dụ: 42.000.000 VND</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pj-form-group">
+                <label class="pj-label">Chế độ phúc lợi nổi bật (Chọn các mục phù hợp)</label>
+                <div class="benefits-tag-grid">
+                  <label class="benefit-checkbox-label">
+                    <input type="checkbox" checked> <span>🎁 Thưởng tháng 13 &amp; KPI</span>
+                  </label>
+                  <label class="benefit-checkbox-label">
+                    <input type="checkbox" checked> <span>🏥 Bảo hiểm sức khỏe VIP</span>
+                  </label>
+                  <label class="benefit-checkbox-label">
+                    <input type="checkbox" checked> <span>💻 Máy tính xách tay cá nhân</span>
+                  </label>
+                  <label class="benefit-checkbox-label">
+                    <input type="checkbox" checked> <span>✈️ Du lịch công ty hàng năm</span>
+                  </label>
+                  <label class="benefit-checkbox-label">
+                    <input type="checkbox"> <span>🎓 Học bổng chứng chỉ FIATA</span>
+                  </label>
+                  <label class="benefit-checkbox-label">
+                    <input type="checkbox"> <span>🍱 Phụ cấp ăn trưa &amp; xăng xe</span>
+                  </label>
+                  <label class="benefit-checkbox-label">
+                    <input type="checkbox"> <span>⏰ Giờ làm việc linh hoạt</span>
+                  </label>
+                  <label class="benefit-checkbox-label">
+                    <input type="checkbox"> <span>📈 Lộ trình thăng tiến rõ ràng</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Job Description -->
+            <div class="post-job-card">
+              <div class="post-job-card-header">
+                <div class="card-header-left">
+                  <div class="card-step-badge">3</div>
+                  <div>
+                    <h2 class="card-header-title">Mô Tả Công Việc Chi Tiết</h2>
+                    <p class="card-header-sub">Nhiệm vụ, trách nhiệm và mục tiêu công việc hàng ngày</p>
+                  </div>
+                </div>
+                <button type="button" class="btn-template-helper" onclick="fillSampleLogisticsJD()">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> Mẫu Chuẩn Logistics
+                </button>
+              </div>
+
+              <div class="pj-form-group">
+                <label class="pj-label" for="pj-job-desc">Mô tả nhiệm vụ &amp; trách nhiệm <span class="req">*</span></label>
+                <textarea id="pj-job-desc" class="pj-textarea" rows="6" placeholder="Mô tả chi tiết nhiệm vụ hàng ngày của ứng viên..." required>• Tiếp nhận và xử lý các đơn hàng vận tải đường biển (FCL/LCL), hàng không và logistics nội địa.
+• Phối hợp chặt chẽ với các hãng tàu (Maersk, MSC, ONE), đại lý hải quan và đối tác kho bãi để tối ưu hóa chi phí vận chuyển.
+• Theo dõi tiến độ đơn hàng trên hệ thống ERP/WMS, cập nhật tình trạng giao nhận cho khách hàng theo thời gian thực (real-time tracking).
+• Giải quyết các vấn đề phát sinh liên quan đến chứng từ (B/L, C/O, Packing List, Invoice) và thủ tục thông quan hàng hóa.</textarea>
+              </div>
+            </div>
+
+            <!-- Card 4: Requirements & Skills -->
+            <div class="post-job-card">
+              <div class="post-job-card-header">
+                <div class="card-header-left">
+                  <div class="card-step-badge">4</div>
+                  <div>
+                    <h2 class="card-header-title">Yêu Cầu Ứng Viên &amp; Kỹ Năng</h2>
+                    <p class="card-header-sub">Bằng cấp, kỹ năng chuyên môn và chứng chỉ bắt buộc</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pj-form-group">
+                <label class="pj-label" for="pj-job-reqs">Yêu cầu chuyên môn &amp; kinh nghiệm <span class="req">*</span></label>
+                <textarea id="pj-job-reqs" class="pj-textarea" rows="5" placeholder="Yêu cầu về bằng cấp, số năm kinh nghiệm, phẩm chất..." required>• Tốt nghiệp Đại học/Cao đẳng chuyên ngành Kinh tế đối ngoại, Logistics & Chuỗi cung ứng, Xuất nhập khẩu hoặc các ngành liên quan.
+• Tối thiểu 1 - 3 năm kinh nghiệm làm việc tại các công ty Forwarder, Logistics hoặc Doanh nghiệp xuất nhập khẩu.
+• Am hiểu quy trình thông quan hải quan điện tử (ECUS5-VNACCS) và Incoterms 2020.
+• Tiếng Anh giao tiếp tốt (tương đương TOEIC 650+), có khả năng làm việc trực tiếp với đối tác quốc tế.</textarea>
+              </div>
+
+              <div class="pj-form-group">
+                <label class="pj-label">Kỹ năng bắt buộc (Gõ kỹ năng rồi bấm Enter hoặc phẩy)</label>
+                <div class="skills-input-container">
+                  <div id="pj-skills-tags-wrap" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+                  <input type="text" id="pj-skill-input" class="skill-text-input" placeholder="Nhập thêm kỹ năng...">
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5: Company & Contact -->
+            <div class="post-job-card">
+              <div class="post-job-card-header">
+                <div class="card-header-left">
+                  <div class="card-step-badge">5</div>
+                  <div>
+                    <h2 class="card-header-title">Thông Tin Doanh Nghiệp &amp; Kênh Nhận Hồ Sơ</h2>
+                    <p class="card-header-sub">Hồ sơ nhà tuyển dụng và thông tin liên hệ nhận CV</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row-2col">
+                <div class="pj-form-group">
+                  <label class="pj-label" for="pj-company-name">Tên Công ty / Doanh nghiệp <span class="req">*</span></label>
+                  <input type="text" id="pj-company-name" class="pj-input" value="A.P. Moller - Maersk Vietnam" required>
+                </div>
+
+                <div class="pj-form-group">
+                  <label class="pj-label" for="pj-company-logo-select">Logo Doanh nghiệp</label>
+                  <select id="pj-company-logo-select" class="pj-select">
+                    <option value="images/brands/maersk.svg" selected>Maersk (A.P. Moller)</option>
+                    <option value="images/brands/vinfast.svg">VinFast Logistics</option>
+                    <option value="images/brands/db-schenker.svg">DB Schenker</option>
+                    <option value="images/brands/dhl.svg">DHL Supply Chain</option>
+                    <option value="images/brands/fpt.svg">FPT Software</option>
+                    <option value="images/brands/saigon-newport.svg">Tân Cảng Sài Gòn (SNP)</option>
+                    <option value="images/brands/viettel.svg">Viettel Post</option>
+                    <option value="images/brands/shopee.svg">Shopee Express</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row-2col">
+                <div class="pj-form-group">
+                  <label class="pj-label" for="pj-contact-email">Email nhận CV ứng tuyển <span class="req">*</span></label>
+                  <input type="email" id="pj-contact-email" class="pj-input" placeholder="recruitment@maersk.com" value="hr.recruitment@maersk.com" required>
+                </div>
+
+                <div class="pj-form-group">
+                  <label class="pj-label" for="pj-contact-hotline">Số điện thoại / Hotline hỗ trợ</label>
+                  <input type="tel" id="pj-contact-hotline" class="pj-input" placeholder="028 3822 xxxx" value="028 3823 8888">
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Action Buttons -->
+            <div class="post-job-actions-bar">
+              <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                <button type="submit" class="btn-publish-job">
+                  <i class="fa-solid fa-paper-plane"></i> Đăng Tin Tuyển Dụng Ngay
+                </button>
+                <button type="button" class="btn-save-draft" onclick="handleSaveDraft()">
+                  <i class="fa-regular fa-floppy-disk"></i> Lưu Bản Nháp
+                </button>
+              </div>
+              <span style="font-size: 12px; color: #64748B;">
+                <i class="fa-solid fa-lock"></i> Thông tin được mã hóa bảo mật theo tiêu chuẩn SSL
+              </span>
+            </div>
+
+          </form>
+
+          <!-- Right Column: Live Interactive Preview Card & Trust Badges -->
+          <div class="post-job-preview-col">
+            
+            <div class="preview-card-wrap">
+              <div class="preview-header-badge">
+                <div class="preview-live-indicator">
+                  <span class="preview-live-dot"></span> XEM TRƯỚC TIN ĐĂNG (LIVE)
+                </div>
+                <span style="font-size: 11px; color: #64748B;">Giao diện ứng viên</span>
+              </div>
+
+              <!-- Live Job Card Mock -->
+              <div class="live-mock-job-card">
+                <div class="mock-card-top">
+                  <img src="images/brands/maersk.svg" alt="Company Logo" class="mock-company-logo" id="preview-company-logo">
+                  <div>
+                    <h3 class="mock-card-title" id="preview-job-title">Senior Logistics Operations Specialist</h3>
+                    <div class="mock-card-company" id="preview-company-name">
+                      A.P. Moller - Maersk Vietnam <i class="fa-solid fa-circle-check" style="color: #0A66C2; font-size: 11px;"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mock-card-salary" id="preview-salary">₫28.000.000 - ₫42.000.000/tháng</div>
+
+                <div class="mock-meta-tags">
+                  <span class="mock-tag" id="preview-location"><i class="fa-solid fa-location-dot"></i> TP. Hồ Chí Minh</span>
+                  <span class="mock-tag" id="preview-work-mode">Hybrid</span>
+                  <span class="mock-tag" id="preview-experience">Chuyên viên (2-4 năm)</span>
+                  <span class="mock-tag" style="color: #0A66C2; background: #EFF6FF;"><i class="fa-solid fa-clock"></i> Vừa xong</span>
+                </div>
+
+                <button type="button" class="mock-btn-apply" disabled style="opacity: 0.9; cursor: default;">
+                  Ứng Tuyển Nhanh
+                </button>
+              </div>
+            </div>
+
+            <!-- Recruiter Trust Card -->
+            <div class="recruiter-trust-card">
+              <h4 class="trust-card-title">
+                <i class="fa-solid fa-certificate" style="color: #0A66C2;"></i> Quyền Lợi Nhà Tuyển Dụng
+              </h4>
+              <div class="trust-list">
+                <div class="trust-item">
+                  <i class="fa-solid fa-check"></i>
+                  <span>Tiếp cận mạng lưới hơn 500.000+ hồ sơ ứng viên Logistics &amp; Supply Chain sẵn sàng nhận việc.</span>
+                </div>
+                <div class="trust-item">
+                  <i class="fa-solid fa-check"></i>
+                  <span>Hệ thống AI đề xuất danh sách ứng viên phù hợp với mô tả công việc chỉ trong 60 giây.</span>
+                </div>
+                <div class="trust-item">
+                  <i class="fa-solid fa-check"></i>
+                  <span>Tin tuyển dụng được bảo trợ và xác thực trên Cổng Việc Làm Quốc Gia.</span>
+                </div>
+                <div class="trust-item">
+                  <i class="fa-solid fa-check"></i>
+                  <span>Hỗ trợ kỹ thuật 24/7 từ chuyên viên nhân sự VietnamJobs qua hotline 1900-8888.</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <!-- ==========================================================================
@@ -3123,6 +3515,7 @@
   <script src="js/app.js" defer></script>
   <script src="js/courses.js" defer></script>
   <script src="js/split-jobs.js" defer></script>
+  <script src="js/post-job.js" defer></script>
 
   <script>
     // Hero tab switcher

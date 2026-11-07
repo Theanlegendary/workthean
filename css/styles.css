@@ -10650,3 +10650,283 @@ footer a:hover {
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 }
+
+
+/* ==========================================================================
+   CLEAN HEADER TOP-RIGHT CONTROLS (MATCHING EXACT REFERENCE SPEC)
+   ========================================================================== */
+.clean-bell-btn {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  cursor: pointer !important;
+  transition: background 0.15s ease !important;
+  outline: none !important;
+}
+.clean-bell-btn:hover {
+  background: #F1F5F9 !important;
+}
+.clean-bell-btn i {
+  color: #1E3A8A !important;
+  font-size: 20px !important;
+}
+.clean-bell-btn .notification-indicator-badge {
+  position: absolute !important;
+  top: 1px !important;
+  right: 1px !important;
+  background: #EF4444 !important;
+  color: #FFFFFF !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  width: 17px !important;
+  height: 17px !important;
+  border-radius: 50% !important;
+  border: 2px solid #FFFFFF !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+}
+
+.clean-profile-trigger-btn {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  outline: none !important;
+}
+.clean-avatar-circle {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  border: 2px solid #FFFFFF !important;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.12) !important;
+  display: block !important;
+}
+.clean-avatar-chevron {
+  font-size: 11px !important;
+  color: #0F172A !important;
+  transition: transform 0.2s ease !important;
+}
+.clean-profile-trigger-btn[aria-expanded="true"] .clean-avatar-chevron {
+  transform: rotate(180deg) !important;
+}
+
+
+/* ==========================================================================
+   ARTICLE DETAIL READER (#lw-article-reader)
+   Pixel-perfect matching of user reference screenshot
+   ========================================================================== */
+#lw-article-reader {
+  background: #FFFFFF !important;
+  min-height: 80vh;
+  padding-top: 16px;
+  padding-bottom: 60px;
+}
+
+#lw-article-reader .article-layout {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 991px) {
+  #lw-article-reader .article-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+#lw-article-reader .article-reader-content {
+  min-width: 0;
+}
+
+#lw-article-reader .kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+#lw-article-reader .kicker .tag {
+  background: #DC2626;
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+}
+
+#lw-article-reader .kicker .sec {
+  color: #64748B;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#lw-article-reader .headline {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: #0F172A;
+  margin-bottom: 12px;
+}
+
+#lw-article-reader .byline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  color: #64748B;
+  margin-bottom: 16px;
+}
+
+#lw-article-reader .byline .who {
+  font-weight: 700;
+  color: #0F172A;
+}
+
+#lw-article-reader .byline .rule {
+  width: 1px;
+  height: 12px;
+  background: #CBD5E1;
+}
+
+#lw-article-reader .share-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+#lw-article-reader .share-strip .lbl {
+  font-size: 11px;
+  font-weight: 800;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 4px;
+}
+
+#lw-article-reader .share-strip .icirc {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F1F5F9;
+  color: #475569;
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+#lw-article-reader .share-strip .icirc:hover {
+  background: #0A66C2;
+  color: #FFFFFF;
+}
+
+#lw-article-reader .hero-art {
+  margin: 0 0 20px 0;
+}
+
+#lw-article-reader .hero-art img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+#lw-article-reader .hero-art figcaption {
+  font-size: 12px;
+  color: #64748B;
+  margin-top: 8px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+#lw-article-reader .art-body {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: #334155;
+}
+
+#lw-article-reader .art-body .lead {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.65;
+  color: #0F172A;
+  margin-bottom: 18px;
+}
+
+#lw-article-reader .art-body p {
+  margin-bottom: 16px;
+}
+
+#lw-article-reader .sidebar {
+  min-width: 0;
+}
+
+#lw-article-reader .sidebar-news-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #F1F5F9;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#lw-article-reader .sidebar-news-item:hover .item-title {
+  color: #0056B3 !important;
+}
+
+#lw-article-reader .sidebar-news-item img {
+  width: 72px;
+  height: 52px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+#lw-article-reader .sidebar-news-item .item-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #0F172A;
+  margin-bottom: 4px;
+}
+
+#lw-article-reader .sidebar-news-item .item-time {
+  font-size: 11px;
+  color: #94A3B8;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

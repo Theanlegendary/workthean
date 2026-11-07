@@ -1650,22 +1650,10 @@ document.addEventListener('DOMContentLoaded', () => {
       handleHeaderSearch();
     };
 
-    // Animated Rotating Placeholder
-    const trendingPlaceholders = [
-      '💼 Quản Lý Chuỗi Cung Ứng (Supply Chain)...',
-      '🚢 Giám Đốc Cảng Biển & Hàng Hải...',
-      '❄️ Giám Sát Kho Lạnh (Cold Chain)...',
-      '📦 Chuyên Viên Điều Phối Vận Tải 3PL...',
-      '🌐 Chuyên Viên Thủ Tục Hải Quan EDI...',
-      '🤖 Kỹ Sư Tự Động Hóa Kho Thông Minh...'
-    ];
-    let placeholderIdx = 0;
-    setInterval(() => {
-      if (searchInput && document.activeElement !== searchInput && !searchInput.value) {
-        placeholderIdx = (placeholderIdx + 1) % trendingPlaceholders.length;
-        searchInput.setAttribute('placeholder', trendingPlaceholders[placeholderIdx]);
-      }
-    }, 3200);
+    // Keep Clean Fixed Placeholder (Matching Image 2 Reference)
+    if (searchInput) {
+      searchInput.setAttribute('placeholder', 'Search for jobs, companies, or keywords...');
+    }
 
     // Sign In Submission
     formSignIn?.addEventListener('submit', (e) => {
@@ -1865,8 +1853,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function initTaobaoSearchTicker() {
     const searchInputs = [
       document.getElementById('header-search-input'),
-      document.getElementById('header-top-search-input'),
-      document.getElementById('top-capsule-search-input')
+      document.getElementById('header-top-search-input')
     ].filter(Boolean);
 
     if (searchInputs.length === 0) return;
@@ -3647,85 +3634,9 @@ document.addEventListener('DOMContentLoaded', () => {
    ARTICLE & EDITORIAL INTELLIGENCE ENGINE (PHNOM PENH POST / EDITORIAL STYLE)
    ========================================================================== */
 
+// Master Article & News Database
 const articlesDatabase = [
-  
   {
-    id: 'art-cargo-theft',
-    tag: 'Freight Security',
-    sec: 'Supply Chain Risk',
-    title: 'Cargo Theft Prevention Strategies in Transshipment Depots & Inland ICDs',
-    author: 'Logistics Waves Security Desk',
-    location: 'Bình Dương & Đồng Nai Corridors',
-    date: 'Published 06 November 2026',
-    heroImg: 'images/editorial_tech_salaries_hd.png',
-    caption: 'Advanced IoT seal tracking and high-resolution biometric yard surveillance across southern transshipment hubs.',
-    listenMeta: '3 mins • Audio Brief',
-    lead: 'Báo cáo an ninh logistics ghi nhận giải pháp triển khai seal điện tử định vị GPS và camera giám sát AI nhằm triệt tiêu thất thoát hàng hóa container.',
-    paragraphs: [
-      'Trước sự gia tăng mạnh mẽ của lưu lượng xuất nhập khẩu qua các ICD tại khu vực kinh tế trọng điểm phía Nam, các doanh nghiệp vận tải đang nhanh chóng chuyển đổi từ niêm phong chì truyền thống sang seal điện tử tích hợp cảm biến gia tốc và GPS.',
-      'Hệ thống quản lý kho bãi WMS hiện đại cho phép kết nối dữ liệu tức thời với các đơn vị bảo hiểm hàng hải quốc tế, giảm thiểu 95% rủi ro mất cắp tại bãi lưu container.',
-      'Việc đồng bộ hóa dữ liệu kiểm tra ngoại quan cùng công nghệ phân tích hành vi qua camera an ninh hỗ trợ đội ngũ an ninh bến cảng phản ứng kịp thời trước các dấu hiệu bất thường.'
-    ],
-    topics: ['Cargo Security', 'ICD Depots', 'IoT Seals', 'Supply Chain Risk', 'Container Tracking']
-  },
-  {
-    id: 'art-conrail',
-    tag: 'Infrastructure',
-    sec: 'Rail Logistics & Intermodal',
-    title: 'North-South High-Speed Freight Rail Connectivity Assessment & Port Integration',
-    author: 'Transport Policy Team',
-    location: 'Hà Nội & Hải Phòng Corridor',
-    date: 'Published 05 November 2026',
-    heroImg: 'images/hero_3.jpg',
-    caption: 'Kết nối đường sắt tốc độ cao chuyên chở hàng hóa liên vận quốc tế Việt - Trung và kết nối cảng nước sâu.',
-    listenMeta: '4 mins • Audio Brief',
-    lead: 'Quy hoạch đường sắt tốc độ cao mở ra hành lang vận tải xanh, cắt giảm 40% thời gian vận chuyển container từ các khu công nghiệp phía Bắc ra cụm cảng quốc tế.',
-    paragraphs: [
-      'Dự án hiện đại hóa trục vận tải đường sắt Bắc - Nam đang định hình lại diện mạo logistics nội địa, cho phép các đoàn tàu hàng container chạy với vận tốc 120-160 km/h.',
-      'Sự liên thông giữa ga đường sắt Yên Viên, Đồng Đăng với mạng lưới đường sắt liên vận Á - Âu giúp doanh nghiệp Việt Nam tiếp cận thị trường Trung Á và châu Âu nhanh hơn đáng kể so với đường biển.',
-      'Mô hình vận tải đa phương thức kết hợp đường sắt - đường bộ - hàng hải đang nhận được sự ưu tiên hàng đầu về nguồn vốn tài khóa và ưu đãi thuế hạ tầng logistics.'
-    ],
-    topics: ['Railways', 'Intermodal', 'Container Freight', 'Green Logistics', 'Infrastructure']
-  },
-  {
-    id: 'art-stb-order',
-    tag: 'Maritime Policy',
-    sec: 'Port Authority & Customs',
-    title: 'Maritime Port Authority Issues New Digital Manifest & Green Port Directives',
-    author: 'Maritime Intelligence Bureau',
-    location: 'Vũng Tàu & Cái Mép',
-    date: 'Published 04 November 2026',
-    heroImg: 'images/lead_story.jpg',
-    caption: 'Cục Hàng hải triển khai tiêu chuẩn Cảng Xanh và hệ thống khai báo manifest số hóa tự động.',
-    listenMeta: '3 mins • Audio Brief',
-    lead: 'Văn bản hướng dẫn mới bắt buộc tất cả hãng tàu và đại lý forwarder áp dụng quy chuẩn chứng từ điện tử không giấy tờ tại toàn bộ cụm cảng nhóm 5.',
-    paragraphs: [
-      'Nhằm đẩy nhanh tốc độ giải phóng tàu và cắt giảm thời gian lưu bãi, Cục Hàng hải chính thức đưa vào vận hành cổng tích hợp manifest điện tử chuẩn quốc tế IMO FAL.',
-      'Các tàu container quốc tế ra vào luồng Cái Mép - Thị Vải giờ đây có thể hoàn thành thủ tục hoa tiêu, kiểm dịch và thông quan từ 12 giờ trước khi cập bến thực tế.',
-      'Quy chuẩn Cảng Xanh 2026 đồng thời quy định lộ trình thay thế xe nâng và cẩu giàn sang năng lượng điện 100%, hướng tới mục tiêu Net Zero cho chuỗi cảng biển Việt Nam.'
-    ],
-    topics: ['Maritime', 'Green Port', 'Port Authority', 'Digital Manifest', 'Cái Mép']
-  },
-  {
-    id: 'art-humble-robotics',
-    tag: 'Automation & AI',
-    sec: 'Warehouse Robotics',
-    title: 'Next-Gen Automated Guided Vehicles (AGV) Transform Smart Warehousing in Vietnam',
-    author: 'Tech & Automation Lab',
-    location: 'Bình Dương Industrial Park',
-    date: 'Published 03 November 2026',
-    heroImg: 'images/editorial_ai_robotics_hd.jpg',
-    caption: 'Hệ thống robot tự hành AGV và cẩu tự động ASRS trong trung tâm phân phối thông minh thương mại điện tử.',
-    listenMeta: '3 mins • Audio Brief',
-    lead: 'Làn sóng đầu tư trung tâm logistics cấp độ 4 (4PL) ứng dụng robot tự hành AGV giúp tăng năng suất soạn hàng lên 350% so với phương pháp thủ công.',
-    paragraphs: [
-      'Các trung tâm hoàn tất đơn hàng (Fulfillment Center) quy mô trên 50,000m2 tại Bình Dương và Bắc Ninh đang đi đầu trong việc triển khai hàng trăm robot AGV hoạt động tự động 24/7.',
-      'Nhờ tích hợp thuật toán phân bổ vị trí lưu kho tối ưu dựa trên Machine Learning, thời gian di chuyển nội kho của nhân viên giảm hơn 70%, loại bỏ hoàn toàn các lỗi nhầm lẫn mã vạch hàng hóa.',
-      'Sự phát triển của công nghệ robot cũng dẫn đến nhu cầu tăng vọt về kỹ sư vận hành robot tự động, chuyên viên phân tích dữ liệu kho vận và quản trị hệ thống WMS.'
-    ],
-    topics: ['Robotics', 'AGV', 'Smart Warehouses', 'Automation', 'AI Logistics']
-  },
-{
     id: 'art-gdi',
     tag: 'National',
     sec: 'Immigration & Border Trade',
@@ -3740,101 +3651,16 @@ const articlesDatabase = [
     paragraphs: [
       'They identified 2,921 cases, involving 5,262 people from 93 nationalities attempting unauthorized cross-border transitions along key ASEAN trade corridors.',
       'Of the total, 2,287 involved attempts to enter the Kingdom by 4,271 people, while 634 cases involved 991 people attempting to exit, according to the Ministry of Interior’s General Department of Immigration (GDI).',
-      'Among those attempting to enter, 103 people were arrested and sent to court, while the remainder were denied entry and recorded on international biometric registries.',
-      'Several of the individuals were barred from entry due to their place on watchlists, while others used forged passports, fake visas, counterfeit entry and exit stamps or other falsified customs papers.',
-      'Others had no clear purpose for travel or held invalid trade passports, disrupting regional logistics clearance protocols.',
-      'Of the 991 individuals who attempted to leave the Kingdom, immigration officials detained 270, then sent them to court. Another 721 were identified as victims of human trafficking and allowed to return safely to their homes under humanitarian assistance programs.',
-      'During the same period, GDI officials prevented 218 Cambodian nationals from exiting the country, after suspicions were raised that they were at risk of being trafficked into illicit operations.',
-      'It reported that during the same nine-month period, 5,410 Cambodian nationals left the country through legitimate recruitment and certified cross-border logistics workforce agreements.',
-      'The GDI also coordinated the repatriation of 5,568 Cambodian nationals from foreign jurisdictions, reinforcing digital border verification protocols with Vietnam, Thailand, and regional trade partners.'
+      'The GDI report highlighted that rigorous enforcement alongside digitized biometric manifests has significantly strengthened security protocols across land border crossings connecting Vietnam, Cambodia, and Thailand.',
+      'Authorities noted that legal trade corridors continue to operate smoothly, with automated customs clearances reaching record processing speeds despite heightened inspection of irregular documentation.'
     ],
-    topics: ['Cambodia', 'Immigration', 'Ministry of Interior', 'Border Trade', 'Deportation', 'Cross-Border Logistics', 'ASEAN Corridor'],
-    relatedStories: [
-      { id: 'art-cross-border', title: 'Cross-Border Tech Hiring Guidelines & Global Remote Tax Treaties for 2026', time: '6 November 2026' },
-      { id: 'art-ai-dispatch', title: 'Autonomous AI Dispatch Engines in Southern Vietnam Container Corridors', time: '5 November 2026' },
-      { id: 'art-cai-mep', title: 'Siêu Tàu Container 24,000 TEUs Cập Cảng Cái Mép: Bước Ngoặt Chuỗi Cung Ứng', time: '4 November 2026' }
-    ]
-  },
-  {
-    id: 'art-cross-border',
-    tag: 'Policy & Tax',
-    sec: 'Cross-Border Logistics',
-    title: 'Cross-Border Tech Hiring Guidelines & Global Remote Tax Treaties for 2026',
-    author: 'Dr. Phạm Minh Quân',
-    location: 'Hà Nội & Singapore',
-    date: 'Published 28 September 2026, 14:30 ICT',
-    heroImg: 'images/lead_story.jpg',
-    caption: 'Hội nghị điều phối chuỗi cung ứng và hiệp định tránh đánh thuế 2 lần giữa Việt Nam & các nước thành viên ASEAN. <b>VJ Policy Center</b>',
-    listenMeta: '4 mins • AI voice',
-    lead: 'Tổng cục Thuế cùng Bộ Tài chính ban hành hướng dẫn thực thi hiệp định tránh đánh thuế hai lần (DTA) và quy chuẩn lao động xuyên biên giới đối với nhân sự công nghệ logistics và vận tải quốc tế.',
-    paragraphs: [
-      'Khung quy định mới thiết lập cơ chế xác thực thuế suất ưu đãi đối với các chuyên gia kỹ thuật phần mềm logistics, điều vận hàng hải và kỹ sư giải pháp làm việc từ xa giữa Việt Nam, Singapore và Malaysia.',
-      'Doanh nghiệp vận tải giao nhận hàng hóa (Forwarder) đa quốc gia giờ đây được phép hạch toán chi phí nhân sự kỹ thuật số xuyên biên giới vào chi phí hoạt động hợp lệ khi có hợp đồng số hóa có chứng thực chữ ký điện tử quốc tế.',
-      'Hệ thống tự động liên thông dữ liệu mã số thuế cá nhân và mã định danh doanh nghiệp giúp giảm thiểu 80% thời gian giải trình hồ sơ hoàn thuế khấu trừ tại nguồn (Withholding Tax).',
-      'Đại diện Hiệp hội Doanh nghiệp Dịch vụ Logistics Việt Nam (VLA) nhận định đây là bước tiến đột phá, giúp các công ty logistics nội địa dễ dàng thuê mướn các chuyên gia công nghệ chuỗi cung ứng hàng đầu toàn cầu mà không vướng rào cản pháp lý thuế quan.'
-    ],
-    topics: ['Tax Treaty', 'Cross-Border', 'Labor Law', 'Logistics Workforce', 'ASEAN', 'Remote Work'],
-    relatedStories: [
-      { id: 'art-gdi', title: 'GDI identify more than 5,000 attempts to illegally enter/exit Kingdom; 373 charged', time: '30 October 2026' },
-      { id: 'art-ai-dispatch', title: 'Autonomous AI Dispatch Engines in Southern Vietnam Container Corridors', time: '2 October 2026' },
-      { id: 'art-cold-chain', title: 'WHO-GDP Cold Storage Infrastructure Standards for Pharma Logistics', time: '12 October 2026' }
-    ]
-  },
-  {
-    id: 'art-ai-dispatch',
-    tag: 'Smart Logistics',
-    sec: 'AI & Automation',
-    title: 'Autonomous AI Dispatch Engines in Southern Vietnam Container Corridors',
-    author: 'Kỹ sư Lê Hoàng Nam',
-    location: 'TP. Hồ Chí Minh & Bà Rịa - Vũng Tàu',
-    date: 'Published 2 October 2026, 08:00 ICT',
-    heroImg: 'images/editorial_ai_robotics_hd.jpg',
-    caption: 'Hệ thống phân luồng container thông minh bằng AI tại cụm cảng nước sâu Cái Mép - Thị Vải. <b>VPA / Logistics Tech</b>',
-    listenMeta: '3 mins • AI voice',
-    lead: 'Các thuật toán học sâu (Deep Learning) kết hợp mạng cảm biến IoT trên quốc lộ 51 đang rút ngắn hơn 42% thời gian chờ tại cổng cảng Cái Mép - Thị Vải, tiết kiệm hàng triệu lít nhiên liệu mỗi tháng.',
-    paragraphs: [
-      'Mô hình điều vận thời gian thực phân tích lưu lượng giao thông, tình trạng bến bãi và lịch trình cập cầu của các tàu mẹ siêu trọng tải để phát hành khung giờ Gate-in tối ưu cho từng xe container kéo hàng.',
-      'Tài xế nhận lệnh điện tử thông qua ứng dụng di động kết nối trực tiếp với hệ thống TOS (Terminal Operating System) của cảng, tự động mở barie nhận dạng biển số và mã container qua camera AI trong vòng 1.8 giây.',
-      'Kết quả thử nghiệm 6 tháng qua cho thấy độ trễ trung bình của các chuyến hàng xuất khẩu từ Bình Dương và Đồng Nai về cảng đã giảm từ 4.5 giờ xuống còn 2.6 giờ.',
-      'Dự án dự kiến sẽ được mở rộng ra toàn bộ các trung tâm ICD tại Thủ Đức và Long Bình trong quý 1 năm tới.'
-    ],
-    topics: ['AI Dispatch', 'Cai Mep Port', 'Smart Logistics', 'IoT Sensors', 'Automation', 'Container'],
-    relatedStories: [
-      { id: 'art-cai-mep', title: 'Siêu Tàu Container 24,000 TEUs Cập Cảng Cái Mép: Bước Ngoặt Chuỗi Cung Ứng', time: '4 November 2026' },
-      { id: 'art-cross-border', title: 'Cross-Border Tech Hiring Guidelines & Global Remote Tax Treaties for 2026', time: '28 September 2026' },
-      { id: 'art-cold-chain', title: 'WHO-GDP Cold Storage Infrastructure Standards for Pharma Logistics', time: '12 October 2026' }
-    ]
-  },
-  {
-    id: 'art-cold-chain',
-    tag: 'Healthcare Logistics',
-    sec: 'Cold Chain 4.0',
-    title: 'WHO-GDP Cold Storage Infrastructure Standards for Pharma Logistics',
-    author: 'Dược sĩ Trần Bích Ngọc',
-    location: 'Long An & Bắc Ninh',
-    date: 'Published 12 October 2026, 11:20 ICT',
-    heroImg: 'images/editorial_tech_salaries_hd.png',
-    caption: 'Kho lạnh đạt tiêu chuẩn WHO-GDP với dải nhiệt kiểm soát tự động từ -25°C đến +8°C tại KCN Long Hậu. <b>VJ Pharma Logistics</b>',
-    listenMeta: '5 mins • AI voice',
-    lead: 'Bộ Y tế cùng Cục Quản lý Dược công bố lộ trình áp dụng bắt buộc tiêu chuẩn Thực hành tốt phân phối thuốc (GDP) của WHO đối với toàn bộ kho vận và xe lạnh vận chuyển dược phẩm từ 01/2027.',
-    paragraphs: [
-      'Quy chuẩn mới yêu cầu 100% phương tiện vận tải dược phẩm chuyên dụng phải lắp đặt thiết bị ghi nhiệt độ liên tục có kết nối truyền dữ liệu đám mây và hệ thống cảnh báo xâm nhập nhiệt tức thời.',
-      'Các trung tâm phân phối kho lạnh bắt buộc duy trì hệ thống điện dự phòng 3 lớp và kiểm định mapping nhiệt độ định kỳ 6 tháng một lần theo tiêu chuẩn quốc tế ISPE.',
-      'Sự chuyển dịch này đang tạo ra làn sóng đầu tư mạnh mẽ vào các kho lạnh thế hệ mới tại các vùng kinh tế trọng điểm phía Nam và phía Bắc.',
-      'Các doanh nghiệp sở hữu chứng chỉ GDP đạt chuẩn sẽ được cấp luồng xanh ưu tiên thủ tục thông quan tại các cửa khẩu hàng không Nội Bài và Tân Sơn Nhất.'
-    ],
-    topics: ['Cold Chain', 'Pharma Logistics', 'WHO-GDP', 'Vaccine Storage', 'Temperature Control'],
-    relatedStories: [
-      { id: 'art-gdi', title: 'GDI identify more than 5,000 attempts to illegally enter/exit Kingdom; 373 charged', time: '30 October 2026' },
-      { id: 'art-ai-dispatch', title: 'Autonomous AI Dispatch Engines in Southern Vietnam Container Corridors', time: '2 October 2026' },
-      { id: 'art-cross-border', title: 'Cross-Border Tech Hiring Guidelines & Global Remote Tax Treaties for 2026', time: '28 September 2026' }
-    ]
+    topics: ['Cambodia', 'Immigration', 'Ministry of Interior', 'Border Trade', 'Deportation', 'Cross-Border Logistics', 'ASEAN Corridor']
   },
   {
     id: 'art-cai-mep',
     tag: 'Maritime',
     sec: 'Deep Sea Ports',
-    title: 'Siêu Tàu Container 24,000 TEUs Cập Cảng Cái Mép: Bước Ngoặt Chuỗi Cung Ứng Xuyên Thái Bình Dương',
+    title: 'Cụm cảng Cái Mép đón chuyến tàu mẹ container 24,000 TEUs sang bờ Tây Mỹ',
     author: 'Đặng Minh Tuấn & Nhóm Phóng Viên Hàng Hải',
     location: 'Cái Mép - Thị Vải',
     date: 'Published 4 November 2026, 16:45 ICT',
@@ -3848,72 +3674,211 @@ const articlesDatabase = [
       'Đồng thời, thời gian vận chuyển trên biển được rút ngắn 5-7 ngày, tạo lợi thế cạnh tranh áp đảo cho nông sản tươi và hàng may mặc xuất khẩu mùa cao điểm cuối năm.',
       'Bộ Giao thông Vận tải khẳng định tiếp tục đẩy nhanh tiến độ nạo vét luồng hàng hải Vũng Tàu - Thị Vải để đón các thế hệ siêu tàu container lớn hơn nữa trong tương lai.'
     ],
-    topics: ['Cái Mép', 'Container Shipping', 'Ocean Freight', 'Trans-Pacific', 'Ports', 'Direct Service'],
-    relatedStories: [
-      { id: 'art-ai-dispatch', title: 'Autonomous AI Dispatch Engines in Southern Vietnam Container Corridors', time: '2 October 2026' },
-      { id: 'art-gdi', title: 'GDI identify more than 5,000 attempts to illegally enter/exit Kingdom; 373 charged', time: '30 October 2026' },
-      { id: 'art-cold-chain', title: 'WHO-GDP Cold Storage Infrastructure Standards for Pharma Logistics', time: '12 October 2026' }
-    ]
+    topics: ['Cái Mép', 'Container Shipping', 'Ocean Freight', 'Trans-Pacific', 'Ports', 'Direct Service']
+  },
+  {
+    id: 'art-ai-dispatch',
+    tag: 'Smart Logistics',
+    sec: 'AI & Automation',
+    title: 'AI điều vận bến bãi rút ngắn 42% thời gian chờ giải phóng hàng',
+    author: 'Kỹ sư Lê Hoàng Nam',
+    location: 'TP. Hồ Chí Minh & Bà Rịa - Vũng Tàu',
+    date: 'Published 2 October 2026, 08:00 ICT',
+    heroImg: 'images/editorial_ai_robotics_hd.jpg',
+    caption: 'Hệ thống phân luồng container thông minh bằng AI tại cụm cảng nước sâu Cái Mép - Thị Vải. <b>VPA / Logistics Tech</b>',
+    listenMeta: '3 mins • AI voice',
+    lead: 'Các thuật toán học sâu (Deep Learning) kết hợp mạng cảm biến IoT trên quốc lộ 51 đang rút ngắn hơn 42% thời gian chờ tại cổng cảng Cái Mép - Thị Vải, tiết kiệm hàng triệu lít nhiên liệu mỗi tháng.',
+    paragraphs: [
+      'Mô hình điều vận thời gian thực phân tích lưu lượng giao thông, tình trạng bến bãi và lịch trình cập cầu của các tàu mẹ siêu trọng tải để phát hành khung giờ Gate-in tối ưu cho từng xe container kéo hàng.',
+      'Tài xế nhận lệnh điện tử thông qua ứng dụng di động kết nối trực tiếp với hệ thống TOS (Terminal Operating System) của cảng, tự động mở barie nhận dạng biển số và mã container qua camera AI tốc độ cao.',
+      'Theo thống kê của Tổng công ty Tân Cảng Sài Gòn, giải pháp này giúp triệt tiêu tình trạng ùn tắc kéo dài ngoài cổng cảng, nâng cao tỷ lệ quay vòng phương tiện thêm 1.8 lượt/ngày.'
+    ],
+    topics: ['AI Dispatch', 'Deep Learning', 'Port Automation', 'Smart Yard', 'Green Logistics']
+  },
+  {
+    id: 'art-cross-border',
+    tag: 'Policy & Tax',
+    sec: 'Cross-Border Logistics',
+    title: 'Tổng cục Thuế hướng dẫn biểu thuế tránh đánh thuế hai lần cho chuyên gia',
+    author: 'Dr. Phạm Minh Quân',
+    location: 'Hà Nội & Singapore',
+    date: 'Published 28 September 2026, 14:30 ICT',
+    heroImg: 'images/lead_story.jpg',
+    caption: 'Hội nghị điều phối chuỗi cung ứng và hiệp định tránh đánh thuế 2 lần giữa Việt Nam & các nước thành viên ASEAN. <b>VJ Policy Center</b>',
+    listenMeta: '4 mins • AI voice',
+    lead: 'Tổng cục Thuế cùng Bộ Tài chính ban hành hướng dẫn thực thi hiệp định tránh đánh thuế hai lần (DTA) và quy chuẩn lao động xuyên biên giới đối với nhân sự công nghệ logistics và vận tải quốc tế.',
+    paragraphs: [
+      'Khung quy định mới thiết lập cơ chế xác thực thuế suất ưu đãi đối với các chuyên gia kỹ thuật phần mềm logistics, điều vận hàng hải và kỹ sư giải pháp làm việc từ xa giữa Việt Nam, Singapore và Malaysia.',
+      'Doanh nghiệp vận tải giao nhận hàng hóa (Forwarder) đa quốc gia giờ đây được phép hạch toán chi phí nhân sự kỹ thuật số xuyên biên giới vào chi phí hoạt động hợp lệ khi có hợp đồng số hóa có chứng thực chữ ký điện tử quốc tế.',
+      'Hệ thống tự động liên thông dữ liệu mã số thuế cá nhân và mã định danh doanh nghiệp giúp giảm thiểu 80% thời gian giải trình hồ sơ hoàn thuế khấu trừ tại nguồn (Withholding Tax).'
+    ],
+    topics: ['Tax Treaty', 'Cross-Border', 'Labor Law', 'Logistics Workforce', 'ASEAN', 'Remote Work']
+  },
+  {
+    id: 'art-cold-chain',
+    tag: 'Healthcare',
+    sec: 'Pharma Cold Chain',
+    title: 'Chuẩn WHO-GDP áp dụng cho 100% kho lạnh dược phẩm từ năm 2027',
+    author: 'Dược sĩ Trần Bích Ngọc',
+    location: 'Long An & Bắc Ninh',
+    date: 'Published 12 October 2026, 11:20 ICT',
+    heroImg: 'images/editorial_tech_salaries_hd.png',
+    caption: 'Kho lạnh đạt tiêu chuẩn WHO-GDP với dải nhiệt kiểm soát tự động từ -25°C đến +8°C tại KCN Long Hậu. <b>VJ Pharma Logistics</b>',
+    listenMeta: '5 mins • AI voice',
+    lead: 'Bộ Y tế cùng Cục Quản lý Dược công bố lộ trình áp dụng bắt buộc tiêu chuẩn Thực hành tốt phân phối thuốc (GDP) của WHO đối với toàn bộ kho vận và xe lạnh vận chuyển dược phẩm từ 01/2027.',
+    paragraphs: [
+      'Quy chuẩn mới yêu cầu 100% phương tiện vận tải dược phẩm chuyên dụng phải lắp đặt thiết bị ghi nhiệt độ liên tục có kết nối truyền dữ liệu đám mây và hệ thống cảnh báo xâm nhập nhiệt tức thời.',
+      'Các trung tâm phân phối kho lạnh bắt buộc duy trì hệ thống điện dự phòng 3 lớp và kiểm định mapping nhiệt độ định kỳ 6 tháng một lần theo tiêu chuẩn quốc tế ISPE.',
+      'Sự chuyển dịch này đang tạo ra làn sóng đầu tư mạnh mẽ vào các kho lạnh thế hệ mới tại các vùng kinh tế trọng điểm phía Nam và phía Bắc.'
+    ],
+    topics: ['Cold Chain', 'Pharma Logistics', 'WHO-GDP', 'Vaccine Storage', 'Temperature Control']
+  },
+  {
+    id: 'art-customs-edi',
+    tag: 'Customs Tech',
+    sec: 'Trade Compliance',
+    title: 'Tân Cảng Sài Gòn tự động hóa hoàn toàn luồng khai báo hải quan điện tử',
+    author: 'Hoàng Quốc Việt',
+    location: 'Cát Lái & TP. Thủ Đức',
+    date: 'Published 5 November 2026, 10:15 ICT',
+    heroImg: 'images/hero_2.jpg',
+    caption: 'Cổng thông tin khai báo VNACCS/VCIS điện tử tự động kết nối dữ liệu bãi container Cát Lái. <b>SNP / Tech Center</b>',
+    listenMeta: '3 mins • AI voice',
+    lead: 'Hệ thống tự động thông quan điện tử e-Port nâng cấp giúp giảm thời gian làm thủ tục lấy lệnh giao hàng D/O và hạ bãi từ 4 giờ xuống còn dưới 15 phút.',
+    paragraphs: [
+      'Chủ hàng và các công ty logistics có thể hoàn tất thanh toán điện tử, nộp hồ sơ kiểm tra chuyên ngành và đăng ký xe ra vào bến bãi hoàn toàn trực tuyến 24/7.',
+      'Dữ liệu được mã hóa xác thực bằng chữ ký số HSM tập trung và liên thông trực tiếp với Cổng thông tin một cửa quốc gia NSW.',
+      'Dự án thí điểm đã ghi nhận mức độ hài lòng trên 96% từ hơn 1,200 đại lý hải quan và doanh nghiệp xuất nhập khẩu khu vực Đông Nam Bộ.'
+    ],
+    topics: ['Customs EDI', 'VNACCS/VCIS', 'e-Port', 'Automation', 'SNP']
+  },
+  {
+    id: 'art-noi-bai-cargo',
+    tag: 'Aviation',
+    sec: 'Air Freight',
+    title: 'Hàng không Nội Bài mở thêm đường bay chuyên chở hàng hóa đi Frankfurt',
+    author: 'Vũ Thanh Hằng',
+    location: 'Hà Nội & Frankfurt',
+    date: 'Published 6 November 2026, 07:30 ICT',
+    heroImg: 'images/editorial_logistics_salaries.png',
+    caption: 'Đội bay chuyên cơ vận tải hàng hóa Boeing 777F cất cánh từ nhà ga hàng hóa Nội Bài đi Frankfurt. <b>Air Cargo News</b>',
+    listenMeta: '4 mins • AI voice',
+    lead: 'Tuyến bay thẳng vận chuyển hàng hóa đường hàng không kết nối thủ đô Hà Nội với trung tâm logistics lớn nhất châu Âu chính thức đi vào khai thác với tần suất 4 chuyến/tuần.',
+    paragraphs: [
+      'Đường bay mới đáp ứng nhu cầu xuất khẩu linh kiện điện tử bán dẫn, thiết bị viễn thông và hàng may mặc cao cấp từ chuỗi cung ứng Bắc Ninh, Thái Nguyên sang thị trường EU.',
+      'Thời gian vận chuyển được rút ngắn xuống dưới 14 giờ bay, hỗ trợ tích cực cho các hợp đồng giao hàng theo phương thức Just-In-Time của các tập đoàn công nghệ toàn cầu.',
+      'Sản lượng hàng hóa hàng không qua cụm cảng Nội Bài dự kiến tăng trưởng trên 18% trong quý IV/2026 nhờ bổ sung năng lực chuyên chở này.'
+    ],
+    topics: ['Air Cargo', 'Aviation', 'Frankfurt', 'Noi Bai', 'Semiconductors', 'Direct Route']
+  },
+  {
+    id: 'art-cargo-theft',
+    tag: 'Security',
+    sec: 'Supply Chain Risk',
+    title: 'Cargo Theft Prevention Strategies in Transshipment Hubs',
+    author: 'VJ Supply Chain Security Team',
+    location: 'Regional Analysis',
+    date: 'Published 1 November 2026',
+    heroImg: 'images/editorial_ai_logistics_hd.jpg',
+    caption: 'Advanced cargo tracking and geofencing surveillance across southern transshipment hubs.',
+    listenMeta: '3 mins • Audio Brief',
+    lead: 'Báo cáo an ninh logistics ghi nhận giải pháp triển khai cảm biến niêm phong thông minh (Smart Seal) và camera AI giám sát hành trình giúp giảm thiểu 85% rủi ro mất cắp hàng hóa.',
+    paragraphs: [
+      'Các hành lang vận chuyển liên tỉnh đang áp dụng hệ thống cảnh báo xâm nhập buồng lái và ngắt động cơ từ xa khi phương tiện di chuyển lệch khỏi lộ trình được phê duyệt.',
+      'Bảo hiểm hàng hóa xuất nhập khẩu kết hợp dữ liệu hành trình theo thời gian thực giúp giảm 30% phí bảo hiểm cho các đơn vị vận tải đạt chuẩn ISO 28000.'
+    ],
+    topics: ['Cargo Theft', 'Security', 'Risk Management', 'IoT', 'Insurance']
+  },
+  {
+    id: 'art-conrail',
+    tag: 'Rail Freight',
+    sec: 'Intermodal Logistics',
+    title: 'North-South High-Speed Freight Rail Connectivity Action Plan',
+    author: 'Bộ Kế Hoạch & Đầu Tư Logistics Taskforce',
+    location: 'Hà Nội - TP. Hồ Chí Minh',
+    date: 'Published 3 November 2026',
+    heroImg: 'images/editorial_ai_robotics_hd.jpg',
+    caption: 'Quy hoạch hành lang vận tải đường sắt tốc độ cao chuyên chở container liên vận quốc tế.',
+    listenMeta: '4 mins • Audio Brief',
+    lead: 'Quy hoạch đường sắt tốc độ cao mở ra hành lang vận tải hàng hóa xanh kết nối các trung tâm công nghiệp lớn với chi phí chỉ bằng 45% so với vận tải đường bộ.',
+    paragraphs: [
+      'Dự án định hướng thiết lập các ga hàng hóa liên vận quốc tế thế hệ mới tại Yên Viên, Đồng Đăng, Trảng Bom và Sóng Thần.',
+      'Hệ thống đường ray khổ tiêu chuẩn 1,435mm cho phép kết nối xuyên suốt với mạng lưới đường sắt liên vận Á - Âu mà không cần sang tải toa xe.'
+    ],
+    topics: ['Railways', 'Intermodal', 'High-Speed Rail', 'Green Corridor', 'Eurasia Rail']
   }
 ];
 
 // Open and hydrate any article by ID
-window.openArticle = function(articleId, updateHash = true) {
+// Open and hydrate any article by ID or Story Object
+window.openArticle = function(articleInput, updateHash = true) {
   const hub = document.getElementById('lw-hub-overview');
   const reader = document.getElementById('lw-article-reader');
 
-  // Switch to article view
-  if (typeof window.switchView === 'function') {
-    window.switchView('article', false);
-  } else if (typeof switchView === 'function') {
-    switchView('article', false);
-  }
-
-  // 1. Browsing the Logistics Waves Hub (no specific article ID)
-  if (!articleId) {
+  // If no article passed, view the hub overview
+  if (!articleInput) {
+    if (typeof window.switchView === 'function') {
+      window.switchView('article', false);
+    }
     if (reader) reader.style.display = 'none';
     if (hub) hub.style.display = 'block';
     if (updateHash) window.location.hash = 'article';
     window.scrollTo({ top: 0, behavior: 'instant' });
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
-    if (typeof updateDynamicSEO === 'function') {
-      updateDynamicSEO('article', 'Thời Sự Tuyển Dụng & Logistics Waves – VietnamJobs', 'Cập nhật tin tức thị trường Logistics, Hàng hải, Chuỗi cung ứng và Xu hướng tuyển dụng AI.');
-    }
     return;
   }
 
-  // 2. Reading a specific article
+  // 1. Resolve article data
+  let art = null;
+  if (typeof articleInput === 'object' && articleInput !== null) {
+    art = articleInput;
+  } else if (typeof articleInput === 'string') {
+    const id = articleInput.trim();
+    art = (typeof articlesDatabase !== 'undefined') ? articlesDatabase.find(a => a.id === id) : null;
+    if (!art) {
+      // Look up by partial title match
+      art = (typeof articlesDatabase !== 'undefined') ? articlesDatabase.find(a => 
+        a.title.toLowerCase().includes(id.toLowerCase()) || id.toLowerCase().includes(a.title.toLowerCase())
+      ) : null;
+    }
+    if (!art) {
+      const cleanTitle = id.replace(/^art-/, '').replace(/-/g, ' ');
+      art = {
+        id: id,
+        tag: 'LOGISTICS WAVES',
+        sec: 'Industry Intelligence',
+        title: cleanTitle.charAt(0).toUpperCase() + cleanTitle.slice(1),
+        author: 'FreightWaves & VietnamJobs Editorial Board',
+        location: 'Washington / Ho Chi Minh City',
+        date: 'Published 06 November 2026',
+        heroImg: 'images/editorial_ai_logistics_hd.jpg',
+        caption: 'Báo cáo độc quyền về xu hướng thị trường chuỗi cung ứng và vận tải hàng hóa.',
+        listenMeta: '3 mins • AI voice',
+        lead: 'Phân tích chuyên sâu về làn sóng đầu tư hạ tầng chuỗi cung ứng, kho lạnh thông minh và giải pháp tự động hóa cảng biển thời gian thực.',
+        paragraphs: [
+          'Ngành logistics đang bước vào giai đoạn chuyển mình mạnh mẽ với sự gia tăng đột biến của các dự án kho tự động (ASRS) và cảng biển nước sâu tích hợp AI.',
+          'Các doanh nghiệp hàng đầu đang đẩy nhanh tốc độ số hóa chứng từ điện tử EDI, tối ưu hóa tuyến đường điều vận và giảm thiểu khí thải carbon trên các hành lang kinh tế trọng điểm.',
+          'Sự kết hợp giữa chính sách phát triển hạ tầng và dòng vốn FDI chất lượng cao đang mở ra hàng chục nghìn vị trí việc làm chuyên môn cao.'
+        ]
+      };
+    }
+  }
+
+  if (!art) return;
+
+  // 2. Switch view & toggle containers
+  if (typeof state !== 'undefined') {
+    state.currentView = 'article';
+  }
+  document.querySelectorAll('.app-view').forEach(v => v.classList.remove('active-view'));
+  const viewArticle = document.getElementById('view-article');
+  if (viewArticle) viewArticle.classList.add('active-view');
+
   if (hub) hub.style.display = 'none';
-  if (reader) {
-    reader.style.display = 'block';
-  }
-  if (updateHash) {
-    window.location.hash = `article?id=${articleId}`;
-  }
-  window.scrollTo({ top: 0, behavior: 'instant' });
-  document.documentElement.scrollTop = 0;
-  document.body.scrollTop = 0;
+  if (reader) reader.style.display = 'block';
 
-  const art = (typeof articlesDatabase !== 'undefined' ? articlesDatabase.find(a => a.id === articleId) : null) || {
-    id: articleId,
-    tag: 'LOGISTICS WAVES',
-    sec: 'Industry Intelligence',
-    title: 'Chiến Lược Tối Ưu Hóa Chuỗi Cung Ứng & Chuyển Đổi Số Logistics 2026',
-    author: 'Logistics Waves Editorial Board',
-    location: 'Ho Chi Minh City',
-    date: 'Published 06 November 2026',
-    heroImg: 'images/editorial_ai_logistics_hd.jpg',
-    caption: 'Báo cáo độc quyền về xu hướng tự động hóa bến cảng và cảng biển nước sâu Cái Mép.',
-    lead: 'Tổng hợp phân tích chuyên sâu về làn sóng đầu tư hạ tầng chuỗi cung ứng, kho lạnh thông minh và giải pháp tự động hóa cảng biển tại Việt Nam.',
-    paragraphs: [
-      'Ngành logistics Việt Nam đang bước vào giai đoạn chuyển mình mạnh mẽ với sự gia tăng đột biến của các dự án kho tự động (ASRS) và cảng biển nước sâu tích hợp AI.',
-      'Các doanh nghiệp hàng đầu như Tân Cảng Sài Gòn, VinFast và Maersk đang đẩy nhanh tốc độ số hóa chứng từ điện tử EDI, tối ưu hóa tuyến đường điều vận và giảm thiểu khí thải carbon.',
-      'Sự kết hợp giữa chính sách hỗ trợ phát triển logistics quốc gia và dòng vốn FDI chất lượng cao đang mở ra hàng chục nghìn vị trí việc làm chuyên môn cao.'
-    ]
-  };
-
-  // Hydrate DOM elements
+  // 3. Hydrate Header Elements
   const elTag = document.getElementById('art-tag');
   const elSec = document.getElementById('art-sec');
   const elHeadline = document.getElementById('art-headline');
@@ -3924,25 +3889,46 @@ window.openArticle = function(articleId, updateHash = true) {
   const elCaption = document.getElementById('art-caption');
   const elBody = document.getElementById('art-body');
   const elCrumbCat = document.getElementById('art-crumb-cat');
+  const elListenMeta = document.getElementById('art-listen-meta');
 
-  if (elTag) elTag.textContent = art.tag.toUpperCase();
-  if (elSec) elSec.textContent = art.sec;
+  if (elTag) elTag.textContent = (art.tag || 'NATIONAL').toUpperCase();
+  if (elSec) elSec.textContent = art.sec || 'Logistics & Supply Chain';
   if (elHeadline) elHeadline.textContent = art.title;
-  if (elAuthor) elAuthor.textContent = art.author;
-  if (elLocation) elLocation.textContent = art.location;
-  if (elDate) elDate.textContent = art.date;
+  if (elAuthor) elAuthor.textContent = art.author || 'Niem Chheng';
+  if (elLocation) elLocation.textContent = art.location || 'Phnom Penh & Mekong Region';
+  if (elDate) elDate.textContent = art.date || 'Published 30 October 2026, 09:15 ICT';
+  if (elCrumbCat) elCrumbCat.textContent = art.sec || art.tag || 'Tin Tức Chuyên Ngành';
+  if (elListenMeta) elListenMeta.innerHTML = art.listenMeta || '3 mins &bull; AI voice';
+
   if (elHeroImg) {
-    elHeroImg.src = art.heroImg;
+    elHeroImg.src = art.heroImg || 'images/editorial_ai_logistics_hd.jpg';
     elHeroImg.alt = art.title;
   }
-  if (elCaption) elCaption.innerHTML = art.caption || '';
-  if (elCrumbCat) elCrumbCat.textContent = art.sec;
+  if (elCaption) {
+    elCaption.innerHTML = art.caption || (art.title + ' — Báo cáo từ VJ Market Intelligence.');
+  }
 
-  // Hydrate Body
+  // 4. Reset Audio Player
+  isAudioPlaying = false;
+  const btnAudio = document.getElementById('btn-art-listen');
+  const iconAudio = document.getElementById('art-listen-icon');
+  const titleAudio = document.getElementById('art-listen-title');
+  if (btnAudio) btnAudio.style.background = '#DC2626';
+  if (iconAudio) iconAudio.innerHTML = '<path d="M8 5v14l11-7z"/>';
+  if (titleAudio) titleAudio.innerHTML = 'LISTEN TO THIS ARTICLE';
+
+  // 5. Hydrate Article Body
   if (elBody) {
+    const leadText = art.lead || 'Báo cáo độc quyền về xu hướng thị trường chuỗi cung ứng và vận tải hàng hóa.';
+    const paragraphs = art.paragraphs && art.paragraphs.length > 0 ? art.paragraphs : [
+      'Ngành logistics đang bước vào giai đoạn chuyển mình mạnh mẽ với sự gia tăng đột biến của các dự án kho tự động (ASRS) và cảng biển nước sâu tích hợp AI.',
+      'Các doanh nghiệp hàng đầu đang đẩy nhanh tốc độ số hóa chứng từ điện tử EDI, tối ưu hóa tuyến đường điều vận và giảm thiểu khí thải carbon.',
+      'Sự kết hợp giữa chính sách phát triển hạ tầng và dòng vốn FDI chất lượng cao đang mở ra hàng chục nghìn vị trí việc làm chuyên môn cao.'
+    ];
+
     elBody.innerHTML = `
-      <p class="lead" style="font-size:17px; font-weight:600; line-height:1.7; color:#1E293B; margin-bottom:18px;">${art.lead}</p>
-      ${(art.paragraphs || []).map((p, idx) => {
+      <p class="lead" style="font-size:17px; font-weight:600; line-height:1.7; color:#1E293B; margin-bottom:18px;">${leadText}</p>
+      ${paragraphs.map((p, idx) => {
         if (idx === 1) {
           return `
             <p style="margin-bottom:16px; line-height:1.75; font-size:15px; color:#334155;">${p}</p>
@@ -3956,18 +3942,47 @@ window.openArticle = function(articleId, updateHash = true) {
     `;
   }
 
+  // 6. Hydrate Right Sidebar Latest News List (Matching Screenshot)
+  const sidebarList = document.getElementById('art-sidebar-newslist');
+  if (sidebarList) {
+    const latestItems = [
+      { id: 'art-gdi', title: 'GDI identify more than 5,000 attempts to illegally enter/exit Kingdom', time: '12 mins ago', img: 'images/editorial_ai_logistics_hd.jpg' },
+      { id: 'art-cai-mep', title: 'Cụm cảng Cái Mép đón chuyến tàu mẹ container 24,000 TEUs sang bờ Tây Mỹ', time: '35 mins ago', img: 'images/hero_1.jpg' },
+      { id: 'art-ai-dispatch', title: 'AI điều vận bến bãi rút ngắn 42% thời gian chờ giải phóng hàng', time: '1 hr ago', img: 'images/editorial_ai_robotics_hd.jpg' },
+      { id: 'art-cross-border', title: 'Tổng cục Thuế hướng dẫn biểu thuế tránh đánh thuế hai lần cho chuyên gia', time: '2 hrs ago', img: 'images/lead_story.jpg' },
+      { id: 'art-cold-chain', title: 'Chuẩn WHO-GDP áp dụng cho 100% kho lạnh dược phẩm từ năm 2027', time: '4 hrs ago', img: 'images/editorial_tech_salaries_hd.png' },
+      { id: 'art-customs-edi', title: 'Tân Cảng Sài Gòn tự động hóa hoàn toàn luồng khai báo hải quan điện tử', time: '6 hrs ago', img: 'images/hero_2.jpg' },
+      { id: 'art-noi-bai-cargo', title: 'Hàng không Nội Bài mở thêm đường bay chuyên chở hàng hóa đi Frankfurt', time: '7 hrs ago', img: 'images/editorial_logistics_salaries.png' }
+    ];
+
+    sidebarList.innerHTML = latestItems.map(item => `
+      <li style="margin:0;">
+        <a href="#article?id=${item.id}" onclick="window.openArticle('${item.id}', true); return false;" class="sidebar-news-item" style="display:flex; align-items:flex-start; gap:12px; text-decoration:none; padding:8px 0; border-bottom:1px solid #F1F5F9;">
+          <img src="${item.img}" alt="${item.title}" style="width:72px; height:52px; border-radius:6px; object-fit:cover; flex-shrink:0;">
+          <div style="flex:1; min-width:0;">
+            <div class="item-title" style="font-size:12.5px; font-weight:700; color:#0F172A; line-height:1.35; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">${item.title}</div>
+            <div class="item-time" style="font-size:11px; color:#94A3B8; display:flex; align-items:center; gap:4px;">
+              <i class="fa-regular fa-clock" style="font-size:10px;"></i> ${item.time}
+            </div>
+          </div>
+        </a>
+      </li>
+    `).join('');
+  }
+
+  // 7. Update URL Hash & Scroll Top
   if (updateHash) {
     window.location.hash = `article?id=${encodeURIComponent(art.id)}`;
   }
   if (typeof updateDynamicSEO === 'function') {
-    updateDynamicSEO('article', `${art.title} – Logistics Waves`, art.lead);
+    updateDynamicSEO('article', `${art.title} – VietnamJobs Editorial`, art.lead || art.title);
   }
 
   setTimeout(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
-  }, 30);
+  }, 20);
 };
 
 window.hideArticleReader = function() {
@@ -4913,19 +4928,49 @@ function initFreightWavesInteractivity() {
       return;
     }
 
-    // Article cards click handler -> opens reader view with dynamic data
-    const card = target.closest('.feature-card, .mini, .video-card, .card, .sonar-article, .sonar-list-item, .more-sonar-card, .chart-feature, .chart-minis .mini, .shipper-lead, .shipper-item');
+        // Article cards click handler -> opens reader view with dynamic data
+    const card = target.closest('.feature-card, .mini, .video-card, .card, .sonar-article, .sonar-list-item, .more-sonar-card, .chart-feature, .chart-minis .mini, .shipper-lead, .shipper-item, article');
     if (card) {
       e.preventDefault();
-      const titleEl = card.querySelector('h3, h4, .title');
+      const titleEl = card.querySelector('h3, h4, .title, a');
       const title = titleEl ? titleEl.textContent.trim() : 'Bản Tin Thị Trường & Logistics Intelligence';
       const catEl = card.querySelector('.cat, .kicker, .sub-tag');
       const cat = catEl ? catEl.textContent.trim() : 'LOGISTICS WAVES';
       const imgEl = card.querySelector('img');
       const heroImg = imgEl && imgEl.src && !imgEl.src.startsWith('data:image/svg') ? imgEl.src : 'images/editorial_ai_logistics_hd.jpg';
 
-      // Call openArticle with dynamic story
-      openDynamicFreightWavesStory(title, cat, heroImg);
+      // Check if title matches any entry in articlesDatabase
+      let matched = (typeof articlesDatabase !== 'undefined') ? articlesDatabase.find(a => 
+        a.title.toLowerCase() === title.toLowerCase() || 
+        title.toLowerCase().includes(a.title.toLowerCase()) || 
+        a.title.toLowerCase().includes(title.toLowerCase())
+      ) : null;
+
+      if (matched) {
+        window.openArticle(matched.id, true);
+      } else {
+        const slug = 'art-' + title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '').substring(0, 40);
+        const storyObj = {
+          id: slug,
+          tag: cat.toUpperCase(),
+          sec: cat,
+          title: title,
+          author: 'FreightWaves Market Intelligence',
+          location: 'Washington / Ho Chi Minh City',
+          date: 'Published 06 November 2026',
+          heroImg: heroImg,
+          caption: title + ' — Báo cáo độc quyền từ FreightWaves & VietnamJobs Market Intelligence.',
+          listenMeta: '3 mins • AI voice',
+          lead: title + ': Phân tích chuyên sâu về dữ liệu thị trường vận tải, chuỗi cung ứng quốc tế và biến động chi phí logistics thời gian thực.',
+          paragraphs: [
+            'Theo thống kê mới nhất từ hệ thống giám sát tần suất cao SONAR và các cảng biển trung chuyển lớn, hoạt động vận tải hàng hóa đang ghi nhận sự dịch chuyển đáng kể trong biểu cước và năng lực xử lý bãi container.',
+            'Các doanh nghiệp logistics lớn đang đẩy nhanh việc ứng dụng trí tuệ nhân tạo vào hệ thống điều phối đội xe và tự động hóa chứng từ hải quan, giúp rút ngắn 35% thời gian quay vòng phương tiện.',
+            'Dữ liệu thời gian thực phản ánh nhu cầu tuyển dụng các vị trí Quản lý Chuỗi cung ứng, Chuyên viên Điều vận Cảng và Kỹ sư Phần mềm Logistics đang tăng trưởng mạnh mẽ trên toàn quốc.'
+          ]
+        };
+        window.openArticle(storyObj, true);
+      }
+      return;
     }
   });
 
@@ -4965,50 +5010,28 @@ function initFreightWavesInteractivity() {
 }
 
 // Open and hydrate any FreightWaves story dynamically
+// Open and hydrate any FreightWaves story dynamically
 function openDynamicFreightWavesStory(title, tag, heroImg) {
-  const hub = document.getElementById('lw-hub-overview');
-  const reader = document.getElementById('lw-article-reader');
-  if (!reader) return;
-
-  if (typeof switchView === 'function') {
-    switchView('article', false);
+  if (typeof window.openArticle === 'function') {
+    const slug = 'art-' + (title || 'news').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '').substring(0, 40);
+    window.openArticle({
+      id: slug,
+      tag: (tag || 'LOGISTICS WAVES').toUpperCase(),
+      sec: tag || 'Market Intelligence',
+      title: title || 'Bản Tin Thị Trường Logistics',
+      author: 'FreightWaves Market Intelligence',
+      location: 'Washington / Ho Chi Minh City',
+      date: 'Published 06 November 2026',
+      heroImg: heroImg || 'images/editorial_ai_logistics_hd.jpg',
+      caption: (title || '') + ' — Báo cáo từ FreightWaves & VietnamJobs.',
+      listenMeta: '3 mins • AI voice',
+      lead: (title || '') + ': Phân tích chuyên sâu về dữ liệu thị trường vận tải và chuỗi cung ứng.',
+      paragraphs: [
+        'Theo thống kê mới nhất từ hệ thống giám sát tần suất cao SONAR, thị trường vận tải hàng hóa đang ghi nhận sự dịch chuyển đáng kể.',
+        'Các doanh nghiệp logistics lớn đang đẩy nhanh ứng dụng trí tuệ nhân tạo vào hệ thống điều phối và tự động hóa chứng từ hải quan.',
+        'Dữ liệu phản ánh nhu cầu tuyển dụng chuyên môn cao trong ngành logistics tiếp tục tăng trưởng mạnh.'
+      ]
+    }, true);
   }
-  if (hub) hub.style.display = 'none';
-  reader.style.display = 'block';
-
-  // Hydrate reader elements
-  const elTag = document.getElementById('art-tag');
-  if (elTag) elTag.textContent = tag.toUpperCase();
-
-  const elHeadline = document.getElementById('art-headline');
-  if (elHeadline) elHeadline.textContent = title;
-
-  const elHeroImg = document.getElementById('art-hero-img');
-  if (elHeroImg && heroImg) elHeroImg.src = heroImg;
-
-  const elCaption = document.getElementById('art-caption');
-  if (elCaption) elCaption.textContent = title + ' — Báo cáo độc quyền từ FreightWaves & VietnamJobs Market Intelligence.';
-
-  const elBody = document.getElementById('art-body');
-  if (elBody) {
-    elBody.innerHTML = `
-      <p class="lead" style="font-size:17.5px; font-weight:600; line-height:1.6; color:#1E293B; margin-bottom:18px;">
-        ${title}: Phân tích chuyên sâu về dữ liệu thị trường vận tải, chuỗi cung ứng quốc tế và biến động chi phí logistics thời gian thực.
-      </p>
-      <p style="font-size:15.5px; line-height:1.75; color:#334155; margin-bottom:16px;">
-        Theo thống kê mới nhất từ hệ thống giám sát tần suất cao SONAR và các cảng biển trung chuyển lớn, hoạt động vận tải hàng hóa đang ghi nhận sự dịch chuyển đáng kể trong biểu cước và năng lực xử lý bãi container.
-      </p>
-      <p style="font-size:15.5px; line-height:1.75; color:#334155; margin-bottom:16px;">
-        Các doanh nghiệp logistics lớn đang đẩy nhanh việc ứng dụng trí tuệ nhân tạo vào hệ thống điều phối đội xe và tự động hóa chứng từ hải quan, giúp rút ngắn 35% thời gian quay vòng phương tiện.
-      </p>
-      <div style="background:#F8FAFC; border-left:4px solid #3475B6; padding:16px 20px; border-radius:0 8px 8px 0; margin:24px 0;">
-        <h4 style="color:#0F172A; font-weight:700; margin-bottom:6px;">Điểm Tin Thị Trường Nổi Bật</h4>
-        <p style="color:#475569; font-size:14px; margin:0;">
-          Dữ liệu thời gian thực phản ánh nhu cầu tuyển dụng các vị trí Quản lý Chuỗi cung ứng và Chuyên viên EDI Hải quan tăng trưởng 28% so với cùng kỳ năm trước.
-        </p>
-      </div>
-    `;
-  }
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+

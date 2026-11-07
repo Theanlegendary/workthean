@@ -100,73 +100,131 @@
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <link rel="stylesheet" href="css/styles.css?v=2.2">
-  <link rel="stylesheet" href="css/courses.css?v=2.2">
+  <link rel="stylesheet" href="css/styles.css?v=2.3">
+  <link rel="stylesheet" href="css/courses.css?v=2.3">
   <link rel="stylesheet" href="css/split-jobs.css?v=2.2">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/article.css?v=2.2">
-  <link rel="stylesheet" href="css/companies.css?v=2.2">
+  <link rel="stylesheet" href="css/article.css?v=2.3">
+  <link rel="stylesheet" href="css/companies.css?v=2.3">
   <style id="critical-header-search-style">
-    .header-search-experience-wrapper { position: relative !important; z-index: 9999 !important; }
-    .header-modern-search-capsule { display: flex !important; align-items: center !important; gap: 8px !important; background: #F1F5F9 !important; border: 1.5px solid #CBD5E1 !important; border-radius: 9999px !important; padding: 4px 6px 4px 10px !important; height: 38px !important; width: 280px !important; box-sizing: border-box !important; transition: all 0.2s ease !important; cursor: text; }
-    .header-modern-search-capsule:focus-within, .header-modern-search-capsule.focused { background: #FFFFFF !important; border-color: #0A66C2 !important; box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.15) !important; width: 330px !important; }
-    .search-capsule-icon-wrap { width: 26px !important; height: 26px !important; border-radius: 50% !important; background: #EFF6FF !important; display: flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important; }
-    .search-capsule-icon { color: #0A66C2 !important; font-size: 12px !important; }
-    .header-modern-search-capsule input { border: none !important; outline: none !important; background: transparent !important; font-size: 13px !important; color: #0F172A !important; flex: 1 !important; min-width: 0 !important; }
-    .search-trending-badge { font-size: 11px !important; font-weight: 700 !important; color: #DC2626 !important; background: #FEE2E2 !important; padding: 2px 7px !important; border-radius: 9999px !important; white-space: nowrap !important; }
-    .search-cmd-kbd { font-size: 10px !important; font-weight: 700 !important; color: #64748B !important; background: #E2E8F0 !important; border-radius: 4px !important; padding: 2px 5px !important; line-height: 1 !important; }
+    /* Header Top Actions Flex Group */
+    .header-top-right-group.modern-header-actions {
+      display: flex !important;
+      align-items: center !important;
+      gap: 16px !important;
+      position: relative !important;
+    }
+
+    /* Clean Pill Search Bar (Matching Reference) */
+    .header-search-experience-wrapper {
+      position: relative !important;
+      z-index: 1000 !important;
+    }
+    .header-modern-search-capsule {
+      display: flex !important;
+      align-items: center !important;
+      background: #FFFFFF !important;
+      border: 1.5px solid #E2E8F0 !important;
+      border-radius: 9999px !important;
+      padding: 0 10px 0 16px !important;
+      height: 42px !important;
+      width: 360px !important;
+      box-sizing: border-box !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      cursor: text !important;
+    }
+    .header-modern-search-capsule:focus-within,
+    .header-modern-search-capsule.focused {
+      border-color: #2563EB !important;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12), 0 2px 8px rgba(15, 23, 42, 0.06) !important;
+      width: 400px !important;
+    }
+    .search-capsule-icon-wrap {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin-right: 10px !important;
+      background: transparent !important;
+      width: auto !important;
+      height: auto !important;
+    }
+    .search-capsule-icon {
+      color: #0F172A !important;
+      font-size: 15px !important;
+    }
+    .header-modern-search-capsule input {
+      border: none !important;
+      outline: none !important;
+      background: transparent !important;
+      font-size: 13.5px !important;
+      font-family: inherit !important;
+      color: #0F172A !important;
+      flex: 1 !important;
+      min-width: 0 !important;
+    }
+    .header-modern-search-capsule input::placeholder {
+      color: #64748B !important;
+      opacity: 1 !important;
+      font-weight: 400 !important;
+    }
+    .search-cmd-kbd {
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      color: #64748B !important;
+      background: #F1F5F9 !important;
+      border: 1px solid #E2E8F0 !important;
+      border-radius: 6px !important;
+      padding: 3px 8px !important;
+      margin-left: 8px !important;
+      white-space: nowrap !important;
+      line-height: 1.2 !important;
+    }
 
     /* Popover container: strictly hidden unless active */
     #search-suggestions-popover,
-    .image1-search-dropdown,
-    .search-suggestions-popover {
+    .image1-search-dropdown {
       display: none !important;
       position: absolute !important;
       top: calc(100% + 10px) !important;
-      right: 0 !important;
-      left: auto !important;
-      width: 420px !important;
+      left: 0 !important;
+      right: auto !important;
+      width: 410px !important;
       max-width: calc(100vw - 32px) !important;
-      background: #ffffff !important;
-      border-radius: 16px !important;
-      box-shadow: 0 20px 48px -12px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(15, 23, 42, 0.08) !important;
-      padding: 16px 20px 18px !important;
+      background: #FFFFFF !important;
+      border-radius: 18px !important;
+      box-shadow: 0 20px 48px -10px rgba(15, 23, 42, 0.16), 0 0 0 1px rgba(15, 23, 42, 0.06) !important;
+      padding: 18px 20px 20px !important;
       z-index: 99999 !important;
       box-sizing: border-box !important;
     }
     #search-suggestions-popover.active,
-    .image1-search-dropdown.active,
-    .search-suggestions-popover.active {
+    .image1-search-dropdown.active {
       display: block !important;
     }
 
     /* Section Headers */
-    .image1-search-dropdown .search-section-header,
-    #search-suggestions-popover .search-section-header {
+    .image1-search-dropdown .search-section-header {
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
       margin-bottom: 8px !important;
     }
-    .image1-search-dropdown .section-title-group,
-    #search-suggestions-popover .section-title-group {
+    .image1-search-dropdown .section-title-group {
       display: flex !important;
       align-items: center !important;
       gap: 8px !important;
     }
-    .image1-search-dropdown .section-title-group .text-blue,
-    #search-suggestions-popover .section-title-group .text-blue {
+    .image1-search-dropdown .section-title-group .text-blue {
       color: #2563EB !important;
-      font-size: 13.5px !important;
+      font-size: 14px !important;
     }
-    .image1-search-dropdown .section-title,
-    #search-suggestions-popover .section-title {
-      font-size: 13.5px !important;
+    .image1-search-dropdown .section-title {
+      font-size: 14px !important;
       font-weight: 700 !important;
       color: #0F172A !important;
     }
-    .image1-search-dropdown .btn-clear-recent,
-    #search-suggestions-popover .btn-clear-recent {
+    .image1-search-dropdown .btn-clear-recent {
       background: transparent !important;
       border: none !important;
       color: #2563EB !important;
@@ -175,8 +233,7 @@
       cursor: pointer !important;
       padding: 2px 4px !important;
     }
-    .image1-search-dropdown .btn-view-all-link,
-    #search-suggestions-popover .btn-view-all-link {
+    .image1-search-dropdown .btn-view-all-link {
       color: #2563EB !important;
       font-size: 12.5px !important;
       font-weight: 600 !important;
@@ -184,41 +241,36 @@
     }
 
     /* Recent Searches */
-    .image1-search-dropdown .recent-searches-list,
-    #search-suggestions-popover .recent-searches-list {
+    .image1-search-dropdown .recent-searches-list {
       display: flex !important;
       flex-direction: column !important;
       gap: 2px !important;
     }
-    .image1-search-dropdown .recent-search-row,
-    #search-suggestions-popover .recent-search-row {
+    .image1-search-dropdown .recent-search-row {
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
       padding: 8px 10px !important;
       border-radius: 8px !important;
       cursor: pointer !important;
+      transition: background 0.15s ease !important;
     }
-    .image1-search-dropdown .recent-search-row:hover,
-    #search-suggestions-popover .recent-search-row:hover {
+    .image1-search-dropdown .recent-search-row:hover {
       background: #F8FAFC !important;
     }
-    .image1-search-dropdown .recent-left,
-    #search-suggestions-popover .recent-left {
+    .image1-search-dropdown .recent-left {
       display: flex !important;
       align-items: center !important;
       gap: 12px !important;
-      color: #334155 !important;
+      color: #1E293B !important;
       font-size: 13.5px !important;
       font-weight: 500 !important;
     }
-    .image1-search-dropdown .recent-left i,
-    #search-suggestions-popover .recent-left i {
+    .image1-search-dropdown .recent-left i {
       color: #94A3B8 !important;
       font-size: 14px !important;
     }
-    .image1-search-dropdown .btn-remove-recent,
-    #search-suggestions-popover .btn-remove-recent {
+    .image1-search-dropdown .btn-remove-recent {
       background: transparent !important;
       border: none !important;
       color: #94A3B8 !important;
@@ -227,110 +279,376 @@
       padding: 2px 6px !important;
       border-radius: 4px !important;
     }
+    .image1-search-dropdown .btn-remove-recent:hover {
+      color: #0F172A !important;
+      background: #E2E8F0 !important;
+    }
 
-    /* Popular Searches */
-    .image1-search-dropdown .popular-search-pills,
-    #search-suggestions-popover .popular-search-pills {
+    /* Popular Searches Pills */
+    .image1-search-dropdown .popular-search-pills {
       display: flex !important;
       flex-wrap: wrap !important;
       gap: 8px !important;
-      margin-top: 6px !important;
+      margin-top: 8px !important;
     }
-    .image1-search-dropdown .popular-search-pill,
-    #search-suggestions-popover .popular-search-pill {
+    .image1-search-dropdown .popular-search-pill {
       background: #EFF6FF !important;
       color: #1D4ED8 !important;
       border: 1px solid #DBEAFE !important;
       padding: 6px 14px !important;
       border-radius: 9999px !important;
-      font-size: 12px !important;
+      font-size: 12.5px !important;
       font-weight: 600 !important;
       cursor: pointer !important;
+      transition: all 0.15s ease !important;
       white-space: nowrap !important;
     }
+    .image1-search-dropdown .popular-search-pill:hover {
+      background: #DBEAFE !important;
+      border-color: #BFDBFE !important;
+    }
 
-    /* Companies and Critical SVG Logo Constraints */
-    .image1-search-dropdown .companies-quick-list,
-    #search-suggestions-popover .companies-quick-list {
+    /* Companies List */
+    .image1-search-dropdown .companies-quick-list {
       display: flex !important;
       flex-direction: column !important;
       gap: 4px !important;
-      margin-top: 6px !important;
+      margin-top: 8px !important;
     }
-    .image1-search-dropdown .company-quick-row,
-    #search-suggestions-popover .company-quick-row {
+    .image1-search-dropdown .company-quick-row {
       display: flex !important;
       align-items: center !important;
-      gap: 12px !important;
+      justify-content: space-between !important;
       padding: 8px 10px !important;
       border-radius: 10px !important;
       cursor: pointer !important;
+      transition: background 0.15s ease !important;
     }
-    .image1-search-dropdown .company-quick-row:hover,
-    #search-suggestions-popover .company-quick-row:hover {
+    .image1-search-dropdown .company-quick-row:hover {
       background: #F8FAFC !important;
     }
-    .image1-search-dropdown .company-logo-wrap,
-    #search-suggestions-popover .company-logo-wrap,
-    .company-logo-wrap {
-      width: 32px !important;
-      height: 32px !important;
-      min-width: 32px !important;
-      min-height: 32px !important;
-      max-width: 32px !important;
-      max-height: 32px !important;
+    .image1-search-dropdown .company-logo-wrap {
+      width: 36px !important;
+      height: 36px !important;
+      min-width: 36px !important;
+      max-width: 36px !important;
       border-radius: 8px !important;
-      background: #FFFFFF !important;
-      border: 1px solid #E2E8F0 !important;
+      overflow: hidden !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      overflow: hidden !important;
-      flex-shrink: 0 !important;
-      padding: 2px !important;
+      margin-right: 12px !important;
+      background: #FFFFFF !important;
+      border: 1px solid #E2E8F0 !important;
       box-sizing: border-box !important;
     }
-    .image1-search-dropdown .company-logo-wrap img,
-    #search-suggestions-popover .company-logo-wrap img,
-    .company-logo-wrap img {
-      width: 24px !important;
-      height: 24px !important;
-      min-width: 24px !important;
-      min-height: 24px !important;
-      max-width: 24px !important;
-      max-height: 24px !important;
-      object-fit: contain !important;
+    .image1-search-dropdown .company-logo-wrap img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
       display: block !important;
     }
-    .image1-search-dropdown .company-quick-info,
-    #search-suggestions-popover .company-quick-info {
+    .image1-search-dropdown .company-quick-info {
       flex: 1 !important;
       min-width: 0 !important;
     }
-    .image1-search-dropdown .company-quick-name,
-    #search-suggestions-popover .company-quick-name {
+    .image1-search-dropdown .company-quick-name {
       font-size: 13.5px !important;
       font-weight: 700 !important;
       color: #0F172A !important;
-      line-height: 1.25 !important;
     }
-    .image1-search-dropdown .company-quick-tagline,
-    #search-suggestions-popover .company-quick-tagline {
-      font-size: 11.5px !important;
+    .image1-search-dropdown .company-quick-tagline {
+      font-size: 12px !important;
+      color: #64748B !important;
+      margin-top: 1px !important;
+    }
+    .image1-search-dropdown .company-arrow {
+      font-size: 12px !important;
+      color: #94A3B8 !important;
+    }
+
+    /* Clean Bell Trigger (Matching Reference) */
+    .header-notification-wrapper {
+      position: relative !important;
+    }
+    .clean-bell-btn {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      width: 38px !important;
+      height: 38px !important;
+      border-radius: 50% !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      position: relative !important;
+      cursor: pointer !important;
+      transition: background 0.15s ease !important;
+      outline: none !important;
+    }
+    .clean-bell-btn:hover {
+      background: #F1F5F9 !important;
+    }
+    .clean-bell-btn i {
+      color: #1E3A8A !important;
+      font-size: 20px !important;
+    }
+    .clean-bell-btn .notification-indicator-badge {
+      position: absolute !important;
+      top: 1px !important;
+      right: 1px !important;
+      background: #EF4444 !important;
+      color: #FFFFFF !important;
+      font-size: 10px !important;
+      font-weight: 700 !important;
+      width: 17px !important;
+      height: 17px !important;
+      border-radius: 50% !important;
+      border: 2px solid #FFFFFF !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      line-height: 1 !important;
+    }
+
+    /* Clean Profile Trigger (Matching Reference: Avatar Circle + Chevron next to it) */
+    .header-user-profile-capsule {
+      position: relative !important;
+    }
+    .clean-profile-trigger-btn {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      outline: none !important;
+    }
+    .clean-avatar-circle {
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: 50% !important;
+      object-fit: cover !important;
+      border: 2px solid #FFFFFF !important;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.12) !important;
+      display: block !important;
+    }
+    .clean-avatar-chevron {
+      font-size: 11px !important;
+      color: #0F172A !important;
+      transition: transform 0.2s ease !important;
+    }
+    .clean-profile-trigger-btn[aria-expanded="true"] .clean-avatar-chevron {
+      transform: rotate(180deg) !important;
+    }
+
+    /* Clean Profile Dropdown Popover */
+    .image1-profile-menu {
+      display: none !important;
+      position: absolute !important;
+      top: calc(100% + 12px) !important;
+      right: 0 !important;
+      width: 320px !important;
+      background: #FFFFFF !important;
+      border-radius: 20px !important;
+      box-shadow: 0 20px 48px -10px rgba(15, 23, 42, 0.16), 0 0 0 1px rgba(15, 23, 42, 0.06) !important;
+      padding: 18px 18px 16px !important;
+      z-index: 99999 !important;
+      box-sizing: border-box !important;
+      animation: dropdownFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    }
+    .image1-profile-menu.show {
+      display: block !important;
+    }
+    .image1-profile-header {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      padding-bottom: 14px !important;
+    }
+    .image1-avatar-wrap {
+      position: relative !important;
+      width: 50px !important;
+      height: 50px !important;
+      flex-shrink: 0 !important;
+    }
+    .image1-avatar-img {
+      width: 50px !important;
+      height: 50px !important;
+      border-radius: 50% !important;
+      object-fit: cover !important;
+      border: 2px solid #FFFFFF !important;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.1) !important;
+      display: block !important;
+    }
+    .image1-status-dot {
+      position: absolute !important;
+      bottom: 1px !important;
+      right: 1px !important;
+      width: 13px !important;
+      height: 13px !important;
+      border-radius: 50% !important;
+      background: #10B981 !important;
+      border: 2.5px solid #FFFFFF !important;
+    }
+    .image1-user-name {
+      font-size: 15px !important;
+      font-weight: 800 !important;
+      color: #0F172A !important;
+      line-height: 1.2 !important;
+    }
+    .image1-user-email {
+      font-size: 12px !important;
       color: #64748B !important;
       margin-top: 2px !important;
     }
-    .image1-search-dropdown .company-arrow,
-    #search-suggestions-popover .company-arrow {
-      color: #CBD5E1 !important;
-      font-size: 12px !important;
+    .image1-role-badge {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+      background: #EFF6FF !important;
+      border: 1px solid #BFDBFE !important;
+      color: #0A66C2 !important;
+      font-size: 11.5px !important;
+      font-weight: 700 !important;
+      padding: 3px 10px !important;
+      border-radius: 9999px !important;
+      margin-top: 6px !important;
+      cursor: pointer !important;
+      transition: background 0.15s ease !important;
     }
-
-    /* Defensive Dropdown Fallbacks */
-    #notification-popover { display: none; }
-    #notification-popover.show { display: block !important; }
-    #modern-profile-menu, .image1-profile-menu { display: none; }
-    #modern-profile-menu.show, .image1-profile-menu.show { display: block !important; }
+    .image1-role-badge:hover {
+      background: #DBEAFE !important;
+    }
+    .image1-menu-section {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 2px !important;
+      margin-top: 4px !important;
+    }
+    .image1-menu-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 9px 10px !important;
+      border-radius: 8px !important;
+      text-decoration: none !important;
+      color: #1E293B !important;
+      transition: all 0.15s ease !important;
+    }
+    .image1-menu-row:hover {
+      background: #F8FAFC !important;
+      color: #0A66C2 !important;
+    }
+    .image1-menu-row .row-left {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+    }
+    .image1-menu-row .row-icon {
+      font-size: 15px !important;
+      color: #1E293B !important;
+      width: 18px !important;
+      text-align: center !important;
+    }
+    .image1-menu-row:hover .row-icon {
+      color: #0A66C2 !important;
+    }
+    .image1-menu-row .row-label {
+      font-size: 13.5px !important;
+      font-weight: 600 !important;
+    }
+    .image1-menu-row .row-arrow {
+      font-size: 11px !important;
+      color: #94A3B8 !important;
+    }
+    .count-badge-blue {
+      background: #2563EB !important;
+      color: #FFFFFF !important;
+      font-size: 11px !important;
+      font-weight: 800 !important;
+      padding: 1px 7px !important;
+      border-radius: 9999px !important;
+      margin-right: 6px !important;
+    }
+    .image1-menu-divider {
+      border-top: 1px solid #F1F5F9 !important;
+      margin: 10px 0 !important;
+    }
+    .image1-logout-btn {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      width: 100% !important;
+      height: 40px !important;
+      border-radius: 10px !important;
+      margin-top: 12px !important;
+      background: #FFFFFF !important;
+      border: 1.5px solid #E2E8F0 !important;
+      color: #1E293B !important;
+      font-size: 13.5px !important;
+      font-weight: 700 !important;
+      cursor: pointer !important;
+      transition: all 0.15s ease !important;
+    }
+    .image1-logout-btn:hover {
+      background: #FEE2E2 !important;
+      border-color: #FCA5A5 !important;
+      color: #DC2626 !important;
+    }
+    .image1-promo-card {
+      margin-top: 12px !important;
+      padding: 12px 14px !important;
+      border-radius: 12px !important;
+      background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%) !important;
+      border: 1px solid #BFDBFE !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 10px !important;
+      cursor: pointer !important;
+      transition: transform 0.15s ease !important;
+    }
+    .image1-promo-card:hover {
+      transform: translateY(-1px) !important;
+    }
+    .promo-title {
+      font-size: 12.5px !important;
+      font-weight: 800 !important;
+      color: #0F172A !important;
+      line-height: 1.3 !important;
+      margin-bottom: 3px !important;
+    }
+    .promo-link {
+      font-size: 11.5px !important;
+      font-weight: 700 !important;
+      color: #2563EB !important;
+      text-decoration: none !important;
+    }
+    .promo-briefcase-icon {
+      width: 38px !important;
+      height: 38px !important;
+      border-radius: 10px !important;
+      background: #0A66C2 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 10px rgba(10, 102, 194, 0.25) !important;
+      font-size: 16px !important;
+      position: relative !important;
+    }
+    .promo-plane-sub {
+      position: absolute !important;
+      top: -4px !important;
+      right: -4px !important;
+      font-size: 10px !important;
+      color: #60A5FA !important;
+    }
   </style>
 </head>
 <body id="top">
@@ -489,52 +807,49 @@
           </div>
 
           <!-- Notification Bell (Matching Image 1 Design with Badge 3) -->
+                    <!-- Notification Bell (Matching Reference Image) -->
           <div class="header-notification-wrapper" id="header-notification-wrapper">
-            <button type="button" class="header-bell-btn" id="btn-header-notifications" title="Thông báo" aria-label="Notifications">
+            <button type="button" class="clean-bell-btn" id="btn-header-notifications" title="Notifications" aria-label="Notifications" onclick="toggleNotificationPopover(event)">
               <i class="fa-solid fa-bell"></i>
               <span class="notification-indicator-badge">3</span>
             </button>
             <!-- Dropdown for Notifications -->
             <div class="notification-popover" id="notification-popover" style="display: none;">
               <div class="notif-popover-header">
-                <span class="notif-popover-title">Thông Báo Mới</span>
-                <span class="notif-badge-pill">3 mới</span>
+                <span class="notif-popover-title">Notifications</span>
+                <span class="notif-badge-pill">3 new</span>
               </div>
               <div class="notif-popover-list">
                 <div class="notif-popover-item unread">
                   <div class="notif-item-icon bg-blue"><i class="fa-solid fa-briefcase"></i></div>
                   <div class="notif-item-content">
-                    <p class="notif-item-text">Việc làm mới phù hợp: <strong>Chuyên viên Logistics &amp; Supply Chain</strong></p>
-                    <span class="notif-item-time">10 phút trước</span>
+                    <p class="notif-item-text">New matching job: <strong>Logistics &amp; Supply Chain Specialist</strong></p>
+                    <span class="notif-item-time">10 mins ago</span>
                   </div>
                 </div>
                 <div class="notif-popover-item unread">
                   <div class="notif-item-icon bg-green"><i class="fa-solid fa-circle-check"></i></div>
                   <div class="notif-item-content">
-                    <p class="notif-item-text">Hồ sơ ứng tuyển tại <strong>Cảng Quốc Tế Tân Cảng</strong> đã được duyệt</p>
-                    <span class="notif-item-time">1 giờ trước</span>
+                    <p class="notif-item-text">Application at <strong>Saigon Newport Corp</strong> was reviewed</p>
+                    <span class="notif-item-time">1 hour ago</span>
                   </div>
                 </div>
                 <div class="notif-popover-item">
                   <div class="notif-item-icon bg-purple"><i class="fa-solid fa-graduation-cap"></i></div>
                   <div class="notif-item-content">
-                    <p class="notif-item-text">Khóa học mới: <strong>Quản Trị Chuỗi Cung Ứng Quốc Tế FIATA</strong></p>
-                    <span class="notif-item-time">Hôm qua</span>
+                    <p class="notif-item-text">New course available: <strong>International FIATA Freight Diploma</strong></p>
+                    <span class="notif-item-time">Yesterday</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- User Profile & Role Trigger (Matching Image 1 Design) -->
+          <!-- User Profile & Role Trigger (Matching Reference Image: Avatar Circle + Chevron next to it) -->
           <div class="header-user-profile-capsule" id="header-user-profile">
-            <button type="button" class="fb-profile-btn" id="btn-header-user-profile" onclick="toggleFacebookProfileMenu(event)" aria-haspopup="true" aria-expanded="false" title="Tài khoản cá nhân (Thean Lê)">
-              <div class="fb-avatar-container">
-                <img src="images/user_avatar_header.png" alt="Thean Lê" class="fb-avatar-img" id="header-avatar-img">
-                <span class="fb-chevron-badge" aria-hidden="true">
-                  <i class="fa-solid fa-chevron-down"></i>
-                </span>
-              </div>
+            <button type="button" class="clean-profile-trigger-btn" id="btn-header-user-profile" onclick="toggleFacebookProfileMenu(event)" aria-haspopup="true" aria-expanded="false" title="Account (Thean Lê)">
+              <img src="images/user_avatar_header.png" alt="Thean Lê" class="clean-avatar-circle" id="header-avatar-img">
+              <i class="fa-solid fa-chevron-down clean-avatar-chevron" aria-hidden="true"></i>
             </button>
 
             <!-- Image 1 Pixel-Perfect Profile Dropdown Popover -->
@@ -548,7 +863,7 @@
                 <div class="image1-user-details">
                   <div class="image1-user-name" id="dropdown-user-name">Thean Lê</div>
                   <div class="image1-user-email" id="dropdown-user-email">thean@example.com</div>
-                  <button type="button" class="image1-role-badge" id="dropdown-user-role-badge" onclick="cycleUserRole(event)" title="Nhấn để chuyển đổi vai trò">
+                  <button type="button" class="image1-role-badge" id="dropdown-user-role-badge" onclick="cycleUserRole(event)" title="Click to switch role">
                     <i class="fa-solid fa-circle-check"></i>
                     <span id="badge-role-label">Logistics Specialist</span>
                     <i class="fa-solid fa-chevron-down role-pill-chevron"></i>
@@ -556,39 +871,36 @@
                 </div>
               </div>
 
-              <!-- Menu Section 1: Core Navigation Routes -->
+              <!-- Menu Section 1 -->
               <div class="image1-menu-section">
                 <a href="#candidate-cv" class="image1-menu-row" onclick="navigateTo('profile'); return false;">
                   <div class="row-left">
-                    <i class="fa-regular fa-id-card row-icon" style="color:#0a66c2;"></i>
-                    <span class="row-label">Hồ Sơ &amp; CV Của Tôi</span>
+                    <i class="fa-regular fa-user row-icon"></i>
+                    <span class="row-label">My Profile</span>
                   </div>
                   <i class="fa-solid fa-chevron-right row-arrow"></i>
                 </a>
-                <a href="#saved-jobs" class="image1-menu-row" onclick="navigateTo('saved-jobs'); return false;">
+                <a href="#browse" class="image1-menu-row" onclick="navigateTo('browse'); return false;">
                   <div class="row-left">
-                    <i class="fa-regular fa-bookmark row-icon" style="color:#f59e0b;"></i>
-                    <span class="row-label">Việc Làm Đã Lưu</span>
+                    <i class="fa-solid fa-briefcase row-icon"></i>
+                    <span class="row-label">My Jobs</span>
                   </div>
                   <div class="row-right-group">
-                    <span class="count-badge-blue">3</span>
+                    <span class="count-badge-blue">12</span>
                     <i class="fa-solid fa-chevron-right row-arrow"></i>
                   </div>
+                </a>
+                <a href="#saved-jobs" class="image1-menu-row" onclick="navigateTo('saved-jobs'); return false;">
+                  <div class="row-left">
+                    <i class="fa-regular fa-bookmark row-icon"></i>
+                    <span class="row-label">Saved Jobs</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right row-arrow"></i>
                 </a>
                 <a href="#applications" class="image1-menu-row" onclick="navigateTo('applications'); return false;">
                   <div class="row-left">
-                    <i class="fa-regular fa-paper-plane row-icon" style="color:#10b981;"></i>
-                    <span class="row-label">Lịch Sử Ứng Tuyển</span>
-                  </div>
-                  <div class="row-right-group">
-                    <span class="count-badge-blue">3</span>
-                    <i class="fa-solid fa-chevron-right row-arrow"></i>
-                  </div>
-                </a>
-                <a href="#browse" class="image1-menu-row" onclick="navigateTo('browse'); return false;">
-                  <div class="row-left">
-                    <i class="fa-solid fa-magnifying-glass-chart row-icon" style="color:#6366f1;"></i>
-                    <span class="row-label">Tìm Kiếm Việc Làm Mới</span>
+                    <i class="fa-regular fa-rectangle-list row-icon"></i>
+                    <span class="row-label">My Applications</span>
                   </div>
                   <i class="fa-solid fa-chevron-right row-arrow"></i>
                 </a>
@@ -596,24 +908,32 @@
 
               <div class="image1-menu-divider"></div>
 
-              <!-- Menu Section 2: Account & Settings -->
+              <!-- Menu Section 2 -->
               <div class="image1-menu-section">
                 <a href="#settings" class="image1-menu-row" onclick="navigateTo('settings'); return false;">
                   <div class="row-left">
-                    <i class="fa-solid fa-gear row-icon" style="color:#475569;"></i>
-                    <span class="row-label">Cài Đặt Tài Khoản</span>
+                    <i class="fa-solid fa-gear row-icon"></i>
+                    <span class="row-label">Account Settings</span>
                   </div>
                   <i class="fa-solid fa-chevron-right row-arrow"></i>
                 </a>
-                <a href="#help" class="image1-menu-row" onclick="showToast('Trung tâm Trợ giúp VietnamJobs: Hotline 1900-8888'); closeAllDropdowns(); return false;">
+                <a href="#security" class="image1-menu-row" onclick="showToast('Security & 2FA Settings'); closeAllDropdowns(); return false;">
                   <div class="row-left">
-                    <i class="fa-regular fa-circle-question row-icon" style="color:#64748b;"></i>
-                    <span class="row-label">Trợ Giúp &amp; Hỗ Trợ</span>
+                    <i class="fa-solid fa-shield-halved row-icon"></i>
+                    <span class="row-label">Security &amp; 2FA</span>
                   </div>
+                  <i class="fa-solid fa-chevron-right row-arrow"></i>
+                </a>
+                <a href="#help" class="image1-menu-row" onclick="showToast('VietnamJobs Help Center: 1900-8888'); closeAllDropdowns(); return false;">
+                  <div class="row-left">
+                    <i class="fa-regular fa-circle-question row-icon"></i>
+                    <span class="row-label">Help Center</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right row-arrow"></i>
                 </a>
               </div>
 
-              <!-- Full-Width Log Out Card Button -->
+              <!-- Full-Width Log Out Button -->
               <button type="button" class="image1-logout-btn" id="btn-user-logout" onclick="openAuthModal('signin'); closeAllDropdowns();">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span>Log Out</span>
@@ -2238,18 +2558,7 @@
          ====================================================================== -->
     <div class="app-view" id="view-article">
       <div id="lw-hub-overview">
-      <div class="article-top-nav-bar" style="background:#FFFFFF; border-bottom:1px solid #DFDFDF; padding:12px 24px; margin-bottom:16px;">
-        <div style="max-width:1426px; margin:0 auto; display:flex; justify-content:space-between; align-items:center;">
-          <button type="button" onclick="switchView('home');" style="background:#F1F5F9; border:1px solid #DFDFDF; border-radius:6px; padding:7px 18px; font-weight:700; color:#3475b6; cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-size:13.5px;">
-            <i class="fa-solid fa-arrow-left"></i> Back to Homepage
-          </button>
-          <div style="font-size:13px; font-weight:600; color:#8D8D8D;">
-            <a href="#" onclick="switchView('home'); return false;" style="color:#64748B;">Home</a> &bull; <span style="color:#3475b6; font-weight:700;">FreightWaves Editorial &amp; Market Intelligence</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- FreightWaves Standalone Editorial Core Content -->
+<!-- FreightWaves Standalone Editorial Core Content -->
       <!-- ============ AD BANNER ============ -->
 <div class="container ad-wrap">
   <a class="ad-banner" href="#" aria-label="Certified Fraud Compliance Officer — 50% off the CFCO program">
@@ -2559,16 +2868,16 @@
         <div class="article-reader-toolbar" style="max-width:1240px; margin:0 auto 24px; padding:0 20px;">
           <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:12px 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;">
             <div style="display:flex; align-items:center; gap:10px;">
-              <button type="button" onclick="hideArticleReader();" class="btn-back-to-news" style="background:#FFFFFF; border:1px solid #CBD5E1; border-radius:8px; padding:8px 18px; font-weight:700; color:#0A66C2; cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-size:13.5px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+              <button type="button" onclick="hideArticleReader();" class="btn-back-to-news" style="background:#FFFFFF; border:1px solid #CBD5E1; border-radius:8px; padding:8px 18px; font-weight:700; color:#0A66C2; cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-size:13.5px; box-shadow:0 1px 3px rgba(0,0,0,0.05); transition:all 0.15s;">
                 <i class="fa-solid fa-arrow-left"></i> Quay lại Tất Cả Tin Tức
               </button>
-              <button type="button" onclick="switchView('home');" style="background:#FFFFFF; border:1px solid #CBD5E1; border-radius:8px; padding:8px 16px; font-weight:600; color:#475569; cursor:pointer; display:inline-flex; align-items:center; gap:6px; font-size:13px;">
+              <button type="button" onclick="switchView('home');" style="background:#FFFFFF; border:1px solid #CBD5E1; border-radius:8px; padding:8px 16px; font-weight:600; color:#475569; cursor:pointer; display:inline-flex; align-items:center; gap:6px; font-size:13px; transition:all 0.15s;">
                 <i class="fa-solid fa-house"></i> Về Trang Chủ
               </button>
             </div>
             <div class="article-breadcrumbs" style="font-size:13px; font-weight:600; color:#64748B;">
               <a href="#" onclick="switchView('home'); return false;" style="color:#0A66C2; text-decoration:none;">Trang Chủ</a> &bull; 
-              <a href="#" onclick="hideArticleReader(); return false;" style="color:#0A66C2; text-decoration:none;">Thời Sự Tuyển Dụng &amp; Logistics</a> &bull; 
+              <a href="#" onclick="hideArticleReader(); return false;" style="color:#0A66C2; text-decoration:none;">Thời Sự Tuyển Dụng</a> &bull; 
               <span id="art-crumb-cat" style="color:#0F172A; font-weight:700;">Tin Tức Chuyên Ngành</span>
             </div>
           </div>
@@ -2584,26 +2893,49 @@
             <h2 class="headline" id="art-headline">GDI identify more than 5,000 attempts to illegally enter/exit Kingdom; 373 charged</h2>
 
             <div class="byline">
-              <span class="who" id="art-author">FreightWaves Editorial Board</span>
+              <span class="who" id="art-author">Niem Chheng</span>
               <span class="rule"></span>
-              <span id="art-location">Washington / Ho Chi Minh City</span>
+              <span id="art-location">Phnom Penh &amp; Mekong Region</span>
               <span class="rule"></span>
-              <span id="art-date">Published 06 November 2026</span>
+              <span id="art-date">Published 30 October 2026, 09:15 ICT</span>
             </div>
 
             <!-- Share Strip -->
             <div class="share-strip">
               <span class="lbl">Share</span>
-              <a class="icirc fb" href="#" onclick="showToast('Chia sẻ qua Facebook'); return false;"><i class="fa-brands fa-facebook-f"></i></a>
-              <a class="icirc tw" href="#" onclick="showToast('Chia sẻ qua X'); return false;"><i class="fa-brands fa-x-twitter"></i></a>
-              <a class="icirc wa" href="#" onclick="showToast('Chia sẻ qua WhatsApp'); return false;"><i class="fa-brands fa-whatsapp"></i></a>
-              <a class="icirc mail" href="#" onclick="showToast('Chia sẻ qua Email'); return false;"><i class="fa-solid fa-envelope"></i></a>
+              <a class="icirc fb" href="#" onclick="showToast('Chia sẻ qua Facebook'); return false;" aria-label="Share on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a class="icirc tw" href="#" onclick="showToast('Chia sẻ qua X'); return false;" aria-label="Share on X"><i class="fa-brands fa-x-twitter"></i></a>
+              <a class="icirc wa" href="#" onclick="showToast('Chia sẻ qua WhatsApp'); return false;" aria-label="Share on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+              <a class="icirc mail" href="#" onclick="showToast('Chia sẻ qua Email'); return false;" aria-label="Share via Email"><i class="fa-solid fa-envelope"></i></a>
+              <a class="icirc link" href="#" onclick="navigator.clipboard.writeText(window.location.href); showToast('Đã sao chép liên kết bài viết'); return false;" aria-label="Copy Link"><i class="fa-solid fa-link"></i></a>
             </div>
 
             <figure class="hero-art">
               <img src="images/editorial_ai_logistics_hd.jpg" alt="Article Hero" id="art-hero-img">
-              <figcaption id="art-caption">National Logistics Corridors and Multimodal Transport Intelligence Report.</figcaption>
+              <figcaption id="art-caption">The recent deportation of foreign nationals who committed offences in Cambodia &amp; cross-border trade inspection. GDI / VJ Intelligence</figcaption>
             </figure>
+
+            <!-- Audio Player Bar -->
+            <div class="article-audio-bar" id="art-audio-bar" style="display:flex; align-items:center; justify-content:space-between; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:10px 16px; margin:18px 0 24px;">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <button type="button" id="btn-art-listen" onclick="toggleArticleAudio();" style="width:36px; height:36px; border-radius:50%; background:#DC2626; border:none; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#FFFFFF; transition:background 0.2s; box-shadow:0 2px 6px rgba(220,38,38,0.3);" aria-label="Nghe bài viết">
+                  <svg id="art-listen-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </button>
+                <div>
+                  <div id="art-listen-title" style="font-size:12px; font-weight:800; color:#0F172A; text-transform:uppercase; letter-spacing:0.5px;">LISTEN TO THIS ARTICLE</div>
+                  <div id="art-listen-meta" style="font-size:11.5px; color:#64748B;">3 mins &bull; AI voice</div>
+                </div>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#64748B" stroke-width="2">
+                  <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                </svg>
+                <span style="font-size:11.5px; font-weight:700; color:#64748B; background:#E2E8F0; padding:2px 6px; border-radius:4px;">1.0&times;</span>
+              </div>
+            </div>
 
             <div class="art-body" id="art-body">
               <!-- Populated dynamically by openArticle() -->
@@ -2611,9 +2943,27 @@
           </div><!-- /.article-reader-content -->
 
           <aside class="sidebar">
-            <h3 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:14px; border-bottom:2px solid #0056B3; padding-bottom:6px;">Latest Industry Briefs</h3>
-            <ul id="art-sidebar-newslist" class="sidebar-news">
-              <!-- Hydrated by app.js -->
+            <!-- Sponsored Briefing Exam Guide -->
+            <div class="sponsored-exam-card" style="margin-bottom:24px;">
+              <div style="font-size:10px; font-weight:800; color:#94A3B8; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:8px; text-align:center;">SPONSORED BRIEFING</div>
+              <div style="background:linear-gradient(135deg, #0284C7 0%, #0369A1 100%); border-radius:12px; padding:20px 16px; color:#FFFFFF; text-align:center; box-shadow:0 8px 24px rgba(2,132,199,0.22);">
+                <div style="background:rgba(255,255,255,0.18); border-radius:8px; padding:14px; margin-bottom:14px; display:inline-block; border:1px solid rgba(255,255,255,0.25);">
+                  <div style="font-size:9.5px; font-weight:800; letter-spacing:1px; background:#FFFFFF; color:#0369A1; padding:2px 8px; border-radius:4px; display:inline-block; margin-bottom:6px;">EXAM GUIDE</div>
+                  <div style="font-size:15px; font-weight:900; letter-spacing:0.5px;">JURISPRUDENCE</div>
+                  <div style="font-size:10px; opacity:0.9; margin-top:2px;">Regulatory &amp; Legal Analysis</div>
+                  <div style="width:36px; height:36px; margin:10px auto 0; background:rgba(255,255,255,0.25); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+                    <i class="fa-solid fa-scale-balanced" style="font-size:16px;"></i>
+                  </div>
+                </div>
+                <div style="font-size:14px; font-weight:800; margin-bottom:6px; line-height:1.35;">Vietnam Logistics Salary Index 2026</div>
+                <p style="font-size:11.5px; line-height:1.5; opacity:0.92; margin-bottom:12px;">Báo cáo phân tích thu nhập thực tế ngành Forwarding, Cảng biển &amp; Kho vận.</p>
+                <a href="#" onclick="showToast('Đang tải báo cáo lương...'); return false;" style="display:inline-block; font-size:12px; font-weight:800; color:#FEF08A; text-decoration:none;">Tải Báo Cáo Ngay &rarr;</a>
+              </div>
+            </div>
+
+            <h3 style="font-size:15px; font-weight:800; color:#0F172A; margin-bottom:14px; border-bottom:2px solid #0056B3; padding-bottom:6px;">Latest news</h3>
+            <ul id="art-sidebar-newslist" class="sidebar-news" style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px;">
+              <!-- Hydrated dynamically -->
             </ul>
           </aside>
         </div>

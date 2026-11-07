@@ -2,88 +2,7 @@
    VIETNAM RECRUITMENT MARKETPLACE - APP LOGIC & SPA CONTROLLER
    ========================================================================== */
 
-
-    // Post a Job Modal Functions
-    window.openPostJobModal = function() {
-      if (typeof window.closeAllDropdowns === 'function') window.closeAllDropdowns();
-      const modal = document.getElementById('modal-post-job');
-      if (modal) {
-        modal.removeAttribute('hidden');
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-      }
-    };
-
-    window.closePostJobModal = function() {
-      const modal = document.getElementById('modal-post-job');
-      if (modal) {
-        modal.setAttribute('hidden', '');
-        modal.classList.remove('show');
-        document.body.style.overflow = '';
-      }
-    };
-
-    window.handlePostJobSubmit = function(e) {
-      if (e) e.preventDefault();
-      const title = document.getElementById('post-job-title')?.value || 'Job Opening';
-      if (typeof window.showToast === 'function') {
-        window.showToast(`🎉 Tin tuyển dụng "${title}" đã được đăng thành công! Tin sẽ được duyệt trong 15 phút.`);
-      }
-      window.closePostJobModal();
-      document.getElementById('form-post-job')?.reset();
-    };
-
-    // Header Search Toggle Function
-    window.toggleHeaderSearch = function(e) {
-      if (e) e.stopPropagation();
-      const searchPopover = document.getElementById('search-suggestions-popover');
-      const userMenu = document.getElementById('modern-profile-menu') || document.getElementById('user-dropdown-menu');
-      const notifPopover = document.getElementById('notification-popover');
-      if (userMenu) userMenu.classList.remove('show');
-      if (notifPopover) {
-        notifPopover.classList.remove('show');
-        notifPopover.style.display = 'none';
-      }
-      if (searchPopover) {
-        const isShowing = searchPopover.classList.contains('active') || searchPopover.style.display === 'block';
-        if (isShowing) {
-          searchPopover.classList.remove('active');
-          searchPopover.style.display = 'none';
-        } else {
-          searchPopover.classList.add('active');
-          searchPopover.style.display = 'block';
-          setTimeout(() => {
-            const input = document.getElementById('top-capsule-search-input');
-            if (input) input.focus();
-          }, 50);
-        }
-      }
-    };
-
-    // Notification Popover Toggle Function
-    window.toggleNotificationPopover = function(e) {
-      if (e) e.stopPropagation();
-      const notifPopover = document.getElementById('notification-popover');
-      const userMenu = document.getElementById('modern-profile-menu') || document.getElementById('user-dropdown-menu');
-      const searchPopover = document.getElementById('search-suggestions-popover');
-      if (userMenu) userMenu.classList.remove('show');
-      if (searchPopover) {
-        searchPopover.classList.remove('active');
-        searchPopover.style.display = 'none';
-      }
-      if (notifPopover) {
-        const isShowing = notifPopover.classList.contains('show') || notifPopover.style.display === 'block';
-        if (isShowing) {
-          notifPopover.classList.remove('show');
-          notifPopover.style.display = 'none';
-        } else {
-          notifPopover.classList.add('show');
-          notifPopover.style.display = 'block';
-        }
-      }
-    };
-
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
   /* ==========================================================================
      ROUTE METADATA & DYNAMIC SEO / SCHEMA.ORG
@@ -1427,8 +1346,7 @@
       userProfileCapsule?.classList.remove('open');
       notifPopover?.classList.remove('show');
       const searchPopover = document.getElementById('search-suggestions-popover');
-      if (searchPopover) { searchPopover.classList.remove('active'); searchPopover.style.display = 'none'; }
-      if (notifPopover) { notifPopover.classList.remove('show'); notifPopover.style.display = 'none'; }
+      if (searchPopover) searchPopover.classList.remove('active');
       const searchCapsule = document.getElementById('header-search-capsule');
       if (searchCapsule) searchCapsule.classList.remove('focused');
       const btn = document.getElementById('btn-header-user-profile');
@@ -1443,8 +1361,7 @@
       const notifPopover = document.getElementById('notification-popover');
       if (notifPopover) notifPopover.classList.remove('show');
       const searchPopover = document.getElementById('search-suggestions-popover');
-      if (searchPopover) { searchPopover.classList.remove('active'); searchPopover.style.display = 'none'; }
-      if (notifPopover) { notifPopover.classList.remove('show'); notifPopover.style.display = 'none'; }
+      if (searchPopover) searchPopover.classList.remove('active');
 
       if (!menu) return;
       const isOpen = menu.classList.contains('show');
@@ -1697,8 +1614,7 @@
     };
 
     const closeSearchPopover = () => {
-      if (searchPopover) { searchPopover.classList.remove('active'); searchPopover.style.display = 'none'; }
-      if (notifPopover) { notifPopover.classList.remove('show'); notifPopover.style.display = 'none'; }
+      if (searchPopover) searchPopover.classList.remove('active');
       if (searchCapsule) searchCapsule.classList.remove('focused');
     };
 
@@ -3402,7 +3318,48 @@ function initCompaniesDirectory() {
   renderCompanies();
 }
 
-// ── COMPANY DETAIL VIEW CONTROLLER (MATCHES REFERENCE IMAGE EXACTLY) ───────
+// ── COMPANY DETAIL VIEW CONTROLLER (TAB-BY-TAB PROFESSIONAL SWITCHER) ───────
+window.switchCompanyTab = function(tabName, clickedBtn) {
+  // 1. Update subnav tab buttons
+  const tabBtns = document.querySelectorAll('.co-detail-tab-btn');
+  tabBtns.forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.getAttribute('data-tab') === tabName) {
+      btn.classList.add('active');
+    }
+  });
+
+  // 2. Hide all tab panes, show target pane
+  const panes = document.querySelectorAll('.co-tab-pane');
+  panes.forEach(p => {
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
+
+  const targetPane = document.getElementById(`co-tab-pane-${tabName}`);
+  if (targetPane) {
+    targetPane.classList.add('active');
+    targetPane.style.display = 'block';
+  }
+
+  // 3. Keep scroll aligned to top of tab view
+  const subnav = document.querySelector('.co-detail-subnav-bar');
+  if (subnav) {
+    const rect = subnav.getBoundingClientRect();
+    if (rect.top < 60) {
+      subnav.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+};
+
+window.handleDirectCompanyContact = function(e, companyName) {
+  if (e) e.preventDefault();
+  if (typeof window.showToast === 'function') {
+    window.showToast(`🎉 Yêu cầu liên hệ đã được gửi tới ${companyName}! Chúng tôi sẽ phản hồi trong 24h làm việc.`);
+  }
+  document.getElementById('co-direct-contact-form')?.reset();
+};
+
 window.openCompanyDetail = function(companyId) {
   const company = enterpriseCompaniesData.find(c => c.id === companyId) || enterpriseCompaniesData[0];
   currentSelectedCompanyId = company.id;
@@ -3424,14 +3381,14 @@ window.openCompanyDetail = function(companyId) {
   const relatedCompanies = enterpriseCompaniesData.filter(c => c.id !== company.id).slice(0, 3);
 
   container.innerHTML = `
-    <!-- 1. Hero Panoramic Cover Banner (Matches Reference Image) -->
+    <!-- 1. Hero Panoramic Cover Banner -->
     <div class="co-detail-hero-banner">
       <img src="${meta.coverImage}" alt="${company.name} Panoramic Cover" class="co-detail-hero-img" onerror="this.src='images/today_1.jpg'">
       <div class="co-detail-hero-overlay"></div>
       
       <!-- Top Right Verified Badge -->
       <span class="co-detail-hero-verified">
-        <i class="fa-solid fa-circle-check"></i> Verified
+        <i class="fa-solid fa-circle-check"></i> Verified Employer
       </span>
 
       <!-- Bottom Identity Overlaid on Banner -->
@@ -3451,22 +3408,22 @@ window.openCompanyDetail = function(companyId) {
       </div>
     </div>
 
-    <!-- 2. Sub-Navigation & Actions Bar (Matches Reference Image) -->
+    <!-- 2. Sub-Navigation & Actions Bar (Tab by Tab Switcher) -->
     <div class="co-detail-subnav-bar">
       <div class="co-detail-tabs-list" role="tablist">
-        <button type="button" class="co-detail-tab-btn active" data-tab="overview">Overview</button>
-        <button type="button" class="co-detail-tab-btn" data-tab="jobs" onclick="document.getElementById('co-detail-jobs')?.scrollIntoView({behavior:'smooth'})">Jobs (${meta.latestJobs.length})</button>
-        <button type="button" class="co-detail-tab-btn" data-tab="about" onclick="document.getElementById('co-detail-about')?.scrollIntoView({behavior:'smooth'})">About</button>
-        <button type="button" class="co-detail-tab-btn" data-tab="culture" onclick="showToast('Culture &amp; Workplace Values at ' + '${company.name}')">Culture</button>
-        <button type="button" class="co-detail-tab-btn" data-tab="news" onclick="switchView('news')">News</button>
-        <button type="button" class="co-detail-tab-btn" data-tab="contact" onclick="openCompanyContactModal('${company.id}')">Contact</button>
+        <button type="button" class="co-detail-tab-btn active" data-tab="overview" onclick="switchCompanyTab('overview', this)">Overview</button>
+        <button type="button" class="co-detail-tab-btn" data-tab="jobs" onclick="switchCompanyTab('jobs', this)">Jobs (${meta.latestJobs.length})</button>
+        <button type="button" class="co-detail-tab-btn" data-tab="about" onclick="switchCompanyTab('about', this)">About</button>
+        <button type="button" class="co-detail-tab-btn" data-tab="culture" onclick="switchCompanyTab('culture', this)">Culture</button>
+        <button type="button" class="co-detail-tab-btn" data-tab="news" onclick="switchCompanyTab('news', this)">News</button>
+        <button type="button" class="co-detail-tab-btn" data-tab="contact" onclick="switchCompanyTab('contact', this)">Contact</button>
       </div>
       <div class="co-detail-subnav-actions">
         <button type="button" class="btn-co-detail-save ${isSaved ? 'saved' : ''}" onclick="toggleSaveCompany('${company.id}', this)">
           <i class="${isSaved ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}"></i>
           <span>${isSaved ? 'Saved Company' : 'Save Company'}</span>
         </button>
-        <button type="button" class="btn-co-detail-contact" onclick="openCompanyContactModal('${company.id}')">
+        <button type="button" class="btn-co-detail-contact" onclick="switchCompanyTab('contact', document.querySelector('.co-detail-tab-btn[data-tab=\'contact\']'))">
           <i class="fa-solid fa-paper-plane"></i>
           <span>Contact Company</span>
           <i class="fa-solid fa-arrow-right" style="font-size:12px;"></i>
@@ -3474,125 +3431,564 @@ window.openCompanyDetail = function(companyId) {
       </div>
     </div>
 
-    <!-- 3. Two-Column Main Content Grid (Matches Reference Image) -->
-    <div class="co-detail-main-grid">
-      
-      <!-- Left Column: About & Specialties -->
-      <div class="co-detail-left-col">
-        
-        <!-- About Section with Sunset Cranes Photo -->
-        <div class="co-detail-card" id="co-detail-about">
-          <h2 class="co-detail-card-heading">
-            <span>About ${company.name.split('(')[0].trim()}</span>
-          </h2>
-          <div class="co-about-layout">
-            <div class="co-about-text-col">
-              <p class="co-about-p">${meta.aboutP1}</p>
-              <p class="co-about-p">${meta.aboutP2}</p>
-              <a href="${company.website || '#'}" target="_blank" rel="noopener" class="co-about-readmore">
-                Read more <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
-            <div class="co-about-img-wrap">
-              <img src="${meta.aboutPhoto}" alt="About ${company.name}" class="co-about-img" onerror="this.src='images/maersk_about.jpg'">
-            </div>
-          </div>
-        </div>
+    <!-- 3. Tab Panes Wrapper (Dedicated Professional Content per Tab) -->
+    <div class="co-detail-tab-panes-wrapper">
 
-        <!-- Our Specialties Section -->
-        <div class="co-detail-card">
-          <h2 class="co-detail-card-heading">
-            <span>Our Specialties</span>
-          </h2>
-          <div class="co-specialties-row">
-            ${meta.specialties.map(s => `
-              <span class="co-specialty-pill" style="font-size: 14px; padding: 8px 18px;">
-                <i class="fa-solid ${s.icon}"></i> ${s.name}
-              </span>
-            `).join('')}
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Right Column: Company Highlights & Why Join -->
-      <div class="co-detail-right-col">
-        
-        <!-- Company Highlights -->
-        <div class="co-detail-card">
-          <h2 class="co-detail-card-heading">
-            <span>Company Highlights</span>
-          </h2>
-          <div class="co-highlights-stats-grid">
-            <div class="co-hl-stat-col">
-              <i class="fa-solid fa-users co-hl-stat-icon"></i>
-              <div class="co-hl-stat-num">${meta.employees}</div>
-              <div class="co-hl-stat-lbl">Employees</div>
-            </div>
-            <div class="co-hl-stat-col">
-              <i class="fa-solid fa-globe co-hl-stat-icon"></i>
-              <div class="co-hl-stat-num">${meta.countries}</div>
-              <div class="co-hl-stat-lbl">Countries</div>
-            </div>
-            <div class="co-hl-stat-col">
-              <i class="fa-solid fa-star co-hl-stat-icon"></i>
-              <div class="co-hl-stat-num">${meta.rating}</div>
-              <div class="co-hl-stat-lbl">Employer Rating</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Why Join Card (Light Blue with Watermark) -->
-        <div class="co-why-join-card">
-          <i class="fa-solid fa-certificate co-why-join-watermark"></i>
-          <h2 class="co-why-join-title">Why Join ${company.name.split('(')[0].trim()}?</h2>
-          <ul class="co-why-join-list">
-            ${meta.whyJoin.map(point => `
-              <li class="co-why-join-item">
-                <i class="fa-solid fa-circle-check"></i>
-                <span>${point}</span>
-              </li>
-            `).join('')}
-          </ul>
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- 4. Latest Jobs at Company (Matches Reference Image) -->
-    <div class="co-detail-jobs-section" id="co-detail-jobs">
-      <div class="co-jobs-header-row">
-        <h2 class="co-jobs-header-title">Latest Jobs at ${company.name.split('(')[0].trim()}</h2>
-        <a href="#" onclick="switchView('browse'); return false;" class="co-jobs-view-all-link">
-          View All Jobs <i class="fa-solid fa-arrow-right"></i>
-        </a>
-      </div>
-
-      <div class="co-detail-jobs-grid">
-        ${meta.latestJobs.map(j => `
-          <div class="co-detail-job-card">
-            <div class="co-job-card-top">
-              <div class="co-job-icon-box">
-                <i class="fa-solid fa-briefcase"></i>
-              </div>
-              <div>
-                <h3 class="co-job-card-title">${j.title}</h3>
-                <div class="co-job-card-loc">
-                  <i class="fa-solid fa-location-dot"></i> ${j.location}
+      <!-- ================= TAB 1: OVERVIEW ================= -->
+      <div class="co-tab-pane active" id="co-tab-pane-overview">
+        <div class="co-detail-main-grid">
+          
+          <!-- Left Column: About & Specialties -->
+          <div class="co-detail-left-col">
+            
+            <!-- About Section with Sunset Cranes Photo -->
+            <div class="co-detail-card">
+              <h2 class="co-detail-card-heading">
+                <span>About ${company.name.split('(')[0].trim()}</span>
+              </h2>
+              <div class="co-about-layout">
+                <div class="co-about-text-col">
+                  <p class="co-about-p">${meta.aboutP1}</p>
+                  <p class="co-about-p">${meta.aboutP2}</p>
+                  <a href="javascript:void(0)" onclick="switchCompanyTab('about')" class="co-about-readmore">
+                    View Complete Corporate Profile &amp; Hubs <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+                <div class="co-about-img-wrap">
+                  <img src="${meta.aboutPhoto}" alt="About ${company.name}" class="co-about-img" onerror="this.src='images/maersk_about.jpg'">
                 </div>
               </div>
             </div>
-            <button type="button" class="btn-co-job-apply" onclick="openJobDetail('${j.id}');">
-              <span>Apply Now</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
+
+            <!-- Our Specialties Section -->
+            <div class="co-detail-card">
+              <h2 class="co-detail-card-heading">
+                <span>Core Capabilities &amp; Specialties</span>
+              </h2>
+              <div class="co-specialties-row">
+                ${meta.specialties.map(s => `
+                  <span class="co-specialty-pill" style="font-size: 14px; padding: 8px 18px;">
+                    <i class="fa-solid ${s.icon}"></i> ${s.name}
+                  </span>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Latest Jobs Preview Card -->
+            <div class="co-detail-card">
+              <div class="co-tab-section-header" style="margin-bottom: 16px; border: none; padding: 0;">
+                <div>
+                  <h3 class="co-about-subheading" style="margin: 0;">Featured Job Openings</h3>
+                  <p style="font-size: 13px; color: #64748B; margin: 2px 0 0;">Recent roles hiring in Vietnam</p>
+                </div>
+                <button type="button" class="co-tab-link-btn" onclick="switchCompanyTab('jobs')">
+                  View All ${meta.latestJobs.length} Jobs &rarr;
+                </button>
+              </div>
+              <div class="co-detail-jobs-grid" style="grid-template-columns: 1fr; gap: 12px;">
+                ${meta.latestJobs.slice(0, 2).map(j => `
+                  <div class="co-detail-job-card" style="box-shadow: 0 1px 3px rgba(0,0,0,0.05); padding: 16px;">
+                    <div class="co-job-card-top">
+                      <div class="co-job-icon-box" style="width: 40px; height: 40px; font-size: 16px;">
+                        <i class="fa-solid fa-briefcase"></i>
+                      </div>
+                      <div>
+                        <h4 class="co-job-card-title" style="font-size: 15px;">${j.title}</h4>
+                        <div class="co-job-card-loc" style="font-size: 13px;">
+                          <i class="fa-solid fa-location-dot"></i> ${j.location}
+                        </div>
+                      </div>
+                    </div>
+                    <button type="button" class="btn-co-job-apply" onclick="openJobDetail('${j.id}');">
+                      <span>Apply Now</span>
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
           </div>
-        `).join('')}
+
+          <!-- Right Column: Company Highlights & Why Join -->
+          <div class="co-detail-right-col">
+            
+            <!-- Company Highlights -->
+            <div class="co-detail-card">
+              <h2 class="co-detail-card-heading">
+                <span>Company Highlights</span>
+              </h2>
+              <div class="co-highlights-stats-grid">
+                <div class="co-hl-stat-col">
+                  <i class="fa-solid fa-users co-hl-stat-icon"></i>
+                  <div class="co-hl-stat-num">${meta.employees}</div>
+                  <div class="co-hl-stat-lbl">Employees</div>
+                </div>
+                <div class="co-hl-stat-col">
+                  <i class="fa-solid fa-globe co-hl-stat-icon"></i>
+                  <div class="co-hl-stat-num">${meta.countries}</div>
+                  <div class="co-hl-stat-lbl">Countries</div>
+                </div>
+                <div class="co-hl-stat-col">
+                  <i class="fa-solid fa-star co-hl-stat-icon"></i>
+                  <div class="co-hl-stat-num">${meta.rating}</div>
+                  <div class="co-hl-stat-lbl">Employer Rating</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Why Join Card -->
+            <div class="co-why-join-card">
+              <i class="fa-solid fa-certificate co-why-join-watermark"></i>
+              <h2 class="co-why-join-title">Why Join ${company.name.split('(')[0].trim()}?</h2>
+              <ul class="co-why-join-list">
+                ${meta.whyJoin.map(point => `
+                  <li class="co-why-join-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>${point}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+
+            <!-- Fast Contact CTA Card -->
+            <div class="co-detail-card" style="margin-top: 24px;">
+              <h2 class="co-detail-card-heading">
+                <span>Inquiries &amp; Offices</span>
+              </h2>
+              <p style="font-size: 13.5px; color: #475569; line-height: 1.5; margin-bottom: 14px;">
+                <i class="fa-solid fa-building" style="color: #2477E4; margin-right: 6px;"></i> ${company.location}
+              </p>
+              <button type="button" class="btn-co-tab-action" onclick="switchCompanyTab('contact')">
+                <i class="fa-solid fa-envelope-open-text"></i> Open Office Directory &amp; Inquiry Form &rarr;
+              </button>
+            </div>
+
+          </div>
+
+        </div>
       </div>
+
+      <!-- ================= TAB 2: JOBS ================= -->
+      <div class="co-tab-pane" id="co-tab-pane-jobs" style="display: none;">
+        <div class="co-tab-section-header">
+          <div>
+            <h2 class="co-tab-main-title">Career Opportunities at ${company.name.split('(')[0].trim()}</h2>
+            <p class="co-tab-main-sub">Explore ${meta.latestJobs.length} active positions offering international exposure, career progression, and competitive salaries.</p>
+          </div>
+          <span class="co-jobs-count-pill">${meta.latestJobs.length} Open Positions</span>
+        </div>
+
+        <div class="co-detail-jobs-grid" style="grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 20px; margin-top: 20px;">
+          ${meta.latestJobs.map(j => `
+            <div class="co-detail-job-card full-card">
+              <div class="co-job-card-top">
+                <div class="co-job-icon-box">
+                  <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div>
+                  <h3 class="co-job-card-title">${j.title}</h3>
+                  <div class="co-job-card-loc">
+                    <i class="fa-solid fa-location-dot"></i> ${j.location}
+                  </div>
+                </div>
+              </div>
+              <div class="co-job-card-meta-pills">
+                <span class="job-meta-pill"><i class="fa-regular fa-clock"></i> Full-time</span>
+                <span class="job-meta-pill salary-pill"><i class="fa-solid fa-coins"></i> ₫26.000.000 - ₫42.000.000 / mo</span>
+                <span class="job-meta-pill urgent-pill"><i class="fa-solid fa-bolt"></i> Urgent Hiring</span>
+              </div>
+              <div class="co-job-card-footer">
+                <button type="button" class="btn-job-quick-apply" onclick="openJobDetail('${j.id}');">
+                  <span>Ứng Tuyển Ngay</span>
+                  <i class="fa-solid fa-paper-plane"></i>
+                </button>
+                <button type="button" class="btn-job-view-spec" onclick="openJobDetail('${j.id}');">
+                  <span>Chi Tiết</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+
+        <!-- Spontaneous Application Banner -->
+        <div class="co-spontaneous-banner">
+          <div class="spontaneous-left">
+            <div class="spontaneous-icon"><i class="fa-solid fa-user-plus"></i></div>
+            <div>
+              <h4>Don't see an exact matching position?</h4>
+              <p>Submit your CV directly to our Talent Network. Our recruiting team actively reviews candidates for new logistics operations roles.</p>
+            </div>
+          </div>
+          <button type="button" class="btn-spontaneous-apply" onclick="openQuickApplyModal('spontaneous', '${company.name}')">
+            Join Talent Network &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- ================= TAB 3: ABOUT ================= -->
+      <div class="co-tab-pane" id="co-tab-pane-about" style="display: none;">
+        <div class="co-tab-section-header">
+          <div>
+            <h2 class="co-tab-main-title">About ${company.name}</h2>
+            <p class="co-tab-main-sub">Corporate background, global multimodal reach, and regional operations in Vietnam.</p>
+          </div>
+        </div>
+
+        <div class="co-about-full-grid">
+          <div class="co-about-full-main">
+            <div class="co-detail-card">
+              <h3 class="co-about-subheading">Corporate Mission &amp; Regional Presence</h3>
+              <p class="co-about-p" style="font-size: 15px; line-height: 1.7; margin-bottom: 16px;">${meta.aboutP1}</p>
+              <p class="co-about-p" style="font-size: 15px; line-height: 1.7; margin-bottom: 16px;">${meta.aboutP2}</p>
+              <p class="co-about-p" style="font-size: 15px; line-height: 1.7;">
+                Operating extensively through Vietnam's economic gateways, our multimodal transport corridors seamlessly link manufacturing clusters in Bac Ninh, Hai Phong, Binh Duong, and Dong Nai to key global markets in North America, Europe, and intra-Asia.
+              </p>
+            </div>
+
+            <!-- Vietnam Operational Hubs & Office Locations -->
+            <div class="co-detail-card" style="margin-top: 24px;">
+              <h3 class="co-about-subheading">Regional Offices &amp; Hubs in Vietnam</h3>
+              <div class="co-locations-grid">
+                <div class="co-loc-card">
+                  <div class="co-loc-badge">Head Office</div>
+                  <h4 class="co-loc-name">Ho Chi Minh City HQ</h4>
+                  <p class="co-loc-addr"><i class="fa-solid fa-location-dot"></i> Bitexco Financial Tower / Landmark 81, District 1, HCMC</p>
+                  <div class="co-loc-meta">
+                    <span><i class="fa-solid fa-phone"></i> +84 28 3823 0011</span>
+                    <span><i class="fa-solid fa-envelope"></i> hcmc.office@${company.id}.vn</span>
+                  </div>
+                </div>
+                <div class="co-loc-card">
+                  <div class="co-loc-badge">North Branch</div>
+                  <h4 class="co-loc-name">Hanoi Regional Office</h4>
+                  <p class="co-loc-addr"><i class="fa-solid fa-location-dot"></i> Lotte Center Hanoi, Lieu Giai, Ba Dinh, Hanoi</p>
+                  <div class="co-loc-meta">
+                    <span><i class="fa-solid fa-phone"></i> +84 24 3936 6000</span>
+                    <span><i class="fa-solid fa-envelope"></i> hanoi.office@${company.id}.vn</span>
+                  </div>
+                </div>
+                <div class="co-loc-card">
+                  <div class="co-loc-badge">Port Terminal Hub</div>
+                  <h4 class="co-loc-name">Hai Phong Maritime Gateway</h4>
+                  <p class="co-loc-addr"><i class="fa-solid fa-location-dot"></i> Dinh Vu Logistics Park, Hai An District, Hai Phong</p>
+                  <div class="co-loc-meta">
+                    <span><i class="fa-solid fa-phone"></i> +84 225 385 9900</span>
+                    <span><i class="fa-solid fa-envelope"></i> haiphong@${company.id}.vn</span>
+                  </div>
+                </div>
+                <div class="co-loc-card">
+                  <div class="co-loc-badge">Central Hub</div>
+                  <h4 class="co-loc-name">Da Nang Port Operations</h4>
+                  <p class="co-loc-addr"><i class="fa-solid fa-location-dot"></i> Tien Sa Port, Son Tra District, Da Nang City</p>
+                  <div class="co-loc-meta">
+                    <span><i class="fa-solid fa-phone"></i> +84 236 382 2555</span>
+                    <span><i class="fa-solid fa-envelope"></i> danang@${company.id}.vn</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="co-about-full-side">
+            <!-- Scale & Assets -->
+            <div class="co-detail-card">
+              <h3 class="co-about-subheading">Enterprise Scope</h3>
+              <div class="co-scope-row">
+                <span class="scope-lbl">Global Employees</span>
+                <span class="scope-val">${meta.employees}</span>
+              </div>
+              <div class="co-scope-row">
+                <span class="scope-lbl">Countries Active</span>
+                <span class="scope-val">${meta.countries}</span>
+              </div>
+              <div class="co-scope-row">
+                <span class="scope-lbl">Industry Domain</span>
+                <span class="scope-val">${company.industry}</span>
+              </div>
+              <div class="co-scope-row">
+                <span class="scope-lbl">Primary Headquarters</span>
+                <span class="scope-val">${company.location}</span>
+              </div>
+              <div class="co-scope-row">
+                <span class="scope-lbl">Official Website</span>
+                <span class="scope-val"><a href="${company.website || '#'}" target="_blank" rel="noopener" style="color:#2477E4; text-decoration:none; font-weight:600;">Visit Portal &rarr;</a></span>
+              </div>
+            </div>
+
+            <div class="co-detail-card" style="margin-top: 24px;">
+              <h3 class="co-about-subheading">Core Logistics Capabilities</h3>
+              <div class="co-specialties-row" style="margin-top: 10px;">
+                ${meta.specialties.map(s => `
+                  <span class="co-specialty-pill" style="font-size: 13px; padding: 7px 14px;">
+                    <i class="fa-solid ${s.icon}"></i> ${s.name}
+                  </span>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 4: CULTURE ================= -->
+      <div class="co-tab-pane" id="co-tab-pane-culture" style="display: none;">
+        <div class="co-tab-section-header">
+          <div>
+            <h2 class="co-tab-main-title">Workplace Culture &amp; Values at ${company.name.split('(')[0].trim()}</h2>
+            <p class="co-tab-main-sub">Empowering people through continuous learning, ethical leadership, inclusive growth, and employee wellbeing.</p>
+          </div>
+        </div>
+
+        <!-- 4 Core Pillars -->
+        <div class="co-culture-pillars-grid">
+          <div class="culture-pillar-card">
+            <div class="pillar-icon bg-blue"><i class="fa-solid fa-heart-pulse"></i></div>
+            <h4 class="pillar-title">Constant Care &amp; Safety</h4>
+            <p class="pillar-desc">Take care of today, actively prepare for tomorrow. Uncompromising safety across every port, vessel, and distribution warehouse.</p>
+          </div>
+          <div class="culture-pillar-card">
+            <div class="pillar-icon bg-green"><i class="fa-solid fa-handshake-angle"></i></div>
+            <h4 class="pillar-title">Humbleness &amp; Collaboration</h4>
+            <p class="pillar-desc">Listen, learn, and innovate together. Open communication channels between field logistics teams and regional executive leaders.</p>
+          </div>
+          <div class="culture-pillar-card">
+            <div class="pillar-icon bg-purple"><i class="fa-solid fa-shield-halved"></i></div>
+            <h4 class="pillar-title">Uprightness &amp; Ethics</h4>
+            <p class="pillar-desc">Our word is our bond. Transparency, regulatory compliance, and ethical standards guide every client shipment and customs clearance.</p>
+          </div>
+          <div class="culture-pillar-card">
+            <div class="pillar-icon bg-amber"><i class="fa-solid fa-seedling"></i></div>
+            <h4 class="pillar-title">Sustainable Future</h4>
+            <p class="pillar-desc">Leading green shipping transformations, decarbonization initiatives, and zero-emission multimodal cold storage across ASEAN.</p>
+          </div>
+        </div>
+
+        <!-- Employee Perks & Benefits Grid -->
+        <div class="co-detail-card" style="margin-top: 28px;">
+          <h3 class="co-about-subheading">Comprehensive Benefits Package</h3>
+          <div class="co-benefits-grid">
+            <div class="benefit-item">
+              <i class="fa-solid fa-shield-virus benefit-ico"></i>
+              <div>
+                <h5>Premium Healthcare</h5>
+                <p>Full outpatient and inpatient medical coverage for employees and direct family members.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <i class="fa-solid fa-gift benefit-ico"></i>
+              <div>
+                <h5>13th &amp; 14th Month Bonus</h5>
+                <p>Guaranteed 13th month salary plus performance and KPI incentives paid semi-annually.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <i class="fa-solid fa-laptop-house benefit-ico"></i>
+              <div>
+                <h5>Hybrid Work Policy</h5>
+                <p>Flexible work-from-home options for corporate and supply chain analysts.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <i class="fa-solid fa-graduation-cap benefit-ico"></i>
+              <div>
+                <h5>Sponsored Certifications</h5>
+                <p>100% company-funded tuition for FIATA, APICS CPIM, and international logistics diplomas.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <i class="fa-solid fa-plane-departure benefit-ico"></i>
+              <div>
+                <h5>Annual Retreat &amp; Wellness</h5>
+                <p>Yearly luxury team building excursions, gym allowances, and annual wellbeing days.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <i class="fa-solid fa-baby-carriage benefit-ico"></i>
+              <div>
+                <h5>Parental &amp; Sabbatical Leave</h5>
+                <p>Generous maternity and paternity leave exceeding Vietnam labor statutory requirements.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Employee Testimonials -->
+        <div class="co-testimonials-row" style="margin-top: 28px;">
+          <div class="testimonial-card">
+            <div class="testimonial-quote">"The scale of operations here is unmatched. Within 2 years, I had the opportunity to lead maritime clearance systems for some of the largest cold chain exporters in the Mekong Delta."</div>
+            <div class="testimonial-author">
+              <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+              <div>
+                <div class="author-name">Nguyen Minh Tuan</div>
+                <div class="author-role">Senior Operations Supervisor &bull; 4 yrs at ${company.name.split('(')[0].trim()}</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-quote">"A truly respectful and global culture. The sponsored FIATA supply chain training gave me the tools to transition from operations coordinator to national logistics analyst."</div>
+            <div class="testimonial-author">
+              <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+              <div>
+                <div class="author-name">Le Tran Thao My</div>
+                <div class="author-role">Supply Chain Lead &bull; 3 yrs at ${company.name.split('(')[0].trim()}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 5: NEWS ================= -->
+      <div class="co-tab-pane" id="co-tab-pane-news" style="display: none;">
+        <div class="co-tab-section-header">
+          <div>
+            <h2 class="co-tab-main-title">Latest Company News &amp; Updates</h2>
+            <p class="co-tab-main-sub">Recent developments, terminal announcements, green logistics milestones, and press releases.</p>
+          </div>
+        </div>
+
+        <div class="co-news-grid">
+          <div class="co-news-card" onclick="openArticle('vietnam-logistics-investment-2026')">
+            <div class="co-news-img-wrap">
+              <img src="images/today_1.jpg" alt="News 1" class="co-news-img">
+              <span class="co-news-tag">Expansion</span>
+            </div>
+            <div class="co-news-content">
+              <div class="co-news-date"><i class="fa-regular fa-clock"></i> 2 days ago &bull; Market Expansion</div>
+              <h4 class="co-news-title">${company.name.split('(')[0].trim()} expands smart cold storage warehouse capacity in Southern Vietnam</h4>
+              <p class="co-news-snippet">New facility features temperature-controlled zones from -25°C to +15°C, expanding export capabilities for agricultural and pharmaceutical sectors.</p>
+              <span class="co-news-link">Read full story &rarr;</span>
+            </div>
+          </div>
+
+          <div class="co-news-card" onclick="openArticle('maritime-shipping-rates-forecast-q1-2026')">
+            <div class="co-news-img-wrap">
+              <img src="images/today_2.jpg" alt="News 2" class="co-news-img">
+              <span class="co-news-tag">Green Logistics</span>
+            </div>
+            <div class="co-news-content">
+              <div class="co-news-date"><i class="fa-regular fa-clock"></i> 1 week ago &bull; Sustainability</div>
+              <h4 class="co-news-title">${company.name.split('(')[0].trim()} launches dual-fuel vessel corridor connecting Cai Mep to North America</h4>
+              <p class="co-news-snippet">New green shipping lane reduces carbon intensity by up to 65% per container transported on the transpacific trade route.</p>
+              <span class="co-news-link">Read full story &rarr;</span>
+            </div>
+          </div>
+
+          <div class="co-news-card" onclick="openArticle('vietnam-air-cargo-growth-2026')">
+            <div class="co-news-img-wrap">
+              <img src="images/today_3.jpg" alt="News 3" class="co-news-img">
+              <span class="co-news-tag">Award</span>
+            </div>
+            <div class="co-news-content">
+              <div class="co-news-date"><i class="fa-regular fa-clock"></i> 2 weeks ago &bull; Recognition</div>
+              <h4 class="co-news-title">${company.name.split('(')[0].trim()} recognized as "Top Logistics Employer of the Year" in Vietnam</h4>
+              <p class="co-news-snippet">Award highlights industry-leading workplace standards, transparent promotion frameworks, and excellence in supply chain training.</p>
+              <span class="co-news-link">Read full story &rarr;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 6: CONTACT ================= -->
+      <div class="co-tab-pane" id="co-tab-pane-contact" style="display: none;">
+        <div class="co-tab-section-header">
+          <div>
+            <h2 class="co-tab-main-title">Contact &amp; Connect with ${company.name.split('(')[0].trim()}</h2>
+            <p class="co-tab-main-sub">Get in touch with our Vietnam commercial division, logistics solutions team, or HR department.</p>
+          </div>
+        </div>
+
+        <div class="co-contact-grid">
+          <!-- Left: Direct Inquiry Form -->
+          <div class="co-contact-form-box">
+            <h3 class="co-contact-box-title">Send a Direct Message</h3>
+            <p class="co-contact-box-sub">Fill out the form below. A company representative will get back to you within 24 business hours.</p>
+
+            <form id="co-direct-contact-form" onsubmit="handleDirectCompanyContact(event, '${company.name}')">
+              <div class="co-form-row">
+                <div class="co-form-group">
+                  <label>Họ và Tên (Full Name) *</label>
+                  <input type="text" class="form-control" required placeholder="e.g. Tran Minh Tuan">
+                </div>
+                <div class="co-form-group">
+                  <label>Email Doanh Nghiệp (Email) *</label>
+                  <input type="email" class="form-control" required placeholder="tuan.tran@company.com">
+                </div>
+              </div>
+
+              <div class="co-form-row">
+                <div class="co-form-group">
+                  <label>Số Điện Thoại (Phone) *</label>
+                  <input type="tel" class="form-control" required placeholder="0912 345 678">
+                </div>
+                <div class="co-form-group">
+                  <label>Chủ Đề Liên Hệ (Subject) *</label>
+                  <select class="form-control" required>
+                    <option value="Tư vấn giải pháp Logistics &amp; Cước vận tải">Tư vấn giải pháp Logistics &amp; Cước vận tải</option>
+                    <option value="Hợp tác dịch vụ Kho bãi &amp; Chuỗi cung ứng">Hợp tác dịch vụ Kho bãi &amp; Chuỗi cung ứng</option>
+                    <option value="Tuyển dụng &amp; Cơ hội việc làm">Tuyển dụng &amp; Cơ hội việc làm</option>
+                    <option value="Đối tác đại lý Hải quan">Đối tác đại lý Hải quan</option>
+                    <option value="Khác">Khác</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="co-form-group">
+                <label>Nội Dung Yêu Cầu (Message) *</label>
+                <textarea class="form-control" rows="4" required placeholder="Vui lòng mô tả yêu cầu hoặc tuyến vận chuyển doanh nghiệp đang quan tâm..."></textarea>
+              </div>
+
+              <button type="submit" class="btn-co-submit-inquiry">
+                <i class="fa-solid fa-paper-plane"></i> Gửi Yêu Cầu Liên Hệ
+              </button>
+            </form>
+          </div>
+
+          <!-- Right: Official Directory Card -->
+          <div class="co-contact-directory-box">
+            <h3 class="co-contact-box-title">Official Directory</h3>
+            
+            <div class="co-dir-item">
+              <div class="dir-icon"><i class="fa-solid fa-headset"></i></div>
+              <div>
+                <div class="dir-lbl">Customer Service Hotline</div>
+                <div class="dir-val">1900-8888 (Ext 2) / +84 28 3823 0011</div>
+                <div class="dir-sub">Support Mon - Fri: 08:00 - 17:30</div>
+              </div>
+            </div>
+
+            <div class="co-dir-item">
+              <div class="dir-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <div class="dir-lbl">Recruitment &amp; HR Email</div>
+                <div class="dir-val">careers.vietnam@${company.id}.com</div>
+                <div class="dir-sub">For job applications and internship inquiries</div>
+              </div>
+            </div>
+
+            <div class="co-dir-item">
+              <div class="dir-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <div class="dir-lbl">Vietnam Commercial Headquarters</div>
+                <div class="dir-val">${company.location}</div>
+                <div class="dir-sub">Multimodal Logistics &amp; Regional Hub</div>
+              </div>
+            </div>
+
+            <div class="co-dir-item">
+              <div class="dir-icon"><i class="fa-solid fa-globe"></i></div>
+              <div>
+                <div class="dir-lbl">Official Enterprise Portal</div>
+                <div class="dir-val"><a href="${company.website || '#'}" target="_blank" rel="noopener" style="color:#2477E4; text-decoration:none;">${company.website || 'https://www.company.com'} &rarr;</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- 5. Related Top Employers Section Underneath (Per User Request) -->
+    <!-- 4. Related Top Employers Section Underneath -->
     <div class="co-related-section">
       <div class="co-related-header">
         <div class="co-accent-bar"></div>
@@ -3700,88 +4096,7 @@ window.submitCompanyContactForm = function(e) {
 };
 
 // Wire Top Nav "Companies" Button
-
-    // Post a Job Modal Functions
-    window.openPostJobModal = function() {
-      if (typeof window.closeAllDropdowns === 'function') window.closeAllDropdowns();
-      const modal = document.getElementById('modal-post-job');
-      if (modal) {
-        modal.removeAttribute('hidden');
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-      }
-    };
-
-    window.closePostJobModal = function() {
-      const modal = document.getElementById('modal-post-job');
-      if (modal) {
-        modal.setAttribute('hidden', '');
-        modal.classList.remove('show');
-        document.body.style.overflow = '';
-      }
-    };
-
-    window.handlePostJobSubmit = function(e) {
-      if (e) e.preventDefault();
-      const title = document.getElementById('post-job-title')?.value || 'Job Opening';
-      if (typeof window.showToast === 'function') {
-        window.showToast(`🎉 Tin tuyển dụng "${title}" đã được đăng thành công! Tin sẽ được duyệt trong 15 phút.`);
-      }
-      window.closePostJobModal();
-      document.getElementById('form-post-job')?.reset();
-    };
-
-    // Header Search Toggle Function
-    window.toggleHeaderSearch = function(e) {
-      if (e) e.stopPropagation();
-      const searchPopover = document.getElementById('search-suggestions-popover');
-      const userMenu = document.getElementById('modern-profile-menu') || document.getElementById('user-dropdown-menu');
-      const notifPopover = document.getElementById('notification-popover');
-      if (userMenu) userMenu.classList.remove('show');
-      if (notifPopover) {
-        notifPopover.classList.remove('show');
-        notifPopover.style.display = 'none';
-      }
-      if (searchPopover) {
-        const isShowing = searchPopover.classList.contains('active') || searchPopover.style.display === 'block';
-        if (isShowing) {
-          searchPopover.classList.remove('active');
-          searchPopover.style.display = 'none';
-        } else {
-          searchPopover.classList.add('active');
-          searchPopover.style.display = 'block';
-          setTimeout(() => {
-            const input = document.getElementById('top-capsule-search-input');
-            if (input) input.focus();
-          }, 50);
-        }
-      }
-    };
-
-    // Notification Popover Toggle Function
-    window.toggleNotificationPopover = function(e) {
-      if (e) e.stopPropagation();
-      const notifPopover = document.getElementById('notification-popover');
-      const userMenu = document.getElementById('modern-profile-menu') || document.getElementById('user-dropdown-menu');
-      const searchPopover = document.getElementById('search-suggestions-popover');
-      if (userMenu) userMenu.classList.remove('show');
-      if (searchPopover) {
-        searchPopover.classList.remove('active');
-        searchPopover.style.display = 'none';
-      }
-      if (notifPopover) {
-        const isShowing = notifPopover.classList.contains('show') || notifPopover.style.display === 'block';
-        if (isShowing) {
-          notifPopover.classList.remove('show');
-          notifPopover.style.display = 'none';
-        } else {
-          notifPopover.classList.add('show');
-          notifPopover.style.display = 'block';
-        }
-      }
-    };
-
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   initCompaniesDirectory();
 
   // Ensure any [data-view="companies"] button opens companies directory
@@ -4987,88 +5302,7 @@ window.openJobDetailSplit = function(jobId) {
 };
 
 // Auto initialize on DOM ready
-
-    // Post a Job Modal Functions
-    window.openPostJobModal = function() {
-      if (typeof window.closeAllDropdowns === 'function') window.closeAllDropdowns();
-      const modal = document.getElementById('modal-post-job');
-      if (modal) {
-        modal.removeAttribute('hidden');
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-      }
-    };
-
-    window.closePostJobModal = function() {
-      const modal = document.getElementById('modal-post-job');
-      if (modal) {
-        modal.setAttribute('hidden', '');
-        modal.classList.remove('show');
-        document.body.style.overflow = '';
-      }
-    };
-
-    window.handlePostJobSubmit = function(e) {
-      if (e) e.preventDefault();
-      const title = document.getElementById('post-job-title')?.value || 'Job Opening';
-      if (typeof window.showToast === 'function') {
-        window.showToast(`🎉 Tin tuyển dụng "${title}" đã được đăng thành công! Tin sẽ được duyệt trong 15 phút.`);
-      }
-      window.closePostJobModal();
-      document.getElementById('form-post-job')?.reset();
-    };
-
-    // Header Search Toggle Function
-    window.toggleHeaderSearch = function(e) {
-      if (e) e.stopPropagation();
-      const searchPopover = document.getElementById('search-suggestions-popover');
-      const userMenu = document.getElementById('modern-profile-menu') || document.getElementById('user-dropdown-menu');
-      const notifPopover = document.getElementById('notification-popover');
-      if (userMenu) userMenu.classList.remove('show');
-      if (notifPopover) {
-        notifPopover.classList.remove('show');
-        notifPopover.style.display = 'none';
-      }
-      if (searchPopover) {
-        const isShowing = searchPopover.classList.contains('active') || searchPopover.style.display === 'block';
-        if (isShowing) {
-          searchPopover.classList.remove('active');
-          searchPopover.style.display = 'none';
-        } else {
-          searchPopover.classList.add('active');
-          searchPopover.style.display = 'block';
-          setTimeout(() => {
-            const input = document.getElementById('top-capsule-search-input');
-            if (input) input.focus();
-          }, 50);
-        }
-      }
-    };
-
-    // Notification Popover Toggle Function
-    window.toggleNotificationPopover = function(e) {
-      if (e) e.stopPropagation();
-      const notifPopover = document.getElementById('notification-popover');
-      const userMenu = document.getElementById('modern-profile-menu') || document.getElementById('user-dropdown-menu');
-      const searchPopover = document.getElementById('search-suggestions-popover');
-      if (userMenu) userMenu.classList.remove('show');
-      if (searchPopover) {
-        searchPopover.classList.remove('active');
-        searchPopover.style.display = 'none';
-      }
-      if (notifPopover) {
-        const isShowing = notifPopover.classList.contains('show') || notifPopover.style.display === 'block';
-        if (isShowing) {
-          notifPopover.classList.remove('show');
-          notifPopover.style.display = 'none';
-        } else {
-          notifPopover.classList.add('show');
-          notifPopover.style.display = 'block';
-        }
-      }
-    };
-
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   renderSplitJobList();
   renderSplitJobDetail(currentSplitJobId);
 });

@@ -3427,31 +3427,18 @@ window.handleDirectCompanyContact = function(e, companyName) {
   document.getElementById('co-direct-contact-form')?.reset();
 };
 
-window._isCompanyOpening = false;
-
 window.openCompanyDetail = function(companyId) {
-  // Prevent double-click glitch / debounce
-  if (window._isCompanyOpening) return;
-  window._isCompanyOpening = true;
-
-  // 1. Instantly trigger top progress bar for immediate feedback on SINGLE click
+  // Instantly trigger top progress bar for visual feedback
   if (typeof window.startPageLoading === 'function') {
     window.startPageLoading();
   }
-
-  // 2. Smooth micro-delay (120ms) gives perfect tactile responsiveness
-  setTimeout(() => {
-    try {
-      _executeOpenCompanyDetail(companyId);
-    } finally {
-      if (typeof window.finishPageLoading === 'function') {
-        window.finishPageLoading();
-      }
-      setTimeout(() => {
-        window._isCompanyOpening = false;
-      }, 250);
+  try {
+    _executeOpenCompanyDetail(companyId);
+  } finally {
+    if (typeof window.finishPageLoading === 'function') {
+      window.finishPageLoading();
     }
-  }, 120);
+  }
 };
 
 function _executeOpenCompanyDetail(companyId) {
